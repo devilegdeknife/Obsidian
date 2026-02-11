@@ -1,0 +1,285 @@
+{
+  "main": {
+    "id": "58f18932700bc506",
+    "type": "split",
+    "children": [
+      {
+        "id": "cf22e93d4360b6d0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1d0ad55b0c33e0aa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02_Areas/21_coding/Codex/07_代码库现代化, 用 Codex 迁移遗留系统.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "07_代码库现代化, 用 Codex 迁移遗留系统"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "543ae4baa9a53377",
+    "type": "split",
+    "children": [
+      {
+        "id": "b297b44a7033ed44",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "596849536852005d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "b59584b1f0138775",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "cf2b55cb47bf6334",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 301.5
+  },
+  "right": {
+    "id": "0301e1d0d0252fc6",
+    "type": "split",
+    "children": [
+      {
+        "id": "9e65769ff2651ae7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d057a061e96199fc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "02-Areas/待处理/未命名 1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "未命名 1 的反向链接列表"
+            }
+          },
+          {
+            "id": "379338c30457e985",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "02-Areas/待处理/未命名 1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "未命名 1 的出链列表"
+            }
+          },
+          {
+            "id": "2b72de0fb64d0a19",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "722ca3298a36d7ee",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "39ddf3268da5bd15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "02-Areas/00_编程/Codex 提示词指南.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Codex 提示词指南 的大纲"
+            }
+          },
+          {
+            "id": "5af7d0d460fd2330",
+            "type": "leaf",
+            "state": {
+              "type": "chinese-calendar-view",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "日历"
+            }
+          },
+          {
+            "id": "2e5eadb3d35eba16",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
+              "icon": "SpacedRepIcon",
+              "title": "笔记复习序列"
+            }
+          },
+          {
+            "id": "9ca893a0ad6c7c88",
+            "type": "leaf",
+            "state": {
+              "type": "agent-client-chat-view",
+              "state": {
+                "initialAgentId": "codex-acp"
+              },
+              "icon": "bot-message-square",
+              "title": "Agent client"
+            }
+          },
+          {
+            "id": "f506eb8a5b9c0807",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
+              "icon": "SpacedRepIcon",
+              "title": "笔记复习序列"
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "horizontal",
+    "width": 541.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "copilot:Open Copilot Chat": false,
+      "obsidian-spaced-repetition:复习卡片": false,
+      "obsidian42-brat:BRAT": false,
+      "agent-client:Open agent client": false,
+      "periodic-notes:Open today": false
+    }
+  },
+  "active": "1d0ad55b0c33e0aa",
+  "lastOpenFiles": [
+    "02_Areas/21_coding/Codex/06_ExecPlan, 用 PLANS.md 拆解多小时任务.md",
+    "02_Areas/21_coding/Codex/03_GitHub Actions, CI 失败自动修复 (Codex CLI).md",
+    "02_Areas/21_coding/Codex/02_Codex CLI 与 Agents SDK, 构建一致工作流.md",
+    "02_Areas/21_coding/Codex/07_代码库现代化, 用 Codex 迁移遗留系统.md",
+    "00_Inbox/为什么家用摄像头基本上都不支持onvif-rtsp协议呢？_probezy_2026-02-10.md",
+    "00_Inbox/服务器为什么大多用 Linux？_编程大帅_2026-02-10.md",
+    "PLAN.md",
+    "02_Areas/21_coding/Codex/08_Jira 与 GitHub 自动化, 用 Codex CLI 从工单开 PR.md",
+    "02_Areas/21_coding/Codex/05_CI 中的代码审查, Codex 结构化输出.md",
+    "02_Areas/21_coding/Codex/04_GitLab CI, 代码质量与安全修复 (Codex CLI).md",
+    "00_Inbox/女拳/未命名 10 1.md",
+    "02_Areas/22_Philosophy/gemini-chat-20260121-225727-structured.md",
+    "02_Areas/22_Philosophy/现代性危机：加速主义 vs 马克思主义.md",
+    "02_Areas/22_Philosophy/gemini-chat-20260121-225727.md",
+    "02_Areas/阳春面.md",
+    "02_Areas/日本ACG短生种本位叙事模式解构.md",
+    "02_Areas/23_society/斩杀线理论/由骨架标本看美国自愿捐献.md",
+    "02_Areas/23_society/斩杀线理论/斩杀线——中外新闻存档.md",
+    "00_Inbox/俄罗斯或前苏联加盟国的高层名流吃人吗？_清河崔氏时宜_2026-02-10.md",
+    "00_Inbox/01-社会文化分析/中国社会观察/日本吕宋化趋势与制造业前景分析_Unknown_2026-02-04.md",
+    "00_Inbox/01-社会文化分析/_INDEX.md",
+    "02_Areas/23_society/社会身份学/日本亚文化/亚文化符号的深层联系_Gemini_2026-01-17.md",
+    "02_Areas/23_society/社会身份学/日本亚文化/牛郎债务驱动的性产业闭环_Gemini_2026-01-17.md",
+    "02_Areas/23_society/社会身份学/日本亚文化/边缘群体“准家人”的剥削共生_Gemini_2026-01-17.md",
+    "02_Areas/23_society/社会身份学/日本亚文化/_INDEX.md",
+    "02_Areas/23_society/社会动力学/社会概率学说.md",
+    "02_Areas/23_society/社会身份学/日本亚文化/_INDEX.md.tmp.43772.1770476673373",
+    "04_Archives/Pasted image 20260118203647.png",
+    "00_Inbox/06-杂项/d20121126155350556.pdf",
+    "00_Inbox/未确认 173854.crdownload",
+    "00_Inbox/未确认 267659.crdownload",
+    "00_Inbox/女拳",
+    "00_Inbox/未确认 824071.crdownload",
+    "00-Inbox/05-个人发展/网络工程师的Python之路-从CCNA到CCIE的职场奋斗记_网络行者_2026-01-18.md.tmp.38620.1770306966279",
+    "00-Inbox/01-社会文化分析/中国社会观察/旅美经历与斩杀线理论实例分析_Unknown_2026-01-24.md.tmp.38620.1770306950524",
+    "00-Inbox/INDEX.md.tmp.38620.1770306148286",
+    "00_Inbox/06-杂项/yunnan_map.html",
+    "00-Inbox/Pasted image 20260118203647.png",
+    "02-Areas/00_编程/Vibe_Coding/常见工作流程 - Claude Code Docs_files/light.svg",
+    "02-Areas/00_编程/Vibe_Coding/常见工作流程 - Claude Code Docs_files/dark.svg",
+    "02-Areas/00_编程/Vibe_Coding/常见工作流程 - Claude Code Docs_files/CN.svg",
+    "00-Inbox/待处理/络络.png",
+    "04_Archives/图片 1/导入.png",
+    "04_Archives/图片/95122414_7.png",
+    "04_Archives/图片 1/快捷键.png",
+    "00-Inbox/Notion_export/食谱收藏/炝炒圆白菜/image.png"
+  ]
+}
