@@ -1,0 +1,4 @@
+# Obsidian plugin secrets and local sessions
+**/.obsidian/plugins/**/data.json
+**/.obsidian/plugins/**/sessions/
+**/.obsidian/plugins/**/sessions/**
