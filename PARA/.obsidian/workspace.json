@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_Areas/21_coding/Codex/07_代码库现代化, 用 Codex 迁移遗留系统.md",
+                "file": "00_Inbox/未命名 13.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07_代码库现代化, 用 Codex 迁移遗留系统"
+              "title": "未命名 13"
             }
           }
         ]
@@ -229,12 +229,12 @@
       "copilot:Open Copilot Chat": false,
       "obsidian-spaced-repetition:复习卡片": false,
       "obsidian42-brat:BRAT": false,
-      "agent-client:Open agent client": false,
-      "periodic-notes:Open today": false
+      "agent-client:Open agent client": false
     }
   },
   "active": "1d0ad55b0c33e0aa",
   "lastOpenFiles": [
+    "00_Inbox/未命名 13.md",
     "02_Areas/21_coding/Codex/06_ExecPlan, 用 PLANS.md 拆解多小时任务.md",
     "02_Areas/21_coding/Codex/03_GitHub Actions, CI 失败自动修复 (Codex CLI).md",
     "02_Areas/21_coding/Codex/02_Codex CLI 与 Agents SDK, 构建一致工作流.md",
@@ -260,7 +260,6 @@
     "02_Areas/23_society/社会身份学/日本亚文化/牛郎债务驱动的性产业闭环_Gemini_2026-01-17.md",
     "02_Areas/23_society/社会身份学/日本亚文化/边缘群体“准家人”的剥削共生_Gemini_2026-01-17.md",
     "02_Areas/23_society/社会身份学/日本亚文化/_INDEX.md",
-    "02_Areas/23_society/社会动力学/社会概率学说.md",
     "02_Areas/23_society/社会身份学/日本亚文化/_INDEX.md.tmp.43772.1770476673373",
     "04_Archives/Pasted image 20260118203647.png",
     "00_Inbox/06-杂项/d20121126155350556.pdf",

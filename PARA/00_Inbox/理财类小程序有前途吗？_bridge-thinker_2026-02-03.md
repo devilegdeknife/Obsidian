@@ -1,15 +1,9 @@
 ---
-title: 理财类小程序有前途吗？
-url: https://www.zhihu.com/question/55804152/answer/2002103819866220091
-author: bridge-thinker
-author_badge: 输出倒逼输入
-created: 2026-02-03
-modified: 2026-02-03 19:39
-upvote_num: 16
-comment_num: 5
-para: inbox
+创建时间: 2026-02-03
+最后修改: 2026-02-15
+状态:
+  - Inbox
 tags: []
-updated: 2026-02-11
 ---
 ### 前言
 

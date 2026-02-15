@@ -1,16 +1,10 @@
 ---
-title: 为什么家用摄像头基本上都不支持onvif-rtsp协议呢？
-url: https://www.zhihu.com/question/404251421/answer/2004502639908524420
-author: probezy
-author_badge: 软件架构师
-created: 2026-02-10
-modified: 2026-02-10 10:31
-upvote_num: 18
-comment_num: 4
-para: inbox
+创建时间: 2026-02-10
+最后修改: 2026-02-15
+状态:
+  - Inbox
 tags:
   - #audio
-updated: 2026-02-11
 ---
 ![](https://pic4.zhimg.com/v2-98c462e8b95814ec3181bd47c8ea194f_r.jpg)
 
