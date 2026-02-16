@@ -8,6 +8,8 @@ tags:
   - #claude-code
   - #vibe-coding
   - #workflow
+para: areas
+aliases: []
 ---
 > [!summary]
 > - 用 `git worktree` 并行跑多个会话，用空间换时间

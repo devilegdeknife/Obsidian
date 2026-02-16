@@ -4,6 +4,8 @@
 状态:
   - Resource
 tags: []
+para: resource
+aliases: []
 ---
 # Software-Engineering-at-Google
 
@@ -11,7 +13,7 @@ tags: []
 
 ## 书籍介绍
 
-![Software Engineering at Google](../../04_Archives/图片/swe_at_google.2.cover.jpg)
+![Software Engineering at Google](04_Archives/attachments/img-20231204-142220-002.jpg)
 by **Titus Winters, Tom Manshreck, and Hyrum Wright**
 
 当前国内已经有中文版书籍出版了，大家需要更加准确，推荐大家去购买。

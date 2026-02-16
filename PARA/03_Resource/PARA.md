@@ -7,4 +7,6 @@
   - Areas
   - Resource
 tags:
+para: resource
+aliases: []
 ---

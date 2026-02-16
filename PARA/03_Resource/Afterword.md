@@ -4,6 +4,8 @@
 状态:
   - Resource
 tags: []
+para: resource
+aliases: []
 ---
 # 后记
 Software engineering at Google has been an extraordinary experiment in how to develop and maintain a large and evolving codebase. I’ve seen engineering teams break ground on this front during my time here, moving Google forward both as a company that touches billions of users and as a leader in the tech industry. This wouldn’t have been possible without the principles outlined in this book, so I’m very excited to see these pages come to life.

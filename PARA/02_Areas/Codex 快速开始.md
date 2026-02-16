@@ -8,6 +8,8 @@ tags:
   - #codex
   - #vibe-coding
   - #workflow
+para: areas
+aliases: []
 ---
 > [!summary]
 > 把 Codex 当作“会读代码, 会跑命令, 会改文件, 还能根据反馈自我迭代”的队友。你负责目标, 约束, 验证路径, 以及最终审阅和合并。

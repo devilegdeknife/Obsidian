@@ -4,6 +4,8 @@
 状态:
   - Areas
 tags: []
+para: areas
+aliases: []
 ---
 ## 变量
 
@@ -236,7 +238,7 @@ fn add_with_extra(x: i32, y: i32) -> i32 {
 
 ### 函数
 
-![[../../04_Archives/图片 1/rust函数.png]]
+![[04_Archives/attachments/img-20240525-222039.png]]
 
 #### 函数要点
 

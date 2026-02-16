@@ -4,6 +4,8 @@
 状态:
   - Archives
 tags: []
+para: archives
+aliases: []
 ---
 ### 通用公式
 1. 命令祈使句

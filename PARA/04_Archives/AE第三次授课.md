@@ -4,6 +4,8 @@
 状态:
   - Archives
 tags: []
+para: archives
+aliases: []
 ---
 ## 课程概要
 本课程旨在教授学生如何在Adobe After Effects 2023中使用遮罩和蒙版功能。学生将学习基本概念、操作技巧以及如何在实际项目中应用这些工具。

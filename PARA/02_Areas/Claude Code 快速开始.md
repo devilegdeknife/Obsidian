@@ -9,6 +9,8 @@ tags:
   - #claude-code
   - #vibe-coding
   - #workflow
+para: areas
+aliases: []
 ---
 本文档中的每项任务都包含清晰的说明、示例命令和最佳实践，帮助您充分利用 Claude Code。
 

@@ -5,7 +5,7 @@
   "openBehavior": "new",
   "newFileLocation": "folder",
   "newFileFolderPath": "00_Inbox",
-  "attachmentFolderPath": "04-Archives",
+  "attachmentFolderPath": "04_Archives/attachments",
   "newLinkFormat": "relative",
   "alwaysUpdateLinks": true,
   "showUnsupportedFiles": true,

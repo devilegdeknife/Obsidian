@@ -9,6 +9,8 @@ tags:
   - #prompting
   - #vibe-coding
   - #workflow
+para: areas
+aliases: []
 ---
 > [!summary]
 > 写提示词的目标不是“让 AI 聪明”，而是让工程产出**可控**：范围可控，行为可控，验证可控。你把 Done, 约束, 验证路径讲清楚，Codex 才会稳定发挥。

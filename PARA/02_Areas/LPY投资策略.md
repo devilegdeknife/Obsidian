@@ -8,6 +8,8 @@ tags:
   - #投资策略
   - #长期投资
   - #资产管理
+para: areas
+aliases: []
 ---
 # LPY投资策略
 

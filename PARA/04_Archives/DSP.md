@@ -4,47 +4,49 @@
 状态:
   - Archives
 tags: []
+para: archives
+aliases: []
 ---
 ### 共轭对称与共轭反对称
-![[../../图片 1/Pasted image 20231211221737.png]]
+![[04_Archives/attachments/img-20231211-221737.png]]
 
 ### 卷积计算
 
 ### 基本周期计算
-![[../../图片 1/Pasted image 20231211222358.png]]
+![[04_Archives/attachments/img-20231211-222358.png]]
 
 多个函数，求最小公倍数
 ### 采样频率、周期、模拟频率、角频率
-![[../../图片 1/Pasted image 20231211222929.png]]
+![[04_Archives/attachments/img-20231211-222929.png]]
 
 ### 采样定理
-![[../../图片 1/Pasted image 20231211223238.png]]
+![[04_Archives/attachments/img-20231211-223238.png]]
 
 ### DTFT 
-![[../../图片 1/Pasted image 20231211223933.png]]
-![[../../图片 1/Pasted image 20231211224329.png]]
-![[../../图片 1/Pasted image 20231211224738.png]]
+![[04_Archives/attachments/img-20231211-223933.png]]
+![[04_Archives/attachments/img-20231211-224329.png]]
+![[04_Archives/attachments/img-20231211-224738.png]]
 
 ### Z变换
-![[../../图片 1/Pasted image 20231213153916.png]]
+![[04_Archives/attachments/img-20231213-153916.png]]
 
 ### 部分分式展开法
 
 ### 线性 、时不变性、因果性、稳定性
 
 - 线性
-  ![[../../图片 1/Pasted image 20231213155852.png]]
+  ![[04_Archives/attachments/img-20231213-155852.png]]
 - 时不变性
-  ![[../../图片 1/Pasted image 20231213155942.png]]
+  ![[04_Archives/attachments/img-20231213-155942.png]]
 - 因果性
-   ![[../../图片 1/Pasted image 20231213160650.png]]
+   ![[04_Archives/attachments/img-20231213-160650.png]]
 - 稳定性
- ![[../../图片 1/Pasted image 20231213161046.png]]
+ ![[04_Archives/attachments/img-20231213-161046.png]]
 
 ### 系统频响
-![[../../图片 1/Pasted image 20231213161353.png]]
+![[04_Archives/attachments/img-20231213-161353.png]]
 
 ### DFT
 
 ### 线性相位
-![[../../图片 1/Pasted image 20231213172428.png]]
+![[04_Archives/attachments/img-20231213-172428.png]]

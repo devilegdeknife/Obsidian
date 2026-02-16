@@ -4,6 +4,8 @@
 状态:
   - Inbox
 tags: []
+para: inbox
+aliases: []
 ---
 # 社会文化分析 / Social & Cultural Analysis
 

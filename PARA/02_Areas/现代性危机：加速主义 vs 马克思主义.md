@@ -5,6 +5,8 @@
   - Areas
 tags:
   - #社会反思
+para: areas
+aliases: []
 ---
 # 是什么-什么是现代性危机
 
