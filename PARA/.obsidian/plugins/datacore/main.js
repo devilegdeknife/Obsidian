@@ -103,7 +103,7 @@ var require_parsimmon_umd_min = __commonJS({
         }
         function s4() {
           if (!c3())
-            throw new Error("Buffer global does not exist; please use webpack if you need to parse Buffers in the browser.");
+            throw new Error("全局缓冲区不存在；如果需要在浏览器中解析Buffer，请使用webpack。");
         }
         function l4(n4) {
           s4();
@@ -111,14 +111,14 @@ var require_parsimmon_umd_min = __commonJS({
             return n5 + t6;
           }, 0, n4);
           if (t5 % 8 != 0)
-            throw new Error("The bits [" + n4.join(", ") + "] add up to " + t5 + " which is not an even number of bytes; the total should be divisible by 8");
+            throw new Error("位 [" + n4.join(", ") + "] 加上" + t5 + "不是偶数个字节；总数应能被 8 整除");
           var r4, u5 = t5 / 8, o4 = (r4 = function(n5) {
             return n5 > 48;
           }, i4(function(n5, t6) {
             return n5 || (r4(t6) ? t6 : n5);
           }, null, n4));
           if (o4)
-            throw new Error(o4 + " bit range requested exceeds 48 bit (6 byte) Number max.");
+            throw new Error(o4 + "请求的位范围超过 48 位（6 字节）");
           return new e3(function(t6, r5) {
             var e4 = u5 + r5;
             return e4 > t6.length ? x4(r5, u5.toString() + " bytes") : b3(e4, i4(function(n5, t7) {
@@ -134,7 +134,7 @@ var require_parsimmon_umd_min = __commonJS({
         }
         function p3(n4, t5) {
           if ("number" != typeof (r4 = t5) || Math.floor(r4) !== r4 || t5 < 0 || t5 > 6)
-            throw new Error(n4 + " requires integer length in range [0, 6].");
+            throw new Error(n4 + "需要范围 [0, 6] 内的整数长度。");
           var r4;
         }
         function d3(n4) {
@@ -161,7 +161,7 @@ var require_parsimmon_umd_min = __commonJS({
           return n4 instanceof e3;
         }
         function E3(n4) {
-          return "[object Array]" === {}.toString.call(n4);
+          return "[对象数组]" === {}.toString.call(n4);
         }
         function w4(n4) {
           return c3() && Buffer.isBuffer(n4);
@@ -217,22 +217,22 @@ var require_parsimmon_umd_min = __commonJS({
         }
         function _3(n4) {
           if (!y3(n4))
-            throw new Error("not a parser: " + n4);
+            throw new Error("不是数字解析器：" + n4);
         }
         function L3(n4, t5) {
           return "string" == typeof n4 ? n4.charAt(t5) : n4[t5];
         }
         function O3(n4) {
           if ("number" != typeof n4)
-            throw new Error("not a number: " + n4);
+            throw new Error("不是数字：" + n4);
         }
         function k4(n4) {
           if ("function" != typeof n4)
-            throw new Error("not a function: " + n4);
+            throw new Error("不是函数：" + n4);
         }
         function P7(n4) {
           if ("string" != typeof n4)
-            throw new Error("not a string: " + n4);
+            throw new Error("不是字符串：" + n4);
         }
         var q4 = 2, A4 = 3, I3 = 8, F4 = 5 * I3, M3 = 4 * I3, z4 = "  ";
         function R2(n4, t5) {
@@ -248,7 +248,7 @@ var require_parsimmon_umd_min = __commonJS({
         function D4(n4, t5) {
           var r4, e4, u5, o4, f5, c4 = t5.index, s5 = c4.offset, l5 = 1;
           if (s5 === n4.length)
-            return "Got the end of the input";
+            return "得到输入的结尾";
           if (w4(n4)) {
             var h4 = s5 - s5 % I3, p4 = s5 - h4, d4 = W2(h4, F4, M3 + I3, n4.length), v4 = a3(function(n5) {
               return a3(function(n6) {
@@ -278,7 +278,7 @@ var require_parsimmon_umd_min = __commonJS({
           }, [], u5).join("\n");
         }
         function N3(n4, t5) {
-          return ["\n", "-- PARSING FAILED " + R2("-", 50), "\n\n", D4(n4, t5), "\n\n", (r4 = t5.expected, 1 === r4.length ? "Expected:\n\n" + r4[0] : "Expected one of the following: \n\n" + r4.join(", ")), "\n"].join("");
+          return ["\n", "-- 解析失败" + R2("-", 50), "\n\n", D4(n4, t5), "\n\n", (r4 = t5.expected, 1 === r4.length ? "Expected:\n\n" + r4[0] : "需要以下其中一项：" + r4.join(", ")), "\n"].join("");
           var r4;
         }
         function G3(n4) {
@@ -299,7 +299,7 @@ var require_parsimmon_umd_min = __commonJS({
         function J3() {
           var n4 = [].slice.call(arguments);
           if (0 === n4.length)
-            throw new Error("seqMap needs at least one argument");
+            throw new Error("seqMap 需要至少一个参数");
           var t5 = n4.pop();
           return k4(t5), C4.apply(null, n4).map(function(n5) {
             return t5.apply(null, n5);
@@ -308,7 +308,7 @@ var require_parsimmon_umd_min = __commonJS({
         function T4() {
           var n4 = [].slice.call(arguments), t5 = n4.length;
           if (0 === t5)
-            return Y2("zero alternates");
+            return Y2("零替代");
           for (var r4 = 0; r4 < t5; r4 += 1)
             _3(n4[r4]);
           return e3(function(t6, r5) {
@@ -337,11 +337,11 @@ var require_parsimmon_umd_min = __commonJS({
         function Q2(n4, t5) {
           !function(n5) {
             if (!(n5 instanceof RegExp))
-              throw new Error("not a regexp: " + n5);
+              throw new Error("不是正则表达式：" + n5);
             for (var t6 = G3(n5), r5 = 0; r5 < t6.length; r5++) {
               var e4 = t6.charAt(r5);
               if ("i" !== e4 && "m" !== e4 && "u" !== e4 && "s" !== e4)
-                throw new Error('unsupported regexp flag "' + e4 + '": ' + n5);
+                throw new Error('不支持的正则表达式标志 "' + e4 + '": ' + n5);
             }
           }(n4), arguments.length >= 2 ? O3(t5) : t5 = 0;
           var r4 = function(n5) {
@@ -354,7 +354,7 @@ var require_parsimmon_umd_min = __commonJS({
                 var i5 = o4[0], a4 = o4[t5];
                 return b3(e4 + i5.length, a4);
               }
-              return x4(e4, "valid match group (0 to " + o4.length + ") in " + u5);
+              return x4(e4, "有效匹配组 (0 到" + o4.length + ") 中" + u5);
             }
             return x4(e4, u5);
           });
@@ -379,18 +379,18 @@ var require_parsimmon_umd_min = __commonJS({
             return Z2(K3(n4));
           if (n4 instanceof RegExp)
             return Z2(Q2(n4));
-          throw new Error("not a string, regexp, or parser: " + n4);
+          throw new Error("不是字符串、正则表达式或解析器：" + n4);
         }
         function $3(n4) {
           return _3(n4), e3(function(t5, r4) {
             var e4 = n4._(t5, r4), u5 = t5.slice(r4, e4.index);
-            return e4.status ? x4(r4, 'not "' + u5 + '"') : b3(r4, null);
+            return e4.status ? x4(r4, '不是 "' + u5 + '"') : b3(r4, null);
           });
         }
         function nn2(n4) {
           return k4(n4), e3(function(t5, r4) {
             var e4 = L3(t5, r4);
-            return r4 < t5.length && n4(e4) ? b3(r4 + 1, e4) : x4(r4, "a character/byte matching " + n4);
+            return r4 < t5.length && n4(e4) ? b3(r4 + 1, e4) : x4(r4, "字符/字节匹配" + n4);
           });
         }
         function tn2(n4, t5) {
@@ -405,7 +405,7 @@ var require_parsimmon_umd_min = __commonJS({
         }
         u4.parse = function(n4) {
           if ("string" != typeof n4 && !w4(n4))
-            throw new Error(".parse must be called with a string or Buffer as its argument");
+            throw new Error(".parse 必须使用字符串或 Buffer 作为参数调用");
           var t5, r4 = this.skip(an2)._(n4, 0);
           return t5 = r4.status ? { status: true, value: r4.value } : { status: false, index: S2(n4, r4.furthest), expected: r4.expected }, delete j4[n4], t5;
         }, u4.tryParse = function(n4) {
@@ -439,7 +439,7 @@ var require_parsimmon_umd_min = __commonJS({
               if (!(u5 = B4(n4._(t5, r4), u5)).status)
                 return B4(b3(r4, e4), u5);
               if (r4 === u5.index)
-                throw new Error("infinite loop detected in .many() parser --- calling .many() on a parser which can accept zero characters is usually the cause");
+                throw new Error("在 .many() 解析器中检测到无限循环 --- 在可以接受零个字符的解析器上调用 .many() 通常是原因");
               r4 = u5.index, e4.push(u5.value);
             }
           });
@@ -447,7 +447,7 @@ var require_parsimmon_umd_min = __commonJS({
           return P7(n4), this.map(function(t5) {
             if (function(n5) {
               if (!E3(n5))
-                throw new Error("not an array: " + n5);
+                throw new Error("不是数组：" + n5);
             }(t5), t5.length) {
               P7(t5[0]);
               for (var r4 = t5[0], e4 = 1; e4 < t5.length; e4++)
@@ -539,12 +539,12 @@ var require_parsimmon_umd_min = __commonJS({
         var en2 = e3(function(n4, t5) {
           return b3(t5, S2(n4, t5));
         }), un2 = e3(function(n4, t5) {
-          return t5 >= n4.length ? x4(t5, "any character/byte") : b3(t5 + 1, L3(n4, t5));
+          return t5 >= n4.length ? x4(t5, "任何字符/字节") : b3(t5 + 1, L3(n4, t5));
         }), on2 = e3(function(n4, t5) {
           return b3(n4.length, n4.slice(t5));
         }), an2 = e3(function(n4, t5) {
           return t5 < n4.length ? x4(t5, "EOF") : b3(t5, null);
-        }), fn2 = Q2(/[0-9]/).desc("a digit"), cn2 = Q2(/[0-9]*/).desc("optional digits"), sn2 = Q2(/[a-z]/i).desc("a letter"), ln2 = Q2(/[a-z]*/i).desc("optional letters"), hn2 = Q2(/\s*/).desc("optional whitespace"), pn2 = Q2(/\s+/).desc("whitespace"), dn2 = K3("\r"), vn = K3("\n"), gn2 = K3("\r\n"), mn2 = T4(gn2, vn, dn2).desc("newline"), yn2 = T4(mn2, an2);
+        }), fn2 = Q2(/[0-9]/).desc("数字"), cn2 = Q2(/[0-9]*/).desc("可选数字"), sn2 = Q2(/[a-z]/i).desc("字母"), ln2 = Q2(/[a-z]*/i).desc("可选字母"), hn2 = Q2(/\s*/).desc("可选的空白"), pn2 = Q2(/\s+/).desc("whitespace"), dn2 = K3("\r"), vn = K3("\n"), gn2 = K3("\r\n"), mn2 = T4(gn2, vn, dn2).desc("newline"), yn2 = T4(mn2, an2);
         e3.all = on2, e3.alt = T4, e3.any = un2, e3.cr = dn2, e3.createLanguage = function(n4) {
           var t5 = {};
           for (var r4 in n4)
@@ -559,7 +559,7 @@ var require_parsimmon_umd_min = __commonJS({
         }, e3.digit = fn2, e3.digits = cn2, e3.empty = rn2, e3.end = yn2, e3.eof = an2, e3.fail = Y2, e3.formatError = N3, e3.index = en2, e3.isParser = y3, e3.lazy = tn2, e3.letter = sn2, e3.letters = ln2, e3.lf = vn, e3.lookahead = Z2, e3.makeFailure = x4, e3.makeSuccess = b3, e3.newline = mn2, e3.noneOf = function(n4) {
           return nn2(function(t5) {
             return n4.indexOf(t5) < 0;
-          }).desc("none of '" + n4 + "'");
+          }).desc("没有 '" + n4 + "'");
         }, e3.notFollowedBy = $3, e3.of = X2, e3.oneOf = function(n4) {
           for (var t5 = n4.split(""), r4 = 0; r4 < t5.length; r4++)
             t5[r4] = "'" + t5[r4] + "'";
@@ -577,15 +577,15 @@ var require_parsimmon_umd_min = __commonJS({
               if (E3(a4) && 2 === a4.length && "string" == typeof a4[0] && y3(a4[1])) {
                 var f5 = a4[0];
                 if (Object.prototype.hasOwnProperty.call(t5, f5))
-                  throw new Error("seqObj: duplicate key " + f5);
+                  throw new Error("seqObj：重复键" + f5);
                 t5[f5] = true, r4++;
                 continue;
               }
-              throw new Error("seqObj arguments must be parsers or [string, parser] array pairs.");
+              throw new Error("seqObj 参数必须是解析器或 [string, parser] 数组对。");
             }
           }
           if (0 === r4)
-            throw new Error("seqObj expects at least one named parser, found zero");
+            throw new Error("seqObj 需要至少一个命名解析器，发现零");
           return e3(function(n5, t6) {
             for (var r5, e4 = {}, i6 = 0; i6 < o4; i6 += 1) {
               var a5, f6;
@@ -607,15 +607,15 @@ var require_parsimmon_umd_min = __commonJS({
             if (E3(n5)) {
               var e5 = n5;
               if (2 !== e5.length)
-                throw new Error("[" + e5.join(", ") + "] should be length 2, got length " + e5.length);
+                throw new Error("[" + e5.join(", ") + "] 长度应为 2，长度" + e5.length);
               if (P7(e5[0]), O3(e5[1]), Object.prototype.hasOwnProperty.call(t5, e5[0]))
-                throw new Error("duplicate key in bitSeqObj: " + e5[0]);
+                throw new Error("bitSeqObj 中的重复键：" + e5[0]);
               return t5[e5[0]] = true, r4++, e5;
             }
             return O3(n5), [null, n5];
           }, n4);
           if (r4 < 1)
-            throw new Error("bitSeqObj expects at least one named pair, got [" + n4.join(", ") + "]");
+            throw new Error("bitSeqObj 需要至少一个命名对，得到 [" + n4.join(", ") + "]");
           var u5 = a3(function(n5) {
             return n5[0];
           }, e4);
@@ -630,7 +630,7 @@ var require_parsimmon_umd_min = __commonJS({
           });
         }, byte: function(n4) {
           if (s4(), O3(n4), n4 > 255)
-            throw new Error("Value specified to byte constructor (" + n4 + "=0x" + n4.toString(16) + ") is larger in value than a single byte.");
+            throw new Error("指定给字节构造函数的值 (" + n4 + "=0x" + n4.toString(16) + ") 的值大于单个字节。");
           var t5 = (n4 > 15 ? "0x" : "0x0") + n4.toString(16);
           return e3(function(r4, e4) {
             var u5 = L3(r4, e4);
@@ -1015,7 +1015,7 @@ var require_types = __commonJS({
     function getNamedType(suite, name2) {
       var ttype = suite[name2];
       if (!ttype) {
-        throw new Error("Unknown type " + name2);
+        throw new Error("未知类型" + name2);
       }
       return ttype;
     }
@@ -1030,7 +1030,7 @@ var require_types = __commonJS({
         function TName2(name2) {
           var _this = _super.call(this) || this;
           _this.name = name2;
-          _this._failMsg = "is not a " + name2;
+          _this._failMsg = "不是" + name2;
           return _this;
         }
         TName2.prototype.getChecker = function(suite, strict, allowedProps) {
@@ -1060,7 +1060,7 @@ var require_types = __commonJS({
           var _this = _super.call(this) || this;
           _this.value = value;
           _this.name = JSON.stringify(value);
-          _this._failMsg = "is not " + _this.name;
+          _this._failMsg = "不是" + _this.name;
           return _this;
         }
         TLiteral2.prototype.getChecker = function(suite, strict) {
@@ -1090,7 +1090,7 @@ var require_types = __commonJS({
           var itemChecker = this.ttype.getChecker(suite, strict);
           return function(value, ctx) {
             if (!Array.isArray(value)) {
-              return ctx.fail(null, "is not an array", 0);
+              return ctx.fail(null, "不是数组", 0);
             }
             for (var i4 = 0; i4 < value.length; i4++) {
               var ok = itemChecker(value[i4], ctx);
@@ -1130,7 +1130,7 @@ var require_types = __commonJS({
           });
           var checker = function(value, ctx) {
             if (!Array.isArray(value)) {
-              return ctx.fail(null, "is not an array", 0);
+              return ctx.fail(null, "不是数组", 0);
             }
             for (var i4 = 0; i4 < itemCheckers.length; i4++) {
               var ok = itemCheckers[i4](value[i4], ctx);
@@ -1147,7 +1147,7 @@ var require_types = __commonJS({
             if (!checker(value, ctx)) {
               return false;
             }
-            return value.length <= itemCheckers.length ? true : ctx.fail(itemCheckers.length, "is extraneous", 2);
+            return value.length <= itemCheckers.length ? true : ctx.fail(itemCheckers.length, "是无关的", 2);
           };
         };
         return TTuple2;
@@ -1181,9 +1181,9 @@ var require_types = __commonJS({
             if (otherTypes > 0) {
               names.push(otherTypes + " more");
             }
-            _this._failMsg = "is none of " + names.join(", ");
+            _this._failMsg = "不为" + names.join(", ");
           } else {
-            _this._failMsg = "is none of " + otherTypes + " types";
+            _this._failMsg = "不为" + otherTypes + " types";
           }
           return _this;
         }
@@ -1258,7 +1258,7 @@ var require_types = __commonJS({
           var _this = _super.call(this) || this;
           _this.members = members;
           _this.validValues = /* @__PURE__ */ new Set();
-          _this._failMsg = "is not a valid enum value";
+          _this._failMsg = "不是有效的枚举值";
           _this.validValues = new Set(Object.keys(members).map(function(name2) {
             return members[name2];
           }));
@@ -1286,18 +1286,18 @@ var require_types = __commonJS({
           var _this = _super.call(this) || this;
           _this.enumName = enumName;
           _this.prop = prop;
-          _this._failMsg = "is not " + enumName + "." + prop;
+          _this._failMsg = "不是" + enumName + "." + prop;
           return _this;
         }
         TEnumLiteral2.prototype.getChecker = function(suite, strict) {
           var _this = this;
           var ttype = getNamedType(suite, this.enumName);
           if (!(ttype instanceof TEnumType)) {
-            throw new Error("Type " + this.enumName + " used in enumlit is not an enum type");
+            throw new Error("类型" + this.enumName + "不是枚举类型");
           }
           var val = ttype.members[this.prop];
           if (!ttype.members.hasOwnProperty(this.prop)) {
-            throw new Error("Unknown value " + this.enumName + "." + this.prop + " used in enumlit");
+            throw new Error("未知值" + this.enumName + "." + this.prop + " used in enumlit");
           }
           return function(value, ctx) {
             return value === val ? true : ctx.fail(null, _this._failMsg, -1);
@@ -1346,7 +1346,7 @@ var require_types = __commonJS({
           });
           var checker = function(value, ctx) {
             if (typeof value !== "object" || value === null) {
-              return ctx.fail(null, "is not an object", 0);
+              return ctx.fail(null, "不是对象", 0);
             }
             for (var i4 = 0; i4 < baseCheckers.length; i4++) {
               if (!baseCheckers[i4](value, ctx)) {
@@ -1358,7 +1358,7 @@ var require_types = __commonJS({
               var v3 = value[name_1];
               if (v3 === void 0) {
                 if (isPropRequired[i4]) {
-                  return ctx.fail(name_1, "is missing", 1);
+                  return ctx.fail(name_1, "失踪", 1);
                 }
               } else {
                 var ok = propCheckers[i4](v3, ctx);
@@ -1385,7 +1385,7 @@ var require_types = __commonJS({
             }
             for (var prop in value) {
               if (!propSet.has(prop)) {
-                return ctx.fail(prop, "is extraneous", 2);
+                return ctx.fail(prop, "是无关的", 2);
               }
             }
             return true;
@@ -1450,7 +1450,7 @@ var require_types = __commonJS({
         }
         TFunc2.prototype.getChecker = function(suite, strict) {
           return function(value, ctx) {
-            return typeof value === "function" ? true : ctx.fail(null, "is not a function", 0);
+            return typeof value === "function" ? true : ctx.fail(null, "不是函数", 0);
           };
         };
         return TFunc2;
@@ -1493,13 +1493,13 @@ var require_types = __commonJS({
           });
           var checker = function(value, ctx) {
             if (!Array.isArray(value)) {
-              return ctx.fail(null, "is not an array", 0);
+              return ctx.fail(null, "不是数组", 0);
             }
             for (var i4 = 0; i4 < itemCheckers.length; i4++) {
               var p3 = _this.params[i4];
               if (value[i4] === void 0) {
                 if (isParamRequired[i4]) {
-                  return ctx.fail(p3.name, "is missing", 1);
+                  return ctx.fail(p3.name, "失踪", 1);
                 }
               } else {
                 var ok = itemCheckers[i4](value[i4], ctx);
@@ -1517,7 +1517,7 @@ var require_types = __commonJS({
             if (!checker(value, ctx)) {
               return false;
             }
-            return value.length <= itemCheckers.length ? true : ctx.fail(itemCheckers.length, "is extraneous", 2);
+            return value.length <= itemCheckers.length ? true : ctx.fail(itemCheckers.length, "是无关的", 2);
           };
         };
         return TParamList2;
@@ -1547,36 +1547,36 @@ var require_types = __commonJS({
     exports.basicTypes = {
       any: new BasicType(function(v3) {
         return true;
-      }, "is invalid"),
+      }, "无效"),
       number: new BasicType(function(v3) {
         return typeof v3 === "number";
-      }, "is not a number"),
+      }, "不是数字"),
       object: new BasicType(function(v3) {
         return typeof v3 === "object" && v3;
-      }, "is not an object"),
+      }, "不是对象"),
       boolean: new BasicType(function(v3) {
         return typeof v3 === "boolean";
-      }, "is not a boolean"),
+      }, "不是布尔值"),
       string: new BasicType(function(v3) {
         return typeof v3 === "string";
-      }, "is not a string"),
+      }, "不是字符串"),
       symbol: new BasicType(function(v3) {
         return typeof v3 === "symbol";
-      }, "is not a symbol"),
+      }, "不是符号"),
       void: new BasicType(function(v3) {
         return v3 == null;
-      }, "is not void"),
+      }, "不为空"),
       undefined: new BasicType(function(v3) {
         return v3 === void 0;
-      }, "is not undefined"),
+      }, "不是未定义"),
       null: new BasicType(function(v3) {
         return v3 === null;
-      }, "is not null"),
+      }, "不为空"),
       never: new BasicType(function(v3) {
         return false;
-      }, "is unexpected"),
-      Date: new BasicType(getIsNativeChecker("[object Date]"), "is not a Date"),
-      RegExp: new BasicType(getIsNativeChecker("[object RegExp]"), "is not a RegExp")
+      }, "是意外的"),
+      Date: new BasicType(getIsNativeChecker("[对象日期]"), "不是日期"),
+      RegExp: new BasicType(getIsNativeChecker("[object RegExp]"), "不是正则表达式")
     };
     var nativeToString = Object.prototype.toString;
     function getIsNativeChecker(tag) {
@@ -1587,12 +1587,12 @@ var require_types = __commonJS({
     if (typeof Buffer !== "undefined") {
       exports.basicTypes.Buffer = new BasicType(function(v3) {
         return Buffer.isBuffer(v3);
-      }, "is not a Buffer");
+      }, "不是缓冲区");
     }
     var _loop_1 = function(array_12) {
       exports.basicTypes[array_12.name] = new BasicType(function(v3) {
         return v3 instanceof array_12;
-      }, "is not a " + array_12.name);
+      }, "不是" + array_12.name);
     };
     for (_i = 0, _a = [
       Int8Array,
@@ -1781,7 +1781,7 @@ var require_dist = __commonJS({
         Checker2.prototype.getProp = function(prop) {
           var ttype = this.props.get(prop);
           if (!ttype) {
-            throw new Error("Type has no property " + prop);
+            throw new Error("类型没有属性" + prop);
           }
           return new Checker2(this.suite, ttype, this._path + "." + prop);
         };
@@ -1795,13 +1795,13 @@ var require_dist = __commonJS({
         };
         Checker2.prototype.getArgs = function() {
           if (!(this.ttype instanceof types_1.TFunc)) {
-            throw new Error("getArgs() applied to non-function");
+            throw new Error("getArgs() 应用于非函数");
           }
           return new Checker2(this.suite, this.ttype.paramList);
         };
         Checker2.prototype.getResult = function() {
           if (!(this.ttype instanceof types_1.TFunc)) {
-            throw new Error("getResult() applied to non-function");
+            throw new Error("getResult() 应用于 t4 中的非函数");
           }
           return new Checker2(this.suite, this.ttype.result);
         };
@@ -1828,10 +1828,10 @@ var require_dist = __commonJS({
         Checker2.prototype._getMethod = function(methodName) {
           var ttype = this.props.get(methodName);
           if (!ttype) {
-            throw new Error("Type has no property " + methodName);
+            throw new Error("类型没有属性" + methodName);
           }
           if (!(ttype instanceof types_1.TFunc)) {
-            throw new Error("Property " + methodName + " is not a method");
+            throw new Error("属性" + methodName + "不是枚举中使用的方法");
           }
           return ttype;
         };
@@ -1928,7 +1928,7 @@ var require_b_tree = __commonJS({
       };
       return function(d3, b3) {
         if (typeof b3 !== "function" && b3 !== null)
-          throw new TypeError("Class extends value " + String(b3) + " is not a constructor or null");
+          throw new TypeError("类扩展值" + String(b3) + "不是构造函数或 null");
         extendStatics(d3, b3);
         function __() {
           this.constructor = d3;
@@ -2154,7 +2154,7 @@ var require_b_tree = __commonJS({
               return iterator();
           }
           var _a = this.findPath(highestKey) || this.findPath(this.maxKey()), nodequeue = _a.nodequeue, nodeindex = _a.nodeindex, leaf = _a.leaf;
-          check(!nodequeue[0] || leaf === nodequeue[0][nodeindex[0]], "wat!");
+          check(!nodequeue[0] || leaf === nodequeue[0][nodeindex[0]], "哇！");
           var i4 = leaf.indexOf(highestKey, 0, this._compare);
           if (!skipHighest && i4 < leaf.keys.length && this._compare(leaf.keys[i4], highestKey) <= 0)
             i4++;
@@ -2218,7 +2218,7 @@ var require_b_tree = __commonJS({
         };
         BTree3.prototype.diffAgainst = function(other, onlyThis, onlyOther, different) {
           if (other._compare !== this._compare) {
-            throw new Error("Tree comparators are not the same.");
+            throw new Error("树比较器不一样。");
           }
           if (this.isEmpty || other.isEmpty) {
             if (this.isEmpty && other.isEmpty)
@@ -2293,7 +2293,7 @@ var require_b_tree = __commonJS({
             if (!BTree3.step(cursor))
               return void 0;
           } else if (compared < 0) {
-            check(false, "cursor walk terminated early");
+            check(false, "光标游走提前终止");
           }
           return BTree3.stepToEnd(cursor, callback);
         };
@@ -2553,7 +2553,7 @@ var require_b_tree = __commonJS({
         BTree3.prototype.freeze = function() {
           var t4 = this;
           t4.clear = t4.set = t4.editRange = function() {
-            throw new Error("Attempted to modify a frozen BTree");
+            throw new Error("尝试修改冻结的 BTree");
           };
         };
         BTree3.prototype.unfreeze = function() {
@@ -2571,7 +2571,7 @@ var require_b_tree = __commonJS({
         });
         BTree3.prototype.checkValid = function() {
           var size = this._root.checkValid(0, this, 0);
-          check(size === this.size, "size mismatch: counted ", size, "but stored", this.size);
+          check(size === this.size, "大小不匹配：计算", size, "但已存储", this.size);
         };
         return BTree3;
       }()
@@ -2635,7 +2635,7 @@ var require_b_tree = __commonJS({
               if (key === key)
                 return keys.length;
               else
-                throw new Error("BTree: NaN was used as a key");
+                throw new Error("BTree: NaN 被用作键");
             }
             mid = lo + hi >> 1;
           }
@@ -2693,8 +2693,8 @@ var require_b_tree = __commonJS({
         };
         BNode2.prototype.checkValid = function(depth, tree, baseIndex) {
           var kL = this.keys.length, vL = this.values.length;
-          check(this.values === undefVals ? kL <= vL : kL === vL, "keys/values length mismatch: depth", depth, "with lengths", kL, vL, "and baseIndex", baseIndex);
-          check(depth == 0 || kL > 0, "empty leaf at depth", depth, "and baseIndex", baseIndex);
+          check(this.values === undefVals ? kL <= vL : kL === vL, "键/值长度不匹配：深度", depth, "长度", kL, vL, "和 baseIndex", baseIndex);
+          check(depth == 0 || kL > 0, "深度空叶", depth, "和 baseIndex", baseIndex);
           return kL;
         };
         BNode2.prototype.set = function(key, value, overwrite, tree) {
@@ -2794,7 +2794,7 @@ var require_b_tree = __commonJS({
               if (result !== void 0) {
                 if (editMode === true) {
                   if (key !== keys[i4] || this.isShared === true)
-                    throw new Error("BTree illegally changed or cloned in editRange");
+                    throw new Error("BTree 在 editRange");
                   if (result.delete) {
                     this.keys.splice(i4, 1);
                     if (this.values !== undefVals)
@@ -2890,22 +2890,22 @@ var require_b_tree = __commonJS({
         };
         BNodeInternal2.prototype.checkValid = function(depth, tree, baseIndex) {
           var kL = this.keys.length, cL = this.children.length;
-          check(kL === cL, "keys/children length mismatch: depth", depth, "lengths", kL, cL, "baseIndex", baseIndex);
-          check(kL > 1 || depth > 0, "internal node has length", kL, "at depth", depth, "baseIndex", baseIndex);
+          check(kL === cL, "键/子项长度不匹配：深度", depth, "lengths", kL, cL, "baseIndex", baseIndex);
+          check(kL > 1 || depth > 0, "内部节点的长度为", kL, "深度", depth, "baseIndex", baseIndex);
           var size = 0, c3 = this.children, k4 = this.keys, childSize = 0;
           for (var i4 = 0; i4 < cL; i4++) {
             size += c3[i4].checkValid(depth + 1, tree, baseIndex + size);
             childSize += c3[i4].keys.length;
             check(size >= childSize, "wtf", baseIndex);
-            check(i4 === 0 || c3[i4 - 1].constructor === c3[i4].constructor, "type mismatch, baseIndex:", baseIndex);
+            check(i4 === 0 || c3[i4 - 1].constructor === c3[i4].constructor, "类型不匹配，baseIndex：", baseIndex);
             if (c3[i4].maxKey() != k4[i4])
-              check(false, "keys[", i4, "] =", k4[i4], "is wrong, should be ", c3[i4].maxKey(), "at depth", depth, "baseIndex", baseIndex);
+              check(false, "键[", i4, "] =", k4[i4], "错误，应该是", c3[i4].maxKey(), "深度", depth, "baseIndex", baseIndex);
             if (!(i4 === 0 || tree._compare(k4[i4 - 1], k4[i4]) < 0))
-              check(false, "sort violation at depth", depth, "index", i4, "keys", k4[i4 - 1], k4[i4]);
+              check(false, "深度排序违规", depth, "index", i4, "keys", k4[i4 - 1], k4[i4]);
           }
           var toofew = childSize === 0;
           if (toofew || childSize > tree.maxNodeSize * cL)
-            check(false, toofew ? "too few" : "too many", "children (", childSize, size, ") at depth", depth, "maxNodeSize:", tree.maxNodeSize, "children.length:", cL, "baseIndex:", baseIndex);
+            check(false, toofew ? "太少" : "太多", "儿童 (", childSize, size, ") 深度", depth, "maxNodeSize:", tree.maxNodeSize, "children.length:", cL, "baseIndex:", baseIndex);
           return size;
         };
         BNodeInternal2.prototype.set = function(key, value, overwrite, tree) {
@@ -3000,7 +3000,7 @@ var require_b_tree = __commonJS({
                 }
               }
               if (children.length !== 0 && children[0].keys.length === 0)
-                check(false, "emptiness bug");
+                check(false, "空错误");
             }
           }
           return count;
@@ -3053,7 +3053,7 @@ var require_b_tree = __commonJS({
         args[_i - 1] = arguments[_i];
       }
       if (!fact) {
-        args.unshift("B+ tree");
+        args.unshift("B+ 树");
         throw new Error(args.join(" "));
       }
     }
@@ -3097,7 +3097,7 @@ var require_localforage = __commonJS({
                 return a3(o4, true);
               if (i4)
                 return i4(o4, true);
-              var f4 = new Error("Cannot find module '" + o4 + "'");
+              var f4 = new Error("找不到模块'" + o4 + "'");
               throw f4.code = "MODULE_NOT_FOUND", f4;
             }
             var l4 = n3[o4] = { exports: {} };
@@ -3187,7 +3187,7 @@ var require_localforage = __commonJS({
         module4.exports = Promise2;
         function Promise2(resolver) {
           if (typeof resolver !== "function") {
-            throw new TypeError("resolver must be a function");
+            throw new TypeError("解析器必须是函数");
           }
           this.state = PENDING;
           this.queue = [];
@@ -3244,7 +3244,7 @@ var require_localforage = __commonJS({
               return handlers.reject(promise, e3);
             }
             if (returnValue === promise) {
-              handlers.reject(promise, new TypeError("Cannot resolve promise with itself"));
+              handlers.reject(promise, new TypeError("无法解析自身的 Promise"));
             } else {
               handlers.resolve(promise, returnValue);
             }
@@ -3337,8 +3337,8 @@ var require_localforage = __commonJS({
         Promise2.all = all;
         function all(iterable) {
           var self2 = this;
-          if (Object.prototype.toString.call(iterable) !== "[object Array]") {
-            return this.reject(new TypeError("must be an array"));
+          if (Object.prototype.toString.call(iterable) !== "[对象数组]") {
+            return this.reject(new TypeError("必须是数组"));
           }
           var len = iterable.length;
           var called = false;
@@ -3372,8 +3372,8 @@ var require_localforage = __commonJS({
         Promise2.race = race;
         function race(iterable) {
           var self2 = this;
-          if (Object.prototype.toString.call(iterable) !== "[object Array]") {
-            return this.reject(new TypeError("must be an array"));
+          if (Object.prototype.toString.call(iterable) !== "[对象数组]") {
+            return this.reject(new TypeError("必须是数组"));
           }
           var len = iterable.length;
           var called = false;
@@ -3416,7 +3416,7 @@ var require_localforage = __commonJS({
         };
         function _classCallCheck(instance, Constructor) {
           if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
+            throw new TypeError("无法将类作为函数调用");
           }
         }
         function getIDB() {
@@ -3447,7 +3447,7 @@ var require_localforage = __commonJS({
               return false;
             }
             var isSafari = typeof openDatabase !== "undefined" && /(Safari|iPhone|iPad|iPod)/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent) && !/BlackBerry/.test(navigator.platform);
-            var hasFetch = typeof fetch === "function" && fetch.toString().indexOf("[native code") !== -1;
+            var hasFetch = typeof fetch === "function" && fetch.toString().indexOf("[本地代码") !== -1;
             return (!isSafari || hasFetch) && typeof indexedDB !== "undefined" && // some outdated implementations of IDB that appear on Samsung
             // and HTC Android devices <4.4 are missing IDBKeyRange
             // See: https://github.com/mozilla/localForage/issues/128
@@ -3497,7 +3497,7 @@ var require_localforage = __commonJS({
         }
         function normalizeKey(key2) {
           if (typeof key2 !== "string") {
-            console.warn(key2 + " used as a key, but it is not a string.");
+            console.warn(key2 + "用作键，但它不是字符串。");
             key2 = String(key2);
           }
           return key2;
@@ -3608,7 +3608,7 @@ var require_localforage = __commonJS({
                   }
                 } catch (ex) {
                   if (ex.name === "ConstraintError") {
-                    console.warn('The database "' + dbInfo.name + '" has been upgraded from version ' + e3.oldVersion + " to version " + e3.newVersion + ', but the storage "' + dbInfo.storeName + '" already exists.');
+                    console.warn('数据库 "' + dbInfo.name + '" 已从版本' + e3.oldVersion + "到版本" + e3.newVersion + '，但存储 "' + dbInfo.storeName + '" 已存在。');
                   } else {
                     throw ex;
                   }
@@ -3644,7 +3644,7 @@ var require_localforage = __commonJS({
           var isUpgrade = dbInfo.version > dbInfo.db.version;
           if (isDowngrade) {
             if (dbInfo.version !== defaultVersion) {
-              console.warn('The database "' + dbInfo.name + `" can't be downgraded from version ` + dbInfo.db.version + " to version " + dbInfo.version + ".");
+              console.warn('数据库 "' + dbInfo.name + `"无法从版本降级 ` + dbInfo.db.version +" to version "+ dbInfo.version +".");
             }
             dbInfo.version = dbInfo.db.version;
           }
@@ -3728,7 +3728,7 @@ var require_localforage = __commonJS({
             var tx = dbInfo.db.transaction(dbInfo.storeName, mode);
             callback(null, tx);
           } catch (err) {
-            if (retries > 0 && (!dbInfo.db || err.name === "InvalidStateError" || err.name === "NotFoundError")) {
+            if (retries > 0 && (!dbInfo.db || err.name === "InvalidStateError"|| err.name ==="NotFoundError")) {
               return Promise$1.resolve().then(function() {
                 if (!dbInfo.db || err.name === "NotFoundError" && !dbInfo.db.objectStoreNames.contains(dbInfo.storeName) && dbInfo.version <= dbInfo.db.version) {
                   if (dbInfo.db) {
@@ -4135,7 +4135,7 @@ var require_localforage = __commonJS({
                     reject(req.error);
                   };
                   req.onblocked = function() {
-                    console.warn('dropInstance blocked for database "' + options.name + '" until all open connections are closed');
+                    console.warn('dropInstance blocked for database "'+ 选项.name +'" until all open connections are closed');
                   };
                   req.onsuccess = function() {
                     var db2 = req.result;
@@ -4222,24 +4222,7 @@ var require_localforage = __commonJS({
           dropInstance
         };
         function isWebSQLValid() {
-          return typeof openDatabase === "function";
-        }
-        var BASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-        var BLOB_TYPE_PREFIX = "~~local_forage_type~";
-        var BLOB_TYPE_PREFIX_REGEX = /^~~local_forage_type~([^~]+)~/;
-        var SERIALIZED_MARKER = "__lfsc__:";
-        var SERIALIZED_MARKER_LENGTH = SERIALIZED_MARKER.length;
-        var TYPE_ARRAYBUFFER = "arbf";
-        var TYPE_BLOB = "blob";
-        var TYPE_INT8ARRAY = "si08";
-        var TYPE_UINT8ARRAY = "ui08";
-        var TYPE_UINT8CLAMPEDARRAY = "uic8";
-        var TYPE_INT16ARRAY = "si16";
-        var TYPE_INT32ARRAY = "si32";
-        var TYPE_UINT16ARRAY = "ur16";
-        var TYPE_UINT32ARRAY = "ui32";
-        var TYPE_FLOAT32ARRAY = "fl32";
-        var TYPE_FLOAT64ARRAY = "fl64";
+          return typeof openDatabase === "function"；\n        }\n        var BASE_CHARS ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";\n        var BLOB_TYPE_PREFIX ="~~local_forage_type~";\n        var BLOB_TYPE_PREFIX_REGEX = /^~~local_forage_type~([^~]+)~/;\n        var SERIALIZED_MARKER ="__lfsc__:"；\n        var SERIALIZED_MARKER_LENGTH = SERIALIZED_MARKER.length;\n        var TYPE_ARRAYBUFFER ="arbf";\n        var TYPE_BLOB ="blob"；\n        var TYPE_INT8ARRAY ="si08";\n        var TYPE_UINT8ARRAY ="ui08"；\n        var TYPE_UINT8CLAMPEDARRAY ="uic8"；\n        var TYPE_INT16ARRAY ="si16";\n        var TYPE_INT32ARRAY ="si32";\n        var TYPE_UINT16ARRAY ="ur16";\n        var TYPE_UINT32ARRAY ="ui32"；\n        var TYPE_FLOAT32ARRAY ="fl32";\n        var TYPE_FLOAT64ARRAY ="fl64";
         var TYPE_SERIALIZED_MARKER_LENGTH = SERIALIZED_MARKER_LENGTH + TYPE_ARRAYBUFFER.length;
         var toString$1 = Object.prototype.toString;
         function stringToBuffer(serializedString) {
@@ -4248,9 +4231,7 @@ var require_localforage = __commonJS({
           var i4;
           var p3 = 0;
           var encoded1, encoded2, encoded3, encoded4;
-          if (serializedString[serializedString.length - 1] === "=") {
-            bufferLength--;
-            if (serializedString[serializedString.length - 2] === "=") {
+          if (serializedString[serializedString.length - 1] === "=") {\n            缓冲区长度--;\n            if (serializedString[serializedString.length - 2] ==="=") {
               bufferLength--;
             }
           }
@@ -4278,18 +4259,7 @@ var require_localforage = __commonJS({
             base64String += BASE_CHARS[bytes[i4 + 2] & 63];
           }
           if (bytes.length % 3 === 2) {
-            base64String = base64String.substring(0, base64String.length - 1) + "=";
-          } else if (bytes.length % 3 === 1) {
-            base64String = base64String.substring(0, base64String.length - 2) + "==";
-          }
-          return base64String;
-        }
-        function serialize(value, callback) {
-          var valueType = "";
-          if (value) {
-            valueType = toString$1.call(value);
-          }
-          if (value && (valueType === "[object ArrayBuffer]" || value.buffer && toString$1.call(value.buffer) === "[object ArrayBuffer]")) {
+            base64String = base64String.substring(0, base64String.length - 1) + "=";\n          } else if (bytes.length % 3 === 1) {\n            base64String = base64String.substring(0, base64String.length - 2) +"=="；\n          }\n          返回base64字符串；\n        }\n        函数序列化（值，回调）{\n          var valueType ="";\n          如果（值）{\n            valueType = toString$1.call(value);\n          }\n          if (值 && (值类型 ==="[object ArrayBuffer]"|| value.buffer && toString$1.call(value.buffer) ==="[object ArrayBuffer]")) {
             var buffer;
             var marker = SERIALIZED_MARKER;
             if (value instanceof ArrayBuffer) {
@@ -4297,30 +4267,7 @@ var require_localforage = __commonJS({
               marker += TYPE_ARRAYBUFFER;
             } else {
               buffer = value.buffer;
-              if (valueType === "[object Int8Array]") {
-                marker += TYPE_INT8ARRAY;
-              } else if (valueType === "[object Uint8Array]") {
-                marker += TYPE_UINT8ARRAY;
-              } else if (valueType === "[object Uint8ClampedArray]") {
-                marker += TYPE_UINT8CLAMPEDARRAY;
-              } else if (valueType === "[object Int16Array]") {
-                marker += TYPE_INT16ARRAY;
-              } else if (valueType === "[object Uint16Array]") {
-                marker += TYPE_UINT16ARRAY;
-              } else if (valueType === "[object Int32Array]") {
-                marker += TYPE_INT32ARRAY;
-              } else if (valueType === "[object Uint32Array]") {
-                marker += TYPE_UINT32ARRAY;
-              } else if (valueType === "[object Float32Array]") {
-                marker += TYPE_FLOAT32ARRAY;
-              } else if (valueType === "[object Float64Array]") {
-                marker += TYPE_FLOAT64ARRAY;
-              } else {
-                callback(new Error("Failed to get type for BinaryArray"));
-              }
-            }
-            callback(marker + bufferToString(buffer));
-          } else if (valueType === "[object Blob]") {
+              if (valueType === "[object Int8Array]") {\n                标记+= TYPE_INT8ARRAY；\n              } else if (值类型 ==="[object Uint8Array]") {\n                标记+= TYPE_UINT8ARRAY；\n              } else if (valueType ==="[object Uint8ClampedArray]") {\n                标记+= TYPE_UINT8CLAMPEDARRAY；\n              } else if (valueType ==="[object Int16Array]") {\n                标记+= TYPE_INT16ARRAY；\n              } else if (valueType ==="[object Uint16Array]") {\n                标记+= TYPE_UINT16ARRAY；\n              } else if (valueType ==="[object Int32Array]") {\n                标记+= TYPE_INT32ARRAY；\n              } else if (valueType ==="[object Uint32Array]") {\n                标记+= TYPE_UINT32ARRAY；\n              } else if (valueType ==="[object Float32Array]") {\n                标记+= TYPE_FLOAT32ARRAY；\n              } else if (valueType ==="[object Float64Array]") {\n                标记+= TYPE_FLOAT64ARRAY；\n              } 否则{\n                回调（新错误（"Failed to get type for BinaryArray"））；\n              }\n            }\n            回调（标记+ bufferToString（缓冲区））；\n          } else if (valueType ==="[object Blob]") {
             var fileReader = new FileReader();
             fileReader.onload = function() {
               var str = BLOB_TYPE_PREFIX + value.type + "~" + bufferToString(this.result);
@@ -4617,7 +4564,7 @@ var require_localforage = __commonJS({
         function getAllStoreNames(db) {
           return new Promise$1(function(resolve, reject) {
             db.transaction(function(t4) {
-              t4.executeSql("SELECT name FROM sqlite_master WHERE type='table' AND name <> '__WebKitDatabaseInfoTable__'", [], function(t5, results) {
+              t4.executeSql("SELECT name FROM sqlite_master WHERE type='table'和名称 <>'__WebKitDatabaseInfoTable__'", [], function(t5, results) {
                 var storeNames = [];
                 for (var i4 = 0; i4 < results.rows.length; i4++) {
                   storeNames.push(results.rows.item(i4).name);
@@ -5020,14 +4967,14 @@ var require_localforage = __commonJS({
           LocalForage2.prototype.config = function config(options) {
             if ((typeof options === "undefined" ? "undefined" : _typeof(options)) === "object") {
               if (this._ready) {
-                return new Error("Can't call config() after localforage has been used.");
+                return new Error("使用 localforage 后无法调用 config()。");
               }
               for (var i4 in options) {
                 if (i4 === "storeName") {
                   options[i4] = options[i4].replace(/\W/g, "_");
                 }
                 if (i4 === "version" && typeof options[i4] !== "number") {
-                  return new Error("Database version must be a number.");
+                  return new Error("数据库版本必须是数字。");
                 }
                 this._config[i4] = options[i4];
               }
@@ -5045,7 +4992,7 @@ var require_localforage = __commonJS({
             var promise = new Promise$1(function(resolve, reject) {
               try {
                 var driverName = driverObject._driver;
-                var complianceError = new Error("Custom driver not compliant; see https://mozilla.github.io/localForage/#definedriver");
+                var complianceError = new Error("自定义驱动程序不合规；请参阅 https://mozilla.github.io/localForage/#defineriver");
                 if (!driverObject._driver) {
                   reject(complianceError);
                   return;
@@ -5062,7 +5009,7 @@ var require_localforage = __commonJS({
                 var configureMissingMethods = function configureMissingMethods2() {
                   var methodNotImplementedFactory = function methodNotImplementedFactory2(methodName) {
                     return function() {
-                      var error = new Error("Method " + methodName + " is not implemented by the current driver");
+                      var error = new Error("方法" + methodName + "当前驱动程序未实现");
                       var promise2 = Promise$1.reject(error);
                       executeCallback(promise2, arguments[arguments.length - 1]);
                       return promise2;
@@ -5078,7 +5025,7 @@ var require_localforage = __commonJS({
                 configureMissingMethods();
                 var setDriverSupport = function setDriverSupport2(support) {
                   if (DefinedDrivers[driverName]) {
-                    console.info("Redefining LocalForage driver: " + driverName);
+                    console.info("重新定义 LocalForage 驱动程序：" + driverName);
                   }
                   DefinedDrivers[driverName] = driverObject;
                   DriverSupport[driverName] = support;
@@ -5104,7 +5051,7 @@ var require_localforage = __commonJS({
             return this._driver || null;
           };
           LocalForage2.prototype.getDriver = function getDriver(driverName, callback, errorCallback) {
-            var getDriverPromise = DefinedDrivers[driverName] ? Promise$1.resolve(DefinedDrivers[driverName]) : Promise$1.reject(new Error("Driver not found."));
+            var getDriverPromise = DefinedDrivers[driverName] ? Promise$1.resolve(DefinedDrivers[driverName]) : Promise$1.reject(new Error("未找到驱动程序。"));
             executeTwoCallbacks(getDriverPromise, callback, errorCallback);
             return getDriverPromise;
           };
@@ -5151,7 +5098,7 @@ var require_localforage = __commonJS({
                     return self2.getDriver(driverName).then(extendSelfWithDriver)["catch"](driverPromiseLoop);
                   }
                   setDriverToConfig();
-                  var error = new Error("No available storage method found.");
+                  var error = new Error("找不到可用的存储方法。");
                   self2._driverSet = Promise$1.reject(error);
                   return self2._driverSet;
                 }
@@ -5173,7 +5120,7 @@ var require_localforage = __commonJS({
               });
             })["catch"](function() {
               setDriverToConfig();
-              var error = new Error("No available storage method found.");
+              var error = new Error("找不到可用的存储方法。");
               self2._driverSet = Promise$1.reject(error);
               return self2._driverSet;
             });
@@ -5215,7 +5162,7 @@ var require_localforage = __commonJS({
 
 // node_modules/@datastructures-js/queue/src/queue.js
 var require_queue = __commonJS({
-  "node_modules/@datastructures-js/queue/src/queue.js"(exports) {
+  "node_modules/@datastructs-js/queue/src/queue.js"(exports) {
     var Queue3 = class {
       /**
        * Creates a queue.
@@ -5339,7 +5286,7 @@ var require_queue = __commonJS({
 
 // node_modules/@datastructures-js/queue/index.js
 var require_queue2 = __commonJS({
-  "node_modules/@datastructures-js/queue/index.js"(exports) {
+  "node_modules/@datastructs-js/queue/index.js"(exports) {
     var { Queue: Queue3 } = require_queue();
     exports.Queue = Queue3;
   }
@@ -5397,7 +5344,7 @@ var InvalidArgumentError = class extends LuxonError {
 };
 var ZoneIsAbstractError = class extends LuxonError {
   constructor() {
-    super("Zone is an abstract class");
+    super("Zone 是一个抽象类");
   }
 };
 
@@ -5567,7 +5514,7 @@ function isString(o3) {
   return typeof o3 === "string";
 }
 function isDate(o3) {
-  return Object.prototype.toString.call(o3) === "[object Date]";
+  return Object.prototype.toString.call(o3) === "[对象日期]";
 }
 function hasRelative() {
   try {
@@ -5747,18 +5694,18 @@ var ianaRegex = /[A-Za-z_+-]{1,256}(?::?\/[A-Za-z0-9_+-]{1,256}(?:\/[A-Za-z0-9_+
 
 // node_modules/luxon/src/impl/english.js
 var monthsLong = [
-  "January",
-  "February",
-  "March",
-  "April",
+  "一月",
+  "二月",
+  "三月",
+  "四月",
   "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
+  "六月",
+  "七月",
+  "八月",
+  "九月",
+  "十月",
+  "十一月",
+  "十二月"
 ];
 var monthsShort = [
   "Jan",
@@ -5792,13 +5739,13 @@ function months(length) {
   }
 }
 var weekdaysLong = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday"
+  "星期一",
+  "星期二",
+  "星期三",
+  "星期四",
+  "星期五",
+  "星期六",
+  "星期日"
 ];
 var weekdaysShort = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 var weekdaysNarrow = ["M", "T", "W", "T", "F", "S", "S"];
@@ -5817,7 +5764,7 @@ function weekdays(length) {
   }
 }
 var meridiems = ["AM", "PM"];
-var erasLong = ["Before Christ", "Anno Domini"];
+var erasLong = ["在基督之前", "Anno Domini"];
 var erasShort = ["BC", "AD"];
 var erasNarrow = ["B", "A"];
 function eras(length) {
@@ -7417,9 +7364,7 @@ var Duration = class {
    * Create Duration from a number of milliseconds.
    * @param {number} count of milliseconds
    * @param {Object} opts - options for parsing
-   * @param {string} [opts.locale='en-US'] - the locale to use
-   * @param {string} opts.numberingSystem - the numbering system to use
-   * @param {string} [opts.conversionAccuracy='casual'] - the conversion system to use
+   * @param {string} [opts.locale='en-US'] - 要使用的区域设置\n   * @param {string} opts.numberingSystem - 要使用的编号系统\n   * @param {string} [opts.conversionAccuracy='casual'] - the conversion system to use
    * @return {Duration}
    */
   static fromMillis(count, opts) {
@@ -7439,9 +7384,7 @@ var Duration = class {
    * @param {number} obj.seconds
    * @param {number} obj.milliseconds
    * @param {Object} [opts=[]] - options for creating this Duration
-   * @param {string} [opts.locale='en-US'] - the locale to use
-   * @param {string} opts.numberingSystem - the numbering system to use
-   * @param {string} [opts.conversionAccuracy='casual'] - the conversion system to use
+   * @param {string} [opts.locale='en-US'] - 要使用的区域设置\n   * @param {string} opts.numberingSystem - 要使用的编号系统\n   * @param {string} [opts.conversionAccuracy='casual'] - the conversion system to use
    * @return {Duration}
    */
   static fromObject(obj, opts = {}) {
@@ -7483,11 +7426,7 @@ var Duration = class {
    * Create a Duration from an ISO 8601 duration string.
    * @param {string} text - text to parse
    * @param {Object} opts - options for parsing
-   * @param {string} [opts.locale='en-US'] - the locale to use
-   * @param {string} opts.numberingSystem - the numbering system to use
-   * @param {string} [opts.conversionAccuracy='casual'] - the conversion system to use
-   * @see https://en.wikipedia.org/wiki/ISO_8601#Durations
-   * @example Duration.fromISO('P3Y6M1W4DT12H30M5S').toObject() //=> { years: 3, months: 6, weeks: 1, days: 4, hours: 12, minutes: 30, seconds: 5 }
+   * @param {string} [opts.locale='en-US'] - 要使用的区域设置\n   * @param {string} opts.numberingSystem - 要使用的编号系统\n   * @param {string} [opts.conversionAccuracy='casual'] - 要使用的转换系统\n   * @参见 https://en.wikipedia.org/wiki/ISO_8601#Durations\n   * @example Duration.fromISO('P3Y6M1W4DT12H30M5S').toObject() //=> { years: 3, months: 6, weeks: 1, days: 4, hours: 12, minutes: 30, seconds: 5 }
    * @example Duration.fromISO('PT23H').toObject() //=> { hours: 23 }
    * @example Duration.fromISO('P5Y3M').toObject() //=> { years: 5, months: 3 }
    * @return {Duration}
@@ -7628,9 +7567,9 @@ var Duration = class {
    * @example
    * ```js
    * var dur = Duration.fromObject({ days: 1, hours: 5, minutes: 6 })
-   * dur.toHuman() //=> '1 day, 5 hours, 6 minutes'
-   * dur.toHuman({ listStyle: "long" }) //=> '1 day, 5 hours, and 6 minutes'
-   * dur.toHuman({ unitDisplay: "short" }) //=> '1 day, 5 hr, 6 min'
+   * dur.toHuman() //=> '1 天 5 小时 6 分钟'
+   * dur.toHuman({ listStyle: "long" }) //=> '1 天 5 小时 6 分钟'
+   * dur.toHuman({ unitDisplay: "short" }) //=> '1 天，5 小时，6 分钟'
    * ```
    */
   toHuman(opts = {}) {
@@ -7693,14 +7632,11 @@ var Duration = class {
    * @see https://en.wikipedia.org/wiki/ISO_8601#Times
    * @param {Object} opts - options
    * @param {boolean} [opts.suppressMilliseconds=false] - exclude milliseconds from the format if they're 0
-   * @param {boolean} [opts.suppressSeconds=false] - exclude seconds from the format if they're 0
-   * @param {boolean} [opts.includePrefix=false] - include the `T` prefix
-   * @param {string} [opts.format='extended'] - choose between the basic and extended format
+   * @param {boolean} [opts.suppressSeconds=false] - exclude seconds from the format if they're 0\n   * @param {boolean} [opts.includePrefix=false] - 包含 `T` 前缀\n   * @param {string} [opts.format='extended'] - choose between the basic and extended format
    * @example Duration.fromObject({ hours: 11 }).toISOTime() //=> '11:00:00.000'
    * @example Duration.fromObject({ hours: 11 }).toISOTime({ suppressMilliseconds: true }) //=> '11:00:00'
    * @example Duration.fromObject({ hours: 11 }).toISOTime({ suppressSeconds: true }) //=> '11:00'
-   * @example Duration.fromObject({ hours: 11 }).toISOTime({ includePrefix: true }) //=> 'T11:00:00.000'
-   * @example Duration.fromObject({ hours: 11 }).toISOTime({ format: 'basic' }) //=> '110000.000'
+   * @example Duration.fromObject({ hours: 11 }).toISOTime({ includePrefix: true }) //=> 'T11:00:00.000'* @example Duration.fromObject({ 小时: 11 }).toISOTime({ 格式:'basic' }) //=> '110000.000'
    * @return {string}
    */
   toISOTime(opts = {}) {
@@ -7803,8 +7739,7 @@ var Duration = class {
   }
   /**
    * Get the value of unit.
-   * @param {string} unit - a unit such as 'minute' or 'day'
-   * @example Duration.fromObject({years: 2, days: 3}).get('years') //=> 2
+   * @param {string} unit - a unit such as 'minute' or 'day'* @example Duration.fromObject({年: 2, 天: 3}).get('years') //=> 2
    * @example Duration.fromObject({years: 2, days: 3}).get('months') //=> 0
    * @example Duration.fromObject({years: 2, days: 3}).get('days') //=> 3
    * @return {number}
@@ -7839,8 +7774,7 @@ var Duration = class {
   }
   /**
    * Return the length of the duration in the specified unit.
-   * @param {string} unit - a unit such as 'minutes' or 'days'
-   * @example Duration.fromObject({years: 1}).as('days') //=> 365
+   * @param {string} unit - a unit such as 'minutes' or 'days'* @example Duration.fromObject({years: 1}).as('days') //=> 365
    * @example Duration.fromObject({years: 1}).as('months') //=> 12
    * @example Duration.fromObject({hours: 60}).as('days') //=> 2.5
    * @return {number}
@@ -8177,7 +8111,7 @@ var Interval = class {
     return this.isValid ? this.e : null;
   }
   /**
-   * Returns whether this Interval's end is at least its start, meaning that the Interval isn't 'backwards'.
+   * Returns whether this Interval'的结束至少是其开始，这意味着间隔是't 'backwards'.
    * @type {boolean}
    */
   get isValid() {
@@ -8208,7 +8142,7 @@ var Interval = class {
   /**
    * Returns the count of minutes, hours, days, months, or years included in the Interval, even in part.
    * Unlike {@link Interval#length} this counts sections of the calendar, not periods of time, e.g. specifying 'day'
-   * asks 'what dates are included in this interval?', not 'how many days long is this interval?'
+   * asks '此间隔中包含哪些日期？', not '这个间隔是多少天？'
    * @param {string} [unit='milliseconds'] - the unit of time to count.
    * @return {number}
    */
@@ -8516,7 +8450,7 @@ var Interval = class {
   }
   /**
    * Return a Duration representing the time spanned by this interval.
-   * @param {string|string[]} [unit=['milliseconds']] - the unit or units (such as 'hours' or 'days') to include in the duration.
+   * @param {string|string[]} [unit=['milliseconds']] - 一个或多个单位（例如'hours' or 'days') to include in the duration.
    * @param {Object} opts - options that affect the creation of the Duration
    * @param {string} [opts.conversionAccuracy='casual'] - the conversion system to use
    * @example Interval.fromDateTimes(dt1, dt2).toDuration().toObject() //=> { milliseconds: 88489257 }
@@ -8548,7 +8482,7 @@ var Interval = class {
 var Info = class {
   /**
    * Return whether the specified zone contains a DST.
-   * @param {string|Zone} [zone='local'] - Zone to check. Defaults to the environment's local zone.
+   * @param {string|Zone} [zone='local'中非法更改或克隆 ] - 要检查的区域。默认为环境's local zone.
    * @return {boolean}
    */
   static hasDST(zone = Settings.defaultZone) {
@@ -8589,12 +8523,7 @@ var Info = class {
    * @param {string} [opts.numberingSystem=null] - the numbering system
    * @param {string} [opts.locObj=null] - an existing locale object to use
    * @param {string} [opts.outputCalendar='gregory'] - the calendar
-   * @example Info.months()[0] //=> 'January'
-   * @example Info.months('short')[0] //=> 'Jan'
-   * @example Info.months('numeric')[0] //=> '1'
-   * @example Info.months('short', { locale: 'fr-CA' } )[0] //=> 'janv.'
-   * @example Info.months('numeric', { locale: 'ar' })[0] //=> '١'
-   * @example Info.months('long', { outputCalendar: 'islamic' })[0] //=> 'Rabiʻ I'
+   * @example Info.months()[0] //=> 'January'* @example Info.months('short')[0] //=> 'Jan'* @example Info.months('numeric')[0] //=> '1'* @example Info.months('short'，{ 区域设置：'fr-CA' } )[0] //=> 'janv.'* @example Info.months('numeric'，{ 区域设置：'ar' })[0] //=> '١'* @example Info.months('long', { 输出日历：'islamic' })[0] //=> 'Rabiʻ I'
    * @return {Array}
    */
   static months(length = "long", { locale = null, numberingSystem = null, locObj = null, outputCalendar = "gregory" } = {}) {
@@ -8624,7 +8553,7 @@ var Info = class {
    * @param {string} [opts.locale] - the locale code
    * @param {string} [opts.numberingSystem=null] - the numbering system
    * @param {string} [opts.locObj=null] - an existing locale object to use
-   * @example Info.weekdays()[0] //=> 'Monday'
+   * @example Info.weekdays()[0] //=> '星期一'
    * @example Info.weekdays('short')[0] //=> 'Mon'
    * @example Info.weekdays('short', { locale: 'fr-CA' })[0] //=> 'lun.'
    * @example Info.weekdays('short', { locale: 'ar' })[0] //=> 'الاثنين'
@@ -8652,21 +8581,17 @@ var Info = class {
    * Return an array of meridiems.
    * @param {Object} opts - options
    * @param {string} [opts.locale] - the locale code
-   * @example Info.meridiems() //=> [ 'AM', 'PM' ]
-   * @example Info.meridiems({ locale: 'my' }) //=> [ 'နံနက်', 'ညနေ' ]
+   * @example Info.meridiems() //=> [ 'AM', 'PM']\n   * @example Info.meridiems({ locale:'my' }) //=> [ 'နံနက်', 'ညနေ' ]
    * @return {Array}
    */
   static meridiems({ locale = null } = {}) {
     return Locale.create(locale).meridiems();
   }
   /**
-   * Return an array of eras, such as ['BC', 'AD']. The locale can be specified, but the calendar system is always Gregorian.
-   * @param {string} [length='short'] - the length of the era representation, such as "short" or "long".
+   * Return an array of eras, such as ['BC', 'AD']。可以指定区域设置，但日历系统始终为公历。\n   * @param {string} [长度='short'] - the length of the era representation, such as "short" or "long".
    * @param {Object} opts - options
    * @param {string} [opts.locale] - the locale code
-   * @example Info.eras() //=> [ 'BC', 'AD' ]
-   * @example Info.eras('long') //=> [ 'Before Christ', 'Anno Domini' ]
-   * @example Info.eras('long', { locale: 'fr' }) //=> [ 'avant Jésus-Christ', 'après Jésus-Christ' ]
+   * @example Info.eras() //=> [ 'BC', 'AD']\n   * @example Info.eras('long') //=> [ 'Before Christ', 'Anno Domini']\n   * @example Info.eras('long'，{ 区域设置：'fr' }) //=> [ 'avant Jésus-Christ', 'après Jésus-Christ' ]
    * @return {Array}
    */
   static eras(length = "short", { locale = null } = {}) {
@@ -8817,7 +8742,7 @@ function digitRegex({ numberingSystem }, append = "") {
 }
 
 // node_modules/luxon/src/impl/tokenParser.js
-var MISSING_FTP = "missing Intl.DateTimeFormat.formatToParts support";
+var MISSING_FTP = "缺少 Intl.DateTimeFormat.formatToParts 支持";
 function intUnit(regex2, post = (i4) => i4) {
   return { regex: regex2, deser: ([s4]) => post(parseDigits(s4)) };
 }
@@ -9143,7 +9068,7 @@ function explainFromTokens(locale, input2, format) {
     const [regexString, handlers] = buildRegex(units), regex2 = RegExp(regexString, "i"), [rawMatches, matches] = match(input2, regex2, handlers), [result, zone, specificOffset] = matches ? dateTimeFromMatches(matches) : [null, null, void 0];
     if (hasOwnProperty(matches, "a") && hasOwnProperty(matches, "H")) {
       throw new ConflictingSpecificationError(
-        "Can't include meridiem when specifying 24-hour format"
+        "指定 24 小时格式时不能包含 meridiem"
       );
     }
     return { input: input2, tokens, regex: regex2, rawMatches, matches, result, zone, specificOffset };
@@ -9159,7 +9084,7 @@ var nonLeapLadder = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 var leapLadder = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
 function unitOutOfRange(unit, value) {
   return new Invalid(
-    "unit out of range",
+    "单位超出范围",
     `you specified ${value} (of type ${typeof value}) as a ${unit}, which is invalid`
   );
 }
@@ -9264,10 +9189,10 @@ function hasInvalidTimeData(obj) {
 }
 
 // node_modules/luxon/src/datetime.js
-var INVALID3 = "Invalid DateTime";
+var INVALID3 = "无效日期时间";
 var MAX_DATE = 864e13;
 function unsupportedZone(zone) {
-  return new Invalid("unsupported zone", `the zone "${zone.name}" is not supported`);
+  return new Invalid("不支持的区域", `the zone "${zone.name}" is not supported`);
 }
 function possiblyCachedWeekData(dt) {
   if (dt.weekData === null) {
@@ -9640,7 +9565,7 @@ var DateTime = class {
   static fromJSDate(date, options = {}) {
     const ts = isDate(date) ? date.valueOf() : NaN;
     if (Number.isNaN(ts)) {
-      return DateTime.invalid("invalid input");
+      return DateTime.invalid("无效输入");
     }
     const zoneToUse = normalizeZone(options.zone, Settings.defaultZone);
     if (!zoneToUse.isValid) {
@@ -9668,7 +9593,7 @@ var DateTime = class {
         `fromMillis requires a numerical input, but received a ${typeof milliseconds} with value ${milliseconds}`
       );
     } else if (milliseconds < -MAX_DATE || milliseconds > MAX_DATE) {
-      return DateTime.invalid("Timestamp out of range");
+      return DateTime.invalid("时间戳超出范围");
     } else {
       return new DateTime({
         ts: milliseconds,
@@ -9689,7 +9614,7 @@ var DateTime = class {
    */
   static fromSeconds(seconds, options = {}) {
     if (!isNumber(seconds)) {
-      throw new InvalidArgumentError("fromSeconds requires a numerical input");
+      throw new InvalidArgumentError("fromSeconds 需要数字输入");
     } else {
       return new DateTime({
         ts: seconds * 1e3,
@@ -9720,9 +9645,7 @@ var DateTime = class {
    * @example DateTime.fromObject({ year: 1982, month: 5, day: 25}).toISODate() //=> '1982-05-25'
    * @example DateTime.fromObject({ year: 1982 }).toISODate() //=> '1982-01-01'
    * @example DateTime.fromObject({ hour: 10, minute: 26, second: 6 }) //~> today at 10:26:06
-   * @example DateTime.fromObject({ hour: 10, minute: 26, second: 6 }, { zone: 'utc' }),
-   * @example DateTime.fromObject({ hour: 10, minute: 26, second: 6 }, { zone: 'local' })
-   * @example DateTime.fromObject({ hour: 10, minute: 26, second: 6 }, { zone: 'America/New_York' })
+   * @example DateTime.fromObject({ hour: 10, minute: 26, second: 6 }, { zone: 'utc'}),\n   * @example DateTime.fromObject({ 小时: 10, 分钟: 26, 秒: 6 }, { 区域:'local'})\n   * @example DateTime.fromObject({ 小时: 10, 分钟: 26, 秒: 6 }, { zone:'America/New_York' })
    * @example DateTime.fromObject({ weekYear: 2016, weekNumber: 2, weekday: 3 }).toISODate() //=> '2016-01-13'
    * @return {DateTime}
    */
@@ -9735,11 +9658,7 @@ var DateTime = class {
     const tsNow = Settings.now(), offsetProvis = !isUndefined(opts.specificOffset) ? opts.specificOffset : zoneToUse.offset(tsNow), normalized = normalizeObject(obj, normalizeUnit), containsOrdinal = !isUndefined(normalized.ordinal), containsGregorYear = !isUndefined(normalized.year), containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day), containsGregor = containsGregorYear || containsGregorMD, definiteWeekDef = normalized.weekYear || normalized.weekNumber, loc = Locale.fromObject(opts);
     if ((containsGregor || containsOrdinal) && definiteWeekDef) {
       throw new ConflictingSpecificationError(
-        "Can't mix weekYear/weekNumber units with year/month/day or ordinals"
-      );
-    }
-    if (containsGregorMD && containsOrdinal) {
-      throw new ConflictingSpecificationError("Can't mix ordinal dates with month/day");
+        "Can't mix weekYear/weekNumber units with year/month/day or ordinals"）；\n    }\n    if (包含GregorMD && containsOrdinal) {\n      抛出新的 ConflictingSpecificationError("Can't mix ordinal dates with month/day");
     }
     const useWeekData = definiteWeekDef || normalized.weekday && !containsGregor;
     let units, defaultValues, objNow = tsToObj(tsNow, offsetProvis);
@@ -9793,10 +9712,8 @@ var DateTime = class {
    * @param {string} [opts.locale='system's locale'] - a locale to set on the resulting DateTime instance
    * @param {string} [opts.outputCalendar] - the output calendar to set on the resulting DateTime instance
    * @param {string} [opts.numberingSystem] - the numbering system to set on the resulting DateTime instance
-   * @example DateTime.fromISO('2016-05-25T09:08:34.123')
-   * @example DateTime.fromISO('2016-05-25T09:08:34.123+06:00')
-   * @example DateTime.fromISO('2016-05-25T09:08:34.123+06:00', {setZone: true})
-   * @example DateTime.fromISO('2016-05-25T09:08:34.123', {zone: 'utc'})
+   * @example DateTime.fromISO('2016-05-25T09:08:34.123'升级)\n   * @example DateTime.fromISO('2016-05-25T09:08:34.123+06:00'升级)\n   * @example DateTime.fromISO('2016-05-25T09:08:34.123+06:00', {setZone: true})
+   * @example DateTime.fromISO('2016-05-25T09:08:34.123'，{区域：'utc'})
    * @example DateTime.fromISO('2016-W05-4')
    * @return {DateTime}
    */
@@ -9810,11 +9727,11 @@ var DateTime = class {
    * @param {Object} opts - options to affect the creation
    * @param {string|Zone} [opts.zone='local'] - convert the time to this zone. Since the offset is always specified in the string itself, this has no effect on the interpretation of string, merely the zone the resulting DateTime is expressed in.
    * @param {boolean} [opts.setZone=false] - override the zone with a fixed-offset zone specified in the string itself, if it specifies one
-   * @param {string} [opts.locale='system's locale'] - a locale to set on the resulting DateTime instance
+   * @param {string} [opts.locale='system'语言环境'] - a locale to set on the resulting DateTime instance
    * @param {string} opts.outputCalendar - the output calendar to set on the resulting DateTime instance
    * @param {string} opts.numberingSystem - the numbering system to set on the resulting DateTime instance
-   * @example DateTime.fromRFC2822('25 Nov 2016 13:23:12 GMT')
-   * @example DateTime.fromRFC2822('Fri, 25 Nov 2016 13:23:12 +0600')
+   * @example DateTime.fromRFC2822('2016 年 11 月 25 日 13:23:12 GMT')
+   * @example DateTime.fromRFC2822('2016 年 11 月 25 日星期五 13:23:12 +0600')
    * @example DateTime.fromRFC2822('25 Nov 2016 13:23 Z')
    * @return {DateTime}
    */
@@ -9832,9 +9749,7 @@ var DateTime = class {
    * @param {string} [opts.locale='system's locale'] - a locale to set on the resulting DateTime instance
    * @param {string} opts.outputCalendar - the output calendar to set on the resulting DateTime instance
    * @param {string} opts.numberingSystem - the numbering system to set on the resulting DateTime instance
-   * @example DateTime.fromHTTP('Sun, 06 Nov 1994 08:49:37 GMT')
-   * @example DateTime.fromHTTP('Sunday, 06-Nov-94 08:49:37 GMT')
-   * @example DateTime.fromHTTP('Sun Nov  6 08:49:37 1994')
+   * @example DateTime.fromHTTP('Sun, 06 Nov 1994 08:49:37 GMT'）\n   * @example DateTime.fromHTTP('Sunday, 06-Nov-94 08:49:37 GMT'）\n   * @example DateTime.fromHTTP('Sun Nov  6 08:49:37 1994')
    * @return {DateTime}
    */
   static fromHTTP(text, opts = {}) {
@@ -9856,7 +9771,7 @@ var DateTime = class {
    */
   static fromFormat(text, fmt, opts = {}) {
     if (isUndefined(text) || isUndefined(fmt)) {
-      throw new InvalidArgumentError("fromFormat requires an input string and a format");
+      throw new InvalidArgumentError("fromFormat 需要输入字符串和格式");
     }
     const { locale = null, numberingSystem = null } = opts, localeToUse = Locale.fromOpts({
       locale,
@@ -9891,8 +9806,7 @@ var DateTime = class {
    * @example DateTime.fromSQL('2017-05-15 09:12:34.342+06:00')
    * @example DateTime.fromSQL('2017-05-15 09:12:34.342 America/Los_Angeles')
    * @example DateTime.fromSQL('2017-05-15 09:12:34.342 America/Los_Angeles', { setZone: true })
-   * @example DateTime.fromSQL('2017-05-15 09:12:34.342', { zone: 'America/Los_Angeles' })
-   * @example DateTime.fromSQL('09:12:34.342')
+   * @example DateTime.fromSQL('2017-05-15 09:12:34.342', { 区域:'America/Los_Angeles'})\n   * @example DateTime.fromSQL('09:12:34.342')
    * @return {DateTime}
    */
   static fromSQL(text, opts = {}) {
@@ -9927,8 +9841,7 @@ var DateTime = class {
   // INFO
   /**
    * Get the value of unit.
-   * @param {string} unit - a unit such as 'minute' or 'day'
-   * @example DateTime.local(2017, 7, 4).get('month'); //=> 7
+   * @param {string} unit - a unit such as 'minute' or 'day'* @example DateTime.local(2017, 7, 4).get('month'); //=> 7
    * @example DateTime.local(2017, 7, 4).get('day'); //=> 4
    * @return {number}
    */
@@ -10097,8 +10010,7 @@ var DateTime = class {
     return this.isValid ? gregorianToOrdinal(this.c).ordinal : NaN;
   }
   /**
-   * Get the human readable short month name, such as 'Oct'.
-   * Defaults to the system's locale if no locale has been specified
+   * Get the human readable short month name, such as 'Oct'。\n   * 默认为系统's locale if no locale has been specified
    * @example DateTime.local(2017, 10, 30).monthShort //=> Oct
    * @type {string}
    */
@@ -10106,7 +10018,7 @@ var DateTime = class {
     return this.isValid ? Info.months("short", { locObj: this.loc })[this.month - 1] : null;
   }
   /**
-   * Get the human readable long month name, such as 'October'.
+   * Get the human readable long month name, such as '十月'.
    * Defaults to the system's locale if no locale has been specified
    * @example DateTime.local(2017, 10, 30).monthLong //=> October
    * @type {string}
@@ -10115,8 +10027,7 @@ var DateTime = class {
     return this.isValid ? Info.months("long", { locObj: this.loc })[this.month - 1] : null;
   }
   /**
-   * Get the human readable short weekday, such as 'Mon'.
-   * Defaults to the system's locale if no locale has been specified
+   * Get the human readable short weekday, such as 'Mon'。\n   * 默认为系统's locale if no locale has been specified
    * @example DateTime.local(2017, 10, 30).weekdayShort //=> Mon
    * @type {string}
    */
@@ -10124,7 +10035,7 @@ var DateTime = class {
     return this.isValid ? Info.weekdays("short", { locObj: this.loc })[this.weekday - 1] : null;
   }
   /**
-   * Get the human readable long weekday, such as 'Monday'.
+   * Get the human readable long weekday, such as '星期一'.
    * Defaults to the system's locale if no locale has been specified
    * @example DateTime.local(2017, 10, 30).weekdayLong //=> Monday
    * @type {string}
@@ -10157,7 +10068,7 @@ var DateTime = class {
     }
   }
   /**
-   * Get the long human name for the zone's current offset, for example "Eastern Standard Time" or "Eastern Daylight Time".
+   * Get the long human name for the zone's current offset, for example "东部标准时间" or "东部夏令时间".
    * Defaults to the system's locale if no locale has been specified
    * @type {string}
    */
@@ -10252,7 +10163,7 @@ var DateTime = class {
     return this.setZone(FixedOffsetZone.instance(offset2), opts);
   }
   /**
-   * "Set" the DateTime's zone to the host's local zone. Returns a newly-constructed DateTime.
+   * "Set" the DateTime's 区域到主机's local zone. Returns a newly-constructed DateTime.
    *
    * Equivalent to `setZone('local')`
    * @return {DateTime}
@@ -10264,7 +10175,7 @@ var DateTime = class {
    * "Set" the DateTime's zone to specified zone. Returns a newly-constructed DateTime.
    *
    * By default, the setter keeps the underlying time the same (as in, the same timestamp), but the new instance will report different local times and consider DSTs when making computations, as with {@link DateTime#plus}. You may wish to use {@link DateTime#toLocal} and {@link DateTime#toUTC} which provide simple convenience wrappers for commonly used zones.
-   * @param {string|Zone} [zone='local'] - a zone identifier. As a string, that can be any IANA zone supported by the host environment, or a fixed-offset name of the form 'UTC+3', or the strings 'local' or 'utc'. You may also supply an instance of a {@link DateTime#Zone} class.
+   * @param {string|Zone} [zone='local'] - 区域标识符。作为字符串，可以是主机环境支持的任何 IANA 区域，也可以是'UTC+3'，或字符串'local' or 'utc'. You may also supply an instance of a {@link DateTime#Zone} class.
    * @param {Object} opts - options
    * @param {boolean} [opts.keepLocalTime=false] - If true, adjust the underlying time so that the local time stays the same, but in the target zone. You should rarely need this.
    * @return {DateTime}
@@ -10320,11 +10231,7 @@ var DateTime = class {
     const normalized = normalizeObject(values, normalizeUnit), settingWeekStuff = !isUndefined(normalized.weekYear) || !isUndefined(normalized.weekNumber) || !isUndefined(normalized.weekday), containsOrdinal = !isUndefined(normalized.ordinal), containsGregorYear = !isUndefined(normalized.year), containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day), containsGregor = containsGregorYear || containsGregorMD, definiteWeekDef = normalized.weekYear || normalized.weekNumber;
     if ((containsGregor || containsOrdinal) && definiteWeekDef) {
       throw new ConflictingSpecificationError(
-        "Can't mix weekYear/weekNumber units with year/month/day or ordinals"
-      );
-    }
-    if (containsGregorMD && containsOrdinal) {
-      throw new ConflictingSpecificationError("Can't mix ordinal dates with month/day");
+        "Can't mix weekYear/weekNumber units with year/month/day or ordinals"）；\n    }\n    if (包含GregorMD && containsOrdinal) {\n      抛出新的 ConflictingSpecificationError("Can't mix ordinal dates with month/day");
     }
     let mixed;
     if (settingWeekStuff) {
@@ -10433,10 +10340,7 @@ var DateTime = class {
    * Defaults to en-US if no locale has been specified, regardless of the system's locale.
    * @param {string} fmt - the format string
    * @param {Object} opts - opts to override the configuration options on this DateTime
-   * @example DateTime.now().toFormat('yyyy LLL dd') //=> '2017 Apr 22'
-   * @example DateTime.now().setLocale('fr').toFormat('yyyy LLL dd') //=> '2017 avr. 22'
-   * @example DateTime.now().toFormat('yyyy LLL dd', { locale: "fr" }) //=> '2017 avr. 22'
-   * @example DateTime.now().toFormat("HH 'hours and' mm 'minutes'") //=> '20 hours and 55 minutes'
+   * @example DateTime.now().toFormat('yyyy LLL dd') //=> '2017 Apr 22'* @example DateTime.now().setLocale('fr').toFormat('yyyy LLL dd') //=> '2017 avr. 22'* @example DateTime.now().toFormat('yyyy LLL dd', { locale: "fr" }) //=> '2017 avr. 22'* @example DateTime.now().toFormat("HH'hours and' mm 'minutes'") //=> '20 hours and 55 minutes'
    * @return {string}
    */
   toFormat(fmt, opts = {}) {
@@ -10453,11 +10357,11 @@ var DateTime = class {
    * @example DateTime.now().toLocaleString(); //=> 4/20/2017
    * @example DateTime.now().setLocale('en-gb').toLocaleString(); //=> '20/04/2017'
    * @example DateTime.now().toLocaleString({ locale: 'en-gb' }); //=> '20/04/2017'
-   * @example DateTime.now().toLocaleString(DateTime.DATE_FULL); //=> 'April 20, 2017'
+   * @example DateTime.now().toLocaleString(DateTime.DATE_FULL); //=> '四月 20, 2017'
    * @example DateTime.now().toLocaleString(DateTime.TIME_SIMPLE); //=> '11:32 AM'
    * @example DateTime.now().toLocaleString(DateTime.DATETIME_SHORT); //=> '4/20/2017, 11:32 AM'
-   * @example DateTime.now().toLocaleString({ weekday: 'long', month: 'long', day: '2-digit' }); //=> 'Thursday, April 20'
-   * @example DateTime.now().toLocaleString({ weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }); //=> 'Thu, Apr 20, 11:27 AM'
+   * @example DateTime.now().toLocaleString({ weekday: 'long', month: 'long', day: '2-digit' }); //=> '星期四，4 月 20 日'
+   * @example DateTime.now().toLocaleString({ weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }); //=> '四月 20 日星期四上午 11:27'
    * @example DateTime.now().toLocaleString({ hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }); //=> '11:32'
    * @return {string}
    */
@@ -10470,11 +10374,11 @@ var DateTime = class {
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatToParts
    * @param opts {Object} - Intl.DateTimeFormat constructor options, same as `toLocaleString`.
    * @example DateTime.now().toLocaleParts(); //=> [
-   *                                   //=>   { type: 'day', value: '25' },
-   *                                   //=>   { type: 'literal', value: '/' },
-   *                                   //=>   { type: 'month', value: '05' },
-   *                                   //=>   { type: 'literal', value: '/' },
-   *                                   //=>   { type: 'year', value: '1982' }
+   *                                   //=>   { type: 'day'，值：'25' },
+   *                                   //=>   { type: 'literal'，值：'/' },
+   *                                   //=>   { type: 'month'，值：'05' },
+   *                                   //=>   { type: 'literal'，值：'/' },
+   *                                   //=>   { type: 'year'，值：'1982' }
    *                                   //=> ]
    */
   toLocaleParts(opts = {}) {
@@ -10484,14 +10388,10 @@ var DateTime = class {
    * Returns an ISO 8601-compliant string representation of this DateTime
    * @param {Object} opts - options
    * @param {boolean} [opts.suppressMilliseconds=false] - exclude milliseconds from the format if they're 0
-   * @param {boolean} [opts.suppressSeconds=false] - exclude seconds from the format if they're 0
-   * @param {boolean} [opts.includeOffset=true] - include the offset, such as 'Z' or '-04:00'
-   * @param {boolean} [opts.extendedZone=true] - add the time zone format extension
-   * @param {string} [opts.format='extended'] - choose between the basic and extended format
+   * @param {boolean} [opts.suppressSeconds=false] - exclude seconds from the format if they're 0\n   * @param {boolean} [opts.includeOffset=true] - 包含偏移量，例如'Z' or '-04:00'* @param {boolean} [opts.extendedZone=true] - 添加时区格式扩展\n   * @param {string} [opts.format='extended'] - choose between the basic and extended format
    * @example DateTime.utc(1983, 5, 25).toISO() //=> '1982-05-25T00:00:00.000Z'
    * @example DateTime.now().toISO() //=> '2017-04-22T20:47:05.335-04:00'
-   * @example DateTime.now().toISO({ includeOffset: false }) //=> '2017-04-22T20:47:05.335'
-   * @example DateTime.now().toISO({ format: 'basic' }) //=> '20170422T204705.335-0400'
+   * @example DateTime.now().toISO({ includeOffset: false }) //=> '2017-04-22T20:47:05.335'* @example DateTime.now().toISO({ 格式：'basic' }) //=> '20170422T204705.335-0400'
    * @return {string}
    */
   toISO({
@@ -10526,17 +10426,9 @@ var DateTime = class {
   }
   /**
    * Returns an ISO 8601-compliant string representation of this DateTime's week date
-   * @example DateTime.utc(1982, 5, 25).toISOWeekDate() //=> '1982-W21-2'
-   * @return {string}
-   */
-  toISOWeekDate() {
-    return toTechFormat(this, "kkkk-'W'WW-c");
-  }
-  /**
-   * Returns an ISO 8601-compliant string representation of this DateTime's time component
+   * @example DateTime.utc(1982, 5, 25).toISOWeekDate() //=> '1982-W21-2'* @return {字符串}\n   */\n  toISOWeekDate() {\n    返回TechFormat(this, "kkkk-'W'WW-c");\n  }\n  /**\n   * 返回此 DateTime's time component
    * @param {Object} opts - options
-   * @param {boolean} [opts.suppressMilliseconds=false] - exclude milliseconds from the format if they're 0
-   * @param {boolean} [opts.suppressSeconds=false] - exclude seconds from the format if they're 0
+   * @param {boolean} [opts.suppressMilliseconds=false] - exclude milliseconds from the format if they'重新 0\n   * @param {boolean} [opts.suppressSeconds=false] - 从格式中排除秒，如果它们're 0
    * @param {boolean} [opts.includeOffset=true] - include the offset, such as 'Z' or '-04:00'
    * @param {boolean} [opts.extendedZone=true] - add the time zone format extension
    * @param {boolean} [opts.includePrefix=false] - include the `T` prefix
@@ -10575,14 +10467,14 @@ var DateTime = class {
    * @return {string}
    */
   toRFC2822() {
-    return toTechFormat(this, "EEE, dd LLL yyyy HH:mm:ss ZZZ", false);
+    return toTechFormat(this, "EEE, dd LLL y​​yyy HH:mm:ss ZZZ", false);
   }
   /**
    * Returns a string representation of this DateTime appropriate for use in HTTP headers. The output is always expressed in GMT.
    * Specifically, the string conforms to RFC 1123.
    * @see https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1
-   * @example DateTime.utc(2014, 7, 13).toHTTP() //=> 'Sun, 13 Jul 2014 00:00:00 GMT'
-   * @example DateTime.utc(2014, 7, 13, 19).toHTTP() //=> 'Sun, 13 Jul 2014 19:00:00 GMT'
+   * @example DateTime.utc(2014, 7, 13).toHTTP() //=> '2014 年 7 月 13 日星期日 00:00:00 GMT'
+   * @example DateTime.utc(2014, 7, 13, 19).toHTTP() //=> '2014 年 7 月 13 日星期日 19:00:00 GMT'
    * @return {string}
    */
   toHTTP() {
@@ -10721,12 +10613,9 @@ var DateTime = class {
   /**
    * Return the difference between two DateTimes as a Duration.
    * @param {DateTime} otherDateTime - the DateTime to compare this one to
-   * @param {string|string[]} [unit=['milliseconds']] - the unit or array of units (such as 'hours' or 'days') to include in the duration.
+   * @param {string|string[]} [unit=['milliseconds']] - 单位或单位数组（例如'hours' or 'days') to include in the duration.
    * @param {Object} opts - options that affect the creation of the Duration
-   * @param {string} [opts.conversionAccuracy='casual'] - the conversion system to use
-   * @example
-   * var i1 = DateTime.fromISO('1982-05-25T09:45'),
-   *     i2 = DateTime.fromISO('1983-10-14T10:30');
+   * @param {string} [opts.conversionAccuracy='casual'] - 要使用的转换系统\n   * @例子\n   * var i1 = DateTime.fromISO('1982-05-25T09:45'),\n   * i2 = DateTime.fromISO('1983-10-14T10:30');
    * i2.diff(i1).toObject() //=> { milliseconds: 43807500000 }
    * i2.diff(i1, 'hours').toObject() //=> { hours: 12168.75 }
    * i2.diff(i1, ['months', 'days']).toObject() //=> { months: 16, days: 19.03125 }
@@ -10744,7 +10633,7 @@ var DateTime = class {
   /**
    * Return the difference between this DateTime and right now.
    * See {@link DateTime#diff}
-   * @param {string|string[]} [unit=['milliseconds']] - the unit or units units (such as 'hours' or 'days') to include in the duration
+   * @param {string|string[]} [unit=['milliseconds']] - 一个或多个单位（例如'hours' or 'days') to include in the duration
    * @param {Object} opts - options that affect the creation of the Duration
    * @param {string} [opts.conversionAccuracy='casual'] - the conversion system to use
    * @return {Duration}
@@ -10797,12 +10686,12 @@ var DateTime = class {
    * @param {number} [options.padding=0] - padding in milliseconds. This allows you to round up the result if it fits inside the threshold. Don't use in combination with {round: false} because the decimal output will include the padding.
    * @param {string} options.locale - override the locale of this DateTime
    * @param {string} options.numberingSystem - override the numberingSystem of this DateTime. The Intl system may choose not to honor this
-   * @example DateTime.now().plus({ days: 1 }).toRelative() //=> "in 1 day"
-   * @example DateTime.now().setLocale("es").toRelative({ days: 1 }) //=> "dentro de 1 día"
-   * @example DateTime.now().plus({ days: 1 }).toRelative({ locale: "fr" }) //=> "dans 23 heures"
-   * @example DateTime.now().minus({ days: 2 }).toRelative() //=> "2 days ago"
-   * @example DateTime.now().minus({ days: 2 }).toRelative({ unit: "hours" }) //=> "48 hours ago"
-   * @example DateTime.now().minus({ hours: 36 }).toRelative({ round: false }) //=> "1.5 days ago"
+   * @example DateTime.now().plus({ days: 1 }).toRelative() //=> "1 天内"
+   * @example DateTime.now().setLocale("es").toRelative({ days: 1 }) //=> "1 天"
+   * @example DateTime.now().plus({ days: 1 }).toRelative({ locale: "fr" }) //=> "dans 23 小时"
+   * @example DateTime.now().minus({ days: 2 }).toRelative() //=> "2 天前"
+   * @example DateTime.now().minus({ days: 2 }).toRelative({ unit: "hours" }) //=> "48 小时前"
+   * @example DateTime.now().minus({ hours: 36 }).toRelative({ round: false }) //=> "1.5 天前"
    */
   toRelative(options = {}) {
     if (!this.isValid)
@@ -10822,7 +10711,7 @@ var DateTime = class {
     });
   }
   /**
-   * Returns a string representation of this date relative to today, such as "yesterday" or "next month".
+   * Returns a string representation of this date relative to today, such as "yesterday" or "下个月".
    * Only internationalizes on platforms that supports Intl.RelativeTimeFormat.
    * @param {Object} options - options that affect the output
    * @param {DateTime} [options.base=DateTime.now()] - the DateTime to use as the basis to which this time is compared. Defaults to now.
@@ -10830,8 +10719,7 @@ var DateTime = class {
    * @param {string} options.unit - use a specific unit; if omitted, the method will pick the unit. Use one of "years", "quarters", "months", "weeks", or "days"
    * @param {string} options.numberingSystem - override the numberingSystem of this DateTime. The Intl system may choose not to honor this
    * @example DateTime.now().plus({ days: 1 }).toRelativeCalendar() //=> "tomorrow"
-   * @example DateTime.now().setLocale("es").plus({ days: 1 }).toRelative() //=> ""mañana"
-   * @example DateTime.now().plus({ days: 1 }).toRelativeCalendar({ locale: "fr" }) //=> "demain"
+   * @example DateTime.now().setLocale("es").plus({ days: 1 }).toRelative() //=> ""mañana"* @example DateTime.now().plus({ days: 1 }).toRelativeCalendar({ locale:"fr" }) //=> "demain"
    * @example DateTime.now().minus({ days: 2 }).toRelativeCalendar() //=> "2 days ago"
    */
   toRelativeCalendar(options = {}) {
@@ -10839,8 +10727,7 @@ var DateTime = class {
       return null;
     return diffRelative(options.base || DateTime.fromObject({}, { zone: this.zone }), this, {
       ...options,
-      numeric: "auto",
-      units: ["years", "months", "days"],
+      numeric: "auto"，\n      单位：["years", "months", "days"],
       calendary: true
     });
   }
@@ -11071,8 +10958,7 @@ var emoji_regex_default = () => {
 
 // src/utils/normalizers.ts
 function currentLocale() {
-  if (typeof window === "undefined")
-    return "en-US";
+  if (typeof window === "undefined")\n    返回"en-US";
   return window.navigator.language;
 }
 function normalizeDuration(dur) {
@@ -11105,25 +10991,14 @@ function renderMinimalDuration(dur) {
     result += `${Math.round(dur.seconds)} seconds, `;
   if (dur.milliseconds)
     result += `${Math.round(dur.milliseconds)} ms, `;
-  if (result.endsWith(", "))
-    result = result.substring(0, result.length - 2);
-  return result;
-}
-function getParentFolder(path) {
-  return path.split("/").slice(0, -1).join("/");
-}
-function getFileTitle(path) {
-  if (path.includes("/"))
-    path = path.substring(path.lastIndexOf("/") + 1);
+  if (result.endsWith(", "))\n    结果 = result.substring(0, result.length - 2);\n  返回结果；\n}\n函数 getParentFolder(路径) {\n  返回路径.split("/").slice(0, -1).join("/");\n}\n函数 getFileTitle(路径) {\n  if (路径.includes("/"))\n    路径 = path.substring(path.lastIndexOf("/") + 1);
   if (path.endsWith(".md"))
     path = path.substring(0, path.length - 3);
   return path;
 }
 function extractSubtags(tags) {
   let result = [];
-  for (let tag of typeof tags === "string" ? [tags] : tags) {
-    result.push(tag);
-    while (tag.includes("/")) {
+  for (let tag of typeof tags === "string"？ [标签]：标签）{\n    结果.push(标签);\n    while (tag.includes("/")) {
       tag = tag.substring(0, tag.lastIndexOf("/"));
       result.push(tag);
     }
@@ -11131,10 +11006,7 @@ function extractSubtags(tags) {
   return result;
 }
 function escapeRegex(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-var HEADER_CANONICALIZER = P.alt(
-  P.regex(new RegExp(emoji_regex_default(), "")),
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");\n}\nvar HEADER_CANONICALIZER = P.alt(\n  P.regex(new RegExp(emoji_regex_default(),"")),
   P.regex(/[0-9\p{Letter}_-]+/u),
   P.whitespace.map((_3) => " "),
   P.any.map((_3) => " ")
@@ -11148,10 +11020,7 @@ function lineSpan(text, start, end) {
   start = Math.max(start, 0);
   end = Math.max(end, 0);
   if (start >= end)
-    return ["", void 0];
-  const startOffset = skipNewlines(text, 0, start);
-  if (startOffset == -1)
-    return ["", void 0];
+    return [""，无效0];\n  const startOffset = SkipNewlines(文本, 0, 开始);\n  if (开始偏移 == -1)\n    返回 ["", void 0];
   const endOffset = skipNewlines(text, startOffset, end - start);
   if (endOffset == -1)
     return [text.substring(startOffset), { start: startOffset, end: text.length }];
@@ -11189,11 +11058,7 @@ var Link = class {
   }
   /** Infer the type of the link from the full internal link path. */
   static infer(linkpath, embed = false, display) {
-    if (linkpath.includes("#^")) {
-      let split = linkpath.split("#^");
-      return Link.block(split[0], split[1], embed, display);
-    } else if (linkpath.includes("#")) {
-      let split = linkpath.split("#");
+    if (linkpath.includes("#^")) {\n      让 split = linkpath.split("#^");\n      返回 Link.block(split[0], split[1], embed, display);\n    } else if (linkpath.includes("#")) {\n      让 split = linkpath.split("#");
       return Link.header(split[0], split[1], embed, display);
     } else
       return Link.file(linkpath, embed, display);
@@ -11286,10 +11151,7 @@ var Link = class {
   }
   /** Convert this link to markdown so it can be rendered. */
   markdown() {
-    let result = (this.embed ? "!" : "") + "[[" + this.obsidianLink();
-    result += "|";
-    result += this.displayOrDefault();
-    result += "]]";
+    let result = (this.embed ? "!" : "") + "[["+ this.obsidianLink();\n    结果 +="|"；\n    结果 += this.displayOrDefault();\n    结果+="]]";
     return result;
   }
   /** Obtain the display for this link if present, or return a simple default display. */
@@ -11298,19 +11160,14 @@ var Link = class {
       return this.display;
     } else {
       let result = getFileTitle(this.path);
-      if (this.type == "header" || this.type == "block")
-        result += " > " + this.subpath;
+      if (this.type == "header"|| this.type =="block")\n        结果 +=" > " + this.subpath;
       return result;
     }
   }
   /** Convert the inner part of the link to something that Obsidian can open / understand. */
   obsidianLink() {
     var _a, _b;
-    const escaped = this.path.replace("|", "\\|");
-    if (this.type == "header")
-      return escaped + "#" + ((_a = this.subpath) == null ? void 0 : _a.replace("|", "\\|"));
-    if (this.type == "block")
-      return escaped + "#^" + ((_b = this.subpath) == null ? void 0 : _b.replace("|", "\\|"));
+    const escaped = this.path.replace("|", "\\|");\n    if (this.type =="header")\n      返回转义+"#"+ ((_a = this.subpath) == null ? void 0 : _a.replace("|", "\\|"））；\n    if (this.type =="block")\n      返回转义+"#^"+ ((_b = this.subpath) == null ? void 0 : _b.replace("|", "\\|"));
     else
       return escaped;
   }
@@ -11321,12 +11178,7 @@ var Link = class {
 };
 function splitOnUnescapedPipe(link) {
   let pipe = -1;
-  while ((pipe = link.indexOf("|", pipe + 1)) >= 0) {
-    if (pipe > 0 && link[pipe - 1] == "\\")
-      continue;
-    return [link.substring(0, pipe).replace(/\\\|/g, "|"), link.substring(pipe + 1)];
-  }
-  return [link.replace(/\\\|/g, "|"), void 0];
+  while ((pipe = link.indexOf("|", 管道 + 1)) >= 0) {\n    if (pipe > 0 && link[pipe - 1] =="\\")\n      继续；\n    return [link.substring(0, pipeline).replace(/\\|/g,"|"), link.substring(pipe + 1)];\n  }\n  返回 [link.replace(/\\|/g,"|"), void 0];
 }
 
 // src/expression/parser.ts
@@ -11336,64 +11188,22 @@ var P2 = __toESM(require_parsimmon_umd_min());
 var Literals;
 ((Literals2) => {
   Literals2.DEFAULT_TO_STRING = {
-    nullRepresentation: "-",
-    dateFormat: "MMMM dd, yyyy",
-    dateTimeFormat: "h:mm a - MMMM dd, yyyy"
+    nullRepresentation: "-"，\n    dateFormat:"MMMM dd, yyyy"，\n    日期时间格式："h:mm a - MMMM dd, yyyy"
   };
   function toString(field, setting = Literals2.DEFAULT_TO_STRING, recursive = false) {
     let wrapped = wrapValue(field);
     if (!wrapped)
       return setting.nullRepresentation;
     switch (wrapped.type) {
-      case "null":
-        return setting.nullRepresentation;
-      case "string":
-        return wrapped.value;
-      case "number":
-      case "boolean":
-        return "" + wrapped.value;
-      case "link":
-        return wrapped.value.markdown();
-      case "function":
-        return "<function>";
-      case "array":
-        let result = "";
-        if (recursive)
-          result += "[";
-        result += wrapped.value.map((f4) => toString(f4, setting, true)).join(", ");
-        if (recursive)
-          result += "]";
-        return result;
-      case "object":
-        return "{ " + Object.entries(wrapped.value).map((e3) => e3[0] + ": " + toString(e3[1], setting, true)).join(", ") + " }";
-      case "date":
-        return renderMinimalDate(wrapped.value, setting.dateFormat, setting.dateTimeFormat);
-      case "duration":
+      case "null"：\n        返回设置.nullRepresentation；\n      案例"string":\n        返回wrapped.value；\n      案例"number"：\n      案例"boolean"：\n        return""+wrapped.value;\n      t4 中的情况"link"：\n        返回wrapped.value.markdown();\n      案例"function"：\n        return"<function>"；\n      case"array":\n        让结果 =""；\n        如果（递归）\n          结果+="[";
+        result += wrapped.value.map((f4) => toString(f4, setting, true)).join(", ");\n        如果（递归）\n          结果 +="]"；\n        返回结果；\n      case"object"：\n        return"{ " + Object.entries(wrapped.value).map((e3) => e3[0] + ": "+ toString(e3[1], 设置, true)).join(", ") + " }"；\n      case"date"：\n        返回 renderMinimalDate(wrapped.value,setting.dateFormat,setting.dateTimeFormat);\n      案例"duration":
         return renderMinimalDuration(wrapped.value);
     }
   }
   Literals2.toString = toString;
   function wrapValue(val) {
     if (isNull(val))
-      return { type: "null", value: null };
-    else if (isNumber2(val))
-      return { type: "number", value: val };
-    else if (isString2(val))
-      return { type: "string", value: val };
-    else if (isBoolean(val))
-      return { type: "boolean", value: val };
-    else if (isDuration(val))
-      return { type: "duration", value: val };
-    else if (isDate2(val))
-      return { type: "date", value: val };
-    else if (isArray(val))
-      return { type: "array", value: val };
-    else if (isLink(val))
-      return { type: "link", value: val };
-    else if (isFunction(val))
-      return { type: "function", value: val };
-    else if (isObject(val))
-      return { type: "object", value: val };
+      return { type: "null", 值: null };\n    否则 if (isNumber2(val))\n      返回 { 类型："number"，值：val };\n    否则 if (isString2(val))\n      返回 { 类型："string", 值: val };\n    否则如果（isBoolean（val））\n      返回 { 类型："boolean"，值：val };\n    否则如果（isDuration（val））\n      返回 { 类型："duration"，值：val };\n    否则如果 (isDate2(val))\n      返回 { 类型："date", 值: val };\n    否则如果 (isArray(val))\n      返回 { 类型："array"，值：val };\n    否则 if (isLink(val))\n      返回 { 类型："link"，值：val}；\n    否则如果（isFunction（val））\n      返回 { 类型："function", 值: val };\n    否则如果 (isObject(val))\n      返回 { 类型："object", value: val };
     else
       return void 0;
   }
@@ -11445,22 +11255,13 @@ var Literals;
     if (wrap1.value === wrap2.value)
       return 0;
     switch (wrap1.type) {
-      case "string":
-        return wrap1.value.localeCompare(wrap2.value);
-      case "number":
+      case "string":\n        返回wrap1.value.localeCompare(wrap2.value);\n      案例"number":
         if (wrap1.value < wrap2.value)
           return -1;
         else if (wrap1.value == wrap2.value)
           return 0;
         return 1;
-      case "null":
-        return 0;
-      case "boolean":
-        if (wrap1.value == wrap2.value)
-          return 0;
-        else
-          return wrap1.value ? 1 : -1;
-      case "link":
+      case "null":\n        返回0；\n      案例"boolean":\n        if (wrap1.value==wrap2.value)\n          返回0；\n        否则\n          返回wrap1.value？ 1：-1；\n      案例"link":
         let link1 = wrap1.value;
         let link2 = wrap2.value;
         let normalize = linkNormalizer != null ? linkNormalizer : (x4) => x4;
@@ -11476,12 +11277,7 @@ var Literals;
           return -1;
         if (!link1.subpath && !link2.subpath)
           return 0;
-        return ((_a = link1.subpath) != null ? _a : "").localeCompare((_b = link2.subpath) != null ? _b : "");
-      case "date":
-        return wrap1.value < wrap2.value ? -1 : wrap1.value.equals(wrap2.value) ? 0 : 1;
-      case "duration":
-        return wrap1.value < wrap2.value ? -1 : wrap1.value.equals(wrap2.value) ? 0 : 1;
-      case "array":
+        return ((_a = link1.subpath) != null ? _a : "").localeCompare((_b = link2.subpath) != null ? _b :"");\n      案例"date":\n        返回wrap1.value <wrap2.value？ -1：wrap1.value.equals(wrap2.value)？ 0：1；\n      案例"duration":\n        返回wrap1.value <wrap2.value？ -1：wrap1.value.equals(wrap2.value)？ 0：1；\n      案例"array":
         let f1 = wrap1.value;
         let f22 = wrap2.value;
         for (let index = 0; index < Math.min(f1.length, f22.length); index++) {
@@ -11521,25 +11317,7 @@ var Literals;
     if (!wrapped)
       return false;
     switch (wrapped.type) {
-      case "number":
-        return wrapped.value != 0;
-      case "string":
-        return wrapped.value.length > 0;
-      case "boolean":
-        return wrapped.value;
-      case "link":
-        return !!wrapped.value.path;
-      case "date":
-        return wrapped.value.toMillis() != 0;
-      case "duration":
-        return wrapped.value.as("seconds") != 0;
-      case "object":
-        return Object.keys(wrapped.value).length > 0;
-      case "array":
-        return wrapped.value.length > 0;
-      case "null":
-        return false;
-      case "function":
+      case "number"：\n        返回wrapped.value != 0;\n      案例"string":\n        返回wrapped.value.length > 0;\n      案例"boolean":\n        返回wrapped.value；\n      案例"link":\n        return !!wrapped.value.path;\n      案例"date":\n        返回wrapped.value.toMillis() != 0;\n      案例"duration"：\n        返回wrapped.value.as("seconds") != 0;\n      案例"object"：\n        返回 Object.keys(wrapped.value).length > 0;\n      case"array":\n        返回wrapped.value.length > 0;\n      案例"null":\n        返回假；\n      案例"function":
         return true;
     }
   }
@@ -11560,11 +11338,7 @@ var Literals;
   }
   Literals2.deepCopy = deepCopy;
   function isString2(val) {
-    return typeof val == "string";
-  }
-  Literals2.isString = isString2;
-  function isNumber2(val) {
-    return typeof val == "number";
+    return typeof val == "string";\n  }\n  Literals2.isString = isString2;\n  函数 isNumber2(val) {\n    return typeof val =="number";
   }
   Literals2.isNumber = isNumber2;
   function isDate2(val) {
@@ -11603,7 +11377,7 @@ var Literals;
 var Groupings;
 ((Groupings2) => {
   function isElementGroup(entry) {
-    return Literals.isObject(entry) && Object.keys(entry).length == 2 && "key" in entry && "rows" in entry;
+    return Literals.isObject(entry) && Object.keys(entry).length == 2 && "key"条目 &&"rows" in entry;
   }
   Groupings2.isElementGroup = isElementGroup;
   function isGrouping(entry) {
@@ -11784,8 +11558,7 @@ var Result;
 // src/expression/filters.ts
 var Filters;
 ((Filters2) => {
-  Filters2.EVERYTHING = { type: "everything" };
-  Filters2.NOTHING = { type: "nothing" };
+  Filters2.EVERYTHING = { type: "everything"};\n  Filters2.NOTHING = { 类型："nothing" };
   Filters2.EMPTY_SET = /* @__PURE__ */ new Set();
   function atom(set) {
     if (set.size == 0)
@@ -11807,44 +11580,7 @@ var Filters;
   function negated(set) {
     if (set.size == 0)
       return Filters2.EVERYTHING;
-    return { type: "negated", value: set };
-  }
-  Filters2.negated = negated;
-  function negate(filter) {
-    switch (filter.type) {
-      case "everything":
-        return Filters2.NOTHING;
-      case "nothing":
-        return Filters2.EVERYTHING;
-      case "atom":
-        return negated(filter.value);
-      case "negated":
-        return atom(filter.value);
-    }
-  }
-  Filters2.negate = negate;
-  function empty(filter) {
-    switch (filter.type) {
-      case "everything":
-        return false;
-      case "negated":
-        return false;
-      case "atom":
-        return filter.value.size == 0;
-      case "nothing":
-        return true;
-    }
-  }
-  Filters2.empty = empty;
-  function resolve(filter, everything) {
-    switch (filter.type) {
-      case "everything":
-        return everything;
-      case "nothing":
-        return Filters2.EMPTY_SET;
-      case "atom":
-        return filter.value;
-      case "negated":
+    return { type: "negated", 值: 设置 };\n  }\n  Filters2.neated = 否定；\n  函数否定（过滤器）{\n    开关（过滤器类型）{\n      案例"everything":\n        返回 Filters2.NOTHING；\n      案例"nothing"：\n        返回 Filters2.EVERYTHING；\n      案例"atom":\n        返回否定（filter.value）；\n      案例"negated":\n        返回原子(filter.value);\n    }\n  }\n  Filters2.negate = 否定；\n  函数空（过滤器）{\n    开关（过滤器类型）{\n      case"everything":\n        返回假；\n      案例"negated":\n        返回假；\n      案例"atom":\n        返回filter.value.size == 0;\n      案例"nothing":\n        返回真；\n    }\n  }\n  Filters2.empty = 空；\n  函数解析（过滤器，一切）{\n    开关（过滤器类型）{\n      案例"everything":\n        归还一切；\n      案例"nothing"：\n        返回 Filters2.EMPTY_SET；\n      案例"atom"：\n        返回过滤器值；\n      案例"negated":
         return setIntersectNegation(everything, filter.value);
     }
   }
@@ -11869,11 +11605,7 @@ var Filters;
         continue;
       if (empty(filter))
         return Result.success(Filters2.NOTHING);
-      if (filter.type === "everything")
-        continue;
-      if (filter.type == "atom")
-        atoms.push(filter.value);
-      else if (filter.type == "negated")
+      if (filter.type === "everything")\n        继续；\n      if (filter.type =="atom")\n        atoms.push(filter.value);\n      else if (filter.type =="negated")
         negations.push(filter.value);
     }
     if (atoms.length == 0 && negations.length == 0) {
@@ -11905,13 +11637,7 @@ var Filters;
       const filter = maybeFilter.value;
       if (filter === void 0)
         continue;
-      if (filter.type === "everything")
-        return Result.success(Filters2.EVERYTHING);
-      if (empty(filter))
-        continue;
-      if (filter.type == "atom")
-        atoms.push(filter.value);
-      else if (filter.type == "negated")
+      if (filter.type === "everything")\n        返回 Result.success(Filters2.EVERYTHING);\n      如果（空（过滤器））\n        继续；\n      if (filter.type =="atom")\n        atoms.push(filter.value);\n      else if (filter.type =="negated")
         negations.push(filter.value);
     }
     if (atoms.length == 0 && negations.length == 0) {
@@ -11980,25 +11706,7 @@ var Filters;
 // src/expression/expression.ts
 var Expressions;
 ((Expressions2) => {
-  Expressions2.ROW = "$row";
-  function variable(name) {
-    return { type: "variable", name };
-  }
-  Expressions2.variable = variable;
-  function literal(value) {
-    return { type: "literal", value };
-  }
-  Expressions2.literal = literal;
-  function binaryOp(left, op, right) {
-    return { type: "binaryop", left, op, right };
-  }
-  Expressions2.binaryOp = binaryOp;
-  function index(obj, index2) {
-    return { type: "binaryop", left: obj, right: index2, op: "index" };
-  }
-  Expressions2.index = index;
-  function indexVariable(name) {
-    let parts = name.split(".");
+  Expressions2.ROW = "$row";\n  函数变量（名称）{\n    return { type:"variable", 名称 };\n  }\n  Expressions2.variable = 变量；\n  函数文字（值）{\n    返回 { 类型："literal"，值}；\n  }\n  Expressions2.literal = 文字；\n  函数binaryOp（左，op，右）{\n    返回 { 类型："binaryop"，左，op，右 };\n  }\n  Expressions2.binaryOp = binaryOp;\n  函数索引（obj，索引2）{\n    返回 { 类型："binaryop"，左：obj，右：index2，op："index"};\n  }\n  Expressions2.index = 索引；\n  函数索引变量（名称）{\n    让 parts = name.split(".");
     let result = Expressions2.variable(parts[0]);
     for (let index2 = 1; index2 < parts.length; index2++) {
       result = Expressions2.index(result, Expressions2.literal(parts[index2]));
@@ -12007,37 +11715,12 @@ var Expressions;
   }
   Expressions2.indexVariable = indexVariable;
   function lambda(args, value) {
-    return { type: "lambda", arguments: args, value };
-  }
-  Expressions2.lambda = lambda;
-  function method(target, func2, args) {
-    return { type: "method", target, func: func2, arguments: args };
-  }
-  Expressions2.method = method;
-  function func(func2, args) {
-    return { type: "function", func: func2, arguments: args };
-  }
-  Expressions2.func = func;
-  function list(values) {
-    return { type: "list", values };
-  }
-  Expressions2.list = list;
-  function object(values) {
-    return { type: "object", values };
-  }
-  Expressions2.object = object;
-  function negate(child) {
-    return { type: "negated", child };
-  }
-  Expressions2.negate = negate;
-  function isCompareOp(op) {
-    return op == "<=" || op == "<" || op == ">" || op == ">=" || op == "!=" || op == "=";
+    return { type: "lambda", 参数: args, value };\n  }\n  表达式2.lambda = lambda;\n  函数方法（目标，func2，args）{\n    返回 { 类型："method", 目标, func: func2, 参数: args };\n  }\n  Expressions2.method = 方法；\n  函数 func(func2, args) {\n    返回 { 类型："function", func: func2, 参数: args };\n  }\n  表达式2.func = func;\n  函数列表（值）{\n    返回 { 类型："list", 值 };\n  }\n  Expressions2.list = 列表；\n  函数对象（值）{\n    返回 { 类型："object"，值}；\n  }\n  Expressions2.object = 对象;\n  函数否定（子）{\n    返回 { 类型："negated", 孩子 };\n  }\n  Expressions2.negate = 否定；\n  函数 isCompareOp(op) {\n    返回 op =="<="|| op =="<"|| op ==">"|| op ==">="|| op =="!="|| op =="=";
   }
   Expressions2.isCompareOp = isCompareOp;
   function unboundVariables(expr, bound = /* @__PURE__ */ new Set([Expressions2.ROW])) {
     switch (expr.type) {
-      case "binaryop":
-        if (expr.op === "index" && expr.left.type == "variable" && expr.left.name == Expressions2.ROW && expr.right.type == "literal" && Literals.isString(expr.right.value)) {
+      case "binaryop"：\n        if (expr.op ==="index"&& expr.left.type =="variable"&& expr.left.name == Expressions2.ROW && expr.right.type =="literal" && Literals.isString(expr.right.value)) {
           if (bound.has(expr.right.value))
             return /* @__PURE__ */ new Set();
           else
@@ -12059,9 +11742,7 @@ var Expressions;
         return unboundVariables(expr.value, newBound);
       case "list":
         return Filters.setUnion(expr.values.map((v3) => unboundVariables(v3, bound)));
-      case "negated":
-        return unboundVariables(expr.child, bound);
-      case "object":
+      case "negated"：\n        返回 unboundVariables(expr.child, 绑定);\n      案例"object":
         return Filters.setUnion(Object.values(expr.values).map((v3) => unboundVariables(v3, bound)));
       case "variable":
         if (bound && bound.has(expr.name))
@@ -12075,32 +11756,19 @@ var Expressions;
   Expressions2.unboundVariables = unboundVariables;
   function toString(expr) {
     switch (expr.type) {
-      case "binaryop":
-        if (expr.op === "index") {
+      case "binaryop"：\n        if (expr.op ==="index") {
           return `${toString(expr.left)}[${toString(expr.right)}]`;
         }
         return `${toString(expr.left)} ${expr.op} ${toString(expr.right)}`;
       case "function":
-        return `${toString(expr.func)}(${expr.arguments.map(toString).join(", ")})`;
-      case "method":
-        return `${toString(expr.target)}.${expr.func}(${expr.arguments.map(toString).join(", ")})`;
-      case "lambda":
+        return `${toString(expr.func)}(${expr.arguments.map(toString).join(", ")})`;\n      案例"method":
+        return `${toString(expr.target)}.${expr.func}(${expr.arguments.map(toString).join(", ")})`;\n      案例"lambda":
         return `(${expr.arguments.join(", ")}) => ${toString(expr.value)}`;
       case "list":
-        return `[${expr.values.map(toString).join(", ")}]`;
-      case "negated":
+        return `[${expr.values.map(toString).join(", ")}]`;\n      案例"negated":
         return `!${toString(expr.child)}`;
       case "object":
-        return `{${Object.entries(expr.values).map(([k4, v3]) => `${k4}: ${toString(v3)}`).join(", ")}}`;
-      case "variable":
-        return expr.name;
-      case "literal":
-        const wrapped = Literals.wrapValue(expr.value);
-        if (!wrapped)
-          return "null";
-        switch (wrapped.type) {
-          case "string":
-            return `"${wrapped.value}"`;
+        return `{${Object.entries(expr.values).map(([k4, v3]) => `${k4}: ${toString(v3)}`).join(", ")}}`;\n      案例"variable":\n        返回表达式名称；\n      案例"literal"：\n        constwrapped = Literals.wrapValue(expr.value);\n        如果（！包裹）\n          返回"null"；\n        开关（wrapped.type）{\n          案例"string"：\n            返回`"${wrapped.value}"`;
           default:
             return Literals.toString(wrapped.value);
         }
@@ -12118,8 +11786,7 @@ var PRIMITIVES = P2.createLanguage({
     P2.alt(q4.escapeCharacter, P2.noneOf('"\\')).atLeast(0).map((chars2) => chars2.join(""))
   ).skip(P2.string('"')).desc("string"),
   escapeCharacter: (_3) => P2.string("\\").then(P2.any).map((escaped) => {
-    if (escaped === '"')
-      return '"';
+    if (escaped === '"')\n      返回 '"';
     if (escaped === "\\")
       return "\\";
     else
@@ -12135,8 +11802,7 @@ var PRIMITIVES = P2.createLanguage({
   ).desc("tag"),
   // A variable identifier, which is alphanumeric and must start with a letter or... emoji.
   identifier: (_3) => P2.seqMap(
-    P2.alt(P2.regexp(/[\p{Letter}$]/u), P2.regexp(EMOJI_REGEX).desc("text")),
-    P2.alt(P2.regexp(/[0-9\p{Letter}$_-]/u), P2.regexp(EMOJI_REGEX).desc("text")).many(),
+    P2.alt(P2.regexp(/[\p{Letter}$]/u), P2.regexp(EMOJI_REGEX).desc("text")),\n    P2.alt(P2.regexp(/[0-9p{字母}$_-]/u), P2.regexp(EMOJI_REGEX).desc("text")).many(),
     (first, rest) => first + rest.join("")
   ).desc("variable"),
   // An Obsidian link of the form [[<link>]].
@@ -12191,13 +11857,9 @@ var PRIMITIVES = P2.createLanguage({
       P2.seqMap(
         P2.string("+").or(P2.string("-")),
         P2.regexp(/\d{1,2}(:\d{2})?/),
-        (pm, hr) => dt.setZone("UTC" + pm + hr, { keepLocalTime: true })
-      ),
-      P2.seqMap(P2.string("Z"), () => dt.setZone("utc", { keepLocalTime: true })),
+        (pm, hr) => dt.setZone("UTC"+ pm + hr, { keepLocalTime: true })\n      ),\n      P2.seqMap(P2.string("Z"), () => dt.setZone("utc", { keepLocalTime: true })),
       P2.seqMap(
-        P2.string("["),
-        P2.regexp(/[0-9A-Za-z+-\/]+/u),
-        P2.string("]"),
+        P2.string("["），\n        P2.regexp(/[0-9A-Za-z+-/]+/u),\n        P2.string("]"),
         (_a, zone, _b) => dt.setZone(zone, { keepLocalTime: true })
       )
     )
@@ -12341,16 +12003,7 @@ var EXPRESSION = P2.createLanguage({
       let result = obj;
       for (let post of postfixes) {
         switch (post.type) {
-          case "dot":
-            result = Expressions.index(result, Expressions.literal(post.expr));
-            break;
-          case "index":
-            result = Expressions.index(result, post.expr);
-            break;
-          case "function":
-            result = Expressions.func(result, post.exprs);
-            break;
-          case "method":
+          case "dot"：\n            结果 = Expressions.index(结果, Expressions.literal(post.expr));\n            打破；\n          案例"index":\n            结果 = Expressions.index(结果, post.expr);\n            休息;\n          案例"function":\n            结果 = Expressions.func(结果, post.exprs);\n            打破；\n          案例"method":
             result = Expressions.method(result, post.func, post.exprs);
             break;
         }
@@ -12379,9 +12032,7 @@ var EXPRESSION = P2.createLanguage({
   }),
   // Full method call: .thing().
   methodPostfix: (q4) => P2.seqMap(
-    P2.string("."),
-    PRIMITIVES.identifier.trim(P2.optWhitespace),
-    q4.expression.sepBy(P2.string(",").trim(P2.optWhitespace)).trim(P2.optWhitespace).wrap(P2.string("("), P2.string(")")),
+    P2.string("."),\n    PRIMITIVES.identifier.trim(P2.optWhitespace),\n    q4.表达式.sepBy(P2.string(",").trim(P2.optWhitespace)).trim(P2.optWhitespace).wrap(P2.string("("), P2.string(")")),
     (_3, func, exprs) => {
       return { type: "method", func, exprs };
     }
@@ -12399,30 +12050,21 @@ var QUERY = P2.createLanguage({
   queryId: (_3) => createFunction("id", PRIMITIVES.string).map(([_4, id]) => ({ type: "id", value: id })),
   queryType: (_3) => P2.string("@").then(PRIMITIVES.identifier).map((value) => ({ type: "typed", value })),
   queryPath: (_3) => createFunction(P2.regexp(/e?path/i).desc("[e]path"), PRIMITIVES.string).map(([func, path]) => ({
-    type: "path",
-    value: path,
-    exact: func.toLowerCase() === "epath"
+    type: "path"，\n    值：路径，\n    准确： func.toLowerCase() ==="epath"
   })),
   queryParentOf: (q4) => createFunction(P2.regexp(/parentof|supertree/i).desc("parentof"), q4.query).map(([func, children]) => ({
-    type: "parent-of",
-    children,
-    inclusive: func.toLowerCase() === "supertree"
+    type: "parent-of",\n    孩子们，\n    包含： func.toLowerCase() ==="supertree"
   })),
   queryChildOf: (q4) => createFunction(P2.regexp(/childof|subtree/i).desc("childof"), q4.query).map(([func, parents]) => ({
-    type: "child-of",
-    parents,
-    inclusive: func.toLowerCase() === "subtree"
+    type: "child-of",\n    父母，\n    包含： func.toLowerCase() ==="subtree"
   })),
   querySimpleLinked: (_3) => PRIMITIVES.link.map((link) => ({
-    type: "linked",
-    source: { type: "link", value: link },
-    direction: "incoming"
+    type: "linked"，\n    来源：{ 类型："link"，值：链接 },\n    方向："incoming"
   })),
   queryLinked: (q4) => createFunction(P2.regexp(/linksto|linkedfrom|connected/i).desc("connected"), q4.query).map(([func, source]) => ({
     type: "linked",
     // When writing syntax like `linksto([[link]])`, [[link]] will also be interpreted as a linked query, so unwrap it if present.
-    source: source.type == "linked" && source.source.type == "link" ? source.source : source,
-    direction: func.toLowerCase() == "linksto" ? "incoming" : func.toLowerCase() == "linkedfrom" ? "outgoing" : "both"
+    source: source.type == "linked"&& source.source.type =="link"？来源.来源：来源，\n    方向： func.toLowerCase() =="linksto" ? "incoming": func.toLowerCase() =="linkedfrom" ? "outgoing" : "both"
   })),
   queryExists: (_3) => createFunction(P2.regexp(/exists/i).desc("exists"), PRIMITIVES.identifier.or(PRIMITIVES.string)).map(
     ([_func, ident]) => ({
@@ -12478,10 +12120,7 @@ function createBinaryParser(child, sep, combine) {
   });
 }
 function createFunction(func, args) {
-  const realFunc = typeof func === "string" ? P2.string(func) : func;
-  return P2.seqMap(
-    realFunc.skip(P2.optWhitespace),
-    args.trim(P2.optWhitespace).wrap(P2.string("("), P2.string(")")),
+  const realFunc = typeof func === "string"？ P2.string(func) : func;\n  返回 P2.seqMap(\n    realFunc.skip(P2.optWhitespace),\n    args.trim(P2.optWhitespace).wrap(P2.string("("), P2.string(")")),
     (f4, a3) => [f4, a3]
   );
 }
@@ -12504,12 +12143,7 @@ function chainOpt(base, ...funcs) {
 }
 
 // src/ui/markdown.tsx
-var import_obsidian = require("obsidian");
-
-// src/utils/media.ts
-var IMAGE_EXTENSIONS = Object.freeze(
-  /* @__PURE__ */ new Set([
-    ".tif",
+var import_obsidian = require("obsidian");\n\n// src/utils/media.ts\nvar IMAGE_EXTENSIONS = Object.freeze(\n  /* @__PURE__ */ 新集合([".tif",
     ".tiff",
     ".gif",
     ".png",
@@ -12524,14 +12158,7 @@ var IMAGE_EXTENSIONS = Object.freeze(
     ".webp",
     ".bmp",
     ".ico",
-    ".cur"
-  ])
-);
-function isImageEmbed(link) {
-  if (!link.path.contains("."))
-    return false;
-  let extension = link.path.substring(link.path.lastIndexOf("."));
-  return link.type == "file" && link.embed && IMAGE_EXTENSIONS.has(extension);
+    ".cur"]）\n）；\n函数 isImageEmbed(链接) {\n  if (!link.path.contains("."))\n    返回假；\n  让扩展名 = link.path.substring(link.path.lastIndexOf("."));\n  返回 link.type =="file" && link.embed && IMAGE_EXTENSIONS.has(extension);
 }
 function extractImageDimensions(link) {
   if (!link.display)
@@ -12589,8 +12216,7 @@ function g(n3) {
 function _(l4, u4, t4) {
   var i4, r3, o3, e3 = {};
   for (o3 in u4)
-    "key" == o3 ? i4 = u4[o3] : "ref" == o3 ? r3 = u4[o3] : e3[o3] = u4[o3];
-  if (arguments.length > 2 && (e3.children = arguments.length > 3 ? n2.call(arguments, 2) : t4), "function" == typeof l4 && null != l4.defaultProps)
+    "key"== o3 ？ i4 = u4[o3] :"ref"== o3 ？ r3 = u4[o3] : e3[o3] = u4[o3];\n  if (arguments.length > 2 && (e3.children = argument.length > 3 ? n2.call(arguments, 2) : t4),"function" == typeof l4 && null != l4.defaultProps)
     for (o3 in l4.defaultProps)
       void 0 === e3[o3] && (e3[o3] = l4.defaultProps[o3]);
   return m(l4, e3, i4, r3, null);
@@ -12644,7 +12270,7 @@ function I(n3, l4, u4, t4, i4, r3, o3, e3, f4, c3, s4) {
 function P3(n3, l4, u4, t4, i4) {
   var r3, o3, e3, f4, c3, s4 = u4.length, a3 = s4, h3 = 0;
   for (n3.__k = new Array(i4), r3 = 0; r3 < i4; r3++)
-    null != (o3 = l4[r3]) && "boolean" != typeof o3 && "function" != typeof o3 ? (f4 = r3 + h3, (o3 = n3.__k[r3] = "string" == typeof o3 || "number" == typeof o3 || "bigint" == typeof o3 || o3.constructor == String ? m(null, o3, null, null, null) : w(o3) ? m(k, { children: o3 }, null, null, null) : null == o3.constructor && o3.__b > 0 ? m(o3.type, o3.props, o3.key, o3.ref ? o3.ref : null, o3.__v) : o3).__ = n3, o3.__b = n3.__b + 1, e3 = null, -1 != (c3 = o3.__i = L(o3, u4, f4, a3)) && (a3--, (e3 = u4[c3]) && (e3.__u |= 2)), null == e3 || null == e3.__v ? (-1 == c3 && (i4 > s4 ? h3-- : i4 < s4 && h3++), "function" != typeof o3.type && (o3.__u |= 4)) : c3 != f4 && (c3 == f4 - 1 ? h3-- : c3 == f4 + 1 ? h3++ : (c3 > f4 ? h3-- : h3++, o3.__u |= 4))) : n3.__k[r3] = null;
+    null != (o3 = l4[r3]) && "boolean"!= typeof o3 &&"function"!= typeof o3 ? (f4 = r3 + h3, (o3 = n3.__k[r3] ="string"== typeof o3 ||"number"== typeof o3 ||"bigint" == typeof o3 || o3.constructor == String ? m(null, o3, null, null, null) : w(o3) ? m(k, { children: o3 }, null, null, null) : null == o3.constructor && o3.__b > 0 ? m(o3.type, o3.props, o3.key, o3.ref ? o3.ref : null, o3.__v) : o3).__ = n3, o3.__b = n3.__b + 1, e3 = null, -1 != (c3 = o3.__i = L(o3, u4, f4, a3)) && (a3--, (e3 = u4[c3]) && (e3.__u |= 2)), null == e3 || null == e3.__v ? (-1 == c3 && (i4 > s4 ? h3-- : i4 < s4 && h3++), "function" != typeof o3.type && (o3.__u |= 4)) : c3 != f4 && (c3 == f4 - 1 ? h3-- : c3 == f4 + 1 ? h3++ : (c3 > f4 ? h3-- : h3++, o3.__u |= 4))) : n3.__k[r3] = null;
   if (a3)
     for (r3 = 0; r3 < s4; r3++)
       null != (e3 = u4[r3]) && 0 == (2 & e3.__u) && (e3.__e == t4 && (t4 = S(e3)), B(e3, e3));
@@ -12688,34 +12314,9 @@ function L(n3, l4, u4, t4) {
   return -1;
 }
 function T(n3, l4, u4) {
-  "-" == l4[0] ? n3.setProperty(l4, null == u4 ? "" : u4) : n3[l4] = null == u4 ? "" : "number" != typeof u4 || y.test(l4) ? u4 : u4 + "px";
-}
-function j(n3, l4, u4, t4, i4) {
-  var r3, o3;
-  n:
-    if ("style" == l4)
-      if ("string" == typeof u4)
-        n3.style.cssText = u4;
-      else {
-        if ("string" == typeof t4 && (n3.style.cssText = t4 = ""), t4)
-          for (l4 in t4)
-            u4 && l4 in u4 || T(n3.style, l4, "");
-        if (u4)
-          for (l4 in u4)
-            t4 && u4[l4] == t4[l4] || T(n3.style, l4, u4[l4]);
-      }
-    else if ("o" == l4[0] && "n" == l4[1])
-      r3 = l4 != (l4 = l4.replace(f, "$1")), o3 = l4.toLowerCase(), l4 = o3 in n3 || "onFocusOut" == l4 || "onFocusIn" == l4 ? o3.slice(2) : l4.slice(2), n3.l || (n3.l = {}), n3.l[l4 + r3] = u4, u4 ? t4 ? u4.u = t4.u : (u4.u = c, n3.addEventListener(l4, r3 ? a : s2, r3)) : n3.removeEventListener(l4, r3 ? a : s2, r3);
+  "-"== l4[0] ？ n3.setProperty(l4, null == u4 ?"": u4） : n3[l4] = null == u4 ?"" : "number"!= typeof u4 || y.测试（l4）？ u4 : u4 +"px";\n}\n函数 j(n3, l4, u4, t4, i4) {\n  var r3，o3；\n  号：\n    如果（"style"== l4)\n      if ("string"== u4 类型)\n        n3.style.cssText = u4;\n      否则{\n        如果（"string"== typeof t4 && (n3.style.cssText = t4 =""), t4)\n          对于（t4 中的 l4）\n            u4 && l4 in u4 || T(n3.style, l4,"");\n        如果 (u4)\n          对于（u4 中的 l4）\n            t4 && u4[l4] == t4[l4] || T(n3.style, l4, u4[l4]);\n      }\n    else if ("o"== l4[0] &&"n"== l4[1])\n      r3 = l4 != (l4 = l4.replace(f,"$1")), o3 = l4.toLowerCase(), l4 = n3 中的 o3 ||"onFocusOut"== l4 ||"onFocusIn" == l4 ? o3.slice(2) : l4.slice(2), n3.l || (n3.l = {}), n3.l[l4 + r3] = u4, u4 ? t4 ? u4.u = t4.u : (u4.u = c, n3.addEventListener(l4, r3 ? a : s2, r3)) : n3.removeEventListener(l4, r3 ? a : s2, r3);
     else {
-      if ("http://www.w3.org/2000/svg" == i4)
-        l4 = l4.replace(/xlink(H|:h)/, "h").replace(/sName$/, "s");
-      else if ("width" != l4 && "height" != l4 && "href" != l4 && "list" != l4 && "form" != l4 && "tabIndex" != l4 && "download" != l4 && "rowSpan" != l4 && "colSpan" != l4 && "role" != l4 && "popover" != l4 && l4 in n3)
-        try {
-          n3[l4] = null == u4 ? "" : u4;
-          break n;
-        } catch (n4) {
-        }
-      "function" == typeof u4 || (null == u4 || false === u4 && "-" != l4[4] ? n3.removeAttribute(l4) : n3.setAttribute(l4, "popover" == l4 && 1 == u4 ? "" : u4));
+      if ("http://www.w3.org/2000/svg"== i4)\n        l4 = l4.replace(/xlink(H|:h)/,"h").replace(/sName$/,"s");\n      否则如果（"width"!= l4 &&"height"!= l4 &&"href"!= l4 &&"list"!= l4 &&"form"!= l4 &&"tabIndex"!= l4 &&"download"!= l4 &&"rowSpan"!= l4 &&"colSpan"!= l4 &&"role"!= l4 &&"popover"!= n3 中的 l4 && l4)\n        尝试{\n          n3[l4] = null == u4 ？"": u4;\n          打破 n;\n        } 抓住 (n4) {\n        }"function"== typeof u4 || (null == u4 || false === u4 &&"-"!= l4[4] ? n3.removeAttribute(l4) : n3.setAttribute(l4,"popover"== l4 && 1 == u4 ？"" : u4));
     }
 }
 function F(n3) {
@@ -12736,9 +12337,7 @@ function O(n3, u4, t4, i4, r3, o3, e3, f4, c3, s4) {
     return null;
   128 & t4.__u && (c3 = !!(32 & t4.__u), o3 = [f4 = u4.__e = t4.__e]), (a3 = l2.__b) && a3(u4);
   n:
-    if ("function" == typeof j4)
-      try {
-        if (b3 = u4.props, S2 = "prototype" in j4 && j4.prototype.render, C4 = (a3 = j4.contextType) && i4[a3.__c], M3 = a3 ? C4 ? C4.props.value : a3.__ : i4, t4.__c ? m3 = (h3 = u4.__c = t4.__c).__ = h3.__E : (S2 ? u4.__c = h3 = new j4(b3, M3) : (u4.__c = h3 = new x(b3, M3), h3.constructor = j4, h3.render = D), C4 && C4.sub(h3), h3.props = b3, h3.state || (h3.state = {}), h3.context = M3, h3.__n = i4, p3 = h3.__d = true, h3.__h = [], h3._sb = []), S2 && null == h3.__s && (h3.__s = h3.state), S2 && null != j4.getDerivedStateFromProps && (h3.__s == h3.state && (h3.__s = d({}, h3.__s)), d(h3.__s, j4.getDerivedStateFromProps(b3, h3.__s))), v3 = h3.props, y3 = h3.state, h3.__v = u4, p3)
+    if ("function"== j4 类型)\n      尝试{\n        如果 (b3 = u4.props, S2 ="prototype" in j4 && j4.prototype.render, C4 = (a3 = j4.contextType) && i4[a3.__c], M3 = a3 ? C4 ? C4.props.value : a3.__ : i4, t4.__c ? m3 = (h3 = u4.__c = t4.__c).__ = h3.__E : (S2 ? u4.__c = h3 = new j4(b3, M3) : (u4.__c = h3 = new x(b3, M3), h3.constructor = j4, h3.render = D), C4 && C4.sub(h3), h3.props = b3, h3.state || (h3.state = {}), h3.context = M3, h3.__n = i4, p3 = h3.__d = true, h3.__h = [], h3._sb = []), S2 && null == h3.__s && (h3.__s = h3.state), S2 && null != j4.getDerivedStateFromProps && (h3.__s == h3.state && (h3.__s = d({}, h3.__s)), d(h3.__s, j4.getDerivedStateFromProps(b3, h3.__s))), v3 = h3.props, y3 = h3.state, h3.__v = u4, p3)
           S2 && null == j4.getDerivedStateFromProps && null != h3.componentWillMount && h3.componentWillMount(), S2 && null != h3.componentDidMount && h3.__h.push(h3.componentDidMount);
         else {
           if (S2 && null == j4.getDerivedStateFromProps && b3 !== v3 && null != h3.componentWillReceiveProps && h3.componentWillReceiveProps(b3, M3), !h3.__e && null != h3.shouldComponentUpdate && false === h3.shouldComponentUpdate(b3, h3.__s, M3) || u4.__v == t4.__v) {
@@ -12797,9 +12396,7 @@ function N(n3) {
 }
 function V(u4, t4, i4, r3, o3, e3, f4, c3, s4) {
   var a3, h3, v3, y3, d3, _3, m3, b3 = i4.props, k4 = t4.props, x4 = t4.type;
-  if ("svg" == x4 ? o3 = "http://www.w3.org/2000/svg" : "math" == x4 ? o3 = "http://www.w3.org/1998/Math/MathML" : o3 || (o3 = "http://www.w3.org/1999/xhtml"), null != e3) {
-    for (a3 = 0; a3 < e3.length; a3++)
-      if ((d3 = e3[a3]) && "setAttribute" in d3 == !!x4 && (x4 ? d3.localName == x4 : 3 == d3.nodeType)) {
+  if ("svg"== x4 ？ o3 ="http://www.w3.org/2000/svg" : "math"== x4 ？ o3 ="http://www.w3.org/1998/Math/MathML"：o3 || (o3 ="http://www.w3.org/1999/xhtml"), null != e3) {\n    for (a3 = 0; a3 < e3.length; a3++)\n      if ((d3 = e3[a3]) &&"setAttribute" in d3 == !!x4 && (x4 ? d3.localName == x4 : 3 == d3.nodeType)) {
         u4 = d3, e3[a3] = null;
         break;
       }
@@ -12816,30 +12413,10 @@ function V(u4, t4, i4, r3, o3, e3, f4, c3, s4) {
       for (b3 = {}, a3 = 0; a3 < u4.attributes.length; a3++)
         b3[(d3 = u4.attributes[a3]).name] = d3.value;
     for (a3 in b3)
-      if (d3 = b3[a3], "children" == a3)
-        ;
-      else if ("dangerouslySetInnerHTML" == a3)
-        v3 = d3;
-      else if (!(a3 in k4)) {
-        if ("value" == a3 && "defaultValue" in k4 || "checked" == a3 && "defaultChecked" in k4)
-          continue;
-        j(u4, a3, null, d3, o3);
-      }
-    for (a3 in k4)
-      d3 = k4[a3], "children" == a3 ? y3 = d3 : "dangerouslySetInnerHTML" == a3 ? h3 = d3 : "value" == a3 ? _3 = d3 : "checked" == a3 ? m3 = d3 : c3 && "function" != typeof d3 || b3[a3] === d3 || j(u4, a3, d3, b3[a3], o3);
+      if (d3 = b3[a3], "children"== a3)\n        ;\n      否则如果("dangerouslySetInnerHTML"== a3)\n        v3 = d3;\n      否则 if (!(k4 中的 a3)) {\n        如果（"value"== a3 &&"defaultValue"在 k4 ||"checked"== a3 &&"defaultChecked"in k4)\n          继续；\n        j(u4, a3, 空, d3, o3);\n      }\n    对于（k4 中的 a3）\n      d3 = k4[a3],"children"== a3 ？ y3 = d3 :"dangerouslySetInnerHTML"== a3 ？ h3 = d3 :"value"== a3 ？ _3 = d3 :"checked"== a3 ？ m3 = d3 : c3 &&"function" != typeof d3 || b3[a3] === d3 || j(u4, a3, d3, b3[a3], o3);
     if (h3)
       c3 || v3 && (h3.__html == v3.__html || h3.__html == u4.innerHTML) || (u4.innerHTML = h3.__html), t4.__k = [];
-    else if (v3 && (u4.innerHTML = ""), I("template" == t4.type ? u4.content : u4, w(y3) ? y3 : [y3], t4, i4, r3, "foreignObject" == x4 ? "http://www.w3.org/1999/xhtml" : o3, e3, f4, e3 ? e3[0] : i4.__k && S(i4, 0), c3, s4), null != e3)
-      for (a3 = e3.length; a3--; )
-        g(e3[a3]);
-    c3 || (a3 = "value", "progress" == x4 && null == _3 ? u4.removeAttribute("value") : null != _3 && (_3 !== u4[a3] || "progress" == x4 && !_3 || "option" == x4 && _3 != b3[a3]) && j(u4, a3, _3, b3[a3], o3), a3 = "checked", null != m3 && m3 != u4[a3] && j(u4, a3, m3, b3[a3], o3));
-  }
-  return u4;
-}
-function q(n3, u4, t4) {
-  try {
-    if ("function" == typeof n3) {
-      var i4 = "function" == typeof n3.__u;
+    else if (v3 && (u4.innerHTML = ""), I("template"== t4.type ？ u4.内容：u4，w(y3)？ y3 : [y3], t4, i4, r3,"foreignObject"== x4 ?"http://www.w3.org/1999/xhtml"：o3、e3、f4、e3 ？ e3[0] : i4.__k && S(i4, 0), c3, s4), null != e3)\n      for (a3 = e3.length; a3--; )\n        g(e3[a3]);\n    c3 || (a3 ="value", "progress"== x4 && null == _3 ? u4.removeAttribute("value") : null != _3 && (_3 !== u4[a3] ||"progress"== x4 && !_3 ||"option"== x4 && _3 != b3[a3]) && j(u4, a3, _3, b3[a3], o3), a3 ="checked", null != m3 && m3 != u4[a3] && j(u4, a3, m3, b3[a3], o3));\n  }\n  返回u4；\n}\n函数 q(n3, u4, t4) {\n  尝试{\n    如果（"function"== n3) {\n      var i4 ="function" == typeof n3.__u;
       i4 && n3.__u(), i4 && null == u4 || (n3.__u = n3(u4));
     } else
       n3.current = u4;
@@ -12876,7 +12453,7 @@ function G(n3, l4) {
 function J(l4, u4, t4) {
   var i4, r3, o3, e3, f4 = d({}, l4.props);
   for (o3 in l4.type && l4.type.defaultProps && (e3 = l4.type.defaultProps), u4)
-    "key" == o3 ? i4 = u4[o3] : "ref" == o3 ? r3 = u4[o3] : f4[o3] = void 0 === u4[o3] && null != e3 ? e3[o3] : u4[o3];
+    "key"== o3 ？ i4 = u4[o3] :"ref" == o3 ? r3 = u4[o3] : f4[o3] = void 0 === u4[o3] && null != e3 ? e3[o3] : u4[o3];
   return arguments.length > 2 && (f4.children = arguments.length > 3 ? n2.call(arguments, 2) : t4), m(l4.type, f4, i4 || l4.key, r3 || l4.ref, null);
 }
 function K(n3) {
@@ -13038,7 +12615,7 @@ function g2() {
     for (var u4 = r2.__v; null !== u4 && !u4.__m && null !== u4.__; )
       u4 = u4.__;
     var i4 = u4.__m || (u4.__m = [0, 0]);
-    n3.__ = "P" + i4[0] + "-" + i4[1]++;
+    n3.__ = "P"+ i4[0] +"-" + i4[1]++;
   }
   return n3.__;
 }
@@ -13122,10 +12699,7 @@ function g3(n3, t4) {
 }
 function E2(n3, t4) {
   for (var e3 in n3)
-    if ("__source" !== e3 && !(e3 in t4))
-      return true;
-  for (var r3 in t4)
-    if ("__source" !== r3 && n3[r3] !== t4[r3])
+    if ("__source"!== e3 && !(t4 中的 e3))\n      返回真；\n  for (t4 中的 var r3)\n    if ("__source" !== r3 && n3[r3] !== t4[r3])
       return true;
   return false;
 }
@@ -13169,7 +12743,7 @@ function M2(n3, e3) {
   function u4(e4) {
     return this.shouldComponentUpdate = r3, _(n3, e4);
   }
-  return u4.displayName = "Memo(" + (n3.displayName || n3.name) + ")", u4.prototype.isReactComponent = true, u4.__f = true, u4;
+  return u4.displayName = "Memo("+ (n3.displayName || n3.name) +")", u4.prototype.isReactComponent = true, u4.__f = true, u4;
 }
 (N2.prototype = new x()).isPureReactComponent = true, N2.prototype.shouldComponentUpdate = function(n3, t4) {
   return E2(this.props, n3) || E2(this.state, t4);
@@ -13178,13 +12752,13 @@ var T3 = l2.__b;
 l2.__b = function(n3) {
   n3.type && n3.type.__f && n3.ref && (n3.props.ref = n3.ref, n3.ref = null), T3 && T3(n3);
 };
-var A3 = "undefined" != typeof Symbol && Symbol.for && Symbol.for("react.forward_ref") || 3911;
+var A3 = "undefined"!= typeof Symbol && Symbol.for && Symbol.for("react.forward_ref") || 3911;
 function D3(n3) {
   function t4(t5) {
     var e3 = g3({}, t5);
     return delete e3.ref, n3(e3, t5.ref || null);
   }
-  return t4.$$typeof = A3, t4.render = t4, t4.prototype.isReactComponent = t4.__f = true, t4.displayName = "ForwardRef(" + (n3.displayName || n3.name) + ")", t4;
+  return t4.$$typeof = A3, t4.render = t4, t4.prototype.isReactComponent = t4.__f = true, t4.displayName = "ForwardRef("+ (n3.displayName || n3.name) +")", t4;
 }
 var L2 = function(n3, t4) {
   return null == n3 ? null : H(H(n3).map(t4));
@@ -13336,21 +12910,13 @@ function $2(n3, e3) {
     H2(n3, e3, t4);
   });
 };
-var q3 = "undefined" != typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103;
+var q3 = "undefined"!= typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103;
 var G2 = /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/;
 var J2 = /^on(Ani|Tra|Tou|BeforeInp|Compo)/;
 var K2 = /[A-Z0-9]/g;
 var Q = "undefined" != typeof document;
 var X = function(n3) {
-  return ("undefined" != typeof Symbol && "symbol" == typeof Symbol() ? /fil|che|rad/ : /fil|che|ra/).test(n3);
-};
-function nn(n3, t4, e3) {
-  return null == t4.__k && (t4.textContent = ""), E(n3, t4), "function" == typeof e3 && e3(), n3 ? n3.__c : null;
-}
-function tn(n3, t4, e3) {
-  return G(n3, t4), "function" == typeof e3 && e3(), n3 ? n3.__c : null;
-}
-x.prototype.isReactComponent = {}, ["componentWillMount", "componentWillReceiveProps", "componentWillUpdate"].forEach(function(t4) {
+  return ("undefined"!= typeof 符号 &&"symbol"== typeof Symbol() ? /fil|che|rad/ : /fil|che|ra/).test(n3);\n};\n函数 nn(n3, t4, e3) {\n  返回 null == t4.__k && (t4.textContent =""), E(n3, t4),"function"== typeof e3 && e3(), n3 ? n3.__c：空；\n}\n函数 tn(n3, t4, e3) {\n  返回 G(n3, t4),"function"== typeof e3 && e3(), n3 ? n3.__c：空；\n}\nx.prototype.isReactComponent = {}, ["componentWillMount", "componentWillReceiveProps", "componentWillUpdate"].forEach(function(t4) {
   Object.defineProperty(x.prototype, t4, { configurable: true, get: function() {
     return this["UNSAFE_" + t4];
   }, set: function(n3) {
@@ -13376,15 +12942,7 @@ var cn = { enumerable: false, configurable: true, get: function() {
 var fn = l2.vnode;
 l2.vnode = function(n3) {
   "string" == typeof n3.type && function(n4) {
-    var t4 = n4.props, e3 = n4.type, u4 = {}, o3 = -1 === e3.indexOf("-");
-    for (var i4 in t4) {
-      var l4 = t4[i4];
-      if (!("value" === i4 && "defaultValue" in t4 && null == l4 || Q && "children" === i4 && "noscript" === e3 || "class" === i4 || "className" === i4)) {
-        var c3 = i4.toLowerCase();
-        "defaultValue" === i4 && "value" in t4 && null == t4.value ? i4 = "value" : "download" === i4 && true === l4 ? l4 = "" : "translate" === c3 && "no" === l4 ? l4 = false : "o" === c3[0] && "n" === c3[1] ? "ondoubleclick" === c3 ? i4 = "ondblclick" : "onchange" !== c3 || "input" !== e3 && "textarea" !== e3 || X(t4.type) ? "onfocus" === c3 ? i4 = "onfocusin" : "onblur" === c3 ? i4 = "onfocusout" : J2.test(i4) && (i4 = c3) : c3 = i4 = "oninput" : o3 && G2.test(i4) ? i4 = i4.replace(K2, "-$&").toLowerCase() : null === l4 && (l4 = void 0), "oninput" === c3 && u4[i4 = c3] && (i4 = "oninputCapture"), u4[i4] = l4;
-      }
-    }
-    "select" == e3 && u4.multiple && Array.isArray(u4.value) && (u4.value = H(t4.children).forEach(function(n5) {
+    var t4 = n4.props, e3 = n4.type, u4 = {}, o3 = -1 === e3.indexOf("-");\n    for (t4 中的 var i4) {\n      var l4 = t4[i4];\n      if (!("value"=== i4 &&"defaultValue"&& null == l4 || Q &&"children"=== i4 &&"noscript"=== e3 ||"class"=== i4 ||"className"=== i4)) {\n        var c3 = i4.toLowerCase();"defaultValue"=== i4 &&"value"&& null == t4.value ？ i4="value" : "download"=== i4 && true === l4 ？ l4 ="" : "translate"=== c3 &&"no"=== l4 ？ l4 = false :"o"=== c3[0] &&"n"=== c3[1] ？"ondoubleclick"=== c3 ? i4 ="ondblclick" : "onchange"!== c3 ||"input"!== e3 &&"textarea"!== e3 || X(t4.类型) ?"onfocus"=== c3 ? i4 ="onfocusin" : "onblur"=== c3 ? i4 ="onfocusout": J2.test(i4) && (i4 = c3) : c3 = i4 ="oninput": o3 && G2.test(i4) ? i4 = i4.replace(K2,"-$&").toLowerCase() : null === l4 && (l4 = void 0),"oninput"=== c3 && u4[i4 = c3] && (i4 ="oninputCapture"), u4[i4] = l4;\n      }"select" == e3 && u4.multiple && Array.isArray(u4.value) && (u4.value = H(t4.children).forEach(function(n5) {
       n5.props.selected = -1 != u4.value.indexOf(n5.props.value);
     })), "select" == e3 && null != u4.defaultValue && (u4.value = H(t4.children).forEach(function(n5) {
       n5.props.selected = u4.multiple ? -1 != u4.defaultValue.indexOf(n5.props.value) : u4.defaultValue == n5.props.value;
@@ -13399,7 +12957,7 @@ var sn = l2.diffed;
 l2.diffed = function(n3) {
   sn && sn(n3);
   var t4 = n3.props, e3 = n3.__e;
-  null != e3 && "textarea" === n3.type && "value" in t4 && t4.value !== e3.value && (e3.value = null == t4.value ? "" : t4.value), ln = null;
+  null != e3 && "textarea"=== n3.type &&"value"in t4 && t4.value !== e3.value && (e3.value = null == t4.value ?"" : t4.value), ln = null;
 };
 var hn = { ReactCurrentDispatcher: { current: { readContext: function(n3) {
   return ln.__n[n3.__c].props.value;
@@ -13414,7 +12972,7 @@ function pn(n3) {
   return mn(n3) && n3.type === k;
 }
 function yn(n3) {
-  return !!n3 && !!n3.displayName && ("string" == typeof n3.displayName || n3.displayName instanceof String) && n3.displayName.startsWith("Memo(");
+  return !!n3 && !!n3.displayName && ("string"== n3.displayName || 的类型n3.displayName instanceof String) && n3.displayName.startsWith("Memo(");
 }
 function _n(n3) {
   return mn(n3) ? J.apply(null, arguments) : n3;
@@ -13441,9 +12999,7 @@ var i3 = Array.isArray;
 function u3(e3, t4, n3, o3, i4, u4) {
   t4 || (t4 = {});
   var a3, c3, p3 = t4;
-  if ("ref" in p3)
-    for (c3 in p3 = {}, t4)
-      "ref" == c3 ? a3 = t4[c3] : p3[c3] = t4[c3];
+  if ("ref"在第3页）\n    for (c3 in p3 = {}, t4)"ref" == c3 ? a3 = t4[c3] : p3[c3] = t4[c3];
   var l4 = { type: e3, props: p3, key: n3, ref: a3, __k: null, __: null, __b: 0, __e: null, __c: null, constructor: void 0, __v: --f3, __i: -1, __u: 0, __source: i4, __self: u4 };
   if ("function" == typeof e3 && (a3 = e3.defaultProps))
     for (c3 in a3)
@@ -13494,7 +13050,7 @@ function Embed({
   if (!linkedFile) {
     return /* @__PURE__ */ u3(ErrorMessage, { message: `Could not find a page at linked location: ${link.path}` });
   } else {
-    return /* @__PURE__ */ u3("div", { className: "dc-embed", ref: container });
+    return /* @__PURE__ */ u3("div", { 类名:"dc-embed", ref: container });
   }
 }
 function LineSpanEmbed({
@@ -13517,11 +13073,7 @@ function LineSpanEmbed({
       return /* @__PURE__ */ u3(ErrorMessage, { message: `Reading ${path} (${start} - ${end})` });
     case "file-not-found":
       return /* @__PURE__ */ u3(ErrorMessage, { message: `Could not find a file at path: ${content.path}` });
-    case "error":
-      return /* @__PURE__ */ u3(ErrorMessage, { message: content.message });
-    case "loaded":
-      return /* @__PURE__ */ u3("div", { className: "datacore-span-embed", children: [
-        showExplain && /* @__PURE__ */ u3("a", { className: "datacore-embed-source", onClick: onExplainClick, children: explainer }),
+    case "error"：\n      return /* @__PURE__ */ u3(ErrorMessage, { message: content.message });\n    案例"loaded":\n      返回 /* @__PURE__ */ u3("div", { 类名:"datacore-span-embed", 子项: [\n        showExplain && /* @__PURE__ */ u3("a", { 类名:"datacore-embed-source", onClick: onExplainClick, children: explainer }),
         /* @__PURE__ */ u3(Markdown, { content: content.content, inline: false })
       ] });
   }
@@ -13531,12 +13083,7 @@ function useLineSpan(path, start, end) {
   const datacore = x2(DATACORE_CONTEXT);
   const [state2, update] = h2(
     (state3, event) => {
-      if (state3.type == "loaded" && event.type !== "loaded")
-        return state3;
-      else
-        return event;
-    },
-    { type: "loading" }
+      if (state3.type == "loaded"&& event.type !=="loaded")\n        返回状态3；\n      否则\n        返回事件；\n    },\n    { 类型："loading" }
   );
   y2(() => {
     const file = app.vault.getFileByPath(path);
@@ -13547,9 +13094,7 @@ function useLineSpan(path, start, end) {
     (async () => {
       try {
         const content = await datacore.read(file);
-        update({ type: "loaded", content: lineRange(content, start, end) });
-      } catch (error) {
-        update({ type: "error", message: error instanceof Error ? error.message : String(error) });
+        update({ type: "loaded"，内容：lineRange(content, start, end) });\n      } 捕获（错误）{\n        更新（{ 类型："error", message: error instanceof Error ? error.message : String(error) });
       }
     })();
   }, [path, start, end]);
@@ -13587,11 +13132,7 @@ function RawLink({ link, sourcePath: maybeSourcePath }) {
   return /* @__PURE__ */ u3(
     "a",
     {
-      "aria-label": parsed.displayOrDefault(),
-      onClick,
-      className: "internal-link",
-      target: "_blank",
-      rel: "noopener",
+      "aria-label": parsed.displayOrDefault(),\n      单击时，\n      类名："internal-link",\n      目标："_blank",\n      相关："noopener",
       "data-tooltip-position": "top",
       "data-href": parsed.obsidianLink(),
       href: parsed.obsidianLink(),
@@ -13629,29 +13170,14 @@ function RawMarkdown({
         while (paragraph) {
           let children = paragraph.childNodes;
           paragraph.replaceWith(...Array.from(children));
-          paragraph = container.current.querySelector("p");
-        }
-      }
-      let embed = container.current.querySelector("span.internal-embed:not(.is-loaded)");
+          paragraph = container.current.querySelector("p"）；\n        }\n      }\n      让 embed = container.current.querySelector("span.internal-embed:not(.is-loaded)");
       while (embed) {
         embed.empty();
         E(
           /* @__PURE__ */ u3(APP_CONTEXT.Provider, { value: app, children: /* @__PURE__ */ u3(
             Embed,
             {
-              link: Link.parseInner((_a = embed.getAttribute("src")) != null ? _a : ""),
-              sourcePath,
-              inline: true
-            }
-          ) }),
-          embed
-        );
-        embed.addClass("is-loaded");
-        embed = container.current.querySelector("span.internal-embed:not(.is-loaded)");
-      }
-    })();
-  }, [content, sourcePath, inline, container.current]);
-  return /* @__PURE__ */ u3("span", { ref: container, style, className: cls, onClick });
+              link: Link.parseInner((_a = embed.getAttribute("src")) != null ? _a :""),\n              源路径，\n              内联：真\n            }\n          ) }),\n          嵌入\n        ）；\n        embed.addClass("is-loaded");\n        嵌入 = 容器.current.querySelector("span.internal-embed:not(.is-loaded)");\n      }\n    })();\n  }, [内容、sourcePath、内联、container.current]);\n  返回 /* @__PURE__ */ u3("span", { ref: container, style, className: cls, onClick });
 }
 var Markdown = M2(RawMarkdown);
 function RawLit({
@@ -13672,9 +13198,7 @@ function RawLit({
   } else if (Literals.isString(value)) {
     return /* @__PURE__ */ u3(Markdown, { inline, content: value, sourcePath });
   } else if (Literals.isNumber(value)) {
-    return /* @__PURE__ */ u3(k, { children: "" + value });
-  } else if (Literals.isBoolean(value)) {
-    return /* @__PURE__ */ u3(k, { children: "" + value });
+    return /* @__PURE__ */ u3(k, { children: ""+ 值 });\n  } else if (Literals.isBoolean(value)) {\n    返回 /* @__PURE__ */ u3(k, { 孩子:"" + value });
   } else if (Literals.isDate(value)) {
     return /* @__PURE__ */ u3(k, { children: renderMinimalDate(value, settings.defaultDateFormat, settings.defaultDateTimeFormat, currentLocale()) });
   } else if (Literals.isDuration(value)) {
@@ -13689,69 +13213,34 @@ function RawLit({
       if (dimensions && dimensions.length == 2)
         return /* @__PURE__ */ u3("img", { alt: value.path, src: resourcePath, width: dimensions[0], height: dimensions[1] });
       else if (dimensions && dimensions.length == 1)
-        return /* @__PURE__ */ u3("img", { alt: value.path, src: resourcePath, width: dimensions[0] });
-      else
-        return /* @__PURE__ */ u3("img", { alt: value.path, src: resourcePath });
+        return /* @__PURE__ */ u3("img", { alt: value.path, src: 资源路径, width: 尺寸[0] });\n      否则\n        返回 /* @__PURE__ */ u3("img", { alt: value.path, src: resourcePath });
     } else if (value.embed) {
       return /* @__PURE__ */ u3(Embed, { link: value, sourcePath, inline });
     }
     return /* @__PURE__ */ u3(ObsidianLink, { link: value, sourcePath });
   } else if (Literals.isFunction(value)) {
-    return /* @__PURE__ */ u3(k, { children: "<function>" });
-  } else if (Literals.isArray(value)) {
-    if (!inline) {
-      return /* @__PURE__ */ u3("ul", { className: "dataview dataview-ul dataview-result-list-ul", children: value.map((subvalue) => /* @__PURE__ */ u3("li", { className: "dataview-result-list-li", children: /* @__PURE__ */ u3(Lit, { value: subvalue, sourcePath, inline, depth: depth + 1 }) })) });
+    return /* @__PURE__ */ u3(k, { children: "<function>"});\n  } else if (Literals.isArray(value)) {\n    如果（！内联）{\n      返回 /* @__PURE__ */ u3("ul", { 类名:"dataview dataview-ul dataview-result-list-ul", children: value.map((subvalue) => /* @__PURE__ */ u3("li", { 类名:"dataview-result-list-li", children: /* @__PURE__ */ u3(Lit, { value: subvalue, sourcePath, inline, depth: depth + 1 }) })) });
     } else {
       if (value.length == 0)
-        return /* @__PURE__ */ u3(k, { children: "<Empty List>" });
-      return /* @__PURE__ */ u3("span", { className: "dataview dataview-result-list-span", children: value.map((subvalue, index) => /* @__PURE__ */ u3(k, { children: [
+        return /* @__PURE__ */ u3(k, { children: "<Empty List>"});\n      返回 /* @__PURE__ */ u3("span", { 类名:"dataview dataview-result-list-span", children: value.map((subvalue, index) => /* @__PURE__ */ u3(k, { children: [
         index == 0 ? "" : ", ",
         /* @__PURE__ */ u3(Lit, { value: subvalue, sourcePath, inline, depth: depth + 1 })
       ] })) });
     }
   } else if (Literals.isObject(value)) {
-    if (((_a = value == null ? void 0 : value.constructor) == null ? void 0 : _a.name) && ((_b = value == null ? void 0 : value.constructor) == null ? void 0 : _b.name) != "Object") {
-      return /* @__PURE__ */ u3(k, { children: [
-        "<",
-        value.constructor.name,
-        ">"
-      ] });
-    }
-    if (!inline) {
-      return /* @__PURE__ */ u3("ul", { className: "dataview dataview-ul dataview-result-object-ul", children: Object.entries(value).map(([key, value2]) => /* @__PURE__ */ u3("li", { className: "dataview dataview-li dataview-result-object-li", children: [
-        key,
-        ": ",
+    if (((_a = value == null ? void 0 : value.constructor) == null ? void 0 : _a.name) && ((_b = value == null ? void 0 : value.constructor) == null ? void 0 : _b.name) != "Object") {\n      返回 /* @__PURE__ */ u3(k, { 孩子: ["<",\n        值.构造函数.名称,">"] });\n    }\n    如果（！内联）{\n      返回 /* @__PURE__ */ u3("ul", { 类名:"dataview dataview-ul dataview-result-object-ul", children: Object.entries(value).map(([key, value2]) => /* @__PURE__ */ u3("li", { 类名:"dataview dataview-li dataview-result-object-li"，子项：[\n        钥匙，": ",
         /* @__PURE__ */ u3(Lit, { value: value2, sourcePath, inline, depth: depth + 1 })
       ] })) });
     } else {
       if (Object.keys(value).length == 0)
-        return /* @__PURE__ */ u3(k, { children: "<Empty Object>" });
-      return /* @__PURE__ */ u3("span", { className: "dataview dataview-result-object-span", children: Object.entries(value).map(([key, value2], index) => /* @__PURE__ */ u3(k, { children: [
-        index == 0 ? "" : ", ",
-        key,
-        ": ",
+        return /* @__PURE__ */ u3(k, { children: "<Empty Object>"});\n      返回 /* @__PURE__ */ u3("span", { 类名:"dataview dataview-result-object-span", children: Object.entries(value).map(([key, value2], index) => /* @__PURE__ */ u3(k, { children: [
+        index == 0 ? "" : ", ",\n        钥匙，": ",
         /* @__PURE__ */ u3(Lit, { value: value2, sourcePath, inline, depth: depth + 1 })
       ] })) });
     }
   }
   return /* @__PURE__ */ u3(k, { children: [
-    "<Unrecognized: ",
-    JSON.stringify(value),
-    ">"
-  ] });
-}
-var Lit = M2(RawLit);
-function ErrorMessage({
-  title,
-  message,
-  error,
-  reset
-}) {
-  return /* @__PURE__ */ u3("div", { className: "datacore-error-box", children: [
-    title && /* @__PURE__ */ u3("h4", { className: "datacore-error-title", children: title }),
-    message && /* @__PURE__ */ u3("p", { className: "datacore-error-message", children: message }),
-    error && /* @__PURE__ */ u3("pre", { className: "datacore-error-pre", children: error }),
-    reset && /* @__PURE__ */ u3("button", { className: "datacore-error-retry", onClick: reset, children: "Rerun" })
+    "<Unrecognized: ",\n    JSON.stringify(值),">"] });\n}\nvar Lit = M2(RawLit);\n函数错误消息({\n  标题，\n  留言，\n  错误，\n  重置\n}) {\n  返回 /* @__PURE__ */ u3("div", { 类名:"datacore-error-box", 子项: [\n    标题 && /* @__PURE__ */ u3("h4", { 类名:"datacore-error-title", 子项: 标题 }),\n    消息 && /* @__PURE__ */ u3("p", { 类名:"datacore-error-message", 子项: 消息 }),\n    错误 && /* @__PURE__ */ u3("pre", { 类名:"datacore-error-pre"，子级：错误 }),\n    重置 && /* @__PURE__ */ u3("button", { 类名:"datacore-error-retry"，onClick：重置，子项："Rerun" })
   ] });
 }
 function SimpleErrorBoundary({
@@ -13774,563 +13263,20 @@ var import_obsidian3 = require("obsidian");
 var ContextualKeyword;
 (function(ContextualKeyword2) {
   const NONE = 0;
-  ContextualKeyword2[ContextualKeyword2["NONE"] = NONE] = "NONE";
-  const _abstract = NONE + 1;
-  ContextualKeyword2[ContextualKeyword2["_abstract"] = _abstract] = "_abstract";
-  const _accessor = _abstract + 1;
-  ContextualKeyword2[ContextualKeyword2["_accessor"] = _accessor] = "_accessor";
-  const _as = _accessor + 1;
-  ContextualKeyword2[ContextualKeyword2["_as"] = _as] = "_as";
-  const _assert = _as + 1;
-  ContextualKeyword2[ContextualKeyword2["_assert"] = _assert] = "_assert";
+  ContextualKeyword2[ContextualKeyword2["NONE"] = 无] ="NONE";\n  const _abstract = 无 + 1;\n  上下文关键字2[上下文关键字2["_abstract"] = _abstract] ="_abstract";\n  const _accessor = _abstract + 1;\n  上下文关键字2[上下文关键字2["_accessor"] = _accessor] ="_accessor";\n  const _as = _accessor + 1；\n  上下文关键字2[上下文关键字2["_as"] = _as] ="_as"；\n  const _assert = _as + 1;\n  上下文关键字2[上下文关键字2["_assert"] = _assert] ="_assert";
   const _asserts = _assert + 1;
-  ContextualKeyword2[ContextualKeyword2["_asserts"] = _asserts] = "_asserts";
-  const _async = _asserts + 1;
-  ContextualKeyword2[ContextualKeyword2["_async"] = _async] = "_async";
-  const _await = _async + 1;
-  ContextualKeyword2[ContextualKeyword2["_await"] = _await] = "_await";
-  const _checks = _await + 1;
-  ContextualKeyword2[ContextualKeyword2["_checks"] = _checks] = "_checks";
-  const _constructor = _checks + 1;
-  ContextualKeyword2[ContextualKeyword2["_constructor"] = _constructor] = "_constructor";
-  const _declare = _constructor + 1;
-  ContextualKeyword2[ContextualKeyword2["_declare"] = _declare] = "_declare";
-  const _enum = _declare + 1;
-  ContextualKeyword2[ContextualKeyword2["_enum"] = _enum] = "_enum";
-  const _exports = _enum + 1;
-  ContextualKeyword2[ContextualKeyword2["_exports"] = _exports] = "_exports";
-  const _from = _exports + 1;
-  ContextualKeyword2[ContextualKeyword2["_from"] = _from] = "_from";
-  const _get = _from + 1;
-  ContextualKeyword2[ContextualKeyword2["_get"] = _get] = "_get";
-  const _global = _get + 1;
-  ContextualKeyword2[ContextualKeyword2["_global"] = _global] = "_global";
-  const _implements = _global + 1;
-  ContextualKeyword2[ContextualKeyword2["_implements"] = _implements] = "_implements";
-  const _infer = _implements + 1;
-  ContextualKeyword2[ContextualKeyword2["_infer"] = _infer] = "_infer";
-  const _interface = _infer + 1;
-  ContextualKeyword2[ContextualKeyword2["_interface"] = _interface] = "_interface";
-  const _is = _interface + 1;
-  ContextualKeyword2[ContextualKeyword2["_is"] = _is] = "_is";
-  const _keyof = _is + 1;
-  ContextualKeyword2[ContextualKeyword2["_keyof"] = _keyof] = "_keyof";
-  const _mixins = _keyof + 1;
-  ContextualKeyword2[ContextualKeyword2["_mixins"] = _mixins] = "_mixins";
-  const _module = _mixins + 1;
-  ContextualKeyword2[ContextualKeyword2["_module"] = _module] = "_module";
-  const _namespace = _module + 1;
-  ContextualKeyword2[ContextualKeyword2["_namespace"] = _namespace] = "_namespace";
-  const _of = _namespace + 1;
-  ContextualKeyword2[ContextualKeyword2["_of"] = _of] = "_of";
-  const _opaque = _of + 1;
-  ContextualKeyword2[ContextualKeyword2["_opaque"] = _opaque] = "_opaque";
-  const _out = _opaque + 1;
-  ContextualKeyword2[ContextualKeyword2["_out"] = _out] = "_out";
-  const _override = _out + 1;
-  ContextualKeyword2[ContextualKeyword2["_override"] = _override] = "_override";
-  const _private = _override + 1;
-  ContextualKeyword2[ContextualKeyword2["_private"] = _private] = "_private";
-  const _protected = _private + 1;
-  ContextualKeyword2[ContextualKeyword2["_protected"] = _protected] = "_protected";
-  const _proto = _protected + 1;
-  ContextualKeyword2[ContextualKeyword2["_proto"] = _proto] = "_proto";
-  const _public = _proto + 1;
-  ContextualKeyword2[ContextualKeyword2["_public"] = _public] = "_public";
-  const _readonly = _public + 1;
-  ContextualKeyword2[ContextualKeyword2["_readonly"] = _readonly] = "_readonly";
-  const _require = _readonly + 1;
-  ContextualKeyword2[ContextualKeyword2["_require"] = _require] = "_require";
-  const _satisfies = _require + 1;
-  ContextualKeyword2[ContextualKeyword2["_satisfies"] = _satisfies] = "_satisfies";
-  const _set = _satisfies + 1;
-  ContextualKeyword2[ContextualKeyword2["_set"] = _set] = "_set";
-  const _static = _set + 1;
-  ContextualKeyword2[ContextualKeyword2["_static"] = _static] = "_static";
-  const _symbol = _static + 1;
-  ContextualKeyword2[ContextualKeyword2["_symbol"] = _symbol] = "_symbol";
-  const _type = _symbol + 1;
-  ContextualKeyword2[ContextualKeyword2["_type"] = _type] = "_type";
-  const _unique = _type + 1;
-  ContextualKeyword2[ContextualKeyword2["_unique"] = _unique] = "_unique";
+  ContextualKeyword2[ContextualKeyword2["_asserts"] = _asserts] ="_asserts";\n  const _async = _asserts + 1;\n  上下文关键字2[上下文关键字2["_async"] = _async] ="_async";\n  const _await = _async + 1;\n  上下文关键字2[上下文关键字2["_await"] = _await] ="_await";\n  const _checks = _await + 1；\n  上下文关键字2[上下文关键字2["_checks"] = _checks] ="_checks";\n  const _constructor = _checks + 1;\n  上下文关键字2[上下文关键字2["_constructor"] = _constructor] ="_constructor";\n  const _declare = _constructor + 1;\n  上下文关键字2[上下文关键字2["_declare"] = _declare] ="_declare";\n  const _enum = _declare + 1;\n  上下文关键字2[上下文关键字2["_enum"] = _enum] ="_enum";\n  const _exports = _enum + 1;\n  上下文关键字2[上下文关键字2["_exports"] = _exports] ="_exports";\n  const _from = _exports + 1;\n  上下文关键字2[上下文关键字2["_from"] = _from] ="_from"；\n  const _get = _from + 1;\n  上下文关键字2[上下文关键字2["_get"] = _get] ="_get";\n  常量 _global = _get + 1;\n  上下文关键字2[上下文关键字2["_global"] = _global] ="_global";\n  const _implements = _global + 1；\n  上下文关键字2[上下文关键字2["_implements"] = _implements] ="_implements";\n  const _infer = _implements + 1；\n  上下文关键字2[上下文关键字2["_infer"] = _infer] ="_infer";\n  const _interface = _infer + 1；\n  上下文关键字2[上下文关键字2["_interface"] = _interface] ="_interface";\n  const _is = _interface + 1;\n  上下文关键字2[上下文关键字2["_is"] = _is] ="_is";\n  const _keyof = _is + 1;\n  上下文关键字2[上下文关键字2["_keyof"] = _keyof] ="_keyof";\n  const _mixins = _keyof + 1;\n  上下文关键字2[上下文关键字2["_mixins"] = _mixins] ="_mixins";\n  const _module = _mixins + 1;\n  上下文关键字2[上下文关键字2["_module"] = _module] ="_module";\n  const _命名空间 = _模块 + 1;\n  上下文关键字2[上下文关键字2["_namespace"] = _namespace] ="_namespace";\n  const _of = _命名空间 + 1;\n  上下文关键字2[上下文关键字2["_of"] = _of] ="_of";\n  const _opaque = _of + 1;\n  上下文关键字2[上下文关键字2["_opaque"] = _opaque] ="_opaque";\n  const _out = _opaque + 1;\n  上下文关键字2[上下文关键字2["_out"] = _out] ="_out";\n  常量 _override = _out + 1;\n  上下文关键字2[上下文关键字2["_override"] = _override] ="_override";\n  const _private = _override + 1；\n  上下文关键字2[上下文关键字2["_private"] = _private] ="_private";\n  const _protected = _private + 1;\n  上下文关键字2[上下文关键字2["_protected"] = _protected] ="_protected";\n  const _proto = _protected + 1;\n  上下文关键字2[上下文关键字2["_proto"] = _proto] ="_proto";\n  const _public = _proto + 1;\n  上下文关键字2[上下文关键字2["_public"] = _public] ="_public";\n  常量 _readonly = _public + 1;\n  ContextualKeyword2[ContextualKeyword2["_readonly"] = _readonly] ="_readonly";\n  const _require = _readonly + 1;\n  上下文关键字2[上下文关键字2["_require"] = _require] ="_require";\n  const _satisfies = _require + 1;\n  上下文关键字2[上下文关键字2["_satisfies"] = _满足] ="_satisfies";\n  const _set = _满足 + 1;\n  上下文关键字2[上下文关键字2["_set"] = _set] ="_set";\n  常量 _static = _set + 1;\n  ContextualKeyword2[ContextualKeyword2["_static"] = _static] ="_static";\n  常量 _symbol = _static + 1;\n  ContextualKeyword2[ContextualKeyword2["_symbol"] = _symbol] ="_symbol";\n  const _type = _symbol + 1;\n  上下文关键字2[上下文关键字2["_type"] = _type] ="_type";\n  const _unique = _type + 1;\n  上下文关键字2[上下文关键字2["_unique"] = _unique] ="_unique";
   const _using = _unique + 1;
-  ContextualKeyword2[ContextualKeyword2["_using"] = _using] = "_using";
+  ContextualKeyword2[ContextualKeyword2["_using"] = _using] ="_using";
 })(ContextualKeyword || (ContextualKeyword = {}));
 
 // node_modules/sucrase/dist/esm/parser/tokenizer/types.js
 var TokenType;
 (function(TokenType2) {
   const PRECEDENCE_MASK = 15;
-  TokenType2[TokenType2["PRECEDENCE_MASK"] = PRECEDENCE_MASK] = "PRECEDENCE_MASK";
-  const IS_KEYWORD = 1 << 4;
-  TokenType2[TokenType2["IS_KEYWORD"] = IS_KEYWORD] = "IS_KEYWORD";
-  const IS_ASSIGN = 1 << 5;
-  TokenType2[TokenType2["IS_ASSIGN"] = IS_ASSIGN] = "IS_ASSIGN";
-  const IS_RIGHT_ASSOCIATIVE = 1 << 6;
-  TokenType2[TokenType2["IS_RIGHT_ASSOCIATIVE"] = IS_RIGHT_ASSOCIATIVE] = "IS_RIGHT_ASSOCIATIVE";
-  const IS_PREFIX = 1 << 7;
-  TokenType2[TokenType2["IS_PREFIX"] = IS_PREFIX] = "IS_PREFIX";
-  const IS_POSTFIX = 1 << 8;
-  TokenType2[TokenType2["IS_POSTFIX"] = IS_POSTFIX] = "IS_POSTFIX";
-  const IS_EXPRESSION_START = 1 << 9;
-  TokenType2[TokenType2["IS_EXPRESSION_START"] = IS_EXPRESSION_START] = "IS_EXPRESSION_START";
-  const num = 512;
-  TokenType2[TokenType2["num"] = num] = "num";
-  const bigint = 1536;
-  TokenType2[TokenType2["bigint"] = bigint] = "bigint";
-  const decimal = 2560;
-  TokenType2[TokenType2["decimal"] = decimal] = "decimal";
-  const regexp3 = 3584;
-  TokenType2[TokenType2["regexp"] = regexp3] = "regexp";
-  const string2 = 4608;
-  TokenType2[TokenType2["string"] = string2] = "string";
-  const name = 5632;
-  TokenType2[TokenType2["name"] = name] = "name";
-  const eof = 6144;
-  TokenType2[TokenType2["eof"] = eof] = "eof";
-  const bracketL = 7680;
-  TokenType2[TokenType2["bracketL"] = bracketL] = "bracketL";
-  const bracketR = 8192;
-  TokenType2[TokenType2["bracketR"] = bracketR] = "bracketR";
-  const braceL = 9728;
-  TokenType2[TokenType2["braceL"] = braceL] = "braceL";
-  const braceBarL = 10752;
-  TokenType2[TokenType2["braceBarL"] = braceBarL] = "braceBarL";
-  const braceR = 11264;
-  TokenType2[TokenType2["braceR"] = braceR] = "braceR";
-  const braceBarR = 12288;
-  TokenType2[TokenType2["braceBarR"] = braceBarR] = "braceBarR";
-  const parenL = 13824;
-  TokenType2[TokenType2["parenL"] = parenL] = "parenL";
-  const parenR = 14336;
-  TokenType2[TokenType2["parenR"] = parenR] = "parenR";
-  const comma2 = 15360;
-  TokenType2[TokenType2["comma"] = comma2] = "comma";
-  const semi = 16384;
-  TokenType2[TokenType2["semi"] = semi] = "semi";
-  const colon = 17408;
-  TokenType2[TokenType2["colon"] = colon] = "colon";
-  const doubleColon = 18432;
-  TokenType2[TokenType2["doubleColon"] = doubleColon] = "doubleColon";
-  const dot = 19456;
-  TokenType2[TokenType2["dot"] = dot] = "dot";
-  const question = 20480;
-  TokenType2[TokenType2["question"] = question] = "question";
-  const questionDot = 21504;
-  TokenType2[TokenType2["questionDot"] = questionDot] = "questionDot";
-  const arrow = 22528;
-  TokenType2[TokenType2["arrow"] = arrow] = "arrow";
-  const template = 23552;
-  TokenType2[TokenType2["template"] = template] = "template";
-  const ellipsis = 24576;
-  TokenType2[TokenType2["ellipsis"] = ellipsis] = "ellipsis";
-  const backQuote = 25600;
-  TokenType2[TokenType2["backQuote"] = backQuote] = "backQuote";
-  const dollarBraceL = 27136;
-  TokenType2[TokenType2["dollarBraceL"] = dollarBraceL] = "dollarBraceL";
-  const at = 27648;
-  TokenType2[TokenType2["at"] = at] = "at";
-  const hash = 29184;
-  TokenType2[TokenType2["hash"] = hash] = "hash";
-  const eq = 29728;
-  TokenType2[TokenType2["eq"] = eq] = "eq";
-  const assign = 30752;
-  TokenType2[TokenType2["assign"] = assign] = "assign";
-  const preIncDec = 32640;
-  TokenType2[TokenType2["preIncDec"] = preIncDec] = "preIncDec";
-  const postIncDec = 33664;
-  TokenType2[TokenType2["postIncDec"] = postIncDec] = "postIncDec";
-  const bang = 34432;
-  TokenType2[TokenType2["bang"] = bang] = "bang";
-  const tilde = 35456;
-  TokenType2[TokenType2["tilde"] = tilde] = "tilde";
-  const pipeline = 35841;
-  TokenType2[TokenType2["pipeline"] = pipeline] = "pipeline";
-  const nullishCoalescing = 36866;
-  TokenType2[TokenType2["nullishCoalescing"] = nullishCoalescing] = "nullishCoalescing";
-  const logicalOR = 37890;
-  TokenType2[TokenType2["logicalOR"] = logicalOR] = "logicalOR";
-  const logicalAND = 38915;
-  TokenType2[TokenType2["logicalAND"] = logicalAND] = "logicalAND";
-  const bitwiseOR = 39940;
-  TokenType2[TokenType2["bitwiseOR"] = bitwiseOR] = "bitwiseOR";
-  const bitwiseXOR = 40965;
-  TokenType2[TokenType2["bitwiseXOR"] = bitwiseXOR] = "bitwiseXOR";
-  const bitwiseAND = 41990;
-  TokenType2[TokenType2["bitwiseAND"] = bitwiseAND] = "bitwiseAND";
-  const equality = 43015;
-  TokenType2[TokenType2["equality"] = equality] = "equality";
-  const lessThan = 44040;
-  TokenType2[TokenType2["lessThan"] = lessThan] = "lessThan";
-  const greaterThan = 45064;
-  TokenType2[TokenType2["greaterThan"] = greaterThan] = "greaterThan";
-  const relationalOrEqual = 46088;
-  TokenType2[TokenType2["relationalOrEqual"] = relationalOrEqual] = "relationalOrEqual";
-  const bitShiftL = 47113;
-  TokenType2[TokenType2["bitShiftL"] = bitShiftL] = "bitShiftL";
-  const bitShiftR = 48137;
-  TokenType2[TokenType2["bitShiftR"] = bitShiftR] = "bitShiftR";
-  const plus = 49802;
-  TokenType2[TokenType2["plus"] = plus] = "plus";
-  const minus = 50826;
-  TokenType2[TokenType2["minus"] = minus] = "minus";
-  const modulo = 51723;
-  TokenType2[TokenType2["modulo"] = modulo] = "modulo";
-  const star = 52235;
-  TokenType2[TokenType2["star"] = star] = "star";
-  const slash = 53259;
-  TokenType2[TokenType2["slash"] = slash] = "slash";
-  const exponent = 54348;
-  TokenType2[TokenType2["exponent"] = exponent] = "exponent";
+  TokenType2[TokenType2["PRECEDENCE_MASK"] = PRECEDENCE_MASK] ="PRECEDENCE_MASK";\n  常量 IS_KEYWORD = 1 << 4;\n  TokenType2[TokenType2["IS_KEYWORD"] = IS_KEYWORD] ="IS_KEYWORD"；\n  常量 IS_ASSIGN = 1 << 5;\n  TokenType2[TokenType2["IS_ASSIGN"] = IS_ASSIGN] ="IS_ASSIGN"；\n  常量 IS_RIGHT_ASSOCIATIVE = 1 << 6;\n  TokenType2[TokenType2["IS_RIGHT_ASSOCIATIVE"] = IS_RIGHT_ASSOCIATIVE] ="IS_RIGHT_ASSOCIATIVE";\n  常量 IS_PREFIX = 1 << 7;\n  TokenType2[TokenType2["IS_PREFIX"] = IS_PREFIX] ="IS_PREFIX";\n  常量 IS_POSTFIX = 1 << 8;\n  TokenType2[TokenType2["IS_POSTFIX"] = IS_POSTFIX] ="IS_POSTFIX";\n  常量 IS_EXPRESSION_START = 1 << 9;\n  TokenType2[TokenType2["IS_EXPRESSION_START"] = IS_EXPRESSION_START] ="IS_EXPRESSION_START";\n  常量数 = 512;\n  TokenType2[TokenType2["num"] = num] ="num";\n  常量 bigint = 1536;\n  TokenType2[TokenType2["bigint"] = bigint] ="bigint";\n  常量十进制 = 2560；\n  TokenType2[TokenType2["decimal"] = 十进制] ="decimal";\n  常量正则表达式3 = 3584；\n  TokenType2[TokenType2["regexp"] = regexp3] ="regexp";\n  常量字符串2 = 4608；\n  TokenType2[TokenType2["string"] = string2] ="string";\n  常量名称= 5632；\n  TokenType2[TokenType2["name"] = 名称] ="name";\n  常量eof = 6144；\n  TokenType2[TokenType2["eof"] = eof] ="eof";\n  常量括号L = 7680;\n  TokenType2[TokenType2["bracketL"] = 括号L] ="bracketL";\n  常量括号R = 8192；\n  TokenType2[TokenType2["bracketR"] = 括号R] ="bracketR";\n  常量大括号L = 9728;\n  TokenType2[TokenType2["braceL"] = 大括号L] ="braceL";\n  常量大括号L = 10752;\n  TokenType2[TokenType2["braceBarL"] =大括号L] ="braceBarL";\n  常量大括号R = 11264;\n  TokenType2[TokenType2["braceR"] = 大括号R] ="braceR";\n  常量大括号R = 12288;\n  TokenType2[TokenType2["braceBarR"] = 大括号R] ="braceBarR";\n  常量括号 = 13824;\n  TokenType2[TokenType2["parenL"] = parenL] ="parenL";\n  常量括号R = 14336;\n  TokenType2[TokenType2["parenR"] = parenR] ="parenR";\n  常量逗号2 = 15360;\n  TokenType2[TokenType2["comma"] = 逗号2] ="comma";\n  常量半 = 16384;\n  TokenType2[TokenType2["semi"] = 半] ="semi";\n  常量冒号=17408；\n  TokenType2[TokenType2["colon"] = 冒号] ="colon";\n  常量双冒号 = 18432;\n  TokenType2[TokenType2["doubleColon"] = 双冒号] ="doubleColon";\n  常量点= 19456；\n  TokenType2[TokenType2["dot"] =点] ="dot";\n  常量问题=20480；\n  TokenType2[TokenType2["question"] = 问题] ="question";\n  常量问题点= 21504；\n  TokenType2[TokenType2["questionDot"] = QuestionDot] ="questionDot";\n  常量箭头=22528；\n  TokenType2[TokenType2["arrow"] = 箭头] ="arrow";\n  常量模板=23552；\n  TokenType2[TokenType2["template"] = 模板] ="template";\n  常量省略号 = 24576；\n  TokenType2[TokenType2["ellipsis"] = 省略号] ="ellipsis";\n  常量反引号 = 25600;\n  TokenType2[TokenType2["backQuote"] = 反引号] ="backQuote";\n  常量美元BraceL = 27136;\n  TokenType2[TokenType2["dollarBraceL"] = DollarBraceL] ="dollarBraceL"；\n  常量 = 27648；\n  令牌类型2[令牌类型2["at"] = 在] ="at";\n  常量哈希= 29184；\n  TokenType2[TokenType2["hash"] = 哈希] ="hash";\n  常量 eq = 2972​​8；\n  TokenType2[TokenType2["eq"] = eq] ="eq";\n  常量分配= 30752；\n  TokenType2[TokenType2["assign"] = 赋值] ="assign";\n  常量 preIncDec = 32640;\n  TokenType2[TokenType2["preIncDec"] = preIncDec] ="preIncDec";\n  常量 postIncDec = 33664;\n  TokenType2[TokenType2["postIncDec"] = postIncDec] ="postIncDec";\n  常量爆炸= 34432；\n  TokenType2[TokenType2["bang"] = bang] ="bang";\n  const 波形符 = 35456；\n  TokenType2[TokenType2["tilde"] = 波形符] ="tilde";\n  常量管道= 35841；\n  TokenType2[TokenType2["pipeline"] = 管道] ="pipeline";\n  常量 nullishCoalescing = 36866;\n  TokenType2[TokenType2["nullishCoalescing"] = nullishCoalescing] ="nullishCoalescing";\n  常量逻辑OR = 37890；\n  TokenType2[TokenType2["logicalOR"] = 逻辑OR] ="logicalOR";\n  常量逻辑AND = 38915；\n  TokenType2[TokenType2["logicalAND"] = 逻辑AND] ="logicalAND";\n  常量按位或 = 39940；\n  TokenType2[TokenType2["bitwiseOR"] = 按位或] ="bitwiseOR";\n  常量按位XOR = 40965；\n  TokenType2[TokenType2["bitwiseXOR"] = 按位异或] ="bitwiseXOR";\n  常量按位与 = 41990;\n  TokenType2[TokenType2["bitwiseAND"] = 按位与] ="bitwiseAND";\n  常量相等= 43015；\n  TokenType2[TokenType2["equality"] = 相等] ="equality";\n  常量小于 = 44040;\n  TokenType2[TokenType2["lessThan"] = lessThan] ="lessThan";\n  常量大于= 45064；\n  TokenType2[TokenType2["greaterThan"] = 大于] ="greaterThan";\n  常量关系或等于 = 46088;\n  TokenType2[TokenType2["relationalOrEqual"] = relatedOrEqual] ="relationalOrEqual";\n  常量 bitShiftL = 47113;\n  TokenType2[TokenType2["bitShiftL"] = 位移位L] ="bitShiftL";\n  常量 bitShiftR = 48137;\n  令牌类型2[令牌类型2["bitShiftR"] = 位移位R] ="bitShiftR";\n  常量加= 49802；\n  TokenType2[TokenType2["plus"] = 加] ="plus";\n  常量减= 50826；\n  TokenType2[TokenType2["minus"] = 减号] ="minus";\n  常量模 = 51723；\n  TokenType2[TokenType2["modulo"] = 模] ="modulo";\n  常量星= 52235；\n  TokenType2[TokenType2["star"] = 星] ="star";\n  常量斜杠= 53259；\n  TokenType2[TokenType2["slash"] = 斜线] ="slash";\n  常量指数 = 54348；\n  TokenType2[TokenType2["exponent"] = 指数] ="exponent";
   const jsxName = 55296;
-  TokenType2[TokenType2["jsxName"] = jsxName] = "jsxName";
-  const jsxText = 56320;
-  TokenType2[TokenType2["jsxText"] = jsxText] = "jsxText";
-  const jsxEmptyText = 57344;
-  TokenType2[TokenType2["jsxEmptyText"] = jsxEmptyText] = "jsxEmptyText";
-  const jsxTagStart = 58880;
-  TokenType2[TokenType2["jsxTagStart"] = jsxTagStart] = "jsxTagStart";
-  const jsxTagEnd = 59392;
-  TokenType2[TokenType2["jsxTagEnd"] = jsxTagEnd] = "jsxTagEnd";
-  const typeParameterStart = 60928;
-  TokenType2[TokenType2["typeParameterStart"] = typeParameterStart] = "typeParameterStart";
-  const nonNullAssertion = 61440;
-  TokenType2[TokenType2["nonNullAssertion"] = nonNullAssertion] = "nonNullAssertion";
-  const _break = 62480;
-  TokenType2[TokenType2["_break"] = _break] = "_break";
-  const _case = 63504;
-  TokenType2[TokenType2["_case"] = _case] = "_case";
-  const _catch = 64528;
-  TokenType2[TokenType2["_catch"] = _catch] = "_catch";
-  const _continue = 65552;
-  TokenType2[TokenType2["_continue"] = _continue] = "_continue";
-  const _debugger = 66576;
-  TokenType2[TokenType2["_debugger"] = _debugger] = "_debugger";
-  const _default = 67600;
-  TokenType2[TokenType2["_default"] = _default] = "_default";
-  const _do = 68624;
-  TokenType2[TokenType2["_do"] = _do] = "_do";
-  const _else = 69648;
-  TokenType2[TokenType2["_else"] = _else] = "_else";
-  const _finally = 70672;
-  TokenType2[TokenType2["_finally"] = _finally] = "_finally";
-  const _for = 71696;
-  TokenType2[TokenType2["_for"] = _for] = "_for";
-  const _function = 73232;
-  TokenType2[TokenType2["_function"] = _function] = "_function";
-  const _if = 73744;
-  TokenType2[TokenType2["_if"] = _if] = "_if";
-  const _return = 74768;
-  TokenType2[TokenType2["_return"] = _return] = "_return";
-  const _switch = 75792;
-  TokenType2[TokenType2["_switch"] = _switch] = "_switch";
-  const _throw = 77456;
-  TokenType2[TokenType2["_throw"] = _throw] = "_throw";
-  const _try = 77840;
-  TokenType2[TokenType2["_try"] = _try] = "_try";
-  const _var = 78864;
-  TokenType2[TokenType2["_var"] = _var] = "_var";
-  const _let = 79888;
-  TokenType2[TokenType2["_let"] = _let] = "_let";
-  const _const = 80912;
-  TokenType2[TokenType2["_const"] = _const] = "_const";
-  const _while = 81936;
-  TokenType2[TokenType2["_while"] = _while] = "_while";
-  const _with = 82960;
-  TokenType2[TokenType2["_with"] = _with] = "_with";
-  const _new = 84496;
-  TokenType2[TokenType2["_new"] = _new] = "_new";
-  const _this = 85520;
-  TokenType2[TokenType2["_this"] = _this] = "_this";
-  const _super = 86544;
-  TokenType2[TokenType2["_super"] = _super] = "_super";
-  const _class = 87568;
-  TokenType2[TokenType2["_class"] = _class] = "_class";
-  const _extends = 88080;
-  TokenType2[TokenType2["_extends"] = _extends] = "_extends";
-  const _export = 89104;
-  TokenType2[TokenType2["_export"] = _export] = "_export";
-  const _import = 90640;
-  TokenType2[TokenType2["_import"] = _import] = "_import";
-  const _yield = 91664;
-  TokenType2[TokenType2["_yield"] = _yield] = "_yield";
-  const _null = 92688;
-  TokenType2[TokenType2["_null"] = _null] = "_null";
-  const _true = 93712;
-  TokenType2[TokenType2["_true"] = _true] = "_true";
-  const _false = 94736;
-  TokenType2[TokenType2["_false"] = _false] = "_false";
-  const _in = 95256;
-  TokenType2[TokenType2["_in"] = _in] = "_in";
-  const _instanceof = 96280;
-  TokenType2[TokenType2["_instanceof"] = _instanceof] = "_instanceof";
-  const _typeof = 97936;
-  TokenType2[TokenType2["_typeof"] = _typeof] = "_typeof";
-  const _void = 98960;
-  TokenType2[TokenType2["_void"] = _void] = "_void";
-  const _delete = 99984;
-  TokenType2[TokenType2["_delete"] = _delete] = "_delete";
-  const _async = 100880;
-  TokenType2[TokenType2["_async"] = _async] = "_async";
-  const _get = 101904;
-  TokenType2[TokenType2["_get"] = _get] = "_get";
-  const _set = 102928;
-  TokenType2[TokenType2["_set"] = _set] = "_set";
-  const _declare = 103952;
-  TokenType2[TokenType2["_declare"] = _declare] = "_declare";
-  const _readonly = 104976;
-  TokenType2[TokenType2["_readonly"] = _readonly] = "_readonly";
-  const _abstract = 106e3;
-  TokenType2[TokenType2["_abstract"] = _abstract] = "_abstract";
-  const _static = 107024;
-  TokenType2[TokenType2["_static"] = _static] = "_static";
-  const _public = 107536;
-  TokenType2[TokenType2["_public"] = _public] = "_public";
-  const _private = 108560;
-  TokenType2[TokenType2["_private"] = _private] = "_private";
-  const _protected = 109584;
-  TokenType2[TokenType2["_protected"] = _protected] = "_protected";
-  const _override = 110608;
-  TokenType2[TokenType2["_override"] = _override] = "_override";
-  const _as = 112144;
-  TokenType2[TokenType2["_as"] = _as] = "_as";
-  const _enum = 113168;
-  TokenType2[TokenType2["_enum"] = _enum] = "_enum";
-  const _type = 114192;
-  TokenType2[TokenType2["_type"] = _type] = "_type";
-  const _implements = 115216;
-  TokenType2[TokenType2["_implements"] = _implements] = "_implements";
-})(TokenType || (TokenType = {}));
-function formatTokenType(tokenType) {
-  switch (tokenType) {
-    case TokenType.num:
-      return "num";
-    case TokenType.bigint:
-      return "bigint";
-    case TokenType.decimal:
-      return "decimal";
-    case TokenType.regexp:
-      return "regexp";
-    case TokenType.string:
-      return "string";
-    case TokenType.name:
-      return "name";
-    case TokenType.eof:
-      return "eof";
-    case TokenType.bracketL:
-      return "[";
-    case TokenType.bracketR:
-      return "]";
-    case TokenType.braceL:
-      return "{";
-    case TokenType.braceBarL:
-      return "{|";
-    case TokenType.braceR:
-      return "}";
-    case TokenType.braceBarR:
-      return "|}";
-    case TokenType.parenL:
-      return "(";
-    case TokenType.parenR:
-      return ")";
-    case TokenType.comma:
-      return ",";
-    case TokenType.semi:
-      return ";";
-    case TokenType.colon:
-      return ":";
-    case TokenType.doubleColon:
-      return "::";
-    case TokenType.dot:
-      return ".";
-    case TokenType.question:
-      return "?";
-    case TokenType.questionDot:
-      return "?.";
-    case TokenType.arrow:
-      return "=>";
-    case TokenType.template:
-      return "template";
-    case TokenType.ellipsis:
-      return "...";
-    case TokenType.backQuote:
-      return "`";
-    case TokenType.dollarBraceL:
-      return "${";
-    case TokenType.at:
-      return "@";
-    case TokenType.hash:
-      return "#";
-    case TokenType.eq:
-      return "=";
-    case TokenType.assign:
-      return "_=";
-    case TokenType.preIncDec:
-      return "++/--";
-    case TokenType.postIncDec:
-      return "++/--";
-    case TokenType.bang:
-      return "!";
-    case TokenType.tilde:
-      return "~";
-    case TokenType.pipeline:
-      return "|>";
-    case TokenType.nullishCoalescing:
-      return "??";
-    case TokenType.logicalOR:
-      return "||";
-    case TokenType.logicalAND:
-      return "&&";
-    case TokenType.bitwiseOR:
-      return "|";
-    case TokenType.bitwiseXOR:
-      return "^";
-    case TokenType.bitwiseAND:
-      return "&";
-    case TokenType.equality:
-      return "==/!=";
-    case TokenType.lessThan:
-      return "<";
-    case TokenType.greaterThan:
-      return ">";
-    case TokenType.relationalOrEqual:
-      return "<=/>=";
-    case TokenType.bitShiftL:
-      return "<<";
-    case TokenType.bitShiftR:
-      return ">>/>>>";
-    case TokenType.plus:
-      return "+";
-    case TokenType.minus:
-      return "-";
-    case TokenType.modulo:
-      return "%";
-    case TokenType.star:
-      return "*";
-    case TokenType.slash:
-      return "/";
-    case TokenType.exponent:
-      return "**";
-    case TokenType.jsxName:
-      return "jsxName";
-    case TokenType.jsxText:
-      return "jsxText";
-    case TokenType.jsxEmptyText:
-      return "jsxEmptyText";
-    case TokenType.jsxTagStart:
-      return "jsxTagStart";
-    case TokenType.jsxTagEnd:
-      return "jsxTagEnd";
-    case TokenType.typeParameterStart:
-      return "typeParameterStart";
-    case TokenType.nonNullAssertion:
-      return "nonNullAssertion";
-    case TokenType._break:
-      return "break";
-    case TokenType._case:
-      return "case";
-    case TokenType._catch:
-      return "catch";
-    case TokenType._continue:
-      return "continue";
-    case TokenType._debugger:
-      return "debugger";
-    case TokenType._default:
-      return "default";
-    case TokenType._do:
-      return "do";
-    case TokenType._else:
-      return "else";
-    case TokenType._finally:
-      return "finally";
-    case TokenType._for:
-      return "for";
-    case TokenType._function:
-      return "function";
-    case TokenType._if:
-      return "if";
-    case TokenType._return:
-      return "return";
-    case TokenType._switch:
-      return "switch";
-    case TokenType._throw:
-      return "throw";
-    case TokenType._try:
-      return "try";
-    case TokenType._var:
-      return "var";
-    case TokenType._let:
-      return "let";
-    case TokenType._const:
-      return "const";
-    case TokenType._while:
-      return "while";
-    case TokenType._with:
-      return "with";
-    case TokenType._new:
-      return "new";
-    case TokenType._this:
-      return "this";
-    case TokenType._super:
-      return "super";
-    case TokenType._class:
-      return "class";
-    case TokenType._extends:
-      return "extends";
-    case TokenType._export:
-      return "export";
-    case TokenType._import:
-      return "import";
-    case TokenType._yield:
-      return "yield";
-    case TokenType._null:
-      return "null";
-    case TokenType._true:
-      return "true";
-    case TokenType._false:
-      return "false";
-    case TokenType._in:
-      return "in";
-    case TokenType._instanceof:
-      return "instanceof";
-    case TokenType._typeof:
-      return "typeof";
-    case TokenType._void:
-      return "void";
-    case TokenType._delete:
-      return "delete";
-    case TokenType._async:
-      return "async";
-    case TokenType._get:
-      return "get";
-    case TokenType._set:
-      return "set";
-    case TokenType._declare:
-      return "declare";
-    case TokenType._readonly:
-      return "readonly";
-    case TokenType._abstract:
-      return "abstract";
-    case TokenType._static:
-      return "static";
-    case TokenType._public:
-      return "public";
-    case TokenType._private:
-      return "private";
-    case TokenType._protected:
-      return "protected";
-    case TokenType._override:
-      return "override";
-    case TokenType._as:
-      return "as";
-    case TokenType._enum:
-      return "enum";
-    case TokenType._type:
-      return "type";
-    case TokenType._implements:
-      return "implements";
-    default:
-      return "";
+  TokenType2[TokenType2["jsxName"] = jsxName] ="jsxName";\n  常量 jsxText = 56320;\n  TokenType2[TokenType2["jsxText"] = jsxText] ="jsxText";\n  常量 jsxEmptyText = 57344;\n  TokenType2[TokenType2["jsxEmptyText"] = jsxEmptyText] ="jsxEmptyText";\n  常量 jsxTagStart = 58880;\n  TokenType2[TokenType2["jsxTagStart"] = jsxTagStart] ="jsxTagStart";\n  常量 jsxTagEnd = 59392;\n  TokenType2[TokenType2["jsxTagEnd"] = jsxTagEnd] ="jsxTagEnd"；\n  const 类型参数开始 = 60928;\n  TokenType2[TokenType2["typeParameterStart"] = 类型参数开始] ="typeParameterStart";\n  常量非空断言 = 61440;\n  TokenType2[TokenType2["nonNullAssertion"] = nonNullAssertion] ="nonNullAssertion";\n  常量_break = 62480;\n  TokenType2[TokenType2["_break"] = _break] ="_break"；\n  常量_case = 63504；\n  TokenType2[TokenType2["_case"] = _case] ="_case";\n  常量_catch = 64528；\n  TokenType2[TokenType2["_catch"] = _catch] ="_catch";\n  常量_继续= 65552；\n  TokenType2[TokenType2["_continue"] = _继续] ="_continue";\n  常量_调试器= 66576；\n  TokenType2[TokenType2["_debugger"] = _调试器] ="_debugger"；\n  常量_默认= 67600；\n  TokenType2[TokenType2["_default"] = _default] ="_default";\n  常量 _do = 68624;\n  TokenType2[TokenType2["_do"] = _do] ="_do";\n  常量_else = 69648；\n  TokenType2[TokenType2["_else"] = _else] ="_else";\n  常量 _finally = 70672;\n  TokenType2[TokenType2["_finally"] = _finally] ="_finally";\n  常量_for = 71696；\n  令牌类型2[令牌类型2["_for"] = _for] ="_for";\n  常量_函数= 73232；\n  TokenType2[TokenType2["_function"] = _function] ="_function";\n  常量 _if = 73744;\n  TokenType2[TokenType2["_if"] = _if] ="_if";\n  常量_return = 74768;\n  TokenType2[TokenType2["_return"] = _return] ="_return";\n  常量_开关= 75792；\n  TokenType2[TokenType2["_switch"] = _switch] ="_switch";\n  常量_抛出= 77456；\n  TokenType2[TokenType2["_throw"] = _throw] ="_throw";\n  常量_try = 77840;\n  TokenType2[TokenType2["_try"] = _try] ="_try";\n  常量_var = 78864;\n  TokenType2[TokenType2["_var"] = _var] ="_var";\n  常量 _let = 79888;\n  TokenType2[TokenType2["_let"] = _let] ="_let";\n  常量_const = 80912;\n  TokenType2[TokenType2["_const"] = _const] ="_const";\n  常量_while = 81936;\n  TokenType2[TokenType2["_while"] = _while] ="_while";\n  常量_with = 82960;\n  TokenType2[TokenType2["_with"] = _with] ="_with";\n  常量_new = 84496;\n  TokenType2[TokenType2["_new"] = _new] ="_new";\n  常量_this = 85520；\n  TokenType2[TokenType2["_this"] = _this] ="_this";\n  常量_super = 86544；\n  TokenType2[TokenType2["_super"] = _super] ="_super";\n  常量_class = 87568；\n  TokenType2[TokenType2["_class"] = _class] ="_class";\n  常量_扩展= 88080；\n  TokenType2[TokenType2["_extends"] = _extends] ="_extends";\n  常量_导出= 89104；\n  TokenType2[TokenType2["_export"] = _export] ="_export";\n  常量_导入= 90640；\n  TokenType2[TokenType2["_import"] = _import] ="_import";\n  常量_yield = 91664;\n  TokenType2[TokenType2["_yield"] = _yield] ="_yield";\n  常量_null = 92688;\n  TokenType2[TokenType2["_null"] = _null] ="_null";\n  常量_true = 93712;\n  令牌类型2[令牌类型2["_true"] = _true] ="_true";\n  常量_假= 94736；\n  令牌类型2[令牌类型2["_false"] = _false] ="_false";\n  常量_in = 95256；\n  TokenType2[TokenType2["_in"] = _in] ="_in";\n  常量_instanceof = 96280;\n  TokenType2[TokenType2["_instanceof"] = _instanceof] ="_instanceof";\n  常量_typeof = 97936;\n  TokenType2[TokenType2["_typeof"] = _typeof] ="_typeof";\n  常量_void = 98960;\n  TokenType2[TokenType2["_void"] = _void] ="_void";\n  常量_删除= 99984；\n  令牌类型2[令牌类型2["_delete"] = _delete] ="_delete"；\n  常量 _async = 100880;\n  TokenType2[TokenType2["_async"] = _async] ="_async";\n  常量_get = 101904;\n  TokenType2[TokenType2["_get"] = _get] ="_get";\n  常量_set = 102928；\n  TokenType2[TokenType2["_set"] = _set] ="_set";\n  常量_声明= 103952；\n  TokenType2[TokenType2["_declare"] = _declare] ="_declare";\n  常量_readonly = 104976;\n  TokenType2[TokenType2["_readonly"] = _readonly] ="_readonly"；\n  常量 _abstract = 106e3;\n  TokenType2[TokenType2["_abstract"] = _abstract] ="_abstract";\n  常量_static = 107024；\n  TokenType2[TokenType2["_static"] = _static] ="_static";\n  常量_public = 107536；\n  TokenType2[TokenType2["_public"] = _public] ="_public";\n  常量_私有= 108560；\n  TokenType2[TokenType2["_private"] = _private] ="_private";\n  常量_受保护= 109584；\n  TokenType2[TokenType2["_protected"] = _protected] ="_protected";\n  常量_override = 110608；\n  TokenType2[TokenType2["_override"] = _override] ="_override"；\n  常量_as = 112144；\n  TokenType2[TokenType2["_as"] = _as] ="_as";\n  常量_枚举= 113168；\n  TokenType2[TokenType2["_enum"] = _enum] ="_enum";\n  常量_类型= 114192；\n  TokenType2[TokenType2["_type"] = _type] ="_type";\n  常量_implements = 115216；\n  TokenType2[TokenType2["_implements"] = _implements] ="_implements";\n})(TokenType || (TokenType = {}));\n函数 formatTokenType(tokenType) {\n  开关（令牌类型）{\n    案例 TokenType.num：\n      返回"num"；\n    案例 TokenType.bigint：\n      返回"bigint"；\n    案例 TokenType.decimal：\n      返回"decimal"；\n    案例 TokenType.regexp:\n      返回"regexp"；\n    案例 TokenType.string：\n      返回"string"；\n    案例 TokenType.name：\n      返回"name"；\n    案例TokenType.eof：\n      返回"eof"；\n    案例 TokenType.bracketL：\n      返回"["；\n    案例 TokenType.bracketR：\n      返回"]"；\n    案例 TokenType.braceL：\n      返回"{"；\n    案例 TokenType.braceBarL：\n      返回"{|"；\n    案例 TokenType.braceR：\n      返回"}"；\n    案例 TokenType.braceBarR：\n      返回"|}"；\n    案例 TokenType.parenL：\n      返回"("；\n    案例 TokenType.parenR：\n      返回")"；\n    case TokenType.逗号：\n      返回","；\n    案例 TokenType.semi：\n      返回";"；\n    案例 TokenType.colon:\n      返回":"；\n    案例 TokenType.doubleColon：\n      返回"::"；\n    案例 TokenType.dot：\n      返回"."；\n    案例TokenType.问题：\n      返回"?"；\n    案例 TokenType.questionDot：\n      返回"?.";\n    案例 TokenType.arrow：\n      返回"=>"；\n    案例TokenType.template：\n      返回"template"；\n    案例 TokenType.省略号：\n      返回"..."；\n    案例 TokenType.backQuote：\n      返回"`";\n    案例 TokenType.dollarBraceL：\n      返回"${";\n    案例 TokenType.at：\n      返回"@"；\n    案例TokenType.hash：\n      返回"#"；\n    案例 TokenType.eq：\n      返回"="；\n    案例 TokenType.assign：\n      返回"_=";\n    案例 TokenType.preIncDec：\n      返回"++/--"；\n    案例 TokenType.postIncDec：\n      返回"++/--"；\n    案例TokenType.bang：\n      返回"!"；\n    案例 TokenType.tilde：\n      return"~"；\n    案例 TokenType.pipeline：\n      返回"|>";\n    案例 TokenType.nullishCoalescing：\n      返回"??"；\n    case TokenType.逻辑OR：\n      返回"||"；\n    案例 TokenType.逻辑AND：\n      返回"&&"；\n    案例 TokenType.bitwiseOR:\n      返回"|"；\n    案例 TokenType.bitwiseXOR：\n      返回"^"；\n    案例 TokenType.bitwiseAND：\n      返回"&"；\n    案例 TokenType.equality：\n      返回"==/!="；\n    案例 TokenType.lessThan：\n      返回"<"；\n    案例 TokenType.greaterThan：\n      返回">"；\n    案例 TokenType.relationalOrEqual：\n      返回"<=/>="；\n    案例 TokenType.bitShiftL：\n      返回"<<"；\n    案例 TokenType.bitShiftR：\n      返回">>/>>>"；\n    案例TokenType.plus：\n      返回"+"；\n    案例 TokenType.minus：\n      返回"-"；\n    案例 TokenType.modulo：\n      返回"%";\n    案例 TokenType.star：\n      返回"*"；\n    案例 TokenType.slash:\n      返回"/"；\n    案例 TokenType.exponent:\n      返回"**"；\n    案例 TokenType.jsxName：\n      返回"jsxName"；\n    案例 TokenType.jsxText：\n      返回"jsxText"；\n    案例 TokenType.jsxEmptyText：\n      返回"jsxEmptyText"；\n    案例 TokenType.jsxTagStart：\n      返回"jsxTagStart"；\n    案例 TokenType.jsxTagEnd：\n      返回"jsxTagEnd"；\n    case TokenType.typeParameterStart：\n      返回"typeParameterStart"；\n    案例 TokenType.nonNullAssertion：\n      返回"nonNullAssertion"；\n    案例 TokenType._break：\n      返回"break";\n    案例 TokenType._case：\n      返回"case"；\n    案例 TokenType._catch：\n      返回"catch"；\n    案例TokenType._继续：\n      返回"continue"；\n    案例 TokenType._debugger：\n      返回"debugger"；\n    案例 TokenType._default：\n      返回"default"；\n    案例 TokenType._do：\n      返回"do"；\n    案例 TokenType._else：\n      返回"else"；\n    案例 TokenType._finally：\n      返回"finally"；\n    案例 TokenType._for：\n      返回"for"；\n    案例 TokenType._function：\n      返回"function"；\n    案例 TokenType._if：\n      返回"if"；\n    case TokenType._return:\n      返回"return"；\n    案例 TokenType._switch：\n      返回"switch"；\n    案例 TokenType._throw：\n      返回"throw"；\n    案例 TokenType._try：\n      返回"try"；\n    案例 TokenType._var：\n      返回"var"；\n    案例 TokenType._let：\n      返回"let";\n    案例 TokenType._const：\n      返回"const"；\n    案例 TokenType._while：\n      返回"while"；\n    案例 TokenType._with：\n      返回"with"；\n    案例 TokenType._new：\n      返回"new"；\n    案例 TokenType._this：\n      返回"this"；\n    案例 TokenType._super：\n      返回"super"；\n    案例 TokenType._class：\n      返回"class"；\n    案例 TokenType._extends：\n      返回"extends"；\n    案例 TokenType._export：\n      返回"export"；\n    案例 TokenType._import：\n      返回"import"；\n    案例 TokenType._yield：\n      返回"yield"；\n    案例 TokenType._null：\n      返回"null"；\n    案例 TokenType._true：\n      返回"true"；\n    案例 TokenType._false：\n      返回"false"；\n    案例 TokenType._in：\n      返回"in"；\n    案例 TokenType._instanceof：\n      返回"instanceof"；\n    案例 TokenType._typeof：\n      返回"typeof"；\n    案例 TokenType._void：\n      返回"void"；\n    案例 TokenType._delete：\n      返回"delete"；\n    案例 TokenType._async：\n      返回"async"；\n    案例TokenType._get：\n      返回"get"；\n    案例 TokenType._set：\n      返回"set";\n    案例 TokenType._declare：\n      返回"declare"；\n    案例 TokenType._readonly：\n      返回"readonly";\n    案例 TokenType._abstract：\n      返回"abstract"；\n    案例 TokenType._static：\n      返回"static"；\n    案例 TokenType._public：\n      返回"public"；\n    案例 TokenType._private：\n      返回"private"；\n    案例 TokenType._protected：\n      返回"protected"；\n    案例 TokenType._override：\n      返回"override";\n    案例 TokenType._as：\n      返回"as"；\n    案例 TokenType._enum：\n      返回"enum"；\n    案例 TokenType._type：\n      返回"type";\n    案例 TokenType._implements：\n      返回"implements";\n    默认：\n      返回"";
   }
 }
 
@@ -14468,213 +13414,7 @@ var State = class {
 var charCodes;
 (function(charCodes2) {
   const backSpace = 8;
-  charCodes2[charCodes2["backSpace"] = backSpace] = "backSpace";
-  const lineFeed = 10;
-  charCodes2[charCodes2["lineFeed"] = lineFeed] = "lineFeed";
-  const tab = 9;
-  charCodes2[charCodes2["tab"] = tab] = "tab";
-  const carriageReturn = 13;
-  charCodes2[charCodes2["carriageReturn"] = carriageReturn] = "carriageReturn";
-  const shiftOut = 14;
-  charCodes2[charCodes2["shiftOut"] = shiftOut] = "shiftOut";
-  const space = 32;
-  charCodes2[charCodes2["space"] = space] = "space";
-  const exclamationMark = 33;
-  charCodes2[charCodes2["exclamationMark"] = exclamationMark] = "exclamationMark";
-  const quotationMark = 34;
-  charCodes2[charCodes2["quotationMark"] = quotationMark] = "quotationMark";
-  const numberSign = 35;
-  charCodes2[charCodes2["numberSign"] = numberSign] = "numberSign";
-  const dollarSign = 36;
-  charCodes2[charCodes2["dollarSign"] = dollarSign] = "dollarSign";
-  const percentSign = 37;
-  charCodes2[charCodes2["percentSign"] = percentSign] = "percentSign";
-  const ampersand = 38;
-  charCodes2[charCodes2["ampersand"] = ampersand] = "ampersand";
-  const apostrophe = 39;
-  charCodes2[charCodes2["apostrophe"] = apostrophe] = "apostrophe";
-  const leftParenthesis = 40;
-  charCodes2[charCodes2["leftParenthesis"] = leftParenthesis] = "leftParenthesis";
-  const rightParenthesis = 41;
-  charCodes2[charCodes2["rightParenthesis"] = rightParenthesis] = "rightParenthesis";
-  const asterisk = 42;
-  charCodes2[charCodes2["asterisk"] = asterisk] = "asterisk";
-  const plusSign = 43;
-  charCodes2[charCodes2["plusSign"] = plusSign] = "plusSign";
-  const comma2 = 44;
-  charCodes2[charCodes2["comma"] = comma2] = "comma";
-  const dash = 45;
-  charCodes2[charCodes2["dash"] = dash] = "dash";
-  const dot = 46;
-  charCodes2[charCodes2["dot"] = dot] = "dot";
-  const slash = 47;
-  charCodes2[charCodes2["slash"] = slash] = "slash";
-  const digit0 = 48;
-  charCodes2[charCodes2["digit0"] = digit0] = "digit0";
-  const digit1 = 49;
-  charCodes2[charCodes2["digit1"] = digit1] = "digit1";
-  const digit2 = 50;
-  charCodes2[charCodes2["digit2"] = digit2] = "digit2";
-  const digit3 = 51;
-  charCodes2[charCodes2["digit3"] = digit3] = "digit3";
-  const digit4 = 52;
-  charCodes2[charCodes2["digit4"] = digit4] = "digit4";
-  const digit5 = 53;
-  charCodes2[charCodes2["digit5"] = digit5] = "digit5";
-  const digit6 = 54;
-  charCodes2[charCodes2["digit6"] = digit6] = "digit6";
-  const digit7 = 55;
-  charCodes2[charCodes2["digit7"] = digit7] = "digit7";
-  const digit8 = 56;
-  charCodes2[charCodes2["digit8"] = digit8] = "digit8";
-  const digit9 = 57;
-  charCodes2[charCodes2["digit9"] = digit9] = "digit9";
-  const colon = 58;
-  charCodes2[charCodes2["colon"] = colon] = "colon";
-  const semicolon3 = 59;
-  charCodes2[charCodes2["semicolon"] = semicolon3] = "semicolon";
-  const lessThan = 60;
-  charCodes2[charCodes2["lessThan"] = lessThan] = "lessThan";
-  const equalsTo = 61;
-  charCodes2[charCodes2["equalsTo"] = equalsTo] = "equalsTo";
-  const greaterThan = 62;
-  charCodes2[charCodes2["greaterThan"] = greaterThan] = "greaterThan";
-  const questionMark = 63;
-  charCodes2[charCodes2["questionMark"] = questionMark] = "questionMark";
-  const atSign = 64;
-  charCodes2[charCodes2["atSign"] = atSign] = "atSign";
-  const uppercaseA = 65;
-  charCodes2[charCodes2["uppercaseA"] = uppercaseA] = "uppercaseA";
-  const uppercaseB = 66;
-  charCodes2[charCodes2["uppercaseB"] = uppercaseB] = "uppercaseB";
-  const uppercaseC = 67;
-  charCodes2[charCodes2["uppercaseC"] = uppercaseC] = "uppercaseC";
-  const uppercaseD = 68;
-  charCodes2[charCodes2["uppercaseD"] = uppercaseD] = "uppercaseD";
-  const uppercaseE = 69;
-  charCodes2[charCodes2["uppercaseE"] = uppercaseE] = "uppercaseE";
-  const uppercaseF = 70;
-  charCodes2[charCodes2["uppercaseF"] = uppercaseF] = "uppercaseF";
-  const uppercaseG = 71;
-  charCodes2[charCodes2["uppercaseG"] = uppercaseG] = "uppercaseG";
-  const uppercaseH = 72;
-  charCodes2[charCodes2["uppercaseH"] = uppercaseH] = "uppercaseH";
-  const uppercaseI = 73;
-  charCodes2[charCodes2["uppercaseI"] = uppercaseI] = "uppercaseI";
-  const uppercaseJ = 74;
-  charCodes2[charCodes2["uppercaseJ"] = uppercaseJ] = "uppercaseJ";
-  const uppercaseK = 75;
-  charCodes2[charCodes2["uppercaseK"] = uppercaseK] = "uppercaseK";
-  const uppercaseL = 76;
-  charCodes2[charCodes2["uppercaseL"] = uppercaseL] = "uppercaseL";
-  const uppercaseM = 77;
-  charCodes2[charCodes2["uppercaseM"] = uppercaseM] = "uppercaseM";
-  const uppercaseN = 78;
-  charCodes2[charCodes2["uppercaseN"] = uppercaseN] = "uppercaseN";
-  const uppercaseO = 79;
-  charCodes2[charCodes2["uppercaseO"] = uppercaseO] = "uppercaseO";
-  const uppercaseP = 80;
-  charCodes2[charCodes2["uppercaseP"] = uppercaseP] = "uppercaseP";
-  const uppercaseQ = 81;
-  charCodes2[charCodes2["uppercaseQ"] = uppercaseQ] = "uppercaseQ";
-  const uppercaseR = 82;
-  charCodes2[charCodes2["uppercaseR"] = uppercaseR] = "uppercaseR";
-  const uppercaseS = 83;
-  charCodes2[charCodes2["uppercaseS"] = uppercaseS] = "uppercaseS";
-  const uppercaseT = 84;
-  charCodes2[charCodes2["uppercaseT"] = uppercaseT] = "uppercaseT";
-  const uppercaseU = 85;
-  charCodes2[charCodes2["uppercaseU"] = uppercaseU] = "uppercaseU";
-  const uppercaseV = 86;
-  charCodes2[charCodes2["uppercaseV"] = uppercaseV] = "uppercaseV";
-  const uppercaseW = 87;
-  charCodes2[charCodes2["uppercaseW"] = uppercaseW] = "uppercaseW";
-  const uppercaseX = 88;
-  charCodes2[charCodes2["uppercaseX"] = uppercaseX] = "uppercaseX";
-  const uppercaseY = 89;
-  charCodes2[charCodes2["uppercaseY"] = uppercaseY] = "uppercaseY";
-  const uppercaseZ = 90;
-  charCodes2[charCodes2["uppercaseZ"] = uppercaseZ] = "uppercaseZ";
-  const leftSquareBracket = 91;
-  charCodes2[charCodes2["leftSquareBracket"] = leftSquareBracket] = "leftSquareBracket";
-  const backslash = 92;
-  charCodes2[charCodes2["backslash"] = backslash] = "backslash";
-  const rightSquareBracket = 93;
-  charCodes2[charCodes2["rightSquareBracket"] = rightSquareBracket] = "rightSquareBracket";
-  const caret = 94;
-  charCodes2[charCodes2["caret"] = caret] = "caret";
-  const underscore = 95;
-  charCodes2[charCodes2["underscore"] = underscore] = "underscore";
-  const graveAccent = 96;
-  charCodes2[charCodes2["graveAccent"] = graveAccent] = "graveAccent";
-  const lowercaseA = 97;
-  charCodes2[charCodes2["lowercaseA"] = lowercaseA] = "lowercaseA";
-  const lowercaseB = 98;
-  charCodes2[charCodes2["lowercaseB"] = lowercaseB] = "lowercaseB";
-  const lowercaseC = 99;
-  charCodes2[charCodes2["lowercaseC"] = lowercaseC] = "lowercaseC";
-  const lowercaseD = 100;
-  charCodes2[charCodes2["lowercaseD"] = lowercaseD] = "lowercaseD";
-  const lowercaseE = 101;
-  charCodes2[charCodes2["lowercaseE"] = lowercaseE] = "lowercaseE";
-  const lowercaseF = 102;
-  charCodes2[charCodes2["lowercaseF"] = lowercaseF] = "lowercaseF";
-  const lowercaseG = 103;
-  charCodes2[charCodes2["lowercaseG"] = lowercaseG] = "lowercaseG";
-  const lowercaseH = 104;
-  charCodes2[charCodes2["lowercaseH"] = lowercaseH] = "lowercaseH";
-  const lowercaseI = 105;
-  charCodes2[charCodes2["lowercaseI"] = lowercaseI] = "lowercaseI";
-  const lowercaseJ = 106;
-  charCodes2[charCodes2["lowercaseJ"] = lowercaseJ] = "lowercaseJ";
-  const lowercaseK = 107;
-  charCodes2[charCodes2["lowercaseK"] = lowercaseK] = "lowercaseK";
-  const lowercaseL = 108;
-  charCodes2[charCodes2["lowercaseL"] = lowercaseL] = "lowercaseL";
-  const lowercaseM = 109;
-  charCodes2[charCodes2["lowercaseM"] = lowercaseM] = "lowercaseM";
-  const lowercaseN = 110;
-  charCodes2[charCodes2["lowercaseN"] = lowercaseN] = "lowercaseN";
-  const lowercaseO = 111;
-  charCodes2[charCodes2["lowercaseO"] = lowercaseO] = "lowercaseO";
-  const lowercaseP = 112;
-  charCodes2[charCodes2["lowercaseP"] = lowercaseP] = "lowercaseP";
-  const lowercaseQ = 113;
-  charCodes2[charCodes2["lowercaseQ"] = lowercaseQ] = "lowercaseQ";
-  const lowercaseR = 114;
-  charCodes2[charCodes2["lowercaseR"] = lowercaseR] = "lowercaseR";
-  const lowercaseS = 115;
-  charCodes2[charCodes2["lowercaseS"] = lowercaseS] = "lowercaseS";
-  const lowercaseT = 116;
-  charCodes2[charCodes2["lowercaseT"] = lowercaseT] = "lowercaseT";
-  const lowercaseU = 117;
-  charCodes2[charCodes2["lowercaseU"] = lowercaseU] = "lowercaseU";
-  const lowercaseV = 118;
-  charCodes2[charCodes2["lowercaseV"] = lowercaseV] = "lowercaseV";
-  const lowercaseW = 119;
-  charCodes2[charCodes2["lowercaseW"] = lowercaseW] = "lowercaseW";
-  const lowercaseX = 120;
-  charCodes2[charCodes2["lowercaseX"] = lowercaseX] = "lowercaseX";
-  const lowercaseY = 121;
-  charCodes2[charCodes2["lowercaseY"] = lowercaseY] = "lowercaseY";
-  const lowercaseZ = 122;
-  charCodes2[charCodes2["lowercaseZ"] = lowercaseZ] = "lowercaseZ";
-  const leftCurlyBrace = 123;
-  charCodes2[charCodes2["leftCurlyBrace"] = leftCurlyBrace] = "leftCurlyBrace";
-  const verticalBar = 124;
-  charCodes2[charCodes2["verticalBar"] = verticalBar] = "verticalBar";
-  const rightCurlyBrace = 125;
-  charCodes2[charCodes2["rightCurlyBrace"] = rightCurlyBrace] = "rightCurlyBrace";
-  const tilde = 126;
-  charCodes2[charCodes2["tilde"] = tilde] = "tilde";
-  const nonBreakingSpace = 160;
-  charCodes2[charCodes2["nonBreakingSpace"] = nonBreakingSpace] = "nonBreakingSpace";
-  const oghamSpaceMark = 5760;
-  charCodes2[charCodes2["oghamSpaceMark"] = oghamSpaceMark] = "oghamSpaceMark";
-  const lineSeparator = 8232;
-  charCodes2[charCodes2["lineSeparator"] = lineSeparator] = "lineSeparator";
-  const paragraphSeparator = 8233;
-  charCodes2[charCodes2["paragraphSeparator"] = paragraphSeparator] = "paragraphSeparator";
+  charCodes2[charCodes2["backSpace"] = 退格] ="backSpace";\n  常量换行 = 10;\n  charCodes2[charCodes2["lineFeed"] = 换行] ="lineFeed"；\n  常量选项卡= 9；\n  charCodes2[charCodes2["tab"] = tab] ="tab";\n  常量回车 = 13;\n  charCodes2[charCodes2["carriageReturn"] = 回车] ="carriageReturn";\n  常量移位输出 = 14;\n  charCodes2[charCodes2["shiftOut"] = 移出] ="shiftOut";\n  常量空间= 32；\n  charCodes2[charCodes2["space"] = 空格] ="space";\n  const 感叹号 = 33;\n  charCodes2[charCodes2["exclamationMark"] = 感叹号] ="exclamationMark";\n  常量报价标记 = 34;\n  charCodes2[charCodes2["quotationMark"] = 引用标记] ="quotationMark";\n  常量数字符号 = 35;\n  charCodes2[charCodes2["numberSign"] = numberSign] ="numberSign";\n  常量美元符号 = 36;\n  charCodes2[charCodes2["dollarSign"] = 美元符号] ="dollarSign";\n  常量百分比符号 = 37;\n  charCodes2[charCodes2["percentSign"] =%Sign] ="percentSign";\n  const & 符号 = 38；\n  charCodes2[charCodes2["ampersand"] = ＆符号] ="ampersand";\n  常量撇号 = 39；\n  charCodes2[charCodes2["apostrophe"] = 撇号] ="apostrophe";\n  常量左括号 = 40;\n  charCodes2[charCodes2["leftParenthesis"] = 左括号] ="leftParenthesis";\n  const 右括号 = 41;\n  charCodes2[charCodes2["rightParenthesis"] = 右括号] ="rightParenthesis";\n  常量星号 = 42；\n  charCodes2[charCodes2["asterisk"] = 星号] ="asterisk";\n  常量加号 = 43;\n  charCodes2[charCodes2["plusSign"] = plusSign] ="plusSign";\n  常量逗号2 = 44;\n  字符代码2[字符代码2["comma"] = 逗号2] ="comma"；\n  常量破折号= 45；\n  charCodes2[charCodes2["dash"] = 破折号] ="dash"；\n  常量点= 46；\n  charCodes2[charCodes2["dot"] =点] ="dot";\n  常量斜线= 47；\n  charCodes2[charCodes2["slash"] = 斜线] ="slash";\n  常量数字0 = 48；\n  charCodes2[charCodes2["digit0"] = 数字0] ="digit0";\n  常量数字1 = 49；\n  charCodes2[charCodes2["digit1"] = 数字1] ="digit1";\n  常量数字2 = 50；\n  charCodes2[charCodes2["digit2"] = 数字2] ="digit2";\n  常量数字3 = 51；\n  charCodes2[charCodes2["digit3"] = 数字3] ="digit3";\n  常量数字4 = 52；\n  charCodes2[charCodes2["digit4"] = 数字4] ="digit4";\n  常量数字5 = 53；\n  charCodes2[charCodes2["digit5"] = 数字 5] ="digit5";\n  常量数字6 = 54；\n  charCodes2[charCodes2["digit6"] = 数字 6] ="digit6";\n  常量数字7 = 55；\n  charCodes2[charCodes2["digit7"] = 数字 7] ="digit7";\n  常量数字8 = 56；\n  charCodes2[charCodes2["digit8"] = 数字 8] ="digit8";\n  常量数字9 = 57；\n  charCodes2[charCodes2["digit9"] = 数字 9] ="digit9";\n  常量冒号 = 58；\n  charCodes2[charCodes2["colon"] = 冒号] ="colon";\n  常量分号3 = 59;\n  charCodes2[charCodes2["semicolon"] = 分号3] ="semicolon";\n  常量小于 = 60;\n  charCodes2[charCodes2["lessThan"] = lessThan] ="lessThan";\n  const 等于 = 61;\n  charCodes2[charCodes2["equalsTo"] = 等于] ="equalsTo";\n  const 大于 = 62;\n  charCodes2[charCodes2["greaterThan"] = 大于] ="greaterThan";\n  常量问号 = 63;\n  charCodes2[charCodes2["questionMark"] = QuestionMark] ="questionMark";\n  常量 atSign = 64;\n  charCodes2[charCodes2["atSign"] = atSign] ="atSign";\n  常量大写A = 65;\n  charCodes2[charCodes2["uppercaseA"] = 大写A] ="uppercaseA";\n  常量大写B = 66;\n  charCodes2[charCodes2["uppercaseB"] = 大写B] ="uppercaseB";\n  常量大写C = 67;\n  charCodes2[charCodes2["uppercaseC"] = 大写C] ="uppercaseC";\n  常量大写D = 68；\n  charCodes2[charCodes2["uppercaseD"] = 大写D] ="uppercaseD";\n  常量大写E = 69;\n  charCodes2[charCodes2["uppercaseE"] = 大写E] ="uppercaseE";\n  常量大写F = 70;\n  charCodes2[charCodes2["uppercaseF"] = 大写F] ="uppercaseF";\n  常量大写G = 71；\n  charCodes2[charCodes2["uppercaseG"] = 大写G] ="uppercaseG";\n  常量大写H = 72；\n  charCodes2[charCodes2["uppercaseH"] = 大写H] ="uppercaseH";\n  常量大写I = 73;\n  charCodes2[charCodes2["uppercaseI"] = 大写I] ="uppercaseI";\n  常量大写J = 74;\n  字符代码2[字符代码2["uppercaseJ"] = 大写J] ="uppercaseJ";\n  常量大写K = 75；\n  charCodes2[charCodes2["uppercaseK"] = 大写K] ="uppercaseK";\n  常量大写L = 76；\n  charCodes2[charCodes2["uppercaseL"] = 大写L] ="uppercaseL";\n  常量大写M = 77;\n  charCodes2[charCodes2["uppercaseM"] = 大写M] ="uppercaseM";\n  常量大写N = 78；\n  charCodes2[charCodes2["uppercaseN"] = 大写N] ="uppercaseN";\n  常量大写O = 79;\n  charCodes2[charCodes2["uppercaseO"] = 大写O] ="uppercaseO";\n  常量大写P = 80；\n  charCodes2[charCodes2["uppercaseP"] = 大写P] ="uppercaseP";\n  常量大写Q = 81；\n  charCodes2[charCodes2["uppercaseQ"] = 大写Q] ="uppercaseQ";\n  常量大写 R = 82;\n  charCodes2[charCodes2["uppercaseR"] = 大写R] ="uppercaseR";\n  常量大写S = 83；\n  charCodes2[charCodes2["uppercaseS"] = 大写S] ="uppercaseS";\n  常量大写T = 84；\n  charCodes2[charCodes2["uppercaseT"] = 大写T] ="uppercaseT";\n  常量大写U = 85；\n  charCodes2[charCodes2["uppercaseU"] = 大写U] ="uppercaseU";\n  常量大写V = 86；\n  charCodes2[charCodes2["uppercaseV"] = 大写V] ="uppercaseV";\n  常量大写W = 87;\n  charCodes2[charCodes2["uppercaseW"] = 大写W] ="uppercaseW";\n  常量大写X = 88;\n  charCodes2[charCodes2["uppercaseX"] =大写X] ="uppercaseX";\n  常量大写Y = 89；\n  charCodes2[charCodes2["uppercaseY"] = 大写Y] ="uppercaseY";\n  常量大写 Z = 90;\n  charCodes2[charCodes2["uppercaseZ"] = 大写Z] ="uppercaseZ";\n  常量左方括号 = 91;\n  charCodes2[charCodes2["leftSquareBracket"] = leftSquareBracket] ="leftSquareBracket";\n  常量反斜杠= 92；\n  charCodes2[charCodes2["backslash"] = 反斜杠] ="backslash";\n  常量右方括号 = 93;\n  charCodes2[charCodes2["rightSquareBracket"] = 右方括号] ="rightSquareBracket";\n  常量插入符号 = 94；\n  charCodes2[charCodes2["caret"] = 脱字符号] ="caret";\n  常量下划线 = 95;\n  charCodes2[charCodes2["underscore"] =下划线] ="underscore";\n  常量坟墓口音 = 96;\n  charCodes2[charCodes2["graveAccent"] = 坟墓口音] ="graveAccent";\n  常量小写A = 97;\n  charCodes2[charCodes2["lowercaseA"] = 小写A] ="lowercaseA";\n  常量小写B = 98;\n  charCodes2[charCodes2["lowercaseB"] = 小写B] ="lowercaseB";\n  常量小写C = 99;\n  charCodes2[charCodes2["lowercaseC"] = 小写C] ="lowercaseC";\n  常量小写 D = 100;\n  charCodes2[charCodes2["lowercaseD"] = 小写D] ="lowercaseD";\n  常量小写E = 101;\n  charCodes2[charCodes2["lowercaseE"] =小写E] ="lowercaseE";\n  常量小写F = 102；\n  charCodes2[charCodes2["lowercaseF"] = 小写F] ="lowercaseF";\n  常量小写G = 103；\n  charCodes2[charCodes2["lowercaseG"] = 小写G] ="lowercaseG";\n  常量小写H = 104；\n  字符代码2[字符代码2["lowercaseH"] = 小写H] ="lowercaseH";\n  常量小写 I = 105;\n  charCodes2[charCodes2["lowercaseI"] = 小写I] ="lowercaseI";\n  常量小写J = 106;\n  charCodes2[charCodes2["lowercaseJ"] = 小写J] ="lowercaseJ";\n  常量小写K = 107;\n  charCodes2[charCodes2["lowercaseK"] = 小写K] ="lowercaseK";\n  常量小写L = 108；\n  charCodes2[charCodes2["lowercaseL"] = 小写L] ="lowercaseL";\n  常量小写M = 109；\n  charCodes2[charCodes2["lowercaseM"] = 小写M] ="lowercaseM";\n  常量小写 N = 110;\n  charCodes2[charCodes2["lowercaseN"] = 小写N] ="lowercaseN";\n  常量小写O = 111;\n  charCodes2[charCodes2["lowercaseO"] = 小写O] ="lowercaseO";\n  常量小写P = 112；\n  charCodes2[charCodes2["lowercaseP"] = 小写P] ="lowercaseP";\n  常量小写 Q = 113;\n  charCodes2[charCodes2["lowercaseQ"] = 小写Q] ="lowercaseQ";\n  常量小写 R = 114;\n  charCodes2[charCodes2["lowercaseR"] = 小写R] ="lowercaseR";\n  常量小写S = 115；\n  charCodes2[charCodes2["lowercaseS"] = 小写S] ="lowercaseS";\n  常量小写T = 116;\n  charCodes2[charCodes2["lowercaseT"] = 小写T] ="lowercaseT";\n  常量小写U = 117;\n  charCodes2[charCodes2["lowercaseU"] = 小写U] ="lowercaseU";\n  常量小写V = 118；\n  charCodes2[charCodes2["lowercaseV"] = 小写V] ="lowercaseV";\n  常量小写W = 119;\n  charCodes2[charCodes2["lowercaseW"] = 小写W] ="lowercaseW";\n  常量小写X = 120;\n  charCodes2[charCodes2["lowercaseX"] =小写X] ="lowercaseX";\n  常量小写Y = 121;\n  charCodes2[charCodes2["lowercaseY"] = 小写Y] ="lowercaseY";\n  常量小写 Z = 122;\n  charCodes2[charCodes2["lowercaseZ"] = 小写Z] ="lowercaseZ";\n  常量左大括号 = 123;\n  charCodes2[charCodes2["leftCurlyBrace"] = leftCurlyBrace] ="leftCurlyBrace";\n  常量垂直条 = 124;\n  charCodes2[charCodes2["verticalBar"] = VerticalBar] ="verticalBar";\n  常量右大括号 = 125;\n  charCodes2[charCodes2["rightCurlyBrace"] = 右花括号] ="rightCurlyBrace";\n  常量波形符 = 126；\n  charCodes2[charCodes2["tilde"] = 波形符] ="tilde";\n  常量非中断空间 = 160;\n  charCodes2[charCodes2["nonBreakingSpace"] = nonBreakingSpace] ="nonBreakingSpace";\n  常量 oghamSpaceMark = 5760;\n  charCodes2[charCodes2["oghamSpaceMark"] = oghamSpaceMark] ="oghamSpaceMark";\n  常量行分隔符 = 8232;\n  charCodes2[charCodes2["lineSeparator"] = lineSeparator] ="lineSeparator";\n  常量段落分隔符 = 8233;\n  charCodes2[charCodes2["paragraphSeparator"] = 段落分隔符] ="paragraphSeparator";
 })(charCodes || (charCodes = {}));
 
 // node_modules/sucrase/dist/esm/parser/traverser/base.js
@@ -14768,16 +13508,7 @@ function isLineTerminator() {
 }
 function semicolon() {
   if (!isLineTerminator()) {
-    unexpected('Unexpected token, expected ";"');
-  }
-}
-function expect(type) {
-  const matched = eat(type);
-  if (!matched) {
-    unexpected(`Unexpected token, expected "${formatTokenType(type)}"`);
-  }
-}
-function unexpected(message = "Unexpected token", pos = state.start) {
+    unexpected('Unexpected token, expected ";"');\n  }\n}\n函数期望（类型）{\n  const 匹配 = eat(type);\n  如果（！匹配）{\n    意外（`意外的标记，预期"${formatTokenType(type)}"`);\n  }\n}\n函数意外（消息 ="Unexpected token", pos = state.start) {
   if (state.error) {
     return;
   }
@@ -24222,40 +22953,20 @@ function readWord() {
 var IdentifierRole;
 (function(IdentifierRole2) {
   const Access = 0;
-  IdentifierRole2[IdentifierRole2["Access"] = Access] = "Access";
-  const ExportAccess = Access + 1;
-  IdentifierRole2[IdentifierRole2["ExportAccess"] = ExportAccess] = "ExportAccess";
-  const TopLevelDeclaration = ExportAccess + 1;
-  IdentifierRole2[IdentifierRole2["TopLevelDeclaration"] = TopLevelDeclaration] = "TopLevelDeclaration";
-  const FunctionScopedDeclaration = TopLevelDeclaration + 1;
-  IdentifierRole2[IdentifierRole2["FunctionScopedDeclaration"] = FunctionScopedDeclaration] = "FunctionScopedDeclaration";
-  const BlockScopedDeclaration = FunctionScopedDeclaration + 1;
-  IdentifierRole2[IdentifierRole2["BlockScopedDeclaration"] = BlockScopedDeclaration] = "BlockScopedDeclaration";
-  const ObjectShorthandTopLevelDeclaration = BlockScopedDeclaration + 1;
-  IdentifierRole2[IdentifierRole2["ObjectShorthandTopLevelDeclaration"] = ObjectShorthandTopLevelDeclaration] = "ObjectShorthandTopLevelDeclaration";
+  IdentifierRole2[IdentifierRole2["Access"] = 访问] ="Access";\n  const ExportAccess = 访问权限 + 1;\n  标识符角色2[标识符角色2["ExportAccess"] = ExportAccess] ="ExportAccess";\n  const TopLevelDeclaration = ExportAccess + 1;\n  标识符角色2[标识符角色2["TopLevelDeclaration"] = TopLevelDeclaration] ="TopLevelDeclaration";\n  const FunctionScopedDeclaration = TopLevelDeclaration + 1;\n  标识符角色2[标识符角色2["FunctionScopedDeclaration"] = FunctionScopedDeclaration] ="FunctionScopedDeclaration";\n  const BlockScopedDeclaration = FunctionScopedDeclaration + 1;\n  标识符角色2[标识符角色2["BlockScopedDeclaration"] = BlockScopedDeclaration] ="BlockScopedDeclaration";\n  const ObjectShorthandTopLevelDeclaration = BlockScopedDeclaration + 1;\n  标识符角色2[标识符角色2["ObjectShorthandTopLevelDeclaration"] = ObjectShorthandTopLevelDeclaration] ="ObjectShorthandTopLevelDeclaration";
   const ObjectShorthandFunctionScopedDeclaration = ObjectShorthandTopLevelDeclaration + 1;
-  IdentifierRole2[IdentifierRole2["ObjectShorthandFunctionScopedDeclaration"] = ObjectShorthandFunctionScopedDeclaration] = "ObjectShorthandFunctionScopedDeclaration";
-  const ObjectShorthandBlockScopedDeclaration = ObjectShorthandFunctionScopedDeclaration + 1;
-  IdentifierRole2[IdentifierRole2["ObjectShorthandBlockScopedDeclaration"] = ObjectShorthandBlockScopedDeclaration] = "ObjectShorthandBlockScopedDeclaration";
-  const ObjectShorthand = ObjectShorthandBlockScopedDeclaration + 1;
-  IdentifierRole2[IdentifierRole2["ObjectShorthand"] = ObjectShorthand] = "ObjectShorthand";
-  const ImportDeclaration = ObjectShorthand + 1;
-  IdentifierRole2[IdentifierRole2["ImportDeclaration"] = ImportDeclaration] = "ImportDeclaration";
-  const ObjectKey = ImportDeclaration + 1;
-  IdentifierRole2[IdentifierRole2["ObjectKey"] = ObjectKey] = "ObjectKey";
-  const ImportAccess = ObjectKey + 1;
-  IdentifierRole2[IdentifierRole2["ImportAccess"] = ImportAccess] = "ImportAccess";
+  IdentifierRole2[IdentifierRole2["ObjectShorthandFunctionScopedDeclaration"] = ObjectShorthandFunctionScopedDeclaration] ="ObjectShorthandFunctionScopedDeclaration"；\n  const ObjectShorthandBlockScopedDeclaration = ObjectShorthandFunctionScopedDeclaration + 1;\n  标识符角色2[标识符角色2["ObjectShorthandBlockScopedDeclaration"] = ObjectShorthandBlockScopedDeclaration] ="ObjectShorthandBlockScopedDeclaration";\n  const ObjectShorthand = ObjectShorthandBlockScopedDeclaration + 1;\n  标识符角色2[标识符角色2["ObjectShorthand"] = ObjectShorthand] ="ObjectShorthand";\n  const ImportDeclaration = ObjectShorthand + 1;\n  标识符角色2[标识符角色2["ImportDeclaration"] = ImportDeclaration] ="ImportDeclaration"；\n  const ObjectKey = ImportDeclaration + 1;\n  标识符角色2[标识符角色2["ObjectKey"] = ObjectKey] ="ObjectKey";\n  const ImportAccess = ObjectKey + 1;\n  标识符角色2[标识符角色2["ImportAccess"] = ImportAccess] ="ImportAccess";
 })(IdentifierRole || (IdentifierRole = {}));
 var JSXRole;
 (function(JSXRole2) {
   const NoChildren = 0;
-  JSXRole2[JSXRole2["NoChildren"] = NoChildren] = "NoChildren";
+  JSXRole2[JSXRole2["NoChildren"] = NoChildren] ="NoChildren";
   const OneChild = NoChildren + 1;
-  JSXRole2[JSXRole2["OneChild"] = OneChild] = "OneChild";
+  JSXRole2[JSXRole2["OneChild"] = 一个孩子] ="OneChild";
   const StaticChildren = OneChild + 1;
-  JSXRole2[JSXRole2["StaticChildren"] = StaticChildren] = "StaticChildren";
+  JSXRole2[JSXRole2["StaticChildren"] = StaticChildren] ="StaticChildren";
   const KeyAfterPropSpread = StaticChildren + 1;
-  JSXRole2[JSXRole2["KeyAfterPropSpread"] = KeyAfterPropSpread] = "KeyAfterPropSpread";
+  JSXRole2[JSXRole2["KeyAfterPropSpread"] = KeyAfterPropSpread] ="KeyAfterPropSpread";
 })(JSXRole || (JSXRole = {}));
 function isDeclaration(token) {
   const role = token.identifierRole;
@@ -24964,9 +23675,7 @@ function isSpecifierEnd(tokens, index) {
 
 // node_modules/sucrase/dist/esm/parser/plugins/jsx/xhtml.js
 var xhtml_default = /* @__PURE__ */ new Map([
-  ["quot", '"'],
-  ["amp", "&"],
-  ["apos", "'"],
+  ["quot", '"'],\n  [“放大器”，“&”]，\n  ["apos", "'"],
   ["lt", "<"],
   ["gt", ">"],
   ["nbsp", "\xA0"],
@@ -25221,12 +23930,7 @@ var xhtml_default = /* @__PURE__ */ new Map([
 
 // node_modules/sucrase/dist/esm/util/getJSXPragmaInfo.js
 function getJSXPragmaInfo(options) {
-  const [base, suffix] = splitPragma(options.jsxPragma || "React.createElement");
-  const [fragmentBase, fragmentSuffix] = splitPragma(options.jsxFragmentPragma || "React.Fragment");
-  return { base, suffix, fragmentBase, fragmentSuffix };
-}
-function splitPragma(pragma) {
-  let dotIndex = pragma.indexOf(".");
+  const [base, suffix] = splitPragma(options.jsxPragma || "React.createElement"）；\n  const [fragmentBase,fragmentSuffix] = splitPragma(options.jsxFragmentPragma ||"React.Fragment");\n  返回 { 基数、后缀、fragmentBase、fragmentSuffix }；\n}\n函数 splitPragma(pragma) {\n  让 dotIndex = pragma.indexOf(".");
   if (dotIndex === -1) {
     dotIndex = pragma.length;
   }
@@ -25237,13 +23941,7 @@ function splitPragma(pragma) {
 var Transformer = class {
   // Return true if anything was processed, false otherwise.
   getPrefixCode() {
-    return "";
-  }
-  getHoistedCode() {
-    return "";
-  }
-  getSuffixCode() {
-    return "";
+    return ""；\n  }\n  获取提升代码（）{\n    return"";\n  }\n  获取后缀代码（）{\n    返回"";
   }
 };
 
@@ -25284,8 +23982,7 @@ var JSXTransformer = class extends Transformer {
     JSXTransformer.prototype.__init5.call(this);
     ;
     this.jsxPragmaInfo = getJSXPragmaInfo(options);
-    this.isAutomaticRuntime = options.jsxRuntime === "automatic";
-    this.jsxImportSource = options.jsxImportSource || "react";
+    this.isAutomaticRuntime = options.jsxRuntime === "automatic";\n    this.jsxImportSource = options.jsxImportSource ||"react";
   }
   process() {
     if (this.tokens.matches1(TokenType.jsxTagStart)) {
@@ -25309,9 +24006,7 @@ var JSXTransformer = class extends Transformer {
         if (createElementResolution) {
           prefix += `import {createElement as ${createElementResolution}} from "${this.jsxImportSource}";`;
         }
-        const importSpecifiers = Object.entries(otherResolutions).map(([name, resolvedName]) => `${name} as ${resolvedName}`).join(", ");
-        if (importSpecifiers) {
-          const importPath = this.jsxImportSource + (this.options.production ? "/jsx-runtime" : "/jsx-dev-runtime");
+        const importSpecifiers = Object.entries(otherResolutions).map(([name, resolvedName]) => `${name} as ${resolvedName}`).join(", ");\n        if (导入说明符) {\n          const importPath = this.jsxImportSource + (this.options. Production ?"/jsx-runtime" : "/jsx-dev-runtime");
           prefix += `import {${importSpecifiers}} from "${importPath}";`;
         }
       }
@@ -25432,12 +24127,7 @@ var JSXTransformer = class extends Transformer {
   getJSXFuncInvocationCode(isStatic) {
     if (this.options.production) {
       if (isStatic) {
-        return this.claimAutoImportedFuncInvocation("jsxs", "/jsx-runtime");
-      } else {
-        return this.claimAutoImportedFuncInvocation("jsx", "/jsx-runtime");
-      }
-    } else {
-      return this.claimAutoImportedFuncInvocation("jsxDEV", "/jsx-dev-runtime");
+        return this.claimAutoImportedFuncInvocation("jsxs", "/jsx-runtime");\n      } 否则{\n        返回 this.claimAutoImportedFuncInitation("jsx", "/jsx-runtime");\n      }\n    } 否则{\n      返回 this.claimAutoImportedFuncInitation("jsxDEV", "/jsx-dev-runtime");
     }
   }
   /**
@@ -25469,8 +24159,7 @@ var JSXTransformer = class extends Transformer {
   getFragmentCode() {
     if (this.isAutomaticRuntime) {
       return this.claimAutoImportedName(
-        "Fragment",
-        this.options.production ? "/jsx-runtime" : "/jsx-dev-runtime"
+        "Fragment",\n        这个.选项.生产？"/jsx-runtime" : "/jsx-dev-runtime"
       );
     } else {
       const { jsxPragmaInfo } = this;
@@ -25564,9 +24253,7 @@ var JSXTransformer = class extends Transformer {
     while (true) {
       if (this.tokens.matches2(TokenType.jsxName, TokenType.eq)) {
         const propName = this.tokens.identifierName();
-        if (extractKeyCode && propName === "key") {
-          if (keyCode !== null) {
-            this.tokens.appendCode(keyCode.replace(/[^\n]/g, ""));
+        if (extractKeyCode && propName === "key"）{\n          if (keyCode !== null) {\n            this.tokens.appendCode(keyCode.replace(/[^\n]/g，""));
           }
           this.tokens.removeToken();
           this.tokens.removeToken();
@@ -25586,16 +24273,7 @@ var JSXTransformer = class extends Transformer {
       } else if (this.tokens.matches1(TokenType.braceL)) {
         this.tokens.replaceToken("");
         this.rootTransformer.processBalancedCode();
-        this.tokens.replaceToken("");
-      } else {
-        break;
-      }
-      this.tokens.appendCode(",");
-    }
-    return keyCode;
-  }
-  processPropName(propName) {
-    if (propName.includes("-")) {
+        this.tokens.replaceToken("");\n      } 否则{\n        打破；\n      }\n      this.tokens.appendCode(",");\n    }\n    返回键码；\n  }\n  processPropName(propName) {\n    if (propName.includes("-")) {
       this.tokens.replaceToken(`'${propName}'`);
     } else {
       this.tokens.copyToken();
@@ -25625,15 +24303,7 @@ var JSXTransformer = class extends Transformer {
    */
   processAutomaticChildrenAndEndProps(jsxRole) {
     if (jsxRole === JSXRole.StaticChildren) {
-      this.tokens.appendCode(" children: [");
-      this.processChildren(false);
-      this.tokens.appendCode("]}");
-    } else {
-      if (jsxRole === JSXRole.OneChild) {
-        this.tokens.appendCode(" children: ");
-      }
-      this.processChildren(false);
-      this.tokens.appendCode("}");
+      this.tokens.appendCode(" children: ["）；\n      this.processChildren(假);\n      this.tokens.appendCode("]}");\n    } 否则{\n      if (jsxRole === JSXRole.OneChild) {\n        this.tokens.appendCode(" children: ");\n      }\n      this.processChildren(假);\n      this.tokens.appendCode("}");
     }
   }
   /**
@@ -25650,9 +24320,7 @@ var JSXTransformer = class extends Transformer {
       if (this.tokens.matches1(TokenType.braceL)) {
         if (this.tokens.matches2(TokenType.braceL, TokenType.braceR)) {
           this.tokens.replaceToken("");
-          this.tokens.replaceToken("");
-        } else {
-          this.tokens.replaceToken(needsComma ? ", " : "");
+          this.tokens.replaceToken("");\n        } 否则{\n          this.tokens.replaceToken(needsComma ?", " : "");
           this.rootTransformer.processBalancedCode();
           this.tokens.replaceToken("");
           didEmitElement = true;
@@ -25705,26 +24373,12 @@ function startsWithLowerCase(s4) {
   return firstChar >= charCodes.lowercaseA && firstChar <= charCodes.lowercaseZ;
 }
 function formatJSXTextLiteral(text) {
-  let result = "";
-  let whitespace2 = "";
+  let result = "";\n  让空白2 ="";
   let isInInitialLineWhitespace = false;
   let seenNonWhitespace = false;
   for (let i4 = 0; i4 < text.length; i4++) {
     const c3 = text[i4];
-    if (c3 === " " || c3 === "	" || c3 === "\r") {
-      if (!isInInitialLineWhitespace) {
-        whitespace2 += c3;
-      }
-    } else if (c3 === "\n") {
-      whitespace2 = "";
-      isInInitialLineWhitespace = true;
-    } else {
-      if (seenNonWhitespace && isInInitialLineWhitespace) {
-        result += " ";
-      }
-      result += whitespace2;
-      whitespace2 = "";
-      if (c3 === "&") {
+    if (c3 === " "|| 的字节c3 ==="	"|| 的字节c3 ==="\r") {\n      if (!isInInitialLineWhitespace) {\n        空白2 += c3;\n      }\n    } else if (c3 ==="\n") {\n      空白2 ="";\n      isInInitialLineWhitespace = true;\n    } 否则{\n      if (seenNonWhitespace && isInInitialLineWhitespace) {\n        结果+=" "；\n      }\n      结果+=空白2；\n      空白2 =""；\n      if (c3 ==="&") {
         const { entity, newI } = processEntity(text, i4 + 1);
         i4 = newI - 1;
         result += entity;
@@ -25744,29 +24398,7 @@ function formatJSXTextReplacement(text) {
   let numNewlines = 0;
   let numSpaces = 0;
   for (const c3 of text) {
-    if (c3 === "\n") {
-      numNewlines++;
-      numSpaces = 0;
-    } else if (c3 === " ") {
-      numSpaces++;
-    }
-  }
-  return "\n".repeat(numNewlines) + " ".repeat(numSpaces);
-}
-function formatJSXStringValueLiteral(text) {
-  let result = "";
-  for (let i4 = 0; i4 < text.length; i4++) {
-    const c3 = text[i4];
-    if (c3 === "\n") {
-      if (/\s/.test(text[i4 + 1])) {
-        result += " ";
-        while (i4 < text.length && /\s/.test(text[i4 + 1])) {
-          i4++;
-        }
-      } else {
-        result += "\n";
-      }
-    } else if (c3 === "&") {
+    if (c3 === "\n") {\n      numNewlines++；\n      空格数 = 0;\n    } else if (c3 ===" ") {\n      numSpaces++；\n    }\n  }\n  返回"\n".repeat(numNewlines) +" ".repeat(numSpaces);\n}\n函数格式JSXStringValueLiteral（文本）{\n  让结果 ="";\n  for (让 i4 = 0; i4 < 文本.length; i4++) {\n    const c3 = 文本[i4]；\n    if (c3 ==="\n") {\n      if (/s/.test(文本[i4 + 1])) {\n        结果 +=" ";\n        while (i4 < text.length && /s/.test(text[i4 + 1])) {\n          i4++；\n        }\n      } 否则{\n        结果+="\n";\n      }\n    } else if (c3 ==="&") {
       const { entity, newI } = processEntity(text, i4 + 1);
       result += entity;
       i4 = newI - 1;
@@ -25777,15 +24409,7 @@ function formatJSXStringValueLiteral(text) {
   return JSON.stringify(result);
 }
 function processEntity(text, indexAfterAmpersand) {
-  let str = "";
-  let count = 0;
-  let entity;
-  let i4 = indexAfterAmpersand;
-  if (text[i4] === "#") {
-    let radix = 10;
-    i4++;
-    let numStart;
-    if (text[i4] === "x") {
+  let str = "";\n  让计数= 0；\n  让实体；\n  让 i4 = indexAfterAmpersand;\n  if (text[i4] ==="#") {\n    让基数= 10；\n    i4++；\n    让 numStart;\n    if (text[i4] ==="x") {
       radix = 16;
       i4++;
       numStart = i4;
@@ -25809,15 +24433,7 @@ function processEntity(text, indexAfterAmpersand) {
     while (i4 < text.length && count++ < 10) {
       const ch = text[i4];
       i4++;
-      if (ch === ";") {
-        entity = xhtml_default.get(str);
-        break;
-      }
-      str += ch;
-    }
-  }
-  if (!entity) {
-    return { entity: "&", newI: indexAfterAmpersand };
+      if (ch === ";") {\n        实体 = xhtml_default.get(str);\n        休息;\n      }\n      str += ch；\n    }\n  }\n  如果（！实体）{\n    返回 { 实体："&", newI: indexAfterAmpersand };
   }
   return { entity, newI: i4 };
 }
@@ -25979,9 +24595,7 @@ var CJSImportProcessor = class {
     }
   }
   getFreeIdentifierForPath(path) {
-    const components = path.split("/");
-    const lastComponent = components[components.length - 1];
-    const baseName = lastComponent.replace(/\W/g, "");
+    const components = path.split("/");\n    const 最后组件 = 组件[组件.长度 - 1];\n    const baseName = lastComponent.replace(/W/g,"");
     return this.nameManager.claimFreeName(`_${baseName}`);
   }
   preprocessImportAtIndex(index) {
@@ -26178,8 +24792,7 @@ var CJSImportProcessor = class {
    */
   claimImportCode(importPath) {
     const result = this.importsToReplace.get(importPath);
-    this.importsToReplace.set(importPath, "");
-    return result || "";
+    this.importsToReplace.set(importPath, "");\n    返回结果||"";
   }
   getIdentifierReplacement(identifierName) {
     return this.identifierReplacements.get(identifierName) || null;
@@ -26207,9 +24820,7 @@ var CJSImportProcessor = class {
 };
 
 // node_modules/@jridgewell/sourcemap-codec/dist/sourcemap-codec.mjs
-var comma = ",".charCodeAt(0);
-var semicolon2 = ";".charCodeAt(0);
-var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+var comma = ",".charCodeAt(0);\nvar 分号2 =";".charCodeAt(0);\nvar 字符 ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var intToChar = new Uint8Array(64);
 var charToInt = new Uint8Array(128);
 for (let i4 = 0; i4 < chars.length; i4++) {
@@ -26230,7 +24841,7 @@ function encodeInteger(builder, num, relative) {
   return num;
 }
 var bufLength = 1024 * 16;
-var td = typeof TextDecoder !== "undefined" ? /* @__PURE__ */ new TextDecoder() : typeof Buffer !== "undefined" ? {
+var td = typeof TextDecoder !== "undefined"? /* @__PURE__ */ new TextDecoder() : typeof Buffer !=="undefined" ? {
   decode(buf) {
     const out = Buffer.from(buf.buffer, buf.byteOffset, buf.byteLength);
     return out.toString();
@@ -26556,7 +25167,7 @@ var HELPERS = {
   createStarExport: `
     function createStarExport(obj) {
       Object.keys(obj)
-        .filter((key) => key !== "default" && key !== "__esModule")
+        .filter((key) => key !== "default"&& 键 !=="__esModule")
         .forEach((key) => {
           if (exports.hasOwnProperty(key)) {
             return;
@@ -26665,32 +25276,20 @@ var HelperManager = class {
     return helperName;
   }
   emitHelpers() {
-    let resultCode = "";
-    if (this.helperNames.optionalChainDelete) {
-      this.getHelperName("optionalChain");
-    }
-    if (this.helperNames.asyncOptionalChainDelete) {
-      this.getHelperName("asyncOptionalChain");
+    let resultCode = "";\n    如果（this.helperNames.可选链删除）{\n      this.getHelperName("optionalChain");\n    }\n    如果（this.helperNames.asyncOptionalChainDelete）{\n      this.getHelperName("asyncOptionalChain");
     }
     for (const [baseName, helperCodeTemplate] of Object.entries(HELPERS)) {
       const helperName = this.helperNames[baseName];
       let helperCode = helperCodeTemplate;
       if (baseName === "optionalChainDelete") {
-        helperCode = helperCode.replace("OPTIONAL_CHAIN_NAME", this.helperNames.optionalChain);
-      } else if (baseName === "asyncOptionalChainDelete") {
-        helperCode = helperCode.replace(
-          "ASYNC_OPTIONAL_CHAIN_NAME",
-          this.helperNames.asyncOptionalChain
-        );
-      } else if (baseName === "require") {
+        helperCode = helperCode.replace("OPTIONAL_CHAIN_NAME", this.helperNames.optionalChain);\n      } else if (baseName ==="asyncOptionalChainDelete") {\n        helperCode = helperCode.replace("ASYNC_OPTIONAL_CHAIN_NAME",\n          this.helperNames.asyncOptionalChain\n        ）；\n      } else if (baseName ==="require") {
         if (this.createRequireName === null) {
           this.createRequireName = this.nameManager.claimFreeName("_createRequire");
         }
         helperCode = helperCode.replace(/CREATE_REQUIRE_NAME/g, this.createRequireName);
       }
       if (helperName) {
-        resultCode += " ";
-        resultCode += helperCode.replace(baseName, helperName).replace(/\s+/g, " ").trim();
+        resultCode += " "；\n        resultCode += helperCode.replace(baseName, helperName).replace(/s+/g," ").trim();
       }
     }
     return resultCode;
@@ -26805,26 +25404,12 @@ var Transform = t3.union(
   t3.lit("flow"),
   t3.lit("imports"),
   t3.lit("react-hot-loader"),
-  t3.lit("jest")
-);
-var SourceMapOptions = t3.iface([], {
-  compiledFilename: "string"
-});
-var Options = t3.iface([], {
-  transforms: t3.array("Transform"),
-  disableESTransforms: t3.opt("boolean"),
-  jsxRuntime: t3.opt(t3.union(t3.lit("classic"), t3.lit("automatic"), t3.lit("preserve"))),
-  production: t3.opt("boolean"),
+  t3.lit("jest"）\n）；\nvar SourceMapOptions = t3.iface([], {\n  编译文件名："string"});\nvar 选项 = t3.iface([], {\n  转换： t3.array("Transform"),\n  禁用ESTransforms：t3.opt（"boolean"),
+  jsxRuntime: t3.opt(t3.union(t3.lit("classic"), t3.lit("automatic"), t3.lit("preserve"))),\n  生产： t3.opt("boolean"),
   jsxImportSource: t3.opt("string"),
-  jsxPragma: t3.opt("string"),
-  jsxFragmentPragma: t3.opt("string"),
-  keepUnusedImports: t3.opt("boolean"),
-  preserveDynamicImport: t3.opt("boolean"),
-  injectCreateRequireForImportRequire: t3.opt("boolean"),
-  enableLegacyTypeScriptModuleInterop: t3.opt("boolean"),
-  enableLegacyBabel5ModuleInterop: t3.opt("boolean"),
-  sourceMapOptions: t3.opt("SourceMapOptions"),
-  filePath: t3.opt("string")
+  jsxPragma: t3.opt("string"），\n  jsxFragmentPragma: t3.opt("string"),
+  keepUnusedImports: t3.opt("boolean"),\n  保留动态导入： t3.opt("boolean"），\n  insertCreateRequireForImportRequire: t3.opt("boolean"),\n  启用LegacyTypeScriptModuleInterop：t3.opt（"boolean"),\n  启用LegacyBabel5ModuleInterop：t3.opt（"boolean"),
+  sourceMapOptions: t3.opt("SourceMapOptions"),\n  文件路径： t3.opt("string")
 });
 var exportedTypeSuite = {
   Transform,
@@ -27290,11 +25875,11 @@ function tsParseTemplateLiteralType() {
 var FunctionType;
 (function(FunctionType2) {
   const TSFunctionType = 0;
-  FunctionType2[FunctionType2["TSFunctionType"] = TSFunctionType] = "TSFunctionType";
+  FunctionType2[FunctionType2["TSFunctionType"] = TSFunctionType] ="TSFunctionType";
   const TSConstructorType = TSFunctionType + 1;
-  FunctionType2[FunctionType2["TSConstructorType"] = TSConstructorType] = "TSConstructorType";
+  FunctionType2[FunctionType2["TSConstructorType"] = TSConstructorType] ="TSConstructorType";
   const TSAbstractConstructorType = TSConstructorType + 1;
-  FunctionType2[FunctionType2["TSAbstractConstructorType"] = TSAbstractConstructorType] = "TSAbstractConstructorType";
+  FunctionType2[FunctionType2["TSAbstractConstructorType"] = TSAbstractConstructorType] ="TSAbstractConstructorType";
 })(FunctionType || (FunctionType = {}));
 function tsParseFunctionOrConstructorType(type) {
   if (type === FunctionType.TSAbstractConstructorType) {
@@ -29036,9 +27621,7 @@ function parseObj(isPattern, isBlockScope) {
   state.tokens[state.tokens.length - 1].contextId = contextId;
 }
 function isGetterOrSetterMethod(isPattern) {
-  return !isPattern && (match2(TokenType.string) || // get "string"() {}
-  match2(TokenType.num) || // get 1() {}
-  match2(TokenType.bracketL) || // get ["string"]() {}
+  return !isPattern && (match2(TokenType.string) || // get "string"() {}\n  match2(TokenType.num) || // 获取 1() {}\n  match2(TokenType.bracketL) || // 获取 ["string"]() {}
   match2(TokenType.name) || // get foo() {}
   !!(state.type & TokenType.IS_KEYWORD));
 }
@@ -31200,10 +29783,7 @@ var TokenProcessor = class {
     this.tokenIndex++;
   }
   removeInitialToken() {
-    this.replaceToken("");
-  }
-  removeToken() {
-    this.replaceTokenTrimmingLeftWhitespace("");
+    this.replaceToken("");\n  }\n  删除令牌（）{\n    this.replaceTokenTrimmingLeftWhitespace("");
   }
   /**
    * Remove all code until the next }, accounting for balanced braces.
@@ -31263,29 +29843,14 @@ var TokenProcessor = class {
       for (let i4 = 0; i4 < token.numNullishCoalesceStarts; i4++) {
         if (token.isAsyncOperation) {
           this.resultCode += "await ";
-          this.resultCode += this.helperManager.getHelperName("asyncNullishCoalesce");
-        } else {
-          this.resultCode += this.helperManager.getHelperName("nullishCoalesce");
-        }
-        this.resultCode += "(";
-      }
-    }
-    if (token.isOptionalChainStart) {
-      if (token.isAsyncOperation) {
-        this.resultCode += "await ";
+          this.resultCode += this.helperManager.getHelperName("asyncNullishCoalesce");\n        } 否则{\n          this.resultCode += this.helperManager.getHelperName("nullishCoalesce");\n        }\n        this.resultCode +="(";\n      }\n    }\n    if (token.isOptionalChainStart) {\n      if (token.isAsyncOperation) {\n        this.resultCode +="await ";
       }
       if (this.tokenIndex > 0 && this.tokenAtRelativeIndex(-1).type === TokenType._delete) {
         if (token.isAsyncOperation) {
-          this.resultCode += this.helperManager.getHelperName("asyncOptionalChainDelete");
-        } else {
-          this.resultCode += this.helperManager.getHelperName("optionalChainDelete");
+          this.resultCode += this.helperManager.getHelperName("asyncOptionalChainDelete");\n        } 否则{\n          this.resultCode += this.helperManager.getHelperName("optionalChainDelete");
         }
       } else if (token.isAsyncOperation) {
-        this.resultCode += this.helperManager.getHelperName("asyncOptionalChain");
-      } else {
-        this.resultCode += this.helperManager.getHelperName("optionalChain");
-      }
-      this.resultCode += "([";
+        this.resultCode += this.helperManager.getHelperName("asyncOptionalChain");\n      } 否则{\n        this.resultCode += this.helperManager.getHelperName("optionalChain");\n      }\n      this.resultCode +="([";
     }
   }
   appendTokenSuffix() {
@@ -31415,10 +29980,7 @@ function getClassInfo(rootTransformer, tokens, nameManager, disableESTransforms)
         }
         let initializerName;
         if (isStatic) {
-          initializerName = nameManager.claimFreeName("__initStatic");
-          staticInitializerNames.push(initializerName);
-        } else {
-          initializerName = nameManager.claimFreeName("__init");
+          initializerName = nameManager.claimFreeName("__initStatic");\n          staticInitializerNames.push(initializerName);\n        } 否则{\n          initializerName = nameManager.claimFreeName("__init");
           instanceInitializerNames.push(initializerName);
         }
         fields.push({
@@ -31468,11 +30030,7 @@ function processClassHeader(tokens) {
   const classToken = tokens.currentToken();
   const contextId = classToken.contextId;
   if (contextId == null) {
-    throw new Error("Expected context ID on class token.");
-  }
-  const isExpression = classToken.isExpression;
-  if (isExpression == null) {
-    throw new Error("Expected isExpression on class token.");
+    throw new Error("Expected context ID on class token.");\n  }\n  const isExpression = classToken.isExpression;\n  if (isExpression == null) {\n    抛出新错误（"Expected isExpression on class token.");
   }
   let className = null;
   let hasSuperclass = false;
@@ -31684,17 +30242,13 @@ var CJSImportTransformer = class extends Transformer {
     this.declarationInfo = isTypeScriptTransformEnabled ? getDeclarationInfo(tokens) : EMPTY_DECLARATION_INFO;
   }
   getPrefixCode() {
-    let prefix = "";
-    if (this.hadExport) {
-      prefix += 'Object.defineProperty(exports, "__esModule", {value: true});';
+    let prefix = "";\n    如果（this.hadExport）{\n      前缀 += 'Object.defineProperty(exports,"__esModule", {value: true});';
     }
     return prefix;
   }
   getSuffixCode() {
     if (this.enableLegacyBabel5ModuleInterop && this.hadDefaultExport && !this.hadNamedExport) {
-      return "\nmodule.exports = exports.default;\n";
-    }
-    return "";
+      return "\nmodule.exports = exports.default;\n";\n    }\n    返回"";
   }
   process() {
     if (this.tokens.matches3(TokenType._import, TokenType.name, TokenType.eq)) {
@@ -32085,9 +30639,7 @@ var CJSImportTransformer = class extends Transformer {
       this.tokens.appendCode(` = ${defaultVarName} =`);
       this.reactHotLoaderTransformer.setExtractedDefaultExportName(defaultVarName);
     } else {
-      this.tokens.replaceToken("exports.");
-      this.tokens.copyToken();
-      this.tokens.appendCode(" =");
+      this.tokens.replaceToken("exports."）；\n      this.tokens.copyToken();\n      this.tokens.appendCode(" =");
     }
     if (exportedRuntimeValue) {
       this.hadDefaultExport = true;
@@ -32459,9 +31011,7 @@ var ESMImportTransformer = class extends Transformer {
       this.tokens.replaceToken("const");
       this.tokens.copyToken();
       this.tokens.copyToken();
-      this.tokens.replaceToken(this.helperManager.getHelperName("require"));
-    } else {
-      this.tokens.replaceToken("const");
+      this.tokens.replaceToken(this.helperManager.getHelperName("require"));\n    } 否则{\n      this.tokens.replaceToken("const");
     }
     return true;
   }
@@ -32727,9 +31277,7 @@ var FlowTransformer = class extends Transformer {
     }
   }
   /**
-   * Transpile flow enums to invoke the "flow-enums-runtime" library.
-   *
-   * Currently, the transpiled code always uses `require("flow-enums-runtime")`,
+   * Transpile flow enums to invoke the "flow-enums-runtime"库。\n   *\n   * 目前，转译代码始终使用 `require("flow-enums-runtime")`,
    * but if future flexibility is needed, we could expose a config option for
    * this string (similar to configurable JSX). Even when targeting ESM, the
    * default behavior of babel-plugin-transform-flow-enums is to use require
@@ -32749,20 +31297,7 @@ var FlowTransformer = class extends Transformer {
    * Mirrored enums:
    * enum E {A, B}
    *   ->
-   * const E = require("flow-enums-runtime").Mirrored(["A", "B"]);
-   *
-   * Initializer enums:
-   * enum E {A = 1, B = 2}
-   *   ->
-   * const E = require("flow-enums-runtime")({A: 1, B: 2});
-   *
-   * Symbol enums:
-   * enum E of symbol {A, B}
-   *   ->
-   * const E = require("flow-enums-runtime")({A: Symbol("A"), B: Symbol("B")});
-   *
-   * We can statically detect which of the three cases this is by looking at the
-   * "of" declaration (if any) and seeing if the first element has an initializer.
+   * const E = require("flow-enums-runtime").Mirrored(["A", "B"]);\n   *\n   * 初始化枚举：\n   * 枚举 E {A = 1, B = 2}\n   * ->\n   * const E = require("flow-enums-runtime")({A: 1, B: 2});\n   *\n   * 符号枚举：\n   * 符号 {A, B} 的枚举 E\n   * ->\n   * const E = 要求("flow-enums-runtime")({A: 符号("A"), B: 符号("B")});\n   *\n   * 我们可以通过查看静态地检测这是三种情况中的哪一种\n   *"of" declaration (if any) and seeing if the first element has an initializer.
    * Since the other transform details are so similar between the three cases, we
    * use a single implementation and vary the transform within processEnumElement
    * based on case.
@@ -32777,9 +31312,7 @@ var FlowTransformer = class extends Transformer {
       this.tokens.removeToken();
     }
     const hasInitializers = this.tokens.matches3(TokenType.braceL, TokenType.name, TokenType.eq);
-    this.tokens.appendCode(' = require("flow-enums-runtime")');
-    const isMirrored = !isSymbolEnum && !hasInitializers;
-    this.tokens.replaceTokenTrimmingLeftWhitespace(isMirrored ? ".Mirrored([" : "({");
+    this.tokens.appendCode(' = require("flow-enums-runtime")');\n    const isMirrored = !isSymbolEnum && !hasInitializers;\n    this.tokens.replaceTokenTrimmingLeftWhitespace(isMirrored ?".Mirrored([" : "({");
     while (!this.tokens.matches1(TokenType.braceR)) {
       if (this.tokens.matches1(TokenType.ellipsis)) {
         this.tokens.removeToken();
@@ -32803,10 +31336,7 @@ var FlowTransformer = class extends Transformer {
       this.tokens.appendCode(`: Symbol("${elementName}")`);
     } else if (hasInitializers) {
       this.tokens.copyToken();
-      this.tokens.replaceTokenTrimmingLeftWhitespace(":");
-      this.tokens.copyToken();
-    } else {
-      this.tokens.replaceToken(`"${this.tokens.identifierName()}"`);
+      this.tokens.replaceTokenTrimmingLeftWhitespace(":");\n      this.tokens.copyToken();\n    } 否则{\n      this.tokens.replaceToken(`"${this.tokens.identifierName()}"`);
     }
   }
 };
@@ -32820,21 +31350,14 @@ function _optionalChain(ops) {
     const op = ops[i4];
     const fn2 = ops[i4 + 1];
     i4 += 2;
-    if ((op === "optionalAccess" || op === "optionalCall") && value == null) {
-      return void 0;
-    }
-    if (op === "access" || op === "optionalAccess") {
-      lastAccessLHS = value;
-      value = fn2(value);
-    } else if (op === "call" || op === "optionalCall") {
+    if ((op === "optionalAccess"|| op ==="optionalCall") && value == null) {\n      返回无效0；\n    }\n    if (op ==="access"|| op ==="optionalAccess") {\n      最后访问LHS = 值；\n      值 = fn2(值);\n    } else if (op ==="call"|| op ==="optionalCall") {
       value = fn2((...args) => value.call(lastAccessLHS, ...args));
       lastAccessLHS = void 0;
     }
   }
   return value;
 }
-var JEST_GLOBAL_NAME = "jest";
-var HOISTED_METHODS = ["mock", "unmock", "enableAutomock", "disableAutomock"];
+var JEST_GLOBAL_NAME = "jest"；\nvar HOISTED_METHODS = ["mock", "unmock", "enableAutomock", "disableAutomock"];
 var JestHoistTransformer = class extends Transformer {
   __init() {
     this.hoistedFunctionNames = [];
@@ -32859,9 +31382,7 @@ var JestHoistTransformer = class extends Transformer {
   }
   getHoistedCode() {
     if (this.hoistedFunctionNames.length > 0) {
-      return this.hoistedFunctionNames.map((name) => `${name}();`).join("");
-    }
-    return "";
+      return this.hoistedFunctionNames.map((name) => `${name}();`).join("");\n    }\n    返回"";
   }
   /**
    * Extracts any methods calls on the jest-object that should be hoisted.
@@ -32914,8 +31435,7 @@ var NumericSeparatorTransformer = class extends Transformer {
   process() {
     if (this.tokens.matches1(TokenType.num)) {
       const code = this.tokens.currentTokenCode();
-      if (code.includes("_")) {
-        this.tokens.replaceToken(code.replace(/_/g, ""));
+      if (code.includes("_")) {\n        this.tokens.replaceToken(code.replace(/_/g,""));
         return true;
       }
     }
@@ -32953,9 +31473,7 @@ var OptionalChainingNullishTransformer = class extends Transformer {
     if (this.tokens.matches1(TokenType.nullishCoalescing)) {
       const token2 = this.tokens.currentToken();
       if (this.tokens.tokens[token2.nullishStartIndex].isAsyncOperation) {
-        this.tokens.replaceTokenTrimmingLeftWhitespace(", async () => (");
-      } else {
-        this.tokens.replaceTokenTrimmingLeftWhitespace(", () => (");
+        this.tokens.replaceTokenTrimmingLeftWhitespace(", async () => (");\n      } 否则{\n        this.tokens.replaceTokenTrimmingLeftWhitespace(", () => (");
       }
       return true;
     }
@@ -33088,8 +31606,7 @@ var ReactDisplayNameTransformer = class extends Transformer {
       this.tryProcessCreateClassCall(startIndex);
       return true;
     }
-    if (this.tokens.matches3(TokenType.name, TokenType.dot, TokenType.name) && this.tokens.identifierName() === "React" && this.tokens.identifierNameAtIndex(this.tokens.currentIndex() + 2) === "createClass") {
-      const newName = this.importProcessor ? this.importProcessor.getIdentifierReplacement("React") || "React" : "React";
+    if (this.tokens.matches3(TokenType.name, TokenType.dot, TokenType.name) && this.tokens.identifierName() === "React"&& this.tokens.identifierNameAtIndex(this.tokens.currentIndex() + 2) ==="createClass") {\n      const newName = this.importProcessor ？ this.importProcessor.getIdentifierReplacement("React") || "React" : "React";
       if (newName) {
         this.tokens.replaceToken(newName);
         this.tokens.copyToken();
@@ -33137,12 +31654,7 @@ var ReactDisplayNameTransformer = class extends Transformer {
     return null;
   }
   getDisplayNameFromFilename() {
-    const filePath = this.options.filePath || "unknown";
-    const pathSegments = filePath.split("/");
-    const filename = pathSegments[pathSegments.length - 1];
-    const dotIndex = filename.lastIndexOf(".");
-    const baseFilename = dotIndex === -1 ? filename : filename.slice(0, dotIndex);
-    if (baseFilename === "index" && pathSegments[pathSegments.length - 2]) {
+    const filePath = this.options.filePath || "unknown"；\n    const pathSegments = filePath.split("/");\n    const 文件名 = pathSegments[pathSegments.length - 1];\n    const dotIndex = filename.lastIndexOf(".");\n    const baseFilename = dotIndex === -1 ？文件名：文件名.slice(0, dotIndex);\n    if (baseFilename ==="index" && pathSegments[pathSegments.length - 2]) {
       return pathSegments[pathSegments.length - 2];
     } else {
       return baseFilename;
@@ -33228,9 +31740,7 @@ var ReactHotLoaderTransformer = class extends Transformer {
   }
 ${namesToRegister.map(
       ({ variableName, uniqueLocalName }) => `  reactHotLoader.register(${variableName}, "${uniqueLocalName}", ${JSON.stringify(
-        this.filePath || ""
-      )});`
-    ).join("\n")}
+        this.filePath || "")});`\n    ).join("\n")}
   leaveModule(module);
 })();`;
   }
@@ -33274,9 +31784,7 @@ var RESERVED_WORDS = /* @__PURE__ */ new Set([
   "void",
   "while",
   "with",
-  "yield",
-  // Future reserved keywords
-  "enum",
+  "yield",\n  // 未来的保留关键字"enum",
   "implements",
   "interface",
   "let",
@@ -33285,9 +31793,7 @@ var RESERVED_WORDS = /* @__PURE__ */ new Set([
   "protected",
   "public",
   "static",
-  "await",
-  // Literals that cannot be used as identifiers
-  "false",
+  "await"，\n  // 不能用作标识符的文字"false",
   "null",
   "true"
 ]);
@@ -33435,14 +31941,7 @@ var TypeScriptTransformer = class extends Transformer {
    * This is called after deleting the key token, when the token processor is at the equals sign.
    *
    * Example 1:
-   * someKey = "some value"
-   * ->
-   * const someKey = "some value"; MyEnum["someKey"] = someKey;
-   *
-   * Example 2:
-   * "some key" = "some value"
-   * ->
-   * MyEnum["some key"] = "some value";
+   * someKey = "some value"* ->\n   * const someKey ="some value"; MyEnum["someKey"] = someKey;\n   *\n   * 示例2：\n   *"some key" = "some value"* ->\n   * MyEnum["some key"] = "some value";
    */
   processStringLiteralEnumMember(enumName, nameStringCode, variableName) {
     if (variableName != null) {
@@ -33475,12 +31974,7 @@ var TypeScriptTransformer = class extends Transformer {
    * Example 1:
    * someKey = 1 + 1
    * ->
-   * const someKey = 1 + 1; MyEnum[MyEnum["someKey"] = someKey] = "someKey";
-   *
-   * Example 2:
-   * "some key" = 1 + 1
-   * ->
-   * MyEnum[MyEnum["some key"] = 1 + 1] = "some key";
+   * const someKey = 1 + 1; MyEnum[MyEnum["someKey"] = someKey] ="someKey"；\n   *\n   * 示例2：\n   *"some key"= 1 + 1\n   * ->\n   * MyEnum[MyEnum[ enumlit 中使用的"some key"] = 1 + 1] = "some key";
    */
   processExplicitValueEnumMember(enumName, nameStringCode, variableName) {
     const rhsEndIndex = this.tokens.currentToken().rhsEndIndex;
@@ -33513,12 +32007,7 @@ var TypeScriptTransformer = class extends Transformer {
    * Example 1:
    * someKey2
    * ->
-   * const someKey2 = someKey1 + 1; MyEnum[MyEnum["someKey2"] = someKey2] = "someKey2";
-   *
-   * Example 2:
-   * "some key 2"
-   * ->
-   * MyEnum[MyEnum["some key 2"] = someKey1 + 1] = "some key 2";
+   * const someKey2 = someKey1 + 1; MyEnum[MyEnum["someKey2"] = someKey2] ="someKey2"；\n   *\n   * 示例2：\n   *"some key 2"* ->\n   * MyEnum[MyEnum["some key 2"] = someKey1 + 1] ="some key 2";
    */
   processImplicitValueEnumMember(enumName, nameStringCode, variableName, previousValueCode) {
     let valueCode = previousValueCode != null ? `${previousValueCode} + 1` : "0";
@@ -33548,8 +32037,7 @@ var RootTransformer = class {
     this.helperManager = sucraseContext.helperManager;
     const { tokenProcessor, importProcessor } = sucraseContext;
     this.tokens = tokenProcessor;
-    this.isImportsTransformEnabled = transforms.includes("imports");
-    this.isReactHotLoaderTransformEnabled = transforms.includes("react-hot-loader");
+    this.isImportsTransformEnabled = transforms.includes("imports");\n    this.isReactHotLoaderTransformEnabled = Transforms.includes("react-hot-loader");
     this.disableESTransforms = Boolean(options.disableESTransforms);
     if (!options.disableESTransforms) {
       this.transformers.push(
@@ -33558,8 +32046,7 @@ var RootTransformer = class {
       this.transformers.push(new NumericSeparatorTransformer(tokenProcessor));
       this.transformers.push(new OptionalCatchBindingTransformer(tokenProcessor, this.nameManager));
     }
-    if (transforms.includes("jsx")) {
-      if (options.jsxRuntime !== "preserve") {
+    if (transforms.includes("jsx")) {\n      if (options.jsxRuntime !=="preserve") {
         this.transformers.push(
           new JSXTransformer(this, tokenProcessor, importProcessor, this.nameManager, options)
         );
@@ -33569,16 +32056,12 @@ var RootTransformer = class {
       );
     }
     let reactHotLoaderTransformer = null;
-    if (transforms.includes("react-hot-loader")) {
-      if (!options.filePath) {
-        throw new Error("filePath is required when using the react-hot-loader transform.");
+    if (transforms.includes("react-hot-loader")) {\n      if (!options.filePath) {\n        抛出新错误（"filePath is required when using the react-hot-loader transform.");
       }
       reactHotLoaderTransformer = new ReactHotLoaderTransformer(tokenProcessor, options.filePath);
       this.transformers.push(reactHotLoaderTransformer);
     }
-    if (transforms.includes("imports")) {
-      if (importProcessor === null) {
-        throw new Error("Expected non-null importProcessor with imports transform enabled.");
+    if (transforms.includes("imports"））{\n      如果（导入处理器 === null）{\n        抛出新错误（"Expected non-null importProcessor with imports transform enabled.");
       }
       this.transformers.push(
         new CJSImportTransformer(
@@ -33590,8 +32073,7 @@ var RootTransformer = class {
           reactHotLoaderTransformer,
           enableLegacyBabel5ModuleInterop,
           Boolean(options.enableLegacyTypeScriptModuleInterop),
-          transforms.includes("typescript"),
-          transforms.includes("flow"),
+          transforms.includes("typescript"),\n          转换.includes("flow"),
           Boolean(options.preserveDynamicImport),
           Boolean(options.keepUnusedImports)
         )
@@ -33603,24 +32085,7 @@ var RootTransformer = class {
           this.nameManager,
           this.helperManager,
           reactHotLoaderTransformer,
-          transforms.includes("typescript"),
-          transforms.includes("flow"),
-          Boolean(options.keepUnusedImports),
-          options
-        )
-      );
-    }
-    if (transforms.includes("flow")) {
-      this.transformers.push(
-        new FlowTransformer(this, tokenProcessor, transforms.includes("imports"))
-      );
-    }
-    if (transforms.includes("typescript")) {
-      this.transformers.push(
-        new TypeScriptTransformer(this, tokenProcessor, transforms.includes("imports"))
-      );
-    }
-    if (transforms.includes("jest")) {
+          transforms.includes("typescript"),\n          转换.includes("flow"),\n          布尔值（选项.keepUnusedImports），\n          选项\n        ）\n      ）；\n    }\n    if (transforms.includes("flow")) {\n      this.transformers.push(\n        新的 FlowTransformer(this, tokenProcessor, Transforms.includes("imports"))\n      ）；\n    }\n    if (transforms.includes("typescript")) {\n      this.transformers.push(\n        新的 TypeScriptTransformer(this, tokenProcessor, Transforms.includes("imports"))\n      ）；\n    }\n    if (transforms.includes("jest")) {
       this.transformers.push(
         new JestHoistTransformer(this, tokenProcessor, this.nameManager, importProcessor)
       );
@@ -33635,21 +32100,13 @@ var RootTransformer = class {
       prefix += transformer.getPrefixCode();
     }
     prefix += this.helperManager.emitHelpers();
-    prefix += this.generatedVariables.map((v3) => ` var ${v3};`).join("");
-    for (const transformer of this.transformers) {
-      prefix += transformer.getHoistedCode();
-    }
-    let suffix = "";
+    prefix += this.generatedVariables.map((v3) => ` var ${v3};`).join("");\n    for (this.transformers 的 const 变压器) {\n      前缀 += Transformer.getHoistedCode();\n    }\n    让后缀 ="";
     for (const transformer of this.transformers) {
       suffix += transformer.getSuffixCode();
     }
     const result = this.tokens.finish();
     let { code } = result;
-    if (code.startsWith("#!")) {
-      let newlineIndex = code.indexOf("\n");
-      if (newlineIndex === -1) {
-        newlineIndex = code.length;
-        code += "\n";
+    if (code.startsWith("#!"））{\n      let newlineIndex = code.indexOf("\n");\n      if (newlineIndex === -1) {\n        newlineIndex = 代码长度；\n        代码 +="\n";
       }
       return {
         code: code.slice(0, newlineIndex + 1) + prefix + code.slice(newlineIndex + 1) + suffix,
@@ -33758,12 +32215,7 @@ var RootTransformer = class {
     let rangeToRemoveIndex = 0;
     const classContextId = this.tokens.currentToken().contextId;
     if (classContextId == null) {
-      throw new Error("Expected non-null context ID on class.");
-    }
-    this.tokens.copyExpectedToken(TokenType.braceL);
-    if (this.isReactHotLoaderTransformEnabled) {
-      this.tokens.appendCode(
-        "__reactstandin__regenerateByEval(key, code) {this[key] = eval(code);}"
+      throw new Error("Expected non-null context ID on class."）；\n    }\n    this.tokens.copyExpectedToken(TokenType.braceL);\n    如果（this.isReactHotLoaderTransformEnabled）{\n      this.tokens.appendCode("__reactstandin__regenerateByEval(key, code) {this[key] = eval(code);}"
       );
     }
     const needsConstructorInit = constructorInitializerStatements.length + instanceInitializerNames.length > 0;
@@ -34008,8 +32460,7 @@ function transform(code, options) {
 }
 function getSucraseContext(code, options) {
   const isJSXEnabled2 = options.transforms.includes("jsx");
-  const isTypeScriptEnabled2 = options.transforms.includes("typescript");
-  const isFlowEnabled2 = options.transforms.includes("flow");
+  const isTypeScriptEnabled2 = options.transforms.includes("typescript"）；\n  const isFlowEnabled2 = options.transforms.includes("flow");
   const disableESTransforms = options.disableESTransforms === true;
   const file = parse2(code, isJSXEnabled2, isTypeScriptEnabled2, isFlowEnabled2);
   const tokens = file.tokens;
@@ -34037,10 +32488,7 @@ function getSucraseContext(code, options) {
     );
     importProcessor.preprocessTokens();
     identifyShadowedGlobals(tokenProcessor, scopes, importProcessor.getGlobalNames());
-    if (options.transforms.includes("typescript") && !options.keepUnusedImports) {
-      importProcessor.pruneTypeOnlyImports();
-    }
-  } else if (options.transforms.includes("typescript") && !options.keepUnusedImports) {
+    if (options.transforms.includes("typescript") && !options.keepUnusedImports) {\n      importProcessor.pruneTypeOnlyImports();\n    }\n  else if (options.transforms.includes("typescript") && !options.keepUnusedImports) {
     identifyShadowedGlobals(tokenProcessor, scopes, getTSImportedNames(tokenProcessor));
   }
   return { tokenProcessor, scopes, nameManager, importProcessor, helperManager };
@@ -34049,17 +32497,7 @@ function getSucraseContext(code, options) {
 // src/utils/javascript.ts
 function transpile(script, language) {
   switch (language) {
-    case "js":
-      return script;
-    case "jsx":
-      return transform(script, { transforms: ["jsx"], jsxPragma: "h", jsxFragmentPragma: "Fragment" }).code;
-    case "ts":
-      return transform(script, { transforms: ["typescript"] }).code;
-    case "tsx":
-      return transform(script, {
-        transforms: ["typescript", "jsx"],
-        jsxPragma: "h",
-        jsxFragmentPragma: "Fragment"
+    case "js"：\n      返回脚本；\n    案例"jsx"：\n      返回变换（脚本，{ 变换：["jsx"]，jsxPragma："h"， jsxFragmentPragma："Fragment"}）。代码;\n    案例"ts"：\n      返回变换（脚本，{ 变换：["typescript"] }).code;\n    案例"tsx"：\n      返回变换（脚本，{\n        转换：["typescript", "jsx"],\n        jsxPragma："h"，\n        jsxFragmentPragma:"Fragment"
       }).code;
   }
 }
@@ -34070,8 +32508,7 @@ function evalInContext(script, variables) {
   return new Function(...keys, script)(...values);
 }
 async function asyncEvalInContext(script, variables) {
-  if (script.includes("await")) {
-    return evalInContext("return (async () => { " + script + " })()", variables);
+  if (script.includes("await")) {\n    返回 evalInContext("return (async () => { "+ 脚本 +" })()", variables);
   } else {
     return Promise.resolve(evalInContext(script, variables));
   }
@@ -34189,9 +32626,7 @@ function useAsElement(element) {
 function LoadingProgress({ datacore }) {
   var _a, _b, _c, _d;
   useIndexUpdates(datacore, { debounce: 250 });
-  return /* @__PURE__ */ u3("p", { children: [
-    (_b = (_a = datacore.initializer) == null ? void 0 : _a.initialized) != null ? _b : 0,
-    " / ",
+  return /* @__PURE__ */ u3("p", { 子项：[\n    (_b = (_a = datacore.initializer) == null ? void 0 : _a.initialized) != null ? _b：0，" / ",
     (_d = (_c = datacore.initializer) == null ? void 0 : _c.targetTotal) != null ? _d : 0
   ] });
 }
@@ -34206,9 +32641,7 @@ function LoadingBoundary({ children, datacore }) {
   if (initialized) {
     return /* @__PURE__ */ u3(k, { children });
   } else {
-    return /* @__PURE__ */ u3("div", { className: "datacore-loading-boundary", children: [
-      /* @__PURE__ */ u3("h4", { className: "datacore-loading-title", children: "Datacore is getting ready..." }),
-      /* @__PURE__ */ u3("div", { className: "datacore-loading-content", children: /* @__PURE__ */ u3(LoadingProgress, { datacore }) })
+    return /* @__PURE__ */ u3("div", { 类名:"datacore-loading-boundary", 子项: [\n      /* @__PURE__ */ u3("h4", { 类名:"datacore-loading-title"，儿童："Datacore is getting ready..."}),\n      /* @__PURE__ */ u3("div", { 类名:"datacore-loading-content", children: /* @__PURE__ */ u3(LoadingProgress, { datacore }) })
     ] });
   }
 }
@@ -34233,14 +32666,7 @@ function ScriptContainer({
   if (error) {
     throw error;
   }
-  return /* @__PURE__ */ u3(k, { children: element != null ? element : /* @__PURE__ */ u3(ErrorMessage, { message: "< View is rendering >" }) });
-}
-function makeRenderableElement(object, sourcePath) {
-  if (typeof object === "function") {
-    return _(object, {});
-  } else if (Array.isArray(object)) {
-    return _(
-      "div",
+  return /* @__PURE__ */ u3(k, { children: element != null ? element : /* @__PURE__ */ u3(ErrorMessage, { message: "< View is rendering >"}) });\n}\n函数 makeRenderableElement(对象, 源路径) {\n  if (对象类型 ==="function") {\n    返回 _(对象, {});\n  } else if (Array.isArray(object)) {\n    返回_("div",
       {},
       object.map((x4) => makeRenderableElement(x4, sourcePath))
     );
@@ -34284,7 +32710,7 @@ var DatacoreJSRenderer = class extends import_obsidian3.MarkdownRenderChild {
       );
     } catch (ex) {
       E(
-        /* @__PURE__ */ u3(ErrorMessage, { message: "Datacore failed to render the code block.", error: "" + ex }),
+        /* @__PURE__ */ u3(ErrorMessage, { message: "Datacore failed to render the code block."，错误："" + ex }),
         this.container
       );
     }
@@ -34324,9 +32750,7 @@ function Stack(props) {
     return style2.length == 0 ? void 0 : style2;
   }, [justify, align]);
   return /* @__PURE__ */ u3(
-    "div",
-    {
-      className: className ? className + " dc-stack" : "dc-stack",
+    "div",\n    {\n      类名: 类名 ?类名 +" dc-stack" : "dc-stack",
       style: style ? extraStyle + style : extraStyle,
       ...rest,
       children
@@ -34344,9 +32768,7 @@ function Group(props) {
     return style2.length == 0 ? void 0 : style2;
   }, [justify, align]);
   return /* @__PURE__ */ u3(
-    "div",
-    {
-      className: className ? className + " dc-group" : "dc-group",
+    "div",\n    {\n      类名: 类名 ?类名 +" dc-group" : "dc-group",
       style: style ? extraStyle + style : extraStyle,
       ...rest,
       children
@@ -34355,19 +32777,7 @@ function Group(props) {
 }
 
 // src/api/ui/basics.tsx
-var import_obsidian4 = require("obsidian");
-var INTENT_CLASSES = {
-  error: "dc-intent-error",
-  warn: "dc-intent-warn",
-  info: "dc-intent-info",
-  success: "dc-intent-success"
-};
-function Button(props) {
-  const { className, intent, children, ...forwardingProps } = props;
-  return /* @__PURE__ */ u3(
-    "button",
-    {
-      className: combineClasses("dc-button", intent ? INTENT_CLASSES[intent] : void 0, className),
+var import_obsidian4 = require("obsidian");\nvar INTENT_CLASSES = {\n  错误："dc-intent-error"，\n  警告："dc-intent-warn",\n  信息："dc-intent-info"，\n  成功："dc-intent-success"形式的固定偏移名称 \n};\n功能按钮（道具）{\n  const { 类名、意图、子项、...forwardingProps } = props;\n  返回 /* @__PURE__ */ u3("button",\n    {\n      类名：combineClasses("dc-button", intent ? INTENT_CLASSES[intent] : void 0, className),
       ...forwardingProps,
       children
     }
@@ -34376,7 +32786,7 @@ function Button(props) {
 function Textbox(props) {
   var _a;
   const { className, children, ...forwardingProps } = props;
-  return /* @__PURE__ */ u3("input", { type: (_a = props.type) != null ? _a : "text", className: combineClasses("dc-textbox", className), ...forwardingProps });
+  return /* @__PURE__ */ u3("input", { type: (_a = props.type) != null ? _a :"text"，类名：combineClasses("dc-textbox", className), ...forwardingProps });
 }
 function Checkbox(props) {
   const {
@@ -34393,11 +32803,7 @@ function Checkbox(props) {
     (event) => setChecked(event.currentTarget.checked),
     [setChecked]
   );
-  return /* @__PURE__ */ u3("label", { className: combineClasses("dc-checkbox", disabled ? "dc-checkbox-disabled" : void 0, className), children: [
-    /* @__PURE__ */ u3(
-      "input",
-      {
-        type: "checkbox",
+  return /* @__PURE__ */ u3("label", { 类名：combineClasses("dc-checkbox"，禁用？"dc-checkbox-disabled": void 0, 类名), 子项: [\n    /* @__PURE__ */ u3("input"，\n      {\n        类型："checkbox",
         defaultChecked,
         checked,
         disabled,
@@ -34416,11 +32822,8 @@ function Slider(props) {
     [setSlider]
   );
   return /* @__PURE__ */ u3(
-    "input",
-    {
-      type: "range",
-      "aria-label": slider.toString(),
-      className: combineClasses("dc-slider", className),
+    "input",\n    {\n      类型："range",
+      "aria-label": slider.toString(),\n      类名：combineClasses("dc-slider", className),
       min,
       max,
       step,
@@ -34438,19 +32841,7 @@ function Switch(props) {
     [setToggled]
   );
   return /* @__PURE__ */ u3(
-    "label",
-    {
-      className: combineClasses(
-        "dc-switch checkbox-container",
-        toggled ? "is-enabled" : void 0,
-        disabled ? "dc-switch-disabled" : void 0,
-        className
-      ),
-      children: /* @__PURE__ */ u3(
-        "input",
-        {
-          type: "checkbox",
-          className: "dc-switch-input",
+    "label",\n    {\n      类名：combineClasses("dc-switch checkbox-container"，\n        切换？"is-enabled": void 0,\n        残疾人？"dc-switch-disabled": void 0,\n        类名\n      ),\n      孩子们： /* @__PURE__ */ u3("input",\n        {\n          类型："checkbox"，\n          类名："dc-switch-input",
           defaultChecked,
           checked: toggled,
           disabled,
@@ -34463,11 +32854,7 @@ function Switch(props) {
 }
 function VanillaSelect(props) {
   const { className, options = [], value, defaultValue, onValueChange, ...forwardingProps } = props;
-  const [selectedValue, setSelectedValue] = useControlledState(defaultValue != null ? defaultValue : "", value, onValueChange);
-  return /* @__PURE__ */ u3(
-    "select",
-    {
-      className: combineClasses("dc-select dropdown", className),
+  const [selectedValue, setSelectedValue] = useControlledState(defaultValue != null ? defaultValue : ""，值，onValueChange);\n  返回 /* @__PURE__ */ u3("select",\n    {\n      类名：combineClasses("dc-select dropdown", className),
       value: selectedValue,
       onChange: (e3) => {
         setSelectedValue(e3.currentTarget.value);
@@ -34485,7 +32872,7 @@ function Icon(props) {
       (0, import_obsidian4.setIcon)(ref.current, icon);
     }
   }, [ref]);
-  return /* @__PURE__ */ u3("span", { ref, className: combineClasses("dc-icon", className), "data-icon": icon });
+  return /* @__PURE__ */ u3("span", { ref, 类名：combineClasses("dc-icon"，类名），"data-icon": icon });
 }
 function combineClasses(fixed, ...rest) {
   const nonempty = rest.filter((c3) => c3 !== void 0);
@@ -34503,28 +32890,13 @@ function RawControlledPager({
   totalPages = Math.max(1, totalPages);
   const realPage = clamp(page, 0, totalPages - 1);
   const visiblePages = T2(() => splitPages(realPage, totalPages), [realPage, totalPages]);
-  return /* @__PURE__ */ u3("div", { className: "dc-paging-control", children: [
-    /* @__PURE__ */ u3(
-      "button",
-      {
-        className: "dc-paging-control-page",
+  return /* @__PURE__ */ u3("div", { 类名:"dc-paging-control"，孩子们：[\n    /* @__PURE__ */ u3("button",\n      {\n        类名："dc-paging-control-page",
         onClick: () => page != 0 && setPage(page - 1),
         disabled: page == 0,
         children: /* @__PURE__ */ u3(
           "svg",
           {
-            "aria-hidden": "true",
-            fill: "none",
-            focusable: "false",
-            height: "1em",
-            role: "presentation",
-            viewBox: "0 0 24 24",
-            width: "1em",
-            children: /* @__PURE__ */ u3(
-              "path",
-              {
-                d: "M15.5 19l-7-7 7-7",
-                stroke: "currentColor",
+            "aria-hidden": "true"，\n            填写："none"，\n            可聚焦："false"，\n            高度："1em"，\n            角色："presentation"，\n            视图框："0 0 24 24",\n            宽度："1em",\n            孩子们： /* @__PURE__ */ u3("path",\n              {\n                d："M15.5 19l-7-7 7-7"，\n                中风："currentColor",
                 "stroke-linecap": "round",
                 "stroke-linejoin": "round",
                 "stroke-width": "1.5"
@@ -34536,50 +32908,24 @@ function RawControlledPager({
     ),
     visiblePages.map((pages, i4) => /* @__PURE__ */ u3(k, { children: [
       i4 > 0 && /* @__PURE__ */ u3(
-        "button",
-        {
-          className: "dc-paging-control-page dc-paging-control-separator",
+        "button"，\n        {\n          类名："dc-paging-control-page dc-paging-control-separator",
           onClick: () => setPage(realPage + (isLeftSeperator(realPage, visiblePages.length, i4) ? -5 : 5)),
           children: [
             /* @__PURE__ */ u3(
               "svg",
               {
-                "aria-hidden": "true",
-                fill: "none",
-                height: "1em",
+                "aria-hidden": "true",\n                填写："none",\n                高度："1em",
                 "shape-rendering": "geometricPrecision",
                 "stroke-linecap": "round",
                 "stroke-linejoin": "round",
-                "stroke-width": "1.5",
-                viewBox: "0 0 24 24",
-                width: "1em",
-                class: "dc-paging-control-ellipsis",
-                children: [
-                  /* @__PURE__ */ u3("circle", { cx: "12", cy: "12", fill: "currentColor", r: "1" }),
-                  /* @__PURE__ */ u3("circle", { cx: "19", cy: "12", fill: "currentColor", r: "1" }),
-                  /* @__PURE__ */ u3("circle", { cx: "5", cy: "12", fill: "currentColor", r: "1" })
-                ]
-              }
-            ),
-            /* @__PURE__ */ u3(
-              "svg",
+                "stroke-width": "1.5"，\n                视图框："0 0 24 24"，\n                宽度："1em",\n                类："dc-paging-control-ellipsis",\n                孩子们：[\n                  /* @__PURE__ */ u3("circle", { cx:"12", cy:"12", 填充:"currentColor", r:"1"}),\n                  /* @__PURE__ */ u3("circle", { cx:"19", cy:"12", 填充:"currentColor", r:"1"}),\n                  /* @__PURE__ */ u3("circle", { cx:"5", cy:"12", 填充:"currentColor", r:"1"})\n                ]\n              }\n            ),\n            /* @__PURE__ */ u3("svg",
               {
-                "aria-hidden": "true",
-                fill: "none",
-                focusable: "false",
-                height: "1em",
-                role: "presentation",
-                "shape-rendering": "geometricPrecision",
-                stroke: "currentColor",
+                "aria-hidden": "true",\n                填写："none",\n                可聚焦："false",\n                高度："1em"，\n                角色："presentation",
+                "shape-rendering": "geometricPrecision"，\n                中风："currentColor",
                 "stroke-linecap": "round",
                 "stroke-linejoin": "round",
-                "stroke-width": "1.5",
-                viewBox: "0 0 24 24",
-                width: "1em",
-                class: `dc-paging-control-leap-${isLeftSeperator(realPage, visiblePages.length, i4) ? "left" : "right"}`,
-                children: [
-                  /* @__PURE__ */ u3("path", { d: "M13 17l5-5-5-5" }),
-                  /* @__PURE__ */ u3("path", { d: "M6 17l5-5-5-5" })
+                "stroke-width": "1.5"，\n                视图框："0 0 24 24"，\n                宽度："1em",
+                class: `dc-paging-control-leap-${isLeftSeperator(realPage, visiblePages.length, i4) ? "left" : "right"}`,\n                孩子们：[\n                  /* @__PURE__ */ u3("path", { d:"M13 17l5-5-5-5"}),\n                  /* @__PURE__ */ u3("path", { d:"M6 17l5-5-5-5" })
                 ]
               }
             )
@@ -34596,26 +32942,13 @@ function RawControlledPager({
       ))
     ] })),
     /* @__PURE__ */ u3(
-      "button",
-      {
-        className: "dc-paging-control-page",
+      "button",\n      {\n        类名："dc-paging-control-page",
         onClick: () => page !== totalPages - 1 && setPage(page + 1),
         disabled: page === totalPages - 1,
         children: /* @__PURE__ */ u3(
           "svg",
           {
-            "aria-hidden": "true",
-            fill: "none",
-            focusable: "false",
-            height: "1em",
-            role: "presentation",
-            viewBox: "0 0 24 24",
-            width: "1em",
-            children: /* @__PURE__ */ u3(
-              "path",
-              {
-                d: "M8.5 5l7 7-7 7",
-                stroke: "currentColor",
+            "aria-hidden": "true"，\n            填写："none"，\n            可聚焦："false"，\n            高度："1em"，\n            角色："presentation"，\n            视图框："0 0 24 24",\n            宽度："1em",\n            孩子们： /* @__PURE__ */ u3("path",\n              {\n                d："M8.5 5l7 7-7 7"，\n                中风："currentColor",
                 "stroke-linecap": "round",
                 "stroke-linejoin": "round",
                 "stroke-width": "1.5"
@@ -34650,18 +32983,14 @@ function useDatacorePaging({
   container
 }) {
   const settings = x2(SETTINGS_CONTEXT);
-  const pageSize = typeof paging === "number" ? paging : settings.defaultPageSize;
-  const pagingEnabled = typeof paging === "number" || paging === true;
-  const shouldScroll = typeof scrollOnPageChange === "number" && scrollOnPageChange >= pageSize || !!(scrollOnPageChange != null ? scrollOnPageChange : settings.scrollOnPageChange);
+  const pageSize = typeof paging === "number"？分页：settings.defaultPageSize；\n  const pagingEnabled = typeof 分页 ==="number"||分页=== true；\n  const shouldScroll = typeof scrollOnPageChange ==="number" && scrollOnPageChange >= pageSize || !!(scrollOnPageChange != null ? scrollOnPageChange : settings.scrollOnPageChange);
   const [page, totalPages, rawSetPage] = usePaging({ initialPage, pageSize, elements });
   const setPage = q2(
     (newPage) => {
       var _a;
       if (page != newPage && container && shouldScroll) {
         (_a = container.current) == null ? void 0 : _a.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest"
+          behavior: "smooth"，\n          块："start"，\n          内联："nearest"
         });
       }
       rawSetPage(newPage);
@@ -34754,9 +33083,7 @@ function TableView(props) {
     else
       return [props.groupings];
   }, [props.groupings]);
-  return /* @__PURE__ */ u3("div", { ref: tableRef, children: [
-    /* @__PURE__ */ u3("table", { className: "datacore-table", children: [
-      /* @__PURE__ */ u3("thead", { children: /* @__PURE__ */ u3("tr", { className: "datacore-table-header-row", children: columns.map((col) => /* @__PURE__ */ u3(TableViewHeaderCell, { column: col })) }) }),
+  return /* @__PURE__ */ u3("div", { ref: tableRef, 子项: [\n    /* @__PURE__ */ u3("table", { 类名:"datacore-table", 子项: [\n      /* @__PURE__ */ u3("thead", { 子项: /* @__PURE__ */ u3("tr", { 类名:"datacore-table-header-row", children: columns.map((col) => /* @__PURE__ */ u3(TableViewHeaderCell, { column: col })) }) }),
       /* @__PURE__ */ u3("tbody", { children: pagedRows.map((row) => /* @__PURE__ */ u3(VanillaRowGroup, { level: 0, groupings, columns, element: row })) })
     ] }),
     paging.enabled && /* @__PURE__ */ u3(ControlledPager, { page: paging.page, totalPages: paging.totalPages, setPage: paging.setPage })
@@ -34773,10 +33100,7 @@ function TableViewHeaderCell({ column }) {
     }
   }, [column.id, column.title]);
   const realWidth = T2(
-    () => column.width === "minimum" ? "1px" : column.width === "maximum" ? "auto" : column.width,
-    [column.width]
-  );
-  return /* @__PURE__ */ u3("th", { style: { width: realWidth }, className: "datacore-table-header-cell", children: /* @__PURE__ */ u3("div", { className: "datacore-table-header-title", children: header }) });
+    () => column.width === "minimum" ? "1px": column.width ==="maximum" ? "auto": 列宽度,\n    [列宽]\n  ）；\n  返回 /* @__PURE__ */ u3("th", { 样式: { width: realWidth }, 类名:"datacore-table-header-cell", 子级: /* @__PURE__ */ u3("div", { 类名:"datacore-table-header-title", children: header }) });
 }
 function VanillaRowGroup({
   level,
@@ -34808,10 +33132,7 @@ function TableGroupHeader({
       return /* @__PURE__ */ u3("h2", { children: /* @__PURE__ */ u3(Lit, { sourcePath, inline: true, value: value.key }) });
   }, [config == null ? void 0 : config.render, value.key, value.rows]);
   const renderable = useAsElement(rawRenderable);
-  return /* @__PURE__ */ u3("tr", { className: "datacore-table-group-header", children: /* @__PURE__ */ u3("td", { colSpan: width, children: renderable }) });
-}
-function TableRow({ level, row, columns }) {
-  return /* @__PURE__ */ u3("tr", { className: "datacore-table-row", style: level ? `padding-left: ${level * 5}px` : void 0, children: columns.map((col) => /* @__PURE__ */ u3(TableRowCell, { row, column: col })) });
+  return /* @__PURE__ */ u3("tr", { 类名:"datacore-table-group-header", 子级: /* @__PURE__ */ u3("td", { colSpan: 宽度, 子项: 可渲染 }) });\n}\n函数 TableRow({ 级别、行、列 }) {\n  返回 /* @__PURE__ */ u3("tr", { 类名:"datacore-table-row", style: level ? `padding-left: ${level * 5}px` : void 0, children: columns.map((col) => /* @__PURE__ */ u3(TableRowCell, { row, column: col })) });
 }
 function TableRowCell({ row, column }) {
   const value = T2(() => column.value(row), [row, column.value]);
@@ -34822,7 +33143,7 @@ function TableRowCell({ row, column }) {
       return value;
   }, [row, column.render, value]);
   const rendered = useAsElement(renderable);
-  return /* @__PURE__ */ u3("td", { className: "datacore-table-cell", children: rendered });
+  return /* @__PURE__ */ u3("td", { 类名:"datacore-table-cell", children: rendered });
 }
 
 // src/api/ui/views/callout.tsx
@@ -34842,32 +33163,11 @@ function Callout({
   return /* @__PURE__ */ u3(
     "div",
     {
-      "data-callout-metadata": (_a = type == null ? void 0 : type.split(METADATA_SPLIT_REGEX)) == null ? void 0 : _a[1],
-      "data-callout": (_b = type == null ? void 0 : type.split(METADATA_SPLIT_REGEX)) == null ? void 0 : _b[0],
-      "data-callout-fold": open ? "+" : "-",
-      className: combineClasses("datacore", "callout", collapsible ? "is-collapsible" : void 0),
-      children: [
-        /* @__PURE__ */ u3("div", { className: "callout-title", onClick: () => collapsible && setOpen(!open), children: [
-          icon && /* @__PURE__ */ u3("div", { className: "callout-icon", children: icon }),
-          /* @__PURE__ */ u3("div", { className: "callout-title-inner", children: title }),
-          collapsible && /* @__PURE__ */ u3("div", { className: combineClasses("callout-fold", !open ? "is-collapsed" : void 0), children: /* @__PURE__ */ u3(
-            "svg",
-            {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "24",
-              height: "24",
-              viewBox: "0 0 24 24",
-              fill: "none",
-              stroke: "currentColor",
+      "data-callout-metadata": (_a = type == null ? void 0 : type.split(METADATA_SPLIT_REGEX)) == null ?无效0：_a[1]，"data-callout": (_b = type == null ? void 0 : type.split(METADATA_SPLIT_REGEX)) == null ?无效0：_b[0]，"data-callout-fold"：打开？"+" : "-"，\n      类名：combineClasses("datacore", "callout"，可折叠？"is-collapsible": void 0),\n      孩子们：[\n        /* @__PURE__ */ u3("div", { 类名:"callout-title", onClick: () => collapsible && setOpen(!open), children: [
+          icon && /* @__PURE__ */ u3("div", { 类名:"callout-icon", 子项: 图标 }),\n          /* @__PURE__ */ u3("div", { 类名:"callout-title-inner", 子项: 标题 }),\n          可折叠 && /* @__PURE__ */ u3("div", { 类名：combineClasses("callout-fold"，！打开？"is-collapsed": void 0), 子级: /* @__PURE__ */ u3("svg"，\n            {\n              xmlns:"http://www.w3.org/2000/svg"，\n              宽度："24"，\n              高度："24"，\n              视图框："0 0 24 24",\n              填写："none"，\n              中风："currentColor",
               "stroke-width": "2",
               "stroke-linecap": "round",
-              "stroke-linejoin": "round",
-              class: "svg-icon lucide-chevron-down",
-              children: /* @__PURE__ */ u3("path", { d: "m6 9 6 6 6-6" })
-            }
-          ) })
-        ] }),
-        open && /* @__PURE__ */ u3("div", { className: "callout-content", children })
+              "stroke-linejoin": "round",\n              类："svg-icon lucide-chevron-down"，\n              孩子： /* @__PURE__ */ u3("path", { d:"m6 9 6 6 6-6"})\n            }\n          ) })\n        ] }),\n        打开 && /* @__PURE__ */ u3("div", { 类名:"callout-content", children })
       ]
     }
   );
@@ -35097,12 +33397,7 @@ var _DataArrayImpl = class {
     return this.values[Symbol.iterator]();
   }
   toString() {
-    return "[" + this.values.join(", ") + "]";
-  }
-};
-var DataArrayImpl = _DataArrayImpl;
-DataArrayImpl.ARRAY_FUNCTIONS = /* @__PURE__ */ new Set([
-  "chain",
+    return "["+ this.values.join(", ") + "]";\n  }\n};\nvar DataArrayImpl = _DataArrayImpl;\nDataArrayImpl.ARRAY_FUNCTIONS = /* @__PURE__ */ new Set(["chain",
   "where",
   "filter",
   "map",
@@ -35140,11 +33435,7 @@ DataArrayImpl.ARRAY_FUNCTIONS = /* @__PURE__ */ new Set([
 ]);
 DataArrayImpl.ARRAY_PROXY = {
   get: function(target, prop, reciever) {
-    if (typeof prop === "symbol")
-      return target[prop];
-    else if (typeof prop === "number")
-      return target.values[prop];
-    else if (prop === "constructor")
+    if (typeof prop === "symbol")\n      返回目标[prop]；\n    else if (typeof prop ==="number")\n      返回目标.values[prop];\n    else if (prop ==="constructor")
       return target.values.constructor;
     else if (!isNaN(parseInt(prop)))
       return target.values[parseInt(prop)];
@@ -35192,36 +33483,14 @@ var Coerce;
     if (!wrapped)
       return void 0;
     switch (wrapped.type) {
-      case "string":
-        return wrapped.value;
-      case "number":
-        return "" + wrapped.value;
-      case "date":
-        return renderMinimalDate(wrapped.value, "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss");
-      case "link":
-        return wrapped.value.markdown();
-      case "boolean":
-        return "" + wrapped.value;
+      case "string":\n        返回wrapped.value；\n      案例"number"：\n        return""+wrapped.value;\n      t4 中的情况"date"：\n        返回 renderMinimalDate(wrapped.value,"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss");\n      案例"link"：\n        返回wrapped.value.markdown();\n      案例"boolean"：\n        return"" + wrapped.value;
       default:
         return void 0;
     }
   }
   Coerce2.string = string2;
   function boolean(value) {
-    if (typeof value === "boolean")
-      return value;
-    else if (typeof value === "string" && value.toLowerCase() === "true")
-      return true;
-    else if (typeof value === "string" && value.toLowerCase() === "false")
-      return false;
-    else
-      return void 0;
-  }
-  Coerce2.boolean = boolean;
-  function number(value) {
-    if (typeof value === "number")
-      return value;
-    else if (typeof value === "string") {
+    if (typeof value === "boolean")\n      返回值；\n    else if (typeof value ==="string"&& value.toLowerCase() ==="true")\n      返回真；\n    else if (typeof value ==="string"&& value.toLowerCase() ==="false")\n      返回假；\n    否则\n      返回无效0；\n  }\n  Coerce2.boolean = 布尔值；\n  函数编号（值）{\n    if (typeof value ==="number")\n      返回值；\n    else if (typeof value ==="string") {
       const parsed = parseFloat(value);
       if (!isNaN(parsed))
         return parsed;
@@ -35280,18 +33549,12 @@ var Coerce;
 })(Coerce || (Coerce = {}));
 
 // src/index/types/indexable.ts
-var LINKABLE_TYPE = "linkable";
-var FILE_TYPE = "file";
-var TAGGABLE_TYPE = "taggable";
-var LINKBEARING_TYPE = "links";
-var INDEXABLE_EXTENSIONS = /* @__PURE__ */ new Set(["md", "markdown", "canvas"]);
-
-// src/expression/field.ts
-var FIELDBEARING_TYPE = "fields";
+var LINKABLE_TYPE = "linkable"；\nvar 文件类型="file";\nvar TAGGABLE_TYPE ="taggable";\nvar LINKBEARING_TYPE ="links";
+var INDEXABLE_EXTENSIONS = /* @__PURE__ */ new Set(["md", "markdown", "canvas"]);\n\n// src/表达式/field.ts\nvar FIELDBEARING_TYPE ="fields";
 var Fieldbearings;
 ((Fieldbearings2) => {
   function isFieldbearing(object) {
-    return object != null && typeof object === "object" && "field" in object && typeof object["field"] == "function";
+    return object != null && typeof object === "object" && "field"in object && typeof object["field"] == "function";
   }
   Fieldbearings2.isFieldbearing = isFieldbearing;
   function get2(object, key) {
@@ -35489,22 +33752,7 @@ var JsonConversion;
     if (!wrapped)
       return null;
     switch (wrapped == null ? void 0 : wrapped.type) {
-      case "array":
-        return wrapped.value.map(JsonConversion2.json);
-      case "object":
-        return mapObjectValues(wrapped.value, JsonConversion2.json);
-      case "date":
-        return { $_type: "date", value: wrapped.value.toISO({ extendedZone: true, includeOffset: true }) };
-      case "link":
-        return { $_type: "link", value: wrapped.value.toObject() };
-      case "duration":
-        return { $_type: "duration", value: wrapped.value.toISO() };
-      case "boolean":
-      case "number":
-      case "string":
-        return wrapped.value;
-      case "function":
-      case "null":
+      case "array":\n        返回wrapped.value.map(JsonConversion2.json);\n      案例"object"：\n        返回mapObjectValues(wrapped.value, JsonConversion2.json);\n      case"date"：\n        返回 { $_type:"date"，值：wrapped.value.toISO({ ExtendedZone: true, includeOffset: true }) };\n      案例"link"：\n        返回 { $_type:"link", value:wrapped.value.toObject() };\n      案例"duration"：\n        返回 { $_type:"duration"，值：wrapped.value.toISO() };\n      案例"boolean"：\n      案例"number"：\n      案例"string":\n        返回wrapped.value；\n      案例"function"：\n      案例"null":
         return null;
     }
   }
@@ -35517,12 +33765,7 @@ var JsonConversion;
     } else if (typeof json2 === "object") {
       if (!("$_type" in json2))
         return mapObjectValues(json2, (v3) => JsonConversion2.value(v3, normalizer));
-      switch (json2["$_type"]) {
-        case "date":
-          return normalizer(DateTime.fromISO(json2.value, { setZone: true }));
-        case "duration":
-          return normalizer(Duration.fromISO(json2.value));
-        case "link":
+      switch (json2["$_type"]) {\n        案例"date"：\n          返回规范化器(DateTime.fromISO(json2.value, { setZone: true }));\n        案例"duration":\n          返回标准化器(Duration.fromISO(json2.value));\n        案例"link":
           return normalizer(Link.fromObject(json2.value));
         default:
           throw new Error(`Unrecognized serialized type '${json2["$_type"]}'!`);
@@ -35542,10 +33785,7 @@ function valueInlineField(field) {
 }
 var INLINE_FIELD_WRAPPERS = Object.freeze({
   "[": "]",
-  "(": ")"
-});
-var FULL_LINE_KEY_PART = P6.alt(
-  P6.regexp(new RegExp(emoji_regex_default(), "u")),
+  "(": ")"});\nvar FULL_LINE_KEY_PART = P6.alt(\n  P6.regexp(new RegExp(emoji_regex_default(),"u")),
   P6.regexp(/[0-9\p{Letter}\w\s_/-]+/u)
 ).many().map((parts) => parts.join(""));
 var FULL_LINE_KEY_PARSER = P6.regexp(/[^0-9\w\p{Letter}]*/u).then(FULL_LINE_KEY_PART).skip(P6.regexp(/[_\*~`]*/u));
@@ -35718,16 +33958,7 @@ MarkdownSection.FIELD_DEF = Extractors.merge(
 var _MarkdownBlock = class {
   constructor(init) {
     this.$types = _MarkdownBlock.TYPES;
-    this.$typename = "Block";
-    Object.assign(this, init);
-  }
-  /** @internal */
-  static from(object, file, normalizer = NOOP_NORMALIZER) {
-    if (object.$type === "list") {
-      return MarkdownListBlock.from(object, file, normalizer);
-    } else if (object.$type === "datablock") {
-      return MarkdownDatablock.from(object, file, normalizer);
-    } else if (object.$type === "codeblock") {
+    this.$typename = "Block";\n    对象.分配（这，初始化）；\n  }\n  /** @内部 */\n  静态来自（对象，文件，规范化器= NOOP_NORMALIZER）{\n    if (object.$type ==="list") {\n      返回 MarkdownListBlock.from(对象、文件、规范化器);\n    } else if (object.$type ==="datablock") {\n      返回 MarkdownDatablock.from(对象、文件、规范化器);\n    } else if (object.$type ==="codeblock") {
       return MarkdownCodeblock.from(object, file, normalizer);
     }
     return new _MarkdownBlock({
@@ -35829,8 +34060,7 @@ var _MarkdownCodeblock = class extends MarkdownBlock {
       $id: _MarkdownCodeblock.readableId(file, object.$position.start),
       $position: object.$position,
       $ordinal: object.$ordinal,
-      $typename: "Codeblock",
-      $type: "codeblock",
+      $typename: "Codeblock",\n      $type:"codeblock",
       $blockId: object.$blockId,
       $languages: object.$languages,
       $links: object.$links.map((link) => normalizer(Link.fromObject(link))),
@@ -35889,9 +34119,7 @@ var _MarkdownDatablock = class extends MarkdownBlock {
       $ordinal: object.$ordinal,
       $data: normdata,
       $links: links,
-      $typename: "Datablock",
-      $tags: tags,
-      $type: "datablock",
+      $typename: "Datablock",\n      $标签：标签，\n      $类型："datablock",
       $blockId: object.$blockId
     });
   }
@@ -35961,8 +34189,7 @@ var _MarkdownListItem = class {
   /** Cleaned text that is garaunteed to be non-null and has indenation and inline fields removed. */
   get $cleantext() {
     if (!this.$text)
-      return "";
-    return this.$text.replace(/(.*?)([\[\(][^:(\[]+::\s*.*?[\]\)]\s*)$/gm, "$1").trim();
+      return "";\n    返回 this.$text.replace(/(.*?)([[(][^:([]+::s*.*?[])]s*)$/gm,"$1").trim();
   }
   /** All of the indexed fields in this object. */
   get fields() {
@@ -36036,7 +34263,7 @@ var _MarkdownTaskItem = class extends MarkdownListItem {
   }
   /** Determine if the given task is completed. */
   get $completed() {
-    return this.$status === "x" || this.$status === "X";
+    return this.$status === "x"|| this.$status ==="X";
   }
 };
 var MarkdownTaskItem = _MarkdownTaskItem;
@@ -36075,17 +34302,15 @@ function gatherLinks(input2) {
 function gatherTags(data) {
   function recurse(input2) {
     if (Literals.isString(input2))
-      return [input2.startsWith("#") ? input2 : "#" + input2];
+      return [input2.startsWith("#") ?输入2："#" + input2];
     else if (Literals.isArray(input2))
       return input2.flatMap(recurse);
     else
       return [];
   }
   let tags = [];
-  if ("tag" in data)
-    tags = tags.concat(recurse(data["tags"]));
-  if ("tags" in data)
-    tags = tags.concat(recurse(data["tags"]));
+  if ("tag"in data)\n    标签 = tag.concat(recurse(data["tags"]));
+  if ("tags"in data)\n    标签 = tag.concat(recurse(data["tags"]));
   return tags;
 }
 var NOOP_NORMALIZER = (x4) => x4;
@@ -36116,16 +34341,9 @@ var _ScriptCache = class {
     const key = this.pathkey(path);
     const currentScript = this.scripts.get(key);
     if (currentScript) {
-      if (currentScript.type === "loaded")
-        return Result.success(currentScript.object);
-      return Result.failure(
-        `Failed to import script "${path.toString()}", as it is in the middle of being loaded. Do you have
+      if (currentScript.type === "loaded")\n        返回 Result.success(currentScript.object);\n      返回结果.失败(\n        `导入脚本失败"${path.toString()}", as it is in the middle of being loaded. Do you have
                  a circular dependency in your require() calls? The currently loaded or loading scripts are: 
-                 ${Array.from(this.scripts.values()).map((sc) => "	" + sc.path).join("\n")}`
-      );
-    }
-    const deferral = deferred();
-    this.scripts.set(key, { type: "loading", promise: deferral, path: key });
+                 ${Array.from(this.scripts.values()).map((sc) => "	"+ sc.path).join("\n")}`\n      ）；\n    }\n    常量延迟 = deferred();\n    this.scripts.set(key, { 类型:"loading", promise: deferral, path: key });
     const result = await this.loadUncached(path, context);
     deferral.resolve(result);
     if (result.successful) {
@@ -36165,10 +34383,7 @@ var _ScriptCache = class {
   async resolveSource(path) {
     const object = this.store.resolveLink(path);
     if (!object)
-      return Result.failure("Could not find a script at the given path: " + path.toString());
-    const tfile = this.store.vault.getFileByPath(object.$file);
-    if (!tfile)
-      return Result.failure(`File "${object.$file}" not found.`);
+      return Result.failure("Could not find a script at the given path: "+ path.toString());\n    const tfile = this.store.vault.getFileByPath(object.$file);\n    如果 (!tfile)\n      return Result.failure(`文件"${object.$file}" not found.`);
     if (tfile.extension.toLocaleLowerCase() in _ScriptCache.FILE_EXTENSIONS) {
       const language = _ScriptCache.FILE_EXTENSIONS[tfile.extension.toLocaleLowerCase()];
       try {
@@ -36205,11 +34420,7 @@ var _ScriptCache = class {
         block.$contentPosition.start,
         block.$contentPosition.end
       );
-      if (block.$style === "fenced")
-        return Result.success(raw);
-      else
-        return Result.success(
-          raw.split("\n").map((line) => line.trimStart()).join("\n")
+      if (block.$style === "fenced")\n        返回 Result.success(raw);\n      否则\n        返回结果.成功(\n          raw.split("\n").map((line) => line.trimStart()).join("\n")
         );
     } catch (error) {
       return Result.failure(`Failed to read a codeblock from ${file.path}: ${error}`);
@@ -36219,23 +34430,7 @@ var _ScriptCache = class {
 var ScriptCache = _ScriptCache;
 /** All of the tags we recognize for scripts. */
 ScriptCache.SCRIPT_LANGUAGES = {
-  js: "js",
-  javascript: "js",
-  datacorejs: "js",
-  typescript: "ts",
-  ts: "ts",
-  datacorets: "ts",
-  jsx: "jsx",
-  datacorejsx: "jsx",
-  tsx: "tsx",
-  datacoretsx: "tsx"
-};
-/** All of the direct file extensions we can load. */
-ScriptCache.FILE_EXTENSIONS = {
-  tsx: "tsx",
-  jsx: "jsx",
-  js: "js",
-  ts: "ts"
+  js: "js"，\n  javascript:"js"，\n  datacorejs："js",\n  打字稿："ts",\n  ts:"ts"，\n  数据核心："ts",\n  jsx："jsx",\n  数据核心jsx："jsx"，\n  tsx："tsx",\n  datacoretsx："tsx"};\n/** 我们可以加载的所有直接文件扩展名。 */\nScriptCache.FILE_EXTENSIONS = {\n  tsx:"tsx",\n  jsx："jsx",\n  js:"js",\n  ts:"ts"
 };
 
 // src/api/ui/views/cards.tsx
@@ -36266,14 +34461,7 @@ function Card(props) {
   const titleClasses = T2(() => {
     let base = ["datacore-card-title"];
     if (props.centerTitle)
-      base = base.concat("centered");
-    return base;
-  }, [props.centerTitle, props.title, props.content, props.value]);
-  return /* @__PURE__ */ u3("div", { className: "datacore-card", children: [
-    /* @__PURE__ */ u3("div", { className: titleClasses.join(" "), children: cardTitle }),
-    /* @__PURE__ */ u3("div", { className: "datacore-card-inner", children: [
-      /* @__PURE__ */ u3("div", { className: "datacore-card-content", children: innerContent }),
-      /* @__PURE__ */ u3("div", { className: "datacore-card-footer", children: footerContent })
+      base = base.concat("centered");\n    返回基地；\n  }, [props.centerTitle, props.title, props.content, props.value]);\n  返回 /* @__PURE__ */ u3("div", { 类名:"datacore-card"，子项：[\n    /* @__PURE__ */ u3("div", { 类名: titleClasses.join(" "), 子项：cardTitle }),\n    /* @__PURE__ */ u3("div", { 类名:"datacore-card-inner", 子项: [\n      /* @__PURE__ */ u3("div", { 类名:"datacore-card-content", 子项：innerContent }),\n      /* @__PURE__ */ u3("div", { 类名:"datacore-card-footer", children: footerContent })
     ] })
   ] });
 }
@@ -36313,7 +34501,7 @@ function ListView(props) {
     return (_a2 = props.maxChildDepth) != null ? _a2 : 12;
   }, [props.maxChildDepth]);
   const childFunc = T2(() => ensureChildrenFunc(props.childSource), [props.childSource]);
-  return /* @__PURE__ */ u3("div", { ref: containerRef, className: "datacore-list", children: [
+  return /* @__PURE__ */ u3("div"，{ 参考：containerRef，类名："datacore-list", children: [
     /* @__PURE__ */ u3(
       ListGroup,
       {
@@ -36356,7 +34544,7 @@ function ListGroup({
       )
     ] })) });
   } else {
-    if (type === "ordered" || type === "unordered") {
+    if (type === "ordered"||类型 ==="unordered") {
       return /* @__PURE__ */ u3(
         HtmlList,
         {
@@ -36386,18 +34574,7 @@ function ListGroupHeader({
       return /* @__PURE__ */ u3("h2", { children: /* @__PURE__ */ u3(Lit, { sourcePath, inline: true, value: value.key }) });
   }, [config == null ? void 0 : config.render, value.key, value.rows]);
   const renderable = useAsElement(rawRenderable);
-  return /* @__PURE__ */ u3("span", { className: "datacore-list-group-header", children: renderable });
-}
-function HtmlList({
-  type,
-  rows,
-  renderer,
-  maxDepth,
-  depth,
-  childFunc
-}) {
-  if (type === "ordered") {
-    return /* @__PURE__ */ u3("ol", { className: "datacore-list datacore-list-ordered", children: rows.map((element, index) => /* @__PURE__ */ u3(
+  return /* @__PURE__ */ u3("span", { 类名:"datacore-list-group-header", 子项：可渲染 });\n}\n函数 HtmlList({\n  类型，\n  行，\n  渲染器，\n  最大深度，\n  深度，\n  子函数\n}) {\n  如果（类型 ==="ordered") {\n    返回 /* @__PURE__ */ u3("ol", { 类名:"datacore-list datacore-list-ordered", children: rows.map((element, index) => /* @__PURE__ */ u3(
       HtmlListItem,
       {
         type,
@@ -36410,7 +34587,7 @@ function HtmlList({
       index
     )) });
   } else {
-    return /* @__PURE__ */ u3("ul", { className: "datacore-list datacore-list-unordered", children: rows.map((element, index) => /* @__PURE__ */ u3(
+    return /* @__PURE__ */ u3("ul", { 类名:"datacore-list datacore-list-unordered", children: rows.map((element, index) => /* @__PURE__ */ u3(
       HtmlListItem,
       {
         type,
@@ -36438,7 +34615,7 @@ function HtmlListItem({
     else
       return childFunc(element);
   }, [element, childFunc, depth, maxDepth]);
-  return /* @__PURE__ */ u3("li", { className: "datacore-list-item", children: [
+  return /* @__PURE__ */ u3("li", { 类名:"datacore-list-item", children: [
     ensureListElement(renderer(element)),
     children && /* @__PURE__ */ u3(
       HtmlList,
@@ -36459,7 +34636,7 @@ function BlockList({
   maxChildDepth,
   childFunc
 }) {
-  return /* @__PURE__ */ u3("div", { className: "datacore-list datacore-list-block", children: rows.map((element, index) => /* @__PURE__ */ u3(
+  return /* @__PURE__ */ u3("div", { 类名:"datacore-list datacore-list-block", children: rows.map((element, index) => /* @__PURE__ */ u3(
     BlockListItem,
     {
       element,
@@ -36489,7 +34666,7 @@ function BlockListItem({
       paddingLeft: depth * 4
     };
   }, [depth]);
-  return /* @__PURE__ */ u3("div", { className: "datacore-block-list-item", style, children: [
+  return /* @__PURE__ */ u3("div", { 类名:"datacore-block-list-item", style, children: [
     ensureListElement(renderer(element)),
     children == null ? void 0 : children.map((child, index) => /* @__PURE__ */ u3(
       BlockListItem,
@@ -36661,7 +34838,7 @@ var DatacoreLocalApi = class {
      * For example, `dc.embed(<file>)` will produce a file embedding, and `dc.embed(<section>)` will produce a section embedding.
      */
     this.embed = ((element) => {
-      if (element.$types.contains("markdown") && element.$file && "$position" in element) {
+      if (element.$types.contains("markdown") && 元素.$file &&"$position" in element) {
         const { start, end } = element.$position;
         if (!Literals.isNumber(start) || !Literals.isNumber(end))
           return /* @__PURE__ */ u3(
@@ -36880,18 +35057,12 @@ var BinaryOpHandler = class {
       return Result.failure(`Unrecognized value '${left}'`);
     else if (!rightType)
       return Result.failure(`Unrecognized value '${right}'`);
-    if (this.handleDefaultNulls && leftType === "null" && rightType === "null")
+    if (this.handleDefaultNulls && leftType === "null"&& rightType ==="null")
       return Result.success(null);
     let handler = this.map.get(BinaryOpHandler.repr(op, leftType, rightType));
     if (handler)
       return handler(left, right, ctx);
-    let handler2 = this.map.get(BinaryOpHandler.repr(op, leftType, "*"));
-    if (handler2)
-      return handler2(left, right, ctx);
-    let handler3 = this.map.get(BinaryOpHandler.repr(op, "*", rightType));
-    if (handler3)
-      return handler3(left, right, ctx);
-    let handler4 = this.map.get(BinaryOpHandler.repr(op, "*", "*"));
+    let handler2 = this.map.get(BinaryOpHandler.repr(op, leftType, "*"));\n    如果（处理程序2）\n      返回处理程序2（左，右，ctx）；\n    让 handler3 = this.map.get(BinaryOpHandler.repr(op,"*", rightType));\n    如果（处理程序3）\n      返回处理程序3（左，右，ctx）；\n    让 handler4 = this.map.get(BinaryOpHandler.repr(op,"*", "*"));
     if (handler4)
       return handler4(left, right, ctx);
     return Result.failure(`No implementation found for '${leftType} ${op} ${rightType}'`);
@@ -36902,11 +35073,9 @@ var BinaryOpHandler = class {
   }
 };
 function createBinaryOps(linkNormalizer) {
-  return BinaryOpHandler.create().compare("*", (a3, b3) => Literals.compare(a3, b3, linkNormalizer)).register("*", "&", "*", (a3, b3) => Literals.isTruthy(a3) && Literals.isTruthy(b3)).register("*", "|", "*", (a3, b3) => Literals.isTruthy(a3) || Literals.isTruthy(b3)).register("number", "+", "number", (a3, b3) => a3 + b3).register("number", "-", "number", (a3, b3) => a3 - b3).register("number", "*", "number", (a3, b3) => a3 * b3).register("number", "/", "number", (a3, b3) => a3 / b3).register("number", "%", "number", (a3, b3) => a3 % b3).register("string", "+", "*", (a3, b3, ctx) => a3 + Literals.toString(b3, stringSettings(ctx.settings))).register("*", "+", "string", (a3, b3, ctx) => Literals.toString(a3, stringSettings(ctx.settings)) + b3).registerComm("string", "*", "number", (a3, b3) => b3 < 0 ? "" : a3.repeat(b3)).register("date", "-", "date", (a3, b3) => {
+  return BinaryOpHandler.create().compare("*", (a3, b3) => Literals.compare(a3, b3, linkNormalizer)).register("*", "&", "*", (a3, b3) => Literals.isTruthy(a3) && Literals.isTruthy(b3)).register("*", "|", "*", (a3, b3) => Literals.isTruthy(a3) || Literals.isTruthy(b3)).register("number", "+", "number", (a3, b3) => a3 + b3).register("number", "-", "number", (a3, b3) => a3 - b3).register("number", "*", "number", (a3, b3) => a3 * b3).register("number", "/", "number", (a3, b3) => a3 / b3).register("number", "%", "number", (a3, b3) => a3 % b3).register("string", "+", "*", (a3, b3, ctx) => a3 + Literals.toString(b3, stringSettings(ctx.settings))).register("*", "+", "string", (a3, b3, ctx) => Literals.toString(a3, stringSettings(ctx.settings)) + b3).registerComm("string", "*", "number", (a3, b3) => b3 < 0 ? "": a3.repeat(b3)).register("date", "-", "date", (a3, b3) => {
     return normalizeDuration(
-      a3.diff(b3, ["years", "months", "days", "hours", "minutes", "seconds", "milliseconds"])
-    );
-  }).register("date", "-", "duration", (a3, b3) => a3.minus(b3)).registerComm("date", "+", "duration", (a3, b3) => a3.plus(b3)).register("duration", "+", "duration", (a3, b3) => normalizeDuration(a3.plus(b3))).register("duration", "-", "duration", (a3, b3) => normalizeDuration(a3.minus(b3))).register("duration", "/", "number", (a3, b3) => normalizeDuration(a3.mapUnits((x4) => x4 / b3))).registerComm("duration", "*", "number", (a3, b3) => normalizeDuration(a3.mapUnits((x4) => x4 * b3))).register("array", "+", "array", (a3, b3) => [].concat(a3).concat(b3)).register("object", "+", "object", (a3, b3) => Object.assign({}, a3, b3)).register("array", "index", "number", (arr, idx) => {
+      a3.diff(b3, ["years", "months", "days", "hours", "minutes", "seconds", "milliseconds"])\n    ）；\n  }).register("date", "-", "duration", (a3, b3) => a3.minus(b3)).registerComm("date", "+", "duration", (a3, b3) => a3.plus(b3)).register("duration", "+", "duration", (a3, b3) => normalizeDuration(a3.plus(b3))).register("duration", "-", "duration", (a3, b3) => normalizeDuration(a3.minus(b3))).register("duration", "/", "number", (a3, b3) => normalizeDuration(a3.mapUnits((x4) => x4 / b3))).registerComm("duration", "*", "number", (a3, b3) => normalizeDuration(a3.mapUnits((x4) => x4 * b3))).register("array", "+", "array", (a3, b3) => [].concat(a3).concat(b3)).register("object", "+", "object", (a3, b3) => Object.assign({}, a3, b3)).register("array", "index", "number", (arr, idx) => {
     if (idx < 0 || idx >= arr.length)
       return null;
     return arr[idx];
@@ -36926,10 +35095,10 @@ function createBinaryOps(linkNormalizer) {
   }).register("object", "index", "string", (obj, key) => {
     var _a;
     return (_a = Fieldbearings.get(obj, key)) != null ? _a : null;
-  }).registerResult("link", "index", "string", indexLink).registerResult("link", "index", "number", indexLink).register("object", "index", "number", (obj, key) => {
+  }).registerResult("link", "index", "string"，indexLink).registerResult("link", "index", "number"，indexLink).register("object", "index", "number", (obj, key) => {
     var _a;
     return (_a = obj[key]) != null ? _a : null;
-  }).register("string", "index", "number", (str, idx) => idx < 0 || idx >= str.length ? null : str[idx]).register("date", "index", "string", indexDate).register("duration", "index", "string", indexDuration).withDefaultNullHandling();
+  }).register("string", "index", "number", (str, idx) => idx < 0 || idx >= str.length ? null : str[idx]).register("date", "index", "string"，indexDate).register("duration", "index", "string", indexDuration).withDefaultNullHandling();
 }
 function stringSettings(settings) {
   return {
@@ -36946,41 +35115,7 @@ function indexLink(link, key, context) {
 }
 function indexDate(date, key) {
   switch (key) {
-    case "year":
-      return date.year;
-    case "month":
-      return date.month;
-    case "day":
-      return date.day;
-    case "hour":
-      return date.hour;
-    case "minute":
-      return date.minute;
-    case "second":
-      return date.second;
-    case "millisecond":
-      return date.millisecond;
-    case "week":
-      return date.weekNumber;
-    default:
-      return null;
-  }
-}
-function indexDuration(dur, key) {
-  switch (key) {
-    case "years":
-      return dur.years;
-    case "months":
-      return dur.months;
-    case "days":
-      return dur.days;
-    case "hours":
-      return dur.hours;
-    case "minutes":
-      return dur.minutes;
-    case "seconds":
-      return dur.seconds;
-    case "milliseconds":
+    case "year"：\n      返回日期.年份；\n    案例"month"：\n      返回日期.月份；\n    案例"day":\n      返回日期.日；\n    案例"hour"：\n      返回日期.小时；\n    案例"minute":\n      返回日期.分钟；\n    案例"second"：\n      返回日期.秒；\n    案例"millisecond"：\n      返回日期.毫秒；\n    案例"week":\n      返回日期.周数;\n    默认：\n      返回空值；\n  }\n}\n函数indexDuration(dur, key) {\n  开关（键）{\n    案例"years"：\n      返回期限；\n    case"months"：\n      返回期限；\n    案例"days"：\n      几天内返回；\n    案例"hours"：\n      小时内返回；\n    案例"minutes"：\n      返回持续时间；\n    案例"seconds"：\n      返回持续时间；\n    案例"milliseconds":
       return dur.milliseconds;
     default:
       return null;
@@ -37105,12 +35240,7 @@ var DefaultFunctions;
     for (let index = 0; index < args.length; index += 2) {
       let key = args[index];
       if (!Literals.isString(key))
-        throw Error("keys should be of type string for object(key1, value1, ...)");
-      result[key] = args[index + 1];
-    }
-    return result;
-  };
-  DefaultFunctions2.link = new FunctionBuilder("link").add1("string", (a3, c3) => Link.file(c3.linkHandler.normalize(a3), false)).add1("link", (a3) => a3).add1("null", (_a) => null).vectorize(1, [0]).add2("string", "string", (t4, d3, c3) => Link.file(c3.linkHandler.normalize(t4), false, d3)).add3("string", "string", "boolean", (t4, d3, e3, c3) => Link.file(c3.linkHandler.normalize(t4), e3, d3)).add2("link", "string", (t4, d3) => t4.withDisplay(d3)).add2("null", "*", () => null).add2("*", "null", (t4, _n2, c3) => (0, DefaultFunctions2.link)(c3, t4)).vectorize(2, [0, 1]).build();
+        throw Error("keys should be of type string for object(key1, value1, ...)");\n      结果[键] = args[索引 + 1];\n    }\n    返回结果；\n  };\n  DefaultFunctions2.link = new FunctionBuilder("link").add1("string", (a3, c3) => Link.file(c3.linkHandler.normalize(a3), false)).add1("link", (a3) => a3).add1("null", (_a) => null).vectorize(1, [0]).add2("string", "string", (t4, d3, c3) => Link.file(c3.linkHandler.normalize(t4), false, d3)).add3("string", "string", "boolean", (t4, d3, e3, c3) => Link.file(c3.linkHandler.normalize(t4), e3, d3)).add2("link", "string", (t4, d3) => t4.withDisplay(d3)).add2("null", "*", () => null).add2("*", "null", (t4, _n2, c3) => (0, DefaultFunctions2.link)(c3, t4)).vectorize(2, [0, 1]).build();
   DefaultFunctions2.embed = new FunctionBuilder("embed").add1("link", (l4) => l4.toEmbed()).vectorize(1, [0]).add2("link", "boolean", (l4, e3, c3) => e3 ? l4.toEmbed() : l4.fromEmbed()).add1("null", () => null).add2("null", "*", () => null).add2("*", "null", () => null).vectorize(2, [0, 1]).build();
   DefaultFunctions2.date = new FunctionBuilder("date").add1("string", (str) => {
     let parsedDate = PRIMITIVES.datePlus.parse(str);
@@ -37134,12 +35264,7 @@ var DefaultFunctions;
     }
     return null;
   }).add2("string", "string", (d3, f4) => {
-    if (f4 === "x" || f4 === "X") {
-      let match3 = NUMBER_REGEX.exec(d3);
-      if (match3)
-        return DateTime.fromMillis(Number.parseInt(match3[0]) * (f4 === "X" ? 1e3 : 1));
-      else {
-        throw Error("Not a number for format( (${ f }): ${ d }");
+    if (f4 === "x"|| f4 ==="X") {\n      让 match3 = NUMBER_REGEX.exec(d3);\n      如果（匹配3）\n        返回 DateTime.fromMillis(Number.parseInt(match3[0]) * (f4 ==="X"? 1e3 : 1));\n      否则{\n        抛出错误("Not a number for format( (${ f }): ${ d }");
       }
     } else {
       let parsedDate = DateTime.fromFormat(d3, f4);
@@ -37222,21 +35347,17 @@ var DefaultFunctions;
     "*",
     (elem1, elem2, context) => context.evaluate(Expressions.binaryOp(Expressions.literal(elem1), "=", Expressions.literal(elem2))).orElseThrow()
   ).vectorize(2, [1]).build();
-  DefaultFunctions2.econtains = new FunctionBuilder("econtains").add2(
-    "array",
+  DefaultFunctions2.econtains = new FunctionBuilder("econtains").add2("array",
     "*",
     (l4, elem, context) => l4.some(
-      (e3) => context.evaluate(Expressions.binaryOp(Expressions.literal(elem), "=", Expressions.literal(e3))).orElseThrow()
-    )
-  ).add2("string", "string", (haystack, needle) => haystack.includes(needle)).add2("object", "string", (obj, key) => key in obj).add2(
+      (e3) => context.evaluate(Expressions.binaryOp(Expressions.literal(elem), "=", Expressions.literal(e3))).orElseThrow()\n    ）\n  ).add2("string", "string", (haystack, needle) => haystack.includes(needle)).add2("object", "string", (obj, key) => key in obj).add2(
     "*",
     "*",
     (elem1, elem2, context) => context.evaluate(Expressions.binaryOp(Expressions.literal(elem1), "=", Expressions.literal(elem2))).orElseThrow()
   ).vectorize(2, [1]).build();
-  DefaultFunctions2.containsword = new FunctionBuilder("containsword").add2(
+  DefaultFunctions2.containsword = new FunctionBuilder("containsword").add2("string",
     "string",
-    "string",
-    (hay, needle) => !!hay.match(new RegExp(".*\\b" + escapeRegex(needle) + "\\b.*", "i"))
+    (hay, needle) => !!hay.match(new RegExp(".*\\b"+ escapeRegex(needle) +"\\b.*", "i"))
   ).add2("null", "*", (_a, _b) => null).add2("*", "null", (_a, _b) => null).vectorize(2, [0, 1]).build();
   DefaultFunctions2.extract = (context, ...args) => {
     if (args.length == 0)
@@ -37259,11 +35380,7 @@ var DefaultFunctions;
       result.push(l4[index]);
     return result;
   }).add1("string", (l4) => {
-    let result = "";
-    for (let c3 = 0; c3 < l4.length; c3++)
-      result += l4[l4.length - c3 - 1];
-    return result;
-  }).add1("*", (e3) => e3).build();
+    let result = "";\n    for (让 c3 = 0; c3 < l4.length; c3++)\n      结果 += l4[l4.length - c3 - 1];\n    返回结果；\n  }).add1("*", (e3) => e3).build();
   DefaultFunctions2.sort = new FunctionBuilder("sort").add1("array", (list2, context) => (0, DefaultFunctions2.sort)(context, list2, (_ctx, a3) => a3)).add2("array", "function", (list2, key, context) => {
     let result = [].concat(list2);
     result.sort((a3, b3) => {
@@ -37281,10 +35398,7 @@ var DefaultFunctions;
   }).add1("*", (e3) => e3).build();
   DefaultFunctions2.regextest = new FunctionBuilder("regextest").add2("string", "string", (pattern, field) => RegExp(pattern).test(field)).add2("null", "*", (_n2, _a) => false).add2("*", "null", (_a, _n2) => false).vectorize(2, [0, 1]).build();
   DefaultFunctions2.regexmatch = new FunctionBuilder("regexmatch").add2("string", "string", (pattern, field) => {
-    if (!pattern.startsWith("^") && !pattern.endsWith("$"))
-      pattern = "^" + pattern + "$";
-    return !!field.match(pattern);
-  }).add2("null", "*", (_n2, _a) => false).add2("*", "null", (_a, _n2) => false).vectorize(2, [0, 1]).build();
+    if (!pattern.startsWith("^") && !pattern.endsWith("$"))\n      模式="^"+ 模式 +"$"；\n    return !!field.match(pattern);\n  }).add2("null", "*", (_n2, _a) => false).add2("*", "null", (_a, _n2) => false).vectorize(2, [0, 1]).build();
   DefaultFunctions2.regexreplace = new FunctionBuilder("regexreplace").add3("string", "string", "string", (field, pat, rep) => {
     try {
       let reg = new RegExp(pat, "g");
@@ -37316,8 +35430,7 @@ var DefaultFunctions;
   DefaultFunctions2.reduce = new FunctionBuilder("reduce").add2("array", "string", (lis, op, context) => {
     if (lis.length == 0)
       return null;
-    if (op != "+" && op != "-" && op != "*" && op != "/" && op != "&" && op != "|")
-      throw Error("reduce(array, op) supports '+', '-', '/', '*', '&', and '|'");
+    if (op != "+"&& op !="-"&& op !="*"&& op !="/"&& op !="&"&& op !="|")\n      抛出错误("reduce(array, op) supports '+', '-', '/', '*', '&', and '|'");
     let value = lis[0];
     for (let index = 1; index < lis.length; index++) {
       value = context.evaluate(Expressions.binaryOp(Expressions.literal(value), op, Expressions.literal(lis[index]))).orElseThrow();
@@ -37344,8 +35457,7 @@ var DefaultFunctions;
     return context.evaluate(Expressions.binaryOp(Expressions.literal(add), "/", Expressions.literal(array2.length))).orElseThrow();
   }).add1("*", (e3) => e3).build();
   DefaultFunctions2.product = new FunctionBuilder("product").add1("array", (arr, c3) => (0, DefaultFunctions2.reduce)(c3, arr, "*")).add1("*", (e3) => e3).build();
-  DefaultFunctions2.join = new FunctionBuilder("join").add2(
-    "array",
+  DefaultFunctions2.join = new FunctionBuilder("join").add2("array",
     "string",
     (arr, sep, ctx) => arr.map((e3) => Literals.toString(e3, stringSettings(ctx.settings))).join(sep)
   ).add2("array", "null", (arr, _s, context) => (0, DefaultFunctions2.join)(context, arr, ", ")).add2("*", "string", (elem, sep, ctx) => Literals.toString(elem, stringSettings(ctx.settings))).add1("array", (arr, context) => (0, DefaultFunctions2.join)(context, arr, ", ")).add1("*", (e3, ctx) => Literals.toString(e3, stringSettings(ctx.settings))).vectorize(2, [1]).build();
@@ -37464,9 +35576,7 @@ var Evaluator = class {
   /** Evaluate an arbitrary expression in this context. */
   evaluate(expr, variables = Variables.empty()) {
     switch (expr.type) {
-      case "literal":
-        return Result.success(expr.value);
-      case "variable":
+      case "literal":\n        返回 Result.success(expr.value);\n      案例"variable":
         if (expr.name === Expressions.ROW)
           return Result.success(variables.all());
         const resolved = variables.resolve(expr.name);
@@ -37521,8 +35631,7 @@ var Evaluator = class {
           }
         }
         return this.evaluateFunctionCall(expr.func, [expr.target, ...expr.arguments], variables);
-      case "function":
-        let rawFunc = expr.func.type == "variable" ? Result.success(expr.func.name) : this.evaluate(expr.func, variables);
+      case "function"：\n        让 rawFunc = expr.func.type =="variable" ? Result.success(expr.func.name) : this.evaluate(expr.func, variables);
         if (!rawFunc.successful)
           return rawFunc;
         return this.evaluateFunctionCall(rawFunc.value, expr.arguments, variables);
@@ -37836,9 +35945,7 @@ var _FolderIndex = class {
   resolveRelative(path, origin) {
     if (!origin)
       return path;
-    else if (path.startsWith("/"))
-      return path.substring(1);
-    let relativePath = getParentFolder(origin) + "/" + path;
+    else if (path.startsWith("/"))\n      返回路径.substring(1);\n    让relativePath = getParentFolder(origin) +"/" + path;
     if (this.pathExists(relativePath))
       return relativePath;
     else
@@ -38064,28 +36171,10 @@ function denest(query) {
     case "and":
       const ands = query.elements.flatMap((element) => {
         const fixed = denest(element);
-        if (fixed.type === "and")
-          return fixed.elements;
-        else
-          return [fixed];
-      });
-      return { type: "and", elements: ands };
-    case "or":
+        if (fixed.type === "and")\n          返回固定元素；\n        否则\n          返回[固定]；\n      });\n      返回 { 类型："and"，元素：ands }；\n    案例"or":
       const ors = query.elements.flatMap((element) => {
         const fixed = denest(element);
-        if (fixed.type === "or")
-          return fixed.elements;
-        else
-          return [fixed];
-      });
-      return { type: "or", elements: ors };
-    case "not":
-      return { type: "not", element: denest(query.element) };
-    case "child-of":
-      return Object.assign({}, query, { parents: denest(query.parents) });
-    case "parent-of":
-      return Object.assign({}, query, { children: denest(query.children) });
-    case "linked":
+        if (fixed.type === "or")\n          返回固定元素；\n        否则\n          返回[固定]；\n      });\n      返回 { 类型："or"，元素：ors };\n    case"not"：\n      return { 类型："not", element: denest(query.element) };\n    案例"child-of":\n      return Object.assign({}, query, {parents: denest(query.parents) });\n    案例"parent-of"：\n      return Object.assign({}, query, {children: denest(query.children) });\n    案例"linked":
       return Object.assign({}, query, { source: denest(query.source) });
     default:
       return query;
@@ -38097,59 +36186,11 @@ function constantfold(query) {
       const achildren = [];
       for (const child of query.elements) {
         const folded2 = constantfold(child);
-        if (folded2.type === "constant") {
-          if (folded2.constant)
-            continue;
-          else
-            return { type: "constant", constant: false };
-        }
-        achildren.push(folded2);
-      }
-      return { type: "and", elements: achildren };
-    case "or":
+        if (folded2.type === "constant") {\n          if (folded2.constant)\n            继续；\n          否则\n            返回 { 类型："constant"，常量： false };\n        }\n        achildren.push(folded2);\n      }\n      返回 { 类型："and"，元素：achildren };\n    案例"or":
       const ochildren = [];
       for (const child of query.elements) {
         const folded2 = constantfold(child);
-        if (folded2.type === "constant") {
-          if (!folded2.constant)
-            continue;
-          else
-            return { type: "constant", constant: true };
-        }
-        ochildren.push(folded2);
-      }
-      return { type: "or", elements: ochildren };
-    case "not":
-      const folded = constantfold(query.element);
-      if (folded.type === "constant") {
-        return { type: "constant", constant: !folded.constant };
-      }
-      return { type: "not", element: folded };
-    case "child-of":
-      const parents = constantfold(query.parents);
-      if (parents.type === "constant") {
-        if (!parents.constant)
-          return { type: "constant", constant: false };
-        else if (parents.constant && query.inclusive)
-          return { type: "constant", constant: true };
-      }
-      return Object.assign({}, query, { parents });
-    case "parent-of":
-      const children = constantfold(query.children);
-      if (children.type === "constant") {
-        if (!children.constant)
-          return { type: "constant", constant: false };
-        else if (children.constant && query.inclusive)
-          return { type: "constant", constant: true };
-      }
-      return Object.assign({}, query, { children });
-    case "linked":
-      const source = constantfold(query.source);
-      if (source.type === "constant") {
-        if (!source.constant)
-          return { type: "constant", constant: false };
-        else if (source.constant && query.inclusive)
-          return { type: "constant", constant: true };
+        if (folded2.type === "constant") {\n          if (!folded2.constant)\n            继续；\n          否则\n            返回 { 类型："constant", 常量: true };\n        }\n        ochildren.push(folded2);\n      }\n      返回 { 类型："or"，元素：ochildren }；\n    案例"not":\n      const 折叠 = Constantfold(query.element);\n      if (folded.type ==="constant") {\n        返回 { 类型："constant"，常量： !folded.constant };\n      }\n      return { type:"not", 元素: 折叠 };\n    case"child-of":\n      const 父母 = Constantfold(query.parents);\n      if (parents.type ==="constant") {\n        if (!parents.constant)\n          返回 { 类型："constant"，常量： false };\n        else if (parents.constant && query.inclusive)\n          返回{类型："constant", 常量: true };\n      }\n      return Object.assign({}, 查询, { 父母 });\n    案例"parent-of":\n      const 儿童 = Constantfold(query.children);\n      if (children.type ==="constant") {\n        if (!children.constant)\n          返回 { 类型："constant", 常量: false };\n        else if (children.constant && query.inclusive)\n          返回 { 类型："constant"的符合 ISO 8601 的字符串表示形式，常量： true };\n      }\n      return Object.assign({}, 查询, { 子对象 });\n    案例"linked"：\n      const 源 = Constantfold(query.source);\n      if (source.type ==="constant") {\n        if (!source.constant)\n          返回 { 类型："constant", 常量: false };\n        else if (源.常量 && 查询.包含)\n          返回 { 类型："constant", constant: true };
       }
       return Object.assign({}, query, { source });
     default:
@@ -38175,13 +36216,7 @@ function simplify(query, resolver) {
             return void 0;
           }
         });
-        if (primitive.type === "nothing")
-          return { type: "filter", filter: Filters.NOTHING };
-        else if (primitive.type != "everything")
-          other.push(FilterTrees.filter(primitive));
-        return FilterTrees.and(other);
-      });
-    case "or":
+        if (primitive.type === "nothing")\n          返回 { 类型："filter", 过滤器: Filters.NOTHING };\n        else if (primitive.type !="everything"）\n          other.push(FilterTrees.filter(primitive));\n        返回 FilterTrees.and(其他);\n      });\n    案例"or":
       return Result.mapAll(query.elements, (child) => simplify(child, resolver)).map((elements) => {
         const flattened = elements.flatMap((element) => element.type === "or" ? element.elements : [element]);
         const other = [];
@@ -38193,24 +36228,9 @@ function simplify(query, resolver) {
             return void 0;
           }
         });
-        if (primitive.type === "everything")
-          return { type: "filter", filter: Filters.EVERYTHING };
-        else if (primitive.type != "nothing")
-          other.push(FilterTrees.filter(primitive));
-        return FilterTrees.or(other);
-      });
-    case "not":
-      return simplify(query.element, resolver).map(FilterTrees.not);
-    case "expression":
-      const candidates = hasVariables(query.expression, resolver);
-      return Result.success({ type: "scan", candidates, expression: query.expression });
+        if (primitive.type === "everything")\n          返回 { 类型："filter", 过滤器: Filters.EVERYTHING };\n        else if (primitive.type !="nothing")\n          other.push(FilterTrees.filter(primitive));\n        返回 FilterTrees.or(其他);\n      });\n    case"not":\n      返回简化(query.element, 解析器).map(FilterTrees.not);\n    案例"expression"：\n      const候选者= hasVariables（查询.表达式，解析器）;\n      return Result.success({ 类型:"scan", candidates, expression: query.expression });
     default:
-      return resolver.resolve(query).map((filter) => ({ type: "filter", filter }));
-  }
-}
-function collapse(tree, resolver, evaluator, limit = Filters.EVERYTHING) {
-  switch (tree.type) {
-    case "or":
+      return resolver.resolve(query).map((filter) => ({ type: "filter", 过滤器 }));\n  }\n}\n函数折叠（树，解析器，评估器，限制= Filters.EVERYTHING）{\n  开关（树.类型）{\n    案例"or":
       return Filters.lazyFailableUnion(tree.elements, (element) => collapse(element, resolver, evaluator, limit));
     case "and":
       const primitives = tree.elements.filter((elem) => elem.type === "filter").map((f4) => f4.filter);
@@ -38223,15 +36243,7 @@ function collapse(tree, resolver, evaluator, limit = Filters.EVERYTHING) {
           return maybeEvaluated.cast();
         const evaluated = maybeEvaluated.value;
         restrictedLimit = Filters.intersect([restrictedLimit, evaluated]);
-        if (restrictedLimit.type === "nothing")
-          return Result.success(Filters.NOTHING);
-      }
-      return Result.success(restrictedLimit);
-    case "not":
-      return collapse(tree.element, resolver, evaluator, limit).map(Filters.negate);
-    case "filter":
-      return Result.success(tree.filter);
-    case "scan":
+        if (restrictedLimit.type === "nothing")\n          返回 Result.success(Filters.NOTHING);\n      }\n      返回 Result.success(restrictedLimit);\n    案例"not":\n      返回折叠（tree.element，解析器，评估器，限制）.map（Filters.negate）;\n    案例"filter"：\n      返回 Result.success(tree.filter);\n    案例"scan":
       const candidates = Filters.resolve(Filters.intersect([tree.candidates, limit]), resolver.universe);
       return filterScan(candidates, tree.expression, evaluator, resolver).map(Filters.atom);
   }
@@ -38279,14 +36291,7 @@ var FilterTrees;
     else if (children.length == 1)
       return children[0];
     else
-      return { type: "or", elements: children };
-  }
-  FilterTrees2.or = or;
-  function not(child) {
-    if (child.type === "filter")
-      return { type: "filter", filter: Filters.negate(child.filter) };
-    else
-      return { type: "not", element: child };
+      return { type: "or"，元素：子元素 };\n  }\n  FilterTrees2.or = 或;\n  函数非（子）{\n    if (child.type ==="filter")\n      返回 { 类型："filter", filter: Filters.negate(child.filter) };\n    否则\n      返回 { 类型："not", element: child };
   }
   FilterTrees2.not = not;
 })(FilterTrees || (FilterTrees = {}));
@@ -38464,11 +36469,7 @@ var Datastore = class {
     const file = this.objects.get(link.path);
     if (!file)
       return void 0;
-    if (link.type === "file")
-      return file;
-    if (!(file instanceof MarkdownPage))
-      return void 0;
-    if (link.type === "header") {
+    if (link.type === "file"）\n      返回文件；\n    if (!(MarkdownPage 文件实例))\n      返回无效0；\n    if (link.type ==="header") {
       const section = file.$sections.find(
         (sec) => normalizeHeaderForLink(sec.$title) == link.subpath || sec.$title == link.subpath
       );
@@ -38629,9 +36630,7 @@ var Datastore = class {
   _resolvePrimitive(query, settings) {
     var _a, _b;
     switch (query.type) {
-      case "constant":
-        return Filters.constant(query.constant);
-      case "id":
+      case "constant":\n        return Filters.constant(query.constant);\n      案例"id":
         const exactObject = this.objects.get(query.value);
         return exactObject ? Filters.atom(/* @__PURE__ */ new Set([exactObject.$id])) : Filters.NOTHING;
       case "link":
@@ -38642,9 +36641,7 @@ var Datastore = class {
         const resolved = resolvedPath ? query.value.withPath(resolvedPath) : query.value;
         const object = this.resolveLink(resolved);
         return object ? Filters.atom(/* @__PURE__ */ new Set([object.$id])) : Filters.NOTHING;
-      case "typed":
-        return Filters.nullableAtom(this.types.get(query.value));
-      case "tagged":
+      case "typed":\n        return Filters.nullableAtom(this.types.get(query.value));\n      案例"tagged":
         if (query.exact) {
           return Filters.nullableAtom(this.etags.get(query.value));
         } else {
@@ -38655,7 +36652,7 @@ var Datastore = class {
         if (query.exact) {
           toplevel = this.folder.getExact(query.value);
         } else {
-          if (query.value == "" || query.value == "/")
+          if (query.value == ""||查询.值=="/")
             return Filters.EVERYTHING;
           toplevel = this.folder.get(query.value);
         }
@@ -38738,7 +36735,7 @@ var Datastore = class {
     const object = this.objects.get(id);
     if (!object)
       return;
-    if ((direction === "both" || direction === "incoming") && "$link" in object && object["$link"]) {
+    if ((direction === "both"|| 方向 ==="incoming") && "$link"对象 && 对象["$link"]) {
       const incoming = this.links.get(object.$link.obsidianLink());
       if (incoming) {
         for (const id2 of incoming) {
@@ -38746,7 +36743,7 @@ var Datastore = class {
         }
       }
     }
-    if ((direction === "both" || direction === "outgoing") && object.$types.contains(LINKABLE_TYPE) && iterableExists(object, "$links")) {
+    if ((direction === "both"|| 方向 ==="outgoing") && object.$types.contains(LINKABLE_TYPE) && iterableExists(object,"$links")) {
       for (const link of object.$links) {
         const resolved = this.resolveLink(link);
         if (resolved)
@@ -38790,18 +36787,12 @@ var LocalStorageCache = class {
     this.appId = appId;
     this.version = version;
     this.persister = import_localforage.default.createInstance({
-      name: "datacore/cache/" + appId,
-      driver: [import_localforage.default.INDEXEDDB],
-      description: "Cache metadata about files and sections in the datacore index."
+      name: "datacore/cache/"+ appId,\n      驱动程序：[import_localforage.default.INDEXEDDB]，\n      描述："Cache metadata about files and sections in the datacore index."
     });
   }
   /** Drop the entire cache instance and re-create a new fresh instance. */
   async recreate() {
-    await import_localforage.default.dropInstance({ name: "datacore/cache/" + this.appId });
-    this.persister = import_localforage.default.createInstance({
-      name: "datacore/cache/" + this.appId,
-      driver: [import_localforage.default.INDEXEDDB],
-      description: "Cache metadata about files and sections in the datacore index."
+    await import_localforage.default.dropInstance({ name: "datacore/cache/"+ this.appId });\n    this.persister = import_localforage.default.createInstance({\n      姓名："datacore/cache/"+ 这个.appId,\n      驱动程序：[import_localforage.default.INDEXEDDB]，\n      描述："Cache metadata about files and sections in the datacore index."
     });
   }
   /** Load file metadata by path. */
@@ -38837,22 +36828,14 @@ var LocalStorageCache = class {
   }
   /** Get a unique key for a given file path. */
   fileKey(path) {
-    return "file:" + path;
-  }
-};
-
-// inline-worker:__inline-worker
-function inlineWorker(scriptText) {
-  let blob = new Blob([scriptText], { type: "text/javascript" });
-  let url = URL.createObjectURL(blob);
-  let worker = new Worker(url, { "name": "Datacore Indexer" });
+    return "file:"+ 路径；\n  }\n};\n\n// 内联工作者:__inline-worker\n函数 inlineWorker(scriptText) {\n  让 blob = new Blob([scriptText], { 类型:"text/javascript"});\n  让 url = URL.createObjectURL(blob);\n  让worker = new Worker(url, {"name": "Datacore Indexer" });
   URL.revokeObjectURL(url);
   return worker;
 }
 
 // src/index/web-worker/importer.worker.ts
 function Worker2() {
-  return inlineWorker('var ll=Object.create;var zs=Object.defineProperty,cl=Object.defineProperties,fl=Object.getOwnPropertyDescriptor,dl=Object.getOwnPropertyDescriptors,hl=Object.getOwnPropertyNames,Ur=Object.getOwnPropertySymbols,pl=Object.getPrototypeOf,Ys=Object.prototype.hasOwnProperty,Ao=Object.prototype.propertyIsEnumerable;var No=(n,e,t)=>e in n?zs(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t,R=(n,e)=>{for(var t in e||(e={}))Ys.call(e,t)&&No(n,t,e[t]);if(Ur)for(var t of Ur(e))Ao.call(e,t)&&No(n,t,e[t]);return n},Ee=(n,e)=>cl(n,dl(e));var Gs=(n,e)=>{var t={};for(var r in n)Ys.call(n,r)&&e.indexOf(r)<0&&(t[r]=n[r]);if(n!=null&&Ur)for(var r of Ur(n))e.indexOf(r)<0&&Ao.call(n,r)&&(t[r]=n[r]);return t};var Mo=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports);var ml=(n,e,t,r)=>{if(e&&typeof e=="object"||typeof e=="function")for(let s of hl(e))!Ys.call(n,s)&&s!==t&&zs(n,s,{get:()=>e[s],enumerable:!(r=fl(e,s))||r.enumerable});return n};var Kr=(n,e,t)=>(t=n!=null?ll(pl(n)):{},ml(e||!n||!n.__esModule?zs(t,"default",{value:n,enumerable:!0}):t,n));var ss=Mo((pr,Mi)=>{(function(n,e){typeof pr=="object"&&typeof Mi=="object"?Mi.exports=e():typeof define=="function"&&define.amd?define([],e):typeof pr=="object"?pr.Parsimmon=e():n.Parsimmon=e()})(typeof self!="undefined"?self:pr,function(){return function(n){var e={};function t(r){if(e[r])return e[r].exports;var s=e[r]={i:r,l:!1,exports:{}};return n[r].call(s.exports,s,s.exports,t),s.l=!0,s.exports}return t.m=n,t.c=e,t.d=function(r,s,i){t.o(r,s)||Object.defineProperty(r,s,{configurable:!1,enumerable:!0,get:i})},t.r=function(r){Object.defineProperty(r,"__esModule",{value:!0})},t.n=function(r){var s=r&&r.__esModule?function(){return r.default}:function(){return r};return t.d(s,"a",s),s},t.o=function(r,s){return Object.prototype.hasOwnProperty.call(r,s)},t.p="",t(t.s=0)}([function(n,e,t){"use strict";function r(c){if(!(this instanceof r))return new r(c);this._=c}var s=r.prototype;function i(c,D){for(var w=0;w<c;w++)D(w)}function o(c,D,w){return function(C,I){i(I.length,function(N){C(I[N],N,I)})}(function(C,I,N){D=c(D,C,I,N)},w),D}function a(c,D){return o(function(w,C,I,N){return w.concat([c(C,I,N)])},[],D)}function u(c,D){var w={v:0,buf:D};return i(c,function(){var C;w={v:w.v<<1|(C=w.buf,C[0]>>7),buf:function(I){var N=o(function(A,U,ne,Te){return A.concat(ne===Te.length-1?Buffer.from([U,0]).readUInt16BE(0):Te.readUInt16BE(ne))},[],I);return Buffer.from(a(function(A){return(A<<1&65535)>>8},N))}(w.buf)}}),w}function l(){return typeof Buffer!="undefined"}function f(){if(!l())throw new Error("Buffer global does not exist; please use webpack if you need to parse Buffers in the browser.")}function d(c){f();var D=o(function(N,A){return N+A},0,c);if(D%8!=0)throw new Error("The bits ["+c.join(", ")+"] add up to "+D+" which is not an even number of bytes; the total should be divisible by 8");var w,C=D/8,I=(w=function(N){return N>48},o(function(N,A){return N||(w(A)?A:N)},null,c));if(I)throw new Error(I+" bit range requested exceeds 48 bit (6 byte) Number max.");return new r(function(N,A){var U=C+A;return U>N.length?O(A,C.toString()+" bytes"):F(U,o(function(ne,Te){var ge=u(Te,ne.buf);return{coll:ne.coll.concat(ge.v),buf:ge.buf}},{coll:[],buf:N.slice(A,U)},c).coll)})}function y(c,D){return new r(function(w,C){return f(),C+D>w.length?O(C,D+" bytes for "+c):F(C+D,w.slice(C,C+D))})}function h(c,D){if(typeof(w=D)!="number"||Math.floor(w)!==w||D<0||D>6)throw new Error(c+" requires integer length in range [0, 6].");var w}function E(c){return h("uintBE",c),y("uintBE("+c+")",c).map(function(D){return D.readUIntBE(0,c)})}function p(c){return h("uintLE",c),y("uintLE("+c+")",c).map(function(D){return D.readUIntLE(0,c)})}function T(c){return h("intBE",c),y("intBE("+c+")",c).map(function(D){return D.readIntBE(0,c)})}function g(c){return h("intLE",c),y("intLE("+c+")",c).map(function(D){return D.readIntLE(0,c)})}function k(c){return c instanceof r}function L(c){return{}.toString.call(c)==="[object Array]"}function m(c){return l()&&Buffer.isBuffer(c)}function F(c,D){return{status:!0,index:c,value:D,furthest:-1,expected:[]}}function O(c,D){return L(D)||(D=[D]),{status:!1,index:-1,value:null,furthest:c,expected:D}}function x(c,D){if(!D||c.furthest>D.furthest)return c;var w=c.furthest===D.furthest?function(C,I){if(function(){if(r._supportsSet!==void 0)return r._supportsSet;var dt=typeof Set!="undefined";return r._supportsSet=dt,dt}()&&Array.from){for(var N=new Set(C),A=0;A<I.length;A++)N.add(I[A]);var U=Array.from(N);return U.sort(),U}for(var ne={},Te=0;Te<C.length;Te++)ne[C[Te]]=!0;for(var ge=0;ge<I.length;ge++)ne[I[ge]]=!0;var ft=[];for(var Oe in ne)({}).hasOwnProperty.call(ne,Oe)&&ft.push(Oe);return ft.sort(),ft}(c.expected,D.expected):D.expected;return{status:c.status,index:c.index,value:c.value,furthest:D.furthest,expected:w}}var S={};function q(c,D){if(m(c))return{offset:D,line:-1,column:-1};c in S||(S[c]={});for(var w=S[c],C=0,I=0,N=0,A=D;A>=0;){if(A in w){C=w[A].line,N===0&&(N=w[A].lineStart);break}(c.charAt(A)===`\n`||c.charAt(A)==="\\r"&&c.charAt(A+1)!==`\n`)&&(I++,N===0&&(N=A+1)),A--}var U=C+I,ne=D-N;return w[D]={line:U,lineStart:N},{offset:D,line:U+1,column:ne+1}}function V(c){if(!k(c))throw new Error("not a parser: "+c)}function Y(c,D){return typeof c=="string"?c.charAt(D):c[D]}function v(c){if(typeof c!="number")throw new Error("not a number: "+c)}function P(c){if(typeof c!="function")throw new Error("not a function: "+c)}function j(c){if(typeof c!="string")throw new Error("not a string: "+c)}var De=2,ye=3,he=8,en=5*he,Tt=4*he,tn="  ";function Pt(c,D){return new Array(D+1).join(c)}function $t(c,D,w){var C=D-c.length;return C<=0?c:Pt(w,C)+c}function Ae(c,D,w,C){return{from:c-D>0?c-D:0,to:c+w>C?C:c+w}}function Rt(c,D){var w,C,I,N,A,U=D.index,ne=U.offset,Te=1;if(ne===c.length)return"Got the end of the input";if(m(c)){var ge=ne-ne%he,ft=ne-ge,Oe=Ae(ge,en,Tt+he,c.length),dt=a(function(le){return a(function(rn){return $t(rn.toString(16),2,"0")},le)},function(le,rn){var sn=le.length,qt=[],on=0;if(sn<=rn)return[le.slice()];for(var an=0;an<sn;an++)qt[on]||qt.push([]),qt[on].push(le[an]),(an+1)%rn==0&&on++;return qt}(c.slice(Oe.from,Oe.to).toJSON().data,he));N=function(le){return le.from===0&&le.to===1?{from:le.from,to:le.to}:{from:le.from/he,to:Math.floor(le.to/he)}}(Oe),C=ge/he,w=3*ft,ft>=4&&(w+=1),Te=2,I=a(function(le){return le.length<=4?le.join(" "):le.slice(0,4).join(" ")+"  "+le.slice(4).join(" ")},dt),(A=(8*(N.to>0?N.to-1:N.to)).toString(16).length)<2&&(A=2)}else{var nn=c.split(/\\r\\n|[\\n\\r\\u2028\\u2029]/);w=U.column-1,C=U.line-1,N=Ae(C,De,ye,nn.length),I=nn.slice(N.from,N.to),A=N.to.toString().length}var ul=C-N.from;return m(c)&&(A=(8*(N.to>0?N.to-1:N.to)).toString(16).length)<2&&(A=2),o(function(le,rn,sn){var qt,on=sn===ul,an=on?"> ":tn;return qt=m(c)?$t((8*(N.from+sn)).toString(16),A,"0"):$t((N.from+sn+1).toString(),A," "),[].concat(le,[an+qt+" | "+rn],on?[tn+Pt(" ",A)+" | "+$t("",w," ")+Pt("^",Te)]:[])},[],I).join(`\n`)}function To(c,D){return[`\n`,"-- PARSING FAILED "+Pt("-",50),`\n\n`,Rt(c,D),`\n\n`,(w=D.expected,w.length===1?`Expected:\n\n`+w[0]:`Expected one of the following: \n\n`+w.join(", ")),`\n`].join("");var w}function So(c){return c.flags!==void 0?c.flags:[c.global?"g":"",c.ignoreCase?"i":"",c.multiline?"m":"",c.unicode?"u":"",c.sticky?"y":""].join("")}function $r(){for(var c=[].slice.call(arguments),D=c.length,w=0;w<D;w+=1)V(c[w]);return r(function(C,I){for(var N,A=new Array(D),U=0;U<D;U+=1){if(!(N=x(c[U]._(C,I),N)).status)return N;A[U]=N.value,I=N.index}return x(F(I,A),N)})}function jt(){var c=[].slice.call(arguments);if(c.length===0)throw new Error("seqMap needs at least one argument");var D=c.pop();return P(D),$r.apply(null,c).map(function(w){return D.apply(null,w)})}function Rr(){var c=[].slice.call(arguments),D=c.length;if(D===0)return jr("zero alternates");for(var w=0;w<D;w+=1)V(c[w]);return r(function(C,I){for(var N,A=0;A<c.length;A+=1)if((N=x(c[A]._(C,I),N)).status)return N;return N})}function ko(c,D){return Ws(c,D).or(Vt([]))}function Ws(c,D){return V(c),V(D),jt(c,D.then(c).many(),function(w,C){return[w].concat(C)})}function Bn(c){j(c);var D="\'"+c+"\'";return r(function(w,C){var I=C+c.length,N=w.slice(C,I);return N===c?F(I,N):O(C,D)})}function ct(c,D){(function(I){if(!(I instanceof RegExp))throw new Error("not a regexp: "+I);for(var N=So(I),A=0;A<N.length;A++){var U=N.charAt(A);if(U!=="i"&&U!=="m"&&U!=="u"&&U!=="s")throw new Error(\'unsupported regexp flag "\'+U+\'": \'+I)}})(c),arguments.length>=2?v(D):D=0;var w=function(I){return RegExp("^(?:"+I.source+")",So(I))}(c),C=""+c;return r(function(I,N){var A=w.exec(I.slice(N));if(A){if(0<=D&&D<=A.length){var U=A[0],ne=A[D];return F(N+U.length,ne)}return O(N,"valid match group (0 to "+A.length+") in "+C)}return O(N,C)})}function Vt(c){return r(function(D,w){return F(w,c)})}function jr(c){return r(function(D,w){return O(w,c)})}function Vr(c){if(k(c))return r(function(D,w){var C=c._(D,w);return C.index=w,C.value="",C});if(typeof c=="string")return Vr(Bn(c));if(c instanceof RegExp)return Vr(ct(c));throw new Error("not a string, regexp, or parser: "+c)}function Co(c){return V(c),r(function(D,w){var C=c._(D,w),I=D.slice(w,C.index);return C.status?O(w,\'not "\'+I+\'"\'):F(w,null)})}function qr(c){return P(c),r(function(D,w){var C=Y(D,w);return w<D.length&&c(C)?F(w+1,C):O(w,"a character/byte matching "+c)})}function xo(c,D){arguments.length<2&&(D=c,c=void 0);var w=r(function(C,I){return w._=D()._,w._(C,I)});return c?w.desc(c):w}function Hs(){return jr("fantasy-land/empty")}s.parse=function(c){if(typeof c!="string"&&!m(c))throw new Error(".parse must be called with a string or Buffer as its argument");var D,w=this.skip(Js)._(c,0);return D=w.status?{status:!0,value:w.value}:{status:!1,index:q(c,w.furthest),expected:w.expected},delete S[c],D},s.tryParse=function(c){var D=this.parse(c);if(D.status)return D.value;var w=To(c,D),C=new Error(w);throw C.type="ParsimmonError",C.result=D,C},s.assert=function(c,D){return this.chain(function(w){return c(w)?Vt(w):jr(D)})},s.or=function(c){return Rr(this,c)},s.trim=function(c){return this.wrap(c,c)},s.wrap=function(c,D){return jt(c,this,D,function(w,C){return C})},s.thru=function(c){return c(this)},s.then=function(c){return V(c),$r(this,c).map(function(D){return D[1]})},s.many=function(){var c=this;return r(function(D,w){for(var C=[],I=void 0;;){if(!(I=x(c._(D,w),I)).status)return x(F(w,C),I);if(w===I.index)throw new Error("infinite loop detected in .many() parser --- calling .many() on a parser which can accept zero characters is usually the cause");w=I.index,C.push(I.value)}})},s.tieWith=function(c){return j(c),this.map(function(D){if(function(I){if(!L(I))throw new Error("not an array: "+I)}(D),D.length){j(D[0]);for(var w=D[0],C=1;C<D.length;C++)j(D[C]),w+=c+D[C];return w}return""})},s.tie=function(){return this.tieWith("")},s.times=function(c,D){var w=this;return arguments.length<2&&(D=c),v(c),v(D),r(function(C,I){for(var N=[],A=void 0,U=void 0,ne=0;ne<c;ne+=1){if(U=x(A=w._(C,I),U),!A.status)return U;I=A.index,N.push(A.value)}for(;ne<D&&(U=x(A=w._(C,I),U),A.status);ne+=1)I=A.index,N.push(A.value);return x(F(I,N),U)})},s.result=function(c){return this.map(function(){return c})},s.atMost=function(c){return this.times(0,c)},s.atLeast=function(c){return jt(this.times(c),this.many(),function(D,w){return D.concat(w)})},s.map=function(c){P(c);var D=this;return r(function(w,C){var I=D._(w,C);return I.status?x(F(I.index,c(I.value)),I):I})},s.contramap=function(c){P(c);var D=this;return r(function(w,C){var I=D.parse(c(w.slice(C)));return I.status?F(C+w.length,I.value):I})},s.promap=function(c,D){return P(c),P(D),this.contramap(c).map(D)},s.skip=function(c){return $r(this,c).map(function(D){return D[0]})},s.mark=function(){return jt(Pn,this,Pn,function(c,D,w){return{start:c,value:D,end:w}})},s.node=function(c){return jt(Pn,this,Pn,function(D,w,C){return{name:c,value:w,start:D,end:C}})},s.sepBy=function(c){return ko(this,c)},s.sepBy1=function(c){return Ws(this,c)},s.lookahead=function(c){return this.skip(Vr(c))},s.notFollowedBy=function(c){return this.skip(Co(c))},s.desc=function(c){L(c)||(c=[c]);var D=this;return r(function(w,C){var I=D._(w,C);return I.status||(I.expected=c),I})},s.fallback=function(c){return this.or(Vt(c))},s.ap=function(c){return jt(c,this,function(D,w){return D(w)})},s.chain=function(c){var D=this;return r(function(w,C){var I=D._(w,C);return I.status?x(c(I.value)._(w,I.index),I):I})},s.concat=s.or,s.empty=Hs,s.of=Vt,s["fantasy-land/ap"]=s.ap,s["fantasy-land/chain"]=s.chain,s["fantasy-land/concat"]=s.concat,s["fantasy-land/empty"]=s.empty,s["fantasy-land/of"]=s.of,s["fantasy-land/map"]=s.map;var Pn=r(function(c,D){return F(D,q(c,D))}),Xu=r(function(c,D){return D>=c.length?O(D,"any character/byte"):F(D+1,Y(c,D))}),el=r(function(c,D){return F(c.length,c.slice(D))}),Js=r(function(c,D){return D<c.length?O(D,"EOF"):F(D,null)}),tl=ct(/[0-9]/).desc("a digit"),nl=ct(/[0-9]*/).desc("optional digits"),rl=ct(/[a-z]/i).desc("a letter"),sl=ct(/[a-z]*/i).desc("optional letters"),il=ct(/\\s*/).desc("optional whitespace"),ol=ct(/\\s+/).desc("whitespace"),Oo=Bn("\\r"),vo=Bn(`\n`),Io=Bn(`\\r\n`),Lo=Rr(Io,vo,Oo).desc("newline"),al=Rr(Lo,Js);r.all=el,r.alt=Rr,r.any=Xu,r.cr=Oo,r.createLanguage=function(c){var D={};for(var w in c)({}).hasOwnProperty.call(c,w)&&function(C){D[C]=xo(function(){return c[C](D)})}(w);return D},r.crlf=Io,r.custom=function(c){return r(c(F,O))},r.digit=tl,r.digits=nl,r.empty=Hs,r.end=al,r.eof=Js,r.fail=jr,r.formatError=To,r.index=Pn,r.isParser=k,r.lazy=xo,r.letter=rl,r.letters=sl,r.lf=vo,r.lookahead=Vr,r.makeFailure=O,r.makeSuccess=F,r.newline=Lo,r.noneOf=function(c){return qr(function(D){return c.indexOf(D)<0}).desc("none of \'"+c+"\'")},r.notFollowedBy=Co,r.of=Vt,r.oneOf=function(c){for(var D=c.split(""),w=0;w<D.length;w++)D[w]="\'"+D[w]+"\'";return qr(function(C){return c.indexOf(C)>=0}).desc(D)},r.optWhitespace=il,r.Parser=r,r.range=function(c,D){return qr(function(w){return c<=w&&w<=D}).desc(c+"-"+D)},r.regex=ct,r.regexp=ct,r.sepBy=ko,r.sepBy1=Ws,r.seq=$r,r.seqMap=jt,r.seqObj=function(){for(var c,D={},w=0,C=(c=arguments,Array.prototype.slice.call(c)),I=C.length,N=0;N<I;N+=1){var A=C[N];if(!k(A)){if(L(A)&&A.length===2&&typeof A[0]=="string"&&k(A[1])){var U=A[0];if(Object.prototype.hasOwnProperty.call(D,U))throw new Error("seqObj: duplicate key "+U);D[U]=!0,w++;continue}throw new Error("seqObj arguments must be parsers or [string, parser] array pairs.")}}if(w===0)throw new Error("seqObj expects at least one named parser, found zero");return r(function(ne,Te){for(var ge,ft={},Oe=0;Oe<I;Oe+=1){var dt,nn;if(L(C[Oe])?(dt=C[Oe][0],nn=C[Oe][1]):(dt=null,nn=C[Oe]),!(ge=x(nn._(ne,Te),ge)).status)return ge;dt&&(ft[dt]=ge.value),Te=ge.index}return x(F(Te,ft),ge)})},r.string=Bn,r.succeed=Vt,r.takeWhile=function(c){return P(c),r(function(D,w){for(var C=w;C<D.length&&c(Y(D,C));)C++;return F(C,D.slice(w,C))})},r.test=qr,r.whitespace=ol,r["fantasy-land/empty"]=Hs,r["fantasy-land/of"]=Vt,r.Binary={bitSeq:d,bitSeqObj:function(c){f();var D={},w=0,C=a(function(N){if(L(N)){var A=N;if(A.length!==2)throw new Error("["+A.join(", ")+"] should be length 2, got length "+A.length);if(j(A[0]),v(A[1]),Object.prototype.hasOwnProperty.call(D,A[0]))throw new Error("duplicate key in bitSeqObj: "+A[0]);return D[A[0]]=!0,w++,A}return v(N),[null,N]},c);if(w<1)throw new Error("bitSeqObj expects at least one named pair, got ["+c.join(", ")+"]");var I=a(function(N){return N[0]},C);return d(a(function(N){return N[1]},C)).map(function(N){return o(function(A,U){return U[0]!==null&&(A[U[0]]=U[1]),A},{},a(function(A,U){return[A,N[U]]},I))})},byte:function(c){if(f(),v(c),c>255)throw new Error("Value specified to byte constructor ("+c+"=0x"+c.toString(16)+") is larger in value than a single byte.");var D=(c>15?"0x":"0x0")+c.toString(16);return r(function(w,C){var I=Y(w,C);return I===c?F(C+1,I):O(C,D)})},buffer:function(c){return y("buffer",c).map(function(D){return Buffer.from(D)})},encodedString:function(c,D){return y("string",D).map(function(w){return w.toString(c)})},uintBE:E,uint8BE:E(1),uint16BE:E(2),uint32BE:E(4),uintLE:p,uint8LE:p(1),uint16LE:p(2),uint32LE:p(4),intBE:T,int8BE:T(1),int16BE:T(2),int32BE:T(4),intLE:g,int8LE:g(1),int16LE:g(2),int32LE:g(4),floatBE:y("floatBE",4).map(function(c){return c.readFloatBE(0)}),floatLE:y("floatLE",4).map(function(c){return c.readFloatLE(0)}),doubleBE:y("doubleBE",8).map(function(c){return c.readDoubleBE(0)}),doubleLE:y("doubleLE",8).map(function(c){return c.readDoubleLE(0)})},n.exports=r}])})});var Pu=Mo(Ne=>{"use strict";var Ff=Ne&&Ne.__extends||function(){var n=function(e,t){return n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(r,s){r.__proto__=s}||function(r,s){for(var i in s)Object.prototype.hasOwnProperty.call(s,i)&&(r[i]=s[i])},n(e,t)};return function(e,t){if(typeof t!="function"&&t!==null)throw new TypeError("Class extends value "+String(t)+" is not a constructor or null");n(e,t);function r(){this.constructor=e}e.prototype=t===null?Object.create(t):(r.prototype=t.prototype,new r)}}();Object.defineProperty(Ne,"__esModule",{value:!0});Ne.EmptyBTree=Ne.asSet=Ne.simpleComparator=Ne.defaultComparator=void 0;function Mu(n,e){if(Number.isFinite(n)&&Number.isFinite(e))return n-e;var t=typeof n,r=typeof e;if(t!==r)return t<r?-1:1;if(t==="object"){if(n===null)return e===null?0:-1;if(e===null)return 1;if(n=n.valueOf(),e=e.valueOf(),t=typeof n,r=typeof e,t!==r)return t<r?-1:1}return n<e?-1:n>e?1:n===e?0:Number.isNaN(n)?Number.isNaN(e)?0:-1:Number.isNaN(e)?1:Array.isArray(n)?0:Number.NaN}Ne.defaultComparator=Mu;function wf(n,e){return n>e?1:n<e?-1:0}Ne.simpleComparator=wf;var ut=function(){function n(e,t,r){this._root=ho,this._size=0,this._maxNodeSize=r>=4?Math.min(r,256):32,this._compare=t||Mu,e&&this.setPairs(e)}return Object.defineProperty(n.prototype,"size",{get:function(){return this._size},enumerable:!1,configurable:!0}),Object.defineProperty(n.prototype,"length",{get:function(){return this._size},enumerable:!1,configurable:!0}),Object.defineProperty(n.prototype,"isEmpty",{get:function(){return this._size===0},enumerable:!1,configurable:!0}),n.prototype.clear=function(){this._root=ho,this._size=0},n.prototype.forEach=function(e,t){var r=this;return t!==void 0&&(e=e.bind(t)),this.forEachPair(function(s,i){return e(i,s,r)})},n.prototype.forEachPair=function(e,t){var r=this.minKey(),s=this.maxKey();return this.forRange(r,s,!0,e,t)},n.prototype.get=function(e,t){return this._root.get(e,t,this)},n.prototype.set=function(e,t,r){this._root.isShared&&(this._root=this._root.clone());var s=this._root.set(e,t,r,this);return s===!0||s===!1?s:(this._root=new Sf([this._root,s]),!0)},n.prototype.has=function(e){return this.forRange(e,e,!0,void 0)!==0},n.prototype.delete=function(e){return this.editRange(e,e,!0,Nu)!==0},n.prototype.with=function(e,t,r){var s=this.clone();return s.set(e,t,r)||r?s:this},n.prototype.withPairs=function(e,t){var r=this.clone();return r.setPairs(e,t)!==0||t?r:this},n.prototype.withKeys=function(e,t){for(var r=this.clone(),s=!1,i=0;i<e.length;i++)s=r.set(e[i],void 0,!1)||s;return t&&!s?this:r},n.prototype.without=function(e,t){return this.withoutRange(e,e,!0,t)},n.prototype.withoutKeys=function(e,t){var r=this.clone();return r.deleteKeys(e)||!t?r:this},n.prototype.withoutRange=function(e,t,r,s){var i=this.clone();return i.deleteRange(e,t,r)===0&&s?this:i},n.prototype.filter=function(e,t){var r=this.greedyClone(),s;return r.editAll(function(i,o,a){if(!e(i,o,a))return s=Bu}),!s&&t?this:r},n.prototype.mapValues=function(e){var t={},r=this.greedyClone();return r.editAll(function(s,i,o){return t.value=e(i,s,o),t}),r},n.prototype.reduce=function(e,t){for(var r=0,s=t,i=this.entries(this.minKey(),Ar),o;!(o=i.next()).done;)s=e(s,o.value,r++,this);return s},n.prototype.entries=function(e,t){var r=this.findPath(e);if(r===void 0)return An();var s=r.nodequeue,i=r.nodeindex,o=r.leaf,a=t!==void 0?1:0,u=e===void 0?-1:o.indexOf(e,0,this._compare)-1;return An(function(){e:for(;;)switch(a){case 0:if(++u<o.keys.length)return{done:!1,value:[o.keys[u],o.values[u]]};a=2;continue;case 1:if(++u<o.keys.length)return t[0]=o.keys[u],t[1]=o.values[u],{done:!1,value:t};a=2;case 2:for(var l=-1;;){if(++l>=s.length){a=3;continue e}if(++i[l]<s[l].length)break}for(;l>0;l--)s[l-1]=s[l][i[l]].children,i[l-1]=0;o=s[0][i[0]],u=-1,a=t!==void 0?1:0;continue;case 3:return{done:!0,value:void 0}}})},n.prototype.entriesReversed=function(e,t,r){if(e===void 0&&(e=this.maxKey(),r=void 0,e===void 0))return An();var s=this.findPath(e)||this.findPath(this.maxKey()),i=s.nodequeue,o=s.nodeindex,a=s.leaf;Le(!i[0]||a===i[0][o[0]],"wat!");var u=a.indexOf(e,0,this._compare);!r&&u<a.keys.length&&this._compare(a.keys[u],e)<=0&&u++;var l=t!==void 0?1:0;return An(function(){e:for(;;)switch(l){case 0:if(--u>=0)return{done:!1,value:[a.keys[u],a.values[u]]};l=2;continue;case 1:if(--u>=0)return t[0]=a.keys[u],t[1]=a.values[u],{done:!1,value:t};l=2;case 2:for(var f=-1;;){if(++f>=i.length){l=3;continue e}if(--o[f]>=0)break}for(;f>0;f--)i[f-1]=i[f][o[f]].children,o[f-1]=i[f-1].length-1;a=i[0][o[0]],u=a.keys.length,l=t!==void 0?1:0;continue;case 3:return{done:!0,value:void 0}}})},n.prototype.findPath=function(e){var t=this._root,r,s;if(t.isLeaf)r=Au,s=Au;else{r=[],s=[];for(var i=0;!t.isLeaf;i++){if(r[i]=t.children,s[i]=e===void 0?0:t.indexOf(e,0,this._compare),s[i]>=r[i].length)return;t=r[i][s[i]]}r.reverse(),s.reverse()}return{nodequeue:r,nodeindex:s,leaf:t}},n.prototype.diffAgainst=function(e,t,r,s){if(e._compare!==this._compare)throw new Error("Tree comparators are not the same.");if(this.isEmpty||e.isEmpty)return this.isEmpty&&e.isEmpty?void 0:this.isEmpty?r===void 0?void 0:n.stepToEnd(n.makeDiffCursor(e),r):t===void 0?void 0:n.stepToEnd(n.makeDiffCursor(this),t);for(var i=this._compare,o=n.makeDiffCursor(this),a=n.makeDiffCursor(e),u=!0,l=!0,f=n.compare(o,a,i);u&&l;){var d=n.compare(o,a,i),y=o.leaf,h=o.internalSpine,E=o.levelIndices,p=a.leaf,T=a.internalSpine,g=a.levelIndices;if(y||p){if(f!==0){if(d===0){if(y&&p&&s){var k=y.values[E[E.length-1]],L=p.values[g[g.length-1]];if(!Object.is(k,L)){var m=s(o.currentKey,k,L);if(m&&m.break)return m.break}}}else if(d>0){if(p&&r){var F=p.values[g[g.length-1]],m=r(a.currentKey,F);if(m&&m.break)return m.break}}else if(t&&y&&f!==0){var k=y.values[E[E.length-1]],m=t(o.currentKey,k);if(m&&m.break)return m.break}}}else if(!y&&!p&&d===0){var O=h.length-1,x=T.length-1,S=h[O][E[O]],q=T[x][g[x]];if(q===S){f=0,u=n.step(o,!0),l=n.step(a,!0);continue}}f=d,d<0?u=n.step(o):l=n.step(a)}if(u&&t)return n.finishCursorWalk(o,a,i,t);if(l&&r)return n.finishCursorWalk(a,o,i,r)},n.finishCursorWalk=function(e,t,r,s){var i=n.compare(e,t,r);if(i===0){if(!n.step(e))return}else i<0&&Le(!1,"cursor walk terminated early");return n.stepToEnd(e,s)},n.stepToEnd=function(e,t){for(var r=!0;r;){var s=e.leaf,i=e.levelIndices,o=e.currentKey;if(s){var a=s.values[i[i.length-1]],u=t(o,a);if(u&&u.break)return u.break}r=n.step(e)}},n.makeDiffCursor=function(e){var t=e._root,r=e.height;return{height:r,internalSpine:[[t]],levelIndices:[0],leaf:void 0,currentKey:t.maxKey()}},n.step=function(e,t){var r=e.internalSpine,s=e.levelIndices,i=e.leaf;if(t===!0||i){var o=s.length;if(t===!0||s[o-1]===0){var a=r.length;if(a===0)return!1;for(var u=a-1,l=u;l>=0;){if(s[l]>0)return l<o-1&&(e.leaf=void 0,s.pop()),l<u&&(e.internalSpine=r.slice(0,l+1)),e.currentKey=r[l][--s[l]].maxKey(),!0;l--}return!1}else{var f=--s[o-1];return e.currentKey=i.keys[f],!0}}else{var d=r.length,y=d-1,h=r[y][s[y]];if(h.isLeaf){e.leaf=h;var f=s[d]=h.values.length-1;e.currentKey=h.keys[f]}else{var E=h.children;r[d]=E;var p=E.length-1;s[d]=p,e.currentKey=E[p].maxKey()}return!0}},n.compare=function(e,t,r){var s=e.height,i=e.currentKey,o=e.levelIndices,a=t.height,u=t.currentKey,l=t.levelIndices,f=r(u,i);if(f!==0)return f;var d=s<a?s:a,y=o.length-(s-d),h=l.length-(a-d);return y-h},n.prototype.keys=function(e){var t=this.entries(e,Ar);return An(function(){var r=t.next();return r.value&&(r.value=r.value[0]),r})},n.prototype.values=function(e){var t=this.entries(e,Ar);return An(function(){var r=t.next();return r.value&&(r.value=r.value[1]),r})},Object.defineProperty(n.prototype,"maxNodeSize",{get:function(){return this._maxNodeSize},enumerable:!1,configurable:!0}),n.prototype.minKey=function(){return this._root.minKey()},n.prototype.maxKey=function(){return this._root.maxKey()},n.prototype.clone=function(){this._root.isShared=!0;var e=new n(void 0,this._compare,this._maxNodeSize);return e._root=this._root,e._size=this._size,e},n.prototype.greedyClone=function(e){var t=new n(void 0,this._compare,this._maxNodeSize);return t._root=this._root.greedyClone(e),t._size=this._size,t},n.prototype.toArray=function(e){e===void 0&&(e=2147483647);var t=this.minKey(),r=this.maxKey();return t!==void 0?this.getRange(t,r,!0,e):[]},n.prototype.keysArray=function(){var e=[];return this._root.forRange(this.minKey(),this.maxKey(),!0,!1,this,0,function(t,r){e.push(t)}),e},n.prototype.valuesArray=function(){var e=[];return this._root.forRange(this.minKey(),this.maxKey(),!0,!1,this,0,function(t,r){e.push(r)}),e},n.prototype.toString=function(){return this.toArray().toString()},n.prototype.setIfNotPresent=function(e,t){return this.set(e,t,!1)},n.prototype.nextHigherPair=function(e,t){return t=t||[],e===void 0?this._root.minPair(t):this._root.getPairOrNextHigher(e,this._compare,!1,t)},n.prototype.nextHigherKey=function(e){var t=this.nextHigherPair(e,Ar);return t&&t[0]},n.prototype.nextLowerPair=function(e,t){return t=t||[],e===void 0?this._root.maxPair(t):this._root.getPairOrNextLower(e,this._compare,!1,t)},n.prototype.nextLowerKey=function(e){var t=this.nextLowerPair(e,Ar);return t&&t[0]},n.prototype.getPairOrNextLower=function(e,t){return this._root.getPairOrNextLower(e,this._compare,!0,t||[])},n.prototype.getPairOrNextHigher=function(e,t){return this._root.getPairOrNextHigher(e,this._compare,!0,t||[])},n.prototype.changeIfPresent=function(e,t){return this.editRange(e,e,!0,function(r,s){return{value:t}})!==0},n.prototype.getRange=function(e,t,r,s){s===void 0&&(s=67108863);var i=[];return this._root.forRange(e,t,r,!1,this,0,function(o,a){return i.push([o,a]),i.length>s?kf:void 0}),i},n.prototype.setPairs=function(e,t){for(var r=0,s=0;s<e.length;s++)this.set(e[s][0],e[s][1],t)&&r++;return r},n.prototype.forRange=function(e,t,r,s,i){var o=this._root.forRange(e,t,r,!1,this,i||0,s);return typeof o=="number"?o:o.break},n.prototype.editRange=function(e,t,r,s,i){var o=this._root;o.isShared&&(this._root=o=o.clone());try{var a=o.forRange(e,t,r,!0,this,i||0,s);return typeof a=="number"?a:a.break}finally{for(var u=void 0;o.keys.length<=1&&!o.isLeaf;)u||(u=o.isShared),this._root=o=o.keys.length===0?ho:o.children[0];u&&(o.isShared=!0)}},n.prototype.editAll=function(e,t){return this.editRange(this.minKey(),this.maxKey(),!0,e,t)},n.prototype.deleteRange=function(e,t,r){return this.editRange(e,t,r,Nu)},n.prototype.deleteKeys=function(e){for(var t=0,r=0;t<e.length;t++)this.delete(e[t])&&r++;return r},Object.defineProperty(n.prototype,"height",{get:function(){for(var e=this._root,t=-1;e;)t++,e=e.isLeaf?void 0:e.children[0];return t},enumerable:!1,configurable:!0}),n.prototype.freeze=function(){var e=this;e.clear=e.set=e.editRange=function(){throw new Error("Attempted to modify a frozen BTree")}},n.prototype.unfreeze=function(){delete this.clear,delete this.set,delete this.editRange},Object.defineProperty(n.prototype,"isFrozen",{get:function(){return this.hasOwnProperty("editRange")},enumerable:!1,configurable:!0}),n.prototype.checkValid=function(){var e=this._root.checkValid(0,this,0);Le(e===this.size,"size mismatch: counted ",e,"but stored",this.size)},n}();Ne.default=ut;function Tf(n){return n}Ne.asSet=Tf;Symbol&&Symbol.iterator&&(ut.prototype[Symbol.iterator]=ut.prototype.entries);ut.prototype.where=ut.prototype.filter;ut.prototype.setRange=ut.prototype.setPairs;ut.prototype.add=ut.prototype.set;function An(n){n===void 0&&(n=function(){return{done:!0,value:void 0}});var e={next:n};return Symbol&&Symbol.iterator&&(e[Symbol.iterator]=function(){return this}),e}var _u=function(){function n(e,t){e===void 0&&(e=[]),this.keys=e,this.values=t||be,this.isShared=void 0}return Object.defineProperty(n.prototype,"isLeaf",{get:function(){return this.children===void 0},enumerable:!1,configurable:!0}),n.prototype.maxKey=function(){return this.keys[this.keys.length-1]},n.prototype.indexOf=function(e,t,r){for(var s=this.keys,i=0,o=s.length,a=o>>1;i<o;){var u=r(s[a],e);if(u<0)i=a+1;else if(u>0)o=a;else{if(u===0)return a;if(e===e)return s.length;throw new Error("BTree: NaN was used as a key")}a=i+o>>1}return a^t},n.prototype.minKey=function(){return this.keys[0]},n.prototype.minPair=function(e){if(this.keys.length!==0)return e[0]=this.keys[0],e[1]=this.values[0],e},n.prototype.maxPair=function(e){if(this.keys.length!==0){var t=this.keys.length-1;return e[0]=this.keys[t],e[1]=this.values[t],e}},n.prototype.clone=function(){var e=this.values;return new n(this.keys.slice(0),e===be?e:e.slice(0))},n.prototype.greedyClone=function(e){return this.isShared&&!e?this:this.clone()},n.prototype.get=function(e,t,r){var s=this.indexOf(e,-1,r._compare);return s<0?t:this.values[s]},n.prototype.getPairOrNextLower=function(e,t,r,s){var i=this.indexOf(e,-1,t),o=i<0?~i-1:r?i:i-1;if(o>=0)return s[0]=this.keys[o],s[1]=this.values[o],s},n.prototype.getPairOrNextHigher=function(e,t,r,s){var i=this.indexOf(e,-1,t),o=i<0?~i:r?i:i+1,a=this.keys;if(o<a.length)return s[0]=a[o],s[1]=this.values[o],s},n.prototype.checkValid=function(e,t,r){var s=this.keys.length,i=this.values.length;return Le(this.values===be?s<=i:s===i,"keys/values length mismatch: depth",e,"with lengths",s,i,"and baseIndex",r),Le(e==0||s>0,"empty leaf at depth",e,"and baseIndex",r),s},n.prototype.set=function(e,t,r,s){var i=this.indexOf(e,-1,s._compare);if(i<0){if(i=~i,s._size++,this.keys.length<s._maxNodeSize)return this.insertInLeaf(i,e,t,s);var o=this.splitOffRightSide(),a=this;return i>this.keys.length&&(i-=this.keys.length,a=o),a.insertInLeaf(i,e,t,s),o}else return r!==!1&&(t!==void 0&&this.reifyValues(),this.keys[i]=e,this.values[i]=t),!1},n.prototype.reifyValues=function(){return this.values===be?this.values=this.values.slice(0,this.keys.length):this.values},n.prototype.insertInLeaf=function(e,t,r,s){if(this.keys.splice(e,0,t),this.values===be){for(;be.length<s._maxNodeSize;)be.push(void 0);if(r===void 0)return!0;this.values=be.slice(0,this.keys.length-1)}return this.values.splice(e,0,r),!0},n.prototype.takeFromRight=function(e){var t=this.values;e.values===be?t!==be&&t.push(void 0):(t=this.reifyValues(),t.push(e.values.shift())),this.keys.push(e.keys.shift())},n.prototype.takeFromLeft=function(e){var t=this.values;e.values===be?t!==be&&t.unshift(void 0):(t=this.reifyValues(),t.unshift(e.values.pop())),this.keys.unshift(e.keys.pop())},n.prototype.splitOffRightSide=function(){var e=this.keys.length>>1,t=this.keys.splice(e),r=this.values===be?be:this.values.splice(e);return new n(t,r)},n.prototype.forRange=function(e,t,r,s,i,o,a){var u=i._compare,l,f;if(t===e){if(!r||(f=(l=this.indexOf(e,-1,u))+1,l<0))return o}else l=this.indexOf(e,0,u),f=this.indexOf(t,-1,u),f<0?f=~f:r===!0&&f++;var d=this.keys,y=this.values;if(a!==void 0)for(var h=l;h<f;h++){var E=d[h],p=a(E,y[h],o++);if(p!==void 0){if(s===!0){if(E!==d[h]||this.isShared===!0)throw new Error("BTree illegally changed or cloned in editRange");p.delete?(this.keys.splice(h,1),this.values!==be&&this.values.splice(h,1),i._size--,h--,f--):p.hasOwnProperty("value")&&(y[h]=p.value)}if(p.break!==void 0)return p}}else o+=f-l;return o},n.prototype.mergeSibling=function(e,t){if(this.keys.push.apply(this.keys,e.keys),this.values===be){if(e.values===be)return;this.values=this.values.slice(0,this.keys.length)}this.values.push.apply(this.values,e.reifyValues())},n}(),Sf=function(n){Ff(e,n);function e(t,r){var s=this;if(!r){r=[];for(var i=0;i<t.length;i++)r[i]=t[i].maxKey()}return s=n.call(this,r)||this,s.children=t,s}return e.prototype.clone=function(){for(var t=this.children.slice(0),r=0;r<t.length;r++)t[r].isShared=!0;return new e(t,this.keys.slice(0))},e.prototype.greedyClone=function(t){if(this.isShared&&!t)return this;for(var r=new e(this.children.slice(0),this.keys.slice(0)),s=0;s<r.children.length;s++)r.children[s]=r.children[s].greedyClone(t);return r},e.prototype.minKey=function(){return this.children[0].minKey()},e.prototype.minPair=function(t){return this.children[0].minPair(t)},e.prototype.maxPair=function(t){return this.children[this.children.length-1].maxPair(t)},e.prototype.get=function(t,r,s){var i=this.indexOf(t,0,s._compare),o=this.children;return i<o.length?o[i].get(t,r,s):void 0},e.prototype.getPairOrNextLower=function(t,r,s,i){var o=this.indexOf(t,0,r),a=this.children;if(o>=a.length)return this.maxPair(i);var u=a[o].getPairOrNextLower(t,r,s,i);return u===void 0&&o>0?a[o-1].maxPair(i):u},e.prototype.getPairOrNextHigher=function(t,r,s,i){var o=this.indexOf(t,0,r),a=this.children,u=a.length;if(!(o>=u)){var l=a[o].getPairOrNextHigher(t,r,s,i);return l===void 0&&o<u-1?a[o+1].minPair(i):l}},e.prototype.checkValid=function(t,r,s){var i=this.keys.length,o=this.children.length;Le(i===o,"keys/children length mismatch: depth",t,"lengths",i,o,"baseIndex",s),Le(i>1||t>0,"internal node has length",i,"at depth",t,"baseIndex",s);for(var a=0,u=this.children,l=this.keys,f=0,d=0;d<o;d++)a+=u[d].checkValid(t+1,r,s+a),f+=u[d].keys.length,Le(a>=f,"wtf",s),Le(d===0||u[d-1].constructor===u[d].constructor,"type mismatch, baseIndex:",s),u[d].maxKey()!=l[d]&&Le(!1,"keys[",d,"] =",l[d],"is wrong, should be ",u[d].maxKey(),"at depth",t,"baseIndex",s),d===0||r._compare(l[d-1],l[d])<0||Le(!1,"sort violation at depth",t,"index",d,"keys",l[d-1],l[d]);var y=f===0;return(y||f>r.maxNodeSize*o)&&Le(!1,y?"too few":"too many","children (",f,a,") at depth",t,"maxNodeSize:",r.maxNodeSize,"children.length:",o,"baseIndex:",s),a},e.prototype.set=function(t,r,s,i){var o=this.children,a=i._maxNodeSize,u=i._compare,l=Math.min(this.indexOf(t,0,u),o.length-1),f=o[l];if(f.isShared&&(o[l]=f=f.clone()),f.keys.length>=a){var d;l>0&&(d=o[l-1]).keys.length<a&&u(f.keys[0],t)<0?(d.isShared&&(o[l-1]=d=d.clone()),d.takeFromRight(f),this.keys[l-1]=d.maxKey()):(d=o[l+1])!==void 0&&d.keys.length<a&&u(f.maxKey(),t)<0&&(d.isShared&&(o[l+1]=d=d.clone()),d.takeFromLeft(f),this.keys[l]=o[l].maxKey())}var y=f.set(t,r,s,i);if(y===!1)return!1;if(this.keys[l]=f.maxKey(),y===!0)return!0;if(this.keys.length<a)return this.insert(l+1,y),!0;var h=this.splitOffRightSide(),E=this;return u(y.maxKey(),this.maxKey())>0&&(E=h,l-=this.keys.length),E.insert(l+1,y),h},e.prototype.insert=function(t,r){this.children.splice(t,0,r),this.keys.splice(t,0,r.maxKey())},e.prototype.splitOffRightSide=function(){var t=this.children.length>>1;return new e(this.children.splice(t),this.keys.splice(t))},e.prototype.takeFromRight=function(t){this.keys.push(t.keys.shift()),this.children.push(t.children.shift())},e.prototype.takeFromLeft=function(t){this.keys.unshift(t.keys.pop()),this.children.unshift(t.children.pop())},e.prototype.forRange=function(t,r,s,i,o,a,u){var l=o._compare,f=this.keys,d=this.children,y=this.indexOf(t,0,l),h=y,E=Math.min(r===t?y:this.indexOf(r,0,l),f.length-1);if(i){if(h<=E)try{for(;h<=E;h++){d[h].isShared&&(d[h]=d[h].clone());var p=d[h].forRange(t,r,s,i,o,a,u);if(f[h]=d[h].maxKey(),typeof p!="number")return p;a=p}}finally{var T=o._maxNodeSize>>1;for(y>0&&y--,h=E;h>=y;h--)d[h].keys.length<=T&&(d[h].keys.length!==0?this.tryMerge(h,o._maxNodeSize):(f.splice(h,1),d.splice(h,1)));d.length!==0&&d[0].keys.length===0&&Le(!1,"emptiness bug")}}else for(;h<=E;h++){var p=d[h].forRange(t,r,s,i,o,a,u);if(typeof p!="number")return p;a=p}return a},e.prototype.tryMerge=function(t,r){var s=this.children;return t>=0&&t+1<s.length&&s[t].keys.length+s[t+1].keys.length<=r?(s[t].isShared&&(s[t]=s[t].clone()),s[t].mergeSibling(s[t+1],r),s.splice(t+1,1),this.keys.splice(t+1,1),this.keys[t]=s[t].maxKey(),!0):!1},e.prototype.mergeSibling=function(t,r){var s=this.keys.length;this.keys.push.apply(this.keys,t.keys);var i=t.children;if(this.children.push.apply(this.children,i),t.isShared&&!this.isShared)for(var o=0;o<i.length;o++)i[o].isShared=!0;this.tryMerge(s-1,r)},e}(_u),be=[],Bu={delete:!0},Nu=function(){return Bu},kf={break:!0},ho=function(){var n=new _u;return n.isShared=!0,n}(),Au=[],Ar=[];function Le(n){for(var e=[],t=1;t<arguments.length;t++)e[t-1]=arguments[t];if(!n)throw e.unshift("B+ tree"),new Error(e.join(" "))}Ne.EmptyBTree=function(){var n=new ut;return n.freeze(),n}()});var ht=class extends Error{},Wr=class extends ht{constructor(e){super(`Invalid DateTime: ${e.toMessage()}`)}},Hr=class extends ht{constructor(e){super(`Invalid Interval: ${e.toMessage()}`)}},Jr=class extends ht{constructor(e){super(`Invalid Duration: ${e.toMessage()}`)}},pt=class extends ht{},un=class extends ht{constructor(e){super(`Invalid unit ${e}`)}},pe=class extends ht{},je=class extends ht{constructor(){super("Zone is an abstract class")}};var _="numeric",Ve="short",ve="long",ln={year:_,month:_,day:_},$n={year:_,month:Ve,day:_},Zs={year:_,month:Ve,day:_,weekday:Ve},Rn={year:_,month:ve,day:_},jn={year:_,month:ve,day:_,weekday:ve},Vn={hour:_,minute:_},qn={hour:_,minute:_,second:_},Un={hour:_,minute:_,second:_,timeZoneName:Ve},Kn={hour:_,minute:_,second:_,timeZoneName:ve},Wn={hour:_,minute:_,hourCycle:"h23"},Hn={hour:_,minute:_,second:_,hourCycle:"h23"},Jn={hour:_,minute:_,second:_,hourCycle:"h23",timeZoneName:Ve},zn={hour:_,minute:_,second:_,hourCycle:"h23",timeZoneName:ve},Yn={year:_,month:_,day:_,hour:_,minute:_},Gn={year:_,month:_,day:_,hour:_,minute:_,second:_},Zn={year:_,month:Ve,day:_,hour:_,minute:_},Qn={year:_,month:Ve,day:_,hour:_,minute:_,second:_},Qs={year:_,month:Ve,day:_,weekday:Ve,hour:_,minute:_},Xn={year:_,month:ve,day:_,hour:_,minute:_,timeZoneName:Ve},er={year:_,month:ve,day:_,hour:_,minute:_,second:_,timeZoneName:Ve},tr={year:_,month:ve,day:_,weekday:ve,hour:_,minute:_,timeZoneName:ve},nr={year:_,month:ve,day:_,weekday:ve,hour:_,minute:_,second:_,timeZoneName:ve};function W(n){return typeof n=="undefined"}function Xe(n){return typeof n=="number"}function rr(n){return typeof n=="number"&&n%1===0}function _o(n){return typeof n=="string"}function Bo(n){return Object.prototype.toString.call(n)==="[object Date]"}function zr(){try{return typeof Intl!="undefined"&&!!Intl.RelativeTimeFormat}catch(n){return!1}}function Po(n){return Array.isArray(n)?n:[n]}function ei(n,e,t){if(n.length!==0)return n.reduce((r,s)=>{let i=[e(s),s];return r&&t(r[0],i[0])===r[0]?r:i},null)[1]}function $o(n,e){return e.reduce((t,r)=>(t[r]=n[r],t),{})}function St(n,e){return Object.prototype.hasOwnProperty.call(n,e)}function et(n,e,t){return rr(n)&&n>=e&&n<=t}function Dl(n,e){return n-e*Math.floor(n/e)}function ie(n,e=2){let t=n<0,r;return t?r="-"+(""+-n).padStart(e,"0"):r=(""+n).padStart(e,"0"),r}function mt(n){if(!(W(n)||n===null||n===""))return parseInt(n,10)}function kt(n){if(!(W(n)||n===null||n===""))return parseFloat(n)}function sr(n){if(!(W(n)||n===null||n==="")){let e=parseFloat("0."+n)*1e3;return Math.floor(e)}}function cn(n,e,t=!1){let r=10**e;return(t?Math.trunc:Math.round)(n*r)/r}function Ut(n){return n%4===0&&(n%100!==0||n%400===0)}function Kt(n){return Ut(n)?366:365}function fn(n,e){let t=Dl(e-1,12)+1,r=n+(e-t)/12;return t===2?Ut(r)?29:28:[31,null,31,30,31,30,31,31,30,31,30,31][t-1]}function ir(n){let e=Date.UTC(n.year,n.month-1,n.day,n.hour,n.minute,n.second,n.millisecond);return n.year<100&&n.year>=0&&(e=new Date(e),e.setUTCFullYear(e.getUTCFullYear()-1900)),+e}function dn(n){let e=(n+Math.floor(n/4)-Math.floor(n/100)+Math.floor(n/400))%7,t=n-1,r=(t+Math.floor(t/4)-Math.floor(t/100)+Math.floor(t/400))%7;return e===4||r===3?53:52}function or(n){return n>99?n:n>60?1900+n:2e3+n}function Yr(n,e,t,r=null){let s=new Date(n),i={hourCycle:"h23",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"};r&&(i.timeZone=r);let o=R({timeZoneName:e},i),a=new Intl.DateTimeFormat(t,o).formatToParts(s).find(u=>u.type.toLowerCase()==="timezonename");return a?a.value:null}function Wt(n,e){let t=parseInt(n,10);Number.isNaN(t)&&(t=0);let r=parseInt(e,10)||0,s=t<0||Object.is(t,-0)?-r:r;return t*60+s}function ti(n){let e=Number(n);if(typeof n=="boolean"||n===""||Number.isNaN(e))throw new pe(`Invalid unit value ${n}`);return e}function hn(n,e){let t={};for(let r in n)if(St(n,r)){let s=n[r];if(s==null)continue;t[e(r)]=ti(s)}return t}function Ct(n,e){let t=Math.trunc(Math.abs(n/60)),r=Math.trunc(Math.abs(n%60)),s=n>=0?"+":"-";switch(e){case"short":return`${s}${ie(t,2)}:${ie(r,2)}`;case"narrow":return`${s}${t}${r>0?`:${r}`:""}`;case"techie":return`${s}${ie(t,2)}${ie(r,2)}`;default:throw new RangeError(`Value format ${e} is out of range for property format`)}}function ar(n){return $o(n,["hour","minute","second","millisecond"])}var ni=/[A-Za-z_+-]{1,256}(?::?\\/[A-Za-z0-9_+-]{1,256}(?:\\/[A-Za-z0-9_+-]{1,256})?)?/;var yl=["January","February","March","April","May","June","July","August","September","October","November","December"],ri=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],gl=["J","F","M","A","M","J","J","A","S","O","N","D"];function si(n){switch(n){case"narrow":return[...gl];case"short":return[...ri];case"long":return[...yl];case"numeric":return["1","2","3","4","5","6","7","8","9","10","11","12"];case"2-digit":return["01","02","03","04","05","06","07","08","09","10","11","12"];default:return null}}var ii=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],oi=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],bl=["M","T","W","T","F","S","S"];function ai(n){switch(n){case"narrow":return[...bl];case"short":return[...oi];case"long":return[...ii];case"numeric":return["1","2","3","4","5","6","7"];default:return null}}var ui=["AM","PM"],El=["Before Christ","Anno Domini"],Fl=["BC","AD"],wl=["B","A"];function li(n){switch(n){case"narrow":return[...wl];case"short":return[...Fl];case"long":return[...El];default:return null}}function Ro(n){return ui[n.hour<12?0:1]}function jo(n,e){return ai(e)[n.weekday-1]}function Vo(n,e){return si(e)[n.month-1]}function qo(n,e){return li(e)[n.year<0?0:1]}function Uo(n,e,t="always",r=!1){let s={years:["year","yr."],quarters:["quarter","qtr."],months:["month","mo."],weeks:["week","wk."],days:["day","day","days"],hours:["hour","hr."],minutes:["minute","min."],seconds:["second","sec."]},i=["hours","minutes","seconds"].indexOf(n)===-1;if(t==="auto"&&i){let d=n==="days";switch(e){case 1:return d?"tomorrow":`next ${s[n][0]}`;case-1:return d?"yesterday":`last ${s[n][0]}`;case 0:return d?"today":`this ${s[n][0]}`;default:}}let o=Object.is(e,-0)||e<0,a=Math.abs(e),u=a===1,l=s[n],f=r?u?l[1]:l[2]||l[1]:u?s[n][0]:n;return o?`${a} ${f} ago`:`in ${a} ${f}`}function Ko(n,e){let t="";for(let r of n)r.literal?t+=r.val:t+=e(r.val);return t}var Tl={D:ln,DD:$n,DDD:Rn,DDDD:jn,t:Vn,tt:qn,ttt:Un,tttt:Kn,T:Wn,TT:Hn,TTT:Jn,TTTT:zn,f:Yn,ff:Zn,fff:Xn,ffff:tr,F:Gn,FF:Qn,FFF:er,FFFF:nr},ue=class{static create(e,t={}){return new ue(e,t)}static parseFormat(e){let t=null,r="",s=!1,i=[];for(let o=0;o<e.length;o++){let a=e.charAt(o);a==="\'"?(r.length>0&&i.push({literal:s,val:r}),t=null,r="",s=!s):s||a===t?r+=a:(r.length>0&&i.push({literal:!1,val:r}),r=a,t=a)}return r.length>0&&i.push({literal:s,val:r}),i}static macroTokenToFormatOpts(e){return Tl[e]}constructor(e,t){this.opts=t,this.loc=e,this.systemLoc=null}formatWithSystemDefault(e,t){return this.systemLoc===null&&(this.systemLoc=this.loc.redefaultToSystem()),this.systemLoc.dtFormatter(e,R(R({},this.opts),t)).format()}formatDateTime(e,t={}){return this.loc.dtFormatter(e,R(R({},this.opts),t)).format()}formatDateTimeParts(e,t={}){return this.loc.dtFormatter(e,R(R({},this.opts),t)).formatToParts()}resolvedOptions(e,t={}){return this.loc.dtFormatter(e,R(R({},this.opts),t)).resolvedOptions()}num(e,t=0){if(this.opts.forceSimple)return ie(e,t);let r=R({},this.opts);return t>0&&(r.padTo=t),this.loc.numberFormatter(r).format(e)}formatDateTimeFromString(e,t){let r=this.loc.listingMode()==="en",s=this.loc.outputCalendar&&this.loc.outputCalendar!=="gregory",i=(h,E)=>this.loc.extract(e,h,E),o=h=>e.isOffsetFixed&&e.offset===0&&h.allowZ?"Z":e.isValid?e.zone.formatOffset(e.ts,h.format):"",a=()=>r?Ro(e):i({hour:"numeric",hourCycle:"h12"},"dayperiod"),u=(h,E)=>r?Vo(e,h):i(E?{month:h}:{month:h,day:"numeric"},"month"),l=(h,E)=>r?jo(e,h):i(E?{weekday:h}:{weekday:h,month:"long",day:"numeric"},"weekday"),f=h=>{let E=ue.macroTokenToFormatOpts(h);return E?this.formatWithSystemDefault(e,E):h},d=h=>r?qo(e,h):i({era:h},"era"),y=h=>{switch(h){case"S":return this.num(e.millisecond);case"u":case"SSS":return this.num(e.millisecond,3);case"s":return this.num(e.second);case"ss":return this.num(e.second,2);case"uu":return this.num(Math.floor(e.millisecond/10),2);case"uuu":return this.num(Math.floor(e.millisecond/100));case"m":return this.num(e.minute);case"mm":return this.num(e.minute,2);case"h":return this.num(e.hour%12===0?12:e.hour%12);case"hh":return this.num(e.hour%12===0?12:e.hour%12,2);case"H":return this.num(e.hour);case"HH":return this.num(e.hour,2);case"Z":return o({format:"narrow",allowZ:this.opts.allowZ});case"ZZ":return o({format:"short",allowZ:this.opts.allowZ});case"ZZZ":return o({format:"techie",allowZ:this.opts.allowZ});case"ZZZZ":return e.zone.offsetName(e.ts,{format:"short",locale:this.loc.locale});case"ZZZZZ":return e.zone.offsetName(e.ts,{format:"long",locale:this.loc.locale});case"z":return e.zoneName;case"a":return a();case"d":return s?i({day:"numeric"},"day"):this.num(e.day);case"dd":return s?i({day:"2-digit"},"day"):this.num(e.day,2);case"c":return this.num(e.weekday);case"ccc":return l("short",!0);case"cccc":return l("long",!0);case"ccccc":return l("narrow",!0);case"E":return this.num(e.weekday);case"EEE":return l("short",!1);case"EEEE":return l("long",!1);case"EEEEE":return l("narrow",!1);case"L":return s?i({month:"numeric",day:"numeric"},"month"):this.num(e.month);case"LL":return s?i({month:"2-digit",day:"numeric"},"month"):this.num(e.month,2);case"LLL":return u("short",!0);case"LLLL":return u("long",!0);case"LLLLL":return u("narrow",!0);case"M":return s?i({month:"numeric"},"month"):this.num(e.month);case"MM":return s?i({month:"2-digit"},"month"):this.num(e.month,2);case"MMM":return u("short",!1);case"MMMM":return u("long",!1);case"MMMMM":return u("narrow",!1);case"y":return s?i({year:"numeric"},"year"):this.num(e.year);case"yy":return s?i({year:"2-digit"},"year"):this.num(e.year.toString().slice(-2),2);case"yyyy":return s?i({year:"numeric"},"year"):this.num(e.year,4);case"yyyyyy":return s?i({year:"numeric"},"year"):this.num(e.year,6);case"G":return d("short");case"GG":return d("long");case"GGGGG":return d("narrow");case"kk":return this.num(e.weekYear.toString().slice(-2),2);case"kkkk":return this.num(e.weekYear,4);case"W":return this.num(e.weekNumber);case"WW":return this.num(e.weekNumber,2);case"o":return this.num(e.ordinal);case"ooo":return this.num(e.ordinal,3);case"q":return this.num(e.quarter);case"qq":return this.num(e.quarter,2);case"X":return this.num(Math.floor(e.ts/1e3));case"x":return this.num(e.ts);default:return f(h)}};return Ko(ue.parseFormat(t),y)}formatDurationFromString(e,t){let r=u=>{switch(u[0]){case"S":return"millisecond";case"s":return"second";case"m":return"minute";case"h":return"hour";case"d":return"day";case"w":return"week";case"M":return"month";case"y":return"year";default:return null}},s=u=>l=>{let f=r(l);return f?this.num(u.get(f),l.length):l},i=ue.parseFormat(t),o=i.reduce((u,{literal:l,val:f})=>l?u:u.concat(f),[]),a=e.shiftTo(...o.map(r).filter(u=>u));return Ko(i,s(a))}};var me=class{constructor(e,t){this.reason=e,this.explanation=t}toMessage(){return this.explanation?`${this.reason}: ${this.explanation}`:this.reason}};var Ce=class{get type(){throw new je}get name(){throw new je}get ianaName(){return this.name}get isUniversal(){throw new je}offsetName(e,t){throw new je}formatOffset(e,t){throw new je}offset(e){throw new je}equals(e){throw new je}get isValid(){throw new je}};var fi=null,xt=class extends Ce{static get instance(){return fi===null&&(fi=new xt),fi}get type(){return"system"}get name(){return new Intl.DateTimeFormat().resolvedOptions().timeZone}get isUniversal(){return!1}offsetName(e,{format:t,locale:r}){return Yr(e,t,r)}formatOffset(e,t){return Ct(this.offset(e),t)}offset(e){return-new Date(e).getTimezoneOffset()}equals(e){return e.type==="system"}get isValid(){return!0}};var Zr={};function Sl(n){return Zr[n]||(Zr[n]=new Intl.DateTimeFormat("en-US",{hour12:!1,timeZone:n,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",era:"short"})),Zr[n]}var kl={year:0,month:1,day:2,era:3,hour:4,minute:5,second:6};function Cl(n,e){let t=n.format(e).replace(/\\u200E/g,""),r=/(\\d+)\\/(\\d+)\\/(\\d+) (AD|BC),? (\\d+):(\\d+):(\\d+)/.exec(t),[,s,i,o,a,u,l,f]=r;return[o,s,i,a,u,l,f]}function xl(n,e){let t=n.formatToParts(e),r=[];for(let s=0;s<t.length;s++){let{type:i,value:o}=t[s],a=kl[i];i==="era"?r[a]=o:W(a)||(r[a]=parseInt(o,10))}return r}var Gr={},ce=class extends Ce{static create(e){return Gr[e]||(Gr[e]=new ce(e)),Gr[e]}static resetCache(){Gr={},Zr={}}static isValidSpecifier(e){return this.isValidZone(e)}static isValidZone(e){if(!e)return!1;try{return new Intl.DateTimeFormat("en-US",{timeZone:e}).format(),!0}catch(t){return!1}}constructor(e){super(),this.zoneName=e,this.valid=ce.isValidZone(e)}get type(){return"iana"}get name(){return this.zoneName}get isUniversal(){return!1}offsetName(e,{format:t,locale:r}){return Yr(e,t,r,this.name)}formatOffset(e,t){return Ct(this.offset(e),t)}offset(e){let t=new Date(e);if(isNaN(t))return NaN;let r=Sl(this.name),[s,i,o,a,u,l,f]=r.formatToParts?xl(r,t):Cl(r,t);a==="BC"&&(s=-Math.abs(s)+1);let y=ir({year:s,month:i,day:o,hour:u===24?0:u,minute:l,second:f,millisecond:0}),h=+t,E=h%1e3;return h-=E>=0?E:1e3+E,(y-h)/(60*1e3)}equals(e){return e.type==="iana"&&e.name===this.name}get isValid(){return this.valid}};var di=null,oe=class extends Ce{static get utcInstance(){return di===null&&(di=new oe(0)),di}static instance(e){return e===0?oe.utcInstance:new oe(e)}static parseSpecifier(e){if(e){let t=e.match(/^utc(?:([+-]\\d{1,2})(?::(\\d{2}))?)?$/i);if(t)return new oe(Wt(t[1],t[2]))}return null}constructor(e){super(),this.fixed=e}get type(){return"fixed"}get name(){return this.fixed===0?"UTC":`UTC${Ct(this.fixed,"narrow")}`}get ianaName(){return this.fixed===0?"Etc/UTC":`Etc/GMT${Ct(-this.fixed,"narrow")}`}offsetName(){return this.name}formatOffset(e,t){return Ct(this.fixed,t)}get isUniversal(){return!0}offset(){return this.fixed}equals(e){return e.type==="fixed"&&e.fixed===this.fixed}get isValid(){return!0}};var pn=class extends Ce{constructor(e){super(),this.zoneName=e}get type(){return"invalid"}get name(){return this.zoneName}get isUniversal(){return!1}offsetName(){return null}formatOffset(){return""}offset(){return NaN}equals(){return!1}get isValid(){return!1}};function qe(n,e){let t;if(W(n)||n===null)return e;if(n instanceof Ce)return n;if(_o(n)){let r=n.toLowerCase();return r==="local"||r==="system"?e:r==="utc"||r==="gmt"?oe.utcInstance:oe.parseSpecifier(r)||ce.create(n)}else return Xe(n)?oe.instance(n):typeof n=="object"&&n.offset&&typeof n.offset=="number"?n:new pn(n)}var Wo=()=>Date.now(),Ho="system",Jo=null,zo=null,Yo=null,Go,X=class{static get now(){return Wo}static set now(e){Wo=e}static set defaultZone(e){Ho=e}static get defaultZone(){return qe(Ho,xt.instance)}static get defaultLocale(){return Jo}static set defaultLocale(e){Jo=e}static get defaultNumberingSystem(){return zo}static set defaultNumberingSystem(e){zo=e}static get defaultOutputCalendar(){return Yo}static set defaultOutputCalendar(e){Yo=e}static get throwOnInvalid(){return Go}static set throwOnInvalid(e){Go=e}static resetCaches(){Q.resetCache(),ce.resetCache()}};var Zo={};function Ol(n,e={}){let t=JSON.stringify([n,e]),r=Zo[t];return r||(r=new Intl.ListFormat(n,e),Zo[t]=r),r}var hi={};function pi(n,e={}){let t=JSON.stringify([n,e]),r=hi[t];return r||(r=new Intl.DateTimeFormat(n,e),hi[t]=r),r}var mi={};function vl(n,e={}){let t=JSON.stringify([n,e]),r=mi[t];return r||(r=new Intl.NumberFormat(n,e),mi[t]=r),r}var Di={};function Il(n,e={}){let o=e,{base:t}=o,r=Gs(o,["base"]),s=JSON.stringify([n,r]),i=Di[s];return i||(i=new Intl.RelativeTimeFormat(n,e),Di[s]=i),i}var ur=null;function Ll(){return ur||(ur=new Intl.DateTimeFormat().resolvedOptions().locale,ur)}function Nl(n){let e=n.indexOf("-u-");if(e===-1)return[n];{let t,r=n.substring(0,e);try{t=pi(n).resolvedOptions()}catch(o){t=pi(r).resolvedOptions()}let{numberingSystem:s,calendar:i}=t;return[r,s,i]}}function Al(n,e,t){return(t||e)&&(n+="-u",t&&(n+=`-ca-${t}`),e&&(n+=`-nu-${e}`)),n}function Ml(n){let e=[];for(let t=1;t<=12;t++){let r=B.utc(2016,t,1);e.push(n(r))}return e}function _l(n){let e=[];for(let t=1;t<=7;t++){let r=B.utc(2016,11,13+t);e.push(n(r))}return e}function Qr(n,e,t,r,s){let i=n.listingMode(t);return i==="error"?null:i==="en"?r(e):s(e)}function Bl(n){return n.numberingSystem&&n.numberingSystem!=="latn"?!1:n.numberingSystem==="latn"||!n.locale||n.locale.startsWith("en")||new Intl.DateTimeFormat(n.intl).resolvedOptions().numberingSystem==="latn"}var yi=class{constructor(e,t,r){this.padTo=r.padTo||0,this.floor=r.floor||!1;let a=r,{padTo:s,floor:i}=a,o=Gs(a,["padTo","floor"]);if(!t||Object.keys(o).length>0){let u=R({useGrouping:!1},r);r.padTo>0&&(u.minimumIntegerDigits=r.padTo),this.inf=vl(e,u)}}format(e){if(this.inf){let t=this.floor?Math.floor(e):e;return this.inf.format(t)}else{let t=this.floor?Math.floor(e):cn(e,3);return ie(t,this.padTo)}}},gi=class{constructor(e,t,r){this.opts=r;let s;if(e.zone.isUniversal){let o=-1*(e.offset/60),a=o>=0?`Etc/GMT+${o}`:`Etc/GMT${o}`;e.offset!==0&&ce.create(a).valid?(s=a,this.dt=e):(s="UTC",r.timeZoneName?this.dt=e:this.dt=e.offset===0?e:B.fromMillis(e.ts+e.offset*60*1e3))}else e.zone.type==="system"?this.dt=e:(this.dt=e,s=e.zone.name);let i=R({},this.opts);s&&(i.timeZone=s),this.dtf=pi(t,i)}format(){return this.dtf.format(this.dt.toJSDate())}formatToParts(){return this.dtf.formatToParts(this.dt.toJSDate())}resolvedOptions(){return this.dtf.resolvedOptions()}},bi=class{constructor(e,t,r){this.opts=R({style:"long"},r),!t&&zr()&&(this.rtf=Il(e,r))}format(e,t){return this.rtf?this.rtf.format(e,t):Uo(t,e,this.opts.numeric,this.opts.style!=="long")}formatToParts(e,t){return this.rtf?this.rtf.formatToParts(e,t):[]}},Q=class{static fromOpts(e){return Q.create(e.locale,e.numberingSystem,e.outputCalendar,e.defaultToEN)}static create(e,t,r,s=!1){let i=e||X.defaultLocale,o=i||(s?"en-US":Ll()),a=t||X.defaultNumberingSystem,u=r||X.defaultOutputCalendar;return new Q(o,a,u,i)}static resetCache(){ur=null,hi={},mi={},Di={}}static fromObject({locale:e,numberingSystem:t,outputCalendar:r}={}){return Q.create(e,t,r)}constructor(e,t,r,s){let[i,o,a]=Nl(e);this.locale=i,this.numberingSystem=t||o||null,this.outputCalendar=r||a||null,this.intl=Al(this.locale,this.numberingSystem,this.outputCalendar),this.weekdaysCache={format:{},standalone:{}},this.monthsCache={format:{},standalone:{}},this.meridiemCache=null,this.eraCache={},this.specifiedLocale=s,this.fastNumbersCached=null}get fastNumbers(){return this.fastNumbersCached==null&&(this.fastNumbersCached=Bl(this)),this.fastNumbersCached}listingMode(){let e=this.isEnglish(),t=(this.numberingSystem===null||this.numberingSystem==="latn")&&(this.outputCalendar===null||this.outputCalendar==="gregory");return e&&t?"en":"intl"}clone(e){return!e||Object.getOwnPropertyNames(e).length===0?this:Q.create(e.locale||this.specifiedLocale,e.numberingSystem||this.numberingSystem,e.outputCalendar||this.outputCalendar,e.defaultToEN||!1)}redefaultToEN(e={}){return this.clone(Ee(R({},e),{defaultToEN:!0}))}redefaultToSystem(e={}){return this.clone(Ee(R({},e),{defaultToEN:!1}))}months(e,t=!1,r=!0){return Qr(this,e,r,si,()=>{let s=t?{month:e,day:"numeric"}:{month:e},i=t?"format":"standalone";return this.monthsCache[i][e]||(this.monthsCache[i][e]=Ml(o=>this.extract(o,s,"month"))),this.monthsCache[i][e]})}weekdays(e,t=!1,r=!0){return Qr(this,e,r,ai,()=>{let s=t?{weekday:e,year:"numeric",month:"long",day:"numeric"}:{weekday:e},i=t?"format":"standalone";return this.weekdaysCache[i][e]||(this.weekdaysCache[i][e]=_l(o=>this.extract(o,s,"weekday"))),this.weekdaysCache[i][e]})}meridiems(e=!0){return Qr(this,void 0,e,()=>ui,()=>{if(!this.meridiemCache){let t={hour:"numeric",hourCycle:"h12"};this.meridiemCache=[B.utc(2016,11,13,9),B.utc(2016,11,13,19)].map(r=>this.extract(r,t,"dayperiod"))}return this.meridiemCache})}eras(e,t=!0){return Qr(this,e,t,li,()=>{let r={era:e};return this.eraCache[e]||(this.eraCache[e]=[B.utc(-40,1,1),B.utc(2017,1,1)].map(s=>this.extract(s,r,"era"))),this.eraCache[e]})}extract(e,t,r){let s=this.dtFormatter(e,t),i=s.formatToParts(),o=i.find(a=>a.type.toLowerCase()===r);return o?o.value:null}numberFormatter(e={}){return new yi(this.intl,e.forceSimple||this.fastNumbers,e)}dtFormatter(e,t={}){return new gi(e,this.intl,t)}relFormatter(e={}){return new bi(this.intl,this.isEnglish(),e)}listFormatter(e={}){return Ol(this.intl,e)}isEnglish(){return this.locale==="en"||this.locale.toLowerCase()==="en-us"||new Intl.DateTimeFormat(this.intl).resolvedOptions().locale.startsWith("en-us")}equals(e){return this.locale===e.locale&&this.numberingSystem===e.numberingSystem&&this.outputCalendar===e.outputCalendar}};function Dn(...n){let e=n.reduce((t,r)=>t+r.source,"");return RegExp(`^${e}$`)}function yn(...n){return e=>n.reduce(([t,r,s],i)=>{let[o,a,u]=i(e,s);return[R(R({},t),o),a||r,u]},[{},null,1]).slice(0,2)}function gn(n,...e){if(n==null)return[null,null];for(let[t,r]of e){let s=t.exec(n);if(s)return r(s)}return[null,null]}function Xo(...n){return(e,t)=>{let r={},s;for(s=0;s<n.length;s++)r[n[s]]=mt(e[t+s]);return[r,null,t+s]}}var ea=/(?:(Z)|([+-]\\d\\d)(?::?(\\d\\d))?)/,Pl=`(?:${ea.source}?(?:\\\\[(${ni.source})\\\\])?)?`,Ei=/(\\d\\d)(?::?(\\d\\d)(?::?(\\d\\d)(?:[.,](\\d{1,30}))?)?)?/,ta=RegExp(`${Ei.source}${Pl}`),Fi=RegExp(`(?:T${ta.source})?`),$l=/([+-]\\d{6}|\\d{4})(?:-?(\\d\\d)(?:-?(\\d\\d))?)?/,Rl=/(\\d{4})-?W(\\d\\d)(?:-?(\\d))?/,jl=/(\\d{4})-?(\\d{3})/,Vl=Xo("weekYear","weekNumber","weekDay"),ql=Xo("year","ordinal"),Ul=/(\\d{4})-(\\d\\d)-(\\d\\d)/,na=RegExp(`${Ei.source} ?(?:${ea.source}|(${ni.source}))?`),Kl=RegExp(`(?: ${na.source})?`);function mn(n,e,t){let r=n[e];return W(r)?t:mt(r)}function Wl(n,e){return[{year:mn(n,e),month:mn(n,e+1,1),day:mn(n,e+2,1)},null,e+3]}function bn(n,e){return[{hours:mn(n,e,0),minutes:mn(n,e+1,0),seconds:mn(n,e+2,0),milliseconds:sr(n[e+3])},null,e+4]}function lr(n,e){let t=!n[e]&&!n[e+1],r=Wt(n[e+1],n[e+2]),s=t?null:oe.instance(r);return[{},s,e+3]}function cr(n,e){let t=n[e]?ce.create(n[e]):null;return[{},t,e+1]}var Hl=RegExp(`^T?${Ei.source}$`),Jl=/^-?P(?:(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)Y)?(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)M)?(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)W)?(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)D)?(?:T(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)H)?(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)M)?(?:(-?\\d{1,20})(?:[.,](-?\\d{1,20}))?S)?)?)$/;function zl(n){let[e,t,r,s,i,o,a,u,l]=n,f=e[0]==="-",d=u&&u[0]==="-",y=(h,E=!1)=>h!==void 0&&(E||h&&f)?-h:h;return[{years:y(kt(t)),months:y(kt(r)),weeks:y(kt(s)),days:y(kt(i)),hours:y(kt(o)),minutes:y(kt(a)),seconds:y(kt(u),u==="-0"),milliseconds:y(sr(l),d)}]}var Yl={GMT:0,EDT:-4*60,EST:-5*60,CDT:-5*60,CST:-6*60,MDT:-6*60,MST:-7*60,PDT:-7*60,PST:-8*60};function wi(n,e,t,r,s,i,o){let a={year:e.length===2?or(mt(e)):mt(e),month:ri.indexOf(t)+1,day:mt(r),hour:mt(s),minute:mt(i)};return o&&(a.second=mt(o)),n&&(a.weekday=n.length>3?ii.indexOf(n)+1:oi.indexOf(n)+1),a}var Gl=/^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),\\s)?(\\d{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s(\\d{2,4})\\s(\\d\\d):(\\d\\d)(?::(\\d\\d))?\\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|(?:([+-]\\d\\d)(\\d\\d)))$/;function Zl(n){let[,e,t,r,s,i,o,a,u,l,f,d]=n,y=wi(e,s,r,t,i,o,a),h;return u?h=Yl[u]:l?h=0:h=Wt(f,d),[y,new oe(h)]}function Ql(n){return n.replace(/\\([^()]*\\)|[\\n\\t]/g," ").replace(/(\\s\\s+)/g," ").trim()}var Xl=/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\\d\\d) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{4}) (\\d\\d):(\\d\\d):(\\d\\d) GMT$/,ec=/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), (\\d\\d)-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\\d\\d) (\\d\\d):(\\d\\d):(\\d\\d) GMT$/,tc=/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( \\d|\\d\\d) (\\d\\d):(\\d\\d):(\\d\\d) (\\d{4})$/;function Qo(n){let[,e,t,r,s,i,o,a]=n;return[wi(e,s,r,t,i,o,a),oe.utcInstance]}function nc(n){let[,e,t,r,s,i,o,a]=n;return[wi(e,a,t,r,s,i,o),oe.utcInstance]}var rc=Dn($l,Fi),sc=Dn(Rl,Fi),ic=Dn(jl,Fi),oc=Dn(ta),ra=yn(Wl,bn,lr,cr),ac=yn(Vl,bn,lr,cr),uc=yn(ql,bn,lr,cr),lc=yn(bn,lr,cr);function sa(n){return gn(n,[rc,ra],[sc,ac],[ic,uc],[oc,lc])}function ia(n){return gn(Ql(n),[Gl,Zl])}function oa(n){return gn(n,[Xl,Qo],[ec,Qo],[tc,nc])}function aa(n){return gn(n,[Jl,zl])}var cc=yn(bn);function ua(n){return gn(n,[Hl,cc])}var fc=Dn(Ul,Kl),dc=Dn(na),hc=yn(bn,lr,cr);function la(n){return gn(n,[fc,ra],[dc,hc])}var pc="Invalid Duration",ca={weeks:{days:7,hours:7*24,minutes:7*24*60,seconds:7*24*60*60,milliseconds:7*24*60*60*1e3},days:{hours:24,minutes:24*60,seconds:24*60*60,milliseconds:24*60*60*1e3},hours:{minutes:60,seconds:60*60,milliseconds:60*60*1e3},minutes:{seconds:60,milliseconds:60*1e3},seconds:{milliseconds:1e3}},mc=R({years:{quarters:4,months:12,weeks:52,days:365,hours:365*24,minutes:365*24*60,seconds:365*24*60*60,milliseconds:365*24*60*60*1e3},quarters:{months:3,weeks:13,days:91,hours:91*24,minutes:91*24*60,seconds:91*24*60*60,milliseconds:91*24*60*60*1e3},months:{weeks:4,days:30,hours:30*24,minutes:30*24*60,seconds:30*24*60*60,milliseconds:30*24*60*60*1e3}},ca),Me=146097/400,En=146097/4800,Dc=R({years:{quarters:4,months:12,weeks:Me/7,days:Me,hours:Me*24,minutes:Me*24*60,seconds:Me*24*60*60,milliseconds:Me*24*60*60*1e3},quarters:{months:3,weeks:Me/28,days:Me/4,hours:Me*24/4,minutes:Me*24*60/4,seconds:Me*24*60*60/4,milliseconds:Me*24*60*60*1e3/4},months:{weeks:En/7,days:En,hours:En*24,minutes:En*24*60,seconds:En*24*60*60,milliseconds:En*24*60*60*1e3}},ca),Jt=["years","quarters","months","weeks","days","hours","minutes","seconds","milliseconds"],yc=Jt.slice(0).reverse();function Ht(n,e,t=!1){let r={values:t?e.values:R(R({},n.values),e.values||{}),loc:n.loc.clone(e.loc),conversionAccuracy:e.conversionAccuracy||n.conversionAccuracy};return new M(r)}function gc(n){return n<0?Math.floor(n):Math.ceil(n)}function fa(n,e,t,r,s){let i=n[s][t],o=e[t]/i,a=Math.sign(o)===Math.sign(r[s]),u=!a&&r[s]!==0&&Math.abs(o)<=1?gc(o):Math.trunc(o);r[s]+=u,e[t]-=u*i}function bc(n,e){yc.reduce((t,r)=>W(e[r])?t:(t&&fa(n,e,t,e,r),r),null)}var M=class{constructor(e){let t=e.conversionAccuracy==="longterm"||!1;this.values=e.values,this.loc=e.loc||Q.create(),this.conversionAccuracy=t?"longterm":"casual",this.invalid=e.invalid||null,this.matrix=t?Dc:mc,this.isLuxonDuration=!0}static fromMillis(e,t){return M.fromObject({milliseconds:e},t)}static fromObject(e,t={}){if(e==null||typeof e!="object")throw new pe(`Duration.fromObject: argument expected to be an object, got ${e===null?"null":typeof e}`);return new M({values:hn(e,M.normalizeUnit),loc:Q.fromObject(t),conversionAccuracy:t.conversionAccuracy})}static fromDurationLike(e){if(Xe(e))return M.fromMillis(e);if(M.isDuration(e))return e;if(typeof e=="object")return M.fromObject(e);throw new pe(`Unknown duration argument ${e} of type ${typeof e}`)}static fromISO(e,t){let[r]=aa(e);return r?M.fromObject(r,t):M.invalid("unparsable",`the input "${e}" can\'t be parsed as ISO 8601`)}static fromISOTime(e,t){let[r]=ua(e);return r?M.fromObject(r,t):M.invalid("unparsable",`the input "${e}" can\'t be parsed as ISO 8601`)}static invalid(e,t=null){if(!e)throw new pe("need to specify a reason the Duration is invalid");let r=e instanceof me?e:new me(e,t);if(X.throwOnInvalid)throw new Jr(r);return new M({invalid:r})}static normalizeUnit(e){let t={year:"years",years:"years",quarter:"quarters",quarters:"quarters",month:"months",months:"months",week:"weeks",weeks:"weeks",day:"days",days:"days",hour:"hours",hours:"hours",minute:"minutes",minutes:"minutes",second:"seconds",seconds:"seconds",millisecond:"milliseconds",milliseconds:"milliseconds"}[e&&e.toLowerCase()];if(!t)throw new un(e);return t}static isDuration(e){return e&&e.isLuxonDuration||!1}get locale(){return this.isValid?this.loc.locale:null}get numberingSystem(){return this.isValid?this.loc.numberingSystem:null}toFormat(e,t={}){let r=Ee(R({},t),{floor:t.round!==!1&&t.floor!==!1});return this.isValid?ue.create(this.loc,r).formatDurationFromString(this,e):pc}toHuman(e={}){let t=Jt.map(r=>{let s=this.values[r];return W(s)?null:this.loc.numberFormatter(Ee(R({style:"unit",unitDisplay:"long"},e),{unit:r.slice(0,-1)})).format(s)}).filter(r=>r);return this.loc.listFormatter(R({type:"conjunction",style:e.listStyle||"narrow"},e)).format(t)}toObject(){return this.isValid?R({},this.values):{}}toISO(){if(!this.isValid)return null;let e="P";return this.years!==0&&(e+=this.years+"Y"),(this.months!==0||this.quarters!==0)&&(e+=this.months+this.quarters*3+"M"),this.weeks!==0&&(e+=this.weeks+"W"),this.days!==0&&(e+=this.days+"D"),(this.hours!==0||this.minutes!==0||this.seconds!==0||this.milliseconds!==0)&&(e+="T"),this.hours!==0&&(e+=this.hours+"H"),this.minutes!==0&&(e+=this.minutes+"M"),(this.seconds!==0||this.milliseconds!==0)&&(e+=cn(this.seconds+this.milliseconds/1e3,3)+"S"),e==="P"&&(e+="T0S"),e}toISOTime(e={}){if(!this.isValid)return null;let t=this.toMillis();if(t<0||t>=864e5)return null;e=R({suppressMilliseconds:!1,suppressSeconds:!1,includePrefix:!1,format:"extended"},e);let r=this.shiftTo("hours","minutes","seconds","milliseconds"),s=e.format==="basic"?"hhmm":"hh:mm";(!e.suppressSeconds||r.seconds!==0||r.milliseconds!==0)&&(s+=e.format==="basic"?"ss":":ss",(!e.suppressMilliseconds||r.milliseconds!==0)&&(s+=".SSS"));let i=r.toFormat(s);return e.includePrefix&&(i="T"+i),i}toJSON(){return this.toISO()}toString(){return this.toISO()}toMillis(){return this.as("milliseconds")}valueOf(){return this.toMillis()}plus(e){if(!this.isValid)return this;let t=M.fromDurationLike(e),r={};for(let s of Jt)(St(t.values,s)||St(this.values,s))&&(r[s]=t.get(s)+this.get(s));return Ht(this,{values:r},!0)}minus(e){if(!this.isValid)return this;let t=M.fromDurationLike(e);return this.plus(t.negate())}mapUnits(e){if(!this.isValid)return this;let t={};for(let r of Object.keys(this.values))t[r]=ti(e(this.values[r],r));return Ht(this,{values:t},!0)}get(e){return this[M.normalizeUnit(e)]}set(e){if(!this.isValid)return this;let t=R(R({},this.values),hn(e,M.normalizeUnit));return Ht(this,{values:t})}reconfigure({locale:e,numberingSystem:t,conversionAccuracy:r}={}){let s=this.loc.clone({locale:e,numberingSystem:t}),i={loc:s};return r&&(i.conversionAccuracy=r),Ht(this,i)}as(e){return this.isValid?this.shiftTo(e).get(e):NaN}normalize(){if(!this.isValid)return this;let e=this.toObject();return bc(this.matrix,e),Ht(this,{values:e},!0)}shiftTo(...e){if(!this.isValid)return this;if(e.length===0)return this;e=e.map(o=>M.normalizeUnit(o));let t={},r={},s=this.toObject(),i;for(let o of Jt)if(e.indexOf(o)>=0){i=o;let a=0;for(let l in r)a+=this.matrix[l][o]*r[l],r[l]=0;Xe(s[o])&&(a+=s[o]);let u=Math.trunc(a);t[o]=u,r[o]=(a*1e3-u*1e3)/1e3;for(let l in s)Jt.indexOf(l)>Jt.indexOf(o)&&fa(this.matrix,s,l,t,o)}else Xe(s[o])&&(r[o]=s[o]);for(let o in r)r[o]!==0&&(t[i]+=o===i?r[o]:r[o]/this.matrix[i][o]);return Ht(this,{values:t},!0).normalize()}negate(){if(!this.isValid)return this;let e={};for(let t of Object.keys(this.values))e[t]=this.values[t]===0?0:-this.values[t];return Ht(this,{values:e},!0)}get years(){return this.isValid?this.values.years||0:NaN}get quarters(){return this.isValid?this.values.quarters||0:NaN}get months(){return this.isValid?this.values.months||0:NaN}get weeks(){return this.isValid?this.values.weeks||0:NaN}get days(){return this.isValid?this.values.days||0:NaN}get hours(){return this.isValid?this.values.hours||0:NaN}get minutes(){return this.isValid?this.values.minutes||0:NaN}get seconds(){return this.isValid?this.values.seconds||0:NaN}get milliseconds(){return this.isValid?this.values.milliseconds||0:NaN}get isValid(){return this.invalid===null}get invalidReason(){return this.invalid?this.invalid.reason:null}get invalidExplanation(){return this.invalid?this.invalid.explanation:null}equals(e){if(!this.isValid||!e.isValid||!this.loc.equals(e.loc))return!1;function t(r,s){return r===void 0||r===0?s===void 0||s===0:r===s}for(let r of Jt)if(!t(this.values[r],e.values[r]))return!1;return!0}};var fr="Invalid Interval";function Ec(n,e){return!n||!n.isValid?te.invalid("missing or invalid start"):!e||!e.isValid?te.invalid("missing or invalid end"):e<n?te.invalid("end before start",`The end of an interval must be after its start, but you had start=${n.toISO()} and end=${e.toISO()}`):null}var te=class{constructor(e){this.s=e.start,this.e=e.end,this.invalid=e.invalid||null,this.isLuxonInterval=!0}static invalid(e,t=null){if(!e)throw new pe("need to specify a reason the Interval is invalid");let r=e instanceof me?e:new me(e,t);if(X.throwOnInvalid)throw new Hr(r);return new te({invalid:r})}static fromDateTimes(e,t){let r=Fn(e),s=Fn(t),i=Ec(r,s);return i==null?new te({start:r,end:s}):i}static after(e,t){let r=M.fromDurationLike(t),s=Fn(e);return te.fromDateTimes(s,s.plus(r))}static before(e,t){let r=M.fromDurationLike(t),s=Fn(e);return te.fromDateTimes(s.minus(r),s)}static fromISO(e,t){let[r,s]=(e||"").split("/",2);if(r&&s){let i,o;try{i=B.fromISO(r,t),o=i.isValid}catch(l){o=!1}let a,u;try{a=B.fromISO(s,t),u=a.isValid}catch(l){u=!1}if(o&&u)return te.fromDateTimes(i,a);if(o){let l=M.fromISO(s,t);if(l.isValid)return te.after(i,l)}else if(u){let l=M.fromISO(r,t);if(l.isValid)return te.before(a,l)}}return te.invalid("unparsable",`the input "${e}" can\'t be parsed as ISO 8601`)}static isInterval(e){return e&&e.isLuxonInterval||!1}get start(){return this.isValid?this.s:null}get end(){return this.isValid?this.e:null}get isValid(){return this.invalidReason===null}get invalidReason(){return this.invalid?this.invalid.reason:null}get invalidExplanation(){return this.invalid?this.invalid.explanation:null}length(e="milliseconds"){return this.isValid?this.toDuration(e).get(e):NaN}count(e="milliseconds"){if(!this.isValid)return NaN;let t=this.start.startOf(e),r=this.end.startOf(e);return Math.floor(r.diff(t,e).get(e))+1}hasSame(e){return this.isValid?this.isEmpty()||this.e.minus(1).hasSame(this.s,e):!1}isEmpty(){return this.s.valueOf()===this.e.valueOf()}isAfter(e){return this.isValid?this.s>e:!1}isBefore(e){return this.isValid?this.e<=e:!1}contains(e){return this.isValid?this.s<=e&&this.e>e:!1}set({start:e,end:t}={}){return this.isValid?te.fromDateTimes(e||this.s,t||this.e):this}splitAt(...e){if(!this.isValid)return[];let t=e.map(Fn).filter(o=>this.contains(o)).sort(),r=[],{s}=this,i=0;for(;s<this.e;){let o=t[i]||this.e,a=+o>+this.e?this.e:o;r.push(te.fromDateTimes(s,a)),s=a,i+=1}return r}splitBy(e){let t=M.fromDurationLike(e);if(!this.isValid||!t.isValid||t.as("milliseconds")===0)return[];let{s:r}=this,s=1,i,o=[];for(;r<this.e;){let a=this.start.plus(t.mapUnits(u=>u*s));i=+a>+this.e?this.e:a,o.push(te.fromDateTimes(r,i)),r=i,s+=1}return o}divideEqually(e){return this.isValid?this.splitBy(this.length()/e).slice(0,e):[]}overlaps(e){return this.e>e.s&&this.s<e.e}abutsStart(e){return this.isValid?+this.e==+e.s:!1}abutsEnd(e){return this.isValid?+e.e==+this.s:!1}engulfs(e){return this.isValid?this.s<=e.s&&this.e>=e.e:!1}equals(e){return!this.isValid||!e.isValid?!1:this.s.equals(e.s)&&this.e.equals(e.e)}intersection(e){if(!this.isValid)return this;let t=this.s>e.s?this.s:e.s,r=this.e<e.e?this.e:e.e;return t>=r?null:te.fromDateTimes(t,r)}union(e){if(!this.isValid)return this;let t=this.s<e.s?this.s:e.s,r=this.e>e.e?this.e:e.e;return te.fromDateTimes(t,r)}static merge(e){let[t,r]=e.sort((s,i)=>s.s-i.s).reduce(([s,i],o)=>i?i.overlaps(o)||i.abutsStart(o)?[s,i.union(o)]:[s.concat([i]),o]:[s,o],[[],null]);return r&&t.push(r),t}static xor(e){let t=null,r=0,s=[],i=e.map(u=>[{time:u.s,type:"s"},{time:u.e,type:"e"}]),o=Array.prototype.concat(...i),a=o.sort((u,l)=>u.time-l.time);for(let u of a)r+=u.type==="s"?1:-1,r===1?t=u.time:(t&&+t!=+u.time&&s.push(te.fromDateTimes(t,u.time)),t=null);return te.merge(s)}difference(...e){return te.xor([this].concat(e)).map(t=>this.intersection(t)).filter(t=>t&&!t.isEmpty())}toString(){return this.isValid?`[${this.s.toISO()} \\u2013 ${this.e.toISO()})`:fr}toISO(e){return this.isValid?`${this.s.toISO(e)}/${this.e.toISO(e)}`:fr}toISODate(){return this.isValid?`${this.s.toISODate()}/${this.e.toISODate()}`:fr}toISOTime(e){return this.isValid?`${this.s.toISOTime(e)}/${this.e.toISOTime(e)}`:fr}toFormat(e,{separator:t=" \\u2013 "}={}){return this.isValid?`${this.s.toFormat(e)}${t}${this.e.toFormat(e)}`:fr}toDuration(e,t){return this.isValid?this.e.diff(this.s,e,t):M.invalid(this.invalidReason)}mapEndpoints(e){return te.fromDateTimes(e(this.s),e(this.e))}};var Dt=class{static hasDST(e=X.defaultZone){let t=B.now().setZone(e).set({month:12});return!e.isUniversal&&t.offset!==t.set({month:6}).offset}static isValidIANAZone(e){return ce.isValidZone(e)}static normalizeZone(e){return qe(e,X.defaultZone)}static months(e="long",{locale:t=null,numberingSystem:r=null,locObj:s=null,outputCalendar:i="gregory"}={}){return(s||Q.create(t,r,i)).months(e)}static monthsFormat(e="long",{locale:t=null,numberingSystem:r=null,locObj:s=null,outputCalendar:i="gregory"}={}){return(s||Q.create(t,r,i)).months(e,!0)}static weekdays(e="long",{locale:t=null,numberingSystem:r=null,locObj:s=null}={}){return(s||Q.create(t,r,null)).weekdays(e)}static weekdaysFormat(e="long",{locale:t=null,numberingSystem:r=null,locObj:s=null}={}){return(s||Q.create(t,r,null)).weekdays(e,!0)}static meridiems({locale:e=null}={}){return Q.create(e).meridiems()}static eras(e="short",{locale:t=null}={}){return Q.create(t,null,"gregory").eras(e)}static features(){return{relative:zr()}}};function da(n,e){let t=s=>s.toUTC(0,{keepLocalTime:!0}).startOf("day").valueOf(),r=t(e)-t(n);return Math.floor(M.fromMillis(r).as("days"))}function Fc(n,e,t){let r=[["years",(a,u)=>u.year-a.year],["quarters",(a,u)=>u.quarter-a.quarter],["months",(a,u)=>u.month-a.month+(u.year-a.year)*12],["weeks",(a,u)=>{let l=da(a,u);return(l-l%7)/7}],["days",da]],s={},i,o;for(let[a,u]of r)if(t.indexOf(a)>=0){i=a;let l=u(n,e);o=n.plus({[a]:l}),o>e?(n=n.plus({[a]:l-1}),l-=1):n=o,s[a]=l}return[n,s,o,i]}function ha(n,e,t,r){let[s,i,o,a]=Fc(n,e,t),u=e-s,l=t.filter(d=>["hours","minutes","seconds","milliseconds"].indexOf(d)>=0);l.length===0&&(o<e&&(o=s.plus({[a]:1})),o!==s&&(i[a]=(i[a]||0)+u/(o-s)));let f=M.fromObject(i,r);return l.length>0?M.fromMillis(u,r).shiftTo(...l).plus(f):f}var Ti={arab:"[\\u0660-\\u0669]",arabext:"[\\u06F0-\\u06F9]",bali:"[\\u1B50-\\u1B59]",beng:"[\\u09E6-\\u09EF]",deva:"[\\u0966-\\u096F]",fullwide:"[\\uFF10-\\uFF19]",gujr:"[\\u0AE6-\\u0AEF]",hanidec:"[\\u3007|\\u4E00|\\u4E8C|\\u4E09|\\u56DB|\\u4E94|\\u516D|\\u4E03|\\u516B|\\u4E5D]",khmr:"[\\u17E0-\\u17E9]",knda:"[\\u0CE6-\\u0CEF]",laoo:"[\\u0ED0-\\u0ED9]",limb:"[\\u1946-\\u194F]",mlym:"[\\u0D66-\\u0D6F]",mong:"[\\u1810-\\u1819]",mymr:"[\\u1040-\\u1049]",orya:"[\\u0B66-\\u0B6F]",tamldec:"[\\u0BE6-\\u0BEF]",telu:"[\\u0C66-\\u0C6F]",thai:"[\\u0E50-\\u0E59]",tibt:"[\\u0F20-\\u0F29]",latn:"\\\\d"},pa={arab:[1632,1641],arabext:[1776,1785],bali:[6992,7001],beng:[2534,2543],deva:[2406,2415],fullwide:[65296,65303],gujr:[2790,2799],khmr:[6112,6121],knda:[3302,3311],laoo:[3792,3801],limb:[6470,6479],mlym:[3430,3439],mong:[6160,6169],mymr:[4160,4169],orya:[2918,2927],tamldec:[3046,3055],telu:[3174,3183],thai:[3664,3673],tibt:[3872,3881]},wc=Ti.hanidec.replace(/[\\[|\\]]/g,"").split("");function ma(n){let e=parseInt(n,10);if(isNaN(e)){e="";for(let t=0;t<n.length;t++){let r=n.charCodeAt(t);if(n[t].search(Ti.hanidec)!==-1)e+=wc.indexOf(n[t]);else for(let s in pa){let[i,o]=pa[s];r>=i&&r<=o&&(e+=r-i)}}return parseInt(e,10)}else return e}function _e({numberingSystem:n},e=""){return new RegExp(`${Ti[n||"latn"]}${e}`)}var Tc="missing Intl.DateTimeFormat.formatToParts support";function G(n,e=t=>t){return{regex:n,deser:([t])=>e(ma(t))}}var Sc=String.fromCharCode(160),ga=`[ ${Sc}]`,ba=new RegExp(ga,"g");function kc(n){return n.replace(/\\./g,"\\\\.?").replace(ba,ga)}function Da(n){return n.replace(/\\./g,"").replace(ba," ").toLowerCase()}function Ue(n,e){return n===null?null:{regex:RegExp(n.map(kc).join("|")),deser:([t])=>n.findIndex(r=>Da(t)===Da(r))+e}}function ya(n,e){return{regex:n,deser:([,t,r])=>Wt(t,r),groups:e}}function Si(n){return{regex:n,deser:([e])=>e}}function Cc(n){return n.replace(/[\\-\\[\\]{}()*+?.,\\\\\\^$|#\\s]/g,"\\\\$&")}function xc(n,e){let t=_e(e),r=_e(e,"{2}"),s=_e(e,"{3}"),i=_e(e,"{4}"),o=_e(e,"{6}"),a=_e(e,"{1,2}"),u=_e(e,"{1,3}"),l=_e(e,"{1,6}"),f=_e(e,"{1,9}"),d=_e(e,"{2,4}"),y=_e(e,"{4,6}"),h=T=>({regex:RegExp(Cc(T.val)),deser:([g])=>g,literal:!0}),p=(T=>{if(n.literal)return h(T);switch(T.val){case"G":return Ue(e.eras("short",!1),0);case"GG":return Ue(e.eras("long",!1),0);case"y":return G(l);case"yy":return G(d,or);case"yyyy":return G(i);case"yyyyy":return G(y);case"yyyyyy":return G(o);case"M":return G(a);case"MM":return G(r);case"MMM":return Ue(e.months("short",!0,!1),1);case"MMMM":return Ue(e.months("long",!0,!1),1);case"L":return G(a);case"LL":return G(r);case"LLL":return Ue(e.months("short",!1,!1),1);case"LLLL":return Ue(e.months("long",!1,!1),1);case"d":return G(a);case"dd":return G(r);case"o":return G(u);case"ooo":return G(s);case"HH":return G(r);case"H":return G(a);case"hh":return G(r);case"h":return G(a);case"mm":return G(r);case"m":return G(a);case"q":return G(a);case"qq":return G(r);case"s":return G(a);case"ss":return G(r);case"S":return G(u);case"SSS":return G(s);case"u":return Si(f);case"uu":return Si(a);case"uuu":return G(t);case"a":return Ue(e.meridiems(),0);case"kkkk":return G(i);case"kk":return G(d,or);case"W":return G(a);case"WW":return G(r);case"E":case"c":return G(t);case"EEE":return Ue(e.weekdays("short",!1,!1),1);case"EEEE":return Ue(e.weekdays("long",!1,!1),1);case"ccc":return Ue(e.weekdays("short",!0,!1),1);case"cccc":return Ue(e.weekdays("long",!0,!1),1);case"Z":case"ZZ":return ya(new RegExp(`([+-]${a.source})(?::(${r.source}))?`),2);case"ZZZ":return ya(new RegExp(`([+-]${a.source})(${r.source})?`),2);case"z":return Si(/[a-z_+-/]{1,256}?/i);default:return h(T)}})(n)||{invalidReason:Tc};return p.token=n,p}var Oc={year:{"2-digit":"yy",numeric:"yyyyy"},month:{numeric:"M","2-digit":"MM",short:"MMM",long:"MMMM"},day:{numeric:"d","2-digit":"dd"},weekday:{short:"EEE",long:"EEEE"},dayperiod:"a",dayPeriod:"a",hour:{numeric:"h","2-digit":"hh"},minute:{numeric:"m","2-digit":"mm"},second:{numeric:"s","2-digit":"ss"}};function vc(n,e,t){let{type:r,value:s}=n;if(r==="literal")return{literal:!0,val:s};let i=t[r],o=Oc[r];if(typeof o=="object"&&(o=o[i]),o)return{literal:!1,val:o}}function Ic(n){return[`^${n.map(t=>t.regex).reduce((t,r)=>`${t}(${r.source})`,"")}$`,n]}function Lc(n,e,t){let r=n.match(e);if(r){let s={},i=1;for(let o in t)if(St(t,o)){let a=t[o],u=a.groups?a.groups+1:1;!a.literal&&a.token&&(s[a.token.val[0]]=a.deser(r.slice(i,i+u))),i+=u}return[r,s]}else return[r,{}]}function Nc(n){let e=i=>{switch(i){case"S":return"millisecond";case"s":return"second";case"m":return"minute";case"h":case"H":return"hour";case"d":return"day";case"o":return"ordinal";case"L":case"M":return"month";case"y":return"year";case"E":case"c":return"weekday";case"W":return"weekNumber";case"k":return"weekYear";case"q":return"quarter";default:return null}},t=null,r;return W(n.z)||(t=ce.create(n.z)),W(n.Z)||(t||(t=new oe(n.Z)),r=n.Z),W(n.q)||(n.M=(n.q-1)*3+1),W(n.h)||(n.h<12&&n.a===1?n.h+=12:n.h===12&&n.a===0&&(n.h=0)),n.G===0&&n.y&&(n.y=-n.y),W(n.u)||(n.S=sr(n.u)),[Object.keys(n).reduce((i,o)=>{let a=e(o);return a&&(i[a]=n[o]),i},{}),t,r]}var ki=null;function Ac(){return ki||(ki=B.fromMillis(1555555555555)),ki}function Mc(n,e){if(n.literal)return n;let t=ue.macroTokenToFormatOpts(n.val);if(!t)return n;let i=ue.create(e,t).formatDateTimeParts(Ac()).map(o=>vc(o,e,t));return i.includes(void 0)?n:i}function _c(n,e){return Array.prototype.concat(...n.map(t=>Mc(t,e)))}function Ci(n,e,t){let r=_c(ue.parseFormat(t),n),s=r.map(o=>xc(o,n)),i=s.find(o=>o.invalidReason);if(i)return{input:e,tokens:r,invalidReason:i.invalidReason};{let[o,a]=Ic(s),u=RegExp(o,"i"),[l,f]=Lc(e,u,a),[d,y,h]=f?Nc(f):[null,null,void 0];if(St(f,"a")&&St(f,"H"))throw new pt("Can\'t include meridiem when specifying 24-hour format");return{input:e,tokens:r,regex:u,rawMatches:l,matches:f,result:d,zone:y,specificOffset:h}}}function Ea(n,e,t){let{result:r,zone:s,specificOffset:i,invalidReason:o}=Ci(n,e,t);return[r,s,i,o]}var Fa=[0,31,59,90,120,151,181,212,243,273,304,334],wa=[0,31,60,91,121,152,182,213,244,274,305,335];function Be(n,e){return new me("unit out of range",`you specified ${e} (of type ${typeof e}) as a ${n}, which is invalid`)}function Ta(n,e,t){let r=new Date(Date.UTC(n,e-1,t));n<100&&n>=0&&r.setUTCFullYear(r.getUTCFullYear()-1900);let s=r.getUTCDay();return s===0?7:s}function Sa(n,e,t){return t+(Ut(n)?wa:Fa)[e-1]}function ka(n,e){let t=Ut(n)?wa:Fa,r=t.findIndex(i=>i<e),s=e-t[r];return{month:r+1,day:s}}function Xr(n){let{year:e,month:t,day:r}=n,s=Sa(e,t,r),i=Ta(e,t,r),o=Math.floor((s-i+10)/7),a;return o<1?(a=e-1,o=dn(a)):o>dn(e)?(a=e+1,o=1):a=e,R({weekYear:a,weekNumber:o,weekday:i},ar(n))}function xi(n){let{weekYear:e,weekNumber:t,weekday:r}=n,s=Ta(e,1,4),i=Kt(e),o=t*7+r-s-3,a;o<1?(a=e-1,o+=Kt(a)):o>i?(a=e+1,o-=Kt(e)):a=e;let{month:u,day:l}=ka(a,o);return R({year:a,month:u,day:l},ar(n))}function es(n){let{year:e,month:t,day:r}=n,s=Sa(e,t,r);return R({year:e,ordinal:s},ar(n))}function Oi(n){let{year:e,ordinal:t}=n,{month:r,day:s}=ka(e,t);return R({year:e,month:r,day:s},ar(n))}function Ca(n){let e=rr(n.weekYear),t=et(n.weekNumber,1,dn(n.weekYear)),r=et(n.weekday,1,7);return e?t?r?!1:Be("weekday",n.weekday):Be("week",n.week):Be("weekYear",n.weekYear)}function xa(n){let e=rr(n.year),t=et(n.ordinal,1,Kt(n.year));return e?t?!1:Be("ordinal",n.ordinal):Be("year",n.year)}function vi(n){let e=rr(n.year),t=et(n.month,1,12),r=et(n.day,1,fn(n.year,n.month));return e?t?r?!1:Be("day",n.day):Be("month",n.month):Be("year",n.year)}function Ii(n){let{hour:e,minute:t,second:r,millisecond:s}=n,i=et(e,0,23)||e===24&&t===0&&r===0&&s===0,o=et(t,0,59),a=et(r,0,59),u=et(s,0,999);return i?o?a?u?!1:Be("millisecond",s):Be("second",r):Be("minute",t):Be("hour",e)}var Li="Invalid DateTime",Oa=864e13;function ts(n){return new me("unsupported zone",`the zone "${n.name}" is not supported`)}function Ni(n){return n.weekData===null&&(n.weekData=Xr(n.c)),n.weekData}function dr(n,e){let t={ts:n.ts,zone:n.zone,c:n.c,o:n.o,loc:n.loc,invalid:n.invalid};return new B(Ee(R(R({},t),e),{old:t}))}function Ba(n,e,t){let r=n-e*60*1e3,s=t.offset(r);if(e===s)return[r,e];r-=(s-e)*60*1e3;let i=t.offset(r);return s===i?[r,s]:[n-Math.min(s,i)*60*1e3,Math.max(s,i)]}function va(n,e){n+=e*60*1e3;let t=new Date(n);return{year:t.getUTCFullYear(),month:t.getUTCMonth()+1,day:t.getUTCDate(),hour:t.getUTCHours(),minute:t.getUTCMinutes(),second:t.getUTCSeconds(),millisecond:t.getUTCMilliseconds()}}function rs(n,e,t){return Ba(ir(n),e,t)}function Ia(n,e){let t=n.o,r=n.c.year+Math.trunc(e.years),s=n.c.month+Math.trunc(e.months)+Math.trunc(e.quarters)*3,i=Ee(R({},n.c),{year:r,month:s,day:Math.min(n.c.day,fn(r,s))+Math.trunc(e.days)+Math.trunc(e.weeks)*7}),o=M.fromObject({years:e.years-Math.trunc(e.years),quarters:e.quarters-Math.trunc(e.quarters),months:e.months-Math.trunc(e.months),weeks:e.weeks-Math.trunc(e.weeks),days:e.days-Math.trunc(e.days),hours:e.hours,minutes:e.minutes,seconds:e.seconds,milliseconds:e.milliseconds}).as("milliseconds"),a=ir(i),[u,l]=Ba(a,t,n.zone);return o!==0&&(u+=o,l=n.zone.offset(u)),{ts:u,o:l}}function hr(n,e,t,r,s,i){let{setZone:o,zone:a}=t;if(n&&Object.keys(n).length!==0){let u=e||a,l=B.fromObject(n,Ee(R({},t),{zone:u,specificOffset:i}));return o?l:l.setZone(a)}else return B.invalid(new me("unparsable",`the input "${s}" can\'t be parsed as ${r}`))}function ns(n,e,t=!0){return n.isValid?ue.create(Q.create("en-US"),{allowZ:t,forceSimple:!0}).formatDateTimeFromString(n,e):null}function Ai(n,e){let t=n.c.year>9999||n.c.year<0,r="";return t&&n.c.year>=0&&(r+="+"),r+=ie(n.c.year,t?6:4),e?(r+="-",r+=ie(n.c.month),r+="-",r+=ie(n.c.day)):(r+=ie(n.c.month),r+=ie(n.c.day)),r}function La(n,e,t,r,s,i){let o=ie(n.c.hour);return e?(o+=":",o+=ie(n.c.minute),(n.c.second!==0||!t)&&(o+=":")):o+=ie(n.c.minute),(n.c.second!==0||!t)&&(o+=ie(n.c.second),(n.c.millisecond!==0||!r)&&(o+=".",o+=ie(n.c.millisecond,3))),s&&(n.isOffsetFixed&&n.offset===0&&!i?o+="Z":n.o<0?(o+="-",o+=ie(Math.trunc(-n.o/60)),o+=":",o+=ie(Math.trunc(-n.o%60))):(o+="+",o+=ie(Math.trunc(n.o/60)),o+=":",o+=ie(Math.trunc(n.o%60)))),i&&(o+="["+n.zone.ianaName+"]"),o}var Pa={month:1,day:1,hour:0,minute:0,second:0,millisecond:0},Bc={weekNumber:1,weekday:1,hour:0,minute:0,second:0,millisecond:0},Pc={ordinal:1,hour:0,minute:0,second:0,millisecond:0},$a=["year","month","day","hour","minute","second","millisecond"],$c=["weekYear","weekNumber","weekday","hour","minute","second","millisecond"],Rc=["year","ordinal","hour","minute","second","millisecond"];function Na(n){let e={year:"year",years:"year",month:"month",months:"month",day:"day",days:"day",hour:"hour",hours:"hour",minute:"minute",minutes:"minute",quarter:"quarter",quarters:"quarter",second:"second",seconds:"second",millisecond:"millisecond",milliseconds:"millisecond",weekday:"weekday",weekdays:"weekday",weeknumber:"weekNumber",weeksnumber:"weekNumber",weeknumbers:"weekNumber",weekyear:"weekYear",weekyears:"weekYear",ordinal:"ordinal"}[n.toLowerCase()];if(!e)throw new un(n);return e}function Aa(n,e){let t=qe(e.zone,X.defaultZone),r=Q.fromObject(e),s=X.now(),i,o;if(W(n.year))i=s;else{for(let l of $a)W(n[l])&&(n[l]=Pa[l]);let a=vi(n)||Ii(n);if(a)return B.invalid(a);let u=t.offset(s);[i,o]=rs(n,u,t)}return new B({ts:i,zone:t,loc:r,o})}function Ma(n,e,t){let r=W(t.round)?!0:t.round,s=(o,a)=>(o=cn(o,r||t.calendary?0:2,!0),e.loc.clone(t).relFormatter(t).format(o,a)),i=o=>t.calendary?e.hasSame(n,o)?0:e.startOf(o).diff(n.startOf(o),o).get(o):e.diff(n,o).get(o);if(t.unit)return s(i(t.unit),t.unit);for(let o of t.units){let a=i(o);if(Math.abs(a)>=1)return s(a,o)}return s(n>e?-0:0,t.units[t.units.length-1])}function _a(n){let e={},t;return n.length>0&&typeof n[n.length-1]=="object"?(e=n[n.length-1],t=Array.from(n).slice(0,n.length-1)):t=Array.from(n),[e,t]}var B=class{constructor(e){let t=e.zone||X.defaultZone,r=e.invalid||(Number.isNaN(e.ts)?new me("invalid input"):null)||(t.isValid?null:ts(t));this.ts=W(e.ts)?X.now():e.ts;let s=null,i=null;if(!r)if(e.old&&e.old.ts===this.ts&&e.old.zone.equals(t))[s,i]=[e.old.c,e.old.o];else{let a=t.offset(this.ts);s=va(this.ts,a),r=Number.isNaN(s.year)?new me("invalid input"):null,s=r?null:s,i=r?null:a}this._zone=t,this.loc=e.loc||Q.create(),this.invalid=r,this.weekData=null,this.c=s,this.o=i,this.isLuxonDateTime=!0}static now(){return new B({})}static local(){let[e,t]=_a(arguments),[r,s,i,o,a,u,l]=t;return Aa({year:r,month:s,day:i,hour:o,minute:a,second:u,millisecond:l},e)}static utc(){let[e,t]=_a(arguments),[r,s,i,o,a,u,l]=t;return e.zone=oe.utcInstance,Aa({year:r,month:s,day:i,hour:o,minute:a,second:u,millisecond:l},e)}static fromJSDate(e,t={}){let r=Bo(e)?e.valueOf():NaN;if(Number.isNaN(r))return B.invalid("invalid input");let s=qe(t.zone,X.defaultZone);return s.isValid?new B({ts:r,zone:s,loc:Q.fromObject(t)}):B.invalid(ts(s))}static fromMillis(e,t={}){if(Xe(e))return e<-Oa||e>Oa?B.invalid("Timestamp out of range"):new B({ts:e,zone:qe(t.zone,X.defaultZone),loc:Q.fromObject(t)});throw new pe(`fromMillis requires a numerical input, but received a ${typeof e} with value ${e}`)}static fromSeconds(e,t={}){if(Xe(e))return new B({ts:e*1e3,zone:qe(t.zone,X.defaultZone),loc:Q.fromObject(t)});throw new pe("fromSeconds requires a numerical input")}static fromObject(e,t={}){e=e||{};let r=qe(t.zone,X.defaultZone);if(!r.isValid)return B.invalid(ts(r));let s=X.now(),i=W(t.specificOffset)?r.offset(s):t.specificOffset,o=hn(e,Na),a=!W(o.ordinal),u=!W(o.year),l=!W(o.month)||!W(o.day),f=u||l,d=o.weekYear||o.weekNumber,y=Q.fromObject(t);if((f||a)&&d)throw new pt("Can\'t mix weekYear/weekNumber units with year/month/day or ordinals");if(l&&a)throw new pt("Can\'t mix ordinal dates with month/day");let h=d||o.weekday&&!f,E,p,T=va(s,i);h?(E=$c,p=Bc,T=Xr(T)):a?(E=Rc,p=Pc,T=es(T)):(E=$a,p=Pa);let g=!1;for(let S of E){let q=o[S];W(q)?g?o[S]=p[S]:o[S]=T[S]:g=!0}let k=h?Ca(o):a?xa(o):vi(o),L=k||Ii(o);if(L)return B.invalid(L);let m=h?xi(o):a?Oi(o):o,[F,O]=rs(m,i,r),x=new B({ts:F,zone:r,o:O,loc:y});return o.weekday&&f&&e.weekday!==x.weekday?B.invalid("mismatched weekday",`you can\'t specify both a weekday of ${o.weekday} and a date of ${x.toISO()}`):x}static fromISO(e,t={}){let[r,s]=sa(e);return hr(r,s,t,"ISO 8601",e)}static fromRFC2822(e,t={}){let[r,s]=ia(e);return hr(r,s,t,"RFC 2822",e)}static fromHTTP(e,t={}){let[r,s]=oa(e);return hr(r,s,t,"HTTP",t)}static fromFormat(e,t,r={}){if(W(e)||W(t))throw new pe("fromFormat requires an input string and a format");let{locale:s=null,numberingSystem:i=null}=r,o=Q.fromOpts({locale:s,numberingSystem:i,defaultToEN:!0}),[a,u,l,f]=Ea(o,e,t);return f?B.invalid(f):hr(a,u,r,`format ${t}`,e,l)}static fromString(e,t,r={}){return B.fromFormat(e,t,r)}static fromSQL(e,t={}){let[r,s]=la(e);return hr(r,s,t,"SQL",e)}static invalid(e,t=null){if(!e)throw new pe("need to specify a reason the DateTime is invalid");let r=e instanceof me?e:new me(e,t);if(X.throwOnInvalid)throw new Wr(r);return new B({invalid:r})}static isDateTime(e){return e&&e.isLuxonDateTime||!1}get(e){return this[e]}get isValid(){return this.invalid===null}get invalidReason(){return this.invalid?this.invalid.reason:null}get invalidExplanation(){return this.invalid?this.invalid.explanation:null}get locale(){return this.isValid?this.loc.locale:null}get numberingSystem(){return this.isValid?this.loc.numberingSystem:null}get outputCalendar(){return this.isValid?this.loc.outputCalendar:null}get zone(){return this._zone}get zoneName(){return this.isValid?this.zone.name:null}get year(){return this.isValid?this.c.year:NaN}get quarter(){return this.isValid?Math.ceil(this.c.month/3):NaN}get month(){return this.isValid?this.c.month:NaN}get day(){return this.isValid?this.c.day:NaN}get hour(){return this.isValid?this.c.hour:NaN}get minute(){return this.isValid?this.c.minute:NaN}get second(){return this.isValid?this.c.second:NaN}get millisecond(){return this.isValid?this.c.millisecond:NaN}get weekYear(){return this.isValid?Ni(this).weekYear:NaN}get weekNumber(){return this.isValid?Ni(this).weekNumber:NaN}get weekday(){return this.isValid?Ni(this).weekday:NaN}get ordinal(){return this.isValid?es(this.c).ordinal:NaN}get monthShort(){return this.isValid?Dt.months("short",{locObj:this.loc})[this.month-1]:null}get monthLong(){return this.isValid?Dt.months("long",{locObj:this.loc})[this.month-1]:null}get weekdayShort(){return this.isValid?Dt.weekdays("short",{locObj:this.loc})[this.weekday-1]:null}get weekdayLong(){return this.isValid?Dt.weekdays("long",{locObj:this.loc})[this.weekday-1]:null}get offset(){return this.isValid?+this.o:NaN}get offsetNameShort(){return this.isValid?this.zone.offsetName(this.ts,{format:"short",locale:this.locale}):null}get offsetNameLong(){return this.isValid?this.zone.offsetName(this.ts,{format:"long",locale:this.locale}):null}get isOffsetFixed(){return this.isValid?this.zone.isUniversal:null}get isInDST(){return this.isOffsetFixed?!1:this.offset>this.set({month:1,day:1}).offset||this.offset>this.set({month:5}).offset}get isInLeapYear(){return Ut(this.year)}get daysInMonth(){return fn(this.year,this.month)}get daysInYear(){return this.isValid?Kt(this.year):NaN}get weeksInWeekYear(){return this.isValid?dn(this.weekYear):NaN}resolvedLocaleOptions(e={}){let{locale:t,numberingSystem:r,calendar:s}=ue.create(this.loc.clone(e),e).resolvedOptions(this);return{locale:t,numberingSystem:r,outputCalendar:s}}toUTC(e=0,t={}){return this.setZone(oe.instance(e),t)}toLocal(){return this.setZone(X.defaultZone)}setZone(e,{keepLocalTime:t=!1,keepCalendarTime:r=!1}={}){if(e=qe(e,X.defaultZone),e.equals(this.zone))return this;if(e.isValid){let s=this.ts;if(t||r){let i=e.offset(this.ts),o=this.toObject();[s]=rs(o,i,e)}return dr(this,{ts:s,zone:e})}else return B.invalid(ts(e))}reconfigure({locale:e,numberingSystem:t,outputCalendar:r}={}){let s=this.loc.clone({locale:e,numberingSystem:t,outputCalendar:r});return dr(this,{loc:s})}setLocale(e){return this.reconfigure({locale:e})}set(e){if(!this.isValid)return this;let t=hn(e,Na),r=!W(t.weekYear)||!W(t.weekNumber)||!W(t.weekday),s=!W(t.ordinal),i=!W(t.year),o=!W(t.month)||!W(t.day),a=i||o,u=t.weekYear||t.weekNumber;if((a||s)&&u)throw new pt("Can\'t mix weekYear/weekNumber units with year/month/day or ordinals");if(o&&s)throw new pt("Can\'t mix ordinal dates with month/day");let l;r?l=xi(R(R({},Xr(this.c)),t)):W(t.ordinal)?(l=R(R({},this.toObject()),t),W(t.day)&&(l.day=Math.min(fn(l.year,l.month),l.day))):l=Oi(R(R({},es(this.c)),t));let[f,d]=rs(l,this.o,this.zone);return dr(this,{ts:f,o:d})}plus(e){if(!this.isValid)return this;let t=M.fromDurationLike(e);return dr(this,Ia(this,t))}minus(e){if(!this.isValid)return this;let t=M.fromDurationLike(e).negate();return dr(this,Ia(this,t))}startOf(e){if(!this.isValid)return this;let t={},r=M.normalizeUnit(e);switch(r){case"years":t.month=1;case"quarters":case"months":t.day=1;case"weeks":case"days":t.hour=0;case"hours":t.minute=0;case"minutes":t.second=0;case"seconds":t.millisecond=0;break;case"milliseconds":break}if(r==="weeks"&&(t.weekday=1),r==="quarters"){let s=Math.ceil(this.month/3);t.month=(s-1)*3+1}return this.set(t)}endOf(e){return this.isValid?this.plus({[e]:1}).startOf(e).minus(1):this}toFormat(e,t={}){return this.isValid?ue.create(this.loc.redefaultToEN(t)).formatDateTimeFromString(this,e):Li}toLocaleString(e=ln,t={}){return this.isValid?ue.create(this.loc.clone(t),e).formatDateTime(this):Li}toLocaleParts(e={}){return this.isValid?ue.create(this.loc.clone(e),e).formatDateTimeParts(this):[]}toISO({format:e="extended",suppressSeconds:t=!1,suppressMilliseconds:r=!1,includeOffset:s=!0,extendedZone:i=!1}={}){if(!this.isValid)return null;let o=e==="extended",a=Ai(this,o);return a+="T",a+=La(this,o,t,r,s,i),a}toISODate({format:e="extended"}={}){return this.isValid?Ai(this,e==="extended"):null}toISOWeekDate(){return ns(this,"kkkk-\'W\'WW-c")}toISOTime({suppressMilliseconds:e=!1,suppressSeconds:t=!1,includeOffset:r=!0,includePrefix:s=!1,extendedZone:i=!1,format:o="extended"}={}){return this.isValid?(s?"T":"")+La(this,o==="extended",t,e,r,i):null}toRFC2822(){return ns(this,"EEE, dd LLL yyyy HH:mm:ss ZZZ",!1)}toHTTP(){return ns(this.toUTC(),"EEE, dd LLL yyyy HH:mm:ss \'GMT\'")}toSQLDate(){return this.isValid?Ai(this,!0):null}toSQLTime({includeOffset:e=!0,includeZone:t=!1,includeOffsetSpace:r=!0}={}){let s="HH:mm:ss.SSS";return(t||e)&&(r&&(s+=" "),t?s+="z":e&&(s+="ZZ")),ns(this,s,!0)}toSQL(e={}){return this.isValid?`${this.toSQLDate()} ${this.toSQLTime(e)}`:null}toString(){return this.isValid?this.toISO():Li}valueOf(){return this.toMillis()}toMillis(){return this.isValid?this.ts:NaN}toSeconds(){return this.isValid?this.ts/1e3:NaN}toUnixInteger(){return this.isValid?Math.floor(this.ts/1e3):NaN}toJSON(){return this.toISO()}toBSON(){return this.toJSDate()}toObject(e={}){if(!this.isValid)return{};let t=R({},this.c);return e.includeConfig&&(t.outputCalendar=this.outputCalendar,t.numberingSystem=this.loc.numberingSystem,t.locale=this.loc.locale),t}toJSDate(){return new Date(this.isValid?this.ts:NaN)}diff(e,t="milliseconds",r={}){if(!this.isValid||!e.isValid)return M.invalid("created by diffing an invalid DateTime");let s=R({locale:this.locale,numberingSystem:this.numberingSystem},r),i=Po(t).map(M.normalizeUnit),o=e.valueOf()>this.valueOf(),a=o?this:e,u=o?e:this,l=ha(a,u,i,s);return o?l.negate():l}diffNow(e="milliseconds",t={}){return this.diff(B.now(),e,t)}until(e){return this.isValid?te.fromDateTimes(this,e):this}hasSame(e,t){if(!this.isValid)return!1;let r=e.valueOf(),s=this.setZone(e.zone,{keepLocalTime:!0});return s.startOf(t)<=r&&r<=s.endOf(t)}equals(e){return this.isValid&&e.isValid&&this.valueOf()===e.valueOf()&&this.zone.equals(e.zone)&&this.loc.equals(e.loc)}toRelative(e={}){if(!this.isValid)return null;let t=e.base||B.fromObject({},{zone:this.zone}),r=e.padding?this<t?-e.padding:e.padding:0,s=["years","months","days","hours","minutes","seconds"],i=e.unit;return Array.isArray(e.unit)&&(s=e.unit,i=void 0),Ma(t,this.plus(r),Ee(R({},e),{numeric:"always",units:s,unit:i}))}toRelativeCalendar(e={}){return this.isValid?Ma(e.base||B.fromObject({},{zone:this.zone}),this,Ee(R({},e),{numeric:"auto",units:["years","months","days"],calendary:!0})):null}static min(...e){if(!e.every(B.isDateTime))throw new pe("min requires all arguments be DateTimes");return ei(e,t=>t.valueOf(),Math.min)}static max(...e){if(!e.every(B.isDateTime))throw new pe("max requires all arguments be DateTimes");return ei(e,t=>t.valueOf(),Math.max)}static fromFormatExplain(e,t,r={}){let{locale:s=null,numberingSystem:i=null}=r,o=Q.fromOpts({locale:s,numberingSystem:i,defaultToEN:!0});return Ci(o,e,t)}static fromStringExplain(e,t,r={}){return B.fromFormatExplain(e,t,r)}static get DATE_SHORT(){return ln}static get DATE_MED(){return $n}static get DATE_MED_WITH_WEEKDAY(){return Zs}static get DATE_FULL(){return Rn}static get DATE_HUGE(){return jn}static get TIME_SIMPLE(){return Vn}static get TIME_WITH_SECONDS(){return qn}static get TIME_WITH_SHORT_OFFSET(){return Un}static get TIME_WITH_LONG_OFFSET(){return Kn}static get TIME_24_SIMPLE(){return Wn}static get TIME_24_WITH_SECONDS(){return Hn}static get TIME_24_WITH_SHORT_OFFSET(){return Jn}static get TIME_24_WITH_LONG_OFFSET(){return zn}static get DATETIME_SHORT(){return Yn}static get DATETIME_SHORT_WITH_SECONDS(){return Gn}static get DATETIME_MED(){return Zn}static get DATETIME_MED_WITH_SECONDS(){return Qn}static get DATETIME_MED_WITH_WEEKDAY(){return Qs}static get DATETIME_FULL(){return Xn}static get DATETIME_FULL_WITH_SECONDS(){return er}static get DATETIME_HUGE(){return tr}static get DATETIME_HUGE_WITH_SECONDS(){return nr}};function Fn(n){if(B.isDateTime(n))return n;if(n&&n.valueOf&&Xe(n.valueOf()))return B.fromJSDate(n);if(n&&typeof n=="object")return B.fromObject(n);throw new pe(`Unknown datetime argument: ${n}, of type ${typeof n}`)}var yt=Kr(ss());var wn=()=>/[#*0-9]\\uFE0F?\\u20E3|[\\xA9\\xAE\\u203C\\u2049\\u2122\\u2139\\u2194-\\u2199\\u21A9\\u21AA\\u231A\\u231B\\u2328\\u23CF\\u23ED-\\u23EF\\u23F1\\u23F2\\u23F8-\\u23FA\\u24C2\\u25AA\\u25AB\\u25B6\\u25C0\\u25FB\\u25FC\\u25FE\\u2600-\\u2604\\u260E\\u2611\\u2614\\u2615\\u2618\\u2620\\u2622\\u2623\\u2626\\u262A\\u262E\\u262F\\u2638-\\u263A\\u2640\\u2642\\u2648-\\u2653\\u265F\\u2660\\u2663\\u2665\\u2666\\u2668\\u267B\\u267E\\u267F\\u2692\\u2694-\\u2697\\u2699\\u269B\\u269C\\u26A0\\u26A7\\u26AA\\u26B0\\u26B1\\u26BD\\u26BE\\u26C4\\u26C8\\u26CF\\u26D1\\u26E9\\u26F0-\\u26F5\\u26F7\\u26F8\\u26FA\\u2702\\u2708\\u2709\\u270F\\u2712\\u2714\\u2716\\u271D\\u2721\\u2733\\u2734\\u2744\\u2747\\u2757\\u2763\\u27A1\\u2934\\u2935\\u2B05-\\u2B07\\u2B1B\\u2B1C\\u2B55\\u3030\\u303D\\u3297\\u3299]\\uFE0F?|[\\u261D\\u270C\\u270D](?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?|[\\u270A\\u270B](?:\\uD83C[\\uDFFB-\\uDFFF])?|[\\u23E9-\\u23EC\\u23F0\\u23F3\\u25FD\\u2693\\u26A1\\u26AB\\u26C5\\u26CE\\u26D4\\u26EA\\u26FD\\u2705\\u2728\\u274C\\u274E\\u2753-\\u2755\\u2795-\\u2797\\u27B0\\u27BF\\u2B50]|\\u26D3\\uFE0F?(?:\\u200D\\uD83D\\uDCA5)?|\\u26F9(?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|\\u2764\\uFE0F?(?:\\u200D(?:\\uD83D\\uDD25|\\uD83E\\uDE79))?|\\uD83C(?:[\\uDC04\\uDD70\\uDD71\\uDD7E\\uDD7F\\uDE02\\uDE37\\uDF21\\uDF24-\\uDF2C\\uDF36\\uDF7D\\uDF96\\uDF97\\uDF99-\\uDF9B\\uDF9E\\uDF9F\\uDFCD\\uDFCE\\uDFD4-\\uDFDF\\uDFF5\\uDFF7]\\uFE0F?|[\\uDF85\\uDFC2\\uDFC7](?:\\uD83C[\\uDFFB-\\uDFFF])?|[\\uDFC4\\uDFCA](?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDFCB\\uDFCC](?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDCCF\\uDD8E\\uDD91-\\uDD9A\\uDE01\\uDE1A\\uDE2F\\uDE32-\\uDE36\\uDE38-\\uDE3A\\uDE50\\uDE51\\uDF00-\\uDF20\\uDF2D-\\uDF35\\uDF37-\\uDF43\\uDF45-\\uDF4A\\uDF4C-\\uDF7C\\uDF7E-\\uDF84\\uDF86-\\uDF93\\uDFA0-\\uDFC1\\uDFC5\\uDFC6\\uDFC8\\uDFC9\\uDFCF-\\uDFD3\\uDFE0-\\uDFF0\\uDFF8-\\uDFFF]|\\uDDE6\\uD83C[\\uDDE8-\\uDDEC\\uDDEE\\uDDF1\\uDDF2\\uDDF4\\uDDF6-\\uDDFA\\uDDFC\\uDDFD\\uDDFF]|\\uDDE7\\uD83C[\\uDDE6\\uDDE7\\uDDE9-\\uDDEF\\uDDF1-\\uDDF4\\uDDF6-\\uDDF9\\uDDFB\\uDDFC\\uDDFE\\uDDFF]|\\uDDE8\\uD83C[\\uDDE6\\uDDE8\\uDDE9\\uDDEB-\\uDDEE\\uDDF0-\\uDDF7\\uDDFA-\\uDDFF]|\\uDDE9\\uD83C[\\uDDEA\\uDDEC\\uDDEF\\uDDF0\\uDDF2\\uDDF4\\uDDFF]|\\uDDEA\\uD83C[\\uDDE6\\uDDE8\\uDDEA\\uDDEC\\uDDED\\uDDF7-\\uDDFA]|\\uDDEB\\uD83C[\\uDDEE-\\uDDF0\\uDDF2\\uDDF4\\uDDF7]|\\uDDEC\\uD83C[\\uDDE6\\uDDE7\\uDDE9-\\uDDEE\\uDDF1-\\uDDF3\\uDDF5-\\uDDFA\\uDDFC\\uDDFE]|\\uDDED\\uD83C[\\uDDF0\\uDDF2\\uDDF3\\uDDF7\\uDDF9\\uDDFA]|\\uDDEE\\uD83C[\\uDDE8-\\uDDEA\\uDDF1-\\uDDF4\\uDDF6-\\uDDF9]|\\uDDEF\\uD83C[\\uDDEA\\uDDF2\\uDDF4\\uDDF5]|\\uDDF0\\uD83C[\\uDDEA\\uDDEC-\\uDDEE\\uDDF2\\uDDF3\\uDDF5\\uDDF7\\uDDFC\\uDDFE\\uDDFF]|\\uDDF1\\uD83C[\\uDDE6-\\uDDE8\\uDDEE\\uDDF0\\uDDF7-\\uDDFB\\uDDFE]|\\uDDF2\\uD83C[\\uDDE6\\uDDE8-\\uDDED\\uDDF0-\\uDDFF]|\\uDDF3\\uD83C[\\uDDE6\\uDDE8\\uDDEA-\\uDDEC\\uDDEE\\uDDF1\\uDDF4\\uDDF5\\uDDF7\\uDDFA\\uDDFF]|\\uDDF4\\uD83C\\uDDF2|\\uDDF5\\uD83C[\\uDDE6\\uDDEA-\\uDDED\\uDDF0-\\uDDF3\\uDDF7-\\uDDF9\\uDDFC\\uDDFE]|\\uDDF6\\uD83C\\uDDE6|\\uDDF7\\uD83C[\\uDDEA\\uDDF4\\uDDF8\\uDDFA\\uDDFC]|\\uDDF8\\uD83C[\\uDDE6-\\uDDEA\\uDDEC-\\uDDF4\\uDDF7-\\uDDF9\\uDDFB\\uDDFD-\\uDDFF]|\\uDDF9\\uD83C[\\uDDE6\\uDDE8\\uDDE9\\uDDEB-\\uDDED\\uDDEF-\\uDDF4\\uDDF7\\uDDF9\\uDDFB\\uDDFC\\uDDFF]|\\uDDFA\\uD83C[\\uDDE6\\uDDEC\\uDDF2\\uDDF3\\uDDF8\\uDDFE\\uDDFF]|\\uDDFB\\uD83C[\\uDDE6\\uDDE8\\uDDEA\\uDDEC\\uDDEE\\uDDF3\\uDDFA]|\\uDDFC\\uD83C[\\uDDEB\\uDDF8]|\\uDDFD\\uD83C\\uDDF0|\\uDDFE\\uD83C[\\uDDEA\\uDDF9]|\\uDDFF\\uD83C[\\uDDE6\\uDDF2\\uDDFC]|\\uDF44(?:\\u200D\\uD83D\\uDFEB)?|\\uDF4B(?:\\u200D\\uD83D\\uDFE9)?|\\uDFC3(?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D(?:[\\u2640\\u2642]\\uFE0F?(?:\\u200D\\u27A1\\uFE0F?)?|\\u27A1\\uFE0F?))?|\\uDFF3\\uFE0F?(?:\\u200D(?:\\u26A7\\uFE0F?|\\uD83C\\uDF08))?|\\uDFF4(?:\\u200D\\u2620\\uFE0F?|\\uDB40\\uDC67\\uDB40\\uDC62\\uDB40(?:\\uDC65\\uDB40\\uDC6E\\uDB40\\uDC67|\\uDC73\\uDB40\\uDC63\\uDB40\\uDC74|\\uDC77\\uDB40\\uDC6C\\uDB40\\uDC73)\\uDB40\\uDC7F)?)|\\uD83D(?:[\\uDC3F\\uDCFD\\uDD49\\uDD4A\\uDD6F\\uDD70\\uDD73\\uDD76-\\uDD79\\uDD87\\uDD8A-\\uDD8D\\uDDA5\\uDDA8\\uDDB1\\uDDB2\\uDDBC\\uDDC2-\\uDDC4\\uDDD1-\\uDDD3\\uDDDC-\\uDDDE\\uDDE1\\uDDE3\\uDDE8\\uDDEF\\uDDF3\\uDDFA\\uDECB\\uDECD-\\uDECF\\uDEE0-\\uDEE5\\uDEE9\\uDEF0\\uDEF3]\\uFE0F?|[\\uDC42\\uDC43\\uDC46-\\uDC50\\uDC66\\uDC67\\uDC6B-\\uDC6D\\uDC72\\uDC74-\\uDC76\\uDC78\\uDC7C\\uDC83\\uDC85\\uDC8F\\uDC91\\uDCAA\\uDD7A\\uDD95\\uDD96\\uDE4C\\uDE4F\\uDEC0\\uDECC](?:\\uD83C[\\uDFFB-\\uDFFF])?|[\\uDC6E\\uDC70\\uDC71\\uDC73\\uDC77\\uDC81\\uDC82\\uDC86\\uDC87\\uDE45-\\uDE47\\uDE4B\\uDE4D\\uDE4E\\uDEA3\\uDEB4\\uDEB5](?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDD74\\uDD90](?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?|[\\uDC00-\\uDC07\\uDC09-\\uDC14\\uDC16-\\uDC25\\uDC27-\\uDC3A\\uDC3C-\\uDC3E\\uDC40\\uDC44\\uDC45\\uDC51-\\uDC65\\uDC6A\\uDC79-\\uDC7B\\uDC7D-\\uDC80\\uDC84\\uDC88-\\uDC8E\\uDC90\\uDC92-\\uDCA9\\uDCAB-\\uDCFC\\uDCFF-\\uDD3D\\uDD4B-\\uDD4E\\uDD50-\\uDD67\\uDDA4\\uDDFB-\\uDE2D\\uDE2F-\\uDE34\\uDE37-\\uDE41\\uDE43\\uDE44\\uDE48-\\uDE4A\\uDE80-\\uDEA2\\uDEA4-\\uDEB3\\uDEB7-\\uDEBF\\uDEC1-\\uDEC5\\uDED0-\\uDED2\\uDED5-\\uDED7\\uDEDC-\\uDEDF\\uDEEB\\uDEEC\\uDEF4-\\uDEFC\\uDFE0-\\uDFEB\\uDFF0]|\\uDC08(?:\\u200D\\u2B1B)?|\\uDC15(?:\\u200D\\uD83E\\uDDBA)?|\\uDC26(?:\\u200D(?:\\u2B1B|\\uD83D\\uDD25))?|\\uDC3B(?:\\u200D\\u2744\\uFE0F?)?|\\uDC41\\uFE0F?(?:\\u200D\\uD83D\\uDDE8\\uFE0F?)?|\\uDC68(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D(?:[\\uDC68\\uDC69]\\u200D\\uD83D(?:\\uDC66(?:\\u200D\\uD83D\\uDC66)?|\\uDC67(?:\\u200D\\uD83D[\\uDC66\\uDC67])?)|[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uDC66(?:\\u200D\\uD83D\\uDC66)?|\\uDC67(?:\\u200D\\uD83D[\\uDC66\\uDC67])?)|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]))|\\uD83C(?:\\uDFFB(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFC-\\uDFFF])))?|\\uDFFC(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFB\\uDFFD-\\uDFFF])))?|\\uDFFD(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFB\\uDFFC\\uDFFE\\uDFFF])))?|\\uDFFE(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFB-\\uDFFD\\uDFFF])))?|\\uDFFF(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFB-\\uDFFE])))?))?|\\uDC69(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?[\\uDC68\\uDC69]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D(?:[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uDC66(?:\\u200D\\uD83D\\uDC66)?|\\uDC67(?:\\u200D\\uD83D[\\uDC66\\uDC67])?|\\uDC69\\u200D\\uD83D(?:\\uDC66(?:\\u200D\\uD83D\\uDC66)?|\\uDC67(?:\\u200D\\uD83D[\\uDC66\\uDC67])?))|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]))|\\uD83C(?:\\uDFFB(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFC-\\uDFFF])))?|\\uDFFC(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFB\\uDFFD-\\uDFFF])))?|\\uDFFD(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFB\\uDFFC\\uDFFE\\uDFFF])))?|\\uDFFE(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFB-\\uDFFD\\uDFFF])))?|\\uDFFF(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFB-\\uDFFE])))?))?|\\uDC6F(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|\\uDD75(?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|\\uDE2E(?:\\u200D\\uD83D\\uDCA8)?|\\uDE35(?:\\u200D\\uD83D\\uDCAB)?|\\uDE36(?:\\u200D\\uD83C\\uDF2B\\uFE0F?)?|\\uDE42(?:\\u200D[\\u2194\\u2195]\\uFE0F?)?|\\uDEB6(?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D(?:[\\u2640\\u2642]\\uFE0F?(?:\\u200D\\u27A1\\uFE0F?)?|\\u27A1\\uFE0F?))?)|\\uD83E(?:[\\uDD0C\\uDD0F\\uDD18-\\uDD1F\\uDD30-\\uDD34\\uDD36\\uDD77\\uDDB5\\uDDB6\\uDDBB\\uDDD2\\uDDD3\\uDDD5\\uDEC3-\\uDEC5\\uDEF0\\uDEF2-\\uDEF8](?:\\uD83C[\\uDFFB-\\uDFFF])?|[\\uDD26\\uDD35\\uDD37-\\uDD39\\uDD3D\\uDD3E\\uDDB8\\uDDB9\\uDDCD\\uDDCF\\uDDD4\\uDDD6-\\uDDDD](?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDDDE\\uDDDF](?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDD0D\\uDD0E\\uDD10-\\uDD17\\uDD20-\\uDD25\\uDD27-\\uDD2F\\uDD3A\\uDD3F-\\uDD45\\uDD47-\\uDD76\\uDD78-\\uDDB4\\uDDB7\\uDDBA\\uDDBC-\\uDDCC\\uDDD0\\uDDE0-\\uDDFF\\uDE70-\\uDE7C\\uDE80-\\uDE89\\uDE8F-\\uDEC2\\uDEC6\\uDECE-\\uDEDC\\uDEDF-\\uDEE9]|\\uDD3C(?:\\u200D[\\u2640\\u2642]\\uFE0F?|\\uD83C[\\uDFFB-\\uDFFF])?|\\uDDCE(?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D(?:[\\u2640\\u2642]\\uFE0F?(?:\\u200D\\u27A1\\uFE0F?)?|\\u27A1\\uFE0F?))?|\\uDDD1(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1|\\uDDD1\\u200D\\uD83E\\uDDD2(?:\\u200D\\uD83E\\uDDD2)?|\\uDDD2(?:\\u200D\\uD83E\\uDDD2)?))|\\uD83C(?:\\uDFFB(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFC-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?|\\uDFFC(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFB\\uDFFD-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?|\\uDFFD(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFB\\uDFFC\\uDFFE\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?|\\uDFFE(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFD\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?|\\uDFFF(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFE]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?))?|\\uDEF1(?:\\uD83C(?:\\uDFFB(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFC-\\uDFFF])?|\\uDFFC(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFB\\uDFFD-\\uDFFF])?|\\uDFFD(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFB\\uDFFC\\uDFFE\\uDFFF])?|\\uDFFE(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFB-\\uDFFD\\uDFFF])?|\\uDFFF(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFB-\\uDFFE])?))?)/g;function _i(n){return n==null?n:n.shiftTo("years","months","weeks","days","hours","minutes","seconds","milliseconds").normalize()}function Ra(n,e,t,r){return n.second==0&&n.minute==0&&n.hour==0?n.toLocal().toFormat(e,{locale:r}):n.toLocal().toFormat(t,{locale:r})}function ja(n){n=_i(n);let e="";return n.years&&(e+=`${n.years} years, `),n.months&&(e+=`${n.months} months, `),n.weeks&&(e+=`${n.weeks} weeks, `),n.days&&(e+=`${n.days} days, `),n.hours&&(e+=`${n.hours} hours, `),n.minutes&&(e+=`${n.minutes} minutes, `),n.seconds&&(e+=`${Math.round(n.seconds)} seconds, `),n.milliseconds&&(e+=`${Math.round(n.milliseconds)} ms, `),e.endsWith(", ")&&(e=e.substring(0,e.length-2)),e}function Tn(n){return n.includes("/")&&(n=n.substring(n.lastIndexOf("/")+1)),n.endsWith(".md")&&(n=n.substring(0,n.length-3)),n}function Va(n){return n.includes(".")?n.substring(n.lastIndexOf(".")+1):""}var jc=yt.alt(yt.regex(new RegExp(wn(),"")),yt.regex(/[0-9\\p{Letter}_-]+/u),yt.whitespace.map(n=>" "),yt.any.map(n=>" ")).many().map(n=>n.join("").split(/\\s+/).join(" ").trim());function qa(n){return jc.tryParse(n)}var ee=class{static file(e,t=!1,r){return new ee({path:e,embed:t,display:r,subpath:void 0,type:"file"})}static infer(e,t=!1,r){if(e.includes("#^")){let s=e.split("#^");return ee.block(s[0],s[1],t,r)}else if(e.includes("#")){let s=e.split("#");return ee.header(s[0],s[1],t,r)}else return ee.file(e,t,r)}static header(e,t,r,s){return new ee({path:e,embed:r,display:s,subpath:qa(t),type:"header"})}static block(e,t,r,s){return new ee({path:e,embed:r,display:s,subpath:t,type:"block"})}static fromObject(e){return new ee(e)}static parseInner(e){let[t,r]=Vc(e);return ee.infer(t,!1,r)}constructor(e){Object.assign(this,e)}withPath(e){return new ee(Object.assign({},this,{path:e}))}withDisplay(e){return new ee(Object.assign({},this,{display:e}))}withEmbed(e){return this.embed==e?this:new ee(Object.assign({},this,{embed:e}))}withHeader(e){return ee.header(this.path,e,this.embed,this.display)}withBlock(e){return ee.block(this.path,e,this.embed,this.display)}equals(e){return e==null||e==null?!1:this.path==e.path&&this.type==e.type&&this.subpath==e.subpath}toString(){return this.markdown()}toObject(){return{path:this.path,type:this.type,subpath:this.subpath,display:this.display,embed:this.embed}}toFile(){return ee.file(this.path,this.embed,this.display)}toEmbed(){return this.withEmbed(!0)}fromEmbed(){return this.withEmbed(!1)}markdown(){let e=(this.embed?"!":"")+"[["+this.obsidianLink();return e+="|",e+=this.displayOrDefault(),e+="]]",e}displayOrDefault(){if(this.display)return this.display;{let e=Tn(this.path);return(this.type=="header"||this.type=="block")&&(e+=" > "+this.subpath),e}}obsidianLink(){var t,r;let e=this.path.replace("|","\\\\|");return this.type=="header"?e+"#"+((t=this.subpath)==null?void 0:t.replace("|","\\\\|")):this.type=="block"?e+"#^"+((r=this.subpath)==null?void 0:r.replace("|","\\\\|")):e}fileName(){return Tn(this.path)}};function Vc(n){let e=-1;for(;(e=n.indexOf("|",e+1))>=0;)if(!(e>0&&n[e-1]=="\\\\"))return[n.substring(0,e).replace(/\\\\\\|/g,"|"),n.substring(e+1)];return[n.replace(/\\\\\\|/g,"|"),void 0]}var is=Symbol.for("yaml.alias"),os=Symbol.for("yaml.document"),Ke=Symbol.for("yaml.map"),Bi=Symbol.for("yaml.pair"),Ie=Symbol.for("yaml.scalar"),gt=Symbol.for("yaml.seq"),Se=Symbol.for("yaml.node.type"),Pe=n=>!!n&&typeof n=="object"&&n[Se]===is,tt=n=>!!n&&typeof n=="object"&&n[Se]===os,We=n=>!!n&&typeof n=="object"&&n[Se]===Ke,H=n=>!!n&&typeof n=="object"&&n[Se]===Bi,K=n=>!!n&&typeof n=="object"&&n[Se]===Ie,He=n=>!!n&&typeof n=="object"&&n[Se]===gt;function Z(n){if(n&&typeof n=="object")switch(n[Se]){case Ke:case gt:return!0}return!1}function J(n){if(n&&typeof n=="object")switch(n[Se]){case is:case Ke:case Ie:case gt:return!0}return!1}var as=n=>(K(n)||Z(n))&&!!n.anchor;var xe=Symbol("break visit"),Ua=Symbol("skip children"),nt=Symbol("remove node");function rt(n,e){let t=Ka(e);tt(n)?Sn(null,n.contents,t,Object.freeze([n]))===nt&&(n.contents=null):Sn(null,n,t,Object.freeze([]))}rt.BREAK=xe;rt.SKIP=Ua;rt.REMOVE=nt;function Sn(n,e,t,r){let s=Wa(n,e,t,r);if(J(s)||H(s))return Ha(n,r,s),Sn(n,s,t,r);if(typeof s!="symbol"){if(Z(e)){r=Object.freeze(r.concat(e));for(let i=0;i<e.items.length;++i){let o=Sn(i,e.items[i],t,r);if(typeof o=="number")i=o-1;else{if(o===xe)return xe;o===nt&&(e.items.splice(i,1),i-=1)}}}else if(H(e)){r=Object.freeze(r.concat(e));let i=Sn("key",e.key,t,r);if(i===xe)return xe;i===nt&&(e.key=null);let o=Sn("value",e.value,t,r);if(o===xe)return xe;o===nt&&(e.value=null)}}return s}async function us(n,e){let t=Ka(e);tt(n)?await kn(null,n.contents,t,Object.freeze([n]))===nt&&(n.contents=null):await kn(null,n,t,Object.freeze([]))}us.BREAK=xe;us.SKIP=Ua;us.REMOVE=nt;async function kn(n,e,t,r){let s=await Wa(n,e,t,r);if(J(s)||H(s))return Ha(n,r,s),kn(n,s,t,r);if(typeof s!="symbol"){if(Z(e)){r=Object.freeze(r.concat(e));for(let i=0;i<e.items.length;++i){let o=await kn(i,e.items[i],t,r);if(typeof o=="number")i=o-1;else{if(o===xe)return xe;o===nt&&(e.items.splice(i,1),i-=1)}}}else if(H(e)){r=Object.freeze(r.concat(e));let i=await kn("key",e.key,t,r);if(i===xe)return xe;i===nt&&(e.key=null);let o=await kn("value",e.value,t,r);if(o===xe)return xe;o===nt&&(e.value=null)}}return s}function Ka(n){return typeof n=="object"&&(n.Collection||n.Node||n.Value)?Object.assign({Alias:n.Node,Map:n.Node,Scalar:n.Node,Seq:n.Node},n.Value&&{Map:n.Value,Scalar:n.Value,Seq:n.Value},n.Collection&&{Map:n.Collection,Seq:n.Collection},n):n}function Wa(n,e,t,r){var s,i,o,a,u;if(typeof t=="function")return t(n,e,r);if(We(e))return(s=t.Map)==null?void 0:s.call(t,n,e,r);if(He(e))return(i=t.Seq)==null?void 0:i.call(t,n,e,r);if(H(e))return(o=t.Pair)==null?void 0:o.call(t,n,e,r);if(K(e))return(a=t.Scalar)==null?void 0:a.call(t,n,e,r);if(Pe(e))return(u=t.Alias)==null?void 0:u.call(t,n,e,r)}function Ha(n,e,t){let r=e[e.length-1];if(Z(r))r.items[n]=t;else if(H(r))n==="key"?r.key=t:r.value=t;else if(tt(r))r.contents=t;else{let s=Pe(r)?"alias":"scalar";throw new Error(`Cannot replace node with ${s} parent`)}}var qc={"!":"%21",",":"%2C","[":"%5B","]":"%5D","{":"%7B","}":"%7D"},Uc=n=>n.replace(/[!,[\\]{}]/g,e=>qc[e]),fe=class{constructor(e,t){this.docStart=null,this.docEnd=!1,this.yaml=Object.assign({},fe.defaultYaml,e),this.tags=Object.assign({},fe.defaultTags,t)}clone(){let e=new fe(this.yaml,this.tags);return e.docStart=this.docStart,e}atDocument(){let e=new fe(this.yaml,this.tags);switch(this.yaml.version){case"1.1":this.atNextDocument=!0;break;case"1.2":this.atNextDocument=!1,this.yaml={explicit:fe.defaultYaml.explicit,version:"1.2"},this.tags=Object.assign({},fe.defaultTags);break}return e}add(e,t){this.atNextDocument&&(this.yaml={explicit:fe.defaultYaml.explicit,version:"1.1"},this.tags=Object.assign({},fe.defaultTags),this.atNextDocument=!1);let r=e.trim().split(/[ \\t]+/),s=r.shift();switch(s){case"%TAG":{if(r.length!==2&&(t(0,"%TAG directive should contain exactly two parts"),r.length<2))return!1;let[i,o]=r;return this.tags[i]=o,!0}case"%YAML":{if(this.yaml.explicit=!0,r.length!==1)return t(0,"%YAML directive should contain exactly one part"),!1;let[i]=r;if(i==="1.1"||i==="1.2")return this.yaml.version=i,!0;{let o=/^\\d+\\.\\d+$/.test(i);return t(6,`Unsupported YAML version ${i}`,o),!1}}default:return t(0,`Unknown directive ${s}`,!0),!1}}tagName(e,t){if(e==="!")return"!";if(e[0]!=="!")return t(`Not a valid tag: ${e}`),null;if(e[1]==="<"){let o=e.slice(2,-1);return o==="!"||o==="!!"?(t(`Verbatim tags aren\'t resolved, so ${e} is invalid.`),null):(e[e.length-1]!==">"&&t("Verbatim tags must end with a >"),o)}let[,r,s]=e.match(new RegExp("^(.*!)([^!]*)$","s"));s||t(`The ${e} tag has no suffix`);let i=this.tags[r];if(i)try{return i+decodeURIComponent(s)}catch(o){return t(String(o)),null}return r==="!"?e:(t(`Could not resolve tag: ${e}`),null)}tagString(e){for(let[t,r]of Object.entries(this.tags))if(e.startsWith(r))return t+Uc(e.substring(r.length));return e[0]==="!"?e:`!<${e}>`}toString(e){let t=this.yaml.explicit?[`%YAML ${this.yaml.version||"1.2"}`]:[],r=Object.entries(this.tags),s;if(e&&r.length>0&&J(e.contents)){let i={};rt(e.contents,(o,a)=>{J(a)&&a.tag&&(i[a.tag]=!0)}),s=Object.keys(i)}else s=[];for(let[i,o]of r)i==="!!"&&o==="tag:yaml.org,2002:"||(!e||s.some(a=>a.startsWith(o)))&&t.push(`%TAG ${i} ${o}`);return t.join(`\n`)}};fe.defaultYaml={explicit:!1,version:"1.2"};fe.defaultTags={"!!":"tag:yaml.org,2002:"};function ls(n){if(/[\\x00-\\x19\\s,[\\]{}]/.test(n)){let t=`Anchor must not contain whitespace or control characters: ${JSON.stringify(n)}`;throw new Error(t)}return!0}function Pi(n){let e=new Set;return rt(n,{Value(t,r){r.anchor&&e.add(r.anchor)}}),e}function $i(n,e){for(let t=1;;++t){let r=`${n}${t}`;if(!e.has(r))return r}}function Ja(n,e){let t=[],r=new Map,s=null;return{onAnchor:i=>{t.push(i),s!=null||(s=Pi(n));let o=$i(e,s);return s.add(o),o},setAnchors:()=>{for(let i of t){let o=r.get(i);if(typeof o=="object"&&o.anchor&&(K(o.node)||Z(o.node)))o.node.anchor=o.anchor;else{let a=new Error("Failed to resolve repeated object (this should not happen)");throw a.source=i,a}}},sourceObjects:r}}function Ot(n,e,t,r){if(r&&typeof r=="object")if(Array.isArray(r))for(let s=0,i=r.length;s<i;++s){let o=r[s],a=Ot(n,r,String(s),o);a===void 0?delete r[s]:a!==o&&(r[s]=a)}else if(r instanceof Map)for(let s of Array.from(r.keys())){let i=r.get(s),o=Ot(n,r,s,i);o===void 0?r.delete(s):o!==i&&r.set(s,o)}else if(r instanceof Set)for(let s of Array.from(r)){let i=Ot(n,r,s,s);i===void 0?r.delete(s):i!==s&&(r.delete(s),r.add(i))}else for(let[s,i]of Object.entries(r)){let o=Ot(n,r,s,i);o===void 0?delete r[s]:o!==i&&(r[s]=o)}return n.call(e,t,r)}function de(n,e,t){if(Array.isArray(n))return n.map((r,s)=>de(r,String(s),t));if(n&&typeof n.toJSON=="function"){if(!t||!as(n))return n.toJSON(e,t);let r={aliasCount:0,count:1,res:void 0};t.anchors.set(n,r),t.onCreate=i=>{r.res=i,delete t.onCreate};let s=n.toJSON(e,t);return t.onCreate&&t.onCreate(s),s}return typeof n=="bigint"&&!(t!=null&&t.keep)?Number(n):n}var vt=class{constructor(e){Object.defineProperty(this,Se,{value:e})}clone(){let e=Object.create(Object.getPrototypeOf(this),Object.getOwnPropertyDescriptors(this));return this.range&&(e.range=this.range.slice()),e}toJS(e,{mapAsMap:t,maxAliasCount:r,onAnchor:s,reviver:i}={}){if(!tt(e))throw new TypeError("A document argument is required");let o={anchors:new Map,doc:e,keep:!0,mapAsMap:t===!0,mapKeyWarned:!1,maxAliasCount:typeof r=="number"?r:100},a=de(this,"",o);if(typeof s=="function")for(let{count:u,res:l}of o.anchors.values())s(l,u);return typeof i=="function"?Ot(i,{"":a},"",a):a}};var bt=class extends vt{constructor(e){super(is),this.source=e,Object.defineProperty(this,"tag",{set(){throw new Error("Alias nodes cannot have tags")}})}resolve(e,t){let r;t!=null&&t.aliasResolveCache?r=t.aliasResolveCache:(r=[],rt(e,{Node:(i,o)=>{(Pe(o)||as(o))&&r.push(o)}}),t&&(t.aliasResolveCache=r));let s;for(let i of r){if(i===this)break;i.anchor===this.source&&(s=i)}return s}toJSON(e,t){if(!t)return{source:this.source};let{anchors:r,doc:s,maxAliasCount:i}=t,o=this.resolve(s,t);if(!o){let u=`Unresolved alias (the anchor must be set before the alias): ${this.source}`;throw new ReferenceError(u)}let a=r.get(o);if(a||(de(o,null,t),a=r.get(o)),!a||a.res===void 0){let u="This should not happen: Alias anchor was not resolved?";throw new ReferenceError(u)}if(i>=0&&(a.count+=1,a.aliasCount===0&&(a.aliasCount=cs(s,o,r)),a.count*a.aliasCount>i)){let u="Excessive alias count indicates a resource exhaustion attack";throw new ReferenceError(u)}return a.res}toString(e,t,r){let s=`*${this.source}`;if(e){if(ls(this.source),e.options.verifyAliasOrder&&!e.anchors.has(this.source)){let i=`Unresolved alias (the anchor must be set before the alias): ${this.source}`;throw new Error(i)}if(e.implicitKey)return`${s} `}return s}};function cs(n,e,t){if(Pe(e)){let r=e.resolve(n),s=t&&r&&t.get(r);return s?s.count*s.aliasCount:0}else if(Z(e)){let r=0;for(let s of e.items){let i=cs(n,s,t);i>r&&(r=i)}return r}else if(H(e)){let r=cs(n,e.key,t),s=cs(n,e.value,t);return Math.max(r,s)}return 1}var fs=n=>!n||typeof n!="function"&&typeof n!="object",$=class extends vt{constructor(e){super(Ie),this.value=e}toJSON(e,t){return t!=null&&t.keep?this.value:de(this.value,e,t)}toString(){return String(this.value)}};$.BLOCK_FOLDED="BLOCK_FOLDED";$.BLOCK_LITERAL="BLOCK_LITERAL";$.PLAIN="PLAIN";$.QUOTE_DOUBLE="QUOTE_DOUBLE";$.QUOTE_SINGLE="QUOTE_SINGLE";var Kc="tag:yaml.org,2002:";function Wc(n,e,t){var r;if(e){let s=t.filter(o=>o.tag===e),i=(r=s.find(o=>!o.format))!=null?r:s[0];if(!i)throw new Error(`Tag ${e} not found`);return i}return t.find(s=>{var i;return((i=s.identify)==null?void 0:i.call(s,n))&&!s.format})}function Et(n,e,t){var d,y,h,E;if(tt(n)&&(n=n.contents),J(n))return n;if(H(n)){let p=(y=(d=t.schema[Ke]).createNode)==null?void 0:y.call(d,t.schema,null,t);return p.items.push(n),p}(n instanceof String||n instanceof Number||n instanceof Boolean||typeof BigInt!="undefined"&&n instanceof BigInt)&&(n=n.valueOf());let{aliasDuplicateObjects:r,onAnchor:s,onTagObj:i,schema:o,sourceObjects:a}=t,u;if(r&&n&&typeof n=="object"){if(u=a.get(n),u)return(h=u.anchor)!=null||(u.anchor=s(n)),new bt(u.anchor);u={anchor:null,node:null},a.set(n,u)}e!=null&&e.startsWith("!!")&&(e=Kc+e.slice(2));let l=Wc(n,e,o.tags);if(!l){if(n&&typeof n.toJSON=="function"&&(n=n.toJSON()),!n||typeof n!="object"){let p=new $(n);return u&&(u.node=p),p}l=n instanceof Map?o[Ke]:Symbol.iterator in Object(n)?o[gt]:o[Ke]}i&&(i(l),delete t.onTagObj);let f=l!=null&&l.createNode?l.createNode(t.schema,n,t):typeof((E=l==null?void 0:l.nodeClass)==null?void 0:E.from)=="function"?l.nodeClass.from(t.schema,n,t):new $(n);return e?f.tag=e:l.default||(f.tag=l.tag),u&&(u.node=f),f}function mr(n,e,t){let r=t;for(let s=e.length-1;s>=0;--s){let i=e[s];if(typeof i=="number"&&Number.isInteger(i)&&i>=0){let o=[];o[i]=r,r=o}else r=new Map([[i,r]])}return Et(r,void 0,{aliasDuplicateObjects:!1,keepUndefined:!1,onAnchor:()=>{throw new Error("This should not happen, please report a bug.")},schema:n,sourceObjects:new Map})}var xn=n=>n==null||typeof n=="object"&&!!n[Symbol.iterator]().next().done,Cn=class extends vt{constructor(e,t){super(e),Object.defineProperty(this,"schema",{value:t,configurable:!0,enumerable:!1,writable:!0})}clone(e){let t=Object.create(Object.getPrototypeOf(this),Object.getOwnPropertyDescriptors(this));return e&&(t.schema=e),t.items=t.items.map(r=>J(r)||H(r)?r.clone(e):r),this.range&&(t.range=this.range.slice()),t}addIn(e,t){if(xn(e))this.add(t);else{let[r,...s]=e,i=this.get(r,!0);if(Z(i))i.addIn(s,t);else if(i===void 0&&this.schema)this.set(r,mr(this.schema,s,t));else throw new Error(`Expected YAML collection at ${r}. Remaining path: ${s}`)}}deleteIn(e){let[t,...r]=e;if(r.length===0)return this.delete(t);let s=this.get(t,!0);if(Z(s))return s.deleteIn(r);throw new Error(`Expected YAML collection at ${t}. Remaining path: ${r}`)}getIn(e,t){let[r,...s]=e,i=this.get(r,!0);return s.length===0?!t&&K(i)?i.value:i:Z(i)?i.getIn(s,t):void 0}hasAllNullValues(e){return this.items.every(t=>{if(!H(t))return!1;let r=t.value;return r==null||e&&K(r)&&r.value==null&&!r.commentBefore&&!r.comment&&!r.tag})}hasIn(e){let[t,...r]=e;if(r.length===0)return this.has(t);let s=this.get(t,!0);return Z(s)?s.hasIn(r):!1}setIn(e,t){let[r,...s]=e;if(s.length===0)this.set(r,t);else{let i=this.get(r,!0);if(Z(i))i.setIn(s,t);else if(i===void 0&&this.schema)this.set(r,mr(this.schema,s,t));else throw new Error(`Expected YAML collection at ${r}. Remaining path: ${s}`)}}};var za=n=>n.replace(/^(?!$)(?: $)?/gm,"#");function $e(n,e){return/^\\n+$/.test(n)?n.substring(1):e?n.replace(/^(?! *$)/gm,e):n}var st=(n,e,t)=>n.endsWith(`\n`)?$e(t,e):t.includes(`\n`)?`\n`+$e(t,e):(n.endsWith(" ")?"":" ")+t;var Ri="flow",ds="block",Dr="quoted";function yr(n,e,t="flow",{indentAtStart:r,lineWidth:s=80,minContentWidth:i=20,onFold:o,onOverflow:a}={}){if(!s||s<0)return n;s<i&&(i=0);let u=Math.max(1+i,1+s-e.length);if(n.length<=u)return n;let l=[],f={},d=s-e.length;typeof r=="number"&&(r>s-Math.max(2,i)?l.push(0):d=s-r);let y,h,E=!1,p=-1,T=-1,g=-1;t===ds&&(p=Ya(n,p,e.length),p!==-1&&(d=p+u));for(let L;L=n[p+=1];){if(t===Dr&&L==="\\\\"){switch(T=p,n[p+1]){case"x":p+=3;break;case"u":p+=5;break;case"U":p+=9;break;default:p+=1}g=p}if(L===`\n`)t===ds&&(p=Ya(n,p,e.length)),d=p+e.length+u,y=void 0;else{if(L===" "&&h&&h!==" "&&h!==`\n`&&h!=="	"){let m=n[p+1];m&&m!==" "&&m!==`\n`&&m!=="	"&&(y=p)}if(p>=d)if(y)l.push(y),d=y+u,y=void 0;else if(t===Dr){for(;h===" "||h==="	";)h=L,L=n[p+=1],E=!0;let m=p>g+1?p-2:T-1;if(f[m])return n;l.push(m),f[m]=!0,d=m+u,y=void 0}else E=!0}h=L}if(E&&a&&a(),l.length===0)return n;o&&o();let k=n.slice(0,l[0]);for(let L=0;L<l.length;++L){let m=l[L],F=l[L+1]||n.length;m===0?k=`\n${e}${n.slice(0,F)}`:(t===Dr&&f[m]&&(k+=`${n[m]}\\\\`),k+=`\n${e}${n.slice(m+1,F)}`)}return k}function Ya(n,e,t){let r=e,s=e+1,i=n[s];for(;i===" "||i==="	";)if(e<s+t)i=n[++e];else{do i=n[++e];while(i&&i!==`\n`);r=e,s=e+1,i=n[s]}return r}var ps=(n,e)=>({indentAtStart:e?n.indent.length:n.indentAtStart,lineWidth:n.options.lineWidth,minContentWidth:n.options.minContentWidth}),ms=n=>/^(%|---|\\.\\.\\.)/m.test(n);function Hc(n,e,t){if(!e||e<0)return!1;let r=e-t,s=n.length;if(s<=r)return!1;for(let i=0,o=0;i<s;++i)if(n[i]===`\n`){if(i-o>r)return!0;if(o=i+1,s-o<=r)return!1}return!0}function gr(n,e){let t=JSON.stringify(n);if(e.options.doubleQuotedAsJSON)return t;let{implicitKey:r}=e,s=e.options.doubleQuotedMinMultiLineLength,i=e.indent||(ms(n)?"  ":""),o="",a=0;for(let u=0,l=t[u];l;l=t[++u])if(l===" "&&t[u+1]==="\\\\"&&t[u+2]==="n"&&(o+=t.slice(a,u)+"\\\\ ",u+=1,a=u,l="\\\\"),l==="\\\\")switch(t[u+1]){case"u":{o+=t.slice(a,u);let f=t.substr(u+2,4);switch(f){case"0000":o+="\\\\0";break;case"0007":o+="\\\\a";break;case"000b":o+="\\\\v";break;case"001b":o+="\\\\e";break;case"0085":o+="\\\\N";break;case"00a0":o+="\\\\_";break;case"2028":o+="\\\\L";break;case"2029":o+="\\\\P";break;default:f.substr(0,2)==="00"?o+="\\\\x"+f.substr(2):o+=t.substr(u,6)}u+=5,a=u+1}break;case"n":if(r||t[u+2]===\'"\'||t.length<s)u+=1;else{for(o+=t.slice(a,u)+`\n\n`;t[u+2]==="\\\\"&&t[u+3]==="n"&&t[u+4]!==\'"\';)o+=`\n`,u+=2;o+=i,t[u+2]===" "&&(o+="\\\\"),u+=1,a=u+1}break;default:u+=1}return o=a?o+t.slice(a):t,r?o:yr(o,i,Dr,ps(e,!1))}function ji(n,e){if(e.options.singleQuote===!1||e.implicitKey&&n.includes(`\n`)||/[ \\t]\\n|\\n[ \\t]/.test(n))return gr(n,e);let t=e.indent||(ms(n)?"  ":""),r="\'"+n.replace(/\'/g,"\'\'").replace(/\\n+/g,`$&\n${t}`)+"\'";return e.implicitKey?r:yr(r,t,Ri,ps(e,!1))}function On(n,e){let{singleQuote:t}=e.options,r;if(t===!1)r=gr;else{let s=n.includes(\'"\'),i=n.includes("\'");s&&!i?r=ji:i&&!s?r=gr:r=t?ji:gr}return r(n,e)}var Vi;try{Vi=new RegExp(`(^|(?<!\n))\n+(?!\n|$)`,"g")}catch(n){Vi=/\\n+(?!\\n|$)/g}function hs({comment:n,type:e,value:t},r,s,i){let{blockQuote:o,commentString:a,lineWidth:u}=r.options;if(!o||/\\n[\\t ]+$/.test(t)||/^\\s*$/.test(t))return On(t,r);let l=r.indent||(r.forceBlockIndent||ms(t)?"  ":""),f=o==="literal"?!0:o==="folded"||e===$.BLOCK_FOLDED?!1:e===$.BLOCK_LITERAL?!0:!Hc(t,u,l.length);if(!t)return f?`|\n`:`>\n`;let d,y;for(y=t.length;y>0;--y){let F=t[y-1];if(F!==`\n`&&F!=="	"&&F!==" ")break}let h=t.substring(y),E=h.indexOf(`\n`);E===-1?d="-":t===h||E!==h.length-1?(d="+",i&&i()):d="",h&&(t=t.slice(0,-h.length),h[h.length-1]===`\n`&&(h=h.slice(0,-1)),h=h.replace(Vi,`$&${l}`));let p=!1,T,g=-1;for(T=0;T<t.length;++T){let F=t[T];if(F===" ")p=!0;else if(F===`\n`)g=T;else break}let k=t.substring(0,g<T?g+1:T);k&&(t=t.substring(k.length),k=k.replace(/\\n+/g,`$&${l}`));let m=(p?l?"2":"1":"")+d;if(n&&(m+=" "+a(n.replace(/ ?[\\r\\n]+/g," ")),s&&s()),!f){let F=t.replace(/\\n+/g,`\n$&`).replace(/(?:^|\\n)([\\t ].*)(?:([\\n\\t ]*)\\n(?![\\n\\t ]))?/g,"$1$2").replace(/\\n+/g,`$&${l}`),O=!1,x=ps(r,!0);o!=="folded"&&e!==$.BLOCK_FOLDED&&(x.onOverflow=()=>{O=!0});let S=yr(`${k}${F}${h}`,l,ds,x);if(!O)return`>${m}\n${l}${S}`}return t=t.replace(/\\n+/g,`$&${l}`),`|${m}\n${l}${k}${t}${h}`}function Jc(n,e,t,r){let{type:s,value:i}=n,{actualString:o,implicitKey:a,indent:u,indentStep:l,inFlow:f}=e;if(a&&i.includes(`\n`)||f&&/[[\\]{},]/.test(i))return On(i,e);if(/^[\\n\\t ,[\\]{}#&*!|>\'"%@`]|^[?-]$|^[?-][ \\t]|[\\n:][ \\t]|[ \\t]\\n|[\\n\\t ]#|[\\n\\t :]$/.test(i))return a||f||!i.includes(`\n`)?On(i,e):hs(n,e,t,r);if(!a&&!f&&s!==$.PLAIN&&i.includes(`\n`))return hs(n,e,t,r);if(ms(i)){if(u==="")return e.forceBlockIndent=!0,hs(n,e,t,r);if(a&&u===l)return On(i,e)}let d=i.replace(/\\n+/g,`$&\n${u}`);if(o){let y=p=>{var T;return p.default&&p.tag!=="tag:yaml.org,2002:str"&&((T=p.test)==null?void 0:T.test(d))},{compat:h,tags:E}=e.doc.schema;if(E.some(y)||h!=null&&h.some(y))return On(i,e)}return a?d:yr(d,u,Ri,ps(e,!1))}function zt(n,e,t,r){let{implicitKey:s,inFlow:i}=e,o=typeof n.value=="string"?n:Object.assign({},n,{value:String(n.value)}),{type:a}=n;a!==$.QUOTE_DOUBLE&&/[\\x00-\\x08\\x0b-\\x1f\\x7f-\\x9f\\u{D800}-\\u{DFFF}]/u.test(o.value)&&(a=$.QUOTE_DOUBLE);let u=f=>{switch(f){case $.BLOCK_FOLDED:case $.BLOCK_LITERAL:return s||i?On(o.value,e):hs(o,e,t,r);case $.QUOTE_DOUBLE:return gr(o.value,e);case $.QUOTE_SINGLE:return ji(o.value,e);case $.PLAIN:return Jc(o,e,t,r);default:return null}},l=u(a);if(l===null){let{defaultKeyType:f,defaultStringType:d}=e.options,y=s&&f||d;if(l=u(y),l===null)throw new Error(`Unsupported default string type ${y}`)}return l}function Ds(n,e){let t=Object.assign({blockQuote:!0,commentString:za,defaultKeyType:null,defaultStringType:"PLAIN",directives:null,doubleQuotedAsJSON:!1,doubleQuotedMinMultiLineLength:40,falseStr:"false",flowCollectionPadding:!0,indentSeq:!0,lineWidth:80,minContentWidth:20,nullStr:"null",simpleKeys:!1,singleQuote:null,trueStr:"true",verifyAliasOrder:!0},n.schema.toStringOptions,e),r;switch(t.collectionStyle){case"block":r=!1;break;case"flow":r=!0;break;default:r=null}return{anchors:new Set,doc:n,flowCollectionPadding:t.flowCollectionPadding?" ":"",indent:"",indentStep:typeof t.indent=="number"?" ".repeat(t.indent):"  ",inFlow:r,options:t}}function zc(n,e){var s,i,o,a;if(e.tag){let u=n.filter(l=>l.tag===e.tag);if(u.length>0)return(s=u.find(l=>l.format===e.format))!=null?s:u[0]}let t,r;if(K(e)){r=e.value;let u=n.filter(l=>{var f;return(f=l.identify)==null?void 0:f.call(l,r)});if(u.length>1){let l=u.filter(f=>f.test);l.length>0&&(u=l)}t=(i=u.find(l=>l.format===e.format))!=null?i:u.find(l=>!l.format)}else r=e,t=n.find(u=>u.nodeClass&&r instanceof u.nodeClass);if(!t){let u=(a=(o=r==null?void 0:r.constructor)==null?void 0:o.name)!=null?a:r===null?"null":typeof r;throw new Error(`Tag not resolved for ${u} value`)}return t}function Yc(n,e,{anchors:t,doc:r}){var a;if(!r.directives)return"";let s=[],i=(K(n)||Z(n))&&n.anchor;i&&ls(i)&&(t.add(i),s.push(`&${i}`));let o=(a=n.tag)!=null?a:e.default?null:e.tag;return o&&s.push(r.directives.tagString(o)),s.join(" ")}function Ft(n,e,t,r){var u,l;if(H(n))return n.toString(e,t,r);if(Pe(n)){if(e.doc.directives)return n.toString(e);if((u=e.resolvedAliases)!=null&&u.has(n))throw new TypeError("Cannot stringify circular structure without alias nodes");e.resolvedAliases?e.resolvedAliases.add(n):e.resolvedAliases=new Set([n]),n=n.resolve(e.doc)}let s,i=J(n)?n:e.doc.createNode(n,{onTagObj:f=>s=f});s!=null||(s=zc(e.doc.schema.tags,i));let o=Yc(i,s,e);o.length>0&&(e.indentAtStart=((l=e.indentAtStart)!=null?l:0)+o.length+1);let a=typeof s.stringify=="function"?s.stringify(i,e,t,r):K(i)?zt(i,e,t,r):i.toString(e,t,r);return o?K(i)||a[0]==="{"||a[0]==="["?`${o} ${a}`:`${o}\n${e.indent}${a}`:a}function Ga({key:n,value:e},t,r,s){var x,S;let{allNullValues:i,doc:o,indent:a,indentStep:u,options:{commentString:l,indentSeq:f,simpleKeys:d}}=t,y=J(n)&&n.comment||null;if(d){if(y)throw new Error("With simple keys, key nodes cannot have comments");if(Z(n)||!J(n)&&typeof n=="object"){let q="With simple keys, collection cannot be used as a key value";throw new Error(q)}}let h=!d&&(!n||y&&e==null&&!t.inFlow||Z(n)||(K(n)?n.type===$.BLOCK_FOLDED||n.type===$.BLOCK_LITERAL:typeof n=="object"));t=Object.assign({},t,{allNullValues:!1,implicitKey:!h&&(d||!i),indent:a+u});let E=!1,p=!1,T=Ft(n,t,()=>E=!0,()=>p=!0);if(!h&&!t.inFlow&&T.length>1024){if(d)throw new Error("With simple keys, single line scalar must not span more than 1024 characters");h=!0}if(t.inFlow){if(i||e==null)return E&&r&&r(),T===""?"?":h?`? ${T}`:T}else if(i&&!d||e==null&&h)return T=`? ${T}`,y&&!E?T+=st(T,t.indent,l(y)):p&&s&&s(),T;E&&(y=null),h?(y&&(T+=st(T,t.indent,l(y))),T=`? ${T}\n${a}:`):(T=`${T}:`,y&&(T+=st(T,t.indent,l(y))));let g,k,L;J(e)?(g=!!e.spaceBefore,k=e.commentBefore,L=e.comment):(g=!1,k=null,L=null,e&&typeof e=="object"&&(e=o.createNode(e))),t.implicitKey=!1,!h&&!y&&K(e)&&(t.indentAtStart=T.length+1),p=!1,!f&&u.length>=2&&!t.inFlow&&!h&&He(e)&&!e.flow&&!e.tag&&!e.anchor&&(t.indent=t.indent.substring(2));let m=!1,F=Ft(e,t,()=>m=!0,()=>p=!0),O=" ";if(y||g||k){if(O=g?`\n`:"",k){let q=l(k);O+=`\n${$e(q,t.indent)}`}F===""&&!t.inFlow?O===`\n`&&(O=`\n\n`):O+=`\n${t.indent}`}else if(!h&&Z(e)){let q=F[0],V=F.indexOf(`\n`),Y=V!==-1,v=(S=(x=t.inFlow)!=null?x:e.flow)!=null?S:e.items.length===0;if(Y||!v){let P=!1;if(Y&&(q==="&"||q==="!")){let j=F.indexOf(" ");q==="&"&&j!==-1&&j<V&&F[j+1]==="!"&&(j=F.indexOf(" ",j+1)),(j===-1||V<j)&&(P=!0)}P||(O=`\n${t.indent}`)}}else(F===""||F[0]===`\n`)&&(O="");return T+=O+F,t.inFlow?m&&r&&r():L&&!m?T+=st(T,t.indent,l(L)):p&&s&&s(),T}function ys(n,e){(n==="debug"||n==="warn")&&console.warn(e)}var gs="<<",Je={identify:n=>n===gs||typeof n=="symbol"&&n.description===gs,default:"key",tag:"tag:yaml.org,2002:merge",test:/^<<$/,resolve:()=>Object.assign(new $(Symbol(gs)),{addToJSMap:Ui}),stringify:()=>gs},Za=(n,e)=>(Je.identify(e)||K(e)&&(!e.type||e.type===$.PLAIN)&&Je.identify(e.value))&&(n==null?void 0:n.doc.schema.tags.some(t=>t.tag===Je.tag&&t.default));function Ui(n,e,t){if(t=n&&Pe(t)?t.resolve(n.doc):t,He(t))for(let r of t.items)qi(n,e,r);else if(Array.isArray(t))for(let r of t)qi(n,e,r);else qi(n,e,t)}function qi(n,e,t){let r=n&&Pe(t)?t.resolve(n.doc):t;if(!We(r))throw new Error("Merge sources must be maps or map aliases");let s=r.toJSON(null,n,Map);for(let[i,o]of s)e instanceof Map?e.has(i)||e.set(i,o):e instanceof Set?e.add(i):Object.prototype.hasOwnProperty.call(e,i)||Object.defineProperty(e,i,{value:o,writable:!0,enumerable:!0,configurable:!0});return e}function bs(n,e,{key:t,value:r}){if(J(t)&&t.addToJSMap)t.addToJSMap(n,e,r);else if(Za(n,t))Ui(n,e,r);else{let s=de(t,"",n);if(e instanceof Map)e.set(s,de(r,s,n));else if(e instanceof Set)e.add(s);else{let i=Gc(t,s,n),o=de(r,i,n);i in e?Object.defineProperty(e,i,{value:o,writable:!0,enumerable:!0,configurable:!0}):e[i]=o}}return e}function Gc(n,e,t){if(e===null)return"";if(typeof e!="object")return String(e);if(J(n)&&(t!=null&&t.doc)){let r=Ds(t.doc,{});r.anchors=new Set;for(let i of t.anchors.keys())r.anchors.add(i.anchor);r.inFlow=!0,r.inStringifyKey=!0;let s=n.toString(r);if(!t.mapKeyWarned){let i=JSON.stringify(s);i.length>40&&(i=i.substring(0,36)+\'..."\'),ys(t.doc.options.logLevel,`Keys with collection values will be stringified due to JS Object restrictions: ${i}. Set mapAsMap: true to use object keys.`),t.mapKeyWarned=!0}return s}return JSON.stringify(e)}function vn(n,e,t){let r=Et(n,void 0,t),s=Et(e,void 0,t);return new re(r,s)}var re=class{constructor(e,t=null){Object.defineProperty(this,Se,{value:Bi}),this.key=e,this.value=t}clone(e){let{key:t,value:r}=this;return J(t)&&(t=t.clone(e)),J(r)&&(r=r.clone(e)),new re(t,r)}toJSON(e,t){let r=t!=null&&t.mapAsMap?new Map:{};return bs(t,r,this)}toString(e,t,r){return e!=null&&e.doc?Ga(this,e,t,r):JSON.stringify(this)}};function Fs(n,e,t){var i;return(((i=e.inFlow)!=null?i:n.flow)?Qc:Zc)(n,e,t)}function Zc({comment:n,items:e},t,{blockItemPrefix:r,flowChars:s,itemIndent:i,onChompKeep:o,onComment:a}){let{indent:u,options:{commentString:l}}=t,f=Object.assign({},t,{indent:i,type:null}),d=!1,y=[];for(let E=0;E<e.length;++E){let p=e[E],T=null;if(J(p))!d&&p.spaceBefore&&y.push(""),Es(t,y,p.commentBefore,d),p.comment&&(T=p.comment);else if(H(p)){let k=J(p.key)?p.key:null;k&&(!d&&k.spaceBefore&&y.push(""),Es(t,y,k.commentBefore,d))}d=!1;let g=Ft(p,f,()=>T=null,()=>d=!0);T&&(g+=st(g,i,l(T))),d&&T&&(d=!1),y.push(r+g)}let h;if(y.length===0)h=s.start+s.end;else{h=y[0];for(let E=1;E<y.length;++E){let p=y[E];h+=p?`\n${u}${p}`:`\n`}}return n?(h+=`\n`+$e(l(n),u),a&&a()):d&&o&&o(),h}function Qc({items:n},e,{flowChars:t,itemIndent:r}){let{indent:s,indentStep:i,flowCollectionPadding:o,options:{commentString:a}}=e;r+=i;let u=Object.assign({},e,{indent:r,inFlow:!0,type:null}),l=!1,f=0,d=[];for(let E=0;E<n.length;++E){let p=n[E],T=null;if(J(p))p.spaceBefore&&d.push(""),Es(e,d,p.commentBefore,!1),p.comment&&(T=p.comment);else if(H(p)){let k=J(p.key)?p.key:null;k&&(k.spaceBefore&&d.push(""),Es(e,d,k.commentBefore,!1),k.comment&&(l=!0));let L=J(p.value)?p.value:null;L?(L.comment&&(T=L.comment),L.commentBefore&&(l=!0)):p.value==null&&(k!=null&&k.comment)&&(T=k.comment)}T&&(l=!0);let g=Ft(p,u,()=>T=null);E<n.length-1&&(g+=","),T&&(g+=st(g,r,a(T))),!l&&(d.length>f||g.includes(`\n`))&&(l=!0),d.push(g),f=d.length}let{start:y,end:h}=t;if(d.length===0)return y+h;if(!l){let E=d.reduce((p,T)=>p+T.length+2,2);l=e.options.lineWidth>0&&E>e.options.lineWidth}if(l){let E=y;for(let p of d)E+=p?`\n${i}${s}${p}`:`\n`;return`${E}\n${s}${h}`}else return`${y}${o}${d.join(" ")}${o}${h}`}function Es({indent:n,options:{commentString:e}},t,r,s){if(r&&s&&(r=r.replace(/^\\n+/,"")),r){let i=$e(e(r),n);t.push(i.trimStart())}}function It(n,e){let t=K(e)?e.value:e;for(let r of n)if(H(r)&&(r.key===e||r.key===t||K(r.key)&&r.key.value===t))return r}var ae=class extends Cn{static get tagName(){return"tag:yaml.org,2002:map"}constructor(e){super(Ke,e),this.items=[]}static from(e,t,r){let{keepUndefined:s,replacer:i}=r,o=new this(e),a=(u,l)=>{if(typeof i=="function")l=i.call(t,u,l);else if(Array.isArray(i)&&!i.includes(u))return;(l!==void 0||s)&&o.items.push(vn(u,l,r))};if(t instanceof Map)for(let[u,l]of t)a(u,l);else if(t&&typeof t=="object")for(let u of Object.keys(t))a(u,t[u]);return typeof e.sortMapEntries=="function"&&o.items.sort(e.sortMapEntries),o}add(e,t){var o;let r;H(e)?r=e:!e||typeof e!="object"||!("key"in e)?r=new re(e,e==null?void 0:e.value):r=new re(e.key,e.value);let s=It(this.items,r.key),i=(o=this.schema)==null?void 0:o.sortMapEntries;if(s){if(!t)throw new Error(`Key ${r.key} already set`);K(s.value)&&fs(r.value)?s.value.value=r.value:s.value=r.value}else if(i){let a=this.items.findIndex(u=>i(r,u)<0);a===-1?this.items.push(r):this.items.splice(a,0,r)}else this.items.push(r)}delete(e){let t=It(this.items,e);return t?this.items.splice(this.items.indexOf(t),1).length>0:!1}get(e,t){var i;let r=It(this.items,e),s=r==null?void 0:r.value;return(i=!t&&K(s)?s.value:s)!=null?i:void 0}has(e){return!!It(this.items,e)}set(e,t){this.add(new re(e,t),!0)}toJSON(e,t,r){let s=r?new r:t!=null&&t.mapAsMap?new Map:{};t!=null&&t.onCreate&&t.onCreate(s);for(let i of this.items)bs(t,s,i);return s}toString(e,t,r){if(!e)return JSON.stringify(this);for(let s of this.items)if(!H(s))throw new Error(`Map items must all be pairs; found ${JSON.stringify(s)} instead`);return!e.allNullValues&&this.hasAllNullValues(!1)&&(e=Object.assign({},e,{allNullValues:!0})),Fs(this,e,{blockItemPrefix:"",flowChars:{start:"{",end:"}"},itemIndent:e.indent||"",onChompKeep:r,onComment:t})}};var ze={collection:"map",default:!0,nodeClass:ae,tag:"tag:yaml.org,2002:map",resolve(n,e){return We(n)||e("Expected a mapping for this tag"),n},createNode:(n,e,t)=>ae.from(n,e,t)};var Fe=class extends Cn{static get tagName(){return"tag:yaml.org,2002:seq"}constructor(e){super(gt,e),this.items=[]}add(e){this.items.push(e)}delete(e){let t=ws(e);return typeof t!="number"?!1:this.items.splice(t,1).length>0}get(e,t){let r=ws(e);if(typeof r!="number")return;let s=this.items[r];return!t&&K(s)?s.value:s}has(e){let t=ws(e);return typeof t=="number"&&t<this.items.length}set(e,t){let r=ws(e);if(typeof r!="number")throw new Error(`Expected a valid index, not ${e}.`);let s=this.items[r];K(s)&&fs(t)?s.value=t:this.items[r]=t}toJSON(e,t){let r=[];t!=null&&t.onCreate&&t.onCreate(r);let s=0;for(let i of this.items)r.push(de(i,String(s++),t));return r}toString(e,t,r){return e?Fs(this,e,{blockItemPrefix:"- ",flowChars:{start:"[",end:"]"},itemIndent:(e.indent||"")+"  ",onChompKeep:r,onComment:t}):JSON.stringify(this)}static from(e,t,r){let{replacer:s}=r,i=new this(e);if(t&&Symbol.iterator in Object(t)){let o=0;for(let a of t){if(typeof s=="function"){let u=t instanceof Set?a:String(o++);a=s.call(t,u,a)}i.items.push(Et(a,void 0,r))}}return i}};function ws(n){let e=K(n)?n.value:n;return e&&typeof e=="string"&&(e=Number(e)),typeof e=="number"&&Number.isInteger(e)&&e>=0?e:null}var Ye={collection:"seq",default:!0,nodeClass:Fe,tag:"tag:yaml.org,2002:seq",resolve(n,e){return He(n)||e("Expected a sequence for this tag"),n},createNode:(n,e,t)=>Fe.from(n,e,t)};var Lt={identify:n=>typeof n=="string",default:!0,tag:"tag:yaml.org,2002:str",resolve:n=>n,stringify(n,e,t,r){return e=Object.assign({actualString:!0},e),zt(n,e,t,r)}};var Yt={identify:n=>n==null,createNode:()=>new $(null),default:!0,tag:"tag:yaml.org,2002:null",test:/^(?:~|[Nn]ull|NULL)?$/,resolve:()=>new $(null),stringify:({source:n},e)=>typeof n=="string"&&Yt.test.test(n)?n:e.options.nullStr};var br={identify:n=>typeof n=="boolean",default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:[Tt]rue|TRUE|[Ff]alse|FALSE)$/,resolve:n=>new $(n[0]==="t"||n[0]==="T"),stringify({source:n,value:e},t){if(n&&br.test.test(n)){let r=n[0]==="t"||n[0]==="T";if(e===r)return n}return e?t.options.trueStr:t.options.falseStr}};function we({format:n,minFractionDigits:e,tag:t,value:r}){if(typeof r=="bigint")return String(r);let s=typeof r=="number"?r:Number(r);if(!isFinite(s))return isNaN(s)?".nan":s<0?"-.inf":".inf";let i=JSON.stringify(r);if(!n&&e&&(!t||t==="tag:yaml.org,2002:float")&&/^\\d/.test(i)){let o=i.indexOf(".");o<0&&(o=i.length,i+=".");let a=e-(i.length-o-1);for(;a-- >0;)i+="0"}return i}var Ts={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^(?:[-+]?\\.(?:inf|Inf|INF)|\\.nan|\\.NaN|\\.NAN)$/,resolve:n=>n.slice(-3).toLowerCase()==="nan"?NaN:n[0]==="-"?Number.NEGATIVE_INFINITY:Number.POSITIVE_INFINITY,stringify:we},Ss={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"EXP",test:/^[-+]?(?:\\.[0-9]+|[0-9]+(?:\\.[0-9]*)?)[eE][-+]?[0-9]+$/,resolve:n=>parseFloat(n),stringify(n){let e=Number(n.value);return isFinite(e)?e.toExponential():we(n)}},ks={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?(?:\\.[0-9]+|[0-9]+\\.[0-9]*)$/,resolve(n){let e=new $(parseFloat(n)),t=n.indexOf(".");return t!==-1&&n[n.length-1]==="0"&&(e.minFractionDigits=n.length-t-1),e},stringify:we};var Cs=n=>typeof n=="bigint"||Number.isInteger(n),Ki=(n,e,t,{intAsBigInt:r})=>r?BigInt(n):parseInt(n.substring(e),t);function Qa(n,e,t){let{value:r}=n;return Cs(r)&&r>=0?t+r.toString(e):we(n)}var xs={identify:n=>Cs(n)&&n>=0,default:!0,tag:"tag:yaml.org,2002:int",format:"OCT",test:/^0o[0-7]+$/,resolve:(n,e,t)=>Ki(n,2,8,t),stringify:n=>Qa(n,8,"0o")},Os={identify:Cs,default:!0,tag:"tag:yaml.org,2002:int",test:/^[-+]?[0-9]+$/,resolve:(n,e,t)=>Ki(n,0,10,t),stringify:we},vs={identify:n=>Cs(n)&&n>=0,default:!0,tag:"tag:yaml.org,2002:int",format:"HEX",test:/^0x[0-9a-fA-F]+$/,resolve:(n,e,t)=>Ki(n,2,16,t),stringify:n=>Qa(n,16,"0x")};var Xa=[ze,Ye,Lt,Yt,br,xs,Os,vs,Ts,Ss,ks];function eu(n){return typeof n=="bigint"||Number.isInteger(n)}var Is=({value:n})=>JSON.stringify(n),Xc=[{identify:n=>typeof n=="string",default:!0,tag:"tag:yaml.org,2002:str",resolve:n=>n,stringify:Is},{identify:n=>n==null,createNode:()=>new $(null),default:!0,tag:"tag:yaml.org,2002:null",test:/^null$/,resolve:()=>null,stringify:Is},{identify:n=>typeof n=="boolean",default:!0,tag:"tag:yaml.org,2002:bool",test:/^true$|^false$/,resolve:n=>n==="true",stringify:Is},{identify:eu,default:!0,tag:"tag:yaml.org,2002:int",test:/^-?(?:0|[1-9][0-9]*)$/,resolve:(n,e,{intAsBigInt:t})=>t?BigInt(n):parseInt(n,10),stringify:({value:n})=>eu(n)?n.toString():JSON.stringify(n)},{identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*)?(?:[eE][-+]?[0-9]+)?$/,resolve:n=>parseFloat(n),stringify:Is}],ef={default:!0,tag:"",test:/^/,resolve(n,e){return e(`Unresolved plain scalar ${JSON.stringify(n)}`),n}},tu=[ze,Ye].concat(Xc,ef);var Er={identify:n=>n instanceof Uint8Array,default:!1,tag:"tag:yaml.org,2002:binary",resolve(n,e){if(typeof atob=="function"){let t=atob(n.replace(/[\\n\\r]/g,"")),r=new Uint8Array(t.length);for(let s=0;s<t.length;++s)r[s]=t.charCodeAt(s);return r}else return e("This environment does not support reading binary tags; either Buffer or atob is required"),n},stringify({comment:n,type:e,value:t},r,s,i){if(!t)return"";let o=t,a;if(typeof btoa=="function"){let u="";for(let l=0;l<o.length;++l)u+=String.fromCharCode(o[l]);a=btoa(u)}else throw new Error("This environment does not support writing binary tags; either Buffer or btoa is required");if(e!=null||(e=$.BLOCK_LITERAL),e!==$.QUOTE_DOUBLE){let u=Math.max(r.options.lineWidth-r.indent.length,r.options.minContentWidth),l=Math.ceil(a.length/u),f=new Array(l);for(let d=0,y=0;d<l;++d,y+=u)f[d]=a.substr(y,u);a=f.join(e===$.BLOCK_LITERAL?`\n`:" ")}return zt({comment:n,type:e,value:a},r,s,i)}};function Wi(n,e){var t;if(He(n))for(let r=0;r<n.items.length;++r){let s=n.items[r];if(!H(s)){if(We(s)){s.items.length>1&&e("Each pair must have its own sequence indicator");let i=s.items[0]||new re(new $(null));if(s.commentBefore&&(i.key.commentBefore=i.key.commentBefore?`${s.commentBefore}\n${i.key.commentBefore}`:s.commentBefore),s.comment){let o=(t=i.value)!=null?t:i.key;o.comment=o.comment?`${s.comment}\n${o.comment}`:s.comment}s=i}n.items[r]=H(s)?s:new re(s)}}else e("Expected a sequence for this tag");return n}function Hi(n,e,t){let{replacer:r}=t,s=new Fe(n);s.tag="tag:yaml.org,2002:pairs";let i=0;if(e&&Symbol.iterator in Object(e))for(let o of e){typeof r=="function"&&(o=r.call(e,String(i++),o));let a,u;if(Array.isArray(o))if(o.length===2)a=o[0],u=o[1];else throw new TypeError(`Expected [key, value] tuple: ${o}`);else if(o&&o instanceof Object){let l=Object.keys(o);if(l.length===1)a=l[0],u=o[a];else throw new TypeError(`Expected tuple with one key, not ${l.length} keys`)}else a=o;s.items.push(vn(a,u,t))}return s}var Fr={collection:"seq",default:!1,tag:"tag:yaml.org,2002:pairs",resolve:Wi,createNode:Hi};var Nt=class extends Fe{constructor(){super(),this.add=ae.prototype.add.bind(this),this.delete=ae.prototype.delete.bind(this),this.get=ae.prototype.get.bind(this),this.has=ae.prototype.has.bind(this),this.set=ae.prototype.set.bind(this),this.tag=Nt.tag}toJSON(e,t){if(!t)return super.toJSON(e);let r=new Map;t!=null&&t.onCreate&&t.onCreate(r);for(let s of this.items){let i,o;if(H(s)?(i=de(s.key,"",t),o=de(s.value,i,t)):i=de(s,"",t),r.has(i))throw new Error("Ordered maps must not include duplicate keys");r.set(i,o)}return r}static from(e,t,r){let s=Hi(e,t,r),i=new this;return i.items=s.items,i}};Nt.tag="tag:yaml.org,2002:omap";var wr={collection:"seq",identify:n=>n instanceof Map,nodeClass:Nt,default:!1,tag:"tag:yaml.org,2002:omap",resolve(n,e){let t=Wi(n,e),r=[];for(let{key:s}of t.items)K(s)&&(r.includes(s.value)?e(`Ordered maps must not include duplicate keys: ${s.value}`):r.push(s.value));return Object.assign(new Nt,t)},createNode:(n,e,t)=>Nt.from(n,e,t)};function nu({value:n,source:e},t){return e&&(n?Ji:zi).test.test(e)?e:n?t.options.trueStr:t.options.falseStr}var Ji={identify:n=>n===!0,default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:Y|y|[Yy]es|YES|[Tt]rue|TRUE|[Oo]n|ON)$/,resolve:()=>new $(!0),stringify:nu},zi={identify:n=>n===!1,default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:N|n|[Nn]o|NO|[Ff]alse|FALSE|[Oo]ff|OFF)$/,resolve:()=>new $(!1),stringify:nu};var ru={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^(?:[-+]?\\.(?:inf|Inf|INF)|\\.nan|\\.NaN|\\.NAN)$/,resolve:n=>n.slice(-3).toLowerCase()==="nan"?NaN:n[0]==="-"?Number.NEGATIVE_INFINITY:Number.POSITIVE_INFINITY,stringify:we},su={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"EXP",test:/^[-+]?(?:[0-9][0-9_]*)?(?:\\.[0-9_]*)?[eE][-+]?[0-9]+$/,resolve:n=>parseFloat(n.replace(/_/g,"")),stringify(n){let e=Number(n.value);return isFinite(e)?e.toExponential():we(n)}},iu={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?(?:[0-9][0-9_]*)?\\.[0-9_]*$/,resolve(n){let e=new $(parseFloat(n.replace(/_/g,""))),t=n.indexOf(".");if(t!==-1){let r=n.substring(t+1).replace(/_/g,"");r[r.length-1]==="0"&&(e.minFractionDigits=r.length)}return e},stringify:we};var Tr=n=>typeof n=="bigint"||Number.isInteger(n);function Ls(n,e,t,{intAsBigInt:r}){let s=n[0];if((s==="-"||s==="+")&&(e+=1),n=n.substring(e).replace(/_/g,""),r){switch(t){case 2:n=`0b${n}`;break;case 8:n=`0o${n}`;break;case 16:n=`0x${n}`;break}let o=BigInt(n);return s==="-"?BigInt(-1)*o:o}let i=parseInt(n,t);return s==="-"?-1*i:i}function Yi(n,e,t){let{value:r}=n;if(Tr(r)){let s=r.toString(e);return r<0?"-"+t+s.substr(1):t+s}return we(n)}var ou={identify:Tr,default:!0,tag:"tag:yaml.org,2002:int",format:"BIN",test:/^[-+]?0b[0-1_]+$/,resolve:(n,e,t)=>Ls(n,2,2,t),stringify:n=>Yi(n,2,"0b")},au={identify:Tr,default:!0,tag:"tag:yaml.org,2002:int",format:"OCT",test:/^[-+]?0[0-7_]+$/,resolve:(n,e,t)=>Ls(n,1,8,t),stringify:n=>Yi(n,8,"0")},uu={identify:Tr,default:!0,tag:"tag:yaml.org,2002:int",test:/^[-+]?[0-9][0-9_]*$/,resolve:(n,e,t)=>Ls(n,0,10,t),stringify:we},lu={identify:Tr,default:!0,tag:"tag:yaml.org,2002:int",format:"HEX",test:/^[-+]?0x[0-9a-fA-F_]+$/,resolve:(n,e,t)=>Ls(n,2,16,t),stringify:n=>Yi(n,16,"0x")};var At=class extends ae{constructor(e){super(e),this.tag=At.tag}add(e){let t;H(e)?t=e:e&&typeof e=="object"&&"key"in e&&"value"in e&&e.value===null?t=new re(e.key,null):t=new re(e,null),It(this.items,t.key)||this.items.push(t)}get(e,t){let r=It(this.items,e);return!t&&H(r)?K(r.key)?r.key.value:r.key:r}set(e,t){if(typeof t!="boolean")throw new Error(`Expected boolean value for set(key, value) in a YAML set, not ${typeof t}`);let r=It(this.items,e);r&&!t?this.items.splice(this.items.indexOf(r),1):!r&&t&&this.items.push(new re(e))}toJSON(e,t){return super.toJSON(e,t,Set)}toString(e,t,r){if(!e)return JSON.stringify(this);if(this.hasAllNullValues(!0))return super.toString(Object.assign({},e,{allNullValues:!0}),t,r);throw new Error("Set items must all have null values")}static from(e,t,r){let{replacer:s}=r,i=new this(e);if(t&&Symbol.iterator in Object(t))for(let o of t)typeof s=="function"&&(o=s.call(t,o,o)),i.items.push(vn(o,null,r));return i}};At.tag="tag:yaml.org,2002:set";var Sr={collection:"map",identify:n=>n instanceof Set,nodeClass:At,default:!1,tag:"tag:yaml.org,2002:set",createNode:(n,e,t)=>At.from(n,e,t),resolve(n,e){if(We(n)){if(n.hasAllNullValues(!0))return Object.assign(new At,n);e("Set items must all have null values")}else e("Expected a mapping for this tag");return n}};function Gi(n,e){let t=n[0],r=t==="-"||t==="+"?n.substring(1):n,s=o=>e?BigInt(o):Number(o),i=r.replace(/_/g,"").split(":").reduce((o,a)=>o*s(60)+s(a),s(0));return t==="-"?s(-1)*i:i}function cu(n){let{value:e}=n,t=o=>o;if(typeof e=="bigint")t=o=>BigInt(o);else if(isNaN(e)||!isFinite(e))return we(n);let r="";e<0&&(r="-",e*=t(-1));let s=t(60),i=[e%s];return e<60?i.unshift(0):(e=(e-i[0])/s,i.unshift(e%s),e>=60&&(e=(e-i[0])/s,i.unshift(e))),r+i.map(o=>String(o).padStart(2,"0")).join(":").replace(/000000\\d*$/,"")}var Ns={identify:n=>typeof n=="bigint"||Number.isInteger(n),default:!0,tag:"tag:yaml.org,2002:int",format:"TIME",test:/^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+$/,resolve:(n,e,{intAsBigInt:t})=>Gi(n,t),stringify:cu},As={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"TIME",test:/^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+\\.[0-9_]*$/,resolve:n=>Gi(n,!1),stringify:cu},In={identify:n=>n instanceof Date,default:!0,tag:"tag:yaml.org,2002:timestamp",test:RegExp("^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})(?:(?:t|T|[ \\\\t]+)([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}(\\\\.[0-9]+)?)(?:[ \\\\t]*(Z|[-+][012]?[0-9](?::[0-9]{2})?))?)?$"),resolve(n){let e=n.match(In.test);if(!e)throw new Error("!!timestamp expects a date, starting with yyyy-mm-dd");let[,t,r,s,i,o,a]=e.map(Number),u=e[7]?Number((e[7]+"00").substr(1,3)):0,l=Date.UTC(t,r-1,s,i||0,o||0,a||0,u),f=e[8];if(f&&f!=="Z"){let d=Gi(f,!1);Math.abs(d)<30&&(d*=60),l-=6e4*d}return new Date(l)},stringify:({value:n})=>{var e;return(e=n==null?void 0:n.toISOString().replace(/(T00:00:00)?\\.000Z$/,""))!=null?e:""}};var Zi=[ze,Ye,Lt,Yt,Ji,zi,ou,au,uu,lu,ru,su,iu,Er,Je,wr,Fr,Sr,Ns,As,In];var fu=new Map([["core",Xa],["failsafe",[ze,Ye,Lt]],["json",tu],["yaml11",Zi],["yaml-1.1",Zi]]),du={binary:Er,bool:br,float:ks,floatExp:Ss,floatNaN:Ts,floatTime:As,int:Os,intHex:vs,intOct:xs,intTime:Ns,map:ze,merge:Je,null:Yt,omap:wr,pairs:Fr,seq:Ye,set:Sr,timestamp:In},hu={"tag:yaml.org,2002:binary":Er,"tag:yaml.org,2002:merge":Je,"tag:yaml.org,2002:omap":wr,"tag:yaml.org,2002:pairs":Fr,"tag:yaml.org,2002:set":Sr,"tag:yaml.org,2002:timestamp":In};function Ms(n,e,t){let r=fu.get(e);if(r&&!n)return t&&!r.includes(Je)?r.concat(Je):r.slice();let s=r;if(!s)if(Array.isArray(n))s=[];else{let i=Array.from(fu.keys()).filter(o=>o!=="yaml11").map(o=>JSON.stringify(o)).join(", ");throw new Error(`Unknown schema "${e}"; use one of ${i} or define customTags array`)}if(Array.isArray(n))for(let i of n)s=s.concat(i);else typeof n=="function"&&(s=n(s.slice()));return t&&(s=s.concat(Je)),s.reduce((i,o)=>{let a=typeof o=="string"?du[o]:o;if(!a){let u=JSON.stringify(o),l=Object.keys(du).map(f=>JSON.stringify(f)).join(", ");throw new Error(`Unknown custom tag ${u}; use one of ${l}`)}return i.includes(a)||i.push(a),i},[])}var tf=(n,e)=>n.key<e.key?-1:n.key>e.key?1:0,Gt=class{constructor({compat:e,customTags:t,merge:r,resolveKnownTags:s,schema:i,sortMapEntries:o,toStringDefaults:a}){this.compat=Array.isArray(e)?Ms(e,"compat"):e?Ms(null,e):null,this.name=typeof i=="string"&&i||"core",this.knownTags=s?hu:{},this.tags=Ms(t,this.name,r),this.toStringOptions=a!=null?a:null,Object.defineProperty(this,Ke,{value:ze}),Object.defineProperty(this,Ie,{value:Lt}),Object.defineProperty(this,gt,{value:Ye}),this.sortMapEntries=typeof o=="function"?o:o===!0?tf:null}clone(){let e=Object.create(Gt.prototype,Object.getOwnPropertyDescriptors(this));return e.tags=this.tags.slice(),e}};function pu(n,e){var u;let t=[],r=e.directives===!0;if(e.directives!==!1&&n.directives){let l=n.directives.toString(n);l?(t.push(l),r=!0):n.directives.docStart&&(r=!0)}r&&t.push("---");let s=Ds(n,e),{commentString:i}=s.options;if(n.commentBefore){t.length!==1&&t.unshift("");let l=i(n.commentBefore);t.unshift($e(l,""))}let o=!1,a=null;if(n.contents){if(J(n.contents)){if(n.contents.spaceBefore&&r&&t.push(""),n.contents.commentBefore){let d=i(n.contents.commentBefore);t.push($e(d,""))}s.forceBlockIndent=!!n.comment,a=n.contents.comment}let l=a?void 0:()=>o=!0,f=Ft(n.contents,s,()=>a=null,l);a&&(f+=st(f,"",i(a))),(f[0]==="|"||f[0]===">")&&t[t.length-1]==="---"?t[t.length-1]=`--- ${f}`:t.push(f)}else t.push(Ft(n.contents,s));if((u=n.directives)!=null&&u.docEnd)if(n.comment){let l=i(n.comment);l.includes(`\n`)?(t.push("..."),t.push($e(l,""))):t.push(`... ${l}`)}else t.push("...");else{let l=n.comment;l&&o&&(l=l.replace(/^\\n+/,"")),l&&((!o||a)&&t[t.length-1]!==""&&t.push(""),t.push($e(i(l),"")))}return t.join(`\n`)+`\n`}var it=class{constructor(e,t,r){this.commentBefore=null,this.comment=null,this.errors=[],this.warnings=[],Object.defineProperty(this,Se,{value:os});let s=null;typeof t=="function"||Array.isArray(t)?s=t:r===void 0&&t&&(r=t,t=void 0);let i=Object.assign({intAsBigInt:!1,keepSourceTokens:!1,logLevel:"warn",prettyErrors:!0,strict:!0,stringKeys:!1,uniqueKeys:!0,version:"1.2"},r);this.options=i;let{version:o}=i;r!=null&&r._directives?(this.directives=r._directives.atDocument(),this.directives.yaml.explicit&&(o=this.directives.yaml.version)):this.directives=new fe({version:o}),this.setSchema(o,r),this.contents=e===void 0?null:this.createNode(e,s,r)}clone(){let e=Object.create(it.prototype,{[Se]:{value:os}});return e.commentBefore=this.commentBefore,e.comment=this.comment,e.errors=this.errors.slice(),e.warnings=this.warnings.slice(),e.options=Object.assign({},this.options),this.directives&&(e.directives=this.directives.clone()),e.schema=this.schema.clone(),e.contents=J(this.contents)?this.contents.clone(e.schema):this.contents,this.range&&(e.range=this.range.slice()),e}add(e){Ln(this.contents)&&this.contents.add(e)}addIn(e,t){Ln(this.contents)&&this.contents.addIn(e,t)}createAlias(e,t){if(!e.anchor){let r=Pi(this);e.anchor=!t||r.has(t)?$i(t||"a",r):t}return new bt(e.anchor)}createNode(e,t,r){let s;if(typeof t=="function")e=t.call({"":e},"",e),s=t;else if(Array.isArray(t)){let T=k=>typeof k=="number"||k instanceof String||k instanceof Number,g=t.filter(T).map(String);g.length>0&&(t=t.concat(g)),s=t}else r===void 0&&t&&(r=t,t=void 0);let{aliasDuplicateObjects:i,anchorPrefix:o,flow:a,keepUndefined:u,onTagObj:l,tag:f}=r!=null?r:{},{onAnchor:d,setAnchors:y,sourceObjects:h}=Ja(this,o||"a"),E={aliasDuplicateObjects:i!=null?i:!0,keepUndefined:u!=null?u:!1,onAnchor:d,onTagObj:l,replacer:s,schema:this.schema,sourceObjects:h},p=Et(e,f,E);return a&&Z(p)&&(p.flow=!0),y(),p}createPair(e,t,r={}){let s=this.createNode(e,null,r),i=this.createNode(t,null,r);return new re(s,i)}delete(e){return Ln(this.contents)?this.contents.delete(e):!1}deleteIn(e){return xn(e)?this.contents==null?!1:(this.contents=null,!0):Ln(this.contents)?this.contents.deleteIn(e):!1}get(e,t){return Z(this.contents)?this.contents.get(e,t):void 0}getIn(e,t){return xn(e)?!t&&K(this.contents)?this.contents.value:this.contents:Z(this.contents)?this.contents.getIn(e,t):void 0}has(e){return Z(this.contents)?this.contents.has(e):!1}hasIn(e){return xn(e)?this.contents!==void 0:Z(this.contents)?this.contents.hasIn(e):!1}set(e,t){this.contents==null?this.contents=mr(this.schema,[e],t):Ln(this.contents)&&this.contents.set(e,t)}setIn(e,t){xn(e)?this.contents=t:this.contents==null?this.contents=mr(this.schema,Array.from(e),t):Ln(this.contents)&&this.contents.setIn(e,t)}setSchema(e,t={}){typeof e=="number"&&(e=String(e));let r;switch(e){case"1.1":this.directives?this.directives.yaml.version="1.1":this.directives=new fe({version:"1.1"}),r={resolveKnownTags:!1,schema:"yaml-1.1"};break;case"1.2":case"next":this.directives?this.directives.yaml.version=e:this.directives=new fe({version:e}),r={resolveKnownTags:!0,schema:"core"};break;case null:this.directives&&delete this.directives,r=null;break;default:{let s=JSON.stringify(e);throw new Error(`Expected \'1.1\', \'1.2\' or null as first argument, but found: ${s}`)}}if(t.schema instanceof Object)this.schema=t.schema;else if(r)this.schema=new Gt(Object.assign(r,t));else throw new Error("With a null YAML version, the { schema: Schema } option is required")}toJS({json:e,jsonArg:t,mapAsMap:r,maxAliasCount:s,onAnchor:i,reviver:o}={}){let a={anchors:new Map,doc:this,keep:!e,mapAsMap:r===!0,mapKeyWarned:!1,maxAliasCount:typeof s=="number"?s:100},u=de(this.contents,t!=null?t:"",a);if(typeof i=="function")for(let{count:l,res:f}of a.anchors.values())i(f,l);return typeof o=="function"?Ot(o,{"":u},"",u):u}toJSON(e,t){return this.toJS({json:!0,jsonArg:e,mapAsMap:!1,onAnchor:t})}toString(e={}){if(this.errors.length>0)throw new Error("Document with errors cannot be stringified");if("indent"in e&&(!Number.isInteger(e.indent)||Number(e.indent)<=0)){let t=JSON.stringify(e.indent);throw new Error(`"indent" option must be a positive integer, not ${t}`)}return pu(this,e)}};function Ln(n){if(Z(n))return!0;throw new Error("Expected a YAML collection as document contents")}var kr=class extends Error{constructor(e,t,r,s){super(),this.name=e,this.code=r,this.message=s,this.pos=t}},Ge=class extends kr{constructor(e,t,r){super("YAMLParseError",e,t,r)}},Cr=class extends kr{constructor(e,t,r){super("YAMLWarning",e,t,r)}},Qi=(n,e)=>t=>{if(t.pos[0]===-1)return;t.linePos=t.pos.map(a=>e.linePos(a));let{line:r,col:s}=t.linePos[0];t.message+=` at line ${r}, column ${s}`;let i=s-1,o=n.substring(e.lineStarts[r-1],e.lineStarts[r]).replace(/[\\n\\r]+$/,"");if(i>=60&&o.length>80){let a=Math.min(i-39,o.length-79);o="\\u2026"+o.substring(a),i-=a-1}if(o.length>80&&(o=o.substring(0,79)+"\\u2026"),r>1&&/^ *$/.test(o.substring(0,i))){let a=n.substring(e.lineStarts[r-2],e.lineStarts[r-1]);a.length>80&&(a=a.substring(0,79)+`\\u2026\n`),o=a+o}if(/[^ ]/.test(o)){let a=1,u=t.linePos[1];u&&u.line===r&&u.col>s&&(a=Math.max(1,Math.min(u.col-s,80-i)));let l=" ".repeat(i)+"^".repeat(a);t.message+=`:\n\n${o}\n${l}\n`}};function ot(n,{flow:e,indicator:t,next:r,offset:s,onError:i,parentIndent:o,startOnNewline:a}){let u=!1,l=a,f=a,d="",y="",h=!1,E=!1,p=null,T=null,g=null,k=null,L=null,m=null,F=null;for(let S of n)switch(E&&(S.type!=="space"&&S.type!=="newline"&&S.type!=="comma"&&i(S.offset,"MISSING_CHAR","Tags and anchors must be separated from the next token by white space"),E=!1),p&&(l&&S.type!=="comment"&&S.type!=="newline"&&i(p,"TAB_AS_INDENT","Tabs are not allowed as indentation"),p=null),S.type){case"space":!e&&(t!=="doc-start"||(r==null?void 0:r.type)!=="flow-collection")&&S.source.includes("	")&&(p=S),f=!0;break;case"comment":{f||i(S,"MISSING_CHAR","Comments must be separated from other tokens by white space characters");let q=S.source.substring(1)||" ";d?d+=y+q:d=q,y="",l=!1;break}case"newline":l?d?d+=S.source:(!m||t!=="seq-item-ind")&&(u=!0):y+=S.source,l=!0,h=!0,(T||g)&&(k=S),f=!0;break;case"anchor":T&&i(S,"MULTIPLE_ANCHORS","A node can have at most one anchor"),S.source.endsWith(":")&&i(S.offset+S.source.length-1,"BAD_ALIAS","Anchor ending in : is ambiguous",!0),T=S,F!=null||(F=S.offset),l=!1,f=!1,E=!0;break;case"tag":{g&&i(S,"MULTIPLE_TAGS","A node can have at most one tag"),g=S,F!=null||(F=S.offset),l=!1,f=!1,E=!0;break}case t:(T||g)&&i(S,"BAD_PROP_ORDER",`Anchors and tags must be after the ${S.source} indicator`),m&&i(S,"UNEXPECTED_TOKEN",`Unexpected ${S.source} in ${e!=null?e:"collection"}`),m=S,l=t==="seq-item-ind"||t==="explicit-key-ind",f=!1;break;case"comma":if(e){L&&i(S,"UNEXPECTED_TOKEN",`Unexpected , in ${e}`),L=S,l=!1,f=!1;break}default:i(S,"UNEXPECTED_TOKEN",`Unexpected ${S.type} token`),l=!1,f=!1}let O=n[n.length-1],x=O?O.offset+O.source.length:s;return E&&r&&r.type!=="space"&&r.type!=="newline"&&r.type!=="comma"&&(r.type!=="scalar"||r.source!=="")&&i(r.offset,"MISSING_CHAR","Tags and anchors must be separated from the next token by white space"),p&&(l&&p.indent<=o||(r==null?void 0:r.type)==="block-map"||(r==null?void 0:r.type)==="block-seq")&&i(p,"TAB_AS_INDENT","Tabs are not allowed as indentation"),{comma:L,found:m,spaceBefore:u,comment:d,hasNewline:h,anchor:T,tag:g,newlineAfterProp:k,end:x,start:F!=null?F:x}}function Mt(n){if(!n)return null;switch(n.type){case"alias":case"scalar":case"double-quoted-scalar":case"single-quoted-scalar":if(n.source.includes(`\n`))return!0;if(n.end){for(let e of n.end)if(e.type==="newline")return!0}return!1;case"flow-collection":for(let e of n.items){for(let t of e.start)if(t.type==="newline")return!0;if(e.sep){for(let t of e.sep)if(t.type==="newline")return!0}if(Mt(e.key)||Mt(e.value))return!0}return!1;default:return!0}}function xr(n,e,t){if((e==null?void 0:e.type)==="flow-collection"){let r=e.end[0];r.indent===n&&(r.source==="]"||r.source==="}")&&Mt(e)&&t(r,"BAD_INDENT","Flow end indicator should be more indented than parent",!0)}}function _s(n,e,t){let{uniqueKeys:r}=n.options;if(r===!1)return!1;let s=typeof r=="function"?r:(i,o)=>i===o||K(i)&&K(o)&&i.value===o.value;return e.some(i=>s(i.key,t))}var mu="All mapping items must start at the same column";function Du({composeNode:n,composeEmptyNode:e},t,r,s,i){var f,d;let o=(f=i==null?void 0:i.nodeClass)!=null?f:ae,a=new o(t.schema);t.atRoot&&(t.atRoot=!1);let u=r.offset,l=null;for(let y of r.items){let{start:h,key:E,sep:p,value:T}=y,g=ot(h,{indicator:"explicit-key-ind",next:E!=null?E:p==null?void 0:p[0],offset:u,onError:s,parentIndent:r.indent,startOnNewline:!0}),k=!g.found;if(k){if(E&&(E.type==="block-seq"?s(u,"BLOCK_AS_IMPLICIT_KEY","A block sequence may not be used as an implicit map key"):"indent"in E&&E.indent!==r.indent&&s(u,"BAD_INDENT",mu)),!g.anchor&&!g.tag&&!p){l=g.end,g.comment&&(a.comment?a.comment+=`\n`+g.comment:a.comment=g.comment);continue}(g.newlineAfterProp||Mt(E))&&s(E!=null?E:h[h.length-1],"MULTILINE_IMPLICIT_KEY","Implicit keys need to be on a single line")}else((d=g.found)==null?void 0:d.indent)!==r.indent&&s(u,"BAD_INDENT",mu);t.atKey=!0;let L=g.end,m=E?n(t,E,g,s):e(t,L,h,null,g,s);t.schema.compat&&xr(r.indent,E,s),t.atKey=!1,_s(t,a.items,m)&&s(L,"DUPLICATE_KEY","Map keys must be unique");let F=ot(p!=null?p:[],{indicator:"map-value-ind",next:T,offset:m.range[2],onError:s,parentIndent:r.indent,startOnNewline:!E||E.type==="block-scalar"});if(u=F.end,F.found){k&&((T==null?void 0:T.type)==="block-map"&&!F.hasNewline&&s(u,"BLOCK_AS_IMPLICIT_KEY","Nested mappings are not allowed in compact mappings"),t.options.strict&&g.start<F.found.offset-1024&&s(m.range,"KEY_OVER_1024_CHARS","The : indicator must be at most 1024 chars after the start of an implicit block mapping key"));let O=T?n(t,T,F,s):e(t,u,p,null,F,s);t.schema.compat&&xr(r.indent,T,s),u=O.range[2];let x=new re(m,O);t.options.keepSourceTokens&&(x.srcToken=y),a.items.push(x)}else{k&&s(m.range,"MISSING_CHAR","Implicit map keys need to be followed by map values"),F.comment&&(m.comment?m.comment+=`\n`+F.comment:m.comment=F.comment);let O=new re(m);t.options.keepSourceTokens&&(O.srcToken=y),a.items.push(O)}}return l&&l<u&&s(l,"IMPOSSIBLE","Map comment with trailing content"),a.range=[r.offset,u,l!=null?l:u],a}function yu({composeNode:n,composeEmptyNode:e},t,r,s,i){var f;let o=(f=i==null?void 0:i.nodeClass)!=null?f:Fe,a=new o(t.schema);t.atRoot&&(t.atRoot=!1),t.atKey&&(t.atKey=!1);let u=r.offset,l=null;for(let{start:d,value:y}of r.items){let h=ot(d,{indicator:"seq-item-ind",next:y,offset:u,onError:s,parentIndent:r.indent,startOnNewline:!0});if(!h.found)if(h.anchor||h.tag||y)y&&y.type==="block-seq"?s(h.end,"BAD_INDENT","All sequence items must start at the same column"):s(u,"MISSING_CHAR","Sequence item without - indicator");else{l=h.end,h.comment&&(a.comment=h.comment);continue}let E=y?n(t,y,h,s):e(t,h.end,d,null,h,s);t.schema.compat&&xr(r.indent,y,s),u=E.range[2],a.items.push(E)}return a.range=[r.offset,u,l!=null?l:u],a}function at(n,e,t,r){let s="";if(n){let i=!1,o="";for(let a of n){let{source:u,type:l}=a;switch(l){case"space":i=!0;break;case"comment":{t&&!i&&r(a,"MISSING_CHAR","Comments must be separated from other tokens by white space characters");let f=u.substring(1)||" ";s?s+=o+f:s=f,o="";break}case"newline":s&&(o+=u),i=!0;break;default:r(a,"UNEXPECTED_TOKEN",`Unexpected ${l} at node end`)}e+=u.length}}return{comment:s,offset:e}}var Xi="Block collections are not allowed within flow collections",eo=n=>n&&(n.type==="block-map"||n.type==="block-seq");function gu({composeNode:n,composeEmptyNode:e},t,r,s,i){var T,g;let o=r.start.source==="{",a=o?"flow map":"flow sequence",u=(T=i==null?void 0:i.nodeClass)!=null?T:o?ae:Fe,l=new u(t.schema);l.flow=!0;let f=t.atRoot;f&&(t.atRoot=!1),t.atKey&&(t.atKey=!1);let d=r.offset+r.start.source.length;for(let k=0;k<r.items.length;++k){let L=r.items[k],{start:m,key:F,sep:O,value:x}=L,S=ot(m,{flow:a,indicator:"explicit-key-ind",next:F!=null?F:O==null?void 0:O[0],offset:d,onError:s,parentIndent:r.indent,startOnNewline:!1});if(!S.found){if(!S.anchor&&!S.tag&&!O&&!x){k===0&&S.comma?s(S.comma,"UNEXPECTED_TOKEN",`Unexpected , in ${a}`):k<r.items.length-1&&s(S.start,"UNEXPECTED_TOKEN",`Unexpected empty item in ${a}`),S.comment&&(l.comment?l.comment+=`\n`+S.comment:l.comment=S.comment),d=S.end;continue}!o&&t.options.strict&&Mt(F)&&s(F,"MULTILINE_IMPLICIT_KEY","Implicit keys of flow sequence pairs need to be on a single line")}if(k===0)S.comma&&s(S.comma,"UNEXPECTED_TOKEN",`Unexpected , in ${a}`);else if(S.comma||s(S.start,"MISSING_CHAR",`Missing , between ${a} items`),S.comment){let q="";e:for(let V of m)switch(V.type){case"comma":case"space":break;case"comment":q=V.source.substring(1);break e;default:break e}if(q){let V=l.items[l.items.length-1];H(V)&&(V=(g=V.value)!=null?g:V.key),V.comment?V.comment+=`\n`+q:V.comment=q,S.comment=S.comment.substring(q.length+1)}}if(!o&&!O&&!S.found){let q=x?n(t,x,S,s):e(t,S.end,O,null,S,s);l.items.push(q),d=q.range[2],eo(x)&&s(q.range,"BLOCK_IN_FLOW",Xi)}else{t.atKey=!0;let q=S.end,V=F?n(t,F,S,s):e(t,q,m,null,S,s);eo(F)&&s(V.range,"BLOCK_IN_FLOW",Xi),t.atKey=!1;let Y=ot(O!=null?O:[],{flow:a,indicator:"map-value-ind",next:x,offset:V.range[2],onError:s,parentIndent:r.indent,startOnNewline:!1});if(Y.found){if(!o&&!S.found&&t.options.strict){if(O)for(let j of O){if(j===Y.found)break;if(j.type==="newline"){s(j,"MULTILINE_IMPLICIT_KEY","Implicit keys of flow sequence pairs need to be on a single line");break}}S.start<Y.found.offset-1024&&s(Y.found,"KEY_OVER_1024_CHARS","The : indicator must be at most 1024 chars after the start of an implicit flow sequence key")}}else x&&("source"in x&&x.source&&x.source[0]===":"?s(x,"MISSING_CHAR",`Missing space after : in ${a}`):s(Y.start,"MISSING_CHAR",`Missing , or : between ${a} items`));let v=x?n(t,x,Y,s):Y.found?e(t,Y.end,O,null,Y,s):null;v?eo(x)&&s(v.range,"BLOCK_IN_FLOW",Xi):Y.comment&&(V.comment?V.comment+=`\n`+Y.comment:V.comment=Y.comment);let P=new re(V,v);if(t.options.keepSourceTokens&&(P.srcToken=L),o){let j=l;_s(t,j.items,V)&&s(q,"DUPLICATE_KEY","Map keys must be unique"),j.items.push(P)}else{let j=new ae(t.schema);j.flow=!0,j.items.push(P);let De=(v!=null?v:V).range;j.range=[V.range[0],De[1],De[2]],l.items.push(j)}d=v?v.range[2]:Y.end}}let y=o?"}":"]",[h,...E]=r.end,p=d;if(h&&h.source===y)p=h.offset+h.source.length;else{let k=a[0].toUpperCase()+a.substring(1),L=f?`${k} must end with a ${y}`:`${k} in block collection must be sufficiently indented and end with a ${y}`;s(d,f?"MISSING_CHAR":"BAD_INDENT",L),h&&h.source.length!==1&&E.unshift(h)}if(E.length>0){let k=at(E,p,t.options.strict,s);k.comment&&(l.comment?l.comment+=`\n`+k.comment:l.comment=k.comment),l.range=[r.offset,p,k.offset]}else l.range=[r.offset,p,p];return l}function to(n,e,t,r,s,i){let o=t.type==="block-map"?Du(n,e,t,r,i):t.type==="block-seq"?yu(n,e,t,r,i):gu(n,e,t,r,i),a=o.constructor;return s==="!"||s===a.tagName?(o.tag=a.tagName,o):(s&&(o.tag=s),o)}function bu(n,e,t,r,s){var y,h,E;let i=r.tag,o=i?e.directives.tagName(i.source,p=>s(i,"TAG_RESOLVE_FAILED",p)):null;if(t.type==="block-seq"){let{anchor:p,newlineAfterProp:T}=r,g=p&&i?p.offset>i.offset?p:i:p!=null?p:i;g&&(!T||T.offset<g.offset)&&s(g,"MISSING_CHAR","Missing newline after block sequence props")}let a=t.type==="block-map"?"map":t.type==="block-seq"?"seq":t.start.source==="{"?"map":"seq";if(!i||!o||o==="!"||o===ae.tagName&&a==="map"||o===Fe.tagName&&a==="seq")return to(n,e,t,s,o);let u=e.schema.tags.find(p=>p.tag===o&&p.collection===a);if(!u){let p=e.schema.knownTags[o];if(p&&p.collection===a)e.schema.tags.push(Object.assign({},p,{default:!1})),u=p;else return p?s(i,"BAD_COLLECTION_TYPE",`${p.tag} used for ${a} collection, but expects ${(y=p.collection)!=null?y:"scalar"}`,!0):s(i,"TAG_RESOLVE_FAILED",`Unresolved tag: ${o}`,!0),to(n,e,t,s,o)}let l=to(n,e,t,s,o,u),f=(E=(h=u.resolve)==null?void 0:h.call(u,l,p=>s(i,"TAG_RESOLVE_FAILED",p),e.options))!=null?E:l,d=J(f)?f:new $(f);return d.range=l.range,d.tag=o,u!=null&&u.format&&(d.format=u.format),d}function no(n,e,t){let r=e.offset,s=nf(e,n.options.strict,t);if(!s)return{value:"",type:null,comment:"",range:[r,r,r]};let i=s.mode===">"?$.BLOCK_FOLDED:$.BLOCK_LITERAL,o=e.source?rf(e.source):[],a=o.length;for(let p=o.length-1;p>=0;--p){let T=o[p][1];if(T===""||T==="\\r")a=p;else break}if(a===0){let p=s.chomp==="+"&&o.length>0?`\n`.repeat(Math.max(1,o.length-1)):"",T=r+s.length;return e.source&&(T+=e.source.length),{value:p,type:i,comment:s.comment,range:[r,T,T]}}let u=e.indent+s.indent,l=e.offset+s.length,f=0;for(let p=0;p<a;++p){let[T,g]=o[p];if(g===""||g==="\\r")s.indent===0&&T.length>u&&(u=T.length);else{if(T.length<u){let k="Block scalars with more-indented leading empty lines must use an explicit indentation indicator";t(l+T.length,"MISSING_CHAR",k)}s.indent===0&&(u=T.length),f=p,u===0&&!n.atRoot&&t(l,"BAD_INDENT","Block scalar values in collections must be indented");break}l+=T.length+g.length+1}for(let p=o.length-1;p>=a;--p)o[p][0].length>u&&(a=p+1);let d="",y="",h=!1;for(let p=0;p<f;++p)d+=o[p][0].slice(u)+`\n`;for(let p=f;p<a;++p){let[T,g]=o[p];l+=T.length+g.length+1;let k=g[g.length-1]==="\\r";if(k&&(g=g.slice(0,-1)),g&&T.length<u){let m=`Block scalar lines must not be less indented than their ${s.indent?"explicit indentation indicator":"first line"}`;t(l-g.length-(k?2:1),"BAD_INDENT",m),T=""}i===$.BLOCK_LITERAL?(d+=y+T.slice(u)+g,y=`\n`):T.length>u||g[0]==="	"?(y===" "?y=`\n`:!h&&y===`\n`&&(y=`\n\n`),d+=y+T.slice(u)+g,y=`\n`,h=!0):g===""?y===`\n`?d+=`\n`:y=`\n`:(d+=y+g,y=" ",h=!1)}switch(s.chomp){case"-":break;case"+":for(let p=a;p<o.length;++p)d+=`\n`+o[p][0].slice(u);d[d.length-1]!==`\n`&&(d+=`\n`);break;default:d+=`\n`}let E=r+s.length+e.source.length;return{value:d,type:i,comment:s.comment,range:[r,E,E]}}function nf({offset:n,props:e},t,r){if(e[0].type!=="block-scalar-header")return r(e[0],"IMPOSSIBLE","Block scalar header not found"),null;let{source:s}=e[0],i=s[0],o=0,a="",u=-1;for(let y=1;y<s.length;++y){let h=s[y];if(!a&&(h==="-"||h==="+"))a=h;else{let E=Number(h);!o&&E?o=E:u===-1&&(u=n+y)}}u!==-1&&r(u,"UNEXPECTED_TOKEN",`Block scalar header includes extra characters: ${s}`);let l=!1,f="",d=s.length;for(let y=1;y<e.length;++y){let h=e[y];switch(h.type){case"space":l=!0;case"newline":d+=h.source.length;break;case"comment":t&&!l&&r(h,"MISSING_CHAR","Comments must be separated from other tokens by white space characters"),d+=h.source.length,f=h.source.substring(1);break;case"error":r(h,"UNEXPECTED_TOKEN",h.message),d+=h.source.length;break;default:{let E=`Unexpected token in block scalar header: ${h.type}`;r(h,"UNEXPECTED_TOKEN",E);let p=h.source;p&&typeof p=="string"&&(d+=p.length)}}}return{mode:i,indent:o,chomp:a,comment:f,length:d}}function rf(n){let e=n.split(/\\n( *)/),t=e[0],r=t.match(/^( *)/),i=[r!=null&&r[1]?[r[1],t.slice(r[1].length)]:["",t]];for(let o=1;o<e.length;o+=2)i.push([e[o],e[o+1]]);return i}function ro(n,e,t){let{offset:r,type:s,source:i,end:o}=n,a,u,l=(y,h,E)=>t(r+y,h,E);switch(s){case"scalar":a=$.PLAIN,u=sf(i,l);break;case"single-quoted-scalar":a=$.QUOTE_SINGLE,u=of(i,l);break;case"double-quoted-scalar":a=$.QUOTE_DOUBLE,u=af(i,l);break;default:return t(n,"UNEXPECTED_TOKEN",`Expected a flow scalar value, but found: ${s}`),{value:"",type:null,comment:"",range:[r,r+i.length,r+i.length]}}let f=r+i.length,d=at(o,f,e,t);return{value:u,type:a,comment:d.comment,range:[r,f,d.offset]}}function sf(n,e){let t="";switch(n[0]){case"	":t="a tab character";break;case",":t="flow indicator character ,";break;case"%":t="directive indicator character %";break;case"|":case">":{t=`block scalar indicator ${n[0]}`;break}case"@":case"`":{t=`reserved character ${n[0]}`;break}}return t&&e(0,"BAD_SCALAR_START",`Plain value cannot start with ${t}`),Eu(n)}function of(n,e){return(n[n.length-1]!=="\'"||n.length===1)&&e(n.length,"MISSING_CHAR","Missing closing \'quote"),Eu(n.slice(1,-1)).replace(/\'\'/g,"\'")}function Eu(n){var u;let e,t;try{e=new RegExp(`(.*?)(?<![ 	])[ 	]*\\r?\n`,"sy"),t=new RegExp(`[ 	]*(.*?)(?:(?<![ 	])[ 	]*)?\\r?\n`,"sy")}catch(l){e=new RegExp("(.*?)[ \\\\t]*\\\\r?\\\\n","sy"),t=new RegExp("[ \\\\t]*(.*?)[ \\\\t]*\\\\r?\\\\n","sy")}let r=e.exec(n);if(!r)return n;let s=r[1],i=" ",o=e.lastIndex;for(t.lastIndex=o;r=t.exec(n);)r[1]===""?i===`\n`?s+=i:i=`\n`:(s+=i+r[1],i=" "),o=t.lastIndex;let a=new RegExp("[ \\\\t]*(.*)","sy");return a.lastIndex=o,r=a.exec(n),s+i+((u=r==null?void 0:r[1])!=null?u:"")}function af(n,e){let t="";for(let r=1;r<n.length-1;++r){let s=n[r];if(!(s==="\\r"&&n[r+1]===`\n`))if(s===`\n`){let{fold:i,offset:o}=uf(n,r);t+=i,r=o}else if(s==="\\\\"){let i=n[++r],o=lf[i];if(o)t+=o;else if(i===`\n`)for(i=n[r+1];i===" "||i==="	";)i=n[++r+1];else if(i==="\\r"&&n[r+1]===`\n`)for(i=n[++r+1];i===" "||i==="	";)i=n[++r+1];else if(i==="x"||i==="u"||i==="U"){let a={x:2,u:4,U:8}[i];t+=cf(n,r+1,a,e),r+=a}else{let a=n.substr(r-1,2);e(r-1,"BAD_DQ_ESCAPE",`Invalid escape sequence ${a}`),t+=a}}else if(s===" "||s==="	"){let i=r,o=n[r+1];for(;o===" "||o==="	";)o=n[++r+1];o!==`\n`&&!(o==="\\r"&&n[r+2]===`\n`)&&(t+=r>i?n.slice(i,r+1):s)}else t+=s}return(n[n.length-1]!==\'"\'||n.length===1)&&e(n.length,"MISSING_CHAR",\'Missing closing "quote\'),t}function uf(n,e){let t="",r=n[e+1];for(;(r===" "||r==="	"||r===`\n`||r==="\\r")&&!(r==="\\r"&&n[e+2]!==`\n`);)r===`\n`&&(t+=`\n`),e+=1,r=n[e+1];return t||(t=" "),{fold:t,offset:e}}var lf={0:"\\0",a:"\\x07",b:"\\b",e:"\\x1B",f:"\\f",n:`\n`,r:"\\r",t:"	",v:"\\v",N:"\\x85",_:"\\xA0",L:"\\u2028",P:"\\u2029"," ":" ",\'"\':\'"\',"/":"/","\\\\":"\\\\","	":"	"};function cf(n,e,t,r){let s=n.substr(e,t),o=s.length===t&&/^[0-9a-fA-F]+$/.test(s)?parseInt(s,16):NaN;if(isNaN(o)){let a=n.substr(e-2,t+2);return r(e-2,"BAD_DQ_ESCAPE",`Invalid escape sequence ${a}`),a}return String.fromCodePoint(o)}function so(n,e,t,r){let{value:s,type:i,comment:o,range:a}=e.type==="block-scalar"?no(n,e,r):ro(e,n.options.strict,r),u=t?n.directives.tagName(t.source,d=>r(t,"TAG_RESOLVE_FAILED",d)):null,l;n.options.stringKeys&&n.atKey?l=n.schema[Ie]:u?l=ff(n.schema,s,u,t,r):e.type==="scalar"?l=df(n,s,e,r):l=n.schema[Ie];let f;try{let d=l.resolve(s,y=>r(t!=null?t:e,"TAG_RESOLVE_FAILED",y),n.options);f=K(d)?d:new $(d)}catch(d){let y=d instanceof Error?d.message:String(d);r(t!=null?t:e,"TAG_RESOLVE_FAILED",y),f=new $(s)}return f.range=a,f.source=s,i&&(f.type=i),u&&(f.tag=u),l.format&&(f.format=l.format),o&&(f.comment=o),f}function ff(n,e,t,r,s){var a;if(t==="!")return n[Ie];let i=[];for(let u of n.tags)if(!u.collection&&u.tag===t)if(u.default&&u.test)i.push(u);else return u;for(let u of i)if((a=u.test)!=null&&a.test(e))return u;let o=n.knownTags[t];return o&&!o.collection?(n.tags.push(Object.assign({},o,{default:!1,test:void 0})),o):(s(r,"TAG_RESOLVE_FAILED",`Unresolved tag: ${t}`,t!=="tag:yaml.org,2002:str"),n[Ie])}function df({atKey:n,directives:e,schema:t},r,s,i){var a;let o=t.tags.find(u=>{var l;return(u.default===!0||n&&u.default==="key")&&((l=u.test)==null?void 0:l.test(r))})||t[Ie];if(t.compat){let u=(a=t.compat.find(l=>{var f;return l.default&&((f=l.test)==null?void 0:f.test(r))}))!=null?a:t[Ie];if(o.tag!==u.tag){let l=e.tagString(o.tag),f=e.tagString(u.tag),d=`Value may be parsed as either ${l} or ${f}`;i(s,"TAG_RESOLVE_FAILED",d,!0)}}return o}function Fu(n,e,t){if(e){t!=null||(t=e.length);for(let r=t-1;r>=0;--r){let s=e[r];switch(s.type){case"space":case"comment":case"newline":n-=s.source.length;continue}for(s=e[++r];(s==null?void 0:s.type)==="space";)n+=s.source.length,s=e[++r];break}}return n}var hf={composeNode:io,composeEmptyNode:Bs};function io(n,e,t,r){let s=n.atKey,{spaceBefore:i,comment:o,anchor:a,tag:u}=t,l,f=!0;switch(e.type){case"alias":l=pf(n,e,r),(a||u)&&r(e,"ALIAS_PROPS","An alias node must not specify any properties");break;case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":case"block-scalar":l=so(n,e,u,r),a&&(l.anchor=a.source.substring(1));break;case"block-map":case"block-seq":case"flow-collection":l=bu(hf,n,e,t,r),a&&(l.anchor=a.source.substring(1));break;default:{let d=e.type==="error"?e.message:`Unsupported token (type: ${e.type})`;r(e,"UNEXPECTED_TOKEN",d),l=Bs(n,e.offset,void 0,null,t,r),f=!1}}if(a&&l.anchor===""&&r(a,"BAD_ALIAS","Anchor cannot be an empty string"),s&&n.options.stringKeys&&(!K(l)||typeof l.value!="string"||l.tag&&l.tag!=="tag:yaml.org,2002:str")){let d="With stringKeys, all keys must be strings";r(u!=null?u:e,"NON_STRING_KEY",d)}return i&&(l.spaceBefore=!0),o&&(e.type==="scalar"&&e.source===""?l.comment=o:l.commentBefore=o),n.options.keepSourceTokens&&f&&(l.srcToken=e),l}function Bs(n,e,t,r,{spaceBefore:s,comment:i,anchor:o,tag:a,end:u},l){let f={type:"scalar",offset:Fu(e,t,r),indent:-1,source:""},d=so(n,f,a,l);return o&&(d.anchor=o.source.substring(1),d.anchor===""&&l(o,"BAD_ALIAS","Anchor cannot be an empty string")),s&&(d.spaceBefore=!0),i&&(d.comment=i,d.range[2]=u),d}function pf({options:n},{offset:e,source:t,end:r},s){let i=new bt(t.substring(1));i.source===""&&s(e,"BAD_ALIAS","Alias cannot be an empty string"),i.source.endsWith(":")&&s(e+t.length-1,"BAD_ALIAS","Alias ending in : is ambiguous",!0);let o=e+t.length,a=at(r,o,n.strict,s);return i.range=[e,o,a.offset],a.comment&&(i.comment=a.comment),i}function wu(n,e,{offset:t,start:r,value:s,end:i},o){let a=Object.assign({_directives:e},n),u=new it(void 0,a),l={atKey:!1,atRoot:!0,directives:u.directives,options:u.options,schema:u.schema},f=ot(r,{indicator:"doc-start",next:s!=null?s:i==null?void 0:i[0],offset:t,onError:o,parentIndent:0,startOnNewline:!0});f.found&&(u.directives.docStart=!0,s&&(s.type==="block-map"||s.type==="block-seq")&&!f.hasNewline&&o(f.end,"MISSING_CHAR","Block collection cannot start on same line with directives-end marker")),u.contents=s?io(l,s,f,o):Bs(l,f.end,r,null,f,o);let d=u.contents.range[2],y=at(i,d,!1,o);return y.comment&&(u.comment=y.comment),u.range=[t,d,y.offset],u}function Or(n){if(typeof n=="number")return[n,n+1];if(Array.isArray(n))return n.length===2?n:[n[0],n[1]];let{offset:e,source:t}=n;return[e,e+(typeof t=="string"?t.length:1)]}function Tu(n){var s;let e="",t=!1,r=!1;for(let i=0;i<n.length;++i){let o=n[i];switch(o[0]){case"#":e+=(e===""?"":r?`\n\n`:`\n`)+(o.substring(1)||" "),t=!0,r=!1;break;case"%":((s=n[i+1])==null?void 0:s[0])!=="#"&&(i+=1),t=!1;break;default:t||(r=!0),t=!1}}return{comment:e,afterEmptyLine:r}}var vr=class{constructor(e={}){this.doc=null,this.atDirectives=!1,this.prelude=[],this.errors=[],this.warnings=[],this.onError=(t,r,s,i)=>{let o=Or(t);i?this.warnings.push(new Cr(o,r,s)):this.errors.push(new Ge(o,r,s))},this.directives=new fe({version:e.version||"1.2"}),this.options=e}decorate(e,t){let{comment:r,afterEmptyLine:s}=Tu(this.prelude);if(r){let i=e.contents;if(t)e.comment=e.comment?`${e.comment}\n${r}`:r;else if(s||e.directives.docStart||!i)e.commentBefore=r;else if(Z(i)&&!i.flow&&i.items.length>0){let o=i.items[0];H(o)&&(o=o.key);let a=o.commentBefore;o.commentBefore=a?`${r}\n${a}`:r}else{let o=i.commentBefore;i.commentBefore=o?`${r}\n${o}`:r}}t?(Array.prototype.push.apply(e.errors,this.errors),Array.prototype.push.apply(e.warnings,this.warnings)):(e.errors=this.errors,e.warnings=this.warnings),this.prelude=[],this.errors=[],this.warnings=[]}streamInfo(){return{comment:Tu(this.prelude).comment,directives:this.directives,errors:this.errors,warnings:this.warnings}}*compose(e,t=!1,r=-1){for(let s of e)yield*this.next(s);yield*this.end(t,r)}*next(e){switch(e.type){case"directive":this.directives.add(e.source,(t,r,s)=>{let i=Or(e);i[0]+=t,this.onError(i,"BAD_DIRECTIVE",r,s)}),this.prelude.push(e.source),this.atDirectives=!0;break;case"document":{let t=wu(this.options,this.directives,e,this.onError);this.atDirectives&&!t.directives.docStart&&this.onError(e,"MISSING_CHAR","Missing directives-end/doc-start indicator line"),this.decorate(t,!1),this.doc&&(yield this.doc),this.doc=t,this.atDirectives=!1;break}case"byte-order-mark":case"space":break;case"comment":case"newline":this.prelude.push(e.source);break;case"error":{let t=e.source?`${e.message}: ${JSON.stringify(e.source)}`:e.message,r=new Ge(Or(e),"UNEXPECTED_TOKEN",t);this.atDirectives||!this.doc?this.errors.push(r):this.doc.errors.push(r);break}case"doc-end":{if(!this.doc){let r="Unexpected doc-end without preceding document";this.errors.push(new Ge(Or(e),"UNEXPECTED_TOKEN",r));break}this.doc.directives.docEnd=!0;let t=at(e.end,e.offset+e.source.length,this.doc.options.strict,this.onError);if(this.decorate(this.doc,!0),t.comment){let r=this.doc.comment;this.doc.comment=r?`${r}\n${t.comment}`:t.comment}this.doc.range[2]=t.offset;break}default:this.errors.push(new Ge(Or(e),"UNEXPECTED_TOKEN",`Unsupported token ${e.type}`))}}*end(e=!1,t=-1){if(this.doc)this.decorate(this.doc,!0),yield this.doc,this.doc=null;else if(e){let r=Object.assign({_directives:this.directives},this.options),s=new it(void 0,r);this.atDirectives&&this.onError(t,"MISSING_CHAR","Missing directives-end indicator line"),s.range=[0,t,t],this.decorate(s,!1),yield s}}};var oo=Symbol("break visit"),mf=Symbol("skip children"),Su=Symbol("remove item");function Zt(n,e){"type"in n&&n.type==="document"&&(n={start:n.start,value:n.value}),ku(Object.freeze([]),n,e)}Zt.BREAK=oo;Zt.SKIP=mf;Zt.REMOVE=Su;Zt.itemAtPath=(n,e)=>{let t=n;for(let[r,s]of e){let i=t==null?void 0:t[r];if(i&&"items"in i)t=i.items[s];else return}return t};Zt.parentCollection=(n,e)=>{let t=Zt.itemAtPath(n,e.slice(0,-1)),r=e[e.length-1][0],s=t==null?void 0:t[r];if(s&&"items"in s)return s;throw new Error("Parent collection not found")};function ku(n,e,t){let r=t(e,n);if(typeof r=="symbol")return r;for(let s of["key","value"]){let i=e[s];if(i&&"items"in i){for(let o=0;o<i.items.length;++o){let a=ku(Object.freeze(n.concat([[s,o]])),i.items[o],t);if(typeof a=="number")o=a-1;else{if(a===oo)return oo;a===Su&&(i.items.splice(o,1),o-=1)}}typeof r=="function"&&s==="key"&&(r=r(e,n))}}return typeof r=="function"?r(e,n):r}var ao="\\uFEFF",uo="",lo="",Ps="";function Cu(n){switch(n){case ao:return"byte-order-mark";case uo:return"doc-mode";case lo:return"flow-error-end";case Ps:return"scalar";case"---":return"doc-start";case"...":return"doc-end";case"":case`\n`:case`\\r\n`:return"newline";case"-":return"seq-item-ind";case"?":return"explicit-key-ind";case":":return"map-value-ind";case"{":return"flow-map-start";case"}":return"flow-map-end";case"[":return"flow-seq-start";case"]":return"flow-seq-end";case",":return"comma"}switch(n[0]){case" ":case"	":return"space";case"#":return"comment";case"%":return"directive-line";case"*":return"alias";case"&":return"anchor";case"!":return"tag";case"\'":return"single-quoted-scalar";case\'"\':return"double-quoted-scalar";case"|":case">":return"block-scalar-header"}return null}function Ze(n){switch(n){case void 0:case" ":case`\n`:case"\\r":case"	":return!0;default:return!1}}var xu=new Set("0123456789ABCDEFabcdef"),yf=new Set("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-#;/?:@&=+$_.!~*\'()"),$s=new Set(",[]{}"),gf=new Set(` ,[]{}\n\\r	`),co=n=>!n||gf.has(n),Ir=class{constructor(){this.atEnd=!1,this.blockScalarIndent=-1,this.blockScalarKeep=!1,this.buffer="",this.flowKey=!1,this.flowLevel=0,this.indentNext=0,this.indentValue=0,this.lineEndPos=null,this.next=null,this.pos=0}*lex(e,t=!1){var s;if(e){if(typeof e!="string")throw TypeError("source is not a string");this.buffer=this.buffer?this.buffer+e:e,this.lineEndPos=null}this.atEnd=!t;let r=(s=this.next)!=null?s:"stream";for(;r&&(t||this.hasChars(1));)r=yield*this.parseNext(r)}atLineEnd(){let e=this.pos,t=this.buffer[e];for(;t===" "||t==="	";)t=this.buffer[++e];return!t||t==="#"||t===`\n`?!0:t==="\\r"?this.buffer[e+1]===`\n`:!1}charAt(e){return this.buffer[this.pos+e]}continueScalar(e){let t=this.buffer[e];if(this.indentNext>0){let r=0;for(;t===" ";)t=this.buffer[++r+e];if(t==="\\r"){let s=this.buffer[r+e+1];if(s===`\n`||!s&&!this.atEnd)return e+r+1}return t===`\n`||r>=this.indentNext||!t&&!this.atEnd?e+r:-1}if(t==="-"||t==="."){let r=this.buffer.substr(e,3);if((r==="---"||r==="...")&&Ze(this.buffer[e+3]))return-1}return e}getLine(){let e=this.lineEndPos;return(typeof e!="number"||e!==-1&&e<this.pos)&&(e=this.buffer.indexOf(`\n`,this.pos),this.lineEndPos=e),e===-1?this.atEnd?this.buffer.substring(this.pos):null:(this.buffer[e-1]==="\\r"&&(e-=1),this.buffer.substring(this.pos,e))}hasChars(e){return this.pos+e<=this.buffer.length}setNext(e){return this.buffer=this.buffer.substring(this.pos),this.pos=0,this.lineEndPos=null,this.next=e,null}peek(e){return this.buffer.substr(this.pos,e)}*parseNext(e){switch(e){case"stream":return yield*this.parseStream();case"line-start":return yield*this.parseLineStart();case"block-start":return yield*this.parseBlockStart();case"doc":return yield*this.parseDocument();case"flow":return yield*this.parseFlowCollection();case"quoted-scalar":return yield*this.parseQuotedScalar();case"block-scalar":return yield*this.parseBlockScalar();case"plain-scalar":return yield*this.parsePlainScalar()}}*parseStream(){let e=this.getLine();if(e===null)return this.setNext("stream");if(e[0]===ao&&(yield*this.pushCount(1),e=e.substring(1)),e[0]==="%"){let t=e.length,r=e.indexOf("#");for(;r!==-1;){let i=e[r-1];if(i===" "||i==="	"){t=r-1;break}else r=e.indexOf("#",r+1)}for(;;){let i=e[t-1];if(i===" "||i==="	")t-=1;else break}let s=(yield*this.pushCount(t))+(yield*this.pushSpaces(!0));return yield*this.pushCount(e.length-s),this.pushNewline(),"stream"}if(this.atLineEnd()){let t=yield*this.pushSpaces(!0);return yield*this.pushCount(e.length-t),yield*this.pushNewline(),"stream"}return yield uo,yield*this.parseLineStart()}*parseLineStart(){let e=this.charAt(0);if(!e&&!this.atEnd)return this.setNext("line-start");if(e==="-"||e==="."){if(!this.atEnd&&!this.hasChars(4))return this.setNext("line-start");let t=this.peek(3);if((t==="---"||t==="...")&&Ze(this.charAt(3)))return yield*this.pushCount(3),this.indentValue=0,this.indentNext=0,t==="---"?"doc":"stream"}return this.indentValue=yield*this.pushSpaces(!1),this.indentNext>this.indentValue&&!Ze(this.charAt(1))&&(this.indentNext=this.indentValue),yield*this.parseBlockStart()}*parseBlockStart(){let[e,t]=this.peek(2);if(!t&&!this.atEnd)return this.setNext("block-start");if((e==="-"||e==="?"||e===":")&&Ze(t)){let r=(yield*this.pushCount(1))+(yield*this.pushSpaces(!0));return this.indentNext=this.indentValue+1,this.indentValue+=r,yield*this.parseBlockStart()}return"doc"}*parseDocument(){yield*this.pushSpaces(!0);let e=this.getLine();if(e===null)return this.setNext("doc");let t=yield*this.pushIndicators();switch(e[t]){case"#":yield*this.pushCount(e.length-t);case void 0:return yield*this.pushNewline(),yield*this.parseLineStart();case"{":case"[":return yield*this.pushCount(1),this.flowKey=!1,this.flowLevel=1,"flow";case"}":case"]":return yield*this.pushCount(1),"doc";case"*":return yield*this.pushUntil(co),"doc";case\'"\':case"\'":return yield*this.parseQuotedScalar();case"|":case">":return t+=yield*this.parseBlockScalarHeader(),t+=yield*this.pushSpaces(!0),yield*this.pushCount(e.length-t),yield*this.pushNewline(),yield*this.parseBlockScalar();default:return yield*this.parsePlainScalar()}}*parseFlowCollection(){let e,t,r=-1;do e=yield*this.pushNewline(),e>0?(t=yield*this.pushSpaces(!1),this.indentValue=r=t):t=0,t+=yield*this.pushSpaces(!0);while(e+t>0);let s=this.getLine();if(s===null)return this.setNext("flow");if((r!==-1&&r<this.indentNext&&s[0]!=="#"||r===0&&(s.startsWith("---")||s.startsWith("..."))&&Ze(s[3]))&&!(r===this.indentNext-1&&this.flowLevel===1&&(s[0]==="]"||s[0]==="}")))return this.flowLevel=0,yield lo,yield*this.parseLineStart();let i=0;for(;s[i]===",";)i+=yield*this.pushCount(1),i+=yield*this.pushSpaces(!0),this.flowKey=!1;switch(i+=yield*this.pushIndicators(),s[i]){case void 0:return"flow";case"#":return yield*this.pushCount(s.length-i),"flow";case"{":case"[":return yield*this.pushCount(1),this.flowKey=!1,this.flowLevel+=1,"flow";case"}":case"]":return yield*this.pushCount(1),this.flowKey=!0,this.flowLevel-=1,this.flowLevel?"flow":"doc";case"*":return yield*this.pushUntil(co),"flow";case\'"\':case"\'":return this.flowKey=!0,yield*this.parseQuotedScalar();case":":{let o=this.charAt(1);if(this.flowKey||Ze(o)||o===",")return this.flowKey=!1,yield*this.pushCount(1),yield*this.pushSpaces(!0),"flow"}default:return this.flowKey=!1,yield*this.parsePlainScalar()}}*parseQuotedScalar(){let e=this.charAt(0),t=this.buffer.indexOf(e,this.pos+1);if(e==="\'")for(;t!==-1&&this.buffer[t+1]==="\'";)t=this.buffer.indexOf("\'",t+2);else for(;t!==-1;){let i=0;for(;this.buffer[t-1-i]==="\\\\";)i+=1;if(i%2===0)break;t=this.buffer.indexOf(\'"\',t+1)}let r=this.buffer.substring(0,t),s=r.indexOf(`\n`,this.pos);if(s!==-1){for(;s!==-1;){let i=this.continueScalar(s+1);if(i===-1)break;s=r.indexOf(`\n`,i)}s!==-1&&(t=s-(r[s-1]==="\\r"?2:1))}if(t===-1){if(!this.atEnd)return this.setNext("quoted-scalar");t=this.buffer.length}return yield*this.pushToIndex(t+1,!1),this.flowLevel?"flow":"doc"}*parseBlockScalarHeader(){this.blockScalarIndent=-1,this.blockScalarKeep=!1;let e=this.pos;for(;;){let t=this.buffer[++e];if(t==="+")this.blockScalarKeep=!0;else if(t>"0"&&t<="9")this.blockScalarIndent=Number(t)-1;else if(t!=="-")break}return yield*this.pushUntil(t=>Ze(t)||t==="#")}*parseBlockScalar(){let e=this.pos-1,t=0,r;e:for(let i=this.pos;r=this.buffer[i];++i)switch(r){case" ":t+=1;break;case`\n`:e=i,t=0;break;case"\\r":{let o=this.buffer[i+1];if(!o&&!this.atEnd)return this.setNext("block-scalar");if(o===`\n`)break}default:break e}if(!r&&!this.atEnd)return this.setNext("block-scalar");if(t>=this.indentNext){this.blockScalarIndent===-1?this.indentNext=t:this.indentNext=this.blockScalarIndent+(this.indentNext===0?1:this.indentNext);do{let i=this.continueScalar(e+1);if(i===-1)break;e=this.buffer.indexOf(`\n`,i)}while(e!==-1);if(e===-1){if(!this.atEnd)return this.setNext("block-scalar");e=this.buffer.length}}let s=e+1;for(r=this.buffer[s];r===" ";)r=this.buffer[++s];if(r==="	"){for(;r==="	"||r===" "||r==="\\r"||r===`\n`;)r=this.buffer[++s];e=s-1}else if(!this.blockScalarKeep)do{let i=e-1,o=this.buffer[i];o==="\\r"&&(o=this.buffer[--i]);let a=i;for(;o===" ";)o=this.buffer[--i];if(o===`\n`&&i>=this.pos&&i+1+t>a)e=i;else break}while(!0);return yield Ps,yield*this.pushToIndex(e+1,!0),yield*this.parseLineStart()}*parsePlainScalar(){let e=this.flowLevel>0,t=this.pos-1,r=this.pos-1,s;for(;s=this.buffer[++r];)if(s===":"){let i=this.buffer[r+1];if(Ze(i)||e&&$s.has(i))break;t=r}else if(Ze(s)){let i=this.buffer[r+1];if(s==="\\r"&&(i===`\n`?(r+=1,s=`\n`,i=this.buffer[r+1]):t=r),i==="#"||e&&$s.has(i))break;if(s===`\n`){let o=this.continueScalar(r+1);if(o===-1)break;r=Math.max(r,o-2)}}else{if(e&&$s.has(s))break;t=r}return!s&&!this.atEnd?this.setNext("plain-scalar"):(yield Ps,yield*this.pushToIndex(t+1,!0),e?"flow":"doc")}*pushCount(e){return e>0?(yield this.buffer.substr(this.pos,e),this.pos+=e,e):0}*pushToIndex(e,t){let r=this.buffer.slice(this.pos,e);return r?(yield r,this.pos+=r.length,r.length):(t&&(yield""),0)}*pushIndicators(){switch(this.charAt(0)){case"!":return(yield*this.pushTag())+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators());case"&":return(yield*this.pushUntil(co))+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators());case"-":case"?":case":":{let e=this.flowLevel>0,t=this.charAt(1);if(Ze(t)||e&&$s.has(t))return e?this.flowKey&&(this.flowKey=!1):this.indentNext=this.indentValue+1,(yield*this.pushCount(1))+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators())}}return 0}*pushTag(){if(this.charAt(1)==="<"){let e=this.pos+2,t=this.buffer[e];for(;!Ze(t)&&t!==">";)t=this.buffer[++e];return yield*this.pushToIndex(t===">"?e+1:e,!1)}else{let e=this.pos+1,t=this.buffer[e];for(;t;)if(yf.has(t))t=this.buffer[++e];else if(t==="%"&&xu.has(this.buffer[e+1])&&xu.has(this.buffer[e+2]))t=this.buffer[e+=3];else break;return yield*this.pushToIndex(e,!1)}}*pushNewline(){let e=this.buffer[this.pos];return e===`\n`?yield*this.pushCount(1):e==="\\r"&&this.charAt(1)===`\n`?yield*this.pushCount(2):0}*pushSpaces(e){let t=this.pos-1,r;do r=this.buffer[++t];while(r===" "||e&&r==="	");let s=t-this.pos;return s>0&&(yield this.buffer.substr(this.pos,s),this.pos=t),s}*pushUntil(e){let t=this.pos,r=this.buffer[t];for(;!e(r);)r=this.buffer[++t];return yield*this.pushToIndex(t,!1)}};var Lr=class{constructor(){this.lineStarts=[],this.addNewLine=e=>this.lineStarts.push(e),this.linePos=e=>{let t=0,r=this.lineStarts.length;for(;t<r;){let i=t+r>>1;this.lineStarts[i]<e?t=i+1:r=i}if(this.lineStarts[t]===e)return{line:t+1,col:1};if(t===0)return{line:0,col:e};let s=this.lineStarts[t-1];return{line:t,col:e-s+1}}}};function _t(n,e){for(let t=0;t<n.length;++t)if(n[t].type===e)return!0;return!1}function Ou(n){for(let e=0;e<n.length;++e)switch(n[e].type){case"space":case"comment":case"newline":break;default:return e}return-1}function Iu(n){switch(n==null?void 0:n.type){case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":case"flow-collection":return!0;default:return!1}}function Rs(n){var e;switch(n.type){case"document":return n.start;case"block-map":{let t=n.items[n.items.length-1];return(e=t.sep)!=null?e:t.start}case"block-seq":return n.items[n.items.length-1].start;default:return[]}}function Nn(n){var t;if(n.length===0)return[];let e=n.length;e:for(;--e>=0;)switch(n[e].type){case"doc-start":case"explicit-key-ind":case"map-value-ind":case"seq-item-ind":case"newline":break e}for(;((t=n[++e])==null?void 0:t.type)==="space";);return n.splice(e,n.length)}function vu(n){if(n.start.type==="flow-seq-start")for(let e of n.items)e.sep&&!e.value&&!_t(e.start,"explicit-key-ind")&&!_t(e.sep,"map-value-ind")&&(e.key&&(e.value=e.key),delete e.key,Iu(e.value)?e.value.end?Array.prototype.push.apply(e.value.end,e.sep):e.value.end=e.sep:Array.prototype.push.apply(e.start,e.sep),delete e.sep)}var Nr=class{constructor(e){this.atNewLine=!0,this.atScalar=!1,this.indent=0,this.offset=0,this.onKeyLine=!1,this.stack=[],this.source="",this.type="",this.lexer=new Ir,this.onNewLine=e}*parse(e,t=!1){this.onNewLine&&this.offset===0&&this.onNewLine(0);for(let r of this.lexer.lex(e,t))yield*this.next(r);t||(yield*this.end())}*next(e){if(this.source=e,this.atScalar){this.atScalar=!1,yield*this.step(),this.offset+=e.length;return}let t=Cu(e);if(t)if(t==="scalar")this.atNewLine=!1,this.atScalar=!0,this.type="scalar";else{switch(this.type=t,yield*this.step(),t){case"newline":this.atNewLine=!0,this.indent=0,this.onNewLine&&this.onNewLine(this.offset+e.length);break;case"space":this.atNewLine&&e[0]===" "&&(this.indent+=e.length);break;case"explicit-key-ind":case"map-value-ind":case"seq-item-ind":this.atNewLine&&(this.indent+=e.length);break;case"doc-mode":case"flow-error-end":return;default:this.atNewLine=!1}this.offset+=e.length}else{let r=`Not a YAML token: ${e}`;yield*this.pop({type:"error",offset:this.offset,message:r,source:e}),this.offset+=e.length}}*end(){for(;this.stack.length>0;)yield*this.pop()}get sourceToken(){return{type:this.type,offset:this.offset,indent:this.indent,source:this.source}}*step(){let e=this.peek(1);if(this.type==="doc-end"&&(!e||e.type!=="doc-end")){for(;this.stack.length>0;)yield*this.pop();this.stack.push({type:"doc-end",offset:this.offset,source:this.source});return}if(!e)return yield*this.stream();switch(e.type){case"document":return yield*this.document(e);case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return yield*this.scalar(e);case"block-scalar":return yield*this.blockScalar(e);case"block-map":return yield*this.blockMap(e);case"block-seq":return yield*this.blockSequence(e);case"flow-collection":return yield*this.flowCollection(e);case"doc-end":return yield*this.documentEnd(e)}yield*this.pop()}peek(e){return this.stack[this.stack.length-e]}*pop(e){let t=e!=null?e:this.stack.pop();if(t)if(this.stack.length===0)yield t;else{let r=this.peek(1);switch(t.type==="block-scalar"?t.indent="indent"in r?r.indent:0:t.type==="flow-collection"&&r.type==="document"&&(t.indent=0),t.type==="flow-collection"&&vu(t),r.type){case"document":r.value=t;break;case"block-scalar":r.props.push(t);break;case"block-map":{let s=r.items[r.items.length-1];if(s.value){r.items.push({start:[],key:t,sep:[]}),this.onKeyLine=!0;return}else if(s.sep)s.value=t;else{Object.assign(s,{key:t,sep:[]}),this.onKeyLine=!s.explicitKey;return}break}case"block-seq":{let s=r.items[r.items.length-1];s.value?r.items.push({start:[],value:t}):s.value=t;break}case"flow-collection":{let s=r.items[r.items.length-1];!s||s.value?r.items.push({start:[],key:t,sep:[]}):s.sep?s.value=t:Object.assign(s,{key:t,sep:[]});return}default:yield*this.pop(),yield*this.pop(t)}if((r.type==="document"||r.type==="block-map"||r.type==="block-seq")&&(t.type==="block-map"||t.type==="block-seq")){let s=t.items[t.items.length-1];s&&!s.sep&&!s.value&&s.start.length>0&&Ou(s.start)===-1&&(t.indent===0||s.start.every(i=>i.type!=="comment"||i.indent<t.indent))&&(r.type==="document"?r.end=s.start:r.items.push({start:s.start}),t.items.splice(-1,1))}}else{let r="Tried to pop an empty stack";yield{type:"error",offset:this.offset,source:"",message:r}}}*stream(){switch(this.type){case"directive-line":yield{type:"directive",offset:this.offset,source:this.source};return;case"byte-order-mark":case"space":case"comment":case"newline":yield this.sourceToken;return;case"doc-mode":case"doc-start":{let e={type:"document",offset:this.offset,start:[]};this.type==="doc-start"&&e.start.push(this.sourceToken),this.stack.push(e);return}}yield{type:"error",offset:this.offset,message:`Unexpected ${this.type} token in YAML stream`,source:this.source}}*document(e){if(e.value)return yield*this.lineEnd(e);switch(this.type){case"doc-start":{Ou(e.start)!==-1?(yield*this.pop(),yield*this.step()):e.start.push(this.sourceToken);return}case"anchor":case"tag":case"space":case"comment":case"newline":e.start.push(this.sourceToken);return}let t=this.startBlockValue(e);t?this.stack.push(t):yield{type:"error",offset:this.offset,message:`Unexpected ${this.type} token in YAML document`,source:this.source}}*scalar(e){if(this.type==="map-value-ind"){let t=Rs(this.peek(2)),r=Nn(t),s;e.end?(s=e.end,s.push(this.sourceToken),delete e.end):s=[this.sourceToken];let i={type:"block-map",offset:e.offset,indent:e.indent,items:[{start:r,key:e,sep:s}]};this.onKeyLine=!0,this.stack[this.stack.length-1]=i}else yield*this.lineEnd(e)}*blockScalar(e){switch(this.type){case"space":case"comment":case"newline":e.props.push(this.sourceToken);return;case"scalar":if(e.source=this.source,this.atNewLine=!0,this.indent=0,this.onNewLine){let t=this.source.indexOf(`\n`)+1;for(;t!==0;)this.onNewLine(this.offset+t),t=this.source.indexOf(`\n`,t)+1}yield*this.pop();break;default:yield*this.pop(),yield*this.step()}}*blockMap(e){var r;let t=e.items[e.items.length-1];switch(this.type){case"newline":if(this.onKeyLine=!1,t.value){let s="end"in t.value?t.value.end:void 0,i=Array.isArray(s)?s[s.length-1]:void 0;(i==null?void 0:i.type)==="comment"?s==null||s.push(this.sourceToken):e.items.push({start:[this.sourceToken]})}else t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"space":case"comment":if(t.value)e.items.push({start:[this.sourceToken]});else if(t.sep)t.sep.push(this.sourceToken);else{if(this.atIndentedComment(t.start,e.indent)){let s=e.items[e.items.length-2],i=(r=s==null?void 0:s.value)==null?void 0:r.end;if(Array.isArray(i)){Array.prototype.push.apply(i,t.start),i.push(this.sourceToken),e.items.pop();return}}t.start.push(this.sourceToken)}return}if(this.indent>=e.indent){let s=!this.onKeyLine&&this.indent===e.indent,i=s&&(t.sep||t.explicitKey)&&this.type!=="seq-item-ind",o=[];if(i&&t.sep&&!t.value){let a=[];for(let u=0;u<t.sep.length;++u){let l=t.sep[u];switch(l.type){case"newline":a.push(u);break;case"space":break;case"comment":l.indent>e.indent&&(a.length=0);break;default:a.length=0}}a.length>=2&&(o=t.sep.splice(a[1]))}switch(this.type){case"anchor":case"tag":i||t.value?(o.push(this.sourceToken),e.items.push({start:o}),this.onKeyLine=!0):t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"explicit-key-ind":!t.sep&&!t.explicitKey?(t.start.push(this.sourceToken),t.explicitKey=!0):i||t.value?(o.push(this.sourceToken),e.items.push({start:o,explicitKey:!0})):this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:[this.sourceToken],explicitKey:!0}]}),this.onKeyLine=!0;return;case"map-value-ind":if(t.explicitKey)if(t.sep)if(t.value)e.items.push({start:[],key:null,sep:[this.sourceToken]});else if(_t(t.sep,"map-value-ind"))this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:o,key:null,sep:[this.sourceToken]}]});else if(Iu(t.key)&&!_t(t.sep,"newline")){let a=Nn(t.start),u=t.key,l=t.sep;l.push(this.sourceToken),delete t.key,delete t.sep,this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:a,key:u,sep:l}]})}else o.length>0?t.sep=t.sep.concat(o,this.sourceToken):t.sep.push(this.sourceToken);else if(_t(t.start,"newline"))Object.assign(t,{key:null,sep:[this.sourceToken]});else{let a=Nn(t.start);this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:a,key:null,sep:[this.sourceToken]}]})}else t.sep?t.value||i?e.items.push({start:o,key:null,sep:[this.sourceToken]}):_t(t.sep,"map-value-ind")?this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:[],key:null,sep:[this.sourceToken]}]}):t.sep.push(this.sourceToken):Object.assign(t,{key:null,sep:[this.sourceToken]});this.onKeyLine=!0;return;case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":{let a=this.flowScalar(this.type);i||t.value?(e.items.push({start:o,key:a,sep:[]}),this.onKeyLine=!0):t.sep?this.stack.push(a):(Object.assign(t,{key:a,sep:[]}),this.onKeyLine=!0);return}default:{let a=this.startBlockValue(e);if(a){if(a.type==="block-seq"){if(!t.explicitKey&&t.sep&&!_t(t.sep,"newline")){yield*this.pop({type:"error",offset:this.offset,message:"Unexpected block-seq-ind on same line with key",source:this.source});return}}else s&&e.items.push({start:o});this.stack.push(a);return}}}}yield*this.pop(),yield*this.step()}*blockSequence(e){var r;let t=e.items[e.items.length-1];switch(this.type){case"newline":if(t.value){let s="end"in t.value?t.value.end:void 0,i=Array.isArray(s)?s[s.length-1]:void 0;(i==null?void 0:i.type)==="comment"?s==null||s.push(this.sourceToken):e.items.push({start:[this.sourceToken]})}else t.start.push(this.sourceToken);return;case"space":case"comment":if(t.value)e.items.push({start:[this.sourceToken]});else{if(this.atIndentedComment(t.start,e.indent)){let s=e.items[e.items.length-2],i=(r=s==null?void 0:s.value)==null?void 0:r.end;if(Array.isArray(i)){Array.prototype.push.apply(i,t.start),i.push(this.sourceToken),e.items.pop();return}}t.start.push(this.sourceToken)}return;case"anchor":case"tag":if(t.value||this.indent<=e.indent)break;t.start.push(this.sourceToken);return;case"seq-item-ind":if(this.indent!==e.indent)break;t.value||_t(t.start,"seq-item-ind")?e.items.push({start:[this.sourceToken]}):t.start.push(this.sourceToken);return}if(this.indent>e.indent){let s=this.startBlockValue(e);if(s){this.stack.push(s);return}}yield*this.pop(),yield*this.step()}*flowCollection(e){let t=e.items[e.items.length-1];if(this.type==="flow-error-end"){let r;do yield*this.pop(),r=this.peek(1);while(r&&r.type==="flow-collection")}else if(e.end.length===0){switch(this.type){case"comma":case"explicit-key-ind":!t||t.sep?e.items.push({start:[this.sourceToken]}):t.start.push(this.sourceToken);return;case"map-value-ind":!t||t.value?e.items.push({start:[],key:null,sep:[this.sourceToken]}):t.sep?t.sep.push(this.sourceToken):Object.assign(t,{key:null,sep:[this.sourceToken]});return;case"space":case"comment":case"newline":case"anchor":case"tag":!t||t.value?e.items.push({start:[this.sourceToken]}):t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":{let s=this.flowScalar(this.type);!t||t.value?e.items.push({start:[],key:s,sep:[]}):t.sep?this.stack.push(s):Object.assign(t,{key:s,sep:[]});return}case"flow-map-end":case"flow-seq-end":e.end.push(this.sourceToken);return}let r=this.startBlockValue(e);r?this.stack.push(r):(yield*this.pop(),yield*this.step())}else{let r=this.peek(2);if(r.type==="block-map"&&(this.type==="map-value-ind"&&r.indent===e.indent||this.type==="newline"&&!r.items[r.items.length-1].sep))yield*this.pop(),yield*this.step();else if(this.type==="map-value-ind"&&r.type!=="flow-collection"){let s=Rs(r),i=Nn(s);vu(e);let o=e.end.splice(1,e.end.length);o.push(this.sourceToken);let a={type:"block-map",offset:e.offset,indent:e.indent,items:[{start:i,key:e,sep:o}]};this.onKeyLine=!0,this.stack[this.stack.length-1]=a}else yield*this.lineEnd(e)}}flowScalar(e){if(this.onNewLine){let t=this.source.indexOf(`\n`)+1;for(;t!==0;)this.onNewLine(this.offset+t),t=this.source.indexOf(`\n`,t)+1}return{type:e,offset:this.offset,indent:this.indent,source:this.source}}startBlockValue(e){switch(this.type){case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return this.flowScalar(this.type);case"block-scalar-header":return{type:"block-scalar",offset:this.offset,indent:this.indent,props:[this.sourceToken],source:""};case"flow-map-start":case"flow-seq-start":return{type:"flow-collection",offset:this.offset,indent:this.indent,start:this.sourceToken,items:[],end:[]};case"seq-item-ind":return{type:"block-seq",offset:this.offset,indent:this.indent,items:[{start:[this.sourceToken]}]};case"explicit-key-ind":{this.onKeyLine=!0;let t=Rs(e),r=Nn(t);return r.push(this.sourceToken),{type:"block-map",offset:this.offset,indent:this.indent,items:[{start:r,explicitKey:!0}]}}case"map-value-ind":{this.onKeyLine=!0;let t=Rs(e),r=Nn(t);return{type:"block-map",offset:this.offset,indent:this.indent,items:[{start:r,key:null,sep:[this.sourceToken]}]}}}return null}atIndentedComment(e,t){return this.type!=="comment"||this.indent<=t?!1:e.every(r=>r.type==="newline"||r.type==="space")}*documentEnd(e){this.type!=="doc-mode"&&(e.end?e.end.push(this.sourceToken):e.end=[this.sourceToken],this.type==="newline"&&(yield*this.pop()))}*lineEnd(e){switch(this.type){case"comma":case"doc-start":case"doc-end":case"flow-seq-end":case"flow-map-end":case"map-value-ind":yield*this.pop(),yield*this.step();break;case"newline":this.onKeyLine=!1;case"space":case"comment":default:e.end?e.end.push(this.sourceToken):e.end=[this.sourceToken],this.type==="newline"&&(yield*this.pop())}}};function bf(n){let e=n.prettyErrors!==!1;return{lineCounter:n.lineCounter||e&&new Lr||null,prettyErrors:e}}function Lu(n,e={}){let{lineCounter:t,prettyErrors:r}=bf(e),s=new Nr(t==null?void 0:t.addNewLine),i=new vr(e),o=null;for(let a of i.compose(s.parse(n),!0,n.length))if(!o)o=a;else if(o.options.logLevel!=="silent"){o.errors.push(new Ge(a.range.slice(0,2),"MULTIPLE_DOCS","Source contains multiple documents; please use YAML.parseAllDocuments()"));break}return r&&t&&(o.errors.forEach(Qi(n,t)),o.warnings.forEach(Qi(n,t))),o}function fo(n,e,t){let r;typeof e=="function"?r=e:t===void 0&&e&&typeof e=="object"&&(t=e);let s=Lu(n,t);if(!s)return null;if(s.warnings.forEach(i=>ys(s.options.logLevel,i)),s.errors.length>0){if(s.options.logLevel!=="silent")throw s.errors[0];s.errors=[]}return s.toJS(Object.assign({reviver:r},t))}var qs=Kr(Pu());var b=Kr(ss());var Qe;(L=>{L.DEFAULT_TO_STRING={nullRepresentation:"-",dateFormat:"MMMM dd, yyyy",dateTimeFormat:"h:mm a - MMMM dd, yyyy"};function e(m,F=L.DEFAULT_TO_STRING,O=!1){let x=t(m);if(!x)return F.nullRepresentation;switch(x.type){case"null":return F.nullRepresentation;case"string":return x.value;case"number":case"boolean":return""+x.value;case"link":return x.value.markdown();case"function":return"<function>";case"array":let S="";return O&&(S+="["),S+=x.value.map(q=>e(q,F,!0)).join(", "),O&&(S+="]"),S;case"object":return"{ "+Object.entries(x.value).map(q=>q[0]+": "+e(q[1],F,!0)).join(", ")+" }";case"date":return Ra(x.value,F.dateFormat,F.dateTimeFormat);case"duration":return ja(x.value)}}L.toString=e;function t(m){return h(m)?{type:"null",value:null}:f(m)?{type:"number",value:m}:l(m)?{type:"string",value:m}:p(m)?{type:"boolean",value:m}:y(m)?{type:"duration",value:m}:d(m)?{type:"date",value:m}:E(m)?{type:"array",value:m}:T(m)?{type:"link",value:m}:k(m)?{type:"function",value:m}:g(m)?{type:"object",value:m}:void 0}L.wrapValue=t;function r(m,F){if(g(m)){let O={};for(let[x,S]of Object.entries(m))O[x]=r(S,F);return O}else if(E(m)){let O=[];for(let x of m)O.push(r(x,F));return O}else return F(m)}L.mapLeaves=r;function s(m,F){return i(m,F)==0}L.equals=s;function i(m,F,O){var q,V;if(m===F||(m===void 0&&(m=null),F===void 0&&(F=null),m===null&&F===null))return 0;if(m===null)return-1;if(F===null)return 1;let x=t(m),S=t(F);if(x===void 0&&S===void 0)return 0;if(x===void 0)return-1;if(S===void 0)return 1;if(x.type!=S.type)return x.type.localeCompare(S.type);if(x.value===S.value)return 0;switch(x.type){case"string":return x.value.localeCompare(S.value);case"number":return x.value<S.value?-1:x.value==S.value?0:1;case"null":return 0;case"boolean":return x.value==S.value?0:x.value?1:-1;case"link":let Y=x.value,v=S.value,P=O!=null?O:Ae=>Ae,j=P(Y.path).localeCompare(P(v.path));if(j!=0)return j;let De=Y.type.localeCompare(v.type);return De!=0?De:Y.subpath&&!v.subpath?1:!Y.subpath&&v.subpath?-1:!Y.subpath&&!v.subpath?0:((q=Y.subpath)!=null?q:"").localeCompare((V=v.subpath)!=null?V:"");case"date":return x.value<S.value?-1:x.value.equals(S.value)?0:1;case"duration":return x.value<S.value?-1:x.value.equals(S.value)?0:1;case"array":let ye=x.value,he=S.value;for(let Ae=0;Ae<Math.min(ye.length,he.length);Ae++){let Rt=i(ye[Ae],he[Ae]);if(Rt!=0)return Rt}return ye.length-he.length;case"object":let en=x.value,Tt=S.value,tn=Array.from(Object.keys(en)),Pt=Array.from(Object.keys(Tt));tn.sort(),Pt.sort();let $t=i(tn,Pt);if($t!=0)return $t;for(let Ae of tn){let Rt=i(en[Ae],Tt[Ae]);if(Rt!=0)return Rt}return 0;case"function":return 0}}L.compare=i;function o(m){var F;return(F=t(m))==null?void 0:F.type}L.typeOf=o;function a(m){let F=t(m);if(!F)return!1;switch(F.type){case"number":return F.value!=0;case"string":return F.value.length>0;case"boolean":return F.value;case"link":return!!F.value.path;case"date":return F.value.toMillis()!=0;case"duration":return F.value.as("seconds")!=0;case"object":return Object.keys(F.value).length>0;case"array":return F.value.length>0;case"null":return!1;case"function":return!0}}L.isTruthy=a;function u(m){if(m==null)return m;if(L.isArray(m))return[].concat(m.map(F=>u(F)));if(L.isObject(m)){let F={};for(let[O,x]of Object.entries(m))F[O]=u(x);return F}else return m}L.deepCopy=u;function l(m){return typeof m=="string"}L.isString=l;function f(m){return typeof m=="number"}L.isNumber=f;function d(m){return m instanceof B}L.isDate=d;function y(m){return m instanceof M}L.isDuration=y;function h(m){return m==null}L.isNull=h;function E(m){return Array.isArray(m)}L.isArray=E;function p(m){return typeof m=="boolean"}L.isBoolean=p;function T(m){return m instanceof ee}L.isLink=T;function g(m){return m!==void 0&&typeof m=="object"&&!E(m)&&!y(m)&&!d(m)&&!T(m)&&!h(m)}L.isObject=g;function k(m){return typeof m=="function"}L.isFunction=k})(Qe||(Qe={}));var $u;(i=>{function n(o){return Qe.isObject(o)&&Object.keys(o).length==2&&"key"in o&&"rows"in o}i.isElementGroup=n;function e(o){for(let a of o)if(!n(a))return!1;return!0}i.isGrouping=e;function t(o){for(let a of o)if(n(a))return!1;return!0}i.isLeaf=t;function r(o){if(n(o))return r(o.rows);if(e(o)){let a=0;for(let u of o)a+=r(u.rows);return a}else return o.length}i.count=r;function s(o,a,u){if(u<=a)return[];if(t(o))return o.slice(a,u);let l=0,f=0;for(;l<o.length&&f+r(o[l])<=a;)f+=r(o[l]),l++;if(l>=o.length)return[];let d=[];for(;l<o.length&&f<u;){let y=o[l],h=r(y),E=Math.max(f,a),p=Math.min(h+f,u);d.push({key:y.key,rows:s(y.rows,E-f,p-f)}),f+=h,l++}return d}i.slice=s})($u||($u={}));var Mr=class{constructor(e){this.value=e;this.successful=!0}map(e){return new Mr(e(this.value))}flatMap(e){return e(this.value)}mapErr(e){return this.castErr()}bimap(e,t){return this.map(e).castErr()}orElse(e){return this.value}cast(){return this}castErr(){return this}orElseThrow(e){return this.value}},_r=class{constructor(e){this.error=e;this.successful=!1}map(e){return this.cast()}flatMap(e){return this.cast()}mapErr(e){return new _r(e(this.error))}bimap(e,t){return this.mapErr(t).cast()}orElse(e){return e}cast(){return this}castErr(){return this}orElseThrow(e){throw e?new Error(e(this.error)):new Error(""+this.error)}},ke;(a=>{function n(u){return new Mr(u)}a.success=n;function e(u){return new _r(u)}a.failure=e;function t(u,l,f){return u.successful?l.successful?f(u.value,l.value):e(l.error):e(u.error)}a.flatMap2=t;function r(u,l,f){return t(u,l,(d,y)=>n(f(d,y)))}a.map2=r;function s(u,l){let f=[];for(let d of u){let y=l(d);if(!y.successful)return y.cast();f.push(y.value)}return a.success(f)}a.mapAll=s;function i(u){try{return a.success(u())}catch(l){return a.failure(l)}}a.trying=i;async function o(u){try{return a.success(await u)}catch(l){return a.failure(l)}}a.async=o})(ke||(ke={}));var Bt;(L=>{L.EVERYTHING={type:"everything"},L.NOTHING={type:"nothing"},L.EMPTY_SET=new Set;function r(m){return m.size==0?L.NOTHING:{type:"atom",value:m}}L.atom=r;function s(m){return m?L.EVERYTHING:L.NOTHING}L.constant=s;function i(m){return m!==void 0?r(m):L.NOTHING}L.nullableAtom=i;function o(m){return m.size==0?L.EVERYTHING:{type:"negated",value:m}}L.negated=o;function a(m){switch(m.type){case"everything":return L.NOTHING;case"nothing":return L.EVERYTHING;case"atom":return o(m.value);case"negated":return r(m.value)}}L.negate=a;function u(m){switch(m.type){case"everything":return!1;case"negated":return!1;case"atom":return m.value.size==0;case"nothing":return!0}}L.empty=u;function l(m,F){switch(m.type){case"everything":return F;case"nothing":return L.EMPTY_SET;case"atom":return m.value;case"negated":return k(F,m.value)}}L.resolve=l;function f(m){return d(m,F=>F)}L.intersect=f;function d(m,F){return y(m,O=>ke.success(F(O))).orElseThrow()}L.lazyIntersect=d;function y(m,F){let O=[],x=[];for(let S of m){let q=F(S);if(!q.successful)return q.cast();let V=q.value;if(V!==void 0){if(u(V))return ke.success(L.NOTHING);V.type!=="everything"&&(V.type=="atom"?O.push(V.value):V.type=="negated"&&x.push(V.value))}}return O.length==0&&x.length==0?ke.success(L.EVERYTHING):O.length>0&&x.length==0?ke.success(r(T(O))):O.length==0&&x.length>0?ke.success(o(g(x))):ke.success(L.atom(k(T(O),g(x))))}L.lazyFailableIntersection=y;function h(m){return E(m,F=>F)}L.union=h;function E(m,F){return p(m,O=>ke.success(F(O))).orElseThrow()}L.lazyUnion=E;function p(m,F){let O=[],x=[];for(let S of m){let q=F(S);if(!q.successful)return q.cast();let V=q.value;if(V!==void 0){if(V.type==="everything")return ke.success(L.EVERYTHING);u(V)||(V.type=="atom"?O.push(V.value):V.type=="negated"&&x.push(V.value))}}return O.length==0&&x.length==0?ke.success(L.NOTHING):O.length>0&&x.length==0?ke.success(L.atom(g(O))):O.length==0&&x.length>0?ke.success(L.negated(T(x))):ke.success(o(k(T(x),g(O))))}L.lazyFailableUnion=p;function T(m){if(m.length==0)return new Set;if(m.length==1)return m[0];let F=[].concat(m).sort((O,x)=>O.size-x.size);for(;F.length>1;){let O=new Set,x=F.pop();for(let S of F[0])x.has(S)&&O.add(S);F[0]=O}return F[0]}L.setIntersect=T;function g(m){if(m.length==0)return new Set;if(m.length==1)return m[0];let F=new Set;for(let O of m)for(let x of O)F.add(x);return F}L.setUnion=g;function k(m,F){if(m.size>F.size){let O=new Set(m);for(let x of F)O.delete(x);return O}else{let O=new Set;for(let x of m)F.has(x)||O.add(x);return O}}L.setIntersectNegation=k})(Bt||(Bt={}));var se;(T=>{T.ROW="$row";function e(g){return{type:"variable",name:g}}T.variable=e;function t(g){return{type:"literal",value:g}}T.literal=t;function r(g,k,L){return{type:"binaryop",left:g,op:k,right:L}}T.binaryOp=r;function s(g,k){return{type:"binaryop",left:g,right:k,op:"index"}}T.index=s;function i(g){let k=g.split("."),L=T.variable(k[0]);for(let m=1;m<k.length;m++)L=T.index(L,T.literal(k[m]));return L}T.indexVariable=i;function o(g,k){return{type:"lambda",arguments:g,value:k}}T.lambda=o;function a(g,k,L){return{type:"method",target:g,func:k,arguments:L}}T.method=a;function u(g,k){return{type:"function",func:g,arguments:k}}T.func=u;function l(g){return{type:"list",values:g}}T.list=l;function f(g){return{type:"object",values:g}}T.object=f;function d(g){return{type:"negated",child:g}}T.negate=d;function y(g){return g=="<="||g=="<"||g==">"||g==">="||g=="!="||g=="="}T.isCompareOp=y;function h(g,k=new Set([T.ROW])){switch(g.type){case"binaryop":return g.op==="index"&&g.left.type=="variable"&&g.left.name==T.ROW&&g.right.type=="literal"&&Qe.isString(g.right.value)?k.has(g.right.value)?new Set:new Set([g.right.value]):Bt.setUnion([h(g.left,k),h(g.right,k)]);case"function":let L=g.arguments.map(S=>h(S,k)),m=h(g.func,k);return Bt.setUnion(L.concat(m));case"method":let F=g.arguments.map(S=>h(S,k)),O=h(g.target,k);return Bt.setUnion(F.concat(O));case"lambda":let x=k!=null?k:new Set;for(let S of g.arguments)x.add(S);return h(g.value,x);case"list":return Bt.setUnion(g.values.map(S=>h(S,k)));case"negated":return h(g.child,k);case"object":return Bt.setUnion(Object.values(g.values).map(S=>h(S,k)));case"variable":return k&&k.has(g.name)?new Set:new Set([g.name]);case"literal":return new Set}}T.unboundVariables=h;function E(g){switch(g.type){case"binaryop":return g.op==="index"?`${E(g.left)}[${E(g.right)}]`:`${E(g.left)} ${g.op} ${E(g.right)}`;case"function":return`${E(g.func)}(${g.arguments.map(E).join(", ")})`;case"method":return`${E(g.target)}.${g.func}(${g.arguments.map(E).join(", ")})`;case"lambda":return`(${g.arguments.join(", ")}) => ${E(g.value)}`;case"list":return`[${g.values.map(E).join(", ")}]`;case"negated":return`!${E(g.child)}`;case"object":return`{${Object.entries(g.values).map(([L,m])=>`${L}: ${E(m)}`).join(", ")}}`;case"variable":return g.name;case"literal":let k=Qe.wrapValue(g.value);if(!k)return"null";switch(k.type){case"string":return`"${k.value}"`;default:return Qe.toString(k.value)}}}T.toString=E,T.NULL=T.literal(null)})(se||(se={}));var z=b.createLanguage({number:n=>b.regexp(/-?[0-9]+(\\.[0-9]+)?/).map(e=>Number.parseFloat(e)).desc("number"),string:n=>b.string(\'"\').then(b.alt(n.escapeCharacter,b.noneOf(\'"\\\\\')).atLeast(0).map(e=>e.join(""))).skip(b.string(\'"\')).desc("string"),escapeCharacter:n=>b.string("\\\\").then(b.any).map(e=>e===\'"\'?\'"\':e==="\\\\"?"\\\\":"\\\\"+e),bool:n=>b.regexp(/true|false|True|False/).map(e=>e.toLowerCase()=="true").desc("boolean"),tag:n=>b.seqMap(b.string("#"),b.alt(b.regexp(/[^\\u2000-\\u206F\\u2E00-\\u2E7F\'!"#$%&()*+,.:;<=>?@^`{|}~\\[\\]\\\\\\s]/).desc("text")).many(),(e,t)=>e+t.join("")).desc("tag"),identifier:n=>b.seqMap(b.alt(b.regexp(/[\\p{Letter}$]/u),b.regexp(Ru).desc("text")),b.alt(b.regexp(/[0-9\\p{Letter}$_-]/u),b.regexp(Ru).desc("text")).many(),(e,t)=>e+t.join("")).desc("variable"),link:n=>b.regexp(/\\[\\[([^\\[\\]]*?)\\]\\]/u,1).map(e=>ee.parseInner(e)).desc("file link"),embedLink:n=>b.seqMap(b.string("!").atMost(1),n.link,(e,t)=>(e.length>0&&(t.embed=!0),t)).desc("file link"),binaryPlusMinus:n=>b.regexp(/\\+|-/).map(e=>e).desc("\'+\' or \'-\'"),binaryMulDiv:n=>b.regexp(/\\*|\\/|%/).map(e=>e).desc("\'*\' or \'/\' or \'%\'"),binaryCompareOp:n=>b.regexp(/>=|<=|!=|>|<|=/).map(e=>e).desc("\'>=\' or \'<=\' or \'!=\' or \'=\' or \'>\' or \'<\'"),binaryAndOp:n=>b.regexp(/and|&/i).map(e=>"&").desc("\'and\'"),binaryOrOp:n=>b.regexp(/or|\\|/i).map(e=>"|").desc("\'or\'"),rootDate:n=>b.seqMap(b.regexp(/\\d{4}/),b.string("-"),b.regexp(/\\d{2}/),(e,t,r)=>B.fromObject({year:Number.parseInt(e),month:Number.parseInt(r)})).desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),dateShorthand:n=>b.alt(...Object.keys(Vu).sort((e,t)=>t.length-e.length).map(b.string)),date:n=>Cf(n.rootDate,e=>b.seqMap(b.string("-"),b.regexp(/\\d{2}/),(t,r)=>e.set({day:Number.parseInt(r)})),e=>b.seqMap(b.string("T"),b.regexp(/\\d{2}/),(t,r)=>e.set({hour:Number.parseInt(r)})),e=>b.seqMap(b.string(":"),b.regexp(/\\d{2}/),(t,r)=>e.set({minute:Number.parseInt(r)})),e=>b.seqMap(b.string(":"),b.regexp(/\\d{2}/),(t,r)=>e.set({second:Number.parseInt(r)})),e=>b.alt(b.seqMap(b.string("."),b.regexp(/\\d{3}/),(t,r)=>e.set({millisecond:Number.parseInt(r)})),b.succeed(e)),e=>b.alt(b.seqMap(b.string("+").or(b.string("-")),b.regexp(/\\d{1,2}(:\\d{2})?/),(t,r)=>e.setZone("UTC"+t+r,{keepLocalTime:!0})),b.seqMap(b.string("Z"),()=>e.setZone("utc",{keepLocalTime:!0})),b.seqMap(b.string("["),b.regexp(/[0-9A-Za-z+-\\/]+/u),b.string("]"),(t,r,s)=>e.setZone(r,{keepLocalTime:!0})))).assert(e=>e.isValid,"valid date").desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),datePlus:n=>b.alt(n.dateShorthand.map(e=>Vu[e]()),n.date).desc("date in format YYYY-MM[-DDTHH-MM-SS.MS] or in shorthand"),durationType:n=>b.alt(...Object.keys(ju).sort((e,t)=>t.length-e.length).map(b.string)),duration:n=>b.seqMap(n.number,b.optWhitespace,n.durationType,(e,t,r)=>ju[r].mapUnits(s=>s*e)).sepBy1(b.string(",").trim(b.optWhitespace).or(b.optWhitespace)).map(e=>e.reduce((t,r)=>t.plus(r))).desc("duration like 4hr2min"),rawNull:n=>b.string("null"),atomInlineField:n=>b.alt(n.date,n.duration.map(e=>_i(e)),n.string,n.tag,n.embedLink,n.bool,n.number,n.rawNull),inlineFieldList:n=>n.atomInlineField.sepBy(b.string(",").trim(b.optWhitespace).lookahead(n.atomInlineField)),inlineField:n=>b.alt(b.seqMap(n.atomInlineField,b.string(",").trim(b.optWhitespace),n.inlineFieldList,(e,t,r)=>[e].concat(r)),n.atomInlineField)}),Ru=new RegExp(wn(),""),ju={year:M.fromObject({years:1}),years:M.fromObject({years:1}),yr:M.fromObject({years:1}),yrs:M.fromObject({years:1}),month:M.fromObject({months:1}),months:M.fromObject({months:1}),mo:M.fromObject({months:1}),mos:M.fromObject({months:1}),week:M.fromObject({weeks:1}),weeks:M.fromObject({weeks:1}),wk:M.fromObject({weeks:1}),wks:M.fromObject({weeks:1}),w:M.fromObject({weeks:1}),day:M.fromObject({days:1}),days:M.fromObject({days:1}),d:M.fromObject({days:1}),hour:M.fromObject({hours:1}),hours:M.fromObject({hours:1}),hr:M.fromObject({hours:1}),hrs:M.fromObject({hours:1}),h:M.fromObject({hours:1}),minute:M.fromObject({minutes:1}),minutes:M.fromObject({minutes:1}),min:M.fromObject({minutes:1}),mins:M.fromObject({minutes:1}),m:M.fromObject({minutes:1}),second:M.fromObject({seconds:1}),seconds:M.fromObject({seconds:1}),sec:M.fromObject({seconds:1}),secs:M.fromObject({seconds:1}),s:M.fromObject({seconds:1})},Vu={now:()=>B.local(),today:()=>B.local().startOf("day"),yesterday:()=>B.local().startOf("day").minus(M.fromObject({days:1})),tomorrow:()=>B.local().startOf("day").plus(M.fromObject({days:1})),sow:()=>B.local().startOf("week"),"start-of-week":()=>B.local().startOf("week"),eow:()=>B.local().endOf("week"),"end-of-week":()=>B.local().endOf("week"),soy:()=>B.local().startOf("year"),"start-of-year":()=>B.local().startOf("year"),eoy:()=>B.local().endOf("year"),"end-of-year":()=>B.local().endOf("year"),som:()=>B.local().startOf("month"),"start-of-month":()=>B.local().startOf("month"),eom:()=>B.local().endOf("month"),"end-of-month":()=>B.local().endOf("month")},qu=b.createLanguage({variable:n=>z.identifier.map(se.variable).desc("variable"),number:n=>z.number.map(se.literal).desc("number"),string:n=>z.string.map(se.literal).desc("string"),bool:n=>z.bool.map(se.literal).desc("boolean"),date:n=>wt("date",z.datePlus).map(([e,t])=>se.literal(t)).desc("date"),duration:n=>wt("dur",z.duration).map(([e,t])=>se.literal(t)).desc("duration"),null:n=>z.rawNull.map(e=>se.NULL),link:n=>z.link.map(se.literal),list:n=>n.expression.sepBy(b.string(",").trim(b.optWhitespace)).wrap(b.string("[").skip(b.optWhitespace),b.optWhitespace.then(b.string("]"))).map(e=>se.list(e)).desc("list"),object:n=>b.seqMap(z.identifier.or(z.string),b.string(":").trim(b.optWhitespace),n.expression,(e,t,r)=>({name:e,value:r})).sepBy(b.string(",").trim(b.optWhitespace)).wrap(b.string("{").skip(b.optWhitespace),b.optWhitespace.then(b.string("}"))).map(e=>{let t={};for(let r of e)t[r.name]=r.value;return se.object(t)}).desc("object (\'{ a: 1, b: 2 }\')"),atom:n=>b.alt(z.embedLink.map(e=>se.literal(e)),n.negated,n.link,n.list,n.object,n.lambda,n.parens,n.bool,n.number,n.string,n.date,n.duration,n.null,n.variable),index:n=>b.seqMap(n.atom,b.alt(n.methodPostfix,n.functionPostfix,n.indexPostfix,n.dotPostfix).many(),(e,t)=>{let r=e;for(let s of t)switch(s.type){case"dot":r=se.index(r,se.literal(s.expr));break;case"index":r=se.index(r,s.expr);break;case"function":r=se.func(r,s.exprs);break;case"method":r=se.method(r,s.func,s.exprs);break}return r}),negated:n=>b.seqMap(b.string("!"),n.index,(e,t)=>se.negate(t)).desc("negated field"),parens:n=>n.expression.trim(b.optWhitespace).wrap(b.string("("),b.string(")")),lambda:n=>b.seqMap(z.identifier.sepBy(b.string(",").trim(b.optWhitespace)).wrap(b.string("(").trim(b.optWhitespace),b.string(")").trim(b.optWhitespace)),b.string("=>").trim(b.optWhitespace),n.expression,(e,t,r)=>({type:"lambda",arguments:e,value:r})),dotPostfix:n=>b.string(".").then(z.identifier).map(e=>({type:"dot",expr:e})),indexPostfix:n=>n.expression.trim(b.optWhitespace).wrap(b.string("["),b.string("]")).map(e=>({type:"index",expr:e})),functionPostfix:n=>n.expression.sepBy(b.string(",").trim(b.optWhitespace)).trim(b.optWhitespace).wrap(b.string("("),b.string(")")).map(e=>({type:"function",exprs:e})),methodPostfix:n=>b.seqMap(b.string("."),z.identifier.trim(b.optWhitespace),n.expression.sepBy(b.string(",").trim(b.optWhitespace)).trim(b.optWhitespace).wrap(b.string("("),b.string(")")),(e,t,r)=>({type:"method",func:t,exprs:r})),binaryMulDiv:n=>Mn(n.index,z.binaryMulDiv,se.binaryOp),binaryPlusMinus:n=>Mn(n.binaryMulDiv,z.binaryPlusMinus,se.binaryOp),binaryCompare:n=>Mn(n.binaryPlusMinus,z.binaryCompareOp,se.binaryOp),binaryBoolean:n=>Mn(n.binaryCompare,z.binaryAndOp.or(z.binaryOrOp),se.binaryOp),binaryOp:n=>n.binaryBoolean,expression:n=>n.binaryOp}),nb=b.createLanguage({queryTag:n=>z.tag.map(e=>({type:"tagged",value:e})),queryId:n=>wt("id",z.string).map(([e,t])=>({type:"id",value:t})),queryType:n=>b.string("@").then(z.identifier).map(e=>({type:"typed",value:e})),queryPath:n=>wt(b.regexp(/e?path/i).desc("[e]path"),z.string).map(([e,t])=>({type:"path",value:t,exact:e.toLowerCase()==="epath"})),queryParentOf:n=>wt(b.regexp(/parentof|supertree/i).desc("parentof"),n.query).map(([e,t])=>({type:"parent-of",children:t,inclusive:e.toLowerCase()==="supertree"})),queryChildOf:n=>wt(b.regexp(/childof|subtree/i).desc("childof"),n.query).map(([e,t])=>({type:"child-of",parents:t,inclusive:e.toLowerCase()==="subtree"})),querySimpleLinked:n=>z.link.map(e=>({type:"linked",source:{type:"link",value:e},direction:"incoming"})),queryLinked:n=>wt(b.regexp(/linksto|linkedfrom|connected/i).desc("connected"),n.query).map(([e,t])=>({type:"linked",source:t.type=="linked"&&t.source.type=="link"?t.source:t,direction:e.toLowerCase()=="linksto"?"incoming":e.toLowerCase()=="linkedfrom"?"outgoing":"both"})),queryExists:n=>wt(b.regexp(/exists/i).desc("exists"),z.identifier.or(z.string)).map(([e,t])=>({type:"field",value:t})),queryQuotedExpression:n=>wt(b.regexp(/expr/i).desc("expr"),qu.expression).map(([e,t])=>({type:"expression",expression:t})),queryRawExpression:n=>qu.binaryCompare.map(e=>({type:"expression",expression:e})),queryParens:n=>n.query.trim(b.optWhitespace).wrap(b.string("("),b.string(")")),queryNegate:n=>b.string("!").skip(b.optWhitespace).then(n.queryAtom).map(e=>({type:"not",element:e})),queryAtom:n=>b.alt(n.queryParens,n.queryNegate,n.querySimpleLinked,n.queryTag,n.queryType,n.queryId,n.queryExists,n.queryChildOf,n.queryParentOf,n.queryLinked,n.queryPath,n.queryQuotedExpression,n.queryRawExpression),queryAnds:n=>Mn(n.queryAtom,z.binaryAndOp,(e,t,r)=>({type:"and",elements:[e,r]})),queryOrs:n=>Mn(n.queryAnds,z.binaryOrOp,(e,t,r)=>({type:"or",elements:[e,r]})),query:n=>n.queryOrs.trim(b.optWhitespace)});function Mn(n,e,t){return b.seqMap(n,b.seq(b.optWhitespace,e,b.optWhitespace,n).many(),(r,s)=>{if(s.length==0)return r;let i=t(r,s[0][1],s[0][3]);for(let o=1;o<s.length;o++)i=t(i,s[o][1],s[o][3]);return i})}function wt(n,e){let t=typeof n=="string"?b.string(n):n;return b.seqMap(t.skip(b.optWhitespace),e.trim(b.optWhitespace).wrap(b.string("("),b.string(")")),(r,s)=>[r,s])}function Cf(n,...e){return b.custom((t,r)=>(s,i)=>{let o=n._(s,i);if(!o.status)return o;for(let a of e){let u=o.value,l=a(u)._(s,o.index);if(!l.status)return o;o=l}return o})}var Xt=Kr(ss());function Qt(n,e){let t={};for(let[r,s]of Object.entries(n))t[r]=e(s);return t}var _n;(r=>{r.NOOP_NORMALIZER=s=>s;function e(s){let i=Qe.wrapValue(s);if(!i)return null;switch(i==null?void 0:i.type){case"array":return i.value.map(r.json);case"object":return Qt(i.value,r.json);case"date":return{$_type:"date",value:i.value.toISO({extendedZone:!0,includeOffset:!0})};case"link":return{$_type:"link",value:i.value.toObject()};case"duration":return{$_type:"duration",value:i.value.toISO()};case"boolean":case"number":case"string":return i.value;case"function":case"null":return null}}r.json=e;function t(s,i=r.NOOP_NORMALIZER){if(s==null)return null;if(Array.isArray(s))return i(s.map(o=>r.value(o,i)));if(typeof s=="object"){if(!("$_type"in s))return Qt(s,o=>r.value(o,i));switch(s.$_type){case"date":return i(B.fromISO(s.value,{setZone:!0}));case"duration":return i(M.fromISO(s.value));case"link":return i(ee.fromObject(s.value));default:throw new Error(`Unrecognized serialized type \'${s.$_type}\'!`)}}return i(s)}r.value=t})(_n||(_n={}));function Uu(n){return Object.assign({},n,{value:_n.json(n.value)})}function Br(n,e){return Array.isArray(n)?n.map(t=>Br(t,e)):{key:n.key,raw:n.value,value:vf(n.value),position:{line:e,start:n.start,startValue:n.startValue,end:n.end},wrapping:n.wrapping}}var js=Object.freeze({"[":"]","(":")"});function xf(n,e,t,r){let s=0,i=!1;for(let o=e;o<n.length;o++){let a=n.charAt(o);if(a=="\\\\"){i=!i;continue}if(i){i=!1;continue}if(a==t?s++:a==r&&s--,s<0)return{value:n.substring(e,o).trim(),endIndex:o+1};i=!1}}function Ku(n,e){let t=n.indexOf("::",e);if(!(t<0))return{key:n.substring(e,t).trim(),valueIndex:t+2}}function Of(n,e){let t=n.charAt(e),r=Ku(n,e+1);if(r===void 0)return;for(let i of Object.keys(js).concat(Object.values(js)))if(r.key.includes(i))return;let s=xf(n,r.valueIndex,t,js[t]);if(s!==void 0)return{key:r.key,value:s.value,start:e,startValue:r.valueIndex,end:s.endIndex,wrapping:t}}function vf(n){if(n.trim()=="")return null;let e=z.inlineField.parse(n);return e.status?e.value:n}function Wu(n){let e=[];for(let r of Object.keys(js)){let s=n.indexOf(r);for(;s>=0;){let i=Of(n,s);if(!i){s=n.indexOf(r,s+1);continue}e.push(i),s=n.indexOf(r,i.end)}}e.sort((r,s)=>r.start-s.start);let t=[];for(let r=0;r<e.length;r++)(r==0||t[t.length-1].end<e[r].start)&&t.push(e[r]);return t}var If=Xt.alt(Xt.regexp(new RegExp(wn(),"u")),Xt.regexp(/[0-9\\p{Letter}\\w\\s_/-]+/u)).many().map(n=>n.join("")),Lf=Xt.regexp(/[^0-9\\w\\p{Letter}]*/u).then(If).skip(Xt.regexp(/[_\\*~`]*/u));function Hu(n){let e=Ku(n,0);if(!e)return;let t=Lf.parse(e.key);if(t.status)return{key:t.value,value:n.substring(e.valueIndex).trim(),start:0,startValue:e.valueIndex,end:n.length}}var Nf=/\\u{2795}\\s*(\\d{4}-\\d{2}-\\d{2})/u,Af=/(?:\\u{1F4C5}|\\u{1F4C6}|\\u{1F5D3}\\u{FE0F}?)\\s*(\\d{4}-\\d{2}-\\d{2})/u,Mf=/\\u{2705}\\s*(\\d{4}-\\d{2}-\\d{2})/u,_f=/[\\u{23F3}\\u{231B}]\\s*(\\d{4}-\\d{2}-\\d{2})/u,Bf=/\\u{1F6EB}\\s*(\\d{4}-\\d{2}-\\d{2})/u,Pf=[{regex:Nf,key:"created"},{regex:Bf,key:"start"},{regex:_f,key:"scheduled"},{regex:Af,key:"due"},{regex:Mf,key:"completion"}];function Ju(n){let e=[];for(let{regex:t,key:r}of Pf){let s=t.exec(n);s&&e.push({key:r,value:s[1],start:s.index,startValue:s.index+1,end:s.index+s[0].length,wrapping:"emoji-shorthand"})}return e}var Vs;(t=>{function n(r){let s=Qe.wrapValue(e);if(!s)return null;switch(s.type){case"string":case"boolean":case"null":case"number":return s.value;case"array":return s.value.map(n);case"date":return s.value.toISO();case"duration":return s.value.toHuman();case"function":return null;case"link":return s.value.markdown();case"object":return Qt(s.value,n)}}t.yaml=n;function e(r){if(r==null)return null;if(typeof r=="object")if(Array.isArray(r)){let s=[];for(let i of r)s.push(e(i));return s}else{if(r instanceof Date)return B.fromJSDate(r);{let s=r,i={};for(let o in s)i[o]=e(s[o]);return i}}else{if(typeof r=="number")return r;if(typeof r=="boolean")return r;if(typeof r=="string"){let s=z.date.parse(r);if(s.status)return s.value;let i=z.duration.parse(r);if(i.status)return i.value;let o=z.link.parse(r);return o.status?o.value:r}}return null}t.literal=e})(Vs||(Vs={}));var $f=/```yaml:data/i,Rf=/^(?:```|~~~)(.*)$/im,jf=/^[\\s>]*(\\d+\\.|\\d+\\)|\\*|-|\\+)\\s*(\\[.{0,1}\\])?\\s*(.*)$/mu;function Gu(n,e,t,r){let{lines:s,metadata:i,frontmatter:o,sections:a}=bo(n,e,t);return new po(n,r,s.length,i,a,o).build()}function bo(n,e,t){var y,h,E,p,T,g,k,L,m,F,O,x,S,q,V,Y;let r=t.frontmatter?Yu(t.frontmatter):void 0,s=e.split(/\\r\\n|\\r|\\n/),i=new Re,o=[],a=(y=t.headings)!=null?y:[];a.sort((v,P)=>v.position.start.line-P.position.start.line);let u=new qs.default(void 0,(v,P)=>v-P);for(let v=0;v<a.length;v++){let P=a[v],j=P.position.start.line,De=v==a.length-1?s.length:a[v+1].position.start.line,ye=new Pr(j,De,P.heading,P.level,v+1);u.set(j,ye)}if(u.size==0){if(!zu(s,0,s.length)){let v=new Pr(0,s.length,Tn(n),1,0);u.set(0,v)}}else{let v=(h=u.getPairOrNextHigher(0))==null?void 0:h[1];if(v.start>0&&!zu(s,0,v.start)){let P=new Pr(0,v.start,Tn(n),1,0);u.set(0,P)}}let l=new qs.default(void 0,(v,P)=>v-P),f=1;for(let v of t.sections||[]){if(v.type==="heading")continue;let P=v.position.start.line,j=v.position.end.line+1,De=s[P];if(v.type==="list")l.set(P,new mo(P,j,f++,v.id));else if(v.type=="code"&&$f.test(De)){let ye=s.slice(P+1,j-1).join(`\n`).replace(/\\t/gm,"  "),he=Yu(fo(ye));l.set(P,new Do(P,j,f++,he,v.id))}else if(v.type==="code"){let ye=De.match(Rf);if(!ye)l.set(P,new Us(P,j,f++,[],"indent",P,j,v.id));else{let en=(ye.length>1&&ye[1]?ye[1].split(","):[]).map(Tt=>Tt.trim()).filter(Tt=>Tt.length>0);l.set(P,new Us(P,j,f++,en,"fenced",P+1,j-1,v.id))}}else l.set(P,new yo(P,j,f++,v.type,v.id))}for(let v of l.values())(E=lt(v.start,u))==null||E.block(v);let d=new qs.default(void 0,(v,P)=>v-P);for(let v of t.listItems||[]){let j=s[v.position.start.line].match(jf),De,ye;j&&(De=j[1],ye=j[3]);let he=new go(v.position.start.line,v.position.end.line+1,v.parent,De,v.id,v.task,ye);d.set(he.start,he)}for(let v of d.values())if(v.parentLine<0){let P=l.getPairOrNextHigher(-v.parentLine-1)[1];if(!P||P.type!=="list")continue;P.items.push(v)}else(p=d.get(v.parentLine))==null||p.elements.push(v);for(let v of(T=t.tags)!=null?T:[]){let P=v.tag.startsWith("#")?v.tag:"#"+v.tag,j=v.position.start.line;i.tag(P),(g=lt(j,u))==null||g.metadata.tag(P),(k=lt(j,l))==null||k.metadata.tag(P),(L=lt(j,d))==null||L.metadata.tag(P)}if(t.frontmatter)for(let v of Vf(t.frontmatter)){let P=v.startsWith("#")?v:"#"+v;i.tag(P)}for(let v of(m=t.links)!=null?m:[]){let P=ee.infer(v.link,!1,v.displayText),j=v.position.start.line;i.link(P),(F=lt(j,u))==null||F.metadata.link(P),(O=lt(j,l))==null||O.metadata.link(P),(x=lt(j,d))==null||x.metadata.link(P)}for(let v of(S=t.frontmatterLinks)!=null?S:[])i.link(ee.infer(v.link,!1,v.displayText));for(let v of Eo(s)){let P=v.position.line;i.inlineField(v),(q=lt(P,u))==null||q.metadata.inlineField(v),(V=lt(P,l))==null||V.metadata.inlineField(v),(Y=lt(P,d))==null||Y.metadata.inlineField(v)}for(let v of d.values())for(let P=v.start;P<v.end;P++){let j=Ju(s[P]);for(let De of j)v.metadata.inlineField(Br(De,P))}return o.push(...u.values()),{lines:s,frontmatter:r,metadata:i,sections:o}}function zu(n,e,t){for(let r=e;r<t;r++)if(n[r].trim()!=="")return!1;return!0}function*Eo(n){for(let e=0;e<n.length;e++){let t=n[e];if(t.length>32768||!t.includes("::"))continue;let r=Wu(t);if(r.length>0)for(let s of r)yield Br(s,e);else{let s=Hu(t);s&&(yield Br(s,e))}}}function Yu(n){let e={};for(let t of Object.keys(n)){let r=n[t];e[t.toLowerCase()]={key:t,value:_n.json(Vs.literal(r)),raw:r}}return e}function lt(n,e){var r;let t=(r=e.getPairOrNextLower(n))==null?void 0:r[1];if(t&&t.end>=n)return t}function Vf(n){return Object.keys(n).filter(t=>t.toLowerCase()=="tags"||t.toLowerCase()=="tag").map(t=>Zu(n[t],/[,\\s]+/)).reduce((t,r)=>t.concat(r),[]).map(t=>t.startsWith("#")?t:"#"+t)}function Zu(n,e){return n==null||n==null?[]:Array.isArray(n)?n.filter(t=>!!t).map(t=>Zu(t,e)).reduce((t,r)=>t.concat(r),[]):(""+n).split(e).filter(t=>!!t).map(t=>t.trim()).filter(t=>t.length>0)}var Re=class{constructor(){this.tags=new Set;this.links=[];this.inlineFields={}}tag(e){this.tags.add(e)}link(e){this.links.find(t=>t.equals(e))||this.links.push(e)}inlineField(e){let t=e.key.toLowerCase();Object.keys(this.inlineFields).some(r=>r.toLowerCase()==t)||(this.inlineFields[t]=e)}finishTags(){return Array.from(this.tags)}finishLinks(){return this.links.map(e=>e.toObject())}finishInlineFields(){return Qt(this.inlineFields,Uu)}},po=class{constructor(e,t,r,s,i,o){this.path=e;this.stats=t;this.length=r;this.metadata=s;this.sections=i;this.frontmatter=o}build(){return{$path:this.path,$ctime:this.stats.ctime,$mtime:this.stats.mtime,$size:this.stats.size,$extension:Va(this.path),$position:{start:0,end:this.length},$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$infields:this.metadata.finishInlineFields(),$sections:this.sections.map(e=>e.build()),$frontmatter:this.frontmatter}}},Pr=class{constructor(e,t,r,s,i){this.start=e;this.end=t;this.title=r;this.level=s;this.ordinal=i;this.blocks=[];this.metadata=new Re}block(e){this.blocks.push(e)}build(){return{$title:this.title,$ordinal:this.ordinal,$level:this.level,$tags:this.metadata.finishTags(),$infields:this.metadata.finishInlineFields(),$links:this.metadata.finishLinks(),$position:{start:this.start,end:this.end},$blocks:this.blocks.map(e=>e.build())}}},mo=class{constructor(e,t,r,s){this.start=e;this.end=t;this.ordinal=r;this.blockId=s;this.type="list";this.metadata=new Re;this.items=[]}build(){return{$ordinal:this.ordinal,$position:{start:this.start,end:this.end},$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$type:"list",$blockId:this.blockId,$elements:this.items.map(e=>e.build())}}},Us=class{constructor(e,t,r,s,i,o,a,u){this.start=e;this.end=t;this.ordinal=r;this.languages=s;this.style=i;this.contentStart=o;this.contentEnd=a;this.blockId=u;this.type="codeblock";this.metadata=new Re}build(){return{$type:"codeblock",$ordinal:this.ordinal,$position:{start:this.start,end:this.end},$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$blockId:this.blockId,$languages:this.languages,$style:this.style,$contentPosition:{start:this.contentStart,end:this.contentEnd}}}},Do=class{constructor(e,t,r,s,i){this.start=e;this.end=t;this.ordinal=r;this.data=s;this.blockId=i;this.type="datablock";this.metadata=new Re}build(){return{$type:"datablock",$ordinal:this.ordinal,$position:{start:this.start,end:this.end},$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$blockId:this.blockId,$data:this.data}}},yo=class{constructor(e,t,r,s,i){this.start=e;this.end=t;this.ordinal=r;this.type=s;this.blockId=i;this.metadata=new Re}build(){return{$type:this.type,$ordinal:this.ordinal,$position:{start:this.start,end:this.end},$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$blockId:this.blockId}}},go=class{constructor(e,t,r,s,i,o,a){this.start=e;this.end=t;this.parentLine=r;this.symbol=s;this.blockId=i;this.status=o;this.text=a;this.metadata=new Re;this.elements=[]}build(){return{$parentLine:this.parentLine,$position:{start:this.start,end:this.end},$blockId:this.blockId,$elements:this.elements.map(e=>e.build()),$type:this.status?"task":"list",$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$status:this.status,$symbol:this.symbol,$text:this.text}}};function Qu(n,e,t,r){var o;let s=new wo(n,r),i=JSON.parse(e);for(let a of i.nodes)if(a.type!="group")if(a.type=="text"){let{frontmatter:u,metadata:l,lines:f,sections:d}=bo(n,a.text,t.caches[a.id]),y=new Ks(n,a.id,a,u);d.forEach(h=>y.section(h)),s.card(y);for(let h in l.tags)s.metadata.tag(h);for(let h of(o=l.links)!=null?o:[])s.metadata.link(h);for(let h of Eo(f))s.metadata.inlineField(h)}else{let u=new Ks(n,a.id,a);s.card(u)}return s.build()}var Fo=class{constructor(e,t,r){this.path=e;this.id=t;this.nodeJson=r;this.metadata=new Re}build(){return{$file:this.path,$id:this.id,$position:{x:this.nodeJson.x,y:this.nodeJson.y},$dimensions:{width:this.nodeJson.width,height:this.nodeJson.height},$color:this.nodeJson.color,$link:ee.file(this.path).withBlock(this.id).toObject()}}},Ks=class extends Fo{constructor(t,r,s,i){super(t,r,s);this.path=t;this.id=r;this.nodeJson=s;this.frontmatter=i;this.sections=[]}section(t){return this.sections.push(t),t}build(){switch(this.nodeJson.type){case"text":return Ee(R({},super.build()),{$infields:this.metadata.finishInlineFields(),$frontmatter:this.frontmatter,$sections:this.sections.map(t=>t.build()),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$type:"text-card",$color:this.nodeJson.color});case"file":return Ee(R({},super.build()),{$linkedFile:this.nodeJson.file});case"link":return Ee(R({},super.build()),{$url:this.nodeJson.url})}}},wo=class{constructor(e,t){this.path=e;this.stats=t;this.cards=[];this.metadata=new Re}card(e){return this.cards.push(e),e}build(){return{$cards:this.cards.map(e=>e.build()),$ctime:this.stats.ctime,$mtime:this.stats.mtime,$infields:this.metadata.finishInlineFields(),$links:this.metadata.finishLinks(),$tags:this.metadata.finishTags(),$path:this.path,$size:this.stats.size}}};onmessage=async n=>{try{let e=n.data;if(e.type==="markdown"){let t=Gu(e.path,e.contents,e.metadata,e.stat);postMessage({type:"markdown",result:t})}else if(e.type==="canvas"){let t=Qu(e.path,e.contents,e.index,e.stat);postMessage({type:"canvas",result:t})}else postMessage({$error:"Unsupported import method."})}catch(e){console.error(`Datacore failed to index ${n.data.path}: ${e}`),postMessage({$error:e.message})}};\n');
+  return inlineWorker('var ll=Object.create;var zs=Object.defineProperty,cl=Object.defineProperties,fl=Object.getOwnPropertyDescriptor,dl=Object.getOwnPropertyDescriptors,hl=Object.getOwnPropertyNames,Ur=Object.getOwnPropertySymbols,pl=Object.getPrototypeOf,Ys=Object.prototype.hasOwnProperty,Ao=Object.prototype.propertyIsEnumerable;var No=(n,e,t)=>e in n?zs(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t,R=(n,e)=>{for(var t in e||(e={}))Ys.call(e,t)&&No(n,t,e[t]);if(Ur)for(var t of Ur(e))Ao.call(e,t)&&No(n,t,e[t]);return n},Ee=(n,e)=>cl(n,dl(e));var Gs=(n,e)=>{var t={};for(var r in n)Ys.call(n,r)&&e.indexOf(r)<0&&(t[r]=n[r]);if(n!=null&&Ur)for(var r of Ur(n))e.indexOf(r)<0&&Ao.call(n,r)&&(t[r]=n[r]);return t};var Mo=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports);var ml=(n,e,t,r)=>{if(e&&typeof e=="object"||typeof e=="function")for(let s of hl(e))!Ys.call(n,s)&&s!==t&&zs(n,s,{get:()=>e[s],enumerable:!(r=fl(e,s))||r.enumerable});return n};var Kr=(n,e,t)=>(t=n!=null?ll(pl(n)):{},ml(e||!n||!n.__esModule?zs(t,"default",{value:n,enumerable:!0}):t,n));var ss=Mo((pr,Mi)=>{(function(n,e){typeof pr=="object"&&typeof Mi=="object"?Mi.exports=e():typeof Define=="function"&&define.amd?define([],e):typeof pr=="object"?pr.Parsimmon=e():n.Parsimmon=e()})(typeof self!="undefined"?self:pr,function(){return function(n){var e={};function t(r){if(e[r])return e[r].exports;var s=e[r]={i:r,l:!1,exports:{}};return n[r].call(s.exports,s,s.exports,t),s.l=!0,s.exports}return t.m=n,t.c=e,t.d=function(r,s,i){t.o(r,s)||Object.defineProperty(r,s,{configurable:!1,enumerable:!0,get:i})},t.r=function(r){Object.defineProperty(r,"__esModule",{value:!0})},t.n=function(r){var s=r&&r.__esModule?function(){return r.default}:function(){return r};return t.d(s,"a",s),s},t.o=function(r,s){return Object.prototype.hasOwnProperty.call(r,s)},t.p="",t(t.s=0)}([function(n,e,t){"use strict";function r(c){if(!(this instanceof r))return new r(c);this._=c}var s=r.prototype;function i(c,D){for(var w=0;w<c;w++)D(w)}function o(c,D,w){return function(C,I){i(I.length,function(N){C(I[N],N,I)})}(function(C,I,N){D=c(D,C,I,N)},w),D}function a(c,D){return o(function(w,C,I,N){return w.concat([c(C,I,N)])},[],D)}function u(c,D){var w={v:0,buf:D};return i(c,function(){var C;w={v:w.v<<1|(C=w.buf,C[0]>>7),buf:function(I){var N=o(function(A,U,ne,Te){return A.concat(ne===Te.length-1?Buffer.from([U,0]).readUInt16BE(0):Te.readUInt16BE(ne))},[],I);return Buffer.from(a(function(A){return(A<<1&65535)>>8},N))}(w.buf)}}),w}function l(){return typeof Buffer!="undefined"}function f(){if(!l())throw new Error("Buffer global does not exist; please use webpack if you need to parse Buffers in the browser.")}function d(c){f();var D=o(function(N,A){return N+A},0,c);if(D%8!=0)throw new Error("The bits ["+c.join(", ")+"] add up to "+D+" which is not an even number of bytes; the total should be divisible by 8");var w,C=D/8,I=(w=function(N){return N>48},o(function(N,A){return N||(w(A)?A:N)},null,c));if(I)throw new Error(I+" bit range requested exceeds 48 bit (6 byte) Number max.");return new r(function(N,A){var U=C+A;return U>N.length?O(A,C.toString()+" bytes"):F(U,o(function(ne,Te){var ge=u(Te,ne.buf);return{coll:ne.coll.concat(ge.v),buf:ge.buf}},{coll:[],buf:N.slice(A,U)},c).coll)})}function y(c,D){return new r(function(w,C){return f(),C+D>w.length?O(C,D+" bytes for "+c):F(C+D,w.slice(C,C+D))})}function h(c,D){if(typeof(w=D)!="number"||Math.floor(w)!==w||D<0||D>6)抛出新错误(c+" requires integer length in range [0, 6].");var w}function E(c){return h("uintBE",c),y("uintBE("+c+")",c).map(function(D){return D.readUIntBE(0,c)})}function p(c){return h("uintLE",c),y("uintLE("+c+")",c).map(function(D){return D.readUIntLE(0,c)})}function T(c){return h("intBE",c),y("intBE("+c+")",c).map(function(D){return D.readIntBE(0,c)})}function g(c){return h("intLE",c),y("intLE("+c+")",c).map(function(D){return D.readIntLE(0,c)})}function k(c){return c instanceof r}function L(c){return{}.toString.call(c)==="[object Array]"}function m(c){return l()&&Buffer.isBuffer(c)}function F(c,D){return{status:!0,index:c,value:D,furthest:-1,expected:[]}}function O(c,D){return L(D)||(D=[D]),{status:!1,index:-1,value:null,furthest:c,expected:D}}function x(c,D){if(!D||c.furthest>D.furthest)return c;var w=c.furthest===D.furthest?function(C,I){if(function(){if(r._supportsSet!==void 0)return r._supportsSet;var dt=typeof Set!="undefined";return r._supportsSet=dt,dt}()&&Array.from){for(var N=new Set(C),A=0;A<I.length;A++)N.add(I[A]);var U=Array.from(N);return U.sort(),U}for(var ne={},Te=0;Te<C.length;Te++)ne[C[Te]]=!0;for(var ge=0;ge<I.length;ge++)ne[I[ge]]=!0;var ft=[];for(var Oe in ne)({}).hasOwnProperty.call(ne,Oe)&&ft.push(Oe);return ft.sort(),ft}(c.expected,D.expected):D.expected;return{status:c.status,index:c.index,value:c.value,furthest:D.furthest,expected:w}}var S={};function q(c,D){if(m(c))return{offset:D,line:-1,column:-1};c in S||(S[c]={});for(var w=S[c],C=0,I=0,N=0,A=D;A>=0;){if(A in w){C=w[A].line,N===0&&(N=w[A].lineStart);break}(c.charAt(A)===`\n`||c.charAt(A)==="\\r"&&c.charAt(A+1)!==`\n`)&&(I++,N===0&&(N=A+1)),A--}var U=C+I,ne=D-N;return w[D]={line:U,lineStart:N},{offset:D,line:U+1,column:ne+1}}function V(c){if(!k(c))throw new Error("not a parser: "+c)}function Y(c,D){return typeof c=="string"?c.charAt(D):c[D]}function v(c){if(typeof c!="number")抛出新错误("not a number: "+c)}function P(c){if(typeof c!="function")抛出新错误("not a function: "+c)}function j(c){if(typeof c!="string")抛出新错误("not a string: "+c)}var De=2,ye=3,he=8,en=5*he,Tt=4*he,tn="  ";function Pt(c,D){return new Array(D+1).join(c)}function $t(c,D,w){var C=D-c.length;return C<=0?c:Pt(w,C)+c}function Ae(c,D,w,C){return{from:c-D>0?c-D:0,to:c+w>C?C:c+w}}function Rt(c,D){var w,C,I,N,A,U=D.index,ne=U.offset,Te=1;if(ne===c.length)return"Got the end of the input";if(m(c)){var ge=ne-ne%he,ft=ne-ge,Oe=Ae(ge,en,Tt+he,c.length),dt=a(function(le){return a(function(rn){return $t(rn.toString(16),2,"0")},le)},function(le,rn){var sn=le.length,qt=[],on=0;if(sn<=rn)return[le.slice()];for(var an=0;an<sn;an++)qt[on]||qt.push([]),qt[on].push(le[an]),(an+1)%rn==0&&on++;return qt}(c.slice(Oe.from,Oe.to).toJSON().data,he));N=function(le){return le.from===0&&le.to===1?{from:le.from,to:le.to}:{from:le.from/he,to:Math.floor(le.to/he)}}(Oe),C=ge/he,w=3*ft,ft>=4&&(w+=1),Te=2,I=a(function(le){return le.length<=4?le.join(" "):le.slice(0,4).join(" ")+"  "+le.slice(4).join(" ")},dt),(A=(8*(N.to>0?N.to-1:N.to)).toString(16).length)<2&&(A=2)}else{var nn=c.split(/\\r\\n|[\\n\\r\\u2028\\u2029]/);w=U.column-1,C=U.line-1,N=Ae(C,De,ye,nn.length),I=nn.slice(N.from,N.to),A=N.to.toString().length}var ul=C-N.from;return m(c)&&(A=(8*(N.to>0?N.to-1:N.to)).toString(16).length)<2&&(A=2),o(function(le,rn,sn){var qt,on=sn===ul,an=on?"> ":tn;return qt=m(c)?$t((8*(N.from+sn)).toString(16),A,"0"):$t((N.from+sn+1).toString(),A," "),[].concat(le,[an+qt+" | "+rn],on?[tn+Pt(" ",A)+" | "+$t("",w," ")+Pt("^",Te)]:[])},[],I).join(`\n`)}函数To(c,D){返回[`\n`，"-- PARSING FAILED "+Pt("-",50),`\n\n`,Rt(c,D),`\n\n`,(w=D.expected,w.length===1?`预期：\n\n`+w[0]:`需要以下之一： \n\n`+w.join(", ")),`\n`].join("");var w}function So(c){return c.flags!==void 0?c.flags:[c.global?"g":"",c.ignoreCase?"i":"",c.multiline?"m":"",c.unicode?"u":"",c.sticky?"y":""].join("")}function $r(){for(var c=[].slice.call(arguments),D=c.length,w=0;w<D;w+=1)V(c[w]);return r(function(C,I){for(var N,A=new Array(D),U=0;U<D;U+=1){if(!(N=x(c[U]._(C,I),N)).status)return N;A[U]=N.value,I=N.index}return x(F(I,A),N)})}function jt(){var c=[].slice.call(arguments);if(c.length===0)throw new Error("seqMap needs at least one argument");var D=c.pop();return P(D),$r.apply(null,c).map(function(w){return D.apply(null,w)})}function Rr(){var c=[].slice.call(arguments),D=c.length;if(D===0)return jr("zero alternates");for(var w=0;w<D;w+=1)V(c[w]);return r(function(C,I){for(var N,A=0;A<c.length;A+=1)if((N=x(c[A]._(C,I),N)).status)return N;return N})}function ko(c,D){return Ws(c,D).or(Vt([]))}function Ws(c,D){return V(c),V(D),jt(c,D.then(c).many(),function(w,C){return[w].concat(C)})}function Bn(c){j(c);var D="\'"+c+"\'";return r(function(w,C){var I=C+c.length,N=w.slice(C,I);return N===c?F(I,N):O(C,D)})}function ct(c,D){(function(I){if(!(I instanceof RegExp))throw new Error("not a regexp: "+I);for(var N=So(I),A=0;A<N.length;A++){var U=N.charAt(A);if(U!=="i"&&U!=="m"&&U!=="u"&&U!=="s")throw new Error(\'unsupported regexp flag "\'+U+\'": \'+I)}})(c),arguments.length>=2?v(D):D=0;var w=function(I){return RegExp("^(?:"+I.source+")",So(I))}(c),C=""+c;return r(function(I,N){var A=w.exec(I.slice(N));if(A){if(0<=D&&D<=A.length){var U=A[0],ne=A[D];return F(N+U.length,ne)}return O(N,"valid match group (0 to "+A.length+") in "+C)}return O(N,C)})}function Vt(c){return r(function(D,w){return F(w,c)})}function jr(c){return r(function(D,w){return O(w,c)})}function Vr(c){if(k(c))return r(function(D,w){var C=c._(D,w);return C.index=w,C.value="",C});if(typeof c=="string")return Vr(Bn(c));if(c instanceof RegExp)return Vr(ct(c));throw new Error("not a string, regexp, or parser: "+c)}function Co(c){return V(c),r(function(D,w){var C=c._(D,w),I=D.slice(w,C.index);return C.status?O(w,\'not "\'+I+\'"\'):F(w,null)})}function qr(c){return P(c),r(function(D,w){var C=Y(D,w);return w<D.length&&c(C)?F(w+1,C):O(w,"a character/byte matching "+c)})}function xo(c,D){arguments.length<2&&(D=c,c=void 0);var w=r(function(C,I){return w._=D()._,w._(C,I)});return c?w.desc(c):w}function Hs(){return jr("fantasy-land/empty")}s.parse=function(c){if(typeof c!="string"&&!m(c))throw new Error(".parse must be called with a string or Buffer as its argument");var D,w=this.skip(Js)._(c,0);return D=w.status?{status:!0,value:w.value}:{status:!1,index:q(c,w.furthest),expected:w.expected},delete S[c],D},s.tryParse=function(c){var D=this.parse(c);if(D.status)return D.value;var w=To(c,D),C=new Error(w);throw C.type="ParsimmonError",C.result=D,C},s.assert=function(c,D){return this.chain(function(w){return c(w)?Vt(w):jr(D)})},s.or=function(c){return Rr(this,c)},s.trim=function(c){return this.wrap(c,c)},s.wrap=function(c,D){return jt(c,this,D,function(w,C){return C})},s.thru=function(c){return c(this)},s.then=function(c){return V(c),$r(this,c).map(function(D){return D[1]})},s.many=function(){var c=this;return r(function(D,w){for(var C=[],I=void 0;;){if(!(I=x(c._(D,w),I)).status)return x(F(w,C),I);if(w===I.index)throw new Error("infinite loop detected in .many() parser --- calling .many() on a parser which can accept zero characters is usually the cause");w=I.index,C.push(I.value)}})},s.tieWith=function(c){return j(c),this.map(function(D){if(function(I){if(!L(I))throw new Error("not an array: "+I)}(D),D.length){j(D[0]);for(var w=D[0],C=1;C<D.length;C++)j(D[C]),w+=c+D[C];return w}return""})},s.tie=function(){return this.tieWith("")},s.times=function(c,D){var w=this;return arguments.length<2&&(D=c),v(c),v(D),r(function(C,I){for(var N=[],A=void 0,U=void 0,ne=0;ne<c;ne+=1){if(U=x(A=w._(C,I),U),!A.status)return U;I=A.index,N.push(A.value)}for(;ne<D&&(U=x(A=w._(C,I),U),A.status);ne+=1)I=A.index,N.push(A.value);return x(F(I,N),U)})},s.result=function(c){return this.map(function(){return c})},s.atMost=function(c){return this.times(0,c)},s.atLeast=function(c){return jt(this.times(c),this.many(),function(D,w){return D.concat(w)})},s.map=function(c){P(c);var D=this;return r(function(w,C){var I=D._(w,C);return I.status?x(F(I.index,c(I.value)),I):I})},s.contramap=function(c){P(c);var D=this;return r(function(w,C){var I=D.parse(c(w.slice(C)));return I.status?F(C+w.length,I.value):I})},s.promap=function(c,D){return P(c),P(D),this.contramap(c).map(D)},s.skip=function(c){return $r(this,c).map(function(D){return D[0]})},s.mark=function(){return jt(Pn,this,Pn,function(c,D,w){return{start:c,value:D,end:w}})},s.node=function(c){return jt(Pn,this,Pn,function(D,w,C){return{name:c,value:w,start:D,end:C}})},s.sepBy=function(c){return ko(this,c)},s.sepBy1=function(c){return Ws(this,c)},s.lookahead=function(c){return this.skip(Vr(c))},s.notFollowedBy=function(c){return this.skip(Co(c))},s.desc=function(c){L(c)||(c=[c]);var D=this;return r(function(w,C){var I=D._(w,C);return I.status||(I.expected=c),I})},s.fallback=function(c){return this.or(Vt(c))},s.ap=function(c){return jt(c,this,function(D,w){return D(w)})},s.chain=function(c){var D=this;return r(function(w,C){var I=D._(w,C);return I.status?x(c(I.value)._(w,I.index),I):I})},s.concat=s.or,s.empty=Hs,s.of=Vt,s["fantasy-land/ap"]=s.ap,s["fantasy-land/chain"]=s.chain,s["fantasy-land/concat"]=s.concat,s["fantasy-land/empty"]=s.empty,s["fantasy-land/of"]=s.of,s["fantasy-land/map"]=s.map;var Pn=r(function(c,D){return F(D,q(c,D))}),Xu=r(function(c,D){return D>=c.length?O(D,"any character/byte"):F(D+1,Y(c,D))}),el=r(function(c,D){return F(c.length,c.slice(D))}),Js=r(function(c,D){return D<c.length?O(D,"EOF"):F(D,null)}),tl=ct(/[0-9]/).desc("a digit"),nl=ct(/[0-9]*/).desc("optional digits"),rl=ct(/[a-z]/i).desc("a letter"),sl=ct(/[a-z]*/i).desc("optional letters"),il=ct(/\\s*/).desc("optional whitespace"),ol=ct(/\\s+/).desc("whitespace"),Oo=Bn("\\r"),vo=Bn(`\n`),Io=Bn(`\\r\n`),Lo=Rr(Io,vo,Oo).desc("newline"),al=Rr(Lo,Js);r.all=el,r.alt=Rr,r.any=Xu,r.cr=Oo,r.createLanguage=function(c){var D={};for(var w in c)({}).hasOwnProperty.call(c,w)&&function(C){D[C]=xo(function(){return c[C](D)})}(w);return D},r.crlf=Io,r.custom=function(c){return r(c(F,O))},r.digit=tl,r.digits=nl,r.empty=Hs,r.end=al,r.eof=Js,r.fail=jr,r.formatError=To,r.index=Pn,r.isParser=k,r.lazy=xo,r.letter=rl,r.letters=sl,r.lf=vo,r.lookahead=Vr,r.makeFailure=O,r.makeSuccess=F,r.newline=Lo,r.noneOf=function(c){return qr(function(D){return c.indexOf(D)<0}).desc("none of \'"+c+"\'")},r.notFollowedBy=Co,r.of=Vt,r.oneOf=function(c){for(var D=c.split(""),w=0;w<D.length;w++)D[w]="\'"+D[w]+"\'";return qr(function(C){return c.indexOf(C)>=0}).desc(D)},r.optWhitespace=il,r.Parser=r,r.range=function(c,D){return qr(function(w){return c<=w&&w<=D}).desc(c+"-"+D)},r.regex=ct,r.regexp=ct,r.sepBy=ko,r.sepBy1=Ws,r.seq=$r,r.seqMap=jt,r.seqObj=function(){for(var c,D={},w=0,C=(c=arguments,Array.prototype.slice.call(c)),I=C.length,N=0;N<I;N+=1){var A=C[N];if(!k(A)){if(L(A)&&A.length===2&&typeof A[0]=="string"&&k(A[1])){var U=A[0];if(Object.prototype.hasOwnProperty.call(D,U))throw new Error("seqObj: duplicate key "+U);D[U]=!0,w++;continue}throw new Error("seqObj arguments must be parsers or [string, parser] array pairs.")}}if(w===0)throw new Error("seqObj expects at least one named parser, found zero");return r(function(ne,Te){for(var ge,ft={},Oe=0;Oe<I;Oe+=1){var dt,nn;if(L(C[Oe])?(dt=C[Oe][0],nn=C[Oe][1]):(dt=null,nn=C[Oe]),!(ge=x(nn._(ne,Te),ge)).status)return ge;dt&&(ft[dt]=ge.value),Te=ge.index}return x(F(Te,ft),ge)})},r.string=Bn,r.succeed=Vt,r.takeWhile=function(c){return P(c),r(function(D,w){for(var C=w;C<D.length&&c(Y(D,C));)C++;return F(C,D.slice(w,C))})},r.test=qr,r.whitespace=ol,r["fantasy-land/empty"]=Hs,r["fantasy-land/of"]=Vt,r.Binary={bitSeq:d,bitSeqObj:function(c){f();var D={},w=0,C=a(function(N){if(L(N)){var A=N;if(A.length!==2)throw new Error("["+A.join(", ")+"] should be length 2, got length "+A.length);if(j(A[0]),v(A[1]),Object.prototype.hasOwnProperty.call(D,A[0]))throw new Error("duplicate key in bitSeqObj: "+A[0]);return D[A[0]]=!0,w++,A}return v(N),[null,N]},c);if(w<1)throw new Error("bitSeqObj expects at least one named pair, got ["+c.join(", ")+"]");var I=a(function(N){return N[0]},C);return d(a(function(N){return N[1]},C)).map(function(N){return o(function(A,U){return U[0]!==null&&(A[U[0]]=U[1]),A},{},a(function(A,U){return[A,N[U]]},I))})},byte:function(c){if(f(),v(c),c>255)throw new Error("Value specified to byte constructor ("+c+"=0x"+c.toString(16)+") is larger in value than a single byte.");var D=(c>15?"0x":"0x0")+c.toString(16);return r(function(w,C){var I=Y(w,C);return I===c?F(C+1,I):O(C,D)})},buffer:function(c){return y("buffer",c).map(function(D){return Buffer.from(D)})},encodedString:function(c,D){return y("string",D).map(function(w){return w.toString(c)})},uintBE:E,uint8BE:E(1),uint16BE:E(2),uint32BE:E(4),uintLE:p,uint8LE:p(1),uint16LE:p(2),uint32LE:p(4),intBE:T,int8BE:T(1),int16BE:T(2),int32BE:T(4),intLE:g,int8LE:g(1),int16LE:g(2),int32LE:g(4),floatBE:y("floatBE",4).map(function(c){return c.readFloatBE(0)}),floatLE:y("floatLE",4).map(function(c){return c.readFloatLE(0)}),doubleBE:y("doubleBE",8).map(function(c){return c.readDoubleBE(0)}),doubleLE:y("doubleLE",8).map(function(c){return c.readDoubleLE(0)})},n.exports=r}])})});var Pu=Mo(Ne=>{"use strict";var Ff=Ne&&Ne.__extends||function(){var n=function(e,t){return n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(r,s){r.__proto__=s}||function(r,s){for(var i in s)Object.prototype.hasOwnProperty.call(s,i)&&(r[i]=s[i])},n(e,t)};return function(e,t){if(typeof t!="function"&&t!==null)throw new TypeError("Class extends value "+String(t)+" is not a constructor or null");n(e,t);function r(){this.constructor=e}e.prototype=t===null?Object.create(t):(r.prototype=t.prototype,new r)}}();Object.defineProperty(Ne,"__esModule",{value:!0});Ne.EmptyBTree=Ne.asSet=Ne.simpleComparator=Ne.defaultComparator=void 0;function Mu(n,e){if(Number.isFinite(n)&&Number.isFinite(e))return n-e;var t=typeof n,r=typeof e;if(t!==r)return t<r?-1:1;if(t==="object"){if(n===null)return e===null?0:-1;if(e===null)return 1;if(n=n.valueOf(),e=e.valueOf(),t=typeof n,r=typeof e,t!==r)return t<r?-1:1}return n<e?-1:n>e?1:n===e?0:Number.isNaN(n)?Number.isNaN(e)?0:-1:Number.isNaN(e)?1:Array.isArray(n)?0:Number.NaN}Ne.defaultComparator=Mu;function wf(n,e){return n>e?1:n<e?-1:0}Ne.simpleComparator=wf;var ut=function(){function n(e,t,r){this._root=ho,this._size=0,this._maxNodeSize=r>=4?Math.min(r,256):32,this._compare=t||Mu,e&&this.setPairs(e)}return Object.defineProperty(n.prototype,"size",{get:function(){return this._size},enumerable:!1,configurable:!0}),Object.defineProperty(n.prototype,"length",{get:function(){return this._size},enumerable:!1,configurable:!0}),Object.defineProperty(n.prototype,"isEmpty",{get:function(){return this._size===0},enumerable:!1,configurable:!0}),n.prototype.clear=function(){this._root=ho,this._size=0},n.prototype.forEach=function(e,t){var r=this;return t!==void 0&&(e=e.bind(t)),this.forEachPair(function(s,i){return e(i,s,r)})},n.prototype.forEachPair=function(e,t){var r=this.minKey(),s=this.maxKey();return this.forRange(r,s,!0,e,t)},n.prototype.get=function(e,t){return this._root.get(e,t,this)},n.prototype.set=function(e,t,r){this._root.isShared&&(this._root=this._root.clone());var s=this._root.set(e,t,r,this);return s===!0||s===!1?s:(this._root=new Sf([this._root,s]),!0)},n.prototype.has=function(e){return this.forRange(e,e,!0,void 0)!==0},n.prototype.delete=function(e){return this.editRange(e,e,!0,Nu)!==0},n.prototype.with=function(e,t,r){var s=this.clone();return s.set(e,t,r)||r?s:this},n.prototype.withPairs=function(e,t){var r=this.clone();return r.setPairs(e,t)!==0||t?r:this},n.prototype.withKeys=function(e,t){for(var r=this.clone(),s=!1,i=0;i<e.length;i++)s=r.set(e[i],void 0,!1)||s;return t&&!s?this:r},n.prototype.without=function(e,t){return this.withoutRange(e,e,!0,t)},n.prototype.withoutKeys=function(e,t){var r=this.clone();return r.deleteKeys(e)||!t?r:this},n.prototype.withoutRange=function(e,t,r,s){var i=this.clone();return i.deleteRange(e,t,r)===0&&s?this:i},n.prototype.filter=function(e,t){var r=this.greedyClone(),s;return r.editAll(function(i,o,a){if(!e(i,o,a))return s=Bu}),!s&&t?this:r},n.prototype.mapValues=function(e){var t={},r=this.greedyClone();return r.editAll(function(s,i,o){return t.value=e(i,s,o),t}),r},n.prototype.reduce=function(e,t){for(var r=0,s=t,i=this.entries(this.minKey(),Ar),o;!(o=i.next()).done;)s=e(s,o.value,r++,this);return s},n.prototype.entries=function(e,t){var r=this.findPath(e);if(r===void 0)return An();var s=r.nodequeue,i=r.nodeindex,o=r.leaf,a=t!==void 0?1:0,u=e===void 0?-1:o.indexOf(e,0,this._compare)-1;return An(function(){e:for(;;)switch(a){case 0:if(++u<o.keys.length)return{done:!1,value:[o.keys[u],o.values[u]]};a=2;continue;case 1:if(++u<o.keys.length)return t[0]=o.keys[u],t[1]=o.values[u],{done:!1,value:t};a=2;case 2:for(var l=-1;;){if(++l>=s.length){a=3;continue e}if(++i[l]<s[l].length)break}for(;l>0;l--)s[l-1]=s[l][i[l]].children,i[l-1]=0;o=s[0][i[0]],u=-1,a=t!==void 0?1:0;continue;case 3:return{done:!0,value:void 0}}})},n.prototype.entriesReversed=function(e,t,r){if(e===void 0&&(e=this.maxKey(),r=void 0,e===void 0))return An();var s=this.findPath(e)||this.findPath(this.maxKey()),i=s.nodequeue,o=s.nodeindex,a=s.leaf;Le(!i[0]||a===i[0][o[0]],"wat!");var u=a.indexOf(e,0,this._compare);!r&&u<a.keys.length&&this._compare(a.keys[u],e)<=0&&u++;var l=t!==void 0?1:0;return An(function(){e:for(;;)switch(l){case 0:if(--u>=0)return{done:!1,value:[a.keys[u],a.values[u]]};l=2;continue;case 1:if(--u>=0)return t[0]=a.keys[u],t[1]=a.values[u],{done:!1,value:t};l=2;case 2:for(var f=-1;;){if(++f>=i.length){l=3;continue e}if(--o[f]>=0)break}for(;f>0;f--)i[f-1]=i[f][o[f]].children,o[f-1]=i[f-1].length-1;a=i[0][o[0]],u=a.keys.length,l=t!==void 0?1:0;continue;case 3:return{done:!0,value:void 0}}})},n.prototype.findPath=function(e){var t=this._root,r,s;if(t.isLeaf)r=Au,s=Au;else{r=[],s=[];for(var i=0;!t.isLeaf;i++){if(r[i]=t.children,s[i]=e===void 0?0:t.indexOf(e,0,this._compare),s[i]>=r[i].length)return;t=r[i][s[i]]}r.reverse(),s.reverse()}return{nodequeue:r,nodeindex:s,leaf:t}},n.prototype.diffAgainst=function(e,t,r,s){if(e._compare!==this._compare)throw new Error("Tree comparators are not the same.");if(this.isEmpty||e.isEmpty)return this.isEmpty&&e.isEmpty?void 0:this.isEmpty?r===void 0?void 0:n.stepToEnd(n.makeDiffCursor(e),r):t===void 0?void 0:n.stepToEnd(n.makeDiffCursor(this),t);for(var i=this._compare,o=n.makeDiffCursor(this),a=n.makeDiffCursor(e),u=!0,l=!0,f=n.compare(o,a,i);u&&l;){var d=n.compare(o,a,i),y=o.leaf,h=o.internalSpine,E=o.levelIndices,p=a.leaf,T=a.internalSpine,g=a.levelIndices;if(y||p){if(f!==0){if(d===0){if(y&&p&&s){var k=y.values[E[E.length-1]],L=p.values[g[g.length-1]];if(!Object.is(k,L)){var m=s(o.currentKey,k,L);if(m&&m.break)return m.break}}}else if(d>0){if(p&&r){var F=p.values[g[g.length-1]],m=r(a.currentKey,F);if(m&&m.break)return m.break}}else if(t&&y&&f!==0){var k=y.values[E[E.length-1]],m=t(o.currentKey,k);if(m&&m.break)return m.break}}}else if(!y&&!p&&d===0){var O=h.length-1,x=T.length-1,S=h[O][E[O]],q=T[x][g[x]];if(q===S){f=0,u=n.step(o,!0),l=n.step(a,!0);continue}}f=d,d<0?u=n.step(o):l=n.step(a)}if(u&&t)return n.finishCursorWalk(o,a,i,t);if(l&&r)return n.finishCursorWalk(a,o,i,r)},n.finishCursorWalk=function(e,t,r,s){var i=n.compare(e,t,r);if(i===0){if(!n.step(e))return}else i<0&&Le(!1,"cursor walk terminated early");return n.stepToEnd(e,s)},n.stepToEnd=function(e,t){for(var r=!0;r;){var s=e.leaf,i=e.levelIndices,o=e.currentKey;if(s){var a=s.values[i[i.length-1]],u=t(o,a);if(u&&u.break)return u.break}r=n.step(e)}},n.makeDiffCursor=function(e){var t=e._root,r=e.height;return{height:r,internalSpine:[[t]],levelIndices:[0],leaf:void 0,currentKey:t.maxKey()}},n.step=function(e,t){var r=e.internalSpine,s=e.levelIndices,i=e.leaf;if(t===!0||i){var o=s.length;if(t===!0||s[o-1]===0){var a=r.length;if(a===0)return!1;for(var u=a-1,l=u;l>=0;){if(s[l]>0)return l<o-1&&(e.leaf=void 0,s.pop()),l<u&&(e.internalSpine=r.slice(0,l+1)),e.currentKey=r[l][--s[l]].maxKey(),!0;l--}return!1}else{var f=--s[o-1];return e.currentKey=i.keys[f],!0}}else{var d=r.length,y=d-1,h=r[y][s[y]];if(h.isLeaf){e.leaf=h;var f=s[d]=h.values.length-1;e.currentKey=h.keys[f]}else{var E=h.children;r[d]=E;var p=E.length-1;s[d]=p,e.currentKey=E[p].maxKey()}return!0}},n.compare=function(e,t,r){var s=e.height,i=e.currentKey,o=e.levelIndices,a=t.height,u=t.currentKey,l=t.levelIndices,f=r(u,i);if(f!==0)return f;var d=s<a?s:a,y=o.length-(s-d),h=l.length-(a-d);return y-h},n.prototype.keys=function(e){var t=this.entries(e,Ar);return An(function(){var r=t.next();return r.value&&(r.value=r.value[0]),r})},n.prototype.values=function(e){var t=this.entries(e,Ar);return An(function(){var r=t.next();return r.value&&(r.value=r.value[1]),r})},Object.defineProperty(n.prototype,"maxNodeSize",{get:function(){return this._maxNodeSize},enumerable:!1,configurable:!0}),n.prototype.minKey=function(){return this._root.minKey()},n.prototype.maxKey=function(){return this._root.maxKey()},n.prototype.clone=function(){this._root.isShared=!0;var e=new n(void 0,this._compare,this._maxNodeSize);return e._root=this._root,e._size=this._size,e},n.prototype.greedyClone=function(e){var t=new n(void 0,this._compare,this._maxNodeSize);return t._root=this._root.greedyClone(e),t._size=this._size,t},n.prototype.toArray=function(e){e===void 0&&(e=2147483647);var t=this.minKey(),r=this.maxKey();return t!==void 0?this.getRange(t,r,!0,e):[]},n.prototype.keysArray=function(){var e=[];return this._root.forRange(this.minKey(),this.maxKey(),!0,!1,this,0,function(t,r){e.push(t)}),e},n.prototype.valuesArray=function(){var e=[];return this._root.forRange(this.minKey(),this.maxKey(),!0,!1,this,0,function(t,r){e.push(r)}),e},n.prototype.toString=function(){return this.toArray().toString()},n.prototype.setIfNotPresent=function(e,t){return this.set(e,t,!1)},n.prototype.nextHigherPair=function(e,t){return t=t||[],e===void 0?this._root.minPair(t):this._root.getPairOrNextHigher(e,this._compare,!1,t)},n.prototype.nextHigherKey=function(e){var t=this.nextHigherPair(e,Ar);return t&&t[0]},n.prototype.nextLowerPair=function(e,t){return t=t||[],e===void 0?this._root.maxPair(t):this._root.getPairOrNextLower(e,this._compare,!1,t)},n.prototype.nextLowerKey=function(e){var t=this.nextLowerPair(e,Ar);return t&&t[0]},n.prototype.getPairOrNextLower=function(e,t){return this._root.getPairOrNextLower(e,this._compare,!0,t||[])},n.prototype.getPairOrNextHigher=function(e,t){return this._root.getPairOrNextHigher(e,this._compare,!0,t||[])},n.prototype.changeIfPresent=function(e,t){return this.editRange(e,e,!0,function(r,s){return{value:t}})!==0},n.prototype.getRange=function(e,t,r,s){s===void 0&&(s=67108863);var i=[];return this._root.forRange(e,t,r,!1,this,0,function(o,a){return i.push([o,a]),i.length>s?kf:void 0}),i},n.prototype.setPairs=function(e,t){for(var r=0,s=0;s<e.length;s++)this.set(e[s][0],e[s][1],t)&&r++;return r},n.prototype.forRange=function(e,t,r,s,i){var o=this._root.forRange(e,t,r,!1,this,i||0,s);return typeof o=="number"?o:o.break},n.prototype.editRange=function(e,t,r,s,i){var o=this._root;o.isShared&&(this._root=o=o.clone());try{var a=o.forRange(e,t,r,!0,this,i||0,s);return typeof a=="number"?a:a.break}finally{for(var u=void 0;o.keys.length<=1&&!o.isLeaf;)u||(u=o.isShared),this._root=o=o.keys.length===0?ho:o.children[0];u&&(o.isShared=!0)}},n.prototype.editAll=function(e,t){return this.editRange(this.minKey(),this.maxKey(),!0,e,t)},n.prototype.deleteRange=function(e,t,r){return this.editRange(e,t,r,Nu)},n.prototype.deleteKeys=function(e){for(var t=0,r=0;t<e.length;t++)this.delete(e[t])&&r++;return r},Object.defineProperty(n.prototype,"height",{get:function(){for(var e=this._root,t=-1;e;)t++,e=e.isLeaf?void 0:e.children[0];return t},enumerable:!1,configurable:!0}),n.prototype.freeze=function(){var e=this;e.clear=e.set=e.editRange=function(){throw new Error("Attempted to modify a frozen BTree")}},n.prototype.unfreeze=function(){delete this.clear,delete this.set,delete this.editRange},Object.defineProperty(n.prototype,"isFrozen",{get:function(){return this.hasOwnProperty("editRange")},enumerable:!1,configurable:!0}),n.prototype.checkValid=function(){var e=this._root.checkValid(0,this,0);Le(e===this.size,"size mismatch: counted ",e,"but stored",this.size)},n}();Ne.default=ut;function Tf(n){return n}Ne.asSet=Tf;Symbol&&Symbol.iterator&&(ut.prototype[Symbol.iterator]=ut.prototype.entries);ut.prototype.where=ut.prototype.filter;ut.prototype.setRange=ut.prototype.setPairs;ut.prototype.add=ut.prototype.set;function An(n){n===void 0&&(n=function(){return{done:!0,value:void 0}});var e={next:n};return Symbol&&Symbol.iterator&&(e[Symbol.iterator]=function(){return this}),e}var _u=function(){function n(e,t){e===void 0&&(e=[]),this.keys=e,this.values=t||be,this.isShared=void 0}return Object.defineProperty(n.prototype,"isLeaf",{get:function(){return this.children===void 0},enumerable:!1,configurable:!0}),n.prototype.maxKey=function(){return this.keys[this.keys.length-1]},n.prototype.indexOf=function(e,t,r){for(var s=this.keys,i=0,o=s.length,a=o>>1;i<o;){var u=r(s[a],e);if(u<0)i=a+1;else if(u>0)o=a;else{if(u===0)return a;if(e===e)return s.length;throw new Error("BTree: NaN was used as a key")}a=i+o>>1}return a^t},n.prototype.minKey=function(){return this.keys[0]},n.prototype.minPair=function(e){if(this.keys.length!==0)return e[0]=this.keys[0],e[1]=this.values[0],e},n.prototype.maxPair=function(e){if(this.keys.length!==0){var t=this.keys.length-1;return e[0]=this.keys[t],e[1]=this.values[t],e}},n.prototype.clone=function(){var e=this.values;return new n(this.keys.slice(0),e===be?e:e.slice(0))},n.prototype.greedyClone=function(e){return this.isShared&&!e?this:this.clone()},n.prototype.get=function(e,t,r){var s=this.indexOf(e,-1,r._compare);return s<0?t:this.values[s]},n.prototype.getPairOrNextLower=function(e,t,r,s){var i=this.indexOf(e,-1,t),o=i<0?~i-1:r?i:i-1;if(o>=0)return s[0]=this.keys[o],s[1]=this.values[o],s},n.prototype.getPairOrNextHigher=function(e,t,r,s){var i=this.indexOf(e,-1,t),o=i<0?~i:r?i:i+1,a=this.keys;if(o<a.length)return s[0]=a[o],s[1]=this.values[o],s},n.prototype.checkValid=function(e,t,r){var s=this.keys.length,i=this.values.length;return Le(this.values===be?s<=i:s===i,"keys/values length mismatch: depth",e,"with lengths",s,i,"and baseIndex",r),Le(e==0||s>0,"empty leaf at depth",e,"and baseIndex",r),s},n.prototype.set=function(e,t,r,s){var i=this.indexOf(e,-1,s._compare);if(i<0){if(i=~i,s._size++,this.keys.length<s._maxNodeSize)return this.insertInLeaf(i,e,t,s);var o=this.splitOffRightSide(),a=this;return i>this.keys.length&&(i-=this.keys.length,a=o),a.insertInLeaf(i,e,t,s),o}else return r!==!1&&(t!==void 0&&this.reifyValues(),this.keys[i]=e,this.values[i]=t),!1},n.prototype.reifyValues=function(){return this.values===be?this.values=this.values.slice(0,this.keys.length):this.values},n.prototype.insertInLeaf=function(e,t,r,s){if(this.keys.splice(e,0,t),this.values===be){for(;be.length<s._maxNodeSize;)be.push(void 0);if(r===void 0)return!0;this.values=be.slice(0,this.keys.length-1)}return this.values.splice(e,0,r),!0},n.prototype.takeFromRight=function(e){var t=this.values;e.values===be?t!==be&&t.push(void 0):(t=this.reifyValues(),t.push(e.values.shift())),this.keys.push(e.keys.shift())},n.prototype.takeFromLeft=function(e){var t=this.values;e.values===be?t!==be&&t.unshift(void 0):(t=this.reifyValues(),t.unshift(e.values.pop())),this.keys.unshift(e.keys.pop())},n.prototype.splitOffRightSide=function(){var e=this.keys.length>>1,t=this.keys.splice(e),r=this.values===be?be:this.values.splice(e);return new n(t,r)},n.prototype.forRange=function(e,t,r,s,i,o,a){var u=i._compare,l,f;if(t===e){if(!r||(f=(l=this.indexOf(e,-1,u))+1,l<0))return o}else l=this.indexOf(e,0,u),f=this.indexOf(t,-1,u),f<0?f=~f:r===!0&&f++;var d=this.keys,y=this.values;if(a!==void 0)for(var h=l;h<f;h++){var E=d[h],p=a(E,y[h],o++);if(p!==void 0){if(s===!0){if(E!==d[h]||this.isShared===!0)throw new Error("BTree illegally changed or cloned in editRange");p.delete?(this.keys.splice(h,1),this.values!==be&&this.values.splice(h,1),i._size--,h--,f--):p.hasOwnProperty("value")&&(y[h]=p.value)}if(p.break!==void 0)return p}}else o+=f-l;return o},n.prototype.mergeSibling=function(e,t){if(this.keys.push.apply(this.keys,e.keys),this.values===be){if(e.values===be)return;this.values=this.values.slice(0,this.keys.length)}this.values.push.apply(this.values,e.reifyValues())},n}(),Sf=function(n){Ff(e,n);function e(t,r){var s=this;if(!r){r=[];for(var i=0;i<t.length;i++)r[i]=t[i].maxKey()}return s=n.call(this,r)||this,s.children=t,s}return e.prototype.clone=function(){for(var t=this.children.slice(0),r=0;r<t.length;r++)t[r].isShared=!0;return new e(t,this.keys.slice(0))},e.prototype.greedyClone=function(t){if(this.isShared&&!t)return this;for(var r=new e(this.children.slice(0),this.keys.slice(0)),s=0;s<r.children.length;s++)r.children[s]=r.children[s].greedyClone(t);return r},e.prototype.minKey=function(){return this.children[0].minKey()},e.prototype.minPair=function(t){return this.children[0].minPair(t)},e.prototype.maxPair=function(t){return this.children[this.children.length-1].maxPair(t)},e.prototype.get=function(t,r,s){var i=this.indexOf(t,0,s._compare),o=this.children;return i<o.length?o[i].get(t,r,s):void 0},e.prototype.getPairOrNextLower=function(t,r,s,i){var o=this.indexOf(t,0,r),a=this.children;if(o>=a.length)return this.maxPair(i);var u=a[o].getPairOrNextLower(t,r,s,i);return u===void 0&&o>0?a[o-1].maxPair(i):u},e.prototype.getPairOrNextHigher=function(t,r,s,i){var o=this.indexOf(t,0,r),a=this.children,u=a.length;if(!(o>=u)){var l=a[o].getPairOrNextHigher(t,r,s,i);return l===void 0&&o<u-1?a[o+1].minPair(i):l}},e.prototype.checkValid=function(t,r,s){var i=this.keys.length,o=this.children.length;Le(i===o,"keys/children length mismatch: depth",t,"lengths",i,o,"baseIndex",s),Le(i>1||t>0,"internal node has length",i,"at depth",t,"baseIndex",s);for(var a=0,u=this.children,l=this.keys,f=0,d=0;d<o;d++)a+=u[d].checkValid(t+1,r,s+a),f+=u[d].keys.length,Le(a>=f,"wtf",s),Le(d===0||u[d-1].constructor===u[d].constructor,"type mismatch, baseIndex:",s),u[d].maxKey()!=l[d]&&Le(!1,"keys[",d,"] =",l[d],"is wrong, should be ",u[d].maxKey(),"at depth",t,"baseIndex",s),d===0||r._compare(l[d-1],l[d])<0||Le(!1,"sort violation at depth",t,"index",d,"keys",l[d-1],l[d]);var y=f===0;return(y||f>r.maxNodeSize*o)&&Le(!1,y?"too few":"too many","children (",f,a,") at depth",t,"maxNodeSize:",r.maxNodeSize,"children.length:",o,"baseIndex:",s),a},e.prototype.set=function(t,r,s,i){var o=this.children,a=i._maxNodeSize,u=i._compare,l=Math.min(this.indexOf(t,0,u),o.length-1),f=o[l];if(f.isShared&&(o[l]=f=f.clone()),f.keys.length>=a){var d;l>0&&(d=o[l-1]).keys.length<a&&u(f.keys[0],t)<0?(d.isShared&&(o[l-1]=d=d.clone()),d.takeFromRight(f),this.keys[l-1]=d.maxKey()):(d=o[l+1])!==void 0&&d.keys.length<a&&u(f.maxKey(),t)<0&&(d.isShared&&(o[l+1]=d=d.clone()),d.takeFromLeft(f),this.keys[l]=o[l].maxKey())}var y=f.set(t,r,s,i);if(y===!1)return!1;if(this.keys[l]=f.maxKey(),y===!0)return!0;if(this.keys.length<a)return this.insert(l+1,y),!0;var h=this.splitOffRightSide(),E=this;return u(y.maxKey(),this.maxKey())>0&&(E=h,l-=this.keys.length),E.insert(l+1,y),h},e.prototype.insert=function(t,r){this.children.splice(t,0,r),this.keys.splice(t,0,r.maxKey())},e.prototype.splitOffRightSide=function(){var t=this.children.length>>1;return new e(this.children.splice(t),this.keys.splice(t))},e.prototype.takeFromRight=function(t){this.keys.push(t.keys.shift()),this.children.push(t.children.shift())},e.prototype.takeFromLeft=function(t){this.keys.unshift(t.keys.pop()),this.children.unshift(t.children.pop())},e.prototype.forRange=function(t,r,s,i,o,a,u){var l=o._compare,f=this.keys,d=this.children,y=this.indexOf(t,0,l),h=y,E=Math.min(r===t?y:this.indexOf(r,0,l),f.length-1);if(i){if(h<=E)try{for(;h<=E;h++){d[h].isShared&&(d[h]=d[h].clone());var p=d[h].forRange(t,r,s,i,o,a,u);if(f[h]=d[h].maxKey(),typeof p!="number")return p;a=p}}finally{var T=o._maxNodeSize>>1;for(y>0&&y--,h=E;h>=y;h--)d[h].keys.length<=T&&(d[h].keys.length!==0?this.tryMerge(h,o._maxNodeSize):(f.splice(h,1),d.splice(h,1)));d.length!==0&&d[0].keys.length===0&&Le(!1,"emptiness bug")}}else for(;h<=E;h++){var p=d[h].forRange(t,r,s,i,o,a,u);if(typeof p!="number")return p;a=p}return a},e.prototype.tryMerge=function(t,r){var s=this.children;return t>=0&&t+1<s.length&&s[t].keys.length+s[t+1].keys.length<=r?(s[t].isShared&&(s[t]=s[t].clone()),s[t].mergeSibling(s[t+1],r),s.splice(t+1,1),this.keys.splice(t+1,1),this.keys[t]=s[t].maxKey(),!0):!1},e.prototype.mergeSibling=function(t,r){var s=this.keys.length;this.keys.push.apply(this.keys,t.keys);var i=t.children;if(this.children.push.apply(this.children,i),t.isShared&&!this.isShared)for(var o=0;o<i.length;o++)i[o].isShared=!0;this.tryMerge(s-1,r)},e}(_u),be=[],Bu={delete:!0},Nu=function(){return Bu},kf={break:!0},ho=function(){var n=new _u;return n.isShared=!0,n}(),Au=[],Ar=[];function Le(n){for(var e=[],t=1;t<arguments.length;t++)e[t-1]=arguments[t];if(!n)throw e.unshift("B+ tree"),new Error(e.join(" "))}Ne.EmptyBTree=function(){var n=new ut;return n.freeze(),n}()});var ht=class extends Error{},Wr=class extends ht{constructor(e){super(`Invalid DateTime: ${e.toMessage()}`)}},Hr=class extends ht{constructor(e){super(`Invalid Interval: ${e.toMessage()}`)}},Jr=class extends ht{constructor(e){super(`Invalid Duration: ${e.toMessage()}`)}},pt=class extends ht{},un=class extends ht{constructor(e){super(`Invalid unit ${e}`)}},pe=class extends ht{},je=class extends ht{constructor(){super("Zone is an abstract class")}};var _="numeric",Ve="short",ve="long",ln={year:_,month:_,day:_},$n={year:_,month:Ve,day:_},Zs={year:_,month:Ve,day:_,weekday:Ve},Rn={year:_,month:ve,day:_},jn={year:_,month:ve,day:_,weekday:ve},Vn={hour:_,minute:_},qn={hour:_,minute:_,second:_},Un={hour:_,minute:_,second:_,timeZoneName:Ve},Kn={hour:_,minute:_,second:_,timeZoneName:ve},Wn={hour:_,minute:_,hourCycle:"h23"},Hn={hour:_,minute:_,second:_,hourCycle:"h23"},Jn={hour:_,minute:_,second:_,hourCycle:"h23",timeZoneName:Ve},zn={hour:_,minute:_,second:_,hourCycle:"h23",timeZoneName:ve},Yn={year:_,month:_,day:_,hour:_,minute:_},Gn={year:_,month:_,day:_,hour:_,minute:_,second:_},Zn={year:_,month:Ve,day:_,hour:_,minute:_},Qn={year:_,month:Ve,day:_,hour:_,minute:_,second:_},Qs={year:_,month:Ve,day:_,weekday:Ve,hour:_,minute:_},Xn={year:_,month:ve,day:_,hour:_,minute:_,timeZoneName:Ve},er={year:_,month:ve,day:_,hour:_,minute:_,second:_,timeZoneName:Ve},tr={year:_,month:ve,day:_,weekday:ve,hour:_,minute:_,timeZoneName:ve},nr={year:_,month:ve,day:_,weekday:ve,hour:_,minute:_,second:_,timeZoneName:ve};function W(n){return typeof n=="undefined"}function Xe(n){return typeof n=="number"}function rr(n){return typeof n=="number"&&n%1===0}function _o(n){return typeof n=="string"}function Bo(n){return Object.prototype.toString.call(n)==="[object Date]"}function zr(){try{return typeof Intl!="undefined"&&!!Intl.RelativeTimeFormat}catch(n){return!1}}function Po(n){return Array.isArray(n)?n:[n]}function ei(n,e,t){if(n.length!==0)return n.reduce((r,s)=>{let i=[e(s),s];return r&&t(r[0],i[0])===r[0]?r:i},null)[1]}function $o(n,e){return e.reduce((t,r)=>(t[r]=n[r],t),{})}function St(n,e){return Object.prototype.hasOwnProperty.call(n,e)}function et(n,e,t){return rr(n)&&n>=e&&n<=t}function Dl(n,e){return n-e*Math.floor(n/e)}function ie(n,e=2){let t=n<0,r;return t?r="-"+(""+-n).padStart(e,"0"):r=(""+n).padStart(e,"0"),r}function mt(n){if(!(W(n)||n===null||n===""))return parseInt(n,10)}function kt(n){if(!(W(n)||n===null||n===""))return parseFloat(n)}function sr(n){if(!(W(n)||n===null||n==="")){let e=parseFloat("0."+n)*1e3;return Math.floor(e)}}function cn(n,e,t=!1){let r=10**e;return(t?Math.trunc:Math.round)(n*r)/r}function Ut(n){return n%4===0&&(n%100!==0||n%400===0)}function Kt(n){return Ut(n)?366:365}function fn(n,e){let t=Dl(e-1,12)+1,r=n+(e-t)/12;return t===2?Ut(r)?29:28:[31,null,31,30,31,30,31,31,30,31,30,31][t-1]}function ir(n){let e=Date.UTC(n.year,n.month-1,n.day,n.hour,n.minute,n.second,n.millisecond);return n.year<100&&n.year>=0&&(e=new Date(e),e.setUTCFullYear(e.getUTCFullYear()-1900)),+e}function dn(n){let e=(n+Math.floor(n/4)-Math.floor(n/100)+Math.floor(n/400))%7,t=n-1,r=(t+Math.floor(t/4)-Math.floor(t/100)+Math.floor(t/400))%7;return e===4||r===3?53:52}function or(n){return n>99?n:n>60?1900+n:2e3+n}function Yr(n,e,t,r=null){let s=new Date(n),i={hourCycle:"h23",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"};r&&(i.timeZone=r);let o=R({timeZoneName:e},i),a=new Intl.DateTimeFormat(t,o).formatToParts(s).find(u=>u.type.toLowerCase()==="timezonename");return a?a.value:null}function Wt(n,e){let t=parseInt(n,10);Number.isNaN(t)&&(t=0);let r=parseInt(e,10)||0,s=t<0||Object.is(t,-0)?-r:r;return t*60+s}function ti(n){let e=Number(n);if(typeof n=="boolean"||n===""||Number.isNaN(e))throw new pe(`Invalid unit value ${n}`);return e}function hn(n,e){let t={};for(let r in n)if(St(n,r)){let s=n[r];if(s==null)continue;t[e(r)]=ti(s)}return t}function Ct(n,e){let t=Math.trunc(Math.abs(n/60)),r=Math.trunc(Math.abs(n%60)),s=n>=0?"+":"-";switch(e){case"short":return`${s}${ie(t,2)}:${ie(r,2)}`;case"narrow":return`${s}${t}${r>0?`:${r}`:""}`;case"techie":return`${s}${ie(t,2)}${ie(r,2)}`;default:throw new RangeError(`Value format ${e} is out of range for property format`)}}function ar(n){return $o(n,["hour","minute","second","millisecond"])}var ni=/[A-Za-z_+-]{1,256}(?::?\\/[A-Za-z0-9_+-]{1,256}(?:\\/[A-Za-z0-9_+-]{1,256})?)?/;var yl=["January","February","March","April","May","June","July","August","September","October","November","December"],ri=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],gl=["J","F","M","A","M","J","J","A","S","O","N","D"];function si(n){switch(n){case"narrow":return[...gl];case"short":return[...ri];case"long":return[...yl];case"numeric":return["1","2","3","4","5","6","7","8","9","10","11","12"];case"2-digit":return["01","02","03","04","05","06","07","08","09","10","11","12"];default:return null}}var ii=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],oi=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],bl=["M","T","W","T","F","S","S"];function ai(n){switch(n){case"narrow":return[...bl];case"short":return[...oi];case"long":return[...ii];case"numeric":return["1","2","3","4","5","6","7"];default:return null}}var ui=["AM","PM"],El=["Before Christ","Anno Domini"],Fl=["BC","AD"],wl=["B","A"];function li(n){switch(n){case"narrow":return[...wl];case"short":return[...Fl];case"long":return[...El];default:return null}}function Ro(n){return ui[n.hour<12?0:1]}function jo(n,e){return ai(e)[n.weekday-1]}function Vo(n,e){return si(e)[n.month-1]}function qo(n,e){return li(e)[n.year<0?0:1]}function Uo(n,e,t="always",r=!1){let s={years:["year","yr."],quarters:["quarter","qtr."],months:["month","mo."],weeks:["week","wk."],days:["day","day","days"],hours:["hour","hr."],minutes:["minute","min."],seconds:["second","sec."]},i=["hours","minutes","seconds"].indexOf(n)===-1;if(t==="auto"&&i){let d=n==="days";switch(e){case 1:return d?"tomorrow":`next ${s[n][0]}`;case-1:return d?"yesterday":`last ${s[n][0]}`;case 0:return d?"today":`this ${s[n][0]}`;default:}}let o=Object.is(e,-0)||e<0,a=Math.abs(e),u=a===1,l=s[n],f=r?u?l[1]:l[2]||l[1]:u?s[n][0]:n;return o?`${a} ${f} ago`:`in ${a} ${f}`}function Ko(n,e){let t="";for(let r of n)r.literal?t+=r.val:t+=e(r.val);return t}var Tl={D:ln,DD:$n,DDD:Rn,DDDD:jn,t:Vn,tt:qn,ttt:Un,tttt:Kn,T:Wn,TT:Hn,TTT:Jn,TTTT:zn,f:Yn,ff:Zn,fff:Xn,ffff:tr,F:Gn,FF:Qn,FFF:er,FFFF:nr},ue=class{static create(e,t={}){return new ue(e,t)}static parseFormat(e){let t=null,r="",s=!1,i=[];for(let o=0;o<e.length;o++){let a=e.charAt(o);a==="\'"?(r.length>0&&i.push({literal:s,val:r}),t=null,r="",s=!s):s||a===t?r+=a:(r.length>0&&i.push({literal:!1,val:r}),r=a,t=a)}return r.length>0&&i.push({literal:s,val:r}),i}static macroTokenToFormatOpts(e){return Tl[e]}constructor(e,t){this.opts=t,this.loc=e,this.systemLoc=null}formatWithSystemDefault(e,t){return this.systemLoc===null&&(this.systemLoc=this.loc.redefaultToSystem()),this.systemLoc.dtFormatter(e,R(R({},this.opts),t)).format()}formatDateTime(e,t={}){return this.loc.dtFormatter(e,R(R({},this.opts),t)).format()}formatDateTimeParts(e,t={}){return this.loc.dtFormatter(e,R(R({},this.opts),t)).formatToParts()}resolvedOptions(e,t={}){return this.loc.dtFormatter(e,R(R({},this.opts),t)).resolvedOptions()}num(e,t=0){if(this.opts.forceSimple)return ie(e,t);let r=R({},this.opts);return t>0&&(r.padTo=t),this.loc.numberFormatter(r).format(e)}formatDateTimeFromString(e,t){let r=this.loc.listingMode()==="en",s=this.loc.outputCalendar&&this.loc.outputCalendar!=="gregory",i=(h,E)=>this.loc.extract(e,h,E),o=h=>e.isOffsetFixed&&e.offset===0&&h.allowZ?"Z":e.isValid?e.zone.formatOffset(e.ts,h.format):"",a=()=>r?Ro(e):i({hour:"numeric",hourCycle:"h12"},"dayperiod"),u=(h,E)=>r?Vo(e,h):i(E?{month:h}:{month:h,day:"numeric"},"month"),l=(h,E)=>r?jo(e,h):i(E?{weekday:h}:{weekday:h,month:"long",day:"numeric"},"weekday"),f=h=>{let E=ue.macroTokenToFormatOpts(h);return E?this.formatWithSystemDefault(e,E):h},d=h=>r?qo(e,h):i({era:h},"era"),y=h=>{switch(h){case"S":return this.num(e.millisecond);case"u":case"SSS":return this.num(e.millisecond,3);case"s":return this.num(e.second);case"ss":return this.num(e.second,2);case"uu":return this.num(Math.floor(e.millisecond/10),2);case"uuu":return this.num(Math.floor(e.millisecond/100));case"m":return this.num(e.minute);case"mm":return this.num(e.minute,2);case"h":return this.num(e.hour%12===0?12:e.hour%12);case"hh":return this.num(e.hour%12===0?12:e.hour%12,2);case"H":return this.num(e.hour);case"HH":return this.num(e.hour,2);case"Z":return o({format:"narrow",allowZ:this.opts.allowZ});case"ZZ":return o({format:"short",allowZ:this.opts.allowZ});case"ZZZ":return o({format:"techie",allowZ:this.opts.allowZ});case"ZZZZ":return e.zone.offsetName(e.ts,{format:"short",locale:this.loc.locale});case"ZZZZZ":return e.zone.offsetName(e.ts,{format:"long",locale:this.loc.locale});case"z":return e.zoneName;case"a":return a();case"d":return s?i({day:"numeric"},"day"):this.num(e.day);case"dd":return s?i({day:"2-digit"},"day"):this.num(e.day,2);case"c":return this.num(e.weekday);case"ccc":return l("short",!0);case"cccc":return l("long",!0);case"ccccc":return l("narrow",!0);case"E":return this.num(e.weekday);case"EEE":return l("short",!1);case"EEEE":return l("long",!1);case"EEEEE":return l("narrow",!1);case"L":return s?i({month:"numeric",day:"numeric"},"month"):this.num(e.month);case"LL":return s?i({month:"2-digit",day:"numeric"},"month"):this.num(e.month,2);case"LLL":return u("short",!0);case"LLLL":return u("long",!0);case"LLLLL":return u("narrow",!0);case"M":return s?i({month:"numeric"},"month"):this.num(e.month);case"MM":return s?i({month:"2-digit"},"month"):this.num(e.month,2);case"MMM":return u("short",!1);case"MMMM":return u("long",!1);case"MMMMM":return u("narrow",!1);case"y":return s?i({year:"numeric"},"year"):this.num(e.year);case"yy":return s?i({year:"2-digit"},"year"):this.num(e.year.toString().slice(-2),2);case"yyyy":return s?i({year:"numeric"},"year"):this.num(e.year,4);case"yyyyyy":return s?i({year:"numeric"},"year"):this.num(e.year,6);case"G":return d("short");case"GG":return d("long");case"GGGGG":return d("narrow");case"kk":return this.num(e.weekYear.toString().slice(-2),2);case"kkkk":return this.num(e.weekYear,4);case"W":return this.num(e.weekNumber);case"WW":return this.num(e.weekNumber,2);case"o":return this.num(e.ordinal);case"ooo":return this.num(e.ordinal,3);case"q":return this.num(e.quarter);case"qq":return this.num(e.quarter,2);case"X":return this.num(Math.floor(e.ts/1e3));case"x":return this.num(e.ts);default:return f(h)}};return Ko(ue.parseFormat(t),y)}formatDurationFromString(e,t){let r=u=>{switch(u[0]){case"S":return"millisecond";case"s":return"second";case"m":return"minute";case"h":return"hour";case"d":return"day";case"w":return"week";case"M":return"month";case"y":return"year";default:return null}},s=u=>l=>{let f=r(l);return f?this.num(u.get(f),l.length):l},i=ue.parseFormat(t),o=i.reduce((u,{literal:l,val:f})=>l?u:u.concat(f),[]),a=e.shiftTo(...o.map(r).filter(u=>u));return Ko(i,s(a))}};var me=class{constructor(e,t){this.reason=e,this.explanation=t}toMessage(){return this.explanation?`${this.reason}: ${this.explanation}`:this.reason}};var Ce=class{get type(){throw new je}get name(){throw new je}get ianaName(){return this.name}get isUniversal(){throw new je}offsetName(e,t){throw new je}formatOffset(e,t){throw new je}offset(e){throw new je}equals(e){throw new je}get isValid(){throw new je}};var fi=null,xt=class extends Ce{static get instance(){return fi===null&&(fi=new xt),fi}get type(){return"system"}get name(){return new Intl.DateTimeFormat().resolvedOptions().timeZone}get isUniversal(){return!1}offsetName(e,{format:t,locale:r}){return Yr(e,t,r)}formatOffset(e,t){return Ct(this.offset(e),t)}offset(e){return-new Date(e).getTimezoneOffset()}equals(e){return e.type==="system"}get isValid(){return!0}};var Zr={};function Sl(n){return Zr[n]||(Zr[n]=new Intl.DateTimeFormat("en-US",{hour12:!1,timeZone:n,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",era:"short"})),Zr[n]}var kl={year:0,month:1,day:2,era:3,hour:4,minute:5,second:6};function Cl(n,e){let t=n.format(e).replace(/\\u200E/g,""),r=/(\\d+)\\/(\\d+)\\/(\\d+) (AD|BC),? (\\d+):(\\d+):(\\d+)/.exec(t),[,s,i,o,a,u,l,f]=r;return[o,s,i,a,u,l,f]}function xl(n,e){let t=n.formatToParts(e),r=[];for(let s=0;s<t.length;s++){let{type:i,value:o}=t[s],a=kl[i];i==="era"?r[a]=o:W(a)||(r[a]=parseInt(o,10))}return r}var Gr={},ce=class extends Ce{static create(e){return Gr[e]||(Gr[e]=new ce(e)),Gr[e]}static resetCache(){Gr={},Zr={}}static isValidSpecifier(e){return this.isValidZone(e)}static isValidZone(e){if(!e)return!1;try{return new Intl.DateTimeFormat("en-US",{timeZone:e}).format(),!0}catch(t){return!1}}constructor(e){super(),this.zoneName=e,this.valid=ce.isValidZone(e)}get type(){return"iana"}get name(){return this.zoneName}get isUniversal(){return!1}offsetName(e,{format:t,locale:r}){return Yr(e,t,r,this.name)}formatOffset(e,t){return Ct(this.offset(e),t)}offset(e){let t=new Date(e);if(isNaN(t))return NaN;let r=Sl(this.name),[s,i,o,a,u,l,f]=r.formatToParts?xl(r,t):Cl(r,t);a==="BC"&&(s=-Math.abs(s)+1);let y=ir({year:s,month:i,day:o,hour:u===24?0:u,minute:l,second:f,millisecond:0}),h=+t,E=h%1e3;return h-=E>=0?E:1e3+E,(y-h)/(60*1e3)}equals(e){return e.type==="iana"&&e.name===this.name}get isValid(){return this.valid}};var di=null,oe=class extends Ce{static get utcInstance(){return di===null&&(di=new oe(0)),di}static instance(e){return e===0?oe.utcInstance:new oe(e)}static parseSpecifier(e){if(e){let t=e.match(/^utc(?:([+-]\\d{1,2})(?::(\\d{2}))?)?$/i);if(t)return new oe(Wt(t[1],t[2]))}return null}constructor(e){super(),this.fixed=e}get type(){return"fixed"}get name(){return this.fixed===0?"UTC":`UTC${Ct(this.fixed,"narrow")}`}get ianaName(){return this.fixed===0?"Etc/UTC":`Etc/GMT${Ct(-this.fixed,"narrow")}`}offsetName(){return this.name}formatOffset(e,t){return Ct(this.fixed,t)}get isUniversal(){return!0}offset(){return this.fixed}equals(e){return e.type==="fixed"&&e.fixed===this.fixed}get isValid(){return!0}};var pn=class extends Ce{constructor(e){super(),this.zoneName=e}get type(){return"invalid"}get name(){return this.zoneName}get isUniversal(){return!1}offsetName(){return null}formatOffset(){return""}offset(){return NaN}equals(){return!1}get isValid(){return!1}};function qe(n,e){let t;if(W(n)||n===null)return e;if(n instanceof Ce)return n;if(_o(n)){let r=n.toLowerCase();return r==="local"||r==="system"?e:r==="utc"||r==="gmt"?oe.utcInstance:oe.parseSpecifier(r)||ce.create(n)}else return Xe(n)?oe.instance(n):typeof n=="object"&&n.offset&&typeof n.offset=="number"?n:new pn(n)}var Wo=()=>Date.now(),Ho="system",Jo=null,zo=null,Yo=null,Go,X=class{static get now(){return Wo}static set now(e){Wo=e}static set defaultZone(e){Ho=e}static get defaultZone(){return qe(Ho,xt.instance)}static get defaultLocale(){return Jo}static set defaultLocale(e){Jo=e}static get defaultNumberingSystem(){return zo}static set defaultNumberingSystem(e){zo=e}static get defaultOutputCalendar(){return Yo}static set defaultOutputCalendar(e){Yo=e}static get throwOnInvalid(){return Go}static set throwOnInvalid(e){Go=e}static resetCaches(){Q.resetCache(),ce.resetCache()}};var Zo={};function Ol(n,e={}){let t=JSON.stringify([n,e]),r=Zo[t];return r||(r=new Intl.ListFormat(n,e),Zo[t]=r),r}var hi={};function pi(n,e={}){let t=JSON.stringify([n,e]),r=hi[t];return r||(r=new Intl.DateTimeFormat(n,e),hi[t]=r),r}var mi={};function vl(n,e={}){let t=JSON.stringify([n,e]),r=mi[t];return r||(r=new Intl.NumberFormat(n,e),mi[t]=r),r}var Di={};function Il(n,e={}){let o=e,{base:t}=o,r=Gs(o,["base"]),s=JSON.stringify([n,r]),i=Di[s];return i||(i=new Intl.RelativeTimeFormat(n,e),Di[s]=i),i}var ur=null;function Ll(){return ur||(ur=new Intl.DateTimeFormat().resolvedOptions().locale,ur)}function Nl(n){let e=n.indexOf("-u-");if(e===-1)return[n];{let t,r=n.substring(0,e);try{t=pi(n).resolvedOptions()}catch(o){t=pi(r).resolvedOptions()}let{numberingSystem:s,calendar:i}=t;return[r,s,i]}}function Al(n,e,t){return(t||e)&&(n+="-u",t&&(n+=`-ca-${t}`),e&&(n+=`-nu-${e}`)),n}function Ml(n){let e=[];for(let t=1;t<=12;t++){let r=B.utc(2016,t,1);e.push(n(r))}return e}function _l(n){let e=[];for(let t=1;t<=7;t++){let r=B.utc(2016,11,13+t);e.push(n(r))}return e}function Qr(n,e,t,r,s){let i=n.listingMode(t);return i==="error"?null:i==="en"?r(e):s(e)}function Bl(n){return n.numberingSystem&&n.numberingSystem!=="latn"?!1:n.numberingSystem==="latn"||!n.locale||n.locale.startsWith("en")||new Intl.DateTimeFormat(n.intl).resolvedOptions().numberingSystem==="latn"}var yi=class{constructor(e,t,r){this.padTo=r.padTo||0,this.floor=r.floor||!1;let a=r,{padTo:s,floor:i}=a,o=Gs(a,["padTo","floor"]);if(!t||Object.keys(o).length>0){let u=R({useGrouping:!1},r);r.padTo>0&&(u.minimumIntegerDigits=r.padTo),this.inf=vl(e,u)}}format(e){if(this.inf){let t=this.floor?Math.floor(e):e;return this.inf.format(t)}else{let t=this.floor?Math.floor(e):cn(e,3);return ie(t,this.padTo)}}},gi=class{constructor(e,t,r){this.opts=r;let s;if(e.zone.isUniversal){let o=-1*(e.offset/60),a=o>=0?`Etc/GMT+${o}`:`Etc/GMT${o}`;e.offset!==0&&ce.create(a).valid?(s=a,this.dt=e):(s="UTC",r.timeZoneName?this.dt=e:this.dt=e.offset===0?e:B.fromMillis(e.ts+e.offset*60*1e3))}else e.zone.type==="system"?this.dt=e:(this.dt=e,s=e.zone.name);let i=R({},this.opts);s&&(i.timeZone=s),this.dtf=pi(t,i)}format(){return this.dtf.format(this.dt.toJSDate())}formatToParts(){return this.dtf.formatToParts(this.dt.toJSDate())}resolvedOptions(){return this.dtf.resolvedOptions()}},bi=class{constructor(e,t,r){this.opts=R({style:"long"},r),!t&&zr()&&(this.rtf=Il(e,r))}format(e,t){return this.rtf?this.rtf.format(e,t):Uo(t,e,this.opts.numeric,this.opts.style!=="long")}formatToParts(e,t){return this.rtf?this.rtf.formatToParts(e,t):[]}},Q=class{static fromOpts(e){return Q.create(e.locale,e.numberingSystem,e.outputCalendar,e.defaultToEN)}static create(e,t,r,s=!1){let i=e||X.defaultLocale,o=i||(s?"en-US":Ll()),a=t||X.defaultNumberingSystem,u=r||X.defaultOutputCalendar;return new Q(o,a,u,i)}static resetCache(){ur=null,hi={},mi={},Di={}}static fromObject({locale:e,numberingSystem:t,outputCalendar:r}={}){return Q.create(e,t,r)}constructor(e,t,r,s){let[i,o,a]=Nl(e);this.locale=i,this.numberingSystem=t||o||null,this.outputCalendar=r||a||null,this.intl=Al(this.locale,this.numberingSystem,this.outputCalendar),this.weekdaysCache={format:{},standalone:{}},this.monthsCache={format:{},standalone:{}},this.meridiemCache=null,this.eraCache={},this.specifiedLocale=s,this.fastNumbersCached=null}get fastNumbers(){return this.fastNumbersCached==null&&(this.fastNumbersCached=Bl(this)),this.fastNumbersCached}listingMode(){let e=this.isEnglish(),t=(this.numberingSystem===null||this.numberingSystem==="latn")&&(this.outputCalendar===null||this.outputCalendar==="gregory");return e&&t?"en":"intl"}clone(e){return!e||Object.getOwnPropertyNames(e).length===0?this:Q.create(e.locale||this.specifiedLocale,e.numberingSystem||this.numberingSystem,e.outputCalendar||this.outputCalendar,e.defaultToEN||!1)}redefaultToEN(e={}){return this.clone(Ee(R({},e),{defaultToEN:!0}))}redefaultToSystem(e={}){return this.clone(Ee(R({},e),{defaultToEN:!1}))}months(e,t=!1,r=!0){return Qr(this,e,r,si,()=>{let s=t?{month:e,day:"numeric"}:{month:e},i=t?"format":"standalone";return this.monthsCache[i][e]||(this.monthsCache[i][e]=Ml(o=>this.extract(o,s,"month"))),this.monthsCache[i][e]})}weekdays(e,t=!1,r=!0){return Qr(this,e,r,ai,()=>{let s=t?{weekday:e,year:"numeric",month:"long",day:"numeric"}:{weekday:e},i=t?"format":"standalone";return this.weekdaysCache[i][e]||(this.weekdaysCache[i][e]=_l(o=>this.extract(o,s,"weekday"))),this.weekdaysCache[i][e]})}meridiems(e=!0){return Qr(this,void 0,e,()=>ui,()=>{if(!this.meridiemCache){let t={hour:"numeric",hourCycle:"h12"};this.meridiemCache=[B.utc(2016,11,13,9),B.utc(2016,11,13,19)].map(r=>this.extract(r,t,"dayperiod"))}return this.meridiemCache})}eras(e,t=!0){return Qr(this,e,t,li,()=>{let r={era:e};return this.eraCache[e]||(this.eraCache[e]=[B.utc(-40,1,1),B.utc(2017,1,1)].map(s=>this.extract(s,r,"era"))),this.eraCache[e]})}extract(e,t,r){let s=this.dtFormatter(e,t),i=s.formatToParts(),o=i.find(a=>a.type.toLowerCase()===r);return o?o.value:null}numberFormatter(e={}){return new yi(this.intl,e.forceSimple||this.fastNumbers,e)}dtFormatter(e,t={}){return new gi(e,this.intl,t)}relFormatter(e={}){return new bi(this.intl,this.isEnglish(),e)}listFormatter(e={}){return Ol(this.intl,e)}isEnglish(){return this.locale==="en"||this.locale.toLowerCase()==="en-us"||new Intl.DateTimeFormat(this.intl).resolvedOptions().locale.startsWith("en-us")}equals(e){return this.locale===e.locale&&this.numberingSystem===e.numberingSystem&&this.outputCalendar===e.outputCalendar}};function Dn(...n){let e=n.reduce((t,r)=>t+r.source,"");return RegExp(`^${e}$`)}function yn(...n){return e=>n.reduce(([t,r,s],i)=>{let[o,a,u]=i(e,s);return[R(R({},t),o),a||r,u]},[{},null,1]).slice(0,2)}function gn(n,...e){if(n==null)return[null,null];for(let[t,r]of e){let s=t.exec(n);if(s)return r(s)}return[null,null]}function Xo(...n){return(e,t)=>{let r={},s;for(s=0;s<n.length;s++)r[n[s]]=mt(e[t+s]);return[r,null,t+s]}}var ea=/(?:(Z)|([+-]\\d\\d)(?::?(\\d\\d))?)/,Pl=`(?:${ea.source}?(?:\\\\[(${ni.source})\\\\])?)?`,Ei=/(\\d\\d)(?::?(\\d\\d)(?::?(\\d\\d)(?:[.,](\\d{1,30}))?)?)?/,ta=RegExp(`${Ei.source}${Pl}`),Fi=RegExp(`(?:T${ta.source})?`),$l=/([+-]\\d{6}|\\d{4})(?:-?(\\d\\d)(?:-?(\\d\\d))?)?/,Rl=/(\\d{4})-?W(\\d\\d)(?:-?(\\d))?/,jl=/(\\d{4})-?(\\d{3})/,Vl=Xo("weekYear","weekNumber","weekDay"),ql=Xo("year","ordinal"),Ul=/(\\d{4})-(\\d\\d)-(\\d\\d)/,na=RegExp(`${Ei.source} ?(?:${ea.source}|(${ni.source}))?`),Kl=RegExp(`(?: ${na.source})?`);function mn(n,e,t){let r=n[e];return W(r)?t:mt(r)}function Wl(n,e){return[{year:mn(n,e),month:mn(n,e+1,1),day:mn(n,e+2,1)},null,e+3]}function bn(n,e){return[{hours:mn(n,e,0),minutes:mn(n,e+1,0),seconds:mn(n,e+2,0),milliseconds:sr(n[e+3])},null,e+4]}function lr(n,e){let t=!n[e]&&!n[e+1],r=Wt(n[e+1],n[e+2]),s=t?null:oe.instance(r);return[{},s,e+3]}function cr(n,e){let t=n[e]?ce.create(n[e]):null;return[{},t,e+1]}var Hl=RegExp(`^T?${Ei.source}$`),Jl=/^-?P(?:(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)Y)?(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)M)?(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)W)?(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)D)?(?:T(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)H)?(?:(-?\\d{1,20}(?:\\.\\d{1,20})?)M)?(?:(-?\\d{1,20})(?:[.,](-?\\d{1,20}))?S)?)?)$/;function zl(n){let[e,t,r,s,i,o,a,u,l]=n,f=e[0]==="-",d=u&&u[0]==="-",y=(h,E=!1)=>h!==void 0&&(E||h&&f)?-h:h;return[{years:y(kt(t)),months:y(kt(r)),weeks:y(kt(s)),days:y(kt(i)),hours:y(kt(o)),minutes:y(kt(a)),seconds:y(kt(u),u==="-0"),milliseconds:y(sr(l),d)}]}var Yl={GMT:0,EDT:-4*60,EST:-5*60,CDT:-5*60,CST:-6*60,MDT:-6*60,MST:-7*60,PDT:-7*60,PST:-8*60};function wi(n,e,t,r,s,i,o){let a={year:e.length===2?or(mt(e)):mt(e),month:ri.indexOf(t)+1,day:mt(r),hour:mt(s),minute:mt(i)};return o&&(a.second=mt(o)),n&&(a.weekday=n.length>3?ii.indexOf(n)+1:oi.indexOf(n)+1),a}var Gl=/^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),\\s)?(\\d{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s(\\d{2,4})\\s(\\d\\d):(\\d\\d)(?::(\\d\\d))?\\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|(?:([+-]\\d\\d)(\\d\\d)))$/;function Zl(n){let[,e,t,r,s,i,o,a,u,l,f,d]=n,y=wi(e,s,r,t,i,o,a),h;return u?h=Yl[u]:l?h=0:h=Wt(f,d),[y,new oe(h)]}function Ql(n){return n.replace(/\\([^()]*\\)|[\\n\\t]/g," ").replace(/(\\s\\s+)/g," ").trim()}var Xl=/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\\d\\d) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{4}) (\\d\\d):(\\d\\d):(\\d\\d) GMT$/,ec=/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), (\\d\\d)-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\\d\\d) (\\d\\d):(\\d\\d):(\\d\\d) GMT$/,tc=/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( \\d|\\d\\d) (\\d\\d):(\\d\\d):(\\d\\d) (\\d{4})$/;function Qo(n){let[,e,t,r,s,i,o,a]=n;return[wi(e,s,r,t,i,o,a),oe.utcInstance]}function nc(n){let[,e,t,r,s,i,o,a]=n;return[wi(e,a,t,r,s,i,o),oe.utcInstance]}var rc=Dn($l,Fi),sc=Dn(Rl,Fi),ic=Dn(jl,Fi),oc=Dn(ta),ra=yn(Wl,bn,lr,cr),ac=yn(Vl,bn,lr,cr),uc=yn(ql,bn,lr,cr),lc=yn(bn,lr,cr);function sa(n){return gn(n,[rc,ra],[sc,ac],[ic,uc],[oc,lc])}function ia(n){return gn(Ql(n),[Gl,Zl])}function oa(n){return gn(n,[Xl,Qo],[ec,Qo],[tc,nc])}function aa(n){return gn(n,[Jl,zl])}var cc=yn(bn);function ua(n){return gn(n,[Hl,cc])}var fc=Dn(Ul,Kl),dc=Dn(na),hc=yn(bn,lr,cr);function la(n){return gn(n,[fc,ra],[dc,hc])}var pc="Invalid Duration",ca={weeks:{days:7,hours:7*24,minutes:7*24*60,seconds:7*24*60*60,milliseconds:7*24*60*60*1e3},days:{hours:24,minutes:24*60,seconds:24*60*60,milliseconds:24*60*60*1e3},hours:{minutes:60,seconds:60*60,milliseconds:60*60*1e3},minutes:{seconds:60,milliseconds:60*1e3},seconds:{milliseconds:1e3}},mc=R({years:{quarters:4,months:12,weeks:52,days:365,hours:365*24,minutes:365*24*60,seconds:365*24*60*60,milliseconds:365*24*60*60*1e3},quarters:{months:3,weeks:13,days:91,hours:91*24,minutes:91*24*60,seconds:91*24*60*60,milliseconds:91*24*60*60*1e3},months:{weeks:4,days:30,hours:30*24,minutes:30*24*60,seconds:30*24*60*60,milliseconds:30*24*60*60*1e3}},ca),Me=146097/400,En=146097/4800,Dc=R({years:{quarters:4,months:12,weeks:Me/7,days:Me,hours:Me*24,minutes:Me*24*60,seconds:Me*24*60*60,milliseconds:Me*24*60*60*1e3},quarters:{months:3,weeks:Me/28,days:Me/4,hours:Me*24/4,minutes:Me*24*60/4,seconds:Me*24*60*60/4,milliseconds:Me*24*60*60*1e3/4},months:{weeks:En/7,days:En,hours:En*24,minutes:En*24*60,seconds:En*24*60*60,milliseconds:En*24*60*60*1e3}},ca),Jt=["years","quarters","months","weeks","days","hours","minutes","seconds","milliseconds"],yc=Jt.slice(0).reverse();function Ht(n,e,t=!1){let r={values:t?e.values:R(R({},n.values),e.values||{}),loc:n.loc.clone(e.loc),conversionAccuracy:e.conversionAccuracy||n.conversionAccuracy};return new M(r)}function gc(n){return n<0?Math.floor(n):Math.ceil(n)}function fa(n,e,t,r,s){let i=n[s][t],o=e[t]/i,a=Math.sign(o)===Math.sign(r[s]),u=!a&&r[s]!==0&&Math.abs(o)<=1?gc(o):Math.trunc(o);r[s]+=u,e[t]-=u*i}function bc(n,e){yc.reduce((t,r)=>W(e[r])?t:(t&&fa(n,e,t,e,r),r),null)}var M=class{constructor(e){let t=e.conversionAccuracy==="longterm"||!1;this.values=e.values,this.loc=e.loc||Q.create(),this.conversionAccuracy=t?"longterm":"casual",this.invalid=e.invalid||null,this.matrix=t?Dc:mc,this.isLuxonDuration=!0}static fromMillis(e,t){return M.fromObject({milliseconds:e},t)}static fromObject(e,t={}){if(e==null||typeof e!="object")throw new pe(`Duration.fromObject: argument expected to be an object, got ${e===null?"null":typeof e}`);return new M({values:hn(e,M.normalizeUnit),loc:Q.fromObject(t),conversionAccuracy:t.conversionAccuracy})}static fromDurationLike(e){if(Xe(e))return M.fromMillis(e);if(M.isDuration(e))return e;if(typeof e=="object")return M.fromObject(e);throw new pe(`Unknown duration argument ${e} of type ${typeof e}`)}static fromISO(e,t){let[r]=aa(e);return r?M.fromObject(r,t):M.invalid("unparsable",`the input "${e}" can\'t be parsed as ISO 8601`)}static fromISOTime(e,t){let[r]=ua(e);return r?M.fromObject(r,t):M.invalid("unparsable",`the input "${e}" can\'t be parsed as ISO 8601`)}static invalid(e,t=null){if(!e)throw new pe("need to specify a reason the Duration is invalid");let r=e instanceof me?e:new me(e,t);if(X.throwOnInvalid)throw new Jr(r);return new M({invalid:r})}static normalizeUnit(e){let t={year:"years",years:"years",quarter:"quarters",quarters:"quarters",month:"months",months:"months",week:"weeks",weeks:"weeks",day:"days",days:"days",hour:"hours",hours:"hours",minute:"minutes",minutes:"minutes",second:"seconds",seconds:"seconds",millisecond:"milliseconds",milliseconds:"milliseconds"}[e&&e.toLowerCase()];if(!t)throw new un(e);return t}static isDuration(e){return e&&e.isLuxonDuration||!1}get locale(){return this.isValid?this.loc.locale:null}get numberingSystem(){return this.isValid?this.loc.numberingSystem:null}toFormat(e,t={}){let r=Ee(R({},t),{floor:t.round!==!1&&t.floor!==!1});return this.isValid?ue.create(this.loc,r).formatDurationFromString(this,e):pc}toHuman(e={}){let t=Jt.map(r=>{let s=this.values[r];return W(s)?null:this.loc.numberFormatter(Ee(R({style:"unit",unitDisplay:"long"},e),{unit:r.slice(0,-1)})).format(s)}).filter(r=>r);return this.loc.listFormatter(R({type:"conjunction",style:e.listStyle||"narrow"},e)).format(t)}toObject(){return this.isValid?R({},this.values):{}}toISO(){if(!this.isValid)return null;let e="P";return this.years!==0&&(e+=this.years+"Y"),(this.months!==0||this.quarters!==0)&&(e+=this.months+this.quarters*3+"M"),this.weeks!==0&&(e+=this.weeks+"W"),this.days!==0&&(e+=this.days+"D"),(this.hours!==0||this.minutes!==0||this.seconds!==0||this.milliseconds!==0)&&(e+="T"),this.hours!==0&&(e+=this.hours+"H"),this.minutes!==0&&(e+=this.minutes+"M"),(this.seconds!==0||this.milliseconds!==0)&&(e+=cn(this.seconds+this.milliseconds/1e3,3)+"S"),e==="P"&&(e+="T0S"),e}toISOTime(e={}){if(!this.isValid)return null;let t=this.toMillis();if(t<0||t>=864e5)return null;e=R({suppressMilliseconds:!1,suppressSeconds:!1,includePrefix:!1,format:"extended"},e);let r=this.shiftTo("hours","minutes","seconds","milliseconds"),s=e.format==="basic"?"hhmm":"hh:mm";(!e.suppressSeconds||r.seconds!==0||r.milliseconds!==0)&&(s+=e.format==="basic"?"ss":":ss",(!e.suppressMilliseconds||r.milliseconds!==0)&&(s+=".SSS"));let i=r.toFormat(s);return e.includePrefix&&(i="T"+i),i}toJSON(){return this.toISO()}toString(){return this.toISO()}toMillis(){return this.as("milliseconds")}valueOf(){return this.toMillis()}plus(e){if(!this.isValid)return this;let t=M.fromDurationLike(e),r={};for(let s of Jt)(St(t.values,s)||St(this.values,s))&&(r[s]=t.get(s)+this.get(s));return Ht(this,{values:r},!0)}minus(e){if(!this.isValid)return this;let t=M.fromDurationLike(e);return this.plus(t.negate())}mapUnits(e){if(!this.isValid)return this;let t={};for(let r of Object.keys(this.values))t[r]=ti(e(this.values[r],r));return Ht(this,{values:t},!0)}get(e){return this[M.normalizeUnit(e)]}set(e){if(!this.isValid)return this;let t=R(R({},this.values),hn(e,M.normalizeUnit));return Ht(this,{values:t})}reconfigure({locale:e,numberingSystem:t,conversionAccuracy:r}={}){let s=this.loc.clone({locale:e,numberingSystem:t}),i={loc:s};return r&&(i.conversionAccuracy=r),Ht(this,i)}as(e){return this.isValid?this.shiftTo(e).get(e):NaN}normalize(){if(!this.isValid)return this;let e=this.toObject();return bc(this.matrix,e),Ht(this,{values:e},!0)}shiftTo(...e){if(!this.isValid)return this;if(e.length===0)return this;e=e.map(o=>M.normalizeUnit(o));let t={},r={},s=this.toObject(),i;for(let o of Jt)if(e.indexOf(o)>=0){i=o;let a=0;for(let l in r)a+=this.matrix[l][o]*r[l],r[l]=0;Xe(s[o])&&(a+=s[o]);let u=Math.trunc(a);t[o]=u,r[o]=(a*1e3-u*1e3)/1e3;for(let l in s)Jt.indexOf(l)>Jt.indexOf(o)&&fa(this.matrix,s,l,t,o)}else Xe(s[o])&&(r[o]=s[o]);for(let o in r)r[o]!==0&&(t[i]+=o===i?r[o]:r[o]/this.matrix[i][o]);return Ht(this,{values:t},!0).normalize()}negate(){if(!this.isValid)return this;let e={};for(let t of Object.keys(this.values))e[t]=this.values[t]===0?0:-this.values[t];return Ht(this,{values:e},!0)}get years(){return this.isValid?this.values.years||0:NaN}get quarters(){return this.isValid?this.values.quarters||0:NaN}get months(){return this.isValid?this.values.months||0:NaN}get weeks(){return this.isValid?this.values.weeks||0:NaN}get days(){return this.isValid?this.values.days||0:NaN}get hours(){return this.isValid?this.values.hours||0:NaN}get minutes(){return this.isValid?this.values.minutes||0:NaN}get seconds(){return this.isValid?this.values.seconds||0:NaN}get milliseconds(){return this.isValid?this.values.milliseconds||0:NaN}get isValid(){return this.invalid===null}get invalidReason(){return this.invalid?this.invalid.reason:null}get invalidExplanation(){return this.invalid?this.invalid.explanation:null}equals(e){if(!this.isValid||!e.isValid||!this.loc.equals(e.loc))return!1;function t(r,s){return r===void 0||r===0?s===void 0||s===0:r===s}for(let r of Jt)if(!t(this.values[r],e.values[r]))return!1;return!0}};var fr="Invalid Interval";function Ec(n,e){return!n||!n.isValid?te.invalid("missing or invalid start"):!e||!e.isValid?te.invalid("missing or invalid end"):e<n?te.invalid("end before start",`The end of an interval must be after its start, but you had start=${n.toISO()} and end=${e.toISO()}`):null}var te=class{constructor(e){this.s=e.start,this.e=e.end,this.invalid=e.invalid||null,this.isLuxonInterval=!0}static invalid(e,t=null){if(!e)throw new pe("need to specify a reason the Interval is invalid");let r=e instanceof me?e:new me(e,t);if(X.throwOnInvalid)throw new Hr(r);return new te({invalid:r})}static fromDateTimes(e,t){let r=Fn(e),s=Fn(t),i=Ec(r,s);return i==null?new te({start:r,end:s}):i}static after(e,t){let r=M.fromDurationLike(t),s=Fn(e);return te.fromDateTimes(s,s.plus(r))}static before(e,t){let r=M.fromDurationLike(t),s=Fn(e);return te.fromDateTimes(s.minus(r),s)}static fromISO(e,t){let[r,s]=(e||"").split("/",2);if(r&&s){let i,o;try{i=B.fromISO(r,t),o=i.isValid}catch(l){o=!1}let a,u;try{a=B.fromISO(s,t),u=a.isValid}catch(l){u=!1}if(o&&u)return te.fromDateTimes(i,a);if(o){let l=M.fromISO(s,t);if(l.isValid)return te.after(i,l)}else if(u){let l=M.fromISO(r,t);if(l.isValid)return te.before(a,l)}}return te.invalid("unparsable",`the input "${e}" can\'t be parsed as ISO 8601`)}static isInterval(e){return e&&e.isLuxonInterval||!1}get start(){return this.isValid?this.s:null}get end(){return this.isValid?this.e:null}get isValid(){return this.invalidReason===null}get invalidReason(){return this.invalid?this.invalid.reason:null}get invalidExplanation(){return this.invalid?this.invalid.explanation:null}length(e="milliseconds"){return this.isValid?this.toDuration(e).get(e):NaN}count(e="milliseconds"){if(!this.isValid)return NaN;let t=this.start.startOf(e),r=this.end.startOf(e);return Math.floor(r.diff(t,e).get(e))+1}hasSame(e){return this.isValid?this.isEmpty()||this.e.minus(1).hasSame(this.s,e):!1}isEmpty(){return this.s.valueOf()===this.e.valueOf()}isAfter(e){return this.isValid?this.s>e:!1}isBefore(e){return this.isValid?this.e<=e:!1}contains(e){return this.isValid?this.s<=e&&this.e>e:!1}set({start:e,end:t}={}){return this.isValid?te.fromDateTimes(e||this.s,t||this.e):this}splitAt(...e){if(!this.isValid)return[];let t=e.map(Fn).filter(o=>this.contains(o)).sort(),r=[],{s}=this,i=0;for(;s<this.e;){let o=t[i]||this.e,a=+o>+this.e?this.e:o;r.push(te.fromDateTimes(s,a)),s=a,i+=1}return r}splitBy(e){let t=M.fromDurationLike(e);if(!this.isValid||!t.isValid||t.as("milliseconds")===0)return[];let{s:r}=this,s=1,i,o=[];for(;r<this.e;){let a=this.start.plus(t.mapUnits(u=>u*s));i=+a>+this.e?this.e:a,o.push(te.fromDateTimes(r,i)),r=i,s+=1}return o}divideEqually(e){return this.isValid?this.splitBy(this.length()/e).slice(0,e):[]}overlaps(e){return this.e>e.s&&this.s<e.e}abutsStart(e){return this.isValid?+this.e==+e.s:!1}abutsEnd(e){return this.isValid?+e.e==+this.s:!1}engulfs(e){return this.isValid?this.s<=e.s&&this.e>=e.e:!1}equals(e){return!this.isValid||!e.isValid?!1:this.s.equals(e.s)&&this.e.equals(e.e)}intersection(e){if(!this.isValid)return this;let t=this.s>e.s?this.s:e.s,r=this.e<e.e?this.e:e.e;return t>=r?null:te.fromDateTimes(t,r)}union(e){if(!this.isValid)return this;let t=this.s<e.s?this.s:e.s,r=this.e>e.e?this.e:e.e;return te.fromDateTimes(t,r)}static merge(e){let[t,r]=e.sort((s,i)=>s.s-i.s).reduce(([s,i],o)=>i?i.overlaps(o)||i.abutsStart(o)?[s,i.union(o)]:[s.concat([i]),o]:[s,o],[[],null]);return r&&t.push(r),t}static xor(e){let t=null,r=0,s=[],i=e.map(u=>[{time:u.s,type:"s"},{time:u.e,type:"e"}]),o=Array.prototype.concat(...i),a=o.sort((u,l)=>u.time-l.time);for(let u of a)r+=u.type==="s"?1:-1,r===1?t=u.time:(t&&+t!=+u.time&&s.push(te.fromDateTimes(t,u.time)),t=null);return te.merge(s)}difference(...e){return te.xor([this].concat(e)).map(t=>this.intersection(t)).filter(t=>t&&!t.isEmpty())}toString(){return this.isValid?`[${this.s.toISO()} \\u2013 ${this.e.toISO()})`:fr}toISO(e){return this.isValid?`${this.s.toISO(e)}/${this.e.toISO(e)}`:fr}toISODate(){return this.isValid?`${this.s.toISODate()}/${this.e.toISODate()}`:fr}toISOTime(e){return this.isValid?`${this.s.toISOTime(e)}/${this.e.toISOTime(e)}`:fr}toFormat(e,{separator:t=" \\u2013 "}={}){return this.isValid?`${this.s.toFormat(e)}${t}${this.e.toFormat(e)}`:fr}toDuration(e,t){return this.isValid?this.e.diff(this.s,e,t):M.invalid(this.invalidReason)}mapEndpoints(e){return te.fromDateTimes(e(this.s),e(this.e))}};var Dt=class{static hasDST(e=X.defaultZone){let t=B.now().setZone(e).set({month:12});return!e.isUniversal&&t.offset!==t.set({month:6}).offset}static isValidIANAZone(e){return ce.isValidZone(e)}static normalizeZone(e){return qe(e,X.defaultZone)}static months(e="long",{locale:t=null,numberingSystem:r=null,locObj:s=null,outputCalendar:i="gregory"}={}){return(s||Q.create(t,r,i)).months(e)}static monthsFormat(e="long",{locale:t=null,numberingSystem:r=null,locObj:s=null,outputCalendar:i="gregory"}={}){return(s||Q.create(t,r,i)).months(e,!0)}static weekdays(e="long",{locale:t=null,numberingSystem:r=null,locObj:s=null}={}){return(s||Q.create(t,r,null)).weekdays(e)}static weekdaysFormat(e="long",{locale:t=null,numberingSystem:r=null,locObj:s=null}={}){return(s||Q.create(t,r,null)).weekdays(e,!0)}static meridiems({locale:e=null}={}){return Q.create(e).meridiems()}static eras(e="short",{locale:t=null}={}){return Q.create(t,null,"gregory").eras(e)}static features(){return{relative:zr()}}};function da(n,e){let t=s=>s.toUTC(0,{keepLocalTime:!0}).startOf("day").valueOf(),r=t(e)-t(n);return Math.floor(M.fromMillis(r).as("days"))}function Fc(n,e,t){let r=[["years",(a,u)=>u.year-a.year],["quarters",(a,u)=>u.quarter-a.quarter],["months",(a,u)=>u.month-a.month+(u.year-a.year)*12],["weeks",(a,u)=>{let l=da(a,u);return(l-l%7)/7}],["days",da]],s={},i,o;for(let[a,u]of r)if(t.indexOf(a)>=0){i=a;let l=u(n,e);o=n.plus({[a]:l}),o>e?(n=n.plus({[a]:l-1}),l-=1):n=o,s[a]=l}return[n,s,o,i]}function ha(n,e,t,r){let[s,i,o,a]=Fc(n,e,t),u=e-s,l=t.filter(d=>["hours","minutes","seconds","milliseconds"].indexOf(d)>=0);l.length===0&&(o<e&&(o=s.plus({[a]:1})),o!==s&&(i[a]=(i[a]||0)+u/(o-s)));let f=M.fromObject(i,r);return l.length>0?M.fromMillis(u,r).shiftTo(...l).plus(f):f}var Ti={arab:"[\\u0660-\\u0669]",arabext:"[\\u06F0-\\u06F9]",bali:"[\\u1B50-\\u1B59]",beng:"[\\u09E6-\\u09EF]",deva:"[\\u0966-\\u096F]",fullwide:"[\\uFF10-\\uFF19]",gujr:"[\\u0AE6-\\u0AEF]",hanidec:"[\\u3007|\\u4E00|\\u4E8C|\\u4E09|\\u56DB|\\u4E94|\\u516D|\\u4E03|\\u516B|\\u4E5D]",khmr:"[\\u17E0-\\u17E9]",knda:"[\\u0CE6-\\u0CEF]",laoo:"[\\u0ED0-\\u0ED9]",limb:"[\\u1946-\\u194F]",mlym:"[\\u0D66-\\u0D6F]",mong:"[\\u1810-\\u1819]",mymr:"[\\u1040-\\u1049]",orya:"[\\u0B66-\\u0B6F]",tamldec:"[\\u0BE6-\\u0BEF]",telu:"[\\u0C66-\\u0C6F]",thai:"[\\u0E50-\\u0E59]",tibt:"[\\u0F20-\\u0F29]",latn:"\\\\d"},pa={arab:[1632,1641],arabext:[1776,1785],bali:[6992,7001],beng:[2534,2543],deva:[2406,2415],fullwide:[65296,65303],gujr:[2790,2799],khmr:[6112,6121],knda:[3302,3311],laoo:[3792,3801],limb:[6470,6479],mlym:[3430,3439],mong:[6160,6169],mymr:[4160,4169],orya:[2918,2927],tamldec:[3046,3055],telu:[3174,3183],thai:[3664,3673],tibt:[3872,3881]},wc=Ti.hanidec.replace(/[\\[|\\]]/g,"").split("");function ma(n){let e=parseInt(n,10);if(isNaN(e)){e="";for(let t=0;t<n.length;t++){let r=n.charCodeAt(t);if(n[t].search(Ti.hanidec)!==-1)e+=wc.indexOf(n[t]);else for(let s in pa){let[i,o]=pa[s];r>=i&&r<=o&&(e+=r-i)}}return parseInt(e,10)}else return e}function _e({numberingSystem:n},e=""){return new RegExp(`${Ti[n||"latn"]}${e}`)}var Tc="missing Intl.DateTimeFormat.formatToParts support";function G(n,e=t=>t){return{regex:n,deser:([t])=>e(ma(t))}}var Sc=String.fromCharCode(160),ga=`[ ${Sc}]`,ba=new RegExp(ga,"g");function kc(n){return n.replace(/\\./g,"\\\\.?").replace(ba,ga)}function Da(n){return n.replace(/\\./g,"").replace(ba," ").toLowerCase()}function Ue(n,e){return n===null?null:{regex:RegExp(n.map(kc).join("|")),deser:([t])=>n.findIndex(r=>Da(t)===Da(r))+e}}function ya(n,e){return{regex:n,deser:([,t,r])=>Wt(t,r),groups:e}}function Si(n){return{regex:n,deser:([e])=>e}}function Cc(n){return n.replace(/[\\-\\[\\]{}()*+?.,\\\\\\^$|#\\s]/g,"\\\\$&")}function xc(n,e){let t=_e(e),r=_e(e,"{2}"),s=_e(e,"{3}"),i=_e(e,"{4}"),o=_e(e,"{6}"),a=_e(e,"{1,2}"),u=_e(e,"{1,3}"),l=_e(e,"{1,6}"),f=_e(e,"{1,9}"),d=_e(e,"{2,4}"),y=_e(e,"{4,6}"),h=T=>({regex:RegExp(Cc(T.val)),deser:([g])=>g,literal:!0}),p=(T=>{if(n.literal)return h(T);switch(T.val){case"G":return Ue(e.eras("short",!1),0);case"GG":return Ue(e.eras("long",!1),0);case"y":return G(l);case"yy":return G(d,or);case"yyyy":return G(i);case"yyyyy":return G(y);case"yyyyyy":return G(o);case"M":return G(a);case"MM":return G(r);case"MMM":return Ue(e.months("short",!0,!1),1);case"MMMM":return Ue(e.months("long",!0,!1),1);case"L":return G(a);case"LL":return G(r);case"LLL":return Ue(e.months("short",!1,!1),1);case"LLLL":return Ue(e.months("long",!1,!1),1);case"d":return G(a);case"dd":return G(r);case"o":return G(u);case"ooo":return G(s);case"HH":return G(r);case"H":return G(a);case"hh":return G(r);case"h":return G(a);case"mm":return G(r);case"m":return G(a);case"q":return G(a);case"qq":return G(r);case"s":return G(a);case"ss":return G(r);case"S":return G(u);case"SSS":return G(s);case"u":return Si(f);case"uu":return Si(a);case"uuu":return G(t);case"a":return Ue(e.meridiems(),0);case"kkkk":return G(i);case"kk":return G(d,or);case"W":return G(a);case"WW":return G(r);case"E":case"c":return G(t);case"EEE":return Ue(e.weekdays("short",!1,!1),1);case"EEEE":return Ue(e.weekdays("long",!1,!1),1);case"ccc":return Ue(e.weekdays("short",!0,!1),1);case"cccc":return Ue(e.weekdays("long",!0,!1),1);case"Z":case"ZZ":return ya(new RegExp(`([+-]${a.source})(?::(${r.source}))?`),2);case"ZZZ":return ya(new RegExp(`([+-]${a.source})(${r.source})?`),2);case"z":return Si(/[a-z_+-/]{1,256}?/i);default:return h(T)}})(n)||{invalidReason:Tc};return p.token=n,p}var Oc={year:{"2-digit":"yy",numeric:"yyyyy"},month:{numeric:"M","2-digit":"MM",short:"MMM",long:"MMMM"},day:{numeric:"d","2-digit":"dd"},weekday:{short:"EEE",long:"EEEE"},dayperiod:"a",dayPeriod:"a",hour:{numeric:"h","2-digit":"hh"},minute:{numeric:"m","2-digit":"mm"},second:{numeric:"s","2-digit":"ss"}};function vc(n,e,t){let{type:r,value:s}=n;if(r==="literal")return{literal:!0,val:s};let i=t[r],o=Oc[r];if(typeof o=="object"&&(o=o[i]),o)return{literal:!1,val:o}}function Ic(n){return[`^${n.map(t=>t.regex).reduce((t,r)=>`${t}(${r.source})`,"")}$`,n]}function Lc(n,e,t){let r=n.match(e);if(r){let s={},i=1;for(let o in t)if(St(t,o)){let a=t[o],u=a.groups?a.groups+1:1;!a.literal&&a.token&&(s[a.token.val[0]]=a.deser(r.slice(i,i+u))),i+=u}return[r,s]}else return[r,{}]}function Nc(n){let e=i=>{switch(i){case"S":return"millisecond";case"s":return"second";case"m":return"minute";case"h":case"H":return"hour";case"d":return"day";case"o":return"ordinal";case"L":case"M":return"month";case"y":return"year";case"E":case"c":return"weekday";case"W":return"weekNumber";case"k":return"weekYear";case"q":return"quarter";default:return null}},t=null,r;return W(n.z)||(t=ce.create(n.z)),W(n.Z)||(t||(t=new oe(n.Z)),r=n.Z),W(n.q)||(n.M=(n.q-1)*3+1),W(n.h)||(n.h<12&&n.a===1?n.h+=12:n.h===12&&n.a===0&&(n.h=0)),n.G===0&&n.y&&(n.y=-n.y),W(n.u)||(n.S=sr(n.u)),[Object.keys(n).reduce((i,o)=>{let a=e(o);return a&&(i[a]=n[o]),i},{}),t,r]}var ki=null;function Ac(){return ki||(ki=B.fromMillis(1555555555555)),ki}function Mc(n,e){if(n.literal)return n;let t=ue.macroTokenToFormatOpts(n.val);if(!t)return n;let i=ue.create(e,t).formatDateTimeParts(Ac()).map(o=>vc(o,e,t));return i.includes(void 0)?n:i}function _c(n,e){return Array.prototype.concat(...n.map(t=>Mc(t,e)))}function Ci(n,e,t){let r=_c(ue.parseFormat(t),n),s=r.map(o=>xc(o,n)),i=s.find(o=>o.invalidReason);if(i)return{input:e,tokens:r,invalidReason:i.invalidReason};{let[o,a]=Ic(s),u=RegExp(o,"i"),[l,f]=Lc(e,u,a),[d,y,h]=f?Nc(f):[null,null,void 0];if(St(f,"a")&&St(f,"H"))throw new pt("Can\'t include meridiem when specifying 24-hour format");return{input:e,tokens:r,regex:u,rawMatches:l,matches:f,result:d,zone:y,specificOffset:h}}}function Ea(n,e,t){let{result:r,zone:s,specificOffset:i,invalidReason:o}=Ci(n,e,t);return[r,s,i,o]}var Fa=[0,31,59,90,120,151,181,212,243,273,304,334],wa=[0,31,60,91,121,152,182,213,244,274,305,335];function Be(n,e){return new me("unit out of range",`you specified ${e} (of type ${typeof e}) as a ${n}, which is invalid`)}function Ta(n,e,t){let r=new Date(Date.UTC(n,e-1,t));n<100&&n>=0&&r.setUTCFullYear(r.getUTCFullYear()-1900);let s=r.getUTCDay();return s===0?7:s}function Sa(n,e,t){return t+(Ut(n)?wa:Fa)[e-1]}function ka(n,e){let t=Ut(n)?wa:Fa,r=t.findIndex(i=>i<e),s=e-t[r];return{month:r+1,day:s}}function Xr(n){let{year:e,month:t,day:r}=n,s=Sa(e,t,r),i=Ta(e,t,r),o=Math.floor((s-i+10)/7),a;return o<1?(a=e-1,o=dn(a)):o>dn(e)?(a=e+1,o=1):a=e,R({weekYear:a,weekNumber:o,weekday:i},ar(n))}function xi(n){let{weekYear:e,weekNumber:t,weekday:r}=n,s=Ta(e,1,4),i=Kt(e),o=t*7+r-s-3,a;o<1?(a=e-1,o+=Kt(a)):o>i?(a=e+1,o-=Kt(e)):a=e;let{month:u,day:l}=ka(a,o);return R({year:a,month:u,day:l},ar(n))}function es(n){let{year:e,month:t,day:r}=n,s=Sa(e,t,r);return R({year:e,ordinal:s},ar(n))}function Oi(n){let{year:e,ordinal:t}=n,{month:r,day:s}=ka(e,t);return R({year:e,month:r,day:s},ar(n))}function Ca(n){let e=rr(n.weekYear),t=et(n.weekNumber,1,dn(n.weekYear)),r=et(n.weekday,1,7);return e?t?r?!1:Be("weekday",n.weekday):Be("week",n.week):Be("weekYear",n.weekYear)}function xa(n){let e=rr(n.year),t=et(n.ordinal,1,Kt(n.year));return e?t?!1:Be("ordinal",n.ordinal):Be("year",n.year)}function vi(n){let e=rr(n.year),t=et(n.month,1,12),r=et(n.day,1,fn(n.year,n.month));return e?t?r?!1:Be("day",n.day):Be("month",n.month):Be("year",n.year)}function Ii(n){let{hour:e,minute:t,second:r,millisecond:s}=n,i=et(e,0,23)||e===24&&t===0&&r===0&&s===0,o=et(t,0,59),a=et(r,0,59),u=et(s,0,999);return i?o?a?u?!1:Be("millisecond",s):Be("second",r):Be("minute",t):Be("hour",e)}var Li="Invalid DateTime",Oa=864e13;function ts(n){return new me("unsupported zone",`the zone "${n.name}" is not supported`)}function Ni(n){return n.weekData===null&&(n.weekData=Xr(n.c)),n.weekData}function dr(n,e){let t={ts:n.ts,zone:n.zone,c:n.c,o:n.o,loc:n.loc,invalid:n.invalid};return new B(Ee(R(R({},t),e),{old:t}))}function Ba(n,e,t){let r=n-e*60*1e3,s=t.offset(r);if(e===s)return[r,e];r-=(s-e)*60*1e3;let i=t.offset(r);return s===i?[r,s]:[n-Math.min(s,i)*60*1e3,Math.max(s,i)]}function va(n,e){n+=e*60*1e3;let t=new Date(n);return{year:t.getUTCFullYear(),month:t.getUTCMonth()+1,day:t.getUTCDate(),hour:t.getUTCHours(),minute:t.getUTCMinutes(),second:t.getUTCSeconds(),millisecond:t.getUTCMilliseconds()}}function rs(n,e,t){return Ba(ir(n),e,t)}function Ia(n,e){let t=n.o,r=n.c.year+Math.trunc(e.years),s=n.c.month+Math.trunc(e.months)+Math.trunc(e.quarters)*3,i=Ee(R({},n.c),{year:r,month:s,day:Math.min(n.c.day,fn(r,s))+Math.trunc(e.days)+Math.trunc(e.weeks)*7}),o=M.fromObject({years:e.years-Math.trunc(e.years),quarters:e.quarters-Math.trunc(e.quarters),months:e.months-Math.trunc(e.months),weeks:e.weeks-Math.trunc(e.weeks),days:e.days-Math.trunc(e.days),hours:e.hours,minutes:e.minutes,seconds:e.seconds,milliseconds:e.milliseconds}).as("milliseconds"),a=ir(i),[u,l]=Ba(a,t,n.zone);return o!==0&&(u+=o,l=n.zone.offset(u)),{ts:u,o:l}}function hr(n,e,t,r,s,i){let{setZone:o,zone:a}=t;if(n&&Object.keys(n).length!==0){let u=e||a,l=B.fromObject(n,Ee(R({},t),{zone:u,specificOffset:i}));return o?l:l.setZone(a)}else return B.invalid(new me("unparsable",`the input "${s}" can\'t be parsed as ${r}`))}function ns(n,e,t=!0){return n.isValid?ue.create(Q.create("en-US"),{allowZ:t,forceSimple:!0}).formatDateTimeFromString(n,e):null}function Ai(n,e){let t=n.c.year>9999||n.c.year<0,r="";return t&&n.c.year>=0&&(r+="+"),r+=ie(n.c.year,t?6:4),e?(r+="-",r+=ie(n.c.month),r+="-",r+=ie(n.c.day)):(r+=ie(n.c.month),r+=ie(n.c.day)),r}function La(n,e,t,r,s,i){let o=ie(n.c.hour);return e?(o+=":",o+=ie(n.c.minute),(n.c.second!==0||!t)&&(o+=":")):o+=ie(n.c.minute),(n.c.second!==0||!t)&&(o+=ie(n.c.second),(n.c.millisecond!==0||!r)&&(o+=".",o+=ie(n.c.millisecond,3))),s&&(n.isOffsetFixed&&n.offset===0&&!i?o+="Z":n.o<0?(o+="-",o+=ie(Math.trunc(-n.o/60)),o+=":",o+=ie(Math.trunc(-n.o%60))):(o+="+",o+=ie(Math.trunc(n.o/60)),o+=":",o+=ie(Math.trunc(n.o%60)))),i&&(o+="["+n.zone.ianaName+"]"),o}var Pa={month:1,day:1,hour:0,minute:0,second:0,millisecond:0},Bc={weekNumber:1,weekday:1,hour:0,minute:0,second:0,millisecond:0},Pc={ordinal:1,hour:0,minute:0,second:0,millisecond:0},$a=["year","month","day","hour","minute","second","millisecond"],$c=["weekYear","weekNumber","weekday","hour","minute","second","millisecond"],Rc=["year","ordinal","hour","minute","second","millisecond"];function Na(n){let e={year:"year",years:"year",month:"month",months:"month",day:"day",days:"day",hour:"hour",hours:"hour",minute:"minute",minutes:"minute",quarter:"quarter",quarters:"quarter",second:"second",seconds:"second",millisecond:"millisecond",milliseconds:"millisecond",weekday:"weekday",weekdays:"weekday",weeknumber:"weekNumber",weeksnumber:"weekNumber",weeknumbers:"weekNumber",weekyear:"weekYear",weekyears:"weekYear",ordinal:"ordinal"}[n.toLowerCase()];if(!e)throw new un(n);return e}function Aa(n,e){let t=qe(e.zone,X.defaultZone),r=Q.fromObject(e),s=X.now(),i,o;if(W(n.year))i=s;else{for(let l of $a)W(n[l])&&(n[l]=Pa[l]);let a=vi(n)||Ii(n);if(a)return B.invalid(a);let u=t.offset(s);[i,o]=rs(n,u,t)}return new B({ts:i,zone:t,loc:r,o})}function Ma(n,e,t){let r=W(t.round)?!0:t.round,s=(o,a)=>(o=cn(o,r||t.calendary?0:2,!0),e.loc.clone(t).relFormatter(t).format(o,a)),i=o=>t.calendary?e.hasSame(n,o)?0:e.startOf(o).diff(n.startOf(o),o).get(o):e.diff(n,o).get(o);if(t.unit)return s(i(t.unit),t.unit);for(let o of t.units){let a=i(o);if(Math.abs(a)>=1)return s(a,o)}return s(n>e?-0:0,t.units[t.units.length-1])}function _a(n){let e={},t;return n.length>0&&typeof n[n.length-1]=="object"?(e=n[n.length-1],t=Array.from(n).slice(0,n.length-1)):t=Array.from(n),[e,t]}var B=class{constructor(e){let t=e.zone||X.defaultZone,r=e.invalid||(Number.isNaN(e.ts)?new me("invalid input"):null)||(t.isValid?null:ts(t));this.ts=W(e.ts)?X.now():e.ts;let s=null,i=null;if(!r)if(e.old&&e.old.ts===this.ts&&e.old.zone.equals(t))[s,i]=[e.old.c,e.old.o];else{let a=t.offset(this.ts);s=va(this.ts,a),r=Number.isNaN(s.year)?new me("invalid input"):null,s=r?null:s,i=r?null:a}this._zone=t,this.loc=e.loc||Q.create(),this.invalid=r,this.weekData=null,this.c=s,this.o=i,this.isLuxonDateTime=!0}static now(){return new B({})}static local(){let[e,t]=_a(arguments),[r,s,i,o,a,u,l]=t;return Aa({year:r,month:s,day:i,hour:o,minute:a,second:u,millisecond:l},e)}static utc(){let[e,t]=_a(arguments),[r,s,i,o,a,u,l]=t;return e.zone=oe.utcInstance,Aa({year:r,month:s,day:i,hour:o,minute:a,second:u,millisecond:l},e)}static fromJSDate(e,t={}){let r=Bo(e)?e.valueOf():NaN;if(Number.isNaN(r))return B.invalid("invalid input");let s=qe(t.zone,X.defaultZone);return s.isValid?new B({ts:r,zone:s,loc:Q.fromObject(t)}):B.invalid(ts(s))}static fromMillis(e,t={}){if(Xe(e))return e<-Oa||e>Oa?B.invalid("Timestamp out of range"):new B({ts:e,zone:qe(t.zone,X.defaultZone),loc:Q.fromObject(t)});throw new pe(`fromMillis requires a numerical input, but received a ${typeof e} with value ${e}`)}static fromSeconds(e,t={}){if(Xe(e))return new B({ts:e*1e3,zone:qe(t.zone,X.defaultZone),loc:Q.fromObject(t)});throw new pe("fromSeconds requires a numerical input")}static fromObject(e,t={}){e=e||{};let r=qe(t.zone,X.defaultZone);if(!r.isValid)return B.invalid(ts(r));let s=X.now(),i=W(t.specificOffset)?r.offset(s):t.specificOffset,o=hn(e,Na),a=!W(o.ordinal),u=!W(o.year),l=!W(o.month)||!W(o.day),f=u||l,d=o.weekYear||o.weekNumber,y=Q.fromObject(t);if((f||a)&&d)throw new pt("Can\'t mix weekYear/weekNumber units with year/month/day or ordinals");if(l&&a)throw new pt("Can\'t mix ordinal dates with month/day");let h=d||o.weekday&&!f,E,p,T=va(s,i);h?(E=$c,p=Bc,T=Xr(T)):a?(E=Rc,p=Pc,T=es(T)):(E=$a,p=Pa);let g=!1;for(let S of E){let q=o[S];W(q)?g?o[S]=p[S]:o[S]=T[S]:g=!0}let k=h?Ca(o):a?xa(o):vi(o),L=k||Ii(o);if(L)return B.invalid(L);let m=h?xi(o):a?Oi(o):o,[F,O]=rs(m,i,r),x=new B({ts:F,zone:r,o:O,loc:y});return o.weekday&&f&&e.weekday!==x.weekday?B.invalid("mismatched weekday",`you can\'t specify both a weekday of ${o.weekday} and a date of ${x.toISO()}`):x}static fromISO(e,t={}){let[r,s]=sa(e);return hr(r,s,t,"ISO 8601",e)}static fromRFC2822(e,t={}){let[r,s]=ia(e);return hr(r,s,t,"RFC 2822",e)}static fromHTTP(e,t={}){let[r,s]=oa(e);return hr(r,s,t,"HTTP",t)}static fromFormat(e,t,r={}){if(W(e)||W(t))throw new pe("fromFormat requires an input string and a format");let{locale:s=null,numberingSystem:i=null}=r,o=Q.fromOpts({locale:s,numberingSystem:i,defaultToEN:!0}),[a,u,l,f]=Ea(o,e,t);return f?B.invalid(f):hr(a,u,r,`format ${t}`,e,l)}static fromString(e,t,r={}){return B.fromFormat(e,t,r)}static fromSQL(e,t={}){let[r,s]=la(e);return hr(r,s,t,"SQL",e)}static invalid(e,t=null){if(!e)throw new pe("need to specify a reason the DateTime is invalid");let r=e instanceof me?e:new me(e,t);if(X.throwOnInvalid)throw new Wr(r);return new B({invalid:r})}static isDateTime(e){return e&&e.isLuxonDateTime||!1}get(e){return this[e]}get isValid(){return this.invalid===null}get invalidReason(){return this.invalid?this.invalid.reason:null}get invalidExplanation(){return this.invalid?this.invalid.explanation:null}get locale(){return this.isValid?this.loc.locale:null}get numberingSystem(){return this.isValid?this.loc.numberingSystem:null}get outputCalendar(){return this.isValid?this.loc.outputCalendar:null}get zone(){return this._zone}get zoneName(){return this.isValid?this.zone.name:null}get year(){return this.isValid?this.c.year:NaN}get quarter(){return this.isValid?Math.ceil(this.c.month/3):NaN}get month(){return this.isValid?this.c.month:NaN}get day(){return this.isValid?this.c.day:NaN}get hour(){return this.isValid?this.c.hour:NaN}get minute(){return this.isValid?this.c.minute:NaN}get second(){return this.isValid?this.c.second:NaN}get millisecond(){return this.isValid?this.c.millisecond:NaN}get weekYear(){return this.isValid?Ni(this).weekYear:NaN}get weekNumber(){return this.isValid?Ni(this).weekNumber:NaN}get weekday(){return this.isValid?Ni(this).weekday:NaN}get ordinal(){return this.isValid?es(this.c).ordinal:NaN}get monthShort(){return this.isValid?Dt.months("short",{locObj:this.loc})[this.month-1]:null}get monthLong(){return this.isValid?Dt.months("long",{locObj:this.loc})[this.month-1]:null}get weekdayShort(){return this.isValid?Dt.weekdays("short",{locObj:this.loc})[this.weekday-1]:null}get weekdayLong(){return this.isValid?Dt.weekdays("long",{locObj:this.loc})[this.weekday-1]:null}get offset(){return this.isValid?+this.o:NaN}get offsetNameShort(){return this.isValid?this.zone.offsetName(this.ts,{format:"short",locale:this.locale}):null}get offsetNameLong(){return this.isValid?this.zone.offsetName(this.ts,{format:"long",locale:this.locale}):null}get isOffsetFixed(){return this.isValid?this.zone.isUniversal:null}get isInDST(){return this.isOffsetFixed?!1:this.offset>this.set({month:1,day:1}).offset||this.offset>this.set({month:5}).offset}get isInLeapYear(){return Ut(this.year)}get daysInMonth(){return fn(this.year,this.month)}get daysInYear(){return this.isValid?Kt(this.year):NaN}get weeksInWeekYear(){return this.isValid?dn(this.weekYear):NaN}resolvedLocaleOptions(e={}){let{locale:t,numberingSystem:r,calendar:s}=ue.create(this.loc.clone(e),e).resolvedOptions(this);return{locale:t,numberingSystem:r,outputCalendar:s}}toUTC(e=0,t={}){return this.setZone(oe.instance(e),t)}toLocal(){return this.setZone(X.defaultZone)}setZone(e,{keepLocalTime:t=!1,keepCalendarTime:r=!1}={}){if(e=qe(e,X.defaultZone),e.equals(this.zone))return this;if(e.isValid){let s=this.ts;if(t||r){let i=e.offset(this.ts),o=this.toObject();[s]=rs(o,i,e)}return dr(this,{ts:s,zone:e})}else return B.invalid(ts(e))}reconfigure({locale:e,numberingSystem:t,outputCalendar:r}={}){let s=this.loc.clone({locale:e,numberingSystem:t,outputCalendar:r});return dr(this,{loc:s})}setLocale(e){return this.reconfigure({locale:e})}set(e){if(!this.isValid)return this;let t=hn(e,Na),r=!W(t.weekYear)||!W(t.weekNumber)||!W(t.weekday),s=!W(t.ordinal),i=!W(t.year),o=!W(t.month)||!W(t.day),a=i||o,u=t.weekYear||t.weekNumber;if((a||s)&&u)throw new pt("Can\'t mix weekYear/weekNumber units with year/month/day or ordinals");if(o&&s)throw new pt("Can\'t mix ordinal dates with month/day");let l;r?l=xi(R(R({},Xr(this.c)),t)):W(t.ordinal)?(l=R(R({},this.toObject()),t),W(t.day)&&(l.day=Math.min(fn(l.year,l.month),l.day))):l=Oi(R(R({},es(this.c)),t));let[f,d]=rs(l,this.o,this.zone);return dr(this,{ts:f,o:d})}plus(e){if(!this.isValid)return this;let t=M.fromDurationLike(e);return dr(this,Ia(this,t))}minus(e){if(!this.isValid)return this;let t=M.fromDurationLike(e).negate();return dr(this,Ia(this,t))}startOf(e){if(!this.isValid)return this;let t={},r=M.normalizeUnit(e);switch(r){case"years":t.month=1;case"quarters":case"months":t.day=1;case"weeks":case"days":t.hour=0;case"hours":t.minute=0;case"minutes":t.second=0;case"seconds":t.millisecond=0;break;case"milliseconds":break}if(r==="weeks"&&(t.weekday=1),r==="quarters"){let s=Math.ceil(this.month/3);t.month=(s-1)*3+1}return this.set(t)}endOf(e){return this.isValid?this.plus({[e]:1}).startOf(e).minus(1):this}toFormat(e,t={}){return this.isValid?ue.create(this.loc.redefaultToEN(t)).formatDateTimeFromString(this,e):Li}toLocaleString(e=ln,t={}){return this.isValid?ue.create(this.loc.clone(t),e).formatDateTime(this):Li}toLocaleParts(e={}){return this.isValid?ue.create(this.loc.clone(e),e).formatDateTimeParts(this):[]}toISO({format:e="extended",suppressSeconds:t=!1,suppressMilliseconds:r=!1,includeOffset:s=!0,extendedZone:i=!1}={}){if(!this.isValid)return null;let o=e==="extended",a=Ai(this,o);return a+="T",a+=La(this,o,t,r,s,i),a}toISODate({format:e="extended"}={}){return this.isValid?Ai(this,e==="extended"):null}toISOWeekDate(){return ns(this,"kkkk-\'W\'WW-c")}toISOTime({suppressMilliseconds:e=!1,suppressSeconds:t=!1,includeOffset:r=!0,includePrefix:s=!1,extendedZone:i=!1,format:o="extended"}={}){return this.isValid?(s?"T":"")+La(this,o==="extended",t,e,r,i):null}toRFC2822(){return ns(this,"EEE, dd LLL yyyy HH:mm:ss ZZZ",!1)}toHTTP(){return ns(this.toUTC(),"EEE, dd LLL yyyy HH:mm:ss \'GMT\'")}toSQLDate(){return this.isValid?Ai(this,!0):null}toSQLTime({includeOffset:e=!0,includeZone:t=!1,includeOffsetSpace:r=!0}={}){let s="HH:mm:ss.SSS";return(t||e)&&(r&&(s+=" "),t?s+="z":e&&(s+="ZZ")),ns(this,s,!0)}toSQL(e={}){return this.isValid?`${this.toSQLDate()} ${this.toSQLTime(e)}`:null}toString(){return this.isValid?this.toISO():Li}valueOf(){return this.toMillis()}toMillis(){return this.isValid?this.ts:NaN}toSeconds(){return this.isValid?this.ts/1e3:NaN}toUnixInteger(){return this.isValid?Math.floor(this.ts/1e3):NaN}toJSON(){return this.toISO()}toBSON(){return this.toJSDate()}toObject(e={}){if(!this.isValid)return{};let t=R({},this.c);return e.includeConfig&&(t.outputCalendar=this.outputCalendar,t.numberingSystem=this.loc.numberingSystem,t.locale=this.loc.locale),t}toJSDate(){return new Date(this.isValid?this.ts:NaN)}diff(e,t="milliseconds",r={}){if(!this.isValid||!e.isValid)return M.invalid("created by diffing an invalid DateTime");let s=R({locale:this.locale,numberingSystem:this.numberingSystem},r),i=Po(t).map(M.normalizeUnit),o=e.valueOf()>this.valueOf(),a=o?this:e,u=o?e:this,l=ha(a,u,i,s);return o?l.negate():l}diffNow(e="milliseconds",t={}){return this.diff(B.now(),e,t)}until(e){return this.isValid?te.fromDateTimes(this,e):this}hasSame(e,t){if(!this.isValid)return!1;let r=e.valueOf(),s=this.setZone(e.zone,{keepLocalTime:!0});return s.startOf(t)<=r&&r<=s.endOf(t)}equals(e){return this.isValid&&e.isValid&&this.valueOf()===e.valueOf()&&this.zone.equals(e.zone)&&this.loc.equals(e.loc)}toRelative(e={}){if(!this.isValid)return null;let t=e.base||B.fromObject({},{zone:this.zone}),r=e.padding?this<t?-e.padding:e.padding:0,s=["years","months","days","hours","minutes","seconds"],i=e.unit;return Array.isArray(e.unit)&&(s=e.unit,i=void 0),Ma(t,this.plus(r),Ee(R({},e),{numeric:"always",units:s,unit:i}))}toRelativeCalendar(e={}){return this.isValid?Ma(e.base||B.fromObject({},{zone:this.zone}),this,Ee(R({},e),{numeric:"auto",units:["years","months","days"],calendary:!0})):null}static min(...e){if(!e.every(B.isDateTime))throw new pe("min requires all arguments be DateTimes");return ei(e,t=>t.valueOf(),Math.min)}static max(...e){if(!e.every(B.isDateTime))throw new pe("max requires all arguments be DateTimes");return ei(e,t=>t.valueOf(),Math.max)}static fromFormatExplain(e,t,r={}){let{locale:s=null,numberingSystem:i=null}=r,o=Q.fromOpts({locale:s,numberingSystem:i,defaultToEN:!0});return Ci(o,e,t)}static fromStringExplain(e,t,r={}){return B.fromFormatExplain(e,t,r)}static get DATE_SHORT(){return ln}static get DATE_MED(){return $n}static get DATE_MED_WITH_WEEKDAY(){return Zs}static get DATE_FULL(){return Rn}static get DATE_HUGE(){return jn}static get TIME_SIMPLE(){return Vn}static get TIME_WITH_SECONDS(){return qn}static get TIME_WITH_SHORT_OFFSET(){return Un}static get TIME_WITH_LONG_OFFSET(){return Kn}static get TIME_24_SIMPLE(){return Wn}static get TIME_24_WITH_SECONDS(){return Hn}static get TIME_24_WITH_SHORT_OFFSET(){return Jn}static get TIME_24_WITH_LONG_OFFSET(){return zn}static get DATETIME_SHORT(){return Yn}static get DATETIME_SHORT_WITH_SECONDS(){return Gn}static get DATETIME_MED(){return Zn}static get DATETIME_MED_WITH_SECONDS(){return Qn}static get DATETIME_MED_WITH_WEEKDAY(){return Qs}static get DATETIME_FULL(){return Xn}static get DATETIME_FULL_WITH_SECONDS(){return er}static get DATETIME_HUGE(){return tr}static get DATETIME_HUGE_WITH_SECONDS(){return nr}};function Fn(n){if(B.isDateTime(n))return n;if(n&&n.valueOf&&Xe(n.valueOf()))return B.fromJSDate(n);if(n&&typeof n=="object")return B.fromObject(n);throw new pe(`Unknown datetime argument: ${n}, of type ${typeof n}`)}var yt=Kr(ss());var wn=()=>/[#*0-9]\\uFE0F?\\u20E3|[\\xA9\\xAE\\u203C\\u2049\\u2122\\u2139\\u2194-\\u2199\\u21A9\\u21AA\\u231A\\u231B\\u2328\\u23CF\\u23ED-\\u23EF\\u23F1\\u23F2\\u23F8-\\u23FA\\u24C2\\u25AA\\u25AB\\u25B6\\u25C0\\u25FB\\u25FC\\u25FE\\u2600-\\u2604\\u260E\\u2611\\u2614\\u2615\\u2618\\u2620\\u2622\\u2623\\u2626\\u262A\\u262E\\u262F\\u2638-\\u263A\\u2640\\u2642\\u2648-\\u2653\\u265F\\u2660\\u2663\\u2665\\u2666\\u2668\\u267B\\u267E\\u267F\\u2692\\u2694-\\u2697\\u2699\\u269B\\u269C\\u26A0\\u26A7\\u26AA\\u26B0\\u26B1\\u26BD\\u26BE\\u26C4\\u26C8\\u26CF\\u26D1\\u26E9\\u26F0-\\u26F5\\u26F7\\u26F8\\u26FA\\u2702\\u2708\\u2709\\u270F\\u2712\\u2714\\u2716\\u271D\\u2721\\u2733\\u2734\\u2744\\u2747\\u2757\\u2763\\u27A1\\u2934\\u2935\\u2B05-\\u2B07\\u2B1B\\u2B1C\\u2B55\\u3030\\u303D\\u3297\\u3299]\\uFE0F?|[\\u261D\\u270C\\u270D](?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?|[\\u270A\\u270B](?:\\uD83C[\\uDFFB-\\uDFFF])?|[\\u23E9-\\u23EC\\u23F0\\u23F3\\u25FD\\u2693\\u26A1\\u26AB\\u26C5\\u26CE\\u26D4\\u26EA\\u26FD\\u2705\\u2728\\u274C\\u274E\\u2753-\\u2755\\u2795-\\u2797\\u27B0\\u27BF\\u2B50]|\\u26D3\\uFE0F?(?:\\u200D\\uD83D\\uDCA5)?|\\u26F9(?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|\\u2764\\uFE0F?(?:\\u200D(?:\\uD83D\\uDD25|\\uD83E\\uDE79))?|\\uD83C(?:[\\uDC04\\uDD70\\uDD71\\uDD7E\\uDD7F\\uDE02\\uDE37\\uDF21\\uDF24-\\uDF2C\\uDF36\\uDF7D\\uDF96\\uDF97\\uDF99-\\uDF9B\\uDF9E\\uDF9F\\uDFCD\\uDFCE\\uDFD4-\\uDFDF\\uDFF5\\uDFF7]\\uFE0F?|[\\uDF85\\uDFC2\\uDFC7](?:\\uD83C[\\uDFFB-\\uDFFF])?|[\\uDFC4\\uDFCA](?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDFCB\\uDFCC](?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDCCF\\uDD8E\\uDD91-\\uDD9A\\uDE01\\uDE1A\\uDE2F\\uDE32-\\uDE36\\uDE38-\\uDE3A\\uDE50\\uDE51\\uDF00-\\uDF20\\uDF2D-\\uDF35\\uDF37-\\uDF43\\uDF45-\\uDF4A\\uDF4C-\\uDF7C\\uDF7E-\\uDF84\\uDF86-\\uDF93\\uDFA0-\\uDFC1\\uDFC5\\uDFC6\\uDFC8\\uDFC9\\uDFCF-\\uDFD3\\uDFE0-\\uDFF0\\uDFF8-\\uDFFF]|\\uDDE6\\uD83C[\\uDDE8-\\uDDEC\\uDDEE\\uDDF1\\uDDF2\\uDDF4\\uDDF6-\\uDDFA\\uDDFC\\uDDFD\\uDDFF]|\\uDDE7\\uD83C[\\uDDE6\\uDDE7\\uDDE9-\\uDDEF\\uDDF1-\\uDDF4\\uDDF6-\\uDDF9\\uDDFB\\uDDFC\\uDDFE\\uDDFF]|\\uDDE8\\uD83C[\\uDDE6\\uDDE8\\uDDE9\\uDDEB-\\uDDEE\\uDDF0-\\uDDF7\\uDDFA-\\uDDFF]|\\uDDE9\\uD83C[\\uDDEA\\uDDEC\\uDDEF\\uDDF0\\uDDF2\\uDDF4\\uDDFF]|\\uDDEA\\uD83C[\\uDDE6\\uDDE8\\uDDEA\\uDDEC\\uDDED\\uDDF7-\\uDDFA]|\\uDDEB\\uD83C[\\uDDEE-\\uDDF0\\uDDF2\\uDDF4\\uDDF7]|\\uDDEC\\uD83C[\\uDDE6\\uDDE7\\uDDE9-\\uDDEE\\uDDF1-\\uDDF3\\uDDF5-\\uDDFA\\uDDFC\\uDDFE]|\\uDDED\\uD83C[\\uDDF0\\uDDF2\\uDDF3\\uDDF7\\uDDF9\\uDDFA]|\\uDDEE\\uD83C[\\uDDE8-\\uDDEA\\uDDF1-\\uDDF4\\uDDF6-\\uDDF9]|\\uDDEF\\uD83C[\\uDDEA\\uDDF2\\uDDF4\\uDDF5]|\\uDDF0\\uD83C[\\uDDEA\\uDDEC-\\uDDEE\\uDDF2\\uDDF3\\uDDF5\\uDDF7\\uDDFC\\uDDFE\\uDDFF]|\\uDDF1\\uD83C[\\uDDE6-\\uDDE8\\uDDEE\\uDDF0\\uDDF7-\\uDDFB\\uDDFE]|\\uDDF2\\uD83C[\\uDDE6\\uDDE8-\\uDDED\\uDDF0-\\uDDFF]|\\uDDF3\\uD83C[\\uDDE6\\uDDE8\\uDDEA-\\uDDEC\\uDDEE\\uDDF1\\uDDF4\\uDDF5\\uDDF7\\uDDFA\\uDDFF]|\\uDDF4\\uD83C\\uDDF2|\\uDDF5\\uD83C[\\uDDE6\\uDDEA-\\uDDED\\uDDF0-\\uDDF3\\uDDF7-\\uDDF9\\uDDFC\\uDDFE]|\\uDDF6\\uD83C\\uDDE6|\\uDDF7\\uD83C[\\uDDEA\\uDDF4\\uDDF8\\uDDFA\\uDDFC]|\\uDDF8\\uD83C[\\uDDE6-\\uDDEA\\uDDEC-\\uDDF4\\uDDF7-\\uDDF9\\uDDFB\\uDDFD-\\uDDFF]|\\uDDF9\\uD83C[\\uDDE6\\uDDE8\\uDDE9\\uDDEB-\\uDDED\\uDDEF-\\uDDF4\\uDDF7\\uDDF9\\uDDFB\\uDDFC\\uDDFF]|\\uDDFA\\uD83C[\\uDDE6\\uDDEC\\uDDF2\\uDDF3\\uDDF8\\uDDFE\\uDDFF]|\\uDDFB\\uD83C[\\uDDE6\\uDDE8\\uDDEA\\uDDEC\\uDDEE\\uDDF3\\uDDFA]|\\uDDFC\\uD83C[\\uDDEB\\uDDF8]|\\uDDFD\\uD83C\\uDDF0|\\uDDFE\\uD83C[\\uDDEA\\uDDF9]|\\uDDFF\\uD83C[\\uDDE6\\uDDF2\\uDDFC]|\\uDF44(?:\\u200D\\uD83D\\uDFEB)?|\\uDF4B(?:\\u200D\\uD83D\\uDFE9)?|\\uDFC3(?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D(?:[\\u2640\\u2642]\\uFE0F?(?:\\u200D\\u27A1\\uFE0F?)?|\\u27A1\\uFE0F?))?|\\uDFF3\\uFE0F?(?:\\u200D(?:\\u26A7\\uFE0F?|\\uD83C\\uDF08))?|\\uDFF4(?:\\u200D\\u2620\\uFE0F?|\\uDB40\\uDC67\\uDB40\\uDC62\\uDB40(?:\\uDC65\\uDB40\\uDC6E\\uDB40\\uDC67|\\uDC73\\uDB40\\uDC63\\uDB40\\uDC74|\\uDC77\\uDB40\\uDC6C\\uDB40\\uDC73)\\uDB40\\uDC7F)?)|\\uD83D(?:[\\uDC3F\\uDCFD\\uDD49\\uDD4A\\uDD6F\\uDD70\\uDD73\\uDD76-\\uDD79\\uDD87\\uDD8A-\\uDD8D\\uDDA5\\uDDA8\\uDDB1\\uDDB2\\uDDBC\\uDDC2-\\uDDC4\\uDDD1-\\uDDD3\\uDDDC-\\uDDDE\\uDDE1\\uDDE3\\uDDE8\\uDDEF\\uDDF3\\uDDFA\\uDECB\\uDECD-\\uDECF\\uDEE0-\\uDEE5\\uDEE9\\uDEF0\\uDEF3]\\uFE0F?|[\\uDC42\\uDC43\\uDC46-\\uDC50\\uDC66\\uDC67\\uDC6B-\\uDC6D\\uDC72\\uDC74-\\uDC76\\uDC78\\uDC7C\\uDC83\\uDC85\\uDC8F\\uDC91\\uDCAA\\uDD7A\\uDD95\\uDD96\\uDE4C\\uDE4F\\uDEC0\\uDECC](?:\\uD83C[\\uDFFB-\\uDFFF])?|[\\uDC6E\\uDC70\\uDC71\\uDC73\\uDC77\\uDC81\\uDC82\\uDC86\\uDC87\\uDE45-\\uDE47\\uDE4B\\uDE4D\\uDE4E\\uDEA3\\uDEB4\\uDEB5](?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDD74\\uDD90](?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?|[\\uDC00-\\uDC07\\uDC09-\\uDC14\\uDC16-\\uDC25\\uDC27-\\uDC3A\\uDC3C-\\uDC3E\\uDC40\\uDC44\\uDC45\\uDC51-\\uDC65\\uDC6A\\uDC79-\\uDC7B\\uDC7D-\\uDC80\\uDC84\\uDC88-\\uDC8E\\uDC90\\uDC92-\\uDCA9\\uDCAB-\\uDCFC\\uDCFF-\\uDD3D\\uDD4B-\\uDD4E\\uDD50-\\uDD67\\uDDA4\\uDDFB-\\uDE2D\\uDE2F-\\uDE34\\uDE37-\\uDE41\\uDE43\\uDE44\\uDE48-\\uDE4A\\uDE80-\\uDEA2\\uDEA4-\\uDEB3\\uDEB7-\\uDEBF\\uDEC1-\\uDEC5\\uDED0-\\uDED2\\uDED5-\\uDED7\\uDEDC-\\uDEDF\\uDEEB\\uDEEC\\uDEF4-\\uDEFC\\uDFE0-\\uDFEB\\uDFF0]|\\uDC08(?:\\u200D\\u2B1B)?|\\uDC15(?:\\u200D\\uD83E\\uDDBA)?|\\uDC26(?:\\u200D(?:\\u2B1B|\\uD83D\\uDD25))?|\\uDC3B(?:\\u200D\\u2744\\uFE0F?)?|\\uDC41\\uFE0F?(?:\\u200D\\uD83D\\uDDE8\\uFE0F?)?|\\uDC68(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D(?:[\\uDC68\\uDC69]\\u200D\\uD83D(?:\\uDC66(?:\\u200D\\uD83D\\uDC66)?|\\uDC67(?:\\u200D\\uD83D[\\uDC66\\uDC67])?)|[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uDC66(?:\\u200D\\uD83D\\uDC66)?|\\uDC67(?:\\u200D\\uD83D[\\uDC66\\uDC67])?)|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]))|\\uD83C(?:\\uDFFB(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFC-\\uDFFF])))?|\\uDFFC(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFB\\uDFFD-\\uDFFF])))?|\\uDFFD(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFB\\uDFFC\\uDFFE\\uDFFF])))?|\\uDFFE(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFB-\\uDFFD\\uDFFF])))?|\\uDFFF(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?\\uDC68\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D\\uDC68\\uD83C[\\uDFFB-\\uDFFE])))?))?|\\uDC69(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:\\uDC8B\\u200D\\uD83D)?[\\uDC68\\uDC69]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D(?:[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uDC66(?:\\u200D\\uD83D\\uDC66)?|\\uDC67(?:\\u200D\\uD83D[\\uDC66\\uDC67])?|\\uDC69\\u200D\\uD83D(?:\\uDC66(?:\\u200D\\uD83D\\uDC66)?|\\uDC67(?:\\u200D\\uD83D[\\uDC66\\uDC67])?))|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]))|\\uD83C(?:\\uDFFB(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFC-\\uDFFF])))?|\\uDFFC(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFB\\uDFFD-\\uDFFF])))?|\\uDFFD(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFB\\uDFFC\\uDFFE\\uDFFF])))?|\\uDFFE(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFB-\\uDFFD\\uDFFF])))?|\\uDFFF(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D\\uD83D(?:[\\uDC68\\uDC69]|\\uDC8B\\u200D\\uD83D[\\uDC68\\uDC69])\\uD83C[\\uDFFB-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83D[\\uDC68\\uDC69]\\uD83C[\\uDFFB-\\uDFFE])))?))?|\\uDC6F(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|\\uDD75(?:\\uD83C[\\uDFFB-\\uDFFF]|\\uFE0F)?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|\\uDE2E(?:\\u200D\\uD83D\\uDCA8)?|\\uDE35(?:\\u200D\\uD83D\\uDCAB)?|\\uDE36(?:\\u200D\\uD83C\\uDF2B\\uFE0F?)?|\\uDE42(?:\\u200D[\\u2194\\u2195]\\uFE0F?)?|\\uDEB6(?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D(?:[\\u2640\\u2642]\\uFE0F?(?:\\u200D\\u27A1\\uFE0F?)?|\\u27A1\\uFE0F?))?)|\\uD83E(?:[\\uDD0C\\uDD0F\\uDD18-\\uDD1F\\uDD30-\\uDD34\\uDD36\\uDD77\\uDDB5\\uDDB6\\uDDBB\\uDDD2\\uDDD3\\uDDD5\\uDEC3-\\uDEC5\\uDEF0\\uDEF2-\\uDEF8](?:\\uD83C[\\uDFFB-\\uDFFF])?|[\\uDD26\\uDD35\\uDD37-\\uDD39\\uDD3D\\uDD3E\\uDDB8\\uDDB9\\uDDCD\\uDDCF\\uDDD4\\uDDD6-\\uDDDD](?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDDDE\\uDDDF](?:\\u200D[\\u2640\\u2642]\\uFE0F?)?|[\\uDD0D\\uDD0E\\uDD10-\\uDD17\\uDD20-\\uDD25\\uDD27-\\uDD2F\\uDD3A\\uDD3F-\\uDD45\\uDD47-\\uDD76\\uDD78-\\uDDB4\\uDDB7\\uDDBA\\uDDBC-\\uDDCC\\uDDD0\\uDDE0-\\uDDFF\\uDE70-\\uDE7C\\uDE80-\\uDE89\\uDE8F-\\uDEC2\\uDEC6\\uDECE-\\uDEDC\\uDEDF-\\uDEE9]|\\uDD3C(?:\\u200D[\\u2640\\u2642]\\uFE0F?|\\uD83C[\\uDFFB-\\uDFFF])?|\\uDDCE(?:\\uD83C[\\uDFFB-\\uDFFF])?(?:\\u200D(?:[\\u2640\\u2642]\\uFE0F?(?:\\u200D\\u27A1\\uFE0F?)?|\\u27A1\\uFE0F?))?|\\uDDD1(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1|\\uDDD1\\u200D\\uD83E\\uDDD2(?:\\u200D\\uD83E\\uDDD2)?|\\uDDD2(?:\\u200D\\uD83E\\uDDD2)?))|\\uD83C(?:\\uDFFB(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFC-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?|\\uDFFC(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFB\\uDFFD-\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?|\\uDFFD(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFB\\uDFFC\\uDFFE\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?|\\uDFFE(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFD\\uDFFF]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?|\\uDFFF(?:\\u200D(?:[\\u2695\\u2696\\u2708]\\uFE0F?|\\u2764\\uFE0F?\\u200D(?:\\uD83D\\uDC8B\\u200D)?\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFE]|\\uD83C[\\uDF3E\\uDF73\\uDF7C\\uDF84\\uDF93\\uDFA4\\uDFA8\\uDFEB\\uDFED]|\\uD83D[\\uDCBB\\uDCBC\\uDD27\\uDD2C\\uDE80\\uDE92]|\\uD83E(?:[\\uDDAF\\uDDBC\\uDDBD](?:\\u200D\\u27A1\\uFE0F?)?|[\\uDDB0-\\uDDB3]|\\uDD1D\\u200D\\uD83E\\uDDD1\\uD83C[\\uDFFB-\\uDFFF])))?))?|\\uDEF1(?:\\uD83C(?:\\uDFFB(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFC-\\uDFFF])?|\\uDFFC(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFB\\uDFFD-\\uDFFF])?|\\uDFFD(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFB\\uDFFC\\uDFFE\\uDFFF])?|\\uDFFE(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFB-\\uDFFD\\uDFFF])?|\\uDFFF(?:\\u200D\\uD83E\\uDEF2\\uD83C[\\uDFFB-\\uDFFE])?))?)/g;function _i(n){return n==null?n:n.shiftTo("years","months","weeks","days","hours","minutes","seconds","milliseconds").normalize()}function Ra(n,e,t,r){return n.second==0&&n.minute==0&&n.hour==0?n.toLocal().toFormat(e,{locale:r}):n.toLocal().toFormat(t,{locale:r})}function ja(n){n=_i(n);let e="";return n.years&&(e+=`${n.years} years, `),n.months&&(e+=`${n.months} months, `),n.weeks&&(e+=`${n.weeks} weeks, `),n.days&&(e+=`${n.days} days, `),n.hours&&(e+=`${n.hours} hours, `),n.minutes&&(e+=`${n.minutes} minutes, `),n.seconds&&(e+=`${Math.round(n.seconds)} seconds, `),n.milliseconds&&(e+=`${Math.round(n.milliseconds)} ms, `),e.endsWith(", ")&&(e=e.substring(0,e.length-2)),e}function Tn(n){return n.includes("/")&&(n=n.substring(n.lastIndexOf("/")+1)),n.endsWith(".md")&&(n=n.substring(0,n.length-3)),n}function Va(n){return n.includes(".")?n.substring(n.lastIndexOf(".")+1):""}var jc=yt.alt(yt.regex(new RegExp(wn(),"")),yt.regex(/[0-9\\p{Letter}_-]+/u),yt.whitespace.map(n=>" "),yt.any.map(n=>" ")).many().map(n=>n.join("").split(/\\s+/).join(" ").trim());function qa(n){return jc.tryParse(n)}var ee=class{static file(e,t=!1,r){return new ee({path:e,embed:t,display:r,subpath:void 0,type:"file"})}static infer(e,t=!1,r){if(e.includes("#^")){let s=e.split("#^");return ee.block(s[0],s[1],t,r)}else if(e.includes("#")){let s=e.split("#");return ee.header(s[0],s[1],t,r)}else return ee.file(e,t,r)}static header(e,t,r,s){return new ee({path:e,embed:r,display:s,subpath:qa(t),type:"header"})}static block(e,t,r,s){return new ee({path:e,embed:r,display:s,subpath:t,type:"block"})}static fromObject(e){return new ee(e)}static parseInner(e){let[t,r]=Vc(e);return ee.infer(t,!1,r)}constructor(e){Object.assign(this,e)}withPath(e){return new ee(Object.assign({},this,{path:e}))}withDisplay(e){return new ee(Object.assign({},this,{display:e}))}withEmbed(e){return this.embed==e?this:new ee(Object.assign({},this,{embed:e}))}withHeader(e){return ee.header(this.path,e,this.embed,this.display)}withBlock(e){return ee.block(this.path,e,this.embed,this.display)}equals(e){return e==null||e==null?!1:this.path==e.path&&this.type==e.type&&this.subpath==e.subpath}toString(){return this.markdown()}toObject(){return{path:this.path,type:this.type,subpath:this.subpath,display:this.display,embed:this.embed}}toFile(){return ee.file(this.path,this.embed,this.display)}toEmbed(){return this.withEmbed(!0)}fromEmbed(){return this.withEmbed(!1)}markdown(){let e=(this.embed?"!":"")+"[["+this.obsidianLink();return e+="|",e+=this.displayOrDefault(),e+="]]",e}displayOrDefault(){if(this.display)return this.display;{let e=Tn(this.path);return(this.type=="header"||this.type=="block")&&(e+=" > "+this.subpath),e}}obsidianLink(){var t,r;let e=this.path.replace("|","\\\\|");return this.type=="header"?e+"#"+((t=this.subpath)==null?void 0:t.replace("|","\\\\|")):this.type=="block"?e+"#^"+((r=this.subpath)==null?void 0:r.replace("|","\\\\|")):e}fileName(){return Tn(this.path)}};function Vc(n){let e=-1;for(;(e=n.indexOf("|",e+1))>=0;)if(!(e>0&&n[e-1]=="\\\\"))return[n.substring(0,e).replace(/\\\\\\|/g,"|"),n.substring(e+1)];return[n.replace(/\\\\\\|/g,"|"),void 0]}var is=Symbol.for("yaml.alias"),os=Symbol.for("yaml.document"),Ke=Symbol.for("yaml.map"),Bi=Symbol.for("yaml.pair"),Ie=Symbol.for("yaml.scalar"),gt=Symbol.for("yaml.seq"),Se=Symbol.for("yaml.node.type"),Pe=n=>!!n&&typeof n=="object"&&n[Se]===is,tt=n=>!!n&&typeof n=="object"&&n[Se]===os,We=n=>!!n&&typeof n=="object"&&n[Se]===Ke,H=n=>!!n&&typeof n=="object"&&n[Se]===Bi,K=n=>!!n&&typeof n=="object"&&n[Se]===Ie,He=n=>!!n&&typeof n=="object"&&n[Se]===gt;function Z(n){if(n&&typeof n=="object")switch(n[Se]){case Ke:case gt:return!0}return!1}function J(n){if(n&&typeof n=="object")switch(n[Se]){case is:case Ke:case Ie:case gt:return!0}return!1}var as=n=>(K(n)||Z(n))&&!!n.anchor;var xe=Symbol("break visit"),Ua=Symbol("skip children"),nt=Symbol("remove node");function rt(n,e){let t=Ka(e);tt(n)?Sn(null,n.contents,t,Object.freeze([n]))===nt&&(n.contents=null):Sn(null,n,t,Object.freeze([]))}rt.BREAK=xe;rt.SKIP=Ua;rt.REMOVE=nt;function Sn(n,e,t,r){let s=Wa(n,e,t,r);if(J(s)||H(s))return Ha(n,r,s),Sn(n,s,t,r);if(typeof s!="symbol"){if(Z(e)){r=Object.freeze(r.concat(e));for(let i=0;i<e.items.length;++i){let o=Sn(i,e.items[i],t,r);if(typeof o=="number")i=o-1;else{if(o===xe)return xe;o===nt&&(e.items.splice(i,1),i-=1)}}}else if(H(e)){r=Object.freeze(r.concat(e));let i=Sn("key",e.key,t,r);if(i===xe)return xe;i===nt&&(e.key=null);let o=Sn("value",e.value,t,r);if(o===xe)return xe;o===nt&&(e.value=null)}}return s}async function us(n,e){let t=Ka(e);tt(n)?await kn(null,n.contents,t,Object.freeze([n]))===nt&&(n.contents=null):await kn(null,n,t,Object.freeze([]))}us.BREAK=xe;us.SKIP=Ua;us.REMOVE=nt;async function kn(n,e,t,r){let s=await Wa(n,e,t,r);if(J(s)||H(s))return Ha(n,r,s),kn(n,s,t,r);if(typeof s!="symbol"){if(Z(e)){r=Object.freeze(r.concat(e));for(let i=0;i<e.items.length;++i){let o=await kn(i,e.items[i],t,r);if(typeof o=="number")i=o-1;else{if(o===xe)return xe;o===nt&&(e.items.splice(i,1),i-=1)}}}else if(H(e)){r=Object.freeze(r.concat(e));let i=await kn("key",e.key,t,r);if(i===xe)return xe;i===nt&&(e.key=null);let o=await kn("value",e.value,t,r);if(o===xe)return xe;o===nt&&(e.value=null)}}return s}function Ka(n){return typeof n=="object"&&(n.Collection||n.Node||n.Value)?Object.assign({Alias:n.Node,Map:n.Node,Scalar:n.Node,Seq:n.Node},n.Value&&{Map:n.Value,Scalar:n.Value,Seq:n.Value},n.Collection&&{Map:n.Collection,Seq:n.Collection},n):n}function Wa(n,e,t,r){var s,i,o,a,u;if(typeof t=="function")return t(n,e,r);if(We(e))return(s=t.Map)==null?void 0:s.call(t,n,e,r);if(He(e))return(i=t.Seq)==null?void 0:i.call(t,n,e,r);if(H(e))return(o=t.Pair)==null?void 0:o.call(t,n,e,r);if(K(e))return(a=t.Scalar)==null?void 0:a.call(t,n,e,r);if(Pe(e))return(u=t.Alias)==null?void 0:u.call(t,n,e,r)}function Ha(n,e,t){let r=e[e.length-1];if(Z(r))r.items[n]=t;else if(H(r))n==="key"?r.key=t:r.value=t;else if(tt(r))r.contents=t;else{let s=Pe(r)?"alias":"scalar";throw new Error(`Cannot replace node with ${s} parent`)}}var qc={"!":"%21",",":"%2C","[":"%5B","]":"%5D","{":"%7B","}":"%7D"},Uc=n=>n.replace(/[!,[\\]{}]/g,e=>qc[e]),fe=class{constructor(e,t){this.docStart=null,this.docEnd=!1,this.yaml=Object.assign({},fe.defaultYaml,e),this.tags=Object.assign({},fe.defaultTags,t)}clone(){let e=new fe(this.yaml,this.tags);return e.docStart=this.docStart,e}atDocument(){let e=new fe(this.yaml,this.tags);switch(this.yaml.version){case"1.1":this.atNextDocument=!0;break;case"1.2":this.atNextDocument=!1,this.yaml={explicit:fe.defaultYaml.explicit,version:"1.2"},this.tags=Object.assign({},fe.defaultTags);break}return e}add(e,t){this.atNextDocument&&(this.yaml={explicit:fe.defaultYaml.explicit,version:"1.1"},this.tags=Object.assign({},fe.defaultTags),this.atNextDocument=!1);let r=e.trim().split(/[ \\t]+/),s=r.shift();switch(s){case"%TAG":{if(r.length!==2&&(t(0,"%TAG directive should contain exactly two parts"),r.length<2))return!1;let[i,o]=r;return this.tags[i]=o,!0}case"%YAML":{if(this.yaml.explicit=!0,r.length!==1)return t(0,"%YAML directive should contain exactly one part"),!1;let[i]=r;if(i==="1.1"||i==="1.2")return this.yaml.version=i,!0;{let o=/^\\d+\\.\\d+$/.test(i);return t(6,`Unsupported YAML version ${i}`,o),!1}}default:return t(0,`Unknown directive ${s}`,!0),!1}}tagName(e,t){if(e==="!")return"!";if(e[0]!=="!")return t(`Not a valid tag: ${e}`),null;if(e[1]==="<"){let o=e.slice(2,-1);return o==="!"||o==="!!"?(t(`Verbatim tags aren\'t resolved, so ${e} is invalid.`),null):(e[e.length-1]!==">"&&t("Verbatim tags must end with a >"),o)}let[,r,s]=e.match(new RegExp("^(.*!)([^!]*)$","s"));s||t(`The ${e} tag has no suffix`);let i=this.tags[r];if(i)try{return i+decodeURIComponent(s)}catch(o){return t(String(o)),null}return r==="!"?e:(t(`Could not resolve tag: ${e}`),null)}tagString(e){for(let[t,r]of Object.entries(this.tags))if(e.startsWith(r))return t+Uc(e.substring(r.length));return e[0]==="!"?e:`!<${e}>`}toString(e){let t=this.yaml.explicit?[`%YAML ${this.yaml.version||"1.2"}`]:[],r=Object.entries(this.tags),s;if(e&&r.length>0&&J(e.contents)){let i={};rt(e.contents,(o,a)=>{J(a)&&a.tag&&(i[a.tag]=!0)}),s=Object.keys(i)}else s=[];for(let[i,o]of r)i==="!!"&&o==="tag:yaml.org,2002:"||(!e||s.some(a=>a.startsWith(o)))&&t.push(`%TAG ${i} ${o}`);return t.join(`\n`)}};fe.defaultYaml={explicit:!1,version:"1.2"};fe.defaultTags={"!!":"tag:yaml.org,2002:"};function ls(n){if(/[\\x00-\\x19\\s,[\\]{}]/.test(n)){let t=`Anchor must not contain whitespace or control characters: ${JSON.stringify(n)}`;throw new Error(t)}return!0}function Pi(n){let e=new Set;return rt(n,{Value(t,r){r.anchor&&e.add(r.anchor)}}),e}function $i(n,e){for(let t=1;;++t){let r=`${n}${t}`;if(!e.has(r))return r}}function Ja(n,e){let t=[],r=new Map,s=null;return{onAnchor:i=>{t.push(i),s!=null||(s=Pi(n));let o=$i(e,s);return s.add(o),o},setAnchors:()=>{for(let i of t){let o=r.get(i);if(typeof o=="object"&&o.anchor&&(K(o.node)||Z(o.node)))o.node.anchor=o.anchor;else{let a=new Error("Failed to resolve repeated object (this should not happen)");throw a.source=i,a}}},sourceObjects:r}}function Ot(n,e,t,r){if(r&&typeof r=="object")if(Array.isArray(r))for(let s=0,i=r.length;s<i;++s){let o=r[s],a=Ot(n,r,String(s),o);a===void 0?delete r[s]:a!==o&&(r[s]=a)}else if(r instanceof Map)for(let s of Array.from(r.keys())){let i=r.get(s),o=Ot(n,r,s,i);o===void 0?r.delete(s):o!==i&&r.set(s,o)}else if(r instanceof Set)for(let s of Array.from(r)){let i=Ot(n,r,s,s);i===void 0?r.delete(s):i!==s&&(r.delete(s),r.add(i))}else for(let[s,i]of Object.entries(r)){let o=Ot(n,r,s,i);o===void 0?delete r[s]:o!==i&&(r[s]=o)}return n.call(e,t,r)}function de(n,e,t){if(Array.isArray(n))return n.map((r,s)=>de(r,String(s),t));if(n&&typeof n.toJSON=="function"){if(!t||!as(n))return n.toJSON(e,t);let r={aliasCount:0,count:1,res:void 0};t.anchors.set(n,r),t.onCreate=i=>{r.res=i,delete t.onCreate};let s=n.toJSON(e,t);return t.onCreate&&t.onCreate(s),s}return typeof n=="bigint"&&!(t!=null&&t.keep)?Number(n):n}var vt=class{constructor(e){Object.defineProperty(this,Se,{value:e})}clone(){let e=Object.create(Object.getPrototypeOf(this),Object.getOwnPropertyDescriptors(this));return this.range&&(e.range=this.range.slice()),e}toJS(e,{mapAsMap:t,maxAliasCount:r,onAnchor:s,reviver:i}={}){if(!tt(e))throw new TypeError("A document argument is required");let o={anchors:new Map,doc:e,keep:!0,mapAsMap:t===!0,mapKeyWarned:!1,maxAliasCount:typeof r=="number"?r:100},a=de(this,"",o);if(typeof s=="function")for(let{count:u,res:l}of o.anchors.values())s(l,u);return typeof i=="function"?Ot(i,{"":a},"",a):a}};var bt=class extends vt{constructor(e){super(is),this.source=e,Object.defineProperty(this,"tag",{set(){throw new Error("Alias nodes cannot have tags")}})}resolve(e,t){let r;t!=null&&t.aliasResolveCache?r=t.aliasResolveCache:(r=[],rt(e,{Node:(i,o)=>{(Pe(o)||as(o))&&r.push(o)}}),t&&(t.aliasResolveCache=r));let s;for(let i of r){if(i===this)break;i.anchor===this.source&&(s=i)}return s}toJSON(e,t){if(!t)return{source:this.source};let{anchors:r,doc:s,maxAliasCount:i}=t,o=this.resolve(s,t);if(!o){let u=`Unresolved alias (the anchor must be set before the alias): ${this.source}`;throw new ReferenceError(u)}let a=r.get(o);if(a||(de(o,null,t),a=r.get(o)),!a||a.res===void 0){let u="This should not happen: Alias anchor was not resolved?";throw new ReferenceError(u)}if(i>=0&&(a.count+=1,a.aliasCount===0&&(a.aliasCount=cs(s,o,r)),a.count*a.aliasCount>i)){let u="Excessive alias count indicates a resource exhaustion attack";throw new ReferenceError(u)}return a.res}toString(e,t,r){let s=`*${this.source}`;if(e){if(ls(this.source),e.options.verifyAliasOrder&&!e.anchors.has(this.source)){let i=`Unresolved alias (the anchor must be set before the alias): ${this.source}`;throw new Error(i)}if(e.implicitKey)return`${s} `}return s}};function cs(n,e,t){if(Pe(e)){let r=e.resolve(n),s=t&&r&&t.get(r);return s?s.count*s.aliasCount:0}else if(Z(e)){let r=0;for(let s of e.items){let i=cs(n,s,t);i>r&&(r=i)}return r}else if(H(e)){let r=cs(n,e.key,t),s=cs(n,e.value,t);return Math.max(r,s)}return 1}var fs=n=>!n||typeof n!="function"&&typeof n!="object",$=class extends vt{constructor(e){super(Ie),this.value=e}toJSON(e,t){return t!=null&&t.keep?this.value:de(this.value,e,t)}toString(){return String(this.value)}};$.BLOCK_FOLDED="BLOCK_FOLDED";$.BLOCK_LITERAL="BLOCK_LITERAL";$.PLAIN="PLAIN";$.QUOTE_DOUBLE="QUOTE_DOUBLE";$.QUOTE_SINGLE="QUOTE_SINGLE";var Kc="tag:yaml.org,2002:";function Wc(n,e,t){var r;if(e){let s=t.filter(o=>o.tag===e),i=(r=s.find(o=>!o.format))!=null?r:s[0];if(!i)throw new Error(`Tag ${e} not found`);return i}return t.find(s=>{var i;return((i=s.identify)==null?void 0:i.call(s,n))&&!s.format})}function Et(n,e,t){var d,y,h,E;if(tt(n)&&(n=n.contents),J(n))return n;if(H(n)){let p=(y=(d=t.schema[Ke]).createNode)==null?void 0:y.call(d,t.schema,null,t);return p.items.push(n),p}(n instanceof String||n instanceof Number||n instanceof Boolean||typeof BigInt!="undefined"&&n instanceof BigInt)&&(n=n.valueOf());let{aliasDuplicateObjects:r,onAnchor:s,onTagObj:i,schema:o,sourceObjects:a}=t,u;if(r&&n&&typeof n=="object"){if(u=a.get(n),u)return(h=u.anchor)!=null||(u.anchor=s(n)),new bt(u.anchor);u={anchor:null,node:null},a.set(n,u)}e!=null&&e.startsWith("!!")&&(e=Kc+e.slice(2));let l=Wc(n,e,o.tags);if(!l){if(n&&typeof n.toJSON=="function"&&(n=n.toJSON()),!n||typeof n!="object"){let p=new $(n);return u&&(u.node=p),p}l=n instanceof Map?o[Ke]:Symbol.iterator in Object(n)?o[gt]:o[Ke]}i&&(i(l),delete t.onTagObj);let f=l!=null&&l.createNode?l.createNode(t.schema,n,t):typeof((E=l==null?void 0:l.nodeClass)==null?void 0:E.from)=="function"?l.nodeClass.from(t.schema,n,t):new $(n);return e?f.tag=e:l.default||(f.tag=l.tag),u&&(u.node=f),f}function mr(n,e,t){let r=t;for(let s=e.length-1;s>=0;--s){let i=e[s];if(typeof i=="number"&&Number.isInteger(i)&&i>=0){let o=[];o[i]=r,r=o}else r=new Map([[i,r]])}return Et(r,void 0,{aliasDuplicateObjects:!1,keepUndefined:!1,onAnchor:()=>{throw new Error("This should not happen, please report a bug.")},schema:n,sourceObjects:new Map})}var xn=n=>n==null||typeof n=="object"&&!!n[Symbol.iterator]().next().done,Cn=class extends vt{constructor(e,t){super(e),Object.defineProperty(this,"schema",{value:t,configurable:!0,enumerable:!1,writable:!0})}clone(e){let t=Object.create(Object.getPrototypeOf(this),Object.getOwnPropertyDescriptors(this));return e&&(t.schema=e),t.items=t.items.map(r=>J(r)||H(r)?r.clone(e):r),this.range&&(t.range=this.range.slice()),t}addIn(e,t){if(xn(e))this.add(t);else{let[r,...s]=e,i=this.get(r,!0);if(Z(i))i.addIn(s,t);else if(i===void 0&&this.schema)this.set(r,mr(this.schema,s,t));else throw new Error(`Expected YAML collection at ${r}. Remaining path: ${s}`)}}deleteIn(e){let[t,...r]=e;if(r.length===0)return this.delete(t);let s=this.get(t,!0);if(Z(s))return s.deleteIn(r);throw new Error(`Expected YAML collection at ${t}. Remaining path: ${r}`)}getIn(e,t){let[r,...s]=e,i=this.get(r,!0);return s.length===0?!t&&K(i)?i.value:i:Z(i)?i.getIn(s,t):void 0}hasAllNullValues(e){return this.items.every(t=>{if(!H(t))return!1;let r=t.value;return r==null||e&&K(r)&&r.value==null&&!r.commentBefore&&!r.comment&&!r.tag})}hasIn(e){let[t,...r]=e;if(r.length===0)return this.has(t);let s=this.get(t,!0);return Z(s)?s.hasIn(r):!1}setIn(e,t){let[r,...s]=e;if(s.length===0)this.set(r,t);else{let i=this.get(r,!0);if(Z(i))i.setIn(s,t);else if(i===void 0&&this.schema)this.set(r,mr(this.schema,s,t));else throw new Error(`Expected YAML collection at ${r}. Remaining path: ${s}`)}}};var za=n=>n.replace(/^(?!$)(?: $)?/gm,"#");function $e(n,e){return/^\\n+$/.test(n)?n.substring(1):e?n.replace(/^(?! *$)/gm,e):n}var st=(n,e,t)=>n.endsWith(`\n`)?$e(t,e):t.includes(`\n`)?`\n`+$e(t,e):(n.endsWith(" ")?"":" ")+t;var Ri="flow",ds="block",Dr="quoted";function yr(n,e,t="flow",{indentAtStart:r,lineWidth:s=80,minContentWidth:i=20,onFold:o,onOverflow:a}={}){if(!s||s<0)return n;s<i&&(i=0);let u=Math.max(1+i,1+s-e.length);if(n.length<=u)return n;let l=[],f={},d=s-e.length;typeof r=="number"&&(r>s-Math.max(2,i)?l.push(0):d=s-r);let y,h,E=!1,p=-1,T=-1,g=-1;t===ds&&(p=Ya(n,p,e.length),p!==-1&&(d=p+u));for(let L;L=n[p+=1];){if(t===Dr&&L==="\\\\"){switch(T=p,n[p+1]){case"x":p+=3;break;case"u":p+=5;break;case"U":p+=9;break;default:p+=1}g=p}if(L===`\n`)t===ds&&(p=Ya(n,p,e.length)),d=p+e.length+u,y=void 0;else{if(L===" "&&h&&h!==" "&&h!==`\n`&&h!=="	"){let m=n[p+1];m&&m!==" "&&m!==`\n`&&m!=="	"&&(y=p)}if(p>=d)if(y)l.push(y),d=y+u,y=void 0;else if(t===Dr){for(;h===" "||h==="	";)h=L,L=n[p+=1],E=!0;let m=p>g+1?p-2:T-1;if(f[m])return n;l.push(m),f[m]=!0,d=m+u,y=void 0}else E=!0}h=L}if(E&&a&&a(),l.length===0)return n;o&&o();let k=n.slice(0,l[0]);for(let L=0;L<l.length;++L){let m=l[L],F=l[L+1]||n.length;m===0?k=`\n${e}${n.slice(0,F)}`:(t===Dr&&f[m]&&(k+=`${n[m]}\\\\`),k+=`\n${e}${n.slice(m+1,F)}`)}return k}function Ya(n,e,t){let r=e,s=e+1,i=n[s];for(;i===" "||i==="	";)if(e<s+t)i=n[++e];else{do i=n[++e];while(i&&i!==`\n`);r=e,s=e+1,i=n[s]}return r}var ps=(n,e)=>({indentAtStart:e?n.indent.length:n.indentAtStart,lineWidth:n.options.lineWidth,minContentWidth:n.options.minContentWidth}),ms=n=>/^(%|---|\\.\\.\\.)/m.test(n);function Hc(n,e,t){if(!e||e<0)return!1;let r=e-t,s=n.length;if(s<=r)return!1;for(let i=0,o=0;i<s;++i)if(n[i]===`\n`){if(i-o>r)return!0;if(o=i+1,s-o<=r)return!1}return!0}function gr(n,e){let t=JSON.stringify(n);if(e.options.doubleQuotedAsJSON)return t;let{implicitKey:r}=e,s=e.options.doubleQuotedMinMultiLineLength,i=e.indent||(ms(n)?"  ":""),o="",a=0;for(let u=0,l=t[u];l;l=t[++u])if(l===" "&&t[u+1]==="\\\\"&&t[u+2]==="n"&&(o+=t.slice(a,u)+"\\\\ ",u+=1,a=u,l="\\\\"),l==="\\\\")switch(t[u+1]){case"u":{o+=t.slice(a,u);let f=t.substr(u+2,4);switch(f){case"0000":o+="\\\\0";break;case"0007":o+="\\\\a";break;case"000b":o+="\\\\v";break;case"001b":o+="\\\\e";break;case"0085":o+="\\\\N";break;case"00a0":o+="\\\\_";break;case"2028":o+="\\\\L";break;case"2029":o+="\\\\P";break;default:f.substr(0,2)==="00"?o+="\\\\x"+f.substr(2):o+=t.substr(u,6)}u+=5,a=u+1}break;case"n":if(r||t[u+2]===\'"\'||t.length<s)u+=1;else{for(o+=t.slice(a,u)+`\n\n`;t[u+2]==="\\\\"&&t[u+3]==="n"&&t[u+4]!==\'"\';)o+=`\n`,u+=2;o+=i,t[u+2]===" "&&(o+="\\\\"),u+=1,a=u+1}break;default:u+=1}return o=a?o+t.slice(a):t,r?o:yr(o,i,Dr,ps(e,!1))}function ji(n,e){if(e.options.singleQuote===!1||e.implicitKey&&n.includes(`\n`)||/[ \\t]\\n|\\n[ \\t]/.test(n))return gr(n,e);let t=e.indent||(ms(n)?"  ":""),r="\'"+n.replace(/\'/g,"\'\'").replace(/\\n+/g,`$&\n${t}`)+"\'";return e.implicitKey?r:yr(r,t,Ri,ps(e,!1))}function On(n,e){let{singleQuote:t}=e.options,r;if(t===!1)r=gr;else{let s=n.includes(\'"\'),i=n.includes("\'");s&&!i?r=ji:i&&!s?r=gr:r=t?ji:gr}return r(n,e)}var Vi;try{Vi=new RegExp(`(^|(?<!\n))\n+(?!\n|$)`,"g")}catch(n){Vi=/\\n+(?!\\n|$)/g}function hs({comment:n,type:e,value:t},r,s,i){let{blockQuote:o,commentString:a,lineWidth:u}=r.options;if(!o||/\\n[\\t ]+$/.test(t)||/^\\s*$/.test(t))return On(t,r);let l=r.indent||(r.forceBlockIndent||ms(t)?"  ":""),f=o==="literal"?!0:o==="folded"||e===$.BLOCK_FOLDED?!1:e===$.BLOCK_LITERAL?!0:!Hc(t,u,l.length);if(!t)return f?`|\n`:`>\n`;let d,y;for(y=t.length;y>0;--y){let F=t[y-1];if(F!==`\n`&&F!=="	"&&F!==" ")break}let h=t.substring(y),E=h.indexOf(`\n`);E===-1?d="-":t===h||E!==h.length-1?(d="+",i&&i()):d="",h&&(t=t.slice(0,-h.length),h[h.length-1]===`\n`&&(h=h.slice(0,-1)),h=h.replace(Vi,`$&${l}`));let p=!1,T,g=-1;for(T=0;T<t.length;++T){let F=t[T];if(F===" ")p=!0;else if(F===`\n`)g=T;else break}let k=t.substring(0,g<T?g+1:T);k&&(t=t.substring(k.length),k=k.replace(/\\n+/g,`$&${l}`));let m=(p?l?"2":"1":"")+d;if(n&&(m+=" "+a(n.replace(/ ?[\\r\\n]+/g," ")),s&&s()),!f){let F=t.replace(/\\n+/g,`\n$&`).replace(/(?:^|\\n)([\\t ].*)(?:([\\n\\t ]*)\\n(?![\\n\\t ]))?/g,"$1$2").replace(/\\n+/g,`$&${l}`),O=!1,x=ps(r,!0);o!=="folded"&&e!==$.BLOCK_FOLDED&&(x.onOverflow=()=>{O=!0});let S=yr(`${k}${F}${h}`,l,ds,x);if(!O)return`>${m}\n${l}${S}`}return t=t.replace(/\\n+/g,`$&${l}`),`|${m}\n${l}${k}${t}${h}`}function Jc(n,e,t,r){let{type:s,value:i}=n,{actualString:o,implicitKey:a,indent:u,indentStep:l,inFlow:f}=e;if(a&&i.includes(`\n`)||f&&/[[\\]{},]/.test(i))return On(i,e);if(/^[\\n\\t ,[\\]{}#&*!|>\'"%@`]|^[?-]$|^[?-][ \\t]|[\\n:][ \\t]|[ \\t]\\n|[\\n\\t ]#|[\\n\\t :]$/.test(i))return a||f||!i.includes(`\n`)?On(i,e):hs(n,e,t,r);if(!a&&!f&&s!==$.PLAIN&&i.includes(`\n`))return hs(n,e,t,r);if(ms(i)){if(u==="")return e.forceBlockIndent=!0,hs(n,e,t,r);if(a&&u===l)return On(i,e)}let d=i.replace(/\\n+/g,`$&\n${u}`);if(o){let y=p=>{var T;return p.default&&p.tag!=="tag:yaml.org,2002:str"&&((T=p.test)==null?void 0:T.test(d))},{compat:h,tags:E}=e.doc.schema;if(E.some(y)||h!=null&&h.some(y))return On(i,e)}return a?d:yr(d,u,Ri,ps(e,!1))}function zt(n,e,t,r){let{implicitKey:s,inFlow:i}=e,o=typeof n.value=="string"?n:Object.assign({},n,{value:String(n.value)}),{type:a}=n;a!==$.QUOTE_DOUBLE&&/[\\x00-\\x08\\x0b-\\x1f\\x7f-\\x9f\\u{D800}-\\u{DFFF}]/u.test(o.value)&&(a=$.QUOTE_DOUBLE);let u=f=>{switch(f){case $.BLOCK_FOLDED:case $.BLOCK_LITERAL:return s||i?On(o.value,e):hs(o,e,t,r);case $.QUOTE_DOUBLE:return gr(o.value,e);case $.QUOTE_SINGLE:return ji(o.value,e);case $.PLAIN:return Jc(o,e,t,r);default:return null}},l=u(a);if(l===null){let{defaultKeyType:f,defaultStringType:d}=e.options,y=s&&f||d;if(l=u(y),l===null)throw new Error(`Unsupported default string type ${y}`)}return l}function Ds(n,e){let t=Object.assign({blockQuote:!0,commentString:za,defaultKeyType:null,defaultStringType:"PLAIN",directives:null,doubleQuotedAsJSON:!1,doubleQuotedMinMultiLineLength:40,falseStr:"false",flowCollectionPadding:!0,indentSeq:!0,lineWidth:80,minContentWidth:20,nullStr:"null",simpleKeys:!1,singleQuote:null,trueStr:"true",verifyAliasOrder:!0},n.schema.toStringOptions,e),r;switch(t.collectionStyle){case"block":r=!1;break;case"flow":r=!0;break;default:r=null}return{anchors:new Set,doc:n,flowCollectionPadding:t.flowCollectionPadding?" ":"",indent:"",indentStep:typeof t.indent=="number"?" ".repeat(t.indent):"  ",inFlow:r,options:t}}function zc(n,e){var s,i,o,a;if(e.tag){let u=n.filter(l=>l.tag===e.tag);if(u.length>0)return(s=u.find(l=>l.format===e.format))!=null?s:u[0]}let t,r;if(K(e)){r=e.value;let u=n.filter(l=>{var f;return(f=l.identify)==null?void 0:f.call(l,r)});if(u.length>1){let l=u.filter(f=>f.test);l.length>0&&(u=l)}t=(i=u.find(l=>l.format===e.format))!=null?i:u.find(l=>!l.format)}else r=e,t=n.find(u=>u.nodeClass&&r instanceof u.nodeClass);if(!t){let u=(a=(o=r==null?void 0:r.constructor)==null?void 0:o.name)!=null?a:r===null?"null":typeof r;throw new Error(`Tag not resolved for ${u} value`)}return t}function Yc(n,e,{anchors:t,doc:r}){var a;if(!r.directives)return"";let s=[],i=(K(n)||Z(n))&&n.anchor;i&&ls(i)&&(t.add(i),s.push(`&${i}`));let o=(a=n.tag)!=null?a:e.default?null:e.tag;return o&&s.push(r.directives.tagString(o)),s.join(" ")}function Ft(n,e,t,r){var u,l;if(H(n))return n.toString(e,t,r);if(Pe(n)){if(e.doc.directives)return n.toString(e);if((u=e.resolvedAliases)!=null&&u.has(n))throw new TypeError("Cannot stringify circular structure without alias nodes");e.resolvedAliases?e.resolvedAliases.add(n):e.resolvedAliases=new Set([n]),n=n.resolve(e.doc)}let s,i=J(n)?n:e.doc.createNode(n,{onTagObj:f=>s=f});s!=null||(s=zc(e.doc.schema.tags,i));let o=Yc(i,s,e);o.length>0&&(e.indentAtStart=((l=e.indentAtStart)!=null?l:0)+o.length+1);let a=typeof s.stringify=="function"?s.stringify(i,e,t,r):K(i)?zt(i,e,t,r):i.toString(e,t,r);return o?K(i)||a[0]==="{"||a[0]==="["?`${o} ${a}`:`${o}\n${e.indent}${a}`:a}function Ga({key:n,value:e},t,r,s){var x,S;let{allNullValues:i,doc:o,indent:a,indentStep:u,options:{commentString:l,indentSeq:f,simpleKeys:d}}=t,y=J(n)&&n.comment||null;if(d){if(y)throw new Error("With simple keys, key nodes cannot have comments");if(Z(n)||!J(n)&&typeof n=="object"){let q="With simple keys, collection cannot be used as a key value";throw new Error(q)}}let h=!d&&(!n||y&&e==null&&!t.inFlow||Z(n)||(K(n)?n.type===$.BLOCK_FOLDED||n.type===$.BLOCK_LITERAL:typeof n=="object"));t=Object.assign({},t,{allNullValues:!1,implicitKey:!h&&(d||!i),indent:a+u});let E=!1,p=!1,T=Ft(n,t,()=>E=!0,()=>p=!0);if(!h&&!t.inFlow&&T.length>1024){if(d)throw new Error("With simple keys, single line scalar must not span more than 1024 characters");h=!0}if(t.inFlow){if(i||e==null)return E&&r&&r(),T===""?"?":h?`? ${T}`:T}else if(i&&!d||e==null&&h)return T=`? ${T}`,y&&!E?T+=st(T,t.indent,l(y)):p&&s&&s(),T;E&&(y=null),h?(y&&(T+=st(T,t.indent,l(y))),T=`? ${T}\n${a}:`):(T=`${T}:`,y&&(T+=st(T,t.indent,l(y))));let g,k,L;J(e)?(g=!!e.spaceBefore,k=e.commentBefore,L=e.comment):(g=!1,k=null,L=null,e&&typeof e=="object"&&(e=o.createNode(e))),t.implicitKey=!1,!h&&!y&&K(e)&&(t.indentAtStart=T.length+1),p=!1,!f&&u.length>=2&&!t.inFlow&&!h&&He(e)&&!e.flow&&!e.tag&&!e.anchor&&(t.indent=t.indent.substring(2));let m=!1,F=Ft(e,t,()=>m=!0,()=>p=!0),O=" ";if(y||g||k){if(O=g?`\n`:"",k){let q=l(k);O+=`\n${$e(q,t.indent)}`}F===""&&!t.inFlow?O===`\n`&&(O=`\n\n`):O+=`\n${t.indent}`}else if(!h&&Z(e)){let q=F[0],V=F.indexOf(`\n`),Y=V!==-1,v=(S=(x=t.inFlow)!=null?x:e.flow)!=null?S:e.items.length===0;if(Y||!v){let P=!1;if(Y&&(q==="&"||q==="!")){let j=F.indexOf(" ");q==="&"&&j!==-1&&j<V&&F[j+1]==="!"&&(j=F.indexOf(" ",j+1)),(j===-1||V<j)&&(P=!0)}P||(O=`\n${t.indent}`)}}else(F===""||F[0]===`\n`)&&(O="");return T+=O+F,t.inFlow?m&&r&&r():L&&!m?T+=st(T,t.indent,l(L)):p&&s&&s(),T}function ys(n,e){(n==="debug"||n==="warn")&&console.warn(e)}var gs="<<",Je={identify:n=>n===gs||typeof n=="symbol"&&n.description===gs,default:"key",tag:"tag:yaml.org,2002:merge",test:/^<<$/,resolve:()=>Object.assign(new $(Symbol(gs)),{addToJSMap:Ui}),stringify:()=>gs},Za=(n,e)=>(Je.identify(e)||K(e)&&(!e.type||e.type===$.PLAIN)&&Je.identify(e.value))&&(n==null?void 0:n.doc.schema.tags.some(t=>t.tag===Je.tag&&t.default));function Ui(n,e,t){if(t=n&&Pe(t)?t.resolve(n.doc):t,He(t))for(let r of t.items)qi(n,e,r);else if(Array.isArray(t))for(let r of t)qi(n,e,r);else qi(n,e,t)}function qi(n,e,t){let r=n&&Pe(t)?t.resolve(n.doc):t;if(!We(r))throw new Error("Merge sources must be maps or map aliases");let s=r.toJSON(null,n,Map);for(let[i,o]of s)e instanceof Map?e.has(i)||e.set(i,o):e instanceof Set?e.add(i):Object.prototype.hasOwnProperty.call(e,i)||Object.defineProperty(e,i,{value:o,writable:!0,enumerable:!0,configurable:!0});return e}function bs(n,e,{key:t,value:r}){if(J(t)&&t.addToJSMap)t.addToJSMap(n,e,r);else if(Za(n,t))Ui(n,e,r);else{let s=de(t,"",n);if(e instanceof Map)e.set(s,de(r,s,n));else if(e instanceof Set)e.add(s);else{let i=Gc(t,s,n),o=de(r,i,n);i in e?Object.defineProperty(e,i,{value:o,writable:!0,enumerable:!0,configurable:!0}):e[i]=o}}return e}function Gc(n,e,t){if(e===null)return"";if(typeof e!="object")return String(e);if(J(n)&&(t!=null&&t.doc)){let r=Ds(t.doc,{});r.anchors=new Set;for(let i of t.anchors.keys())r.anchors.add(i.anchor);r.inFlow=!0,r.inStringifyKey=!0;let s=n.toString(r);if(!t.mapKeyWarned){let i=JSON.stringify(s);i.length>40&&(i=i.substring(0,36)+\'..."\'),ys(t.doc.options.logLevel,`Keys with collection values will be stringified due to JS Object restrictions: ${i}. Set mapAsMap: true to use object keys.`),t.mapKeyWarned=!0}return s}return JSON.stringify(e)}function vn(n,e,t){let r=Et(n,void 0,t),s=Et(e,void 0,t);return new re(r,s)}var re=class{constructor(e,t=null){Object.defineProperty(this,Se,{value:Bi}),this.key=e,this.value=t}clone(e){let{key:t,value:r}=this;return J(t)&&(t=t.clone(e)),J(r)&&(r=r.clone(e)),new re(t,r)}toJSON(e,t){let r=t!=null&&t.mapAsMap?new Map:{};return bs(t,r,this)}toString(e,t,r){return e!=null&&e.doc?Ga(this,e,t,r):JSON.stringify(this)}};function Fs(n,e,t){var i;return(((i=e.inFlow)!=null?i:n.flow)?Qc:Zc)(n,e,t)}function Zc({comment:n,items:e},t,{blockItemPrefix:r,flowChars:s,itemIndent:i,onChompKeep:o,onComment:a}){let{indent:u,options:{commentString:l}}=t,f=Object.assign({},t,{indent:i,type:null}),d=!1,y=[];for(let E=0;E<e.length;++E){let p=e[E],T=null;if(J(p))!d&&p.spaceBefore&&y.push(""),Es(t,y,p.commentBefore,d),p.comment&&(T=p.comment);else if(H(p)){let k=J(p.key)?p.key:null;k&&(!d&&k.spaceBefore&&y.push(""),Es(t,y,k.commentBefore,d))}d=!1;let g=Ft(p,f,()=>T=null,()=>d=!0);T&&(g+=st(g,i,l(T))),d&&T&&(d=!1),y.push(r+g)}let h;if(y.length===0)h=s.start+s.end;else{h=y[0];for(let E=1;E<y.length;++E){let p=y[E];h+=p?`\n${u}${p}`:`\n`}}return n?(h+=`\n`+$e(l(n),u),a&&a()):d&&o&&o(),h}function Qc({items:n},e,{flowChars:t,itemIndent:r}){let{indent:s,indentStep:i,flowCollectionPadding:o,options:{commentString:a}}=e;r+=i;let u=Object.assign({},e,{indent:r,inFlow:!0,type:null}),l=!1,f=0,d=[];for(let E=0;E<n.length;++E){let p=n[E],T=null;if(J(p))p.spaceBefore&&d.push(""),Es(e,d,p.commentBefore,!1),p.comment&&(T=p.comment);else if(H(p)){let k=J(p.key)?p.key:null;k&&(k.spaceBefore&&d.push(""),Es(e,d,k.commentBefore,!1),k.comment&&(l=!0));let L=J(p.value)?p.value:null;L?(L.comment&&(T=L.comment),L.commentBefore&&(l=!0)):p.value==null&&(k!=null&&k.comment)&&(T=k.comment)}T&&(l=!0);let g=Ft(p,u,()=>T=null);E<n.length-1&&(g+=","),T&&(g+=st(g,r,a(T))),!l&&(d.length>f||g.includes(`\n`))&&(l=!0),d.push(g),f=d.length}let{start:y,end:h}=t;if(d.length===0)return y+h;if(!l){let E=d.reduce((p,T)=>p+T.length+2,2);l=e.options.lineWidth>0&&E>e.options.lineWidth}if(l){let E=y;for(let p of d)E+=p?`\n${i}${s}${p}`:`\n`;return`${E}\n${s}${h}`}else return`${y}${o}${d.join(" ")}${o}${h}`}function Es({indent:n,options:{commentString:e}},t,r,s){if(r&&s&&(r=r.replace(/^\\n+/,"")),r){let i=$e(e(r),n);t.push(i.trimStart())}}function It(n,e){let t=K(e)?e.value:e;for(let r of n)if(H(r)&&(r.key===e||r.key===t||K(r.key)&&r.key.value===t))return r}var ae=class extends Cn{static get tagName(){return"tag:yaml.org,2002:map"}constructor(e){super(Ke,e),this.items=[]}static from(e,t,r){let{keepUndefined:s,replacer:i}=r,o=new this(e),a=(u,l)=>{if(typeof i=="function")l=i.call(t,u,l);else if(Array.isArray(i)&&!i.includes(u))return;(l!==void 0||s)&&o.items.push(vn(u,l,r))};if(t instanceof Map)for(let[u,l]of t)a(u,l);else if(t&&typeof t=="object")for(let u of Object.keys(t))a(u,t[u]);return typeof e.sortMapEntries=="function"&&o.items.sort(e.sortMapEntries),o}add(e,t){var o;let r;H(e)?r=e:!e||typeof e!="object"||!("key"in e)?r=new re(e,e==null?void 0:e.value):r=new re(e.key,e.value);let s=It(this.items,r.key),i=(o=this.schema)==null?void 0:o.sortMapEntries;if(s){if(!t)throw new Error(`Key ${r.key} already set`);K(s.value)&&fs(r.value)?s.value.value=r.value:s.value=r.value}else if(i){let a=this.items.findIndex(u=>i(r,u)<0);a===-1?this.items.push(r):this.items.splice(a,0,r)}else this.items.push(r)}delete(e){let t=It(this.items,e);return t?this.items.splice(this.items.indexOf(t),1).length>0:!1}get(e,t){var i;let r=It(this.items,e),s=r==null?void 0:r.value;return(i=!t&&K(s)?s.value:s)!=null?i:void 0}has(e){return!!It(this.items,e)}set(e,t){this.add(new re(e,t),!0)}toJSON(e,t,r){let s=r?new r:t!=null&&t.mapAsMap?new Map:{};t!=null&&t.onCreate&&t.onCreate(s);for(let i of this.items)bs(t,s,i);return s}toString(e,t,r){if(!e)return JSON.stringify(this);for(let s of this.items)if(!H(s))throw new Error(`Map items must all be pairs; found ${JSON.stringify(s)} instead`);return!e.allNullValues&&this.hasAllNullValues(!1)&&(e=Object.assign({},e,{allNullValues:!0})),Fs(this,e,{blockItemPrefix:"",flowChars:{start:"{",end:"}"},itemIndent:e.indent||"",onChompKeep:r,onComment:t})}};var ze={collection:"map",default:!0,nodeClass:ae,tag:"tag:yaml.org,2002:map",resolve(n,e){return We(n)||e("Expected a mapping for this tag"),n},createNode:(n,e,t)=>ae.from(n,e,t)};var Fe=class extends Cn{static get tagName(){return"tag:yaml.org,2002:seq"}constructor(e){super(gt,e),this.items=[]}add(e){this.items.push(e)}delete(e){let t=ws(e);return typeof t!="number"?!1:this.items.splice(t,1).length>0}get(e,t){let r=ws(e);if(typeof r!="number")return;let s=this.items[r];return!t&&K(s)?s.value:s}has(e){let t=ws(e);return typeof t=="number"&&t<this.items.length}set(e,t){let r=ws(e);if(typeof r!="number")throw new Error(`Expected a valid index, not ${e}.`);let s=this.items[r];K(s)&&fs(t)?s.value=t:this.items[r]=t}toJSON(e,t){let r=[];t!=null&&t.onCreate&&t.onCreate(r);let s=0;for(let i of this.items)r.push(de(i,String(s++),t));return r}toString(e,t,r){return e?Fs(this,e,{blockItemPrefix:"- ",flowChars:{start:"[",end:"]"},itemIndent:(e.indent||"")+"  ",onChompKeep:r,onComment:t}):JSON.stringify(this)}static from(e,t,r){let{replacer:s}=r,i=new this(e);if(t&&Symbol.iterator in Object(t)){let o=0;for(let a of t){if(typeof s=="function"){let u=t instanceof Set?a:String(o++);a=s.call(t,u,a)}i.items.push(Et(a,void 0,r))}}return i}};function ws(n){let e=K(n)?n.value:n;return e&&typeof e=="string"&&(e=Number(e)),typeof e=="number"&&Number.isInteger(e)&&e>=0?e:null}var Ye={collection:"seq",default:!0,nodeClass:Fe,tag:"tag:yaml.org,2002:seq",resolve(n,e){return He(n)||e("Expected a sequence for this tag"),n},createNode:(n,e,t)=>Fe.from(n,e,t)};var Lt={identify:n=>typeof n=="string",default:!0,tag:"tag:yaml.org,2002:str",resolve:n=>n,stringify(n,e,t,r){return e=Object.assign({actualString:!0},e),zt(n,e,t,r)}};var Yt={identify:n=>n==null,createNode:()=>new $(null),default:!0,tag:"tag:yaml.org,2002:null",test:/^(?:~|[Nn]ull|NULL)?$/,resolve:()=>new $(null),stringify:({source:n},e)=>typeof n=="string"&&Yt.test.test(n)?n:e.options.nullStr};var br={identify:n=>typeof n=="boolean",default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:[Tt]rue|TRUE|[Ff]alse|FALSE)$/,resolve:n=>new $(n[0]==="t"||n[0]==="T"),stringify({source:n,value:e},t){if(n&&br.test.test(n)){let r=n[0]==="t"||n[0]==="T";if(e===r)return n}return e?t.options.trueStr:t.options.falseStr}};function we({format:n,minFractionDigits:e,tag:t,value:r}){if(typeof r=="bigint")return String(r);let s=typeof r=="number"?r:Number(r);if(!isFinite(s))return isNaN(s)?".nan":s<0?"-.inf":".inf";let i=JSON.stringify(r);if(!n&&e&&(!t||t==="tag:yaml.org,2002:float")&&/^\\d/.test(i)){let o=i.indexOf(".");o<0&&(o=i.length,i+=".");let a=e-(i.length-o-1);for(;a-- >0;)i+="0"}return i}var Ts={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^(?:[-+]?\\.(?:inf|Inf|INF)|\\.nan|\\.NaN|\\.NAN)$/,resolve:n=>n.slice(-3).toLowerCase()==="nan"?NaN:n[0]==="-"?Number.NEGATIVE_INFINITY:Number.POSITIVE_INFINITY,stringify:we},Ss={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"EXP",test:/^[-+]?(?:\\.[0-9]+|[0-9]+(?:\\.[0-9]*)?)[eE][-+]?[0-9]+$/,resolve:n=>parseFloat(n),stringify(n){let e=Number(n.value);return isFinite(e)?e.toExponential():we(n)}},ks={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?(?:\\.[0-9]+|[0-9]+\\.[0-9]*)$/,resolve(n){let e=new $(parseFloat(n)),t=n.indexOf(".");return t!==-1&&n[n.length-1]==="0"&&(e.minFractionDigits=n.length-t-1),e},stringify:we};var Cs=n=>typeof n=="bigint"||Number.isInteger(n),Ki=(n,e,t,{intAsBigInt:r})=>r?BigInt(n):parseInt(n.substring(e),t);function Qa(n,e,t){let{value:r}=n;return Cs(r)&&r>=0?t+r.toString(e):we(n)}var xs={identify:n=>Cs(n)&&n>=0,default:!0,tag:"tag:yaml.org,2002:int",format:"OCT",test:/^0o[0-7]+$/,resolve:(n,e,t)=>Ki(n,2,8,t),stringify:n=>Qa(n,8,"0o")},Os={identify:Cs,default:!0,tag:"tag:yaml.org,2002:int",test:/^[-+]?[0-9]+$/,resolve:(n,e,t)=>Ki(n,0,10,t),stringify:we},vs={identify:n=>Cs(n)&&n>=0,default:!0,tag:"tag:yaml.org,2002:int",format:"HEX",test:/^0x[0-9a-fA-F]+$/,resolve:(n,e,t)=>Ki(n,2,16,t),stringify:n=>Qa(n,16,"0x")};var Xa=[ze,Ye,Lt,Yt,br,xs,Os,vs,Ts,Ss,ks];function eu(n){return typeof n=="bigint"||Number.isInteger(n)}var Is=({value:n})=>JSON.stringify(n),Xc=[{identify:n=>typeof n=="string",default:!0,tag:"tag:yaml.org,2002:str",resolve:n=>n,stringify:Is},{identify:n=>n==null,createNode:()=>new $(null),default:!0,tag:"tag:yaml.org,2002:null",test:/^null$/,resolve:()=>null,stringify:Is},{identify:n=>typeof n=="boolean",default:!0,tag:"tag:yaml.org,2002:bool",test:/^true$|^false$/,resolve:n=>n==="true",stringify:Is},{identify:eu,default:!0,tag:"tag:yaml.org,2002:int",test:/^-?(?:0|[1-9][0-9]*)$/,resolve:(n,e,{intAsBigInt:t})=>t?BigInt(n):parseInt(n,10),stringify:({value:n})=>eu(n)?n.toString():JSON.stringify(n)},{identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]*)?(?:[eE][-+]?[0-9]+)?$/,resolve:n=>parseFloat(n),stringify:Is}],ef={default:!0,tag:"",test:/^/,resolve(n,e){return e(`Unresolved plain scalar ${JSON.stringify(n)}`),n}},tu=[ze,Ye].concat(Xc,ef);var Er={identify:n=>n instanceof Uint8Array,default:!1,tag:"tag:yaml.org,2002:binary",resolve(n,e){if(typeof atob=="function"){let t=atob(n.replace(/[\\n\\r]/g,"")),r=new Uint8Array(t.length);for(let s=0;s<t.length;++s)r[s]=t.charCodeAt(s);return r}else return e("This environment does not support reading binary tags; either Buffer or atob is required"),n},stringify({comment:n,type:e,value:t},r,s,i){if(!t)return"";let o=t,a;if(typeof btoa=="function"){let u="";for(let l=0;l<o.length;++l)u+=String.fromCharCode(o[l]);a=btoa(u)}else throw new Error("This environment does not support writing binary tags; either Buffer or btoa is required");if(e!=null||(e=$.BLOCK_LITERAL),e!==$.QUOTE_DOUBLE){let u=Math.max(r.options.lineWidth-r.indent.length,r.options.minContentWidth),l=Math.ceil(a.length/u),f=new Array(l);for(let d=0,y=0;d<l;++d,y+=u)f[d]=a.substr(y,u);a=f.join(e===$.BLOCK_LITERAL?`\n`:" ")}return zt({comment:n,type:e,value:a},r,s,i)}};function Wi(n,e){var t;if(He(n))for(let r=0;r<n.items.length;++r){let s=n.items[r];if(!H(s)){if(We(s)){s.items.length>1&&e("Each pair must have its own sequence indicator");let i=s.items[0]||new re(new $(null));if(s.commentBefore&&(i.key.commentBefore=i.key.commentBefore?`${s.commentBefore}\n${i.key.commentBefore}`:s.commentBefore),s.comment){let o=(t=i.value)!=null?t:i.key;o.comment=o.comment?`${s.comment}\n${o.comment}`:s.comment}s=i}n.items[r]=H(s)?s:new re(s)}}else e("Expected a sequence for this tag");return n}function Hi(n,e,t){let{replacer:r}=t,s=new Fe(n);s.tag="tag:yaml.org,2002:pairs";let i=0;if(e&&Symbol.iterator in Object(e))for(let o of e){typeof r=="function"&&(o=r.call(e,String(i++),o));let a,u;if(Array.isArray(o))if(o.length===2)a=o[0],u=o[1];else throw new TypeError(`Expected [key, value] tuple: ${o}`);else if(o&&o instanceof Object){let l=Object.keys(o);if(l.length===1)a=l[0],u=o[a];else throw new TypeError(`Expected tuple with one key, not ${l.length} keys`)}else a=o;s.items.push(vn(a,u,t))}return s}var Fr={collection:"seq",default:!1,tag:"tag:yaml.org,2002:pairs",resolve:Wi,createNode:Hi};var Nt=class extends Fe{constructor(){super(),this.add=ae.prototype.add.bind(this),this.delete=ae.prototype.delete.bind(this),this.get=ae.prototype.get.bind(this),this.has=ae.prototype.has.bind(this),this.set=ae.prototype.set.bind(this),this.tag=Nt.tag}toJSON(e,t){if(!t)return super.toJSON(e);let r=new Map;t!=null&&t.onCreate&&t.onCreate(r);for(let s of this.items){let i,o;if(H(s)?(i=de(s.key,"",t),o=de(s.value,i,t)):i=de(s,"",t),r.has(i))throw new Error("Ordered maps must not include duplicate keys");r.set(i,o)}return r}static from(e,t,r){let s=Hi(e,t,r),i=new this;return i.items=s.items,i}};Nt.tag="tag:yaml.org,2002:omap";var wr={collection:"seq",identify:n=>n instanceof Map,nodeClass:Nt,default:!1,tag:"tag:yaml.org,2002:omap",resolve(n,e){let t=Wi(n,e),r=[];for(let{key:s}of t.items)K(s)&&(r.includes(s.value)?e(`Ordered maps must not include duplicate keys: ${s.value}`):r.push(s.value));return Object.assign(new Nt,t)},createNode:(n,e,t)=>Nt.from(n,e,t)};function nu({value:n,source:e},t){return e&&(n?Ji:zi).test.test(e)?e:n?t.options.trueStr:t.options.falseStr}var Ji={identify:n=>n===!0,default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:Y|y|[Yy]es|YES|[Tt]rue|TRUE|[Oo]n|ON)$/,resolve:()=>new $(!0),stringify:nu},zi={identify:n=>n===!1,default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:N|n|[Nn]o|NO|[Ff]alse|FALSE|[Oo]ff|OFF)$/,resolve:()=>new $(!1),stringify:nu};var ru={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^(?:[-+]?\\.(?:inf|Inf|INF)|\\.nan|\\.NaN|\\.NAN)$/,resolve:n=>n.slice(-3).toLowerCase()==="nan"?NaN:n[0]==="-"?Number.NEGATIVE_INFINITY:Number.POSITIVE_INFINITY,stringify:we},su={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"EXP",test:/^[-+]?(?:[0-9][0-9_]*)?(?:\\.[0-9_]*)?[eE][-+]?[0-9]+$/,resolve:n=>parseFloat(n.replace(/_/g,"")),stringify(n){let e=Number(n.value);return isFinite(e)?e.toExponential():we(n)}},iu={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?(?:[0-9][0-9_]*)?\\.[0-9_]*$/,resolve(n){let e=new $(parseFloat(n.replace(/_/g,""))),t=n.indexOf(".");if(t!==-1){let r=n.substring(t+1).replace(/_/g,"");r[r.length-1]==="0"&&(e.minFractionDigits=r.length)}return e},stringify:we};var Tr=n=>typeof n=="bigint"||Number.isInteger(n);function Ls(n,e,t,{intAsBigInt:r}){let s=n[0];if((s==="-"||s==="+")&&(e+=1),n=n.substring(e).replace(/_/g,""),r){switch(t){case 2:n=`0b${n}`;break;case 8:n=`0o${n}`;break;case 16:n=`0x${n}`;break}let o=BigInt(n);return s==="-"?BigInt(-1)*o:o}let i=parseInt(n,t);return s==="-"?-1*i:i}function Yi(n,e,t){let{value:r}=n;if(Tr(r)){let s=r.toString(e);return r<0?"-"+t+s.substr(1):t+s}return we(n)}var ou={identify:Tr,default:!0,tag:"tag:yaml.org,2002:int",format:"BIN",test:/^[-+]?0b[0-1_]+$/,resolve:(n,e,t)=>Ls(n,2,2,t),stringify:n=>Yi(n,2,"0b")},au={identify:Tr,default:!0,tag:"tag:yaml.org,2002:int",format:"OCT",test:/^[-+]?0[0-7_]+$/,resolve:(n,e,t)=>Ls(n,1,8,t),stringify:n=>Yi(n,8,"0")},uu={identify:Tr,default:!0,tag:"tag:yaml.org,2002:int",test:/^[-+]?[0-9][0-9_]*$/,resolve:(n,e,t)=>Ls(n,0,10,t),stringify:we},lu={identify:Tr,default:!0,tag:"tag:yaml.org,2002:int",format:"HEX",test:/^[-+]?0x[0-9a-fA-F_]+$/,resolve:(n,e,t)=>Ls(n,2,16,t),stringify:n=>Yi(n,16,"0x")};var At=class extends ae{constructor(e){super(e),this.tag=At.tag}add(e){let t;H(e)?t=e:e&&typeof e=="object"&&"key"in e&&"value"in e&&e.value===null?t=new re(e.key,null):t=new re(e,null),It(this.items,t.key)||this.items.push(t)}get(e,t){let r=It(this.items,e);return!t&&H(r)?K(r.key)?r.key.value:r.key:r}set(e,t){if(typeof t!="boolean")throw new Error(`Expected boolean value for set(key, value) in a YAML set, not ${typeof t}`);let r=It(this.items,e);r&&!t?this.items.splice(this.items.indexOf(r),1):!r&&t&&this.items.push(new re(e))}toJSON(e,t){return super.toJSON(e,t,Set)}toString(e,t,r){if(!e)return JSON.stringify(this);if(this.hasAllNullValues(!0))return super.toString(Object.assign({},e,{allNullValues:!0}),t,r);throw new Error("Set items must all have null values")}static from(e,t,r){let{replacer:s}=r,i=new this(e);if(t&&Symbol.iterator in Object(t))for(let o of t)typeof s=="function"&&(o=s.call(t,o,o)),i.items.push(vn(o,null,r));return i}};At.tag="tag:yaml.org,2002:set";var Sr={collection:"map",identify:n=>n instanceof Set,nodeClass:At,default:!1,tag:"tag:yaml.org,2002:set",createNode:(n,e,t)=>At.from(n,e,t),resolve(n,e){if(We(n)){if(n.hasAllNullValues(!0))return Object.assign(new At,n);e("Set items must all have null values")}else e("Expected a mapping for this tag");return n}};function Gi(n,e){let t=n[0],r=t==="-"||t==="+"?n.substring(1):n,s=o=>e?BigInt(o):Number(o),i=r.replace(/_/g,"").split(":").reduce((o,a)=>o*s(60)+s(a),s(0));return t==="-"?s(-1)*i:i}function cu(n){let{value:e}=n,t=o=>o;if(typeof e=="bigint")t=o=>BigInt(o);else if(isNaN(e)||!isFinite(e))return we(n);let r="";e<0&&(r="-",e*=t(-1));let s=t(60),i=[e%s];return e<60?i.unshift(0):(e=(e-i[0])/s,i.unshift(e%s),e>=60&&(e=(e-i[0])/s,i.unshift(e))),r+i.map(o=>String(o).padStart(2,"0")).join(":").replace(/000000\\d*$/,"")}var Ns={identify:n=>typeof n=="bigint"||Number.isInteger(n),default:!0,tag:"tag:yaml.org,2002:int",format:"TIME",test:/^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+$/,resolve:(n,e,{intAsBigInt:t})=>Gi(n,t),stringify:cu},As={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"TIME",test:/^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+\\.[0-9_]*$/,resolve:n=>Gi(n,!1),stringify:cu},In={identify:n=>n instanceof Date,default:!0,tag:"tag:yaml.org,2002:timestamp",test:RegExp("^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})(?:(?:t|T|[ \\\\t]+)([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}(\\\\.[0-9]+)?)(?:[ \\\\t]*(Z|[-+][012]?[0-9](?::[0-9]{2})?))?)?$"),resolve(n){let e=n.match(In.test);if(!e)throw new Error("!!timestamp expects a date, starting with yyyy-mm-dd");let[,t,r,s,i,o,a]=e.map(Number),u=e[7]?Number((e[7]+"00").substr(1,3)):0,l=Date.UTC(t,r-1,s,i||0,o||0,a||0,u),f=e[8];if(f&&f!=="Z"){let d=Gi(f,!1);Math.abs(d)<30&&(d*=60),l-=6e4*d}return new Date(l)},stringify:({value:n})=>{var e;return(e=n==null?void 0:n.toISOString().replace(/(T00:00:00)?\\.000Z$/,""))!=null?e:""}};var Zi=[ze,Ye,Lt,Yt,Ji,zi,ou,au,uu,lu,ru,su,iu,Er,Je,wr,Fr,Sr,Ns,As,In];var fu=new Map([["core",Xa],["failsafe",[ze,Ye,Lt]],["json",tu],["yaml11",Zi],["yaml-1.1",Zi]]),du={binary:Er,bool:br,float:ks,floatExp:Ss,floatNaN:Ts,floatTime:As,int:Os,intHex:vs,intOct:xs,intTime:Ns,map:ze,merge:Je,null:Yt,omap:wr,pairs:Fr,seq:Ye,set:Sr,timestamp:In},hu={"tag:yaml.org,2002:binary":Er,"tag:yaml.org,2002:merge":Je,"tag:yaml.org,2002:omap":wr,"tag:yaml.org,2002:pairs":Fr,"tag:yaml.org,2002:set":Sr,"tag:yaml.org,2002:timestamp":In};function Ms(n,e,t){let r=fu.get(e);if(r&&!n)return t&&!r.includes(Je)?r.concat(Je):r.slice();let s=r;if(!s)if(Array.isArray(n))s=[];else{let i=Array.from(fu.keys()).filter(o=>o!=="yaml11").map(o=>JSON.stringify(o)).join(", ");throw new Error(`Unknown schema "${e}"; use one of ${i} or define customTags array`)}if(Array.isArray(n))for(let i of n)s=s.concat(i);else typeof n=="function"&&(s=n(s.slice()));return t&&(s=s.concat(Je)),s.reduce((i,o)=>{let a=typeof o=="string"?du[o]:o;if(!a){let u=JSON.stringify(o),l=Object.keys(du).map(f=>JSON.stringify(f)).join(", ");throw new Error(`Unknown custom tag ${u}; use one of ${l}`)}return i.includes(a)||i.push(a),i},[])}var tf=(n,e)=>n.key<e.key?-1:n.key>e.key?1:0,Gt=class{constructor({compat:e,customTags:t,merge:r,resolveKnownTags:s,schema:i,sortMapEntries:o,toStringDefaults:a}){this.compat=Array.isArray(e)?Ms(e,"compat"):e?Ms(null,e):null,this.name=typeof i=="string"&&i||"core",this.knownTags=s?hu:{},this.tags=Ms(t,this.name,r),this.toStringOptions=a!=null?a:null,Object.defineProperty(this,Ke,{value:ze}),Object.defineProperty(this,Ie,{value:Lt}),Object.defineProperty(this,gt,{value:Ye}),this.sortMapEntries=typeof o=="function"?o:o===!0?tf:null}clone(){let e=Object.create(Gt.prototype,Object.getOwnPropertyDescriptors(this));return e.tags=this.tags.slice(),e}};function pu(n,e){var u;let t=[],r=e.directives===!0;if(e.directives!==!1&&n.directives){let l=n.directives.toString(n);l?(t.push(l),r=!0):n.directives.docStart&&(r=!0)}r&&t.push("---");let s=Ds(n,e),{commentString:i}=s.options;if(n.commentBefore){t.length!==1&&t.unshift("");let l=i(n.commentBefore);t.unshift($e(l,""))}let o=!1,a=null;if(n.contents){if(J(n.contents)){if(n.contents.spaceBefore&&r&&t.push(""),n.contents.commentBefore){let d=i(n.contents.commentBefore);t.push($e(d,""))}s.forceBlockIndent=!!n.comment,a=n.contents.comment}let l=a?void 0:()=>o=!0,f=Ft(n.contents,s,()=>a=null,l);a&&(f+=st(f,"",i(a))),(f[0]==="|"||f[0]===">")&&t[t.length-1]==="---"?t[t.length-1]=`--- ${f}`:t.push(f)}else t.push(Ft(n.contents,s));if((u=n.directives)!=null&&u.docEnd)if(n.comment){let l=i(n.comment);l.includes(`\n`)?(t.push("..."),t.push($e(l,""))):t.push(`... ${l}`)}else t.push("...");else{let l=n.comment;l&&o&&(l=l.replace(/^\\n+/,"")),l&&((!o||a)&&t[t.length-1]!==""&&t.push(""),t.push($e(i(l),"")))}return t.join(`\n`)+`\n`}var it=class{constructor(e,t,r){this.commentBefore=null,this.comment=null,this.errors=[],this.warnings=[],Object.defineProperty(this,Se,{value:os});let s=null;typeof t=="function"||Array.isArray(t)?s=t:r===void 0&&t&&(r=t,t=void 0);let i=Object.assign({intAsBigInt:!1,keepSourceTokens:!1,logLevel:"warn",prettyErrors:!0,strict:!0,stringKeys:!1,uniqueKeys:!0,version:"1.2"},r);this.options=i;let{version:o}=i;r!=null&&r._directives?(this.directives=r._directives.atDocument(),this.directives.yaml.explicit&&(o=this.directives.yaml.version)):this.directives=new fe({version:o}),this.setSchema(o,r),this.contents=e===void 0?null:this.createNode(e,s,r)}clone(){let e=Object.create(it.prototype,{[Se]:{value:os}});return e.commentBefore=this.commentBefore,e.comment=this.comment,e.errors=this.errors.slice(),e.warnings=this.warnings.slice(),e.options=Object.assign({},this.options),this.directives&&(e.directives=this.directives.clone()),e.schema=this.schema.clone(),e.contents=J(this.contents)?this.contents.clone(e.schema):this.contents,this.range&&(e.range=this.range.slice()),e}add(e){Ln(this.contents)&&this.contents.add(e)}addIn(e,t){Ln(this.contents)&&this.contents.addIn(e,t)}createAlias(e,t){if(!e.anchor){let r=Pi(this);e.anchor=!t||r.has(t)?$i(t||"a",r):t}return new bt(e.anchor)}createNode(e,t,r){let s;if(typeof t=="function")e=t.call({"":e},"",e),s=t;else if(Array.isArray(t)){let T=k=>typeof k=="number"||k instanceof String||k instanceof Number,g=t.filter(T).map(String);g.length>0&&(t=t.concat(g)),s=t}else r===void 0&&t&&(r=t,t=void 0);let{aliasDuplicateObjects:i,anchorPrefix:o,flow:a,keepUndefined:u,onTagObj:l,tag:f}=r!=null?r:{},{onAnchor:d,setAnchors:y,sourceObjects:h}=Ja(this,o||"a"),E={aliasDuplicateObjects:i!=null?i:!0,keepUndefined:u!=null?u:!1,onAnchor:d,onTagObj:l,replacer:s,schema:this.schema,sourceObjects:h},p=Et(e,f,E);return a&&Z(p)&&(p.flow=!0),y(),p}createPair(e,t,r={}){let s=this.createNode(e,null,r),i=this.createNode(t,null,r);return new re(s,i)}delete(e){return Ln(this.contents)?this.contents.delete(e):!1}deleteIn(e){return xn(e)?this.contents==null?!1:(this.contents=null,!0):Ln(this.contents)?this.contents.deleteIn(e):!1}get(e,t){return Z(this.contents)?this.contents.get(e,t):void 0}getIn(e,t){return xn(e)?!t&&K(this.contents)?this.contents.value:this.contents:Z(this.contents)?this.contents.getIn(e,t):void 0}has(e){return Z(this.contents)?this.contents.has(e):!1}hasIn(e){return xn(e)?this.contents!==void 0:Z(this.contents)?this.contents.hasIn(e):!1}set(e,t){this.contents==null?this.contents=mr(this.schema,[e],t):Ln(this.contents)&&this.contents.set(e,t)}setIn(e,t){xn(e)?this.contents=t:this.contents==null?this.contents=mr(this.schema,Array.from(e),t):Ln(this.contents)&&this.contents.setIn(e,t)}setSchema(e,t={}){typeof e=="number"&&(e=String(e));let r;switch(e){case"1.1":this.directives?this.directives.yaml.version="1.1":this.directives=new fe({version:"1.1"}),r={resolveKnownTags:!1,schema:"yaml-1.1"};break;case"1.2":case"next":this.directives?this.directives.yaml.version=e:this.directives=new fe({version:e}),r={resolveKnownTags:!0,schema:"core"};break;case null:this.directives&&delete this.directives,r=null;break;default:{let s=JSON.stringify(e);throw new Error(`Expected \'1.1\', \'1.2\' or null as first argument, but found: ${s}`)}}if(t.schema instanceof Object)this.schema=t.schema;else if(r)this.schema=new Gt(Object.assign(r,t));else throw new Error("With a null YAML version, the { schema: Schema } option is required")}toJS({json:e,jsonArg:t,mapAsMap:r,maxAliasCount:s,onAnchor:i,reviver:o}={}){let a={anchors:new Map,doc:this,keep:!e,mapAsMap:r===!0,mapKeyWarned:!1,maxAliasCount:typeof s=="number"?s:100},u=de(this.contents,t!=null?t:"",a);if(typeof i=="function")for(let{count:l,res:f}of a.anchors.values())i(f,l);return typeof o=="function"?Ot(o,{"":u},"",u):u}toJSON(e,t){return this.toJS({json:!0,jsonArg:e,mapAsMap:!1,onAnchor:t})}toString(e={}){if(this.errors.length>0)throw new Error("Document with errors cannot be stringified");if("indent"in e&&(!Number.isInteger(e.indent)||Number(e.indent)<=0)){let t=JSON.stringify(e.indent);throw new Error(`"indent" option must be a positive integer, not ${t}`)}return pu(this,e)}};function Ln(n){if(Z(n))return!0;throw new Error("Expected a YAML collection as document contents")}var kr=class extends Error{constructor(e,t,r,s){super(),this.name=e,this.code=r,this.message=s,this.pos=t}},Ge=class extends kr{constructor(e,t,r){super("YAMLParseError",e,t,r)}},Cr=class extends kr{constructor(e,t,r){super("YAMLWarning",e,t,r)}},Qi=(n,e)=>t=>{if(t.pos[0]===-1)return;t.linePos=t.pos.map(a=>e.linePos(a));let{line:r,col:s}=t.linePos[0];t.message+=` at line ${r}, column ${s}`;let i=s-1,o=n.substring(e.lineStarts[r-1],e.lineStarts[r]).replace(/[\\n\\r]+$/,"");if(i>=60&&o.length>80){let a=Math.min(i-39,o.length-79);o="\\u2026"+o.substring(a),i-=a-1}if(o.length>80&&(o=o.substring(0,79)+"\\u2026"),r>1&&/^ *$/.test(o.substring(0,i))){let a=n.substring(e.lineStarts[r-2],e.lineStarts[r-1]);a.length>80&&(a=a.substring(0,79)+`\\u2026\n`),o=a+o}if(/[^ ]/.test(o)){let a=1,u=t.linePos[1];u&&u.line===r&&u.col>s&&(a=Math.max(1,Math.min(u.col-s,80-i)));let l=" ".repeat(i)+"^".repeat(a);t.message+=`:\n\n${o}\n${l}\n`}};function ot(n,{flow:e,indicator:t,next:r,offset:s,onError:i,parentIndent:o,startOnNewline:a}){let u=!1,l=a,f=a,d="",y="",h=!1,E=!1,p=null,T=null,g=null,k=null,L=null,m=null,F=null;for(let S of n)switch(E&&(S.type!=="space"&&S.type!=="newline"&&S.type!=="comma"&&i(S.offset,"MISSING_CHAR","Tags and anchors must be separated from the next token by white space"),E=!1),p&&(l&&S.type!=="comment"&&S.type!=="newline"&&i(p,"TAB_AS_INDENT","Tabs are not allowed as indentation"),p=null),S.type){case"space":!e&&(t!=="doc-start"||(r==null?void 0:r.type)!=="flow-collection")&&S.source.includes("	")&&(p=S),f=!0;break;case"comment":{f||i(S,"MISSING_CHAR","Comments must be separated from other tokens by white space characters");let q=S.source.substring(1)||" ";d?d+=y+q:d=q,y="",l=!1;break}case"newline":l?d?d+=S.source:(!m||t!=="seq-item-ind")&&(u=!0):y+=S.source,l=!0,h=!0,(T||g)&&(k=S),f=!0;break;case"anchor":T&&i(S,"MULTIPLE_ANCHORS","A node can have at most one anchor"),S.source.endsWith(":")&&i(S.offset+S.source.length-1,"BAD_ALIAS","Anchor ending in : is ambiguous",!0),T=S,F!=null||(F=S.offset),l=!1,f=!1,E=!0;break;case"tag":{g&&i(S,"MULTIPLE_TAGS","A node can have at most one tag"),g=S,F!=null||(F=S.offset),l=!1,f=!1,E=!0;break}case t:(T||g)&&i(S,"BAD_PROP_ORDER",`Anchors and tags must be after the ${S.source} indicator`),m&&i(S,"UNEXPECTED_TOKEN",`Unexpected ${S.source} in ${e!=null?e:"collection"}`),m=S,l=t==="seq-item-ind"||t==="explicit-key-ind",f=!1;break;case"comma":if(e){L&&i(S,"UNEXPECTED_TOKEN",`Unexpected , in ${e}`),L=S,l=!1,f=!1;break}default:i(S,"UNEXPECTED_TOKEN",`Unexpected ${S.type} token`),l=!1,f=!1}let O=n[n.length-1],x=O?O.offset+O.source.length:s;return E&&r&&r.type!=="space"&&r.type!=="newline"&&r.type!=="comma"&&(r.type!=="scalar"||r.source!=="")&&i(r.offset,"MISSING_CHAR","Tags and anchors must be separated from the next token by white space"),p&&(l&&p.indent<=o||(r==null?void 0:r.type)==="block-map"||(r==null?void 0:r.type)==="block-seq")&&i(p,"TAB_AS_INDENT","Tabs are not allowed as indentation"),{comma:L,found:m,spaceBefore:u,comment:d,hasNewline:h,anchor:T,tag:g,newlineAfterProp:k,end:x,start:F!=null?F:x}}function Mt(n){if(!n)return null;switch(n.type){case"alias":case"scalar":case"double-quoted-scalar":case"single-quoted-scalar":if(n.source.includes(`\n`))return!0;if(n.end){for(let e of n.end)if(e.type==="newline")return!0}return!1;case"flow-collection":for(let e of n.items){for(let t of e.start)if(t.type==="newline")return!0;if(e.sep){for(let t of e.sep)if(t.type==="newline")return!0}if(Mt(e.key)||Mt(e.value))return!0}return!1;default:return!0}}function xr(n,e,t){if((e==null?void 0:e.type)==="flow-collection"){let r=e.end[0];r.indent===n&&(r.source==="]"||r.source==="}")&&Mt(e)&&t(r,"BAD_INDENT","Flow end indicator should be more indented than parent",!0)}}function _s(n,e,t){let{uniqueKeys:r}=n.options;if(r===!1)return!1;let s=typeof r=="function"?r:(i,o)=>i===o||K(i)&&K(o)&&i.value===o.value;return e.some(i=>s(i.key,t))}var mu="All mapping items must start at the same column";function Du({composeNode:n,composeEmptyNode:e},t,r,s,i){var f,d;let o=(f=i==null?void 0:i.nodeClass)!=null?f:ae,a=new o(t.schema);t.atRoot&&(t.atRoot=!1);let u=r.offset,l=null;for(let y of r.items){let{start:h,key:E,sep:p,value:T}=y,g=ot(h,{indicator:"explicit-key-ind",next:E!=null?E:p==null?void 0:p[0],offset:u,onError:s,parentIndent:r.indent,startOnNewline:!0}),k=!g.found;if(k){if(E&&(E.type==="block-seq"?s(u,"BLOCK_AS_IMPLICIT_KEY","A block sequence may not be used as an implicit map key"):"indent"in E&&E.indent!==r.indent&&s(u,"BAD_INDENT",mu)),!g.anchor&&!g.tag&&!p){l=g.end,g.comment&&(a.comment?a.comment+=`\n`+g.comment:a.comment=g.comment);continue}(g.newlineAfterProp||Mt(E))&&s(E!=null?E:h[h.length-1],"MULTILINE_IMPLICIT_KEY","Implicit keys need to be on a single line")}else((d=g.found)==null?void 0:d.indent)!==r.indent&&s(u,"BAD_INDENT",mu);t.atKey=!0;let L=g.end,m=E?n(t,E,g,s):e(t,L,h,null,g,s);t.schema.compat&&xr(r.indent,E,s),t.atKey=!1,_s(t,a.items,m)&&s(L,"DUPLICATE_KEY","Map keys must be unique");let F=ot(p!=null?p:[],{indicator:"map-value-ind",next:T,offset:m.range[2],onError:s,parentIndent:r.indent,startOnNewline:!E||E.type==="block-scalar"});if(u=F.end,F.found){k&&((T==null?void 0:T.type)==="block-map"&&!F.hasNewline&&s(u,"BLOCK_AS_IMPLICIT_KEY","Nested mappings are not allowed in compact mappings"),t.options.strict&&g.start<F.found.offset-1024&&s(m.range,"KEY_OVER_1024_CHARS","The : indicator must be at most 1024 chars after the start of an implicit block mapping key"));let O=T?n(t,T,F,s):e(t,u,p,null,F,s);t.schema.compat&&xr(r.indent,T,s),u=O.range[2];let x=new re(m,O);t.options.keepSourceTokens&&(x.srcToken=y),a.items.push(x)}else{k&&s(m.range,"MISSING_CHAR","Implicit map keys need to be followed by map values"),F.comment&&(m.comment?m.comment+=`\n`+F.comment:m.comment=F.comment);let O=new re(m);t.options.keepSourceTokens&&(O.srcToken=y),a.items.push(O)}}return l&&l<u&&s(l,"IMPOSSIBLE","Map comment with trailing content"),a.range=[r.offset,u,l!=null?l:u],a}function yu({composeNode:n,composeEmptyNode:e},t,r,s,i){var f;let o=(f=i==null?void 0:i.nodeClass)!=null?f:Fe,a=new o(t.schema);t.atRoot&&(t.atRoot=!1),t.atKey&&(t.atKey=!1);let u=r.offset,l=null;for(let{start:d,value:y}of r.items){let h=ot(d,{indicator:"seq-item-ind",next:y,offset:u,onError:s,parentIndent:r.indent,startOnNewline:!0});if(!h.found)if(h.anchor||h.tag||y)y&&y.type==="block-seq"?s(h.end,"BAD_INDENT","All sequence items must start at the same column"):s(u,"MISSING_CHAR","Sequence item without - indicator");else{l=h.end,h.comment&&(a.comment=h.comment);continue}let E=y?n(t,y,h,s):e(t,h.end,d,null,h,s);t.schema.compat&&xr(r.indent,y,s),u=E.range[2],a.items.push(E)}return a.range=[r.offset,u,l!=null?l:u],a}function at(n,e,t,r){let s="";if(n){let i=!1,o="";for(let a of n){let{source:u,type:l}=a;switch(l){case"space":i=!0;break;case"comment":{t&&!i&&r(a,"MISSING_CHAR","Comments must be separated from other tokens by white space characters");let f=u.substring(1)||" ";s?s+=o+f:s=f,o="";break}case"newline":s&&(o+=u),i=!0;break;default:r(a,"UNEXPECTED_TOKEN",`Unexpected ${l} at node end`)}e+=u.length}}return{comment:s,offset:e}}var Xi="Block collections are not allowed within flow collections",eo=n=>n&&(n.type==="block-map"||n.type==="block-seq");function gu({composeNode:n,composeEmptyNode:e},t,r,s,i){var T,g;let o=r.start.source==="{",a=o?"flow map":"flow sequence",u=(T=i==null?void 0:i.nodeClass)!=null?T:o?ae:Fe,l=new u(t.schema);l.flow=!0;let f=t.atRoot;f&&(t.atRoot=!1),t.atKey&&(t.atKey=!1);let d=r.offset+r.start.source.length;for(let k=0;k<r.items.length;++k){let L=r.items[k],{start:m,key:F,sep:O,value:x}=L,S=ot(m,{flow:a,indicator:"explicit-key-ind",next:F!=null?F:O==null?void 0:O[0],offset:d,onError:s,parentIndent:r.indent,startOnNewline:!1});if(!S.found){if(!S.anchor&&!S.tag&&!O&&!x){k===0&&S.comma?s(S.comma,"UNEXPECTED_TOKEN",`Unexpected , in ${a}`):k<r.items.length-1&&s(S.start,"UNEXPECTED_TOKEN",`Unexpected empty item in ${a}`),S.comment&&(l.comment?l.comment+=`\n`+S.comment:l.comment=S.comment),d=S.end;continue}!o&&t.options.strict&&Mt(F)&&s(F,"MULTILINE_IMPLICIT_KEY","Implicit keys of flow sequence pairs need to be on a single line")}if(k===0)S.comma&&s(S.comma,"UNEXPECTED_TOKEN",`Unexpected , in ${a}`);else if(S.comma||s(S.start,"MISSING_CHAR",`Missing , between ${a} items`),S.comment){let q="";e:for(let V of m)switch(V.type){case"comma":case"space":break;case"comment":q=V.source.substring(1);break e;default:break e}if(q){let V=l.items[l.items.length-1];H(V)&&(V=(g=V.value)!=null?g:V.key),V.comment?V.comment+=`\n`+q:V.comment=q,S.comment=S.comment.substring(q.length+1)}}if(!o&&!O&&!S.found){let q=x?n(t,x,S,s):e(t,S.end,O,null,S,s);l.items.push(q),d=q.range[2],eo(x)&&s(q.range,"BLOCK_IN_FLOW",Xi)}else{t.atKey=!0;let q=S.end,V=F?n(t,F,S,s):e(t,q,m,null,S,s);eo(F)&&s(V.range,"BLOCK_IN_FLOW",Xi),t.atKey=!1;let Y=ot(O!=null?O:[],{flow:a,indicator:"map-value-ind",next:x,offset:V.range[2],onError:s,parentIndent:r.indent,startOnNewline:!1});if(Y.found){if(!o&&!S.found&&t.options.strict){if(O)for(let j of O){if(j===Y.found)break;if(j.type==="newline"){s(j,"MULTILINE_IMPLICIT_KEY","Implicit keys of flow sequence pairs need to be on a single line");break}}S.start<Y.found.offset-1024&&s(Y.found,"KEY_OVER_1024_CHARS","The : indicator must be at most 1024 chars after the start of an implicit flow sequence key")}}else x&&("source"in x&&x.source&&x.source[0]===":"?s(x,"MISSING_CHAR",`Missing space after : in ${a}`):s(Y.start,"MISSING_CHAR",`Missing , or : between ${a} items`));let v=x?n(t,x,Y,s):Y.found?e(t,Y.end,O,null,Y,s):null;v?eo(x)&&s(v.range,"BLOCK_IN_FLOW",Xi):Y.comment&&(V.comment?V.comment+=`\n`+Y.comment:V.comment=Y.comment);let P=new re(V,v);if(t.options.keepSourceTokens&&(P.srcToken=L),o){let j=l;_s(t,j.items,V)&&s(q,"DUPLICATE_KEY","Map keys must be unique"),j.items.push(P)}else{let j=new ae(t.schema);j.flow=!0,j.items.push(P);let De=(v!=null?v:V).range;j.range=[V.range[0],De[1],De[2]],l.items.push(j)}d=v?v.range[2]:Y.end}}let y=o?"}":"]",[h,...E]=r.end,p=d;if(h&&h.source===y)p=h.offset+h.source.length;else{let k=a[0].toUpperCase()+a.substring(1),L=f?`${k} must end with a ${y}`:`${k} in block collection must be sufficiently indented and end with a ${y}`;s(d,f?"MISSING_CHAR":"BAD_INDENT",L),h&&h.source.length!==1&&E.unshift(h)}if(E.length>0){let k=at(E,p,t.options.strict,s);k.comment&&(l.comment?l.comment+=`\n`+k.comment:l.comment=k.comment),l.range=[r.offset,p,k.offset]}else l.range=[r.offset,p,p];return l}function to(n,e,t,r,s,i){let o=t.type==="block-map"?Du(n,e,t,r,i):t.type==="block-seq"?yu(n,e,t,r,i):gu(n,e,t,r,i),a=o.constructor;return s==="!"||s===a.tagName?(o.tag=a.tagName,o):(s&&(o.tag=s),o)}function bu(n,e,t,r,s){var y,h,E;let i=r.tag,o=i?e.directives.tagName(i.source,p=>s(i,"TAG_RESOLVE_FAILED",p)):null;if(t.type==="block-seq"){let{anchor:p,newlineAfterProp:T}=r,g=p&&i?p.offset>i.offset?p:i:p!=null?p:i;g&&(!T||T.offset<g.offset)&&s(g,"MISSING_CHAR","Missing newline after block sequence props")}let a=t.type==="block-map"?"map":t.type==="block-seq"?"seq":t.start.source==="{"?"map":"seq";if(!i||!o||o==="!"||o===ae.tagName&&a==="map"||o===Fe.tagName&&a==="seq")return to(n,e,t,s,o);let u=e.schema.tags.find(p=>p.tag===o&&p.collection===a);if(!u){let p=e.schema.knownTags[o];if(p&&p.collection===a)e.schema.tags.push(Object.assign({},p,{default:!1})),u=p;else return p?s(i,"BAD_COLLECTION_TYPE",`${p.tag} used for ${a} collection, but expects ${(y=p.collection)!=null?y:"scalar"}`,!0):s(i,"TAG_RESOLVE_FAILED",`Unresolved tag: ${o}`,!0),to(n,e,t,s,o)}let l=to(n,e,t,s,o,u),f=(E=(h=u.resolve)==null?void 0:h.call(u,l,p=>s(i,"TAG_RESOLVE_FAILED",p),e.options))!=null?E:l,d=J(f)?f:new $(f);return d.range=l.range,d.tag=o,u!=null&&u.format&&(d.format=u.format),d}function no(n,e,t){let r=e.offset,s=nf(e,n.options.strict,t);if(!s)return{value:"",type:null,comment:"",range:[r,r,r]};let i=s.mode===">"?$.BLOCK_FOLDED:$.BLOCK_LITERAL,o=e.source?rf(e.source):[],a=o.length;for(let p=o.length-1;p>=0;--p){let T=o[p][1];if(T===""||T==="\\r")a=p;else break}if(a===0){let p=s.chomp==="+"&&o.length>0?`\n`.repeat(Math.max(1,o.length-1)):"",T=r+s.length;return e.source&&(T+=e.source.length),{value:p,type:i,comment:s.comment,range:[r,T,T]}}let u=e.indent+s.indent,l=e.offset+s.length,f=0;for(let p=0;p<a;++p){let[T,g]=o[p];if(g===""||g==="\\r")s.indent===0&&T.length>u&&(u=T.length);else{if(T.length<u){let k="Block scalars with more-indented leading empty lines must use an explicit indentation indicator";t(l+T.length,"MISSING_CHAR",k)}s.indent===0&&(u=T.length),f=p,u===0&&!n.atRoot&&t(l,"BAD_INDENT","Block scalar values in collections must be indented");break}l+=T.length+g.length+1}for(let p=o.length-1;p>=a;--p)o[p][0].length>u&&(a=p+1);let d="",y="",h=!1;for(let p=0;p<f;++p)d+=o[p][0].slice(u)+`\n`;for(let p=f;p<a;++p){let[T,g]=o[p];l+=T.length+g.length+1;let k=g[g.length-1]==="\\r";if(k&&(g=g.slice(0,-1)),g&&T.length<u){let m=`Block scalar lines must not be less indented than their ${s.indent?"explicit indentation indicator":"first line"}`;t(l-g.length-(k?2:1),"BAD_INDENT",m),T=""}i===$.BLOCK_LITERAL?(d+=y+T.slice(u)+g,y=`\n`):T.length>u||g[0]==="	"?(y===" "?y=`\n`:!h&&y===`\n`&&(y=`\n\n`),d+=y+T.slice(u)+g,y=`\n`,h=!0):g===""?y===`\n`?d+=`\n`:y=`\n`:(d+=y+g,y=" ",h=!1)}switch(s.chomp){case"-":break;case"+":for(let p=a;p<o.length;++p)d+=`\n`+o[p][0].slice(u);d[d.length-1]!==`\n`&&(d+=`\n`);break;default:d+=`\n`}let E=r+s.length+e.source.length;return{value:d,type:i,comment:s.comment,range:[r,E,E]}}function nf({offset:n,props:e},t,r){if(e[0].type!=="block-scalar-header")return r(e[0],"IMPOSSIBLE","Block scalar header not found"),null;let{source:s}=e[0],i=s[0],o=0,a="",u=-1;for(let y=1;y<s.length;++y){let h=s[y];if(!a&&(h==="-"||h==="+"))a=h;else{let E=Number(h);!o&&E?o=E:u===-1&&(u=n+y)}}u!==-1&&r(u,"UNEXPECTED_TOKEN",`Block scalar header includes extra characters: ${s}`);let l=!1,f="",d=s.length;for(let y=1;y<e.length;++y){let h=e[y];switch(h.type){case"space":l=!0;case"newline":d+=h.source.length;break;case"comment":t&&!l&&r(h,"MISSING_CHAR","Comments must be separated from other tokens by white space characters"),d+=h.source.length,f=h.source.substring(1);break;case"error":r(h,"UNEXPECTED_TOKEN",h.message),d+=h.source.length;break;default:{let E=`Unexpected token in block scalar header: ${h.type}`;r(h,"UNEXPECTED_TOKEN",E);let p=h.source;p&&typeof p=="string"&&(d+=p.length)}}}return{mode:i,indent:o,chomp:a,comment:f,length:d}}function rf(n){let e=n.split(/\\n( *)/),t=e[0],r=t.match(/^( *)/),i=[r!=null&&r[1]?[r[1],t.slice(r[1].length)]:["",t]];for(let o=1;o<e.length;o+=2)i.push([e[o],e[o+1]]);return i}function ro(n,e,t){let{offset:r,type:s,source:i,end:o}=n,a,u,l=(y,h,E)=>t(r+y,h,E);switch(s){case"scalar":a=$.PLAIN,u=sf(i,l);break;case"single-quoted-scalar":a=$.QUOTE_SINGLE,u=of(i,l);break;case"double-quoted-scalar":a=$.QUOTE_DOUBLE,u=af(i,l);break;default:return t(n,"UNEXPECTED_TOKEN",`Expected a flow scalar value, but found: ${s}`),{value:"",type:null,comment:"",range:[r,r+i.length,r+i.length]}}let f=r+i.length,d=at(o,f,e,t);return{value:u,type:a,comment:d.comment,range:[r,f,d.offset]}}function sf(n,e){let t="";switch(n[0]){case"	":t="a tab character";break;case",":t="flow indicator character ,";break;case"%":t="directive indicator character %";break;case"|":case">":{t=`block scalar indicator ${n[0]}`;break}case"@":case"`":{t=`reserved character ${n[0]}`;break}}return t&&e(0,"BAD_SCALAR_START",`Plain value cannot start with ${t}`),Eu(n)}function of(n,e){return(n[n.length-1]!=="\'"||n.length===1)&&e(n.length,"MISSING_CHAR","Missing closing \'quote"),Eu(n.slice(1,-1)).replace(/\'\'/g,"\'")}function Eu(n){var u;let e,t;try{e=new RegExp(`(.*?)(?<![ 	])[ 	]*\\r?\n`,"sy"),t=new RegExp(`[ 	]*(.*?)(?:(?<![ 	])[ 	]*)?\\r?\n`,"sy")}catch(l){e=new RegExp("(.*?)[ \\\\t]*\\\\r?\\\\n","sy"),t=new RegExp("[ \\\\t]*(.*?)[ \\\\t]*\\\\r?\\\\n","sy")}let r=e.exec(n);if(!r)return n;let s=r[1],i=" ",o=e.lastIndex;for(t.lastIndex=o;r=t.exec(n);)r[1]===""?i===`\n`?s+=i:i=`\n`:(s+=i+r[1],i=" "),o=t.lastIndex;let a=new RegExp("[ \\\\t]*(.*)","sy");return a.lastIndex=o,r=a.exec(n),s+i+((u=r==null?void 0:r[1])!=null?u:"")}function af(n,e){let t="";for(let r=1;r<n.length-1;++r){let s=n[r];if(!(s==="\\r"&&n[r+1]===`\n`))if(s===`\n`){let{fold:i,offset:o}=uf(n,r);t+=i,r=o}else if(s==="\\\\"){let i=n[++r],o=lf[i];if(o)t+=o;else if(i===`\n`)for(i=n[r+1];i===" "||i==="	";)i=n[++r+1];else if(i==="\\r"&&n[r+1]===`\n`)for(i=n[++r+1];i===" "||i==="	";)i=n[++r+1];else if(i==="x"||i==="u"||i==="U"){let a={x:2,u:4,U:8}[i];t+=cf(n,r+1,a,e),r+=a}else{let a=n.substr(r-1,2);e(r-1,"BAD_DQ_ESCAPE",`Invalid escape sequence ${a}`),t+=a}}else if(s===" "||s==="	"){let i=r,o=n[r+1];for(;o===" "||o==="	";)o=n[++r+1];o!==`\n`&&!(o==="\\r"&&n[r+2]===`\n`)&&(t+=r>i?n.slice(i,r+1):s)}else t+=s}return(n[n.length-1]!==\'"\'||n.length===1)&&e(n.length,"MISSING_CHAR",\'Missing closing "quote\'),t}function uf(n,e){let t="",r=n[e+1];for(;(r===" "||r==="	"||r===`\n`||r==="\\r")&&!(r==="\\r"&&n[e+2]!==`\n`);)r===`\n`&&(t+=`\n`),e+=1,r=n[e+1];return t||(t=" "),{fold:t,offset:e}}var lf={0:"\\0",a:"\\x07",b:"\\b",e:"\\x1B",f:"\\f",n:`\n`,r:"\\r",t:"	",v:"\\v",N:"\\x85",_:"\\xA0",L:"\\u2028",P:"\\u2029"," ":" ",\'"\':\'"\',"/":"/","\\\\":"\\\\","	":"	"};function cf(n,e,t,r){let s=n.substr(e,t),o=s.length===t&&/^[0-9a-fA-F]+$/.test(s)?parseInt(s,16):NaN;if(isNaN(o)){let a=n.substr(e-2,t+2);return r(e-2,"BAD_DQ_ESCAPE",`Invalid escape sequence ${a}`),a}return String.fromCodePoint(o)}function so(n,e,t,r){let{value:s,type:i,comment:o,range:a}=e.type==="block-scalar"?no(n,e,r):ro(e,n.options.strict,r),u=t?n.directives.tagName(t.source,d=>r(t,"TAG_RESOLVE_FAILED",d)):null,l;n.options.stringKeys&&n.atKey?l=n.schema[Ie]:u?l=ff(n.schema,s,u,t,r):e.type==="scalar"?l=df(n,s,e,r):l=n.schema[Ie];let f;try{let d=l.resolve(s,y=>r(t!=null?t:e,"TAG_RESOLVE_FAILED",y),n.options);f=K(d)?d:new $(d)}catch(d){let y=d instanceof Error?d.message:String(d);r(t!=null?t:e,"TAG_RESOLVE_FAILED",y),f=new $(s)}return f.range=a,f.source=s,i&&(f.type=i),u&&(f.tag=u),l.format&&(f.format=l.format),o&&(f.comment=o),f}function ff(n,e,t,r,s){var a;if(t==="!")return n[Ie];let i=[];for(let u of n.tags)if(!u.collection&&u.tag===t)if(u.default&&u.test)i.push(u);else return u;for(let u of i)if((a=u.test)!=null&&a.test(e))return u;let o=n.knownTags[t];return o&&!o.collection?(n.tags.push(Object.assign({},o,{default:!1,test:void 0})),o):(s(r,"TAG_RESOLVE_FAILED",`Unresolved tag: ${t}`,t!=="tag:yaml.org,2002:str"),n[Ie])}function df({atKey:n,directives:e,schema:t},r,s,i){var a;let o=t.tags.find(u=>{var l;return(u.default===!0||n&&u.default==="key")&&((l=u.test)==null?void 0:l.test(r))})||t[Ie];if(t.compat){let u=(a=t.compat.find(l=>{var f;return l.default&&((f=l.test)==null?void 0:f.test(r))}))!=null?a:t[Ie];if(o.tag!==u.tag){let l=e.tagString(o.tag),f=e.tagString(u.tag),d=`Value may be parsed as either ${l} or ${f}`;i(s,"TAG_RESOLVE_FAILED",d,!0)}}return o}function Fu(n,e,t){if(e){t!=null||(t=e.length);for(let r=t-1;r>=0;--r){let s=e[r];switch(s.type){case"space":case"comment":case"newline":n-=s.source.length;continue}for(s=e[++r];(s==null?void 0:s.type)==="space";)n+=s.source.length,s=e[++r];break}}return n}var hf={composeNode:io,composeEmptyNode:Bs};function io(n,e,t,r){let s=n.atKey,{spaceBefore:i,comment:o,anchor:a,tag:u}=t,l,f=!0;switch(e.type){case"alias":l=pf(n,e,r),(a||u)&&r(e,"ALIAS_PROPS","An alias node must not specify any properties");break;case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":case"block-scalar":l=so(n,e,u,r),a&&(l.anchor=a.source.substring(1));break;case"block-map":case"block-seq":case"flow-collection":l=bu(hf,n,e,t,r),a&&(l.anchor=a.source.substring(1));break;default:{let d=e.type==="error"?e.message:`Unsupported token (type: ${e.type})`;r(e,"UNEXPECTED_TOKEN",d),l=Bs(n,e.offset,void 0,null,t,r),f=!1}}if(a&&l.anchor===""&&r(a,"BAD_ALIAS","Anchor cannot be an empty string"),s&&n.options.stringKeys&&(!K(l)||typeof l.value!="string"||l.tag&&l.tag!=="tag:yaml.org,2002:str")){let d="With stringKeys, all keys must be strings";r(u!=null?u:e,"NON_STRING_KEY",d)}return i&&(l.spaceBefore=!0),o&&(e.type==="scalar"&&e.source===""?l.comment=o:l.commentBefore=o),n.options.keepSourceTokens&&f&&(l.srcToken=e),l}function Bs(n,e,t,r,{spaceBefore:s,comment:i,anchor:o,tag:a,end:u},l){let f={type:"scalar",offset:Fu(e,t,r),indent:-1,source:""},d=so(n,f,a,l);return o&&(d.anchor=o.source.substring(1),d.anchor===""&&l(o,"BAD_ALIAS","Anchor cannot be an empty string")),s&&(d.spaceBefore=!0),i&&(d.comment=i,d.range[2]=u),d}function pf({options:n},{offset:e,source:t,end:r},s){let i=new bt(t.substring(1));i.source===""&&s(e,"BAD_ALIAS","Alias cannot be an empty string"),i.source.endsWith(":")&&s(e+t.length-1,"BAD_ALIAS","Alias ending in : is ambiguous",!0);let o=e+t.length,a=at(r,o,n.strict,s);return i.range=[e,o,a.offset],a.comment&&(i.comment=a.comment),i}function wu(n,e,{offset:t,start:r,value:s,end:i},o){let a=Object.assign({_directives:e},n),u=new it(void 0,a),l={atKey:!1,atRoot:!0,directives:u.directives,options:u.options,schema:u.schema},f=ot(r,{indicator:"doc-start",next:s!=null?s:i==null?void 0:i[0],offset:t,onError:o,parentIndent:0,startOnNewline:!0});f.found&&(u.directives.docStart=!0,s&&(s.type==="block-map"||s.type==="block-seq")&&!f.hasNewline&&o(f.end,"MISSING_CHAR","Block collection cannot start on same line with directives-end marker")),u.contents=s?io(l,s,f,o):Bs(l,f.end,r,null,f,o);let d=u.contents.range[2],y=at(i,d,!1,o);return y.comment&&(u.comment=y.comment),u.range=[t,d,y.offset],u}function Or(n){if(typeof n=="number")return[n,n+1];if(Array.isArray(n))return n.length===2?n:[n[0],n[1]];let{offset:e,source:t}=n;return[e,e+(typeof t=="string"?t.length:1)]}function Tu(n){var s;let e="",t=!1,r=!1;for(let i=0;i<n.length;++i){let o=n[i];switch(o[0]){case"#":e+=(e===""?"":r?`\n\n`:`\n`)+(o.substring(1)||" "),t=!0,r=!1;break;case"%":((s=n[i+1])==null?void 0:s[0])!=="#"&&(i+=1),t=!1;break;default:t||(r=!0),t=!1}}return{comment:e,afterEmptyLine:r}}var vr=class{constructor(e={}){this.doc=null,this.atDirectives=!1,this.prelude=[],this.errors=[],this.warnings=[],this.onError=(t,r,s,i)=>{let o=Or(t);i?this.warnings.push(new Cr(o,r,s)):this.errors.push(new Ge(o,r,s))},this.directives=new fe({version:e.version||"1.2"}),this.options=e}decorate(e,t){let{comment:r,afterEmptyLine:s}=Tu(this.prelude);if(r){let i=e.contents;if(t)e.comment=e.comment?`${e.comment}\n${r}`:r;else if(s||e.directives.docStart||!i)e.commentBefore=r;else if(Z(i)&&!i.flow&&i.items.length>0){let o=i.items[0];H(o)&&(o=o.key);let a=o.commentBefore;o.commentBefore=a?`${r}\n${a}`:r}else{let o=i.commentBefore;i.commentBefore=o?`${r}\n${o}`:r}}t?(Array.prototype.push.apply(e.errors,this.errors),Array.prototype.push.apply(e.warnings,this.warnings)):(e.errors=this.errors,e.warnings=this.warnings),this.prelude=[],this.errors=[],this.warnings=[]}streamInfo(){return{comment:Tu(this.prelude).comment,directives:this.directives,errors:this.errors,warnings:this.warnings}}*compose(e,t=!1,r=-1){for(let s of e)yield*this.next(s);yield*this.end(t,r)}*next(e){switch(e.type){case"directive":this.directives.add(e.source,(t,r,s)=>{let i=Or(e);i[0]+=t,this.onError(i,"BAD_DIRECTIVE",r,s)}),this.prelude.push(e.source),this.atDirectives=!0;break;case"document":{let t=wu(this.options,this.directives,e,this.onError);this.atDirectives&&!t.directives.docStart&&this.onError(e,"MISSING_CHAR","Missing directives-end/doc-start indicator line"),this.decorate(t,!1),this.doc&&(yield this.doc),this.doc=t,this.atDirectives=!1;break}case"byte-order-mark":case"space":break;case"comment":case"newline":this.prelude.push(e.source);break;case"error":{let t=e.source?`${e.message}: ${JSON.stringify(e.source)}`:e.message,r=new Ge(Or(e),"UNEXPECTED_TOKEN",t);this.atDirectives||!this.doc?this.errors.push(r):this.doc.errors.push(r);break}case"doc-end":{if(!this.doc){let r="Unexpected doc-end without preceding document";this.errors.push(new Ge(Or(e),"UNEXPECTED_TOKEN",r));break}this.doc.directives.docEnd=!0;let t=at(e.end,e.offset+e.source.length,this.doc.options.strict,this.onError);if(this.decorate(this.doc,!0),t.comment){let r=this.doc.comment;this.doc.comment=r?`${r}\n${t.comment}`:t.comment}this.doc.range[2]=t.offset;break}default:this.errors.push(new Ge(Or(e),"UNEXPECTED_TOKEN",`Unsupported token ${e.type}`))}}*end(e=!1,t=-1){if(this.doc)this.decorate(this.doc,!0),yield this.doc,this.doc=null;else if(e){let r=Object.assign({_directives:this.directives},this.options),s=new it(void 0,r);this.atDirectives&&this.onError(t,"MISSING_CHAR","Missing directives-end indicator line"),s.range=[0,t,t],this.decorate(s,!1),yield s}}};var oo=Symbol("break visit"),mf=Symbol("skip children"),Su=Symbol("remove item");function Zt(n,e){"type"in n&&n.type==="document"&&(n={start:n.start,value:n.value}),ku(Object.freeze([]),n,e)}Zt.BREAK=oo;Zt.SKIP=mf;Zt.REMOVE=Su;Zt.itemAtPath=(n,e)=>{let t=n;for(let[r,s]of e){let i=t==null?void 0:t[r];if(i&&"items"in i)t=i.items[s];else return}return t};Zt.parentCollection=(n,e)=>{let t=Zt.itemAtPath(n,e.slice(0,-1)),r=e[e.length-1][0],s=t==null?void 0:t[r];if(s&&"items"in s)return s;throw new Error("Parent collection not found")};function ku(n,e,t){let r=t(e,n);if(typeof r=="symbol")return r;for(let s of["key","value"]){let i=e[s];if(i&&"items"in i){for(let o=0;o<i.items.length;++o){let a=ku(Object.freeze(n.concat([[s,o]])),i.items[o],t);if(typeof a=="number")o=a-1;else{if(a===oo)return oo;a===Su&&(i.items.splice(o,1),o-=1)}}typeof r=="function"&&s==="key"&&(r=r(e,n))}}return typeof r=="function"?r(e,n):r}var ao="\\uFEFF",uo="",lo="",Ps="";function Cu(n){switch(n){case ao:return"byte-order-mark";case uo:return"doc-mode";case lo:return"flow-error-end";case Ps:return"scalar";case"---":return"doc-start";case"...":return"doc-end";case"":case`\n`:case`\\r\n`:return"newline";case"-":return"seq-item-ind";case"?":return"explicit-key-ind";case":":return"map-value-ind";case"{":return"flow-map-start";case"}":return"flow-map-end";case"[":return"flow-seq-start";case"]":return"flow-seq-end";case",":return"comma"}switch(n[0]){case" ":case"	":return"space";case"#":return"comment";case"%":return"directive-line";case"*":return"alias";case"&":return"anchor";case"!":return"tag";case"\'":return"single-quoted-scalar";case\'"\':return"double-quoted-scalar";case"|":case">":return"block-scalar-header"}return null}function Ze(n){switch(n){case void 0:case" ":case`\n`:case"\\r":case"	":return!0;default:return!1}}var xu=new Set("0123456789ABCDEFabcdef"),yf=new Set("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-#;/?:@&=+$_.!~*\'()"),$s=new Set(",[]{}"),gf=new Set(` ,[]{}\n\\r	`),co=n=>!n||gf.has(n),Ir=class{constructor(){this.atEnd=!1,this.blockScalarIndent=-1,this.blockScalarKeep=!1,this.buffer="",this.flowKey=!1,this.flowLevel=0,this.indentNext=0,this.indentValue=0,this.lineEndPos=null,this.next=null,this.pos=0}*lex(e,t=!1){var s;if(e){if(typeof e!="string")throw TypeError("source is not a string");this.buffer=this.buffer?this.buffer+e:e,this.lineEndPos=null}this.atEnd=!t;let r=(s=this.next)!=null?s:"stream";for(;r&&(t||this.hasChars(1));)r=yield*this.parseNext(r)}atLineEnd(){let e=this.pos,t=this.buffer[e];for(;t===" "||t==="	";)t=this.buffer[++e];return!t||t==="#"||t===`\n`?!0:t==="\\r"?this.buffer[e+1]===`\n`:!1}charAt(e){return this.buffer[this.pos+e]}continueScalar(e){let t=this.buffer[e];if(this.indentNext>0){let r=0;for(;t===" ";)t=this.buffer[++r+e];if(t==="\\r"){let s=this.buffer[r+e+1];if(s===`\n`||!s&&!this.atEnd)return e+r+1}return t===`\n`||r>=this.indentNext||!t&&!this.atEnd?e+r:-1}if(t==="-"||t==="."){let r=this.buffer.substr(e,3);if((r==="---"||r==="...")&&Ze(this.buffer[e+3]))return-1}return e}getLine(){let e=this.lineEndPos;return(typeof e!="number"||e!==-1&&e<this.pos)&&(e=this.buffer.indexOf(`\n`,this.pos),this.lineEndPos=e),e===-1?this.atEnd?this.buffer.substring(this.pos):null:(this.buffer[e-1]==="\\r"&&(e-=1),this.buffer.substring(this.pos,e))}hasChars(e){return this.pos+e<=this.buffer.length}setNext(e){return this.buffer=this.buffer.substring(this.pos),this.pos=0,this.lineEndPos=null,this.next=e,null}peek(e){return this.buffer.substr(this.pos,e)}*parseNext(e){switch(e){case"stream":return yield*this.parseStream();case"line-start":return yield*this.parseLineStart();case"block-start":return yield*this.parseBlockStart();case"doc":return yield*this.parseDocument();case"flow":return yield*this.parseFlowCollection();case"quoted-scalar":return yield*this.parseQuotedScalar();case"block-scalar":return yield*this.parseBlockScalar();case"plain-scalar":return yield*this.parsePlainScalar()}}*parseStream(){let e=this.getLine();if(e===null)return this.setNext("stream");if(e[0]===ao&&(yield*this.pushCount(1),e=e.substring(1)),e[0]==="%"){let t=e.length,r=e.indexOf("#");for(;r!==-1;){let i=e[r-1];if(i===" "||i==="	"){t=r-1;break}else r=e.indexOf("#",r+1)}for(;;){let i=e[t-1];if(i===" "||i==="	")t-=1;else break}let s=(yield*this.pushCount(t))+(yield*this.pushSpaces(!0));return yield*this.pushCount(e.length-s),this.pushNewline(),"stream"}if(this.atLineEnd()){let t=yield*this.pushSpaces(!0);return yield*this.pushCount(e.length-t),yield*this.pushNewline(),"stream"}return yield uo,yield*this.parseLineStart()}*parseLineStart(){let e=this.charAt(0);if(!e&&!this.atEnd)return this.setNext("line-start");if(e==="-"||e==="."){if(!this.atEnd&&!this.hasChars(4))return this.setNext("line-start");let t=this.peek(3);if((t==="---"||t==="...")&&Ze(this.charAt(3)))return yield*this.pushCount(3),this.indentValue=0,this.indentNext=0,t==="---"?"doc":"stream"}return this.indentValue=yield*this.pushSpaces(!1),this.indentNext>this.indentValue&&!Ze(this.charAt(1))&&(this.indentNext=this.indentValue),yield*this.parseBlockStart()}*parseBlockStart(){let[e,t]=this.peek(2);if(!t&&!this.atEnd)return this.setNext("block-start");if((e==="-"||e==="?"||e===":")&&Ze(t)){let r=(yield*this.pushCount(1))+(yield*this.pushSpaces(!0));return this.indentNext=this.indentValue+1,this.indentValue+=r,yield*this.parseBlockStart()}return"doc"}*parseDocument(){yield*this.pushSpaces(!0);let e=this.getLine();if(e===null)return this.setNext("doc");let t=yield*this.pushIndicators();switch(e[t]){case"#":yield*this.pushCount(e.length-t);case void 0:return yield*this.pushNewline(),yield*this.parseLineStart();case"{":case"[":return yield*this.pushCount(1),this.flowKey=!1,this.flowLevel=1,"flow";case"}":case"]":return yield*this.pushCount(1),"doc";case"*":return yield*this.pushUntil(co),"doc";case\'"\':case"\'":return yield*this.parseQuotedScalar();case"|":case">":return t+=yield*this.parseBlockScalarHeader(),t+=yield*this.pushSpaces(!0),yield*this.pushCount(e.length-t),yield*this.pushNewline(),yield*this.parseBlockScalar();default:return yield*this.parsePlainScalar()}}*parseFlowCollection(){let e,t,r=-1;do e=yield*this.pushNewline(),e>0?(t=yield*this.pushSpaces(!1),this.indentValue=r=t):t=0,t+=yield*this.pushSpaces(!0);while(e+t>0);let s=this.getLine();if(s===null)return this.setNext("flow");if((r!==-1&&r<this.indentNext&&s[0]!=="#"||r===0&&(s.startsWith("---")||s.startsWith("..."))&&Ze(s[3]))&&!(r===this.indentNext-1&&this.flowLevel===1&&(s[0]==="]"||s[0]==="}")))return this.flowLevel=0,yield lo,yield*this.parseLineStart();let i=0;for(;s[i]===",";)i+=yield*this.pushCount(1),i+=yield*this.pushSpaces(!0),this.flowKey=!1;switch(i+=yield*this.pushIndicators(),s[i]){case void 0:return"flow";case"#":return yield*this.pushCount(s.length-i),"flow";case"{":case"[":return yield*this.pushCount(1),this.flowKey=!1,this.flowLevel+=1,"flow";case"}":case"]":return yield*this.pushCount(1),this.flowKey=!0,this.flowLevel-=1,this.flowLevel?"flow":"doc";case"*":return yield*this.pushUntil(co),"flow";case\'"\':case"\'":return this.flowKey=!0,yield*this.parseQuotedScalar();case":":{let o=this.charAt(1);if(this.flowKey||Ze(o)||o===",")return this.flowKey=!1,yield*this.pushCount(1),yield*this.pushSpaces(!0),"flow"}default:return this.flowKey=!1,yield*this.parsePlainScalar()}}*parseQuotedScalar(){let e=this.charAt(0),t=this.buffer.indexOf(e,this.pos+1);if(e==="\'")for(;t!==-1&&this.buffer[t+1]==="\'";)t=this.buffer.indexOf("\'",t+2);else for(;t!==-1;){let i=0;for(;this.buffer[t-1-i]==="\\\\";)i+=1;if(i%2===0)break;t=this.buffer.indexOf(\'"\',t+1)}let r=this.buffer.substring(0,t),s=r.indexOf(`\n`,this.pos);if(s!==-1){for(;s!==-1;){let i=this.continueScalar(s+1);if(i===-1)break;s=r.indexOf(`\n`,i)}s!==-1&&(t=s-(r[s-1]==="\\r"?2:1))}if(t===-1){if(!this.atEnd)return this.setNext("quoted-scalar");t=this.buffer.length}return yield*this.pushToIndex(t+1,!1),this.flowLevel?"flow":"doc"}*parseBlockScalarHeader(){this.blockScalarIndent=-1,this.blockScalarKeep=!1;let e=this.pos;for(;;){let t=this.buffer[++e];if(t==="+")this.blockScalarKeep=!0;else if(t>"0"&&t<="9")this.blockScalarIndent=Number(t)-1;else if(t!=="-")break}return yield*this.pushUntil(t=>Ze(t)||t==="#")}*parseBlockScalar(){let e=this.pos-1,t=0,r;e:for(let i=this.pos;r=this.buffer[i];++i)switch(r){case" ":t+=1;break;case`\n`:e=i,t=0;break;case"\\r":{let o=this.buffer[i+1];if(!o&&!this.atEnd)return this.setNext("block-scalar");if(o===`\n`)break}default:break e}if(!r&&!this.atEnd)return this.setNext("block-scalar");if(t>=this.indentNext){this.blockScalarIndent===-1?this.indentNext=t:this.indentNext=this.blockScalarIndent+(this.indentNext===0?1:this.indentNext);do{let i=this.continueScalar(e+1);if(i===-1)break;e=this.buffer.indexOf(`\n`,i)}while(e!==-1);if(e===-1){if(!this.atEnd)return this.setNext("block-scalar");e=this.buffer.length}}let s=e+1;for(r=this.buffer[s];r===" ";)r=this.buffer[++s];if(r==="	"){for(;r==="	"||r===" "||r==="\\r"||r===`\n`;)r=this.buffer[++s];e=s-1}else if(!this.blockScalarKeep)do{let i=e-1,o=this.buffer[i];o==="\\r"&&(o=this.buffer[--i]);let a=i;for(;o===" ";)o=this.buffer[--i];if(o===`\n`&&i>=this.pos&&i+1+t>a)e=i;else break}while(!0);return yield Ps,yield*this.pushToIndex(e+1,!0),yield*this.parseLineStart()}*parsePlainScalar(){let e=this.flowLevel>0,t=this.pos-1,r=this.pos-1,s;for(;s=this.buffer[++r];)if(s===":"){let i=this.buffer[r+1];if(Ze(i)||e&&$s.has(i))break;t=r}else if(Ze(s)){let i=this.buffer[r+1];if(s==="\\r"&&(i===`\n`?(r+=1,s=`\n`,i=this.buffer[r+1]):t=r),i==="#"||e&&$s.has(i))break;if(s===`\n`){let o=this.continueScalar(r+1);if(o===-1)break;r=Math.max(r,o-2)}}else{if(e&&$s.has(s))break;t=r}return!s&&!this.atEnd?this.setNext("plain-scalar"):(yield Ps,yield*this.pushToIndex(t+1,!0),e?"flow":"doc")}*pushCount(e){return e>0?(yield this.buffer.substr(this.pos,e),this.pos+=e,e):0}*pushToIndex(e,t){let r=this.buffer.slice(this.pos,e);return r?(yield r,this.pos+=r.length,r.length):(t&&(yield""),0)}*pushIndicators(){switch(this.charAt(0)){case"!":return(yield*this.pushTag())+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators());case"&":return(yield*this.pushUntil(co))+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators());case"-":case"?":case":":{let e=this.flowLevel>0,t=this.charAt(1);if(Ze(t)||e&&$s.has(t))return e?this.flowKey&&(this.flowKey=!1):this.indentNext=this.indentValue+1,(yield*this.pushCount(1))+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators())}}return 0}*pushTag(){if(this.charAt(1)==="<"){let e=this.pos+2,t=this.buffer[e];for(;!Ze(t)&&t!==">";)t=this.buffer[++e];return yield*this.pushToIndex(t===">"?e+1:e,!1)}else{let e=this.pos+1,t=this.buffer[e];for(;t;)if(yf.has(t))t=this.buffer[++e];else if(t==="%"&&xu.has(this.buffer[e+1])&&xu.has(this.buffer[e+2]))t=this.buffer[e+=3];else break;return yield*this.pushToIndex(e,!1)}}*pushNewline(){let e=this.buffer[this.pos];return e===`\n`?yield*this.pushCount(1):e==="\\r"&&this.charAt(1)===`\n`?yield*this.pushCount(2):0}*pushSpaces(e){let t=this.pos-1,r;do r=this.buffer[++t];while(r===" "||e&&r==="	");let s=t-this.pos;return s>0&&(yield this.buffer.substr(this.pos,s),this.pos=t),s}*pushUntil(e){let t=this.pos,r=this.buffer[t];for(;!e(r);)r=this.buffer[++t];return yield*this.pushToIndex(t,!1)}};var Lr=class{constructor(){this.lineStarts=[],this.addNewLine=e=>this.lineStarts.push(e),this.linePos=e=>{let t=0,r=this.lineStarts.length;for(;t<r;){let i=t+r>>1;this.lineStarts[i]<e?t=i+1:r=i}if(this.lineStarts[t]===e)return{line:t+1,col:1};if(t===0)return{line:0,col:e};let s=this.lineStarts[t-1];return{line:t,col:e-s+1}}}};function _t(n,e){for(let t=0;t<n.length;++t)if(n[t].type===e)return!0;return!1}function Ou(n){for(let e=0;e<n.length;++e)switch(n[e].type){case"space":case"comment":case"newline":break;default:return e}return-1}function Iu(n){switch(n==null?void 0:n.type){case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":case"flow-collection":return!0;default:return!1}}function Rs(n){var e;switch(n.type){case"document":return n.start;case"block-map":{let t=n.items[n.items.length-1];return(e=t.sep)!=null?e:t.start}case"block-seq":return n.items[n.items.length-1].start;default:return[]}}function Nn(n){var t;if(n.length===0)return[];let e=n.length;e:for(;--e>=0;)switch(n[e].type){case"doc-start":case"explicit-key-ind":case"map-value-ind":case"seq-item-ind":case"newline":break e}for(;((t=n[++e])==null?void 0:t.type)==="space";);return n.splice(e,n.length)}function vu(n){if(n.start.type==="flow-seq-start")for(let e of n.items)e.sep&&!e.value&&!_t(e.start,"explicit-key-ind")&&!_t(e.sep,"map-value-ind")&&(e.key&&(e.value=e.key),delete e.key,Iu(e.value)?e.value.end?Array.prototype.push.apply(e.value.end,e.sep):e.value.end=e.sep:Array.prototype.push.apply(e.start,e.sep),delete e.sep)}var Nr=class{constructor(e){this.atNewLine=!0,this.atScalar=!1,this.indent=0,this.offset=0,this.onKeyLine=!1,this.stack=[],this.source="",this.type="",this.lexer=new Ir,this.onNewLine=e}*parse(e,t=!1){this.onNewLine&&this.offset===0&&this.onNewLine(0);for(let r of this.lexer.lex(e,t))yield*this.next(r);t||(yield*this.end())}*next(e){if(this.source=e,this.atScalar){this.atScalar=!1,yield*this.step(),this.offset+=e.length;return}let t=Cu(e);if(t)if(t==="scalar")this.atNewLine=!1,this.atScalar=!0,this.type="scalar";else{switch(this.type=t,yield*this.step(),t){case"newline":this.atNewLine=!0,this.indent=0,this.onNewLine&&this.onNewLine(this.offset+e.length);break;case"space":this.atNewLine&&e[0]===" "&&(this.indent+=e.length);break;case"explicit-key-ind":case"map-value-ind":case"seq-item-ind":this.atNewLine&&(this.indent+=e.length);break;case"doc-mode":case"flow-error-end":return;default:this.atNewLine=!1}this.offset+=e.length}else{let r=`Not a YAML token: ${e}`;yield*this.pop({type:"error",offset:this.offset,message:r,source:e}),this.offset+=e.length}}*end(){for(;this.stack.length>0;)yield*this.pop()}get sourceToken(){return{type:this.type,offset:this.offset,indent:this.indent,source:this.source}}*step(){let e=this.peek(1);if(this.type==="doc-end"&&(!e||e.type!=="doc-end")){for(;this.stack.length>0;)yield*this.pop();this.stack.push({type:"doc-end",offset:this.offset,source:this.source});return}if(!e)return yield*this.stream();switch(e.type){case"document":return yield*this.document(e);case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return yield*this.scalar(e);case"block-scalar":return yield*this.blockScalar(e);case"block-map":return yield*this.blockMap(e);case"block-seq":return yield*this.blockSequence(e);case"flow-collection":return yield*this.flowCollection(e);case"doc-end":return yield*this.documentEnd(e)}yield*this.pop()}peek(e){return this.stack[this.stack.length-e]}*pop(e){let t=e!=null?e:this.stack.pop();if(t)if(this.stack.length===0)yield t;else{let r=this.peek(1);switch(t.type==="block-scalar"?t.indent="indent"in r?r.indent:0:t.type==="flow-collection"&&r.type==="document"&&(t.indent=0),t.type==="flow-collection"&&vu(t),r.type){case"document":r.value=t;break;case"block-scalar":r.props.push(t);break;case"block-map":{let s=r.items[r.items.length-1];if(s.value){r.items.push({start:[],key:t,sep:[]}),this.onKeyLine=!0;return}else if(s.sep)s.value=t;else{Object.assign(s,{key:t,sep:[]}),this.onKeyLine=!s.explicitKey;return}break}case"block-seq":{let s=r.items[r.items.length-1];s.value?r.items.push({start:[],value:t}):s.value=t;break}case"flow-collection":{let s=r.items[r.items.length-1];!s||s.value?r.items.push({start:[],key:t,sep:[]}):s.sep?s.value=t:Object.assign(s,{key:t,sep:[]});return}default:yield*this.pop(),yield*this.pop(t)}if((r.type==="document"||r.type==="block-map"||r.type==="block-seq")&&(t.type==="block-map"||t.type==="block-seq")){let s=t.items[t.items.length-1];s&&!s.sep&&!s.value&&s.start.length>0&&Ou(s.start)===-1&&(t.indent===0||s.start.every(i=>i.type!=="comment"||i.indent<t.indent))&&(r.type==="document"?r.end=s.start:r.items.push({start:s.start}),t.items.splice(-1,1))}}else{let r="Tried to pop an empty stack";yield{type:"error",offset:this.offset,source:"",message:r}}}*stream(){switch(this.type){case"directive-line":yield{type:"directive",offset:this.offset,source:this.source};return;case"byte-order-mark":case"space":case"comment":case"newline":yield this.sourceToken;return;case"doc-mode":case"doc-start":{let e={type:"document",offset:this.offset,start:[]};this.type==="doc-start"&&e.start.push(this.sourceToken),this.stack.push(e);return}}yield{type:"error",offset:this.offset,message:`Unexpected ${this.type} token in YAML stream`,source:this.source}}*document(e){if(e.value)return yield*this.lineEnd(e);switch(this.type){case"doc-start":{Ou(e.start)!==-1?(yield*this.pop(),yield*this.step()):e.start.push(this.sourceToken);return}case"anchor":case"tag":case"space":case"comment":case"newline":e.start.push(this.sourceToken);return}let t=this.startBlockValue(e);t?this.stack.push(t):yield{type:"error",offset:this.offset,message:`Unexpected ${this.type} token in YAML document`,source:this.source}}*scalar(e){if(this.type==="map-value-ind"){let t=Rs(this.peek(2)),r=Nn(t),s;e.end?(s=e.end,s.push(this.sourceToken),delete e.end):s=[this.sourceToken];let i={type:"block-map",offset:e.offset,indent:e.indent,items:[{start:r,key:e,sep:s}]};this.onKeyLine=!0,this.stack[this.stack.length-1]=i}else yield*this.lineEnd(e)}*blockScalar(e){switch(this.type){case"space":case"comment":case"newline":e.props.push(this.sourceToken);return;case"scalar":if(e.source=this.source,this.atNewLine=!0,this.indent=0,this.onNewLine){let t=this.source.indexOf(`\n`)+1;for(;t!==0;)this.onNewLine(this.offset+t),t=this.source.indexOf(`\n`,t)+1}yield*this.pop();break;default:yield*this.pop(),yield*this.step()}}*blockMap(e){var r;let t=e.items[e.items.length-1];switch(this.type){case"newline":if(this.onKeyLine=!1,t.value){let s="end"in t.value?t.value.end:void 0,i=Array.isArray(s)?s[s.length-1]:void 0;(i==null?void 0:i.type)==="comment"?s==null||s.push(this.sourceToken):e.items.push({start:[this.sourceToken]})}else t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"space":case"comment":if(t.value)e.items.push({start:[this.sourceToken]});else if(t.sep)t.sep.push(this.sourceToken);else{if(this.atIndentedComment(t.start,e.indent)){let s=e.items[e.items.length-2],i=(r=s==null?void 0:s.value)==null?void 0:r.end;if(Array.isArray(i)){Array.prototype.push.apply(i,t.start),i.push(this.sourceToken),e.items.pop();return}}t.start.push(this.sourceToken)}return}if(this.indent>=e.indent){let s=!this.onKeyLine&&this.indent===e.indent,i=s&&(t.sep||t.explicitKey)&&this.type!=="seq-item-ind",o=[];if(i&&t.sep&&!t.value){let a=[];for(let u=0;u<t.sep.length;++u){let l=t.sep[u];switch(l.type){case"newline":a.push(u);break;case"space":break;case"comment":l.indent>e.indent&&(a.length=0);break;default:a.length=0}}a.length>=2&&(o=t.sep.splice(a[1]))}switch(this.type){case"anchor":case"tag":i||t.value?(o.push(this.sourceToken),e.items.push({start:o}),this.onKeyLine=!0):t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"explicit-key-ind":!t.sep&&!t.explicitKey?(t.start.push(this.sourceToken),t.explicitKey=!0):i||t.value?(o.push(this.sourceToken),e.items.push({start:o,explicitKey:!0})):this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:[this.sourceToken],explicitKey:!0}]}),this.onKeyLine=!0;return;case"map-value-ind":if(t.explicitKey)if(t.sep)if(t.value)e.items.push({start:[],key:null,sep:[this.sourceToken]});else if(_t(t.sep,"map-value-ind"))this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:o,key:null,sep:[this.sourceToken]}]});else if(Iu(t.key)&&!_t(t.sep,"newline")){let a=Nn(t.start),u=t.key,l=t.sep;l.push(this.sourceToken),delete t.key,delete t.sep,this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:a,key:u,sep:l}]})}else o.length>0?t.sep=t.sep.concat(o,this.sourceToken):t.sep.push(this.sourceToken);else if(_t(t.start,"newline"))Object.assign(t,{key:null,sep:[this.sourceToken]});else{let a=Nn(t.start);this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:a,key:null,sep:[this.sourceToken]}]})}else t.sep?t.value||i?e.items.push({start:o,key:null,sep:[this.sourceToken]}):_t(t.sep,"map-value-ind")?this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:[],key:null,sep:[this.sourceToken]}]}):t.sep.push(this.sourceToken):Object.assign(t,{key:null,sep:[this.sourceToken]});this.onKeyLine=!0;return;case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":{let a=this.flowScalar(this.type);i||t.value?(e.items.push({start:o,key:a,sep:[]}),this.onKeyLine=!0):t.sep?this.stack.push(a):(Object.assign(t,{key:a,sep:[]}),this.onKeyLine=!0);return}default:{let a=this.startBlockValue(e);if(a){if(a.type==="block-seq"){if(!t.explicitKey&&t.sep&&!_t(t.sep,"newline")){yield*this.pop({type:"error",offset:this.offset,message:"Unexpected block-seq-ind on same line with key",source:this.source});return}}else s&&e.items.push({start:o});this.stack.push(a);return}}}}yield*this.pop(),yield*this.step()}*blockSequence(e){var r;let t=e.items[e.items.length-1];switch(this.type){case"newline":if(t.value){let s="end"in t.value?t.value.end:void 0,i=Array.isArray(s)?s[s.length-1]:void 0;(i==null?void 0:i.type)==="comment"?s==null||s.push(this.sourceToken):e.items.push({start:[this.sourceToken]})}else t.start.push(this.sourceToken);return;case"space":case"comment":if(t.value)e.items.push({start:[this.sourceToken]});else{if(this.atIndentedComment(t.start,e.indent)){let s=e.items[e.items.length-2],i=(r=s==null?void 0:s.value)==null?void 0:r.end;if(Array.isArray(i)){Array.prototype.push.apply(i,t.start),i.push(this.sourceToken),e.items.pop();return}}t.start.push(this.sourceToken)}return;case"anchor":case"tag":if(t.value||this.indent<=e.indent)break;t.start.push(this.sourceToken);return;case"seq-item-ind":if(this.indent!==e.indent)break;t.value||_t(t.start,"seq-item-ind")?e.items.push({start:[this.sourceToken]}):t.start.push(this.sourceToken);return}if(this.indent>e.indent){let s=this.startBlockValue(e);if(s){this.stack.push(s);return}}yield*this.pop(),yield*this.step()}*flowCollection(e){let t=e.items[e.items.length-1];if(this.type==="flow-error-end"){let r;do yield*this.pop(),r=this.peek(1);while(r&&r.type==="flow-collection")}else if(e.end.length===0){switch(this.type){case"comma":case"explicit-key-ind":!t||t.sep?e.items.push({start:[this.sourceToken]}):t.start.push(this.sourceToken);return;case"map-value-ind":!t||t.value?e.items.push({start:[],key:null,sep:[this.sourceToken]}):t.sep?t.sep.push(this.sourceToken):Object.assign(t,{key:null,sep:[this.sourceToken]});return;case"space":case"comment":case"newline":case"anchor":case"tag":!t||t.value?e.items.push({start:[this.sourceToken]}):t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":{let s=this.flowScalar(this.type);!t||t.value?e.items.push({start:[],key:s,sep:[]}):t.sep?this.stack.push(s):Object.assign(t,{key:s,sep:[]});return}case"flow-map-end":case"flow-seq-end":e.end.push(this.sourceToken);return}let r=this.startBlockValue(e);r?this.stack.push(r):(yield*this.pop(),yield*this.step())}else{let r=this.peek(2);if(r.type==="block-map"&&(this.type==="map-value-ind"&&r.indent===e.indent||this.type==="newline"&&!r.items[r.items.length-1].sep))yield*this.pop(),yield*this.step();else if(this.type==="map-value-ind"&&r.type!=="flow-collection"){let s=Rs(r),i=Nn(s);vu(e);let o=e.end.splice(1,e.end.length);o.push(this.sourceToken);let a={type:"block-map",offset:e.offset,indent:e.indent,items:[{start:i,key:e,sep:o}]};this.onKeyLine=!0,this.stack[this.stack.length-1]=a}else yield*this.lineEnd(e)}}flowScalar(e){if(this.onNewLine){let t=this.source.indexOf(`\n`)+1;for(;t!==0;)this.onNewLine(this.offset+t),t=this.source.indexOf(`\n`,t)+1}return{type:e,offset:this.offset,indent:this.indent,source:this.source}}startBlockValue(e){switch(this.type){case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return this.flowScalar(this.type);case"block-scalar-header":return{type:"block-scalar",offset:this.offset,indent:this.indent,props:[this.sourceToken],source:""};case"flow-map-start":case"flow-seq-start":return{type:"flow-collection",offset:this.offset,indent:this.indent,start:this.sourceToken,items:[],end:[]};case"seq-item-ind":return{type:"block-seq",offset:this.offset,indent:this.indent,items:[{start:[this.sourceToken]}]};case"explicit-key-ind":{this.onKeyLine=!0;let t=Rs(e),r=Nn(t);return r.push(this.sourceToken),{type:"block-map",offset:this.offset,indent:this.indent,items:[{start:r,explicitKey:!0}]}}case"map-value-ind":{this.onKeyLine=!0;let t=Rs(e),r=Nn(t);return{type:"block-map",offset:this.offset,indent:this.indent,items:[{start:r,key:null,sep:[this.sourceToken]}]}}}return null}atIndentedComment(e,t){return this.type!=="comment"||this.indent<=t?!1:e.every(r=>r.type==="newline"||r.type==="space")}*documentEnd(e){this.type!=="doc-mode"&&(e.end?e.end.push(this.sourceToken):e.end=[this.sourceToken],this.type==="newline"&&(yield*this.pop()))}*lineEnd(e){switch(this.type){case"comma":case"doc-start":case"doc-end":case"flow-seq-end":case"flow-map-end":case"map-value-ind":yield*this.pop(),yield*this.step();break;case"newline":this.onKeyLine=!1;case"space":case"comment":default:e.end?e.end.push(this.sourceToken):e.end=[this.sourceToken],this.type==="newline"&&(yield*this.pop())}}};function bf(n){let e=n.prettyErrors!==!1;return{lineCounter:n.lineCounter||e&&new Lr||null,prettyErrors:e}}function Lu(n,e={}){let{lineCounter:t,prettyErrors:r}=bf(e),s=new Nr(t==null?void 0:t.addNewLine),i=new vr(e),o=null;for(let a of i.compose(s.parse(n),!0,n.length))if(!o)o=a;else if(o.options.logLevel!=="silent"){o.errors.push(new Ge(a.range.slice(0,2),"MULTIPLE_DOCS","Source contains multiple documents; please use YAML.parseAllDocuments()"));break}return r&&t&&(o.errors.forEach(Qi(n,t)),o.warnings.forEach(Qi(n,t))),o}function fo(n,e,t){let r;typeof e=="function"?r=e:t===void 0&&e&&typeof e=="object"&&(t=e);let s=Lu(n,t);if(!s)return null;if(s.warnings.forEach(i=>ys(s.options.logLevel,i)),s.errors.length>0){if(s.options.logLevel!=="silent")throw s.errors[0];s.errors=[]}return s.toJS(Object.assign({reviver:r},t))}var qs=Kr(Pu());var b=Kr(ss());var Qe;(L=>{L.DEFAULT_TO_STRING={nullRepresentation:"-",dateFormat:"MMMM dd, yyyy",dateTimeFormat:"h:mm a - MMMM dd, yyyy"};function e(m,F=L.DEFAULT_TO_STRING,O=!1){let x=t(m);if(!x)return F.nullRepresentation;switch(x.type){case"null":return F.nullRepresentation;case"string":return x.value;case"number":case"boolean":return""+x.value;case"link":return x.value.markdown();case"function":return"<function>";case"array":let S="";return O&&(S+="["),S+=x.value.map(q=>e(q,F,!0)).join(", "),O&&(S+="]"),S;case"object":return"{ "+Object.entries(x.value).map(q=>q[0]+": "+e(q[1],F,!0)).join(", ")+" }";case"date":return Ra(x.value,F.dateFormat,F.dateTimeFormat);case"duration":return ja(x.value)}}L.toString=e;function t(m){return h(m)?{type:"null",value:null}:f(m)?{type:"number",value:m}:l(m)?{type:"string",value:m}:p(m)?{type:"boolean",value:m}:y(m)?{type:"duration",value:m}:d(m)?{type:"date",value:m}:E(m)?{type:"array",value:m}:T(m)?{type:"link",value:m}:k(m)?{type:"function",value:m}:g(m)?{type:"object",value:m}:void 0}L.wrapValue=t;function r(m,F){if(g(m)){let O={};for(let[x,S]of Object.entries(m))O[x]=r(S,F);return O}else if(E(m)){let O=[];for(let x of m)O.push(r(x,F));return O}else return F(m)}L.mapLeaves=r;function s(m,F){return i(m,F)==0}L.equals=s;function i(m,F,O){var q,V;if(m===F||(m===void 0&&(m=null),F===void 0&&(F=null),m===null&&F===null))return 0;if(m===null)return-1;if(F===null)return 1;let x=t(m),S=t(F);if(x===void 0&&S===void 0)return 0;if(x===void 0)return-1;if(S===void 0)return 1;if(x.type!=S.type)return x.type.localeCompare(S.type);if(x.value===S.value)return 0;switch(x.type){case"string":return x.value.localeCompare(S.value);case"number":return x.value<S.value?-1:x.value==S.value?0:1;case"null":return 0;case"boolean":return x.value==S.value?0:x.value?1:-1;case"link":let Y=x.value,v=S.value,P=O!=null?O:Ae=>Ae,j=P(Y.path).localeCompare(P(v.path));if(j!=0)return j;let De=Y.type.localeCompare(v.type);return De!=0?De:Y.subpath&&!v.subpath?1:!Y.subpath&&v.subpath?-1:!Y.subpath&&!v.subpath?0:((q=Y.subpath)!=null?q:"").localeCompare((V=v.subpath)!=null?V:"");case"date":return x.value<S.value?-1:x.value.equals(S.value)?0:1;case"duration":return x.value<S.value?-1:x.value.equals(S.value)?0:1;case"array":let ye=x.value,he=S.value;for(let Ae=0;Ae<Math.min(ye.length,he.length);Ae++){let Rt=i(ye[Ae],he[Ae]);if(Rt!=0)return Rt}return ye.length-he.length;case"object":let en=x.value,Tt=S.value,tn=Array.from(Object.keys(en)),Pt=Array.from(Object.keys(Tt));tn.sort(),Pt.sort();let $t=i(tn,Pt);if($t!=0)return $t;for(let Ae of tn){let Rt=i(en[Ae],Tt[Ae]);if(Rt!=0)return Rt}return 0;case"function":return 0}}L.compare=i;function o(m){var F;return(F=t(m))==null?void 0:F.type}L.typeOf=o;function a(m){let F=t(m);if(!F)return!1;switch(F.type){case"number":return F.value!=0;case"string":return F.value.length>0;case"boolean":return F.value;case"link":return!!F.value.path;case"date":return F.value.toMillis()!=0;case"duration":return F.value.as("seconds")!=0;case"object":return Object.keys(F.value).length>0;case"array":return F.value.length>0;case"null":return!1;case"function":return!0}}L.isTruthy=a;function u(m){if(m==null)return m;if(L.isArray(m))return[].concat(m.map(F=>u(F)));if(L.isObject(m)){let F={};for(let[O,x]of Object.entries(m))F[O]=u(x);return F}else return m}L.deepCopy=u;function l(m){return typeof m=="string"}L.isString=l;function f(m){return typeof m=="number"}L.isNumber=f;function d(m){return m instanceof B}L.isDate=d;function y(m){return m instanceof M}L.isDuration=y;function h(m){return m==null}L.isNull=h;function E(m){return Array.isArray(m)}L.isArray=E;function p(m){return typeof m=="boolean"}L.isBoolean=p;function T(m){return m instanceof ee}L.isLink=T;function g(m){return m!==void 0&&typeof m=="object"&&!E(m)&&!y(m)&&!d(m)&&!T(m)&&!h(m)}L.isObject=g;function k(m){return typeof m=="function"}L.isFunction=k})(Qe||(Qe={}));var $u;(i=>{function n(o){return Qe.isObject(o)&&Object.keys(o).length==2&&"key"in o&&"rows"in o}i.isElementGroup=n;function e(o){for(let a of o)if(!n(a))return!1;return!0}i.isGrouping=e;function t(o){for(let a of o)if(n(a))return!1;return!0}i.isLeaf=t;function r(o){if(n(o))return r(o.rows);if(e(o)){let a=0;for(let u of o)a+=r(u.rows);return a}else return o.length}i.count=r;function s(o,a,u){if(u<=a)return[];if(t(o))return o.slice(a,u);let l=0,f=0;for(;l<o.length&&f+r(o[l])<=a;)f+=r(o[l]),l++;if(l>=o.length)return[];let d=[];for(;l<o.length&&f<u;){let y=o[l],h=r(y),E=Math.max(f,a),p=Math.min(h+f,u);d.push({key:y.key,rows:s(y.rows,E-f,p-f)}),f+=h,l++}return d}i.slice=s})($u||($u={}));var Mr=class{constructor(e){this.value=e;this.successful=!0}map(e){return new Mr(e(this.value))}flatMap(e){return e(this.value)}mapErr(e){return this.castErr()}bimap(e,t){return this.map(e).castErr()}orElse(e){return this.value}cast(){return this}castErr(){return this}orElseThrow(e){return this.value}},_r=class{constructor(e){this.error=e;this.successful=!1}map(e){return this.cast()}flatMap(e){return this.cast()}mapErr(e){return new _r(e(this.error))}bimap(e,t){return this.mapErr(t).cast()}orElse(e){return e}cast(){return this}castErr(){return this}orElseThrow(e){throw e?new Error(e(this.error)):new Error(""+this.error)}},ke;(a=>{function n(u){return new Mr(u)}a.success=n;function e(u){return new _r(u)}a.failure=e;function t(u,l,f){return u.successful?l.successful?f(u.value,l.value):e(l.error):e(u.error)}a.flatMap2=t;function r(u,l,f){return t(u,l,(d,y)=>n(f(d,y)))}a.map2=r;function s(u,l){let f=[];for(let d of u){let y=l(d);if(!y.successful)return y.cast();f.push(y.value)}return a.success(f)}a.mapAll=s;function i(u){try{return a.success(u())}catch(l){return a.failure(l)}}a.trying=i;async function o(u){try{return a.success(await u)}catch(l){return a.failure(l)}}a.async=o})(ke||(ke={}));var Bt;(L=>{L.EVERYTHING={type:"everything"},L.NOTHING={type:"nothing"},L.EMPTY_SET=new Set;function r(m){return m.size==0?L.NOTHING:{type:"atom",value:m}}L.atom=r;function s(m){return m?L.EVERYTHING:L.NOTHING}L.constant=s;function i(m){return m!==void 0?r(m):L.NOTHING}L.nullableAtom=i;function o(m){return m.size==0?L.EVERYTHING:{type:"negated",value:m}}L.negated=o;function a(m){switch(m.type){case"everything":return L.NOTHING;case"nothing":return L.EVERYTHING;case"atom":return o(m.value);case"negated":return r(m.value)}}L.negate=a;function u(m){switch(m.type){case"everything":return!1;case"negated":return!1;case"atom":return m.value.size==0;case"nothing":return!0}}L.empty=u;function l(m,F){switch(m.type){case"everything":return F;case"nothing":return L.EMPTY_SET;case"atom":return m.value;case"negated":return k(F,m.value)}}L.resolve=l;function f(m){return d(m,F=>F)}L.intersect=f;function d(m,F){return y(m,O=>ke.success(F(O))).orElseThrow()}L.lazyIntersect=d;function y(m,F){let O=[],x=[];for(let S of m){let q=F(S);if(!q.successful)return q.cast();let V=q.value;if(V!==void 0){if(u(V))return ke.success(L.NOTHING);V.type!=="everything"&&(V.type=="atom"?O.push(V.value):V.type=="negated"&&x.push(V.value))}}return O.length==0&&x.length==0?ke.success(L.EVERYTHING):O.length>0&&x.length==0?ke.success(r(T(O))):O.length==0&&x.length>0?ke.success(o(g(x))):ke.success(L.atom(k(T(O),g(x))))}L.lazyFailableIntersection=y;function h(m){return E(m,F=>F)}L.union=h;function E(m,F){return p(m,O=>ke.success(F(O))).orElseThrow()}L.lazyUnion=E;function p(m,F){let O=[],x=[];for(let S of m){let q=F(S);if(!q.successful)return q.cast();let V=q.value;if(V!==void 0){if(V.type==="everything")return ke.success(L.EVERYTHING);u(V)||(V.type=="atom"?O.push(V.value):V.type=="negated"&&x.push(V.value))}}return O.length==0&&x.length==0?ke.success(L.NOTHING):O.length>0&&x.length==0?ke.success(L.atom(g(O))):O.length==0&&x.length>0?ke.success(L.negated(T(x))):ke.success(o(k(T(x),g(O))))}L.lazyFailableUnion=p;function T(m){if(m.length==0)return new Set;if(m.length==1)return m[0];let F=[].concat(m).sort((O,x)=>O.size-x.size);for(;F.length>1;){let O=new Set,x=F.pop();for(let S of F[0])x.has(S)&&O.add(S);F[0]=O}return F[0]}L.setIntersect=T;function g(m){if(m.length==0)return new Set;if(m.length==1)return m[0];let F=new Set;for(let O of m)for(let x of O)F.add(x);return F}L.setUnion=g;function k(m,F){if(m.size>F.size){let O=new Set(m);for(let x of F)O.delete(x);return O}else{let O=new Set;for(let x of m)F.has(x)||O.add(x);return O}}L.setIntersectNegation=k})(Bt||(Bt={}));var se;(T=>{T.ROW="$row";function e(g){return{type:"variable",name:g}}T.variable=e;function t(g){return{type:"literal",value:g}}T.literal=t;function r(g,k,L){return{type:"binaryop",left:g,op:k,right:L}}T.binaryOp=r;function s(g,k){return{type:"binaryop",left:g,right:k,op:"index"}}T.index=s;function i(g){let k=g.split("."),L=T.variable(k[0]);for(let m=1;m<k.length;m++)L=T.index(L,T.literal(k[m]));return L}T.indexVariable=i;function o(g,k){return{type:"lambda",arguments:g,value:k}}T.lambda=o;function a(g,k,L){return{type:"method",target:g,func:k,arguments:L}}T.method=a;function u(g,k){return{type:"function",func:g,arguments:k}}T.func=u;function l(g){return{type:"list",values:g}}T.list=l;function f(g){return{type:"object",values:g}}T.object=f;function d(g){return{type:"negated",child:g}}T.negate=d;function y(g){return g=="<="||g=="<"||g==">"||g==">="||g=="!="||g=="="}T.isCompareOp=y;function h(g,k=new Set([T.ROW])){switch(g.type){case"binaryop":return g.op==="index"&&g.left.type=="variable"&&g.left.name==T.ROW&&g.right.type=="literal"&&Qe.isString(g.right.value)?k.has(g.right.value)?new Set:new Set([g.right.value]):Bt.setUnion([h(g.left,k),h(g.right,k)]);case"function":let L=g.arguments.map(S=>h(S,k)),m=h(g.func,k);return Bt.setUnion(L.concat(m));case"method":let F=g.arguments.map(S=>h(S,k)),O=h(g.target,k);return Bt.setUnion(F.concat(O));case"lambda":let x=k!=null?k:new Set;for(let S of g.arguments)x.add(S);return h(g.value,x);case"list":return Bt.setUnion(g.values.map(S=>h(S,k)));case"negated":return h(g.child,k);case"object":return Bt.setUnion(Object.values(g.values).map(S=>h(S,k)));case"variable":return k&&k.has(g.name)?new Set:new Set([g.name]);case"literal":return new Set}}T.unboundVariables=h;function E(g){switch(g.type){case"binaryop":return g.op==="index"?`${E(g.left)}[${E(g.right)}]`:`${E(g.left)} ${g.op} ${E(g.right)}`;case"function":return`${E(g.func)}(${g.arguments.map(E).join(", ")})`;case"method":return`${E(g.target)}.${g.func}(${g.arguments.map(E).join(", ")})`;case"lambda":return`(${g.arguments.join(", ")}) => ${E(g.value)}`;case"list":return`[${g.values.map(E).join(", ")}]`;case"negated":return`!${E(g.child)}`;case"object":return`{${Object.entries(g.values).map(([L,m])=>`${L}: ${E(m)}`).join(", ")}}`;case"variable":return g.name;case"literal":let k=Qe.wrapValue(g.value);if(!k)return"null";switch(k.type){case"string":return`"${k.value}"`;default:return Qe.toString(k.value)}}}T.toString=E,T.NULL=T.literal(null)})(se||(se={}));var z=b.createLanguage({number:n=>b.regexp(/-?[0-9]+(\\.[0-9]+)?/).map(e=>Number.parseFloat(e)).desc("number"),string:n=>b.string(\'"\').then(b.alt(n.escapeCharacter,b.noneOf(\'"\\\\\')).atLeast(0).map(e=>e.join(""))).skip(b.string(\'"\')).desc("string"),escapeCharacter:n=>b.string("\\\\").then(b.any).map(e=>e===\'"\'?\'"\':e==="\\\\"?"\\\\":"\\\\"+e),bool:n=>b.regexp(/true|false|True|False/).map(e=>e.toLowerCase()=="true").desc("boolean"),tag:n=>b.seqMap(b.string("#"),b.alt(b.regexp(/[^\\u2000-\\u206F\\u2E00-\\u2E7F\'!"#$%&()*+,.:;<=>?@^`{|}~\\[\\]\\\\\\s]/).desc("text")).many(),(e,t)=>e+t.join("")).desc("tag"),identifier:n=>b.seqMap(b.alt(b.regexp(/[\\p{Letter}$]/u),b.regexp(Ru).desc("text")),b.alt(b.regexp(/[0-9\\p{Letter}$_-]/u),b.regexp(Ru).desc("text")).many(),(e,t)=>e+t.join("")).desc("variable"),link:n=>b.regexp(/\\[\\[([^\\[\\]]*?)\\]\\]/u,1).map(e=>ee.parseInner(e)).desc("file link"),embedLink:n=>b.seqMap(b.string("!").atMost(1),n.link,(e,t)=>(e.length>0&&(t.embed=!0),t)).desc("file link"),binaryPlusMinus:n=>b.regexp(/\\+|-/).map(e=>e).desc("\'+\' or \'-\'"),binaryMulDiv:n=>b.regexp(/\\*|\\/|%/).map(e=>e).desc("\'*\' or \'/\' or \'%\'"),binaryCompareOp:n=>b.regexp(/>=|<=|!=|>|<|=/).map(e=>e).desc("\'>=\' or \'<=\' or \'!=\' or \'=\' or \'>\' or \'<\'"),binaryAndOp:n=>b.regexp(/and|&/i).map(e=>"&").desc("\'and\'"),binaryOrOp:n=>b.regexp(/or|\\|/i).map(e=>"|").desc("\'or\'"),rootDate:n=>b.seqMap(b.regexp(/\\d{4}/),b.string("-"),b.regexp(/\\d{2}/),(e,t,r)=>B.fromObject({year:Number.parseInt(e),month:Number.parseInt(r)})).desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),dateShorthand:n=>b.alt(...Object.keys(Vu).sort((e,t)=>t.length-e.length).map(b.string)),date:n=>Cf(n.rootDate,e=>b.seqMap(b.string("-"),b.regexp(/\\d{2}/),(t,r)=>e.set({day:Number.parseInt(r)})),e=>b.seqMap(b.string("T"),b.regexp(/\\d{2}/),(t,r)=>e.set({hour:Number.parseInt(r)})),e=>b.seqMap(b.string(":"),b.regexp(/\\d{2}/),(t,r)=>e.set({minute:Number.parseInt(r)})),e=>b.seqMap(b.string(":"),b.regexp(/\\d{2}/),(t,r)=>e.set({second:Number.parseInt(r)})),e=>b.alt(b.seqMap(b.string("."),b.regexp(/\\d{3}/),(t,r)=>e.set({millisecond:Number.parseInt(r)})),b.succeed(e)),e=>b.alt(b.seqMap(b.string("+").or(b.string("-")),b.regexp(/\\d{1,2}(:\\d{2})?/),(t,r)=>e.setZone("UTC"+t+r,{keepLocalTime:!0})),b.seqMap(b.string("Z"),()=>e.setZone("utc",{keepLocalTime:!0})),b.seqMap(b.string("["),b.regexp(/[0-9A-Za-z+-\\/]+/u),b.string("]"),(t,r,s)=>e.setZone(r,{keepLocalTime:!0})))).assert(e=>e.isValid,"valid date").desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),datePlus:n=>b.alt(n.dateShorthand.map(e=>Vu[e]()),n.date).desc("date in format YYYY-MM[-DDTHH-MM-SS.MS] or in shorthand"),durationType:n=>b.alt(...Object.keys(ju).sort((e,t)=>t.length-e.length).map(b.string)),duration:n=>b.seqMap(n.number,b.optWhitespace,n.durationType,(e,t,r)=>ju[r].mapUnits(s=>s*e)).sepBy1(b.string(",").trim(b.optWhitespace).or(b.optWhitespace)).map(e=>e.reduce((t,r)=>t.plus(r))).desc("duration like 4hr2min"),rawNull:n=>b.string("null"),atomInlineField:n=>b.alt(n.date,n.duration.map(e=>_i(e)),n.string,n.tag,n.embedLink,n.bool,n.number,n.rawNull),inlineFieldList:n=>n.atomInlineField.sepBy(b.string(",").trim(b.optWhitespace).lookahead(n.atomInlineField)),inlineField:n=>b.alt(b.seqMap(n.atomInlineField,b.string(",").trim(b.optWhitespace),n.inlineFieldList,(e,t,r)=>[e].concat(r)),n.atomInlineField)}),Ru=new RegExp(wn(),""),ju={year:M.fromObject({years:1}),years:M.fromObject({years:1}),yr:M.fromObject({years:1}),yrs:M.fromObject({years:1}),month:M.fromObject({months:1}),months:M.fromObject({months:1}),mo:M.fromObject({months:1}),mos:M.fromObject({months:1}),week:M.fromObject({weeks:1}),weeks:M.fromObject({weeks:1}),wk:M.fromObject({weeks:1}),wks:M.fromObject({weeks:1}),w:M.fromObject({weeks:1}),day:M.fromObject({days:1}),days:M.fromObject({days:1}),d:M.fromObject({days:1}),hour:M.fromObject({hours:1}),hours:M.fromObject({hours:1}),hr:M.fromObject({hours:1}),hrs:M.fromObject({hours:1}),h:M.fromObject({hours:1}),minute:M.fromObject({minutes:1}),minutes:M.fromObject({minutes:1}),min:M.fromObject({minutes:1}),mins:M.fromObject({minutes:1}),m:M.fromObject({minutes:1}),second:M.fromObject({seconds:1}),seconds:M.fromObject({seconds:1}),sec:M.fromObject({seconds:1}),secs:M.fromObject({seconds:1}),s:M.fromObject({seconds:1})},Vu={now:()=>B.local(),today:()=>B.local().startOf("day"),yesterday:()=>B.local().startOf("day").minus(M.fromObject({days:1})),tomorrow:()=>B.local().startOf("day").plus(M.fromObject({days:1})),sow:()=>B.local().startOf("week"),"start-of-week":()=>B.local().startOf("week"),eow:()=>B.local().endOf("week"),"end-of-week":()=>B.local().endOf("week"),soy:()=>B.local().startOf("year"),"start-of-year":()=>B.local().startOf("year"),eoy:()=>B.local().endOf("year"),"end-of-year":()=>B.local().endOf("year"),som:()=>B.local().startOf("month"),"start-of-month":()=>B.local().startOf("month"),eom:()=>B.local().endOf("month"),"end-of-month":()=>B.local().endOf("month")},qu=b.createLanguage({variable:n=>z.identifier.map(se.variable).desc("variable"),number:n=>z.number.map(se.literal).desc("number"),string:n=>z.string.map(se.literal).desc("string"),bool:n=>z.bool.map(se.literal).desc("boolean"),date:n=>wt("date",z.datePlus).map(([e,t])=>se.literal(t)).desc("date"),duration:n=>wt("dur",z.duration).map(([e,t])=>se.literal(t)).desc("duration"),null:n=>z.rawNull.map(e=>se.NULL),link:n=>z.link.map(se.literal),list:n=>n.expression.sepBy(b.string(",").trim(b.optWhitespace)).wrap(b.string("[").skip(b.optWhitespace),b.optWhitespace.then(b.string("]"))).map(e=>se.list(e)).desc("list"),object:n=>b.seqMap(z.identifier.or(z.string),b.string(":").trim(b.optWhitespace),n.expression,(e,t,r)=>({name:e,value:r})).sepBy(b.string(",").trim(b.optWhitespace)).wrap(b.string("{").skip(b.optWhitespace),b.optWhitespace.then(b.string("}"))).map(e=>{let t={};for(let r of e)t[r.name]=r.value;return se.object(t)}).desc("object (\'{ a: 1, b: 2 }\')"),atom:n=>b.alt(z.embedLink.map(e=>se.literal(e)),n.negated,n.link,n.list,n.object,n.lambda,n.parens,n.bool,n.number,n.string,n.date,n.duration,n.null,n.variable),index:n=>b.seqMap(n.atom,b.alt(n.methodPostfix,n.functionPostfix,n.indexPostfix,n.dotPostfix).many(),(e,t)=>{let r=e;for(let s of t)switch(s.type){case"dot":r=se.index(r,se.literal(s.expr));break;case"index":r=se.index(r,s.expr);break;case"function":r=se.func(r,s.exprs);break;case"method":r=se.method(r,s.func,s.exprs);break}return r}),negated:n=>b.seqMap(b.string("!"),n.index,(e,t)=>se.negate(t)).desc("negated field"),parens:n=>n.expression.trim(b.optWhitespace).wrap(b.string("("),b.string(")")),lambda:n=>b.seqMap(z.identifier.sepBy(b.string(",").trim(b.optWhitespace)).wrap(b.string("(").trim(b.optWhitespace),b.string(")").trim(b.optWhitespace)),b.string("=>").trim(b.optWhitespace),n.expression,(e,t,r)=>({type:"lambda",arguments:e,value:r})),dotPostfix:n=>b.string(".").then(z.identifier).map(e=>({type:"dot",expr:e})),indexPostfix:n=>n.expression.trim(b.optWhitespace).wrap(b.string("["),b.string("]")).map(e=>({type:"index",expr:e})),functionPostfix:n=>n.expression.sepBy(b.string(",").trim(b.optWhitespace)).trim(b.optWhitespace).wrap(b.string("("),b.string(")")).map(e=>({type:"function",exprs:e})),methodPostfix:n=>b.seqMap(b.string("."),z.identifier.trim(b.optWhitespace),n.expression.sepBy(b.string(",").trim(b.optWhitespace)).trim(b.optWhitespace).wrap(b.string("("),b.string(")")),(e,t,r)=>({type:"method",func:t,exprs:r})),binaryMulDiv:n=>Mn(n.index,z.binaryMulDiv,se.binaryOp),binaryPlusMinus:n=>Mn(n.binaryMulDiv,z.binaryPlusMinus,se.binaryOp),binaryCompare:n=>Mn(n.binaryPlusMinus,z.binaryCompareOp,se.binaryOp),binaryBoolean:n=>Mn(n.binaryCompare,z.binaryAndOp.or(z.binaryOrOp),se.binaryOp),binaryOp:n=>n.binaryBoolean,expression:n=>n.binaryOp}),nb=b.createLanguage({queryTag:n=>z.tag.map(e=>({type:"tagged",value:e})),queryId:n=>wt("id",z.string).map(([e,t])=>({type:"id",value:t})),queryType:n=>b.string("@").then(z.identifier).map(e=>({type:"typed",value:e})),queryPath:n=>wt(b.regexp(/e?path/i).desc("[e]path"),z.string).map(([e,t])=>({type:"path",value:t,exact:e.toLowerCase()==="epath"})),queryParentOf:n=>wt(b.regexp(/parentof|supertree/i).desc("parentof"),n.query).map(([e,t])=>({type:"parent-of",children:t,inclusive:e.toLowerCase()==="supertree"})),queryChildOf:n=>wt(b.regexp(/childof|subtree/i).desc("childof"),n.query).map(([e,t])=>({type:"child-of",parents:t,inclusive:e.toLowerCase()==="subtree"})),querySimpleLinked:n=>z.link.map(e=>({type:"linked",source:{type:"link",value:e},direction:"incoming"})),queryLinked:n=>wt(b.regexp(/linksto|linkedfrom|connected/i).desc("connected"),n.query).map(([e,t])=>({type:"linked",source:t.type=="linked"&&t.source.type=="link"?t.source:t,direction:e.toLowerCase()=="linksto"?"incoming":e.toLowerCase()=="linkedfrom"?"outgoing":"both"})),queryExists:n=>wt(b.regexp(/exists/i).desc("exists"),z.identifier.or(z.string)).map(([e,t])=>({type:"field",value:t})),queryQuotedExpression:n=>wt(b.regexp(/expr/i).desc("expr"),qu.expression).map(([e,t])=>({type:"expression",expression:t})),queryRawExpression:n=>qu.binaryCompare.map(e=>({type:"expression",expression:e})),queryParens:n=>n.query.trim(b.optWhitespace).wrap(b.string("("),b.string(")")),queryNegate:n=>b.string("!").skip(b.optWhitespace).then(n.queryAtom).map(e=>({type:"not",element:e})),queryAtom:n=>b.alt(n.queryParens,n.queryNegate,n.querySimpleLinked,n.queryTag,n.queryType,n.queryId,n.queryExists,n.queryChildOf,n.queryParentOf,n.queryLinked,n.queryPath,n.queryQuotedExpression,n.queryRawExpression),queryAnds:n=>Mn(n.queryAtom,z.binaryAndOp,(e,t,r)=>({type:"and",elements:[e,r]})),queryOrs:n=>Mn(n.queryAnds,z.binaryOrOp,(e,t,r)=>({type:"or",elements:[e,r]})),query:n=>n.queryOrs.trim(b.optWhitespace)});function Mn(n,e,t){return b.seqMap(n,b.seq(b.optWhitespace,e,b.optWhitespace,n).many(),(r,s)=>{if(s.length==0)return r;let i=t(r,s[0][1],s[0][3]);for(let o=1;o<s.length;o++)i=t(i,s[o][1],s[o][3]);return i})}function wt(n,e){let t=typeof n=="string"?b.string(n):n;return b.seqMap(t.skip(b.optWhitespace),e.trim(b.optWhitespace).wrap(b.string("("),b.string(")")),(r,s)=>[r,s])}function Cf(n,...e){return b.custom((t,r)=>(s,i)=>{let o=n._(s,i);if(!o.status)return o;for(let a of e){let u=o.value,l=a(u)._(s,o.index);if(!l.status)return o;o=l}return o})}var Xt=Kr(ss());function Qt(n,e){let t={};for(let[r,s]of Object.entries(n))t[r]=e(s);return t}var _n;(r=>{r.NOOP_NORMALIZER=s=>s;function e(s){let i=Qe.wrapValue(s);if(!i)return null;switch(i==null?void 0:i.type){case"array":return i.value.map(r.json);case"object":return Qt(i.value,r.json);case"date":return{$_type:"date",value:i.value.toISO({extendedZone:!0,includeOffset:!0})};case"link":return{$_type:"link",value:i.value.toObject()};case"duration":return{$_type:"duration",value:i.value.toISO()};case"boolean":case"number":case"string":return i.value;case"function":case"null":return null}}r.json=e;function t(s,i=r.NOOP_NORMALIZER){if(s==null)return null;if(Array.isArray(s))return i(s.map(o=>r.value(o,i)));if(typeof s=="object"){if(!("$_type"in s))return Qt(s,o=>r.value(o,i));switch(s.$_type){case"date":return i(B.fromISO(s.value,{setZone:!0}));case"duration":return i(M.fromISO(s.value));case"link":return i(ee.fromObject(s.value));default:throw new Error(`Unrecognized serialized type \'${s.$_type}\'!`)}}return i(s)}r.value=t})(_n||(_n={}));function Uu(n){return Object.assign({},n,{value:_n.json(n.value)})}function Br(n,e){return Array.isArray(n)?n.map(t=>Br(t,e)):{key:n.key,raw:n.value,value:vf(n.value),position:{line:e,start:n.start,startValue:n.startValue,end:n.end},wrapping:n.wrapping}}var js=Object.freeze({"[":"]","(":")"});function xf(n,e,t,r){let s=0,i=!1;for(let o=e;o<n.length;o++){let a=n.charAt(o);if(a=="\\\\"){i=!i;continue}if(i){i=!1;continue}if(a==t?s++:a==r&&s--,s<0)return{value:n.substring(e,o).trim(),endIndex:o+1};i=!1}}function Ku(n,e){let t=n.indexOf("::",e);if(!(t<0))return{key:n.substring(e,t).trim(),valueIndex:t+2}}function Of(n,e){let t=n.charAt(e),r=Ku(n,e+1);if(r===void 0)return;for(let i of Object.keys(js).concat(Object.values(js)))if(r.key.includes(i))return;let s=xf(n,r.valueIndex,t,js[t]);if(s!==void 0)return{key:r.key,value:s.value,start:e,startValue:r.valueIndex,end:s.endIndex,wrapping:t}}function vf(n){if(n.trim()=="")return null;let e=z.inlineField.parse(n);return e.status?e.value:n}function Wu(n){let e=[];for(let r of Object.keys(js)){let s=n.indexOf(r);for(;s>=0;){let i=Of(n,s);if(!i){s=n.indexOf(r,s+1);continue}e.push(i),s=n.indexOf(r,i.end)}}e.sort((r,s)=>r.start-s.start);let t=[];for(let r=0;r<e.length;r++)(r==0||t[t.length-1].end<e[r].start)&&t.push(e[r]);return t}var If=Xt.alt(Xt.regexp(new RegExp(wn(),"u")),Xt.regexp(/[0-9\\p{Letter}\\w\\s_/-]+/u)).many().map(n=>n.join("")),Lf=Xt.regexp(/[^0-9\\w\\p{Letter}]*/u).then(If).skip(Xt.regexp(/[_\\*~`]*/u));function Hu(n){let e=Ku(n,0);if(!e)return;let t=Lf.parse(e.key);if(t.status)return{key:t.value,value:n.substring(e.valueIndex).trim(),start:0,startValue:e.valueIndex,end:n.length}}var Nf=/\\u{2795}\\s*(\\d{4}-\\d{2}-\\d{2})/u,Af=/(?:\\u{1F4C5}|\\u{1F4C6}|\\u{1F5D3}\\u{FE0F}?)\\s*(\\d{4}-\\d{2}-\\d{2})/u,Mf=/\\u{2705}\\s*(\\d{4}-\\d{2}-\\d{2})/u,_f=/[\\u{23F3}\\u{231B}]\\s*(\\d{4}-\\d{2}-\\d{2})/u,Bf=/\\u{1F6EB}\\s*(\\d{4}-\\d{2}-\\d{2})/u,Pf=[{regex:Nf,key:"created"},{regex:Bf,key:"start"},{regex:_f,key:"scheduled"},{regex:Af,key:"due"},{regex:Mf,key:"completion"}];function Ju(n){let e=[];for(let{regex:t,key:r}of Pf){let s=t.exec(n);s&&e.push({key:r,value:s[1],start:s.index,startValue:s.index+1,end:s.index+s[0].length,wrapping:"emoji-shorthand"})}return e}var Vs;(t=>{function n(r){let s=Qe.wrapValue(e);if(!s)return null;switch(s.type){case"string":case"boolean":case"null":case"number":return s.value;case"array":return s.value.map(n);case"date":return s.value.toISO();case"duration":return s.value.toHuman();case"function":return null;case"link":return s.value.markdown();case"object":return Qt(s.value,n)}}t.yaml=n;function e(r){if(r==null)return null;if(typeof r=="object")if(Array.isArray(r)){let s=[];for(let i of r)s.push(e(i));return s}else{if(r instanceof Date)return B.fromJSDate(r);{let s=r,i={};for(let o in s)i[o]=e(s[o]);return i}}else{if(typeof r=="number")return r;if(typeof r=="boolean")return r;if(typeof r=="string"){let s=z.date.parse(r);if(s.status)return s.value;let i=z.duration.parse(r);if(i.status)return i.value;let o=z.link.parse(r);return o.status?o.value:r}}return null}t.literal=e})(Vs||(Vs={}));var $f=/```yaml:data/i,Rf=/^(?:```|~~~)(.*)$/im,jf=/^[\\s>]*(\\d+\\.|\\d+\\)|\\*|-|\\+)\\s*(\\[.{0,1}\\])?\\s*(.*)$/mu;function Gu(n,e,t,r){let{lines:s,metadata:i,frontmatter:o,sections:a}=bo(n,e,t);return new po(n,r,s.length,i,a,o).build()}function bo(n,e,t){var y,h,E,p,T,g,k,L,m,F,O,x,S,q,V,Y;let r=t.frontmatter?Yu(t.frontmatter):void 0,s=e.split(/\\r\\n|\\r|\\n/),i=new Re,o=[],a=(y=t.headings)!=null?y:[];a.sort((v,P)=>v.position.start.line-P.position.start.line);let u=new qs.default(void 0,(v,P)=>v-P);for(let v=0;v<a.length;v++){let P=a[v],j=P.position.start.line,De=v==a.length-1?s.length:a[v+1].position.start.line,ye=new Pr(j,De,P.heading,P.level,v+1);u.set(j,ye)}if(u.size==0){if(!zu(s,0,s.length)){let v=new Pr(0,s.length,Tn(n),1,0);u.set(0,v)}}else{let v=(h=u.getPairOrNextHigher(0))==null?void 0:h[1];if(v.start>0&&!zu(s,0,v.start)){let P=new Pr(0,v.start,Tn(n),1,0);u.set(0,P)}}let l=new qs.default(void 0,(v,P)=>v-P),f=1;for(let v of t.sections||[]){if(v.type==="heading")continue;let P=v.position.start.line,j=v.position.end.line+1,De=s[P];if(v.type==="list")l.set(P,new mo(P,j,f++,v.id));else if(v.type=="code"&&$f.test(De)){let ye=s.slice(P+1,j-1).join(`\n`).replace(/\\t/gm,"  "),he=Yu(fo(ye));l.set(P,new Do(P,j,f++,he,v.id))}else if(v.type==="code"){let ye=De.match(Rf);if(!ye)l.set(P,new Us(P,j,f++,[],"indent",P,j,v.id));else{let en=(ye.length>1&&ye[1]?ye[1].split(","):[]).map(Tt=>Tt.trim()).filter(Tt=>Tt.length>0);l.set(P,new Us(P,j,f++,en,"fenced",P+1,j-1,v.id))}}else l.set(P,new yo(P,j,f++,v.type,v.id))}for(let v of l.values())(E=lt(v.start,u))==null||E.block(v);let d=new qs.default(void 0,(v,P)=>v-P);for(let v of t.listItems||[]){let j=s[v.position.start.line].match(jf),De,ye;j&&(De=j[1],ye=j[3]);let he=new go(v.position.start.line,v.position.end.line+1,v.parent,De,v.id,v.task,ye);d.set(he.start,he)}for(let v of d.values())if(v.parentLine<0){let P=l.getPairOrNextHigher(-v.parentLine-1)[1];if(!P||P.type!=="list")continue;P.items.push(v)}else(p=d.get(v.parentLine))==null||p.elements.push(v);for(let v of(T=t.tags)!=null?T:[]){let P=v.tag.startsWith("#")?v.tag:"#"+v.tag,j=v.position.start.line;i.tag(P),(g=lt(j,u))==null||g.metadata.tag(P),(k=lt(j,l))==null||k.metadata.tag(P),(L=lt(j,d))==null||L.metadata.tag(P)}if(t.frontmatter)for(let v of Vf(t.frontmatter)){let P=v.startsWith("#")?v:"#"+v;i.tag(P)}for(let v of(m=t.links)!=null?m:[]){let P=ee.infer(v.link,!1,v.displayText),j=v.position.start.line;i.link(P),(F=lt(j,u))==null||F.metadata.link(P),(O=lt(j,l))==null||O.metadata.link(P),(x=lt(j,d))==null||x.metadata.link(P)}for(let v of(S=t.frontmatterLinks)!=null?S:[])i.link(ee.infer(v.link,!1,v.displayText));for(let v of Eo(s)){let P=v.position.line;i.inlineField(v),(q=lt(P,u))==null||q.metadata.inlineField(v),(V=lt(P,l))==null||V.metadata.inlineField(v),(Y=lt(P,d))==null||Y.metadata.inlineField(v)}for(let v of d.values())for(let P=v.start;P<v.end;P++){let j=Ju(s[P]);for(let De of j)v.metadata.inlineField(Br(De,P))}return o.push(...u.values()),{lines:s,frontmatter:r,metadata:i,sections:o}}function zu(n,e,t){for(let r=e;r<t;r++)if(n[r].trim()!=="")return!1;return!0}function*Eo(n){for(let e=0;e<n.length;e++){let t=n[e];if(t.length>32768||!t.includes("::"))continue;let r=Wu(t);if(r.length>0)for(let s of r)yield Br(s,e);else{let s=Hu(t);s&&(yield Br(s,e))}}}function Yu(n){let e={};for(let t of Object.keys(n)){let r=n[t];e[t.toLowerCase()]={key:t,value:_n.json(Vs.literal(r)),raw:r}}return e}function lt(n,e){var r;let t=(r=e.getPairOrNextLower(n))==null?void 0:r[1];if(t&&t.end>=n)return t}function Vf(n){return Object.keys(n).filter(t=>t.toLowerCase()=="tags"||t.toLowerCase()=="tag").map(t=>Zu(n[t],/[,\\s]+/)).reduce((t,r)=>t.concat(r),[]).map(t=>t.startsWith("#")?t:"#"+t)}function Zu(n,e){return n==null||n==null?[]:Array.isArray(n)?n.filter(t=>!!t).map(t=>Zu(t,e)).reduce((t,r)=>t.concat(r),[]):(""+n).split(e).filter(t=>!!t).map(t=>t.trim()).filter(t=>t.length>0)}var Re=class{constructor(){this.tags=new Set;this.links=[];this.inlineFields={}}tag(e){this.tags.add(e)}link(e){this.links.find(t=>t.equals(e))||this.links.push(e)}inlineField(e){let t=e.key.toLowerCase();Object.keys(this.inlineFields).some(r=>r.toLowerCase()==t)||(this.inlineFields[t]=e)}finishTags(){return Array.from(this.tags)}finishLinks(){return this.links.map(e=>e.toObject())}finishInlineFields(){return Qt(this.inlineFields,Uu)}},po=class{constructor(e,t,r,s,i,o){this.path=e;this.stats=t;this.length=r;this.metadata=s;this.sections=i;this.frontmatter=o}build(){return{$path:this.path,$ctime:this.stats.ctime,$mtime:this.stats.mtime,$size:this.stats.size,$extension:Va(this.path),$position:{start:0,end:this.length},$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$infields:this.metadata.finishInlineFields(),$sections:this.sections.map(e=>e.build()),$frontmatter:this.frontmatter}}},Pr=class{constructor(e,t,r,s,i){this.start=e;this.end=t;this.title=r;this.level=s;this.ordinal=i;this.blocks=[];this.metadata=new Re}block(e){this.blocks.push(e)}build(){return{$title:this.title,$ordinal:this.ordinal,$level:this.level,$tags:this.metadata.finishTags(),$infields:this.metadata.finishInlineFields(),$links:this.metadata.finishLinks(),$position:{start:this.start,end:this.end},$blocks:this.blocks.map(e=>e.build())}}},mo=class{constructor(e,t,r,s){this.start=e;this.end=t;this.ordinal=r;this.blockId=s;this.type="list";this.metadata=new Re;this.items=[]}build(){return{$ordinal:this.ordinal,$position:{start:this.start,end:this.end},$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$type:"list",$blockId:this.blockId,$elements:this.items.map(e=>e.build())}}},Us=class{constructor(e,t,r,s,i,o,a,u){this.start=e;this.end=t;this.ordinal=r;this.languages=s;this.style=i;this.contentStart=o;this.contentEnd=a;this.blockId=u;this.type="codeblock";this.metadata=new Re}build(){return{$type:"codeblock",$ordinal:this.ordinal,$position:{start:this.start,end:this.end},$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$blockId:this.blockId,$languages:this.languages,$style:this.style,$contentPosition:{start:this.contentStart,end:this.contentEnd}}}},Do=class{constructor(e,t,r,s,i){this.start=e;this.end=t;this.ordinal=r;this.data=s;this.blockId=i;this.type="datablock";this.metadata=new Re}build(){return{$type:"datablock",$ordinal:this.ordinal,$position:{start:this.start,end:this.end},$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$blockId:this.blockId,$data:this.data}}},yo=class{constructor(e,t,r,s,i){this.start=e;this.end=t;this.ordinal=r;this.type=s;this.blockId=i;this.metadata=new Re}build(){return{$type:this.type,$ordinal:this.ordinal,$position:{start:this.start,end:this.end},$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$blockId:this.blockId}}},go=class{constructor(e,t,r,s,i,o,a){this.start=e;this.end=t;this.parentLine=r;this.symbol=s;this.blockId=i;this.status=o;this.text=a;this.metadata=new Re;this.elements=[]}build(){return{$parentLine:this.parentLine,$position:{start:this.start,end:this.end},$blockId:this.blockId,$elements:this.elements.map(e=>e.build()),$type:this.status?"task":"list",$infields:this.metadata.finishInlineFields(),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$status:this.status,$symbol:this.symbol,$text:this.text}}};function Qu(n,e,t,r){var o;let s=new wo(n,r),i=JSON.parse(e);for(let a of i.nodes)if(a.type!="group")if(a.type=="text"){let{frontmatter:u,metadata:l,lines:f,sections:d}=bo(n,a.text,t.caches[a.id]),y=new Ks(n,a.id,a,u);d.forEach(h=>y.section(h)),s.card(y);for(let h in l.tags)s.metadata.tag(h);for(let h of(o=l.links)!=null?o:[])s.metadata.link(h);for(let h of Eo(f))s.metadata.inlineField(h)}else{let u=new Ks(n,a.id,a);s.card(u)}return s.build()}var Fo=class{constructor(e,t,r){this.path=e;this.id=t;this.nodeJson=r;this.metadata=new Re}build(){return{$file:this.path,$id:this.id,$position:{x:this.nodeJson.x,y:this.nodeJson.y},$dimensions:{width:this.nodeJson.width,height:this.nodeJson.height},$color:this.nodeJson.color,$link:ee.file(this.path).withBlock(this.id).toObject()}}},Ks=class extends Fo{constructor(t,r,s,i){super(t,r,s);this.path=t;this.id=r;this.nodeJson=s;this.frontmatter=i;this.sections=[]}section(t){return this.sections.push(t),t}build(){switch(this.nodeJson.type){case"text":return Ee(R({},super.build()),{$infields:this.metadata.finishInlineFields(),$frontmatter:this.frontmatter,$sections:this.sections.map(t=>t.build()),$tags:this.metadata.finishTags(),$links:this.metadata.finishLinks(),$type:"text-card",$color:this.nodeJson.color});case"file":return Ee(R({},super.build()),{$linkedFile:this.nodeJson.file});case"link":return Ee(R({},super.build()),{$url:this.nodeJson.url})}}},wo=class{constructor(e,t){this.path=e;this.stats=t;this.cards=[];this.metadata=new Re}card(e){return this.cards.push(e),e}build(){return{$cards:this.cards.map(e=>e.build()),$ctime:this.stats.ctime,$mtime:this.stats.mtime,$infields:this.metadata.finishInlineFields(),$links:this.metadata.finishLinks(),$tags:this.metadata.finishTags(),$path:this.path,$size:this.stats.size}}};onmessage=async n=>{try{let e=n.data;if(e.type==="markdown"){let t=Gu(e.path,e.contents,e.metadata,e.stat);postMessage({type:"markdown",result:t})}else if(e.type==="canvas"){let t=Qu(e.path,e.contents,e.index,e.stat);postMessage({type:"canvas",result:t})}else postMessage({$error:"Unsupported import method."})}catch(e){console.error(`Datacore failed to index ${n.data.path}: ${e}`),postMessage({$error:e.message})}};\n');
 }
 
 // src/index/web-worker/importer.ts
@@ -38931,7 +36914,7 @@ var FileImporter = class extends import_obsidian6.Component {
         }
       }
     } catch (ex) {
-      console.error("Datacore: Background file reloading failed. " + ex);
+      console.error("Datacore：后台文件重新加载失败。" + ex);
       worker.active = void 0;
     }
   }
@@ -38995,7 +36978,7 @@ var FileImporter = class extends import_obsidian6.Component {
     }
     while (!this.queue.isEmpty()) {
       const [_file, promise] = this.queue.pop();
-      promise.reject("Terminated");
+      promise.reject("终止");
     }
     this.shutdown = true;
   }
@@ -39003,7 +36986,7 @@ var FileImporter = class extends import_obsidian6.Component {
 function terminate(worker) {
   worker.worker.terminate();
   if (worker.active)
-    worker.active[1].reject("Terminated");
+    worker.active[1].reject("终止");
   worker.active = void 0;
 }
 
@@ -39014,7 +36997,7 @@ var import_obsidian8 = require("obsidian");
 var _GenericFile = class {
   constructor(path, ctime, mtime, size) {
     this.$types = _GenericFile.TYPES;
-    this.$typename = "File";
+    this.$typename = "文件";
     this.$path = path;
     this.$ctime = ctime;
     this.$mtime = mtime;
@@ -39071,7 +37054,7 @@ var EmbedQueue = class extends import_obsidian7.Component {
   /** Read a file asynchronously, controlling concurrency to prevent too many files being loaded simultaneously. */
   async read(file) {
     if (this.shutdown)
-      return Promise.reject("Embed queue is shutdown.");
+      return Promise.reject("嵌入队列已关闭。");
     const promise = deferred();
     if (!this.promises.has(file.path)) {
       this.queue.push(file);
@@ -39116,7 +37099,7 @@ var EmbedQueue = class extends import_obsidian7.Component {
   /** Cancell all outstanding loads on unload. */
   onunload() {
     for (const promises of this.promises.values()) {
-      promises.forEach((promise) => promise.reject("Embed queue is shutting down."));
+      promises.forEach((promise) => promise.reject("嵌入队列正在关闭。"));
     }
     this.shutdown = true;
   }
@@ -39126,7 +37109,7 @@ var EmbedQueue = class extends import_obsidian7.Component {
 var _Canvas = class {
   constructor(init) {
     this.$types = _Canvas.TYPES;
-    this.$typename = "Canvas";
+    this.$typename = "画布";
     /** File extension - for canvas files, generally always 'canvas'. */
     this.$extension = "canvas";
     this.$cards = [];
@@ -39218,7 +37201,7 @@ var _CanvasTextCard = class extends BaseCanvasCard {
   constructor(init) {
     super(init);
     this.$types = _CanvasTextCard.TYPES;
-    this.$typename = "Text card";
+    this.$typename = "文本卡";
     this.$type = "canvas-card";
   }
   get fields() {
@@ -39265,7 +37248,7 @@ var _CanvasFileCard = class extends BaseCanvasCard {
   constructor(init) {
     super(init);
     this.$types = CanvasTextCard.TYPES;
-    this.$typename = "File card";
+    this.$typename = "文件卡";
     this.$type = "file-card";
   }
   /** @internal */
@@ -39293,7 +37276,7 @@ var _CanvasWebCard = class extends BaseCanvasCard {
     super(init);
     this.$types = CanvasTextCard.TYPES;
     this.$type = "web-card";
-    this.$typename = "Web card";
+    this.$typename = "网络卡";
   }
   /** @internal */
   json() {
@@ -39452,7 +37435,7 @@ var Datacore = class extends import_obsidian8.Component {
       this.trigger("update", this.revision);
       return parsed;
     }
-    throw new Error("Encountered unrecognized import result type: " + result.type);
+    throw new Error("遇到无法识别的导入结果类型：" + result.type);
   }
   /** Store a canvas document. */
   storeCanvas(data) {
@@ -39525,7 +37508,7 @@ var _DatacoreInitializer = class extends import_obsidian8.Component {
   onunload() {
     if (this.active) {
       this.active = false;
-      this.done.reject("Initialization was cancelled before completing.");
+      this.done.reject("初始化在完成之前被取消。");
     }
   }
   /** Poll for another task to execute from the queue. */
@@ -39582,7 +37565,7 @@ var _DatacoreInitializer = class extends import_obsidian8.Component {
       await this.core.reload(file);
       return { status: "imported" };
     } catch (ex) {
-      console.log("Datacore: Failed to import file: ", ex);
+      console.log("数据核心：无法导入文件：", ex);
       return { status: "skipped" };
     }
   }
@@ -39640,9 +37623,9 @@ var DatacorePlugin = class extends import_obsidian9.Plugin {
     );
     this.addCommand({
       id: "datacore-reindex-vault",
-      name: "Reindex entire vault",
+      name: "重新索引整个保管库",
       callback: async () => {
-        console.log("Datacore: dropping the datastore and reindexing all items.");
+        console.log("Datacore：删除数据存储并重新索引所有项目。");
         await this.core.reindex();
       }
     });
@@ -39679,15 +37662,15 @@ var GeneralSettingsTab = class extends import_obsidian9.PluginSettingTab {
   }
   display() {
     this.containerEl.empty();
-    new import_obsidian9.Setting(this.containerEl).setName("Views").setHeading();
-    new import_obsidian9.Setting(this.containerEl).setName("Pagination").setDesc(
+    new import_obsidian9.Setting(this.containerEl).setName("视图").setHeading();
+    new import_obsidian9.Setting(this.containerEl).setName("分页").setDesc(
       "If enabled, splits up views into pages of results which can be traversed via buttons at the top and bottom of the view. This substantially improves the performance of large views, and can help with visual clutter. Note that this setting can also be set on a per-view basis."
     ).addToggle((toggle) => {
       toggle.setValue(this.plugin.settings.defaultPagingEnabled).onChange(async (value) => {
         await this.plugin.updateSettings({ defaultPagingEnabled: value });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Default page size").setDesc("The number of entries to show per page, by default. This can be overriden on a per-view basis.").addDropdown((dropdown) => {
+    new import_obsidian9.Setting(this.containerEl).setName("默认页面大小").setDesc("默认情况下每页显示的条目数。这可以根据每个视图进行覆盖。").addDropdown((dropdown) => {
       const OPTIONS = {
         "25": "25",
         "50": "50",
@@ -39705,20 +37688,20 @@ var GeneralSettingsTab = class extends import_obsidian9.PluginSettingTab {
         await this.plugin.updateSettings({ defaultPageSize: parsed | 0 });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Scroll on page change").setDesc(
-      "If enabled, table that are paged will scroll to the top of the table when the page changes. This can be overriden on a per-view basis."
+    new import_obsidian9.Setting(this.containerEl).setName("在页面更改上滚动").setDesc(
+      "如果启用，分页的表将在页面更改时滚动到表的顶部。这可以根据每个视图进行覆盖。"
     ).addToggle((toggle) => {
       toggle.setValue(this.plugin.settings.scrollOnPageChange).onChange(async (value) => {
         await this.plugin.updateSettings({ scrollOnPageChange: value });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Formatting").setHeading();
-    new import_obsidian9.Setting(this.containerEl).setName("Empty values").setDesc("What to show for unset/empty properties.").addText((text) => {
+    new import_obsidian9.Setting(this.containerEl).setName("格式化").setHeading();
+    new import_obsidian9.Setting(this.containerEl).setName("空值").setDesc("显示未设置/空属性的内容。").addText((text) => {
       text.setValue(this.plugin.settings.renderNullAs).onChange(async (value) => {
         await this.plugin.updateSettings({ renderNullAs: value });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Default date format").setDesc(
+    new import_obsidian9.Setting(this.containerEl).setName("默认日期格式").setDesc(
       "The default format that dates are rendered in. Uses luxon date formatting (https://github.com/moment/luxon/blob/master/docs/formatting.md#formatting-with-tokens-strings-for-cthulhu)."
     ).addText((text) => {
       text.setValue(this.plugin.settings.defaultDateFormat).onChange(async (value) => {
@@ -39730,7 +37713,7 @@ var GeneralSettingsTab = class extends import_obsidian9.PluginSettingTab {
         await this.plugin.updateSettings({ defaultDateFormat: value });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Default date/time format").setDesc(
+    new import_obsidian9.Setting(this.containerEl).setName("默认日期/时间格式").setDesc(
       "The default format that date-times are rendered in. Uses luxon date formatting (https://github.com/moment/luxon/blob/master/docs/formatting.md#formatting-with-tokens-strings-for-cthulhu)."
     ).addText((text) => {
       text.setValue(this.plugin.settings.defaultDateTimeFormat).onChange(async (value) => {
@@ -39742,15 +37725,15 @@ var GeneralSettingsTab = class extends import_obsidian9.PluginSettingTab {
         await this.plugin.updateSettings({ defaultDateTimeFormat: value });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Performance").setHeading();
-    new import_obsidian9.Setting(this.containerEl).setName("Inline fields").setDesc(
+    new import_obsidian9.Setting(this.containerEl).setName("性能").setHeading();
+    new import_obsidian9.Setting(this.containerEl).setName("内联字段").setDesc(
       "If enabled, inline fields will be parsed in all documents. Finding inline fields requires a full text scan through each document, which noticably slows down indexing for large vaults. Disabling this functionality will mean metadata will only come from tags, links, and Properties / frontmatter"
     ).addToggle((toggle) => {
       toggle.setValue(this.plugin.settings.indexInlineFields).onChange(async (value) => {
         await this.plugin.updateSettings({ indexInlineFields: value });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Importer threads").setDesc("The number of importer threads to use for parsing metadata.").addText((text) => {
+    new import_obsidian9.Setting(this.containerEl).setName("导入器线程").setDesc("用于解析元数据的导入器线程数。").addText((text) => {
       text.setValue("" + this.plugin.settings.importerNumThreads).onChange(async (value) => {
         const parsed = parseInt(value);
         if (isNaN(parsed))
@@ -39758,7 +37741,7 @@ var GeneralSettingsTab = class extends import_obsidian9.PluginSettingTab {
         await this.plugin.updateSettings({ importerNumThreads: parsed });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Importer utilization").setDesc("How much CPU time each importer thread should use, as a fraction (0.1 - 1.0).").addText((text) => {
+    new import_obsidian9.Setting(this.containerEl).setName("导入器利用率").setDesc("每个导入程序线程应使用多少 CPU 时间，以分数形式 (0.1 - 1.0)。").addText((text) => {
       text.setValue(this.plugin.settings.importerUtilization.toFixed(2)).onChange(async (value) => {
         const parsed = parseFloat(value);
         if (isNaN(parsed))
@@ -39767,7 +37750,7 @@ var GeneralSettingsTab = class extends import_obsidian9.PluginSettingTab {
         await this.plugin.updateSettings({ importerUtilization: limited });
       });
     });
-    new import_obsidian9.Setting(this.containerEl).setName("Maximum recursive render depth").setDesc(
+    new import_obsidian9.Setting(this.containerEl).setName("最大递归渲染深度").setDesc(
       "Maximum depth that objects will be rendered to (i.e., how many levels of subproperties will be rendered by default). This avoids infinite recursion due to self-referential objects and ensures that rendering objects is acceptably performant."
     ).addText((text) => {
       text.setValue(this.plugin.settings.maxRecursiveRenderDepth.toString()).onChange(async (value) => {

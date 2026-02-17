@@ -1,9 +1,9 @@
 'use strict';
 
 var obsidian = require('obsidian');
-var state = require('@codemirror/state');
+var state = require('@codemirror/状态');
 var view = require('@codemirror/view');
-var language = require('@codemirror/language');
+var language = require('@codemirror/语言');
 
 // these aren't really private, but nor are they really useful to document
 
@@ -297,7 +297,7 @@ class Zone {
    * @abstract
    * @param {number} ts - Epoch milliseconds for which to get the offset
    * @param {string} format - What style of offset to return.
-   *                          Accepts 'narrow', 'short', or 'techie'. Returning '+6', '+06:00', or '+0600' respectively
+   *                          Accepts 'narrow', 'short'或'techie'。返回'+6', '+06:00'或'+0600' respectively
    * @return {string}
    */
   formatOffset(ts, format) {
@@ -1354,8 +1354,7 @@ class Settings {
   /**
    * Set the cutoff year after which a string encoding a year as two digits is interpreted to occur in the current century.
    * @type {number}
-   * @example Settings.twoDigitCutoffYear = 0 // cut-off year is 0, so all 'yy' are interpreted as current century
-   * @example Settings.twoDigitCutoffYear = 50 // '49' -> 1949; '50' -> 2050
+   * @example Settings.twoDigitCutoffYear = 0 // cut-off year is 0, so all 'yy'被解释为当前世纪\n   * @example Settings.twoDigitCutoffYear = 50 //'49' -> 1949; '50' -> 2050
    * @example Settings.twoDigitCutoffYear = 1950 // interpreted as 50
    * @example Settings.twoDigitCutoffYear = 2050 // ALSO interpreted as 50
    */
@@ -1605,11 +1604,7 @@ function parseZoneInfo(ts, offsetFormat, locale, timeZone = null) {
   return parsed ? parsed.value : null;
 }
 
-// signedOffset('-5', '30') -> -330
-function signedOffset(offHourStr, offMinuteStr) {
-  let offHour = parseInt(offHourStr, 10);
-
-  // don't || this because we want to preserve -0
+// signedOffset('-5', '30') -> -330\n函数signedOffset（offHourStr，offMinuteStr）{\n  让 offHour = parseInt(offHourStr, 10);\n\n  // 不't || this because we want to preserve -0
   if (Number.isNaN(offHour)) {
     offHour = 0;
   }
@@ -1666,18 +1661,18 @@ function timeObject(obj) {
  */
 
 const monthsLong = [
-  "January",
-  "February",
-  "March",
-  "April",
+  "一月",
+  "二月",
+  "三月",
+  "四月",
   "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "六月",
+  "七月",
+  "八月",
+  "九月",
+  "十月",
+  "十一月",
+  "十二月",
 ];
 
 const monthsShort = [
@@ -1715,13 +1710,13 @@ function months(length) {
 }
 
 const weekdaysLong = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  "星期一",
+  "星期二",
+  "星期三",
+  "星期四",
+  "星期五",
+  "星期六",
+  "星期日",
 ];
 
 const weekdaysShort = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -1745,7 +1740,7 @@ function weekdays(length) {
 
 const meridiems = ["AM", "PM"];
 
-const erasLong = ["Before Christ", "Anno Domini"];
+const erasLong = ["在基督之前", "Anno Domini"];
 
 const erasShort = ["BC", "AD"];
 
@@ -2058,10 +2053,10 @@ class Formatter {
             // like 1
             return this.num(dt.weekday);
           case "ccc":
-            // like 'Tues'
+            // like '周二'
             return weekday("short", true);
           case "cccc":
-            // like 'Tuesday'
+            // like '星期二'
             return weekday("long", true);
           case "ccccc":
             // like 'T'
@@ -2071,10 +2066,10 @@ class Formatter {
             // like 1
             return this.num(dt.weekday);
           case "EEE":
-            // like 'Tues'
+            // like '周二'
             return weekday("short", false);
           case "EEEE":
-            // like 'Tuesday'
+            // like '星期二'
             return weekday("long", false);
           case "EEEEE":
             // like 'T'
@@ -2377,9 +2372,7 @@ function extractISODuration(match) {
   ];
 }
 
-// These are a little braindead. EDT *should* tell us that we're in, say, America/New_York
-// and not just that we're in -240 *right now*. But since I don't think these are used that often
-// I'm just going to ignore that
+// These are a little braindead. EDT *should* tell us that we'位于 America/New_York\n// 不仅仅是我们're in -240 *right now*. But since I don't 认为这些经常使用\n// 我'm just going to ignore that
 const obsOffsets = {
   GMT: 0,
   EDT: -4 * 60,
@@ -2557,7 +2550,7 @@ function parseSQL(s) {
   );
 }
 
-const INVALID$2 = "Invalid Duration";
+const INVALID$2 = "无效持续时间";
 
 // unit conversion constants
 const lowOrderMatrix = {
@@ -2657,7 +2650,7 @@ const orderedUnits$1 = [
 
 const reverseUnits = orderedUnits$1.slice(0).reverse();
 
-// clone really means "create another instance just like this one, but with these changes"
+// clone really means "创建另一个实例，就像这个实例一样，但进行了这些更改"
 function clone$1(dur, alts, clear = false) {
   // deep merge for vals
   const conf = {
@@ -2744,7 +2737,7 @@ function removeZeroes(vals) {
 }
 
 /**
- * A Duration object represents a period of time, like "2 months" or "1 day, 1 hour". Conceptually, it's just a map of units to their quantities, accompanied by some additional configuration and methods for creating, parsing, interrogating, transforming, and formatting them. They can be used on their own or in conjunction with other Luxon types; for example, you can use {@link DateTime#plus} to add a Duration object to a DateTime, producing another DateTime.
+ * A Duration object represents a period of time, like "2 个月" or "1 天，1 小时". Conceptually, it's just a map of units to their quantities, accompanied by some additional configuration and methods for creating, parsing, interrogating, transforming, and formatting them. They can be used on their own or in conjunction with other Luxon types; for example, you can use {@link DateTime#plus} to add a Duration object to a DateTime, producing another DateTime.
  *
  * Here is a brief overview of commonly used methods and getters in Duration:
  *
@@ -2895,9 +2888,7 @@ class Duration {
    * Create a Duration from an ISO 8601 time string.
    * @param {string} text - text to parse
    * @param {Object} opts - options for parsing
-   * @param {string} [opts.locale='en-US'] - the locale to use
-   * @param {string} opts.numberingSystem - the numbering system to use
-   * @param {string} [opts.conversionAccuracy='casual'] - the preset conversion system to use
+   * @param {string} [opts.locale='en-US'] - 要使用的区域设置\n   * @param {string} opts.numberingSystem - 要使用的编号系统\n   * @param {string} [opts.conversionAccuracy='casual'] - the preset conversion system to use
    * @param {string} [opts.matrix=Object] - the conversion system to use
    * @see https://en.wikipedia.org/wiki/ISO_8601#Times
    * @example Duration.fromISOTime('11:22:33.444').toObject() //=> { hours: 11, minutes: 22, seconds: 33, milliseconds: 444 }
@@ -2924,7 +2915,7 @@ class Duration {
    */
   static invalid(reason, explanation = null) {
     if (!reason) {
-      throw new InvalidArgumentError("need to specify a reason the Duration is invalid");
+      throw new InvalidArgumentError("需要指定持续时间无效的原因");
     }
 
     const invalid = reason instanceof Invalid ? reason : new Invalid(reason, explanation);
@@ -3092,7 +3083,7 @@ class Duration {
     if (this.hours !== 0) s += this.hours + "H";
     if (this.minutes !== 0) s += this.minutes + "M";
     if (this.seconds !== 0 || this.milliseconds !== 0)
-      // this will handle "floating point madness" by removing extra decimal places
+      // this will handle "浮点疯狂" by removing extra decimal places
       // https://stackoverflow.com/questions/588004/is-floating-point-math-broken
       s += roundTo(this.seconds + this.milliseconds / 1000, 3) + "S";
     if (s === "P") s += "T0S";
@@ -3104,8 +3095,7 @@ class Duration {
    * Note that this will return null if the duration is invalid, negative, or equal to or greater than 24 hours.
    * @see https://en.wikipedia.org/wiki/ISO_8601#Times
    * @param {Object} opts - options
-   * @param {boolean} [opts.suppressMilliseconds=false] - exclude milliseconds from the format if they're 0
-   * @param {boolean} [opts.suppressSeconds=false] - exclude seconds from the format if they're 0
+   * @param {boolean} [opts.suppressMilliseconds=false] - exclude milliseconds from the format if they'重新 0\n   * @param {boolean} [opts.suppressSeconds=false] - 从格式中排除秒，如果它们're 0
    * @param {boolean} [opts.includePrefix=false] - include the `T` prefix
    * @param {string} [opts.format='extended'] - choose between the basic and extended format
    * @example Duration.fromObject({ hours: 11 }).toISOTime() //=> '11:00:00.000'
@@ -3519,17 +3509,17 @@ class Duration {
   }
 }
 
-const INVALID$1 = "Invalid Interval";
+const INVALID$1 = "无效间隔";
 
 // checks if the start is equal to or before the end
 function validateStartEnd(start, end) {
   if (!start || !start.isValid) {
-    return Interval.invalid("missing or invalid start");
+    return Interval.invalid("缺少或无效开始");
   } else if (!end || !end.isValid) {
-    return Interval.invalid("missing or invalid end");
+    return Interval.invalid("缺失或无效结束");
   } else if (end < start) {
     return Interval.invalid(
-      "end before start",
+      "开始前结束",
       `The end of an interval must be after its start, but you had start=${start.toISO()} and end=${end.toISO()}`
     );
   } else {
@@ -3710,7 +3700,7 @@ class Interval {
   }
 
   /**
-   * Returns whether this Interval's end is at least its start, meaning that the Interval isn't 'backwards'.
+   * Returns whether this Interval's 结束至少是其开始，这意味着 Interval 是 $$props 中的't 'backwards'.
    * @type {boolean}
    */
   get isValid() {
@@ -3745,7 +3735,7 @@ class Interval {
   /**
    * Returns the count of minutes, hours, days, months, or years included in the Interval, even in part.
    * Unlike {@link Interval#length} this counts sections of the calendar, not periods of time, e.g. specifying 'day'
-   * asks 'what dates are included in this interval?', not 'how many days long is this interval?'
+   * asks '此间隔中包含哪些日期？', not '这个间隔有多少天？'
    * @param {string} [unit='milliseconds'] - the unit of time to count.
    * @return {number}
    */
@@ -4200,12 +4190,12 @@ class Info {
    * @param {string} [opts.numberingSystem=null] - the numbering system
    * @param {string} [opts.locObj=null] - an existing locale object to use
    * @param {string} [opts.outputCalendar='gregory'] - the calendar
-   * @example Info.months()[0] //=> 'January'
+   * @example Info.months()[0] //=> '一月'
    * @example Info.months('short')[0] //=> 'Jan'
    * @example Info.months('numeric')[0] //=> '1'
    * @example Info.months('short', { locale: 'fr-CA' } )[0] //=> 'janv.'
    * @example Info.months('numeric', { locale: 'ar' })[0] //=> '١'
-   * @example Info.months('long', { outputCalendar: 'islamic' })[0] //=> 'Rabiʻ I'
+   * @example Info.months('long', { outputCalendar: 'islamic' })[0] //=> '拉比伊'
    * @return {Array}
    */
   static months(
@@ -4243,10 +4233,7 @@ class Info {
    * @param {string} [opts.locale] - the locale code
    * @param {string} [opts.numberingSystem=null] - the numbering system
    * @param {string} [opts.locObj=null] - an existing locale object to use
-   * @example Info.weekdays()[0] //=> 'Monday'
-   * @example Info.weekdays('short')[0] //=> 'Mon'
-   * @example Info.weekdays('short', { locale: 'fr-CA' })[0] //=> 'lun.'
-   * @example Info.weekdays('short', { locale: 'ar' })[0] //=> 'الاثنين'
+   * @example Info.weekdays()[0] //=> 'Monday'* @example Info.weekdays('short')[0] //=> 'Mon'* @example Info.weekdays('short'，{ 区域设置：'fr-CA' })[0] //=> 'lun.'* @example Info.weekdays('short'，{ 区域设置：'ar' })[0] //=> 'الاثنين'
    * @return {Array}
    */
   static weekdays(length = "long", { locale = null, numberingSystem = null, locObj = null } = {}) {
@@ -4290,7 +4277,7 @@ class Info {
    * @param {Object} opts - options
    * @param {string} [opts.locale] - the locale code
    * @example Info.eras() //=> [ 'BC', 'AD' ]
-   * @example Info.eras('long') //=> [ 'Before Christ', 'Anno Domini' ]
+   * @example Info.eras('long') //=> [ '在基督之前', 'Anno Domini' ]
    * @example Info.eras('long', { locale: 'fr' }) //=> [ 'avant Jésus-Christ', 'après Jésus-Christ' ]
    * @return {Array}
    */
@@ -5045,9 +5032,7 @@ function hasInvalidWeekData(obj) {
     validWeekday = integerBetween(obj.weekday, 1, 7);
 
   if (!validYear) {
-    return unitOutOfRange("weekYear", obj.weekYear);
-  } else if (!validWeek) {
-    return unitOutOfRange("week", obj.week);
+    return unitOutOfRange("weekYear", obj.weekYear);\n  } else if (!validWeek) {\n    返回单位超出范围("week", obj.week);
   } else if (!validWeekday) {
     return unitOutOfRange("weekday", obj.weekday);
   } else return false;
@@ -5070,11 +5055,7 @@ function hasInvalidGregorianData(obj) {
     validDay = integerBetween(obj.day, 1, daysInMonth(obj.year, obj.month));
 
   if (!validYear) {
-    return unitOutOfRange("year", obj.year);
-  } else if (!validMonth) {
-    return unitOutOfRange("month", obj.month);
-  } else if (!validDay) {
-    return unitOutOfRange("day", obj.day);
+    return unitOutOfRange("year", obj.year);\n  } else if (!validMonth) {\n    返回单位超出范围（"month", obj.month);\n  } else if (!validDay) {\n    返回单位超出范围("day", obj.day);
   } else return false;
 }
 
@@ -5088,21 +5069,7 @@ function hasInvalidTimeData(obj) {
     validMillisecond = integerBetween(millisecond, 0, 999);
 
   if (!validHour) {
-    return unitOutOfRange("hour", hour);
-  } else if (!validMinute) {
-    return unitOutOfRange("minute", minute);
-  } else if (!validSecond) {
-    return unitOutOfRange("second", second);
-  } else if (!validMillisecond) {
-    return unitOutOfRange("millisecond", millisecond);
-  } else return false;
-}
-
-const INVALID = "Invalid DateTime";
-const MAX_DATE = 8.64e15;
-
-function unsupportedZone(zone) {
-  return new Invalid("unsupported zone", `the zone "${zone.name}" is not supported`);
+    return unitOutOfRange("hour"，小时）；\n  } else if (!validMinute) {\n    return unitOutOfRange("minute", 分钟);\n  } else if (!validSecond) {\n    return unitOutOfRange("second", 第二个);\n  } else if (!validMillisecond) {\n    返回unitOutOfRange("millisecond", 毫秒);\n  否则返回 false；\n}\n\n常量无效 ="Invalid DateTime"；\n常量 MAX_DATE = 8.64e15;\n\n函数unsupportedZone（区域）{\n  return new Invalid("unsupported zone"，`区域"${zone.name}" is not supported`);
 }
 
 // we cache week data on the DT object and this intermediates the cache
@@ -5113,7 +5080,7 @@ function possiblyCachedWeekData(dt) {
   return dt.weekData;
 }
 
-// clone really means, "make a new object with these modifications". all "setters" really use this
+// clone really means, "make a new object with these modifications"。所有"setters" really use this
 // to create a new object while only changing some of the properties
 function clone(inst, alts) {
   const current = {
@@ -5228,7 +5195,7 @@ function parseDataToDateTime(parsed, parsedZone, opts, format, text, specificOff
     return setZone ? inst : inst.setZone(zone);
   } else {
     return DateTime.invalid(
-      new Invalid("unparsable", `the input "${text}" can't be parsed as ${format}`)
+      new Invalid("unparsable"，`输入"${text}" can't be parsed as ${format}`)
     );
   }
 }
@@ -5246,14 +5213,7 @@ function toTechFormat(dt, format, allowZ = true) {
 
 function toISODate(o, extended) {
   const longFormat = o.c.year > 9999 || o.c.year < 0;
-  let c = "";
-  if (longFormat && o.c.year >= 0) c += "+";
-  c += padStart(o.c.year, longFormat ? 6 : 4);
-
-  if (extended) {
-    c += "-";
-    c += padStart(o.c.month);
-    c += "-";
+  let c = "";\n  if (longFormat && o.c.year >= 0) c +="+";\n  c += padStart(o.c.year, longFormat ? 6 : 4);\n\n  如果（扩展）{\n    c +="-";\n    c += padStart(o.c.month);\n    c +="-";
     c += padStart(o.c.day);
   } else {
     c += padStart(o.c.month);
@@ -5272,10 +5232,7 @@ function toISOTime(
 ) {
   let c = padStart(o.c.hour);
   if (extended) {
-    c += ":";
-    c += padStart(o.c.minute);
-    if (o.c.millisecond !== 0 || o.c.second !== 0 || !suppressSeconds) {
-      c += ":";
+    c += ":";\n    c += padStart(o.c. 分钟);\n    if (o.c.毫秒 !== 0 || o.c.秒 !== 0 || !suppressSeconds) {\n      c +=":";
     }
   } else {
     c += padStart(o.c.minute);
@@ -5292,22 +5249,7 @@ function toISOTime(
 
   if (includeOffset) {
     if (o.isOffsetFixed && o.offset === 0 && !extendedZone) {
-      c += "Z";
-    } else if (o.o < 0) {
-      c += "-";
-      c += padStart(Math.trunc(-o.o / 60));
-      c += ":";
-      c += padStart(Math.trunc(-o.o % 60));
-    } else {
-      c += "+";
-      c += padStart(Math.trunc(o.o / 60));
-      c += ":";
-      c += padStart(Math.trunc(o.o % 60));
-    }
-  }
-
-  if (extendedZone) {
-    c += "[" + o.zone.ianaName + "]";
+      c += "Z"时可用；\n    } 否则如果 (o.o < 0) {\n      c +="-"；\n      c += padStart(Math.trunc(-o.o / 60));\n      c +=":";\n      c += padStart(Math.trunc(-o.o % 60));\n    } 否则{\n      c +="+";\n      c += padStart(Math.trunc(o.o / 60));\n      c +=":";\n      c += padStart(Math.trunc(o.o % 60));\n    }\n  }\n\n  如果（扩展区域）{\n    c +="["+ o.zone.ianaName +"]";
   }
   return c;
 }
@@ -5338,45 +5280,13 @@ const defaultUnitValues = {
   };
 
 // Units in the supported calendars, sorted by bigness
-const orderedUnits = ["year", "month", "day", "hour", "minute", "second", "millisecond"],
-  orderedWeekUnits = [
-    "weekYear",
+const orderedUnits = ["year", "month", "day", "hour", "minute", "second", "millisecond"]，\n  订购周单位 = ["weekYear",
     "weekNumber",
     "weekday",
     "hour",
     "minute",
     "second",
-    "millisecond",
-  ],
-  orderedOrdinalUnits = ["year", "ordinal", "hour", "minute", "second", "millisecond"];
-
-// standardize case and plurality in units
-function normalizeUnit(unit) {
-  const normalized = {
-    year: "year",
-    years: "year",
-    month: "month",
-    months: "month",
-    day: "day",
-    days: "day",
-    hour: "hour",
-    hours: "hour",
-    minute: "minute",
-    minutes: "minute",
-    quarter: "quarter",
-    quarters: "quarter",
-    second: "second",
-    seconds: "second",
-    millisecond: "millisecond",
-    milliseconds: "millisecond",
-    weekday: "weekday",
-    weekdays: "weekday",
-    weeknumber: "weekNumber",
-    weeksnumber: "weekNumber",
-    weeknumbers: "weekNumber",
-    weekyear: "weekYear",
-    weekyears: "weekYear",
-    ordinal: "ordinal",
+    "millisecond",\n  ],\n  orderOrdinalUnits = ["year", "ordinal", "hour", "minute", "second", "millisecond"];\n\n// 以单位标准化大小写和复数\n函数标准化单位（单位）{\n  常量标准化 = {\n    年："year"，\n    年："year",\n    月份："month"，\n    月："month",\n    日："day",\n    天："day"，\n    小时："hour",\n    小时："hour",\n    分钟："minute",\n    分钟："minute",\n    季度："quarter",\n    宿舍："quarter"，\n    第二："second"，\n    秒："second",\n    毫秒："millisecond"，\n    毫秒："millisecond"，\n    工作日："weekday"，\n    工作日："weekday",\n    周数："weekNumber"，\n    周数："weekNumber"，\n    周数："weekNumber",\n    周年："weekYear",\n    周年："weekYear"，\n    序数："ordinal",
   }[unit.toLowerCase()];
 
   if (!normalized) throw new InvalidUnitError(unit);
@@ -6457,8 +6367,7 @@ class DateTime {
   }
 
   /**
-   * "Set" the values of specified units. Returns a newly-constructed DateTime.
-   * You can only set units with this method; for "setting" metadata, see {@link DateTime#reconfigure} and {@link DateTime#setZone}.
+   * "Set"指定单位的值。返回一个新构造的 DateTime。\n   * 只能用该方法设置单位；对于"setting" metadata, see {@link DateTime#reconfigure} and {@link DateTime#setZone}.
    * @param {Object} values - a mapping of units to numbers
    * @example dt.set({ year: 2017 })
    * @example dt.set({ hour: 8, minute: 30 })
@@ -6555,43 +6464,7 @@ class DateTime {
     const o = {},
       normalizedUnit = Duration.normalizeUnit(unit);
     switch (normalizedUnit) {
-      case "years":
-        o.month = 1;
-      // falls through
-      case "quarters":
-      case "months":
-        o.day = 1;
-      // falls through
-      case "weeks":
-      case "days":
-        o.hour = 0;
-      // falls through
-      case "hours":
-        o.minute = 0;
-      // falls through
-      case "minutes":
-        o.second = 0;
-      // falls through
-      case "seconds":
-        o.millisecond = 0;
-        break;
-      // no default, invalid units throw in normalizeUnit()
-    }
-
-    if (normalizedUnit === "weeks") {
-      o.weekday = 1;
-    }
-
-    if (normalizedUnit === "quarters") {
-      const q = Math.ceil(this.month / 3);
-      o.month = (q - 1) * 3 + 1;
-    }
-
-    return this.set(o);
-  }
-
-  /**
-   * "Set" this DateTime to the end (meaning the last millisecond) of a unit of time
+      case "years"：\n        o.月 = 1;\n      // 跌倒\n      案例"quarters"：\n      案例"months"：\n        o.天 = 1;\n      // 跌倒\n      case"weeks"：\n      案例"days"的字符串：\n        o.小时 = 0;\n      // 跌倒\n      案例"hours"：\n        o.分钟 = 0;\n      // 跌倒\n      案例"minutes":\n        o.第二个 = 0;\n      // 跌倒\n      case"seconds":\n        o.毫秒=0；\n        打破；\n      // 没有默认的，无效的单位会在normalizeUnit()中抛出\n    }\n\n    if (normalizedUnit ==="weeks"）{\n      o.工作日=1；\n    }\n\n    if (normalizedUnit ==="quarters") {\n      const q = Math.ceil(this.month / 3);\n      o.月 = (q - 1) * 3 + 1;\n    }\n\n    返回 this.set(o);\n  }\n\n  /**\n   *"Set" this DateTime to the end (meaning the last millisecond) of a unit of time
    * @param {string} unit - The unit to go to the end of. Can be 'year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', or 'millisecond'.
    * @example DateTime.local(2014, 3, 3).endOf('month').toISO(); //=> '2014-03-31T23:59:59.999-05:00'
    * @example DateTime.local(2014, 3, 3).endOf('year').toISO(); //=> '2014-12-31T23:59:59.999-05:00'
@@ -6619,7 +6492,7 @@ class DateTime {
    * @example DateTime.now().toFormat('yyyy LLL dd') //=> '2017 Apr 22'
    * @example DateTime.now().setLocale('fr').toFormat('yyyy LLL dd') //=> '2017 avr. 22'
    * @example DateTime.now().toFormat('yyyy LLL dd', { locale: "fr" }) //=> '2017 avr. 22'
-   * @example DateTime.now().toFormat("HH 'hours and' mm 'minutes'") //=> '20 hours and 55 minutes'
+   * @example DateTime.now().toFormat("HH '小时和' mm 'minutes'") //=> '20 hours and 55 minutes'
    * @return {string}
    */
   toFormat(fmt, opts = {}) {
@@ -6697,10 +6570,7 @@ class DateTime {
       return null;
     }
 
-    const ext = format === "extended";
-
-    let c = toISODate(this, ext);
-    c += "T";
+    const ext = format === "extended";\n\n    让 c = toISODate(this, ext);\n    c +="T";
     c += toISOTime(this, ext, suppressSeconds, suppressMilliseconds, includeOffset, extendedZone);
     return c;
   }
@@ -6713,12 +6583,7 @@ class DateTime {
    * @example DateTime.utc(1982, 5, 25).toISODate({ format: 'basic' }) //=> '19820525'
    * @return {string}
    */
-  toISODate({ format = "extended" } = {}) {
-    if (!this.isValid) {
-      return null;
-    }
-
-    return toISODate(this, format === "extended");
+  toISODate({ format = "extended"} = {}) {\n    if (!this.isValid) {\n      返回空值；\n    }\n\n    return toISODate(this, format ==="extended");
   }
 
   /**
@@ -6751,18 +6616,7 @@ class DateTime {
     includeOffset = true,
     includePrefix = false,
     extendedZone = false,
-    format = "extended",
-  } = {}) {
-    if (!this.isValid) {
-      return null;
-    }
-
-    let c = includePrefix ? "T" : "";
-    return (
-      c +
-      toISOTime(
-        this,
-        format === "extended",
+    format = "extended",\n  } = {}) {\n    if (!this.isValid) {\n      返回空值；\n    }\n\n    让 c = includePrefix ？"T" : ""；\n    返回（\n      c+\n      到ISO时间(\n        这个，\n        格式==="extended",
         suppressSeconds,
         suppressMilliseconds,
         includeOffset,
@@ -6818,16 +6672,7 @@ class DateTime {
    * @return {string}
    */
   toSQLTime({ includeOffset = true, includeZone = false, includeOffsetSpace = true } = {}) {
-    let fmt = "HH:mm:ss.SSS";
-
-    if (includeZone || includeOffset) {
-      if (includeOffsetSpace) {
-        fmt += " ";
-      }
-      if (includeZone) {
-        fmt += "z";
-      } else if (includeOffset) {
-        fmt += "ZZ";
+    let fmt = "HH:mm:ss.SSS";\n\n    if (includeZone || includeOffset) {\n      if (includeOffsetSpace) {\n        fmt +=" ";\n      }\n      如果（包括区域）{\n        fmt +="z";\n      } else if (includeOffset) {\n        fmt +="ZZ";
       }
     }
 
@@ -6955,9 +6800,7 @@ class DateTime {
    * i2.diff(i1, ['months', 'days', 'hours']).toObject() //=> { months: 16, days: 19, hours: 0.75 }
    * @return {Duration}
    */
-  diff(otherDateTime, unit = "milliseconds", opts = {}) {
-    if (!this.isValid || !otherDateTime.isValid) {
-      return Duration.invalid("created by diffing an invalid DateTime");
+  diff(otherDateTime, unit = "milliseconds", opts = {}) {\n    if (!this.isValid || !otherDateTime.isValid) {\n      返回 Duration.invalid("created by diffing an invalid DateTime");
     }
 
     const durOpts = { locale: this.locale, numberingSystem: this.numberingSystem, ...opts };
@@ -7031,17 +6874,14 @@ class DateTime {
    * platform supports Intl.RelativeTimeFormat. Rounds down by default.
    * @param {Object} options - options that affect the output
    * @param {DateTime} [options.base=DateTime.now()] - the DateTime to use as the basis to which this time is compared. Defaults to now.
-   * @param {string} [options.style="long"] - the style of units, must be "long", "short", or "narrow"
-   * @param {string|string[]} options.unit - use a specific unit or array of units; if omitted, or an array, the method will pick the best unit. Use an array or one of "years", "quarters", "months", "weeks", "days", "hours", "minutes", or "seconds"
+   * @param {string} [options.style="long"] - 单位的样式，必须是"long", "short"或"narrow"
+   * @param {string|string[]} options.unit - use a specific unit or array of units; if omitted, or an array, the method will pick the best unit. Use an array or one of "years", "quarters", "months", "weeks", "days", "hours", "minutes"或"seconds"
    * @param {boolean} [options.round=true] - whether to round the numbers in the output.
    * @param {number} [options.padding=0] - padding in milliseconds. This allows you to round up the result if it fits inside the threshold. Don't use in combination with {round: false} because the decimal output will include the padding.
    * @param {string} options.locale - override the locale of this DateTime
    * @param {string} options.numberingSystem - override the numberingSystem of this DateTime. The Intl system may choose not to honor this
-   * @example DateTime.now().plus({ days: 1 }).toRelative() //=> "in 1 day"
-   * @example DateTime.now().setLocale("es").toRelative({ days: 1 }) //=> "dentro de 1 día"
-   * @example DateTime.now().plus({ days: 1 }).toRelative({ locale: "fr" }) //=> "dans 23 heures"
-   * @example DateTime.now().minus({ days: 2 }).toRelative() //=> "2 days ago"
-   * @example DateTime.now().minus({ days: 2 }).toRelative({ unit: "hours" }) //=> "48 hours ago"
+   * @example DateTime.now().plus({ days: 1 }).toRelative() //=> "in 1 day"* @example DateTime.now().setLocale("es").toRelative({ days: 1 }) //=> "dentro de 1 día"* @example DateTime.now().plus({ days: 1 }).toRelative({ locale:"fr" }) //=> "dans 23 heures"
+   * @example DateTime.now().minus({ days: 2 }).toRelative() //=> "2 days ago"* @example DateTime.now().minus({ days: 2 }).toRelative({ 单位:"hours" }) //=> "48 hours ago"
    * @example DateTime.now().minus({ hours: 36 }).toRelative({ round: false }) //=> "1.5 days ago"
    */
   toRelative(options = {}) {
@@ -7056,24 +6896,16 @@ class DateTime {
     }
     return diffRelative(base, this.plus(padding), {
       ...options,
-      numeric: "always",
-      units,
-      unit,
-    });
-  }
-
-  /**
-   * Returns a string representation of this date relative to today, such as "yesterday" or "next month".
+      numeric: "always",\n      单位，\n      单位，\n    });\n  }\n\n  /**\n   * 返回该日期相对于今天的字符串表示形式，例如"yesterday" or "next month".
    * Only internationalizes on platforms that supports Intl.RelativeTimeFormat.
    * @param {Object} options - options that affect the output
    * @param {DateTime} [options.base=DateTime.now()] - the DateTime to use as the basis to which this time is compared. Defaults to now.
    * @param {string} options.locale - override the locale of this DateTime
-   * @param {string} options.unit - use a specific unit; if omitted, the method will pick the unit. Use one of "years", "quarters", "months", "weeks", or "days"
+   * @param {string} options.unit - use a specific unit; if omitted, the method will pick the unit. Use one of "years", "quarters", "months", "weeks"或"days"
    * @param {string} options.numberingSystem - override the numberingSystem of this DateTime. The Intl system may choose not to honor this
-   * @example DateTime.now().plus({ days: 1 }).toRelativeCalendar() //=> "tomorrow"
-   * @example DateTime.now().setLocale("es").plus({ days: 1 }).toRelative() //=> ""mañana"
+   * @example DateTime.now().plus({ days: 1 }).toRelativeCalendar() //=> "tomorrow"* @example DateTime.now().setLocale("es").plus({ days: 1 }).toRelative() //=> ""mañana"
    * @example DateTime.now().plus({ days: 1 }).toRelativeCalendar({ locale: "fr" }) //=> "demain"
-   * @example DateTime.now().minus({ days: 2 }).toRelativeCalendar() //=> "2 days ago"
+   * @example DateTime.now().minus({ days: 2 }).toRelativeCalendar() //=> "2 天前"
    */
   toRelativeCalendar(options = {}) {
     if (!this.isValid) return null;
@@ -7093,7 +6925,7 @@ class DateTime {
    */
   static min(...dateTimes) {
     if (!dateTimes.every(DateTime.isDateTime)) {
-      throw new InvalidArgumentError("min requires all arguments be DateTimes");
+      throw new InvalidArgumentError("min 要求所有参数为 DateTimes");
     }
     return bestBy(dateTimes, (i) => i.valueOf(), Math.min);
   }
@@ -7105,7 +6937,7 @@ class DateTime {
    */
   static max(...dateTimes) {
     if (!dateTimes.every(DateTime.isDateTime)) {
-      throw new InvalidArgumentError("max requires all arguments be DateTimes");
+      throw new InvalidArgumentError("max 要求所有参数为 DateTimes");
     }
     return bestBy(dateTimes, (i) => i.valueOf(), Math.max);
   }
@@ -7147,7 +6979,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'Oct 14, 1983'
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日'
    * @type {Object}
    */
   static get DATE_MED() {
@@ -7155,7 +6987,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'Fri, Oct 14, 1983'
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日星期五'
    * @type {Object}
    */
   static get DATE_MED_WITH_WEEKDAY() {
@@ -7163,7 +6995,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'October 14, 1983'
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日'
    * @type {Object}
    */
   static get DATE_FULL() {
@@ -7171,7 +7003,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'Tuesday, October 14, 1983'
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日星期二'
    * @type {Object}
    */
   static get DATE_HUGE() {
@@ -7203,7 +7035,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like '09:30:23 AM Eastern Daylight Time'. Only 12-hour if the locale is.
+   * {@link DateTime#toLocaleString} format like '09:30:23 AM 东部夏令时间'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get TIME_WITH_LONG_OFFSET() {
@@ -7235,7 +7067,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like '09:30:23 Eastern Daylight Time', always 24-hour.
+   * {@link DateTime#toLocaleString} format like '09:30:23 东部夏令时间', always 24-hour.
    * @type {Object}
    */
   static get TIME_24_WITH_LONG_OFFSET() {
@@ -7243,7 +7075,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like '10/14/1983, 9:30 AM'. Only 12-hour if the locale is.
+   * {@link DateTime#toLocaleString} format like '10/14/1983，上午 9:30'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_SHORT() {
@@ -7259,7 +7091,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'Oct 14, 1983, 9:30 AM'. Only 12-hour if the locale is.
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日上午 9:30'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_MED() {
@@ -7267,7 +7099,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'Oct 14, 1983, 9:30:33 AM'. Only 12-hour if the locale is.
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日上午 9:30:33'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_MED_WITH_SECONDS() {
@@ -7275,7 +7107,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'Fri, 14 Oct 1983, 9:30 AM'. Only 12-hour if the locale is.
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日星期五上午 9:30'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_MED_WITH_WEEKDAY() {
@@ -7283,7 +7115,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'October 14, 1983, 9:30 AM EDT'. Only 12-hour if the locale is.
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日上午 9:30 EDT'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_FULL() {
@@ -7299,7 +7131,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'Friday, October 14, 1983, 9:30 AM Eastern Daylight Time'. Only 12-hour if the locale is.
+   * {@link DateTime#toLocaleString} format like '1983 年 10 月 14 日星期五上午 9:30 东部夏令时间'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_HUGE() {
@@ -7307,7 +7139,7 @@ class DateTime {
   }
 
   /**
-   * {@link DateTime#toLocaleString} format like 'Friday, October 14, 1983, 9:30:33 AM Eastern Daylight Time'. Only 12-hour if the locale is.
+   * {@link DateTime#toLocaleString} format like '星期五，1983 年 10 月 14 日，上午 9:30:33 东部夏令时间'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_HUGE_WITH_SECONDS() {
@@ -7365,8 +7197,8 @@ const DEFAULT_QUERY_SETTINGS = {
     defaultDateFormat: "MMMM dd, yyyy",
     defaultDateTimeFormat: "h:mm a - MMMM dd, yyyy",
     maxRecursiveRenderDepth: 4,
-    tableIdColumnName: "File",
-    tableGroupColumnName: "Group",
+    tableIdColumnName: "文件",
+    tableGroupColumnName: "组",
     showResultCount: true,
 };
 const DEFAULT_EXPORT_SETTINGS = {
@@ -7452,7 +7284,7 @@ class Failure {
             throw new Error("" + this.error);
     }
 }
-/** Monadic 'Result' type which encapsulates whether a procedure succeeded or failed, as well as it's return value. */
+/** Monadic '结果' type which encapsulates whether a procedure succeeded or failed, as well as it's return value. */
 var Result;
 (function (Result) {
     /** Construct a new success result wrapping the given value. */
@@ -7485,10 +7317,10 @@ var Result;
     Result.map2 = map2;
 })(Result || (Result = {}));
 
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+var commonjsGlobal = typeof globalThis !== 'undefined'？ globalThis : typeof window !=='undefined'?窗口：全局类型！=='undefined'?全局：自我类型！=='undefined' ? self : {};
 
 function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default')？ x['default'] : x;
 }
 
 var parsimmon_umd_min = {exports: {}};
@@ -7510,14 +7342,9 @@ var removeMarkdown = function(md, options) {
   options = options || {};
   options.listUnicodeChar = options.hasOwnProperty('listUnicodeChar') ? options.listUnicodeChar : false;
   options.stripListLeaders = options.hasOwnProperty('stripListLeaders') ? options.stripListLeaders : true;
-  options.gfm = options.hasOwnProperty('gfm') ? options.gfm : true;
-  options.useImgAltText = options.hasOwnProperty('useImgAltText') ? options.useImgAltText : true;
-  options.abbr = options.hasOwnProperty('abbr') ? options.abbr : false;
-  options.replaceLinksWithURL = options.hasOwnProperty('replaceLinksWithURL') ? options.replaceLinksWithURL : false;
+  options.gfm = options.hasOwnProperty('gfm'）？选项.gfm : true;\n  options.useImgAltText = options.hasOwnProperty('useImgAltText'）？ options.useImgAltText : true;\n  options.abbr = options.hasOwnProperty('abbr'）？ options.abbr : false;\n  options.replaceLinksWithURL = options.hasOwnProperty('replaceLinksWithURL') ? options.replaceLinksWithURL : false;
   options.htmlTagsToSkip = options.hasOwnProperty('htmlTagsToSkip') ? options.htmlTagsToSkip : [];
-  options.throwError = options.hasOwnProperty('throwError') ? options.throwError : false;
-
-  var output = md || '';
+  options.throwError = options.hasOwnProperty('throwError') ?选项. throwError : false;\n\n  var 输出 = md ||'';
 
   // Remove horizontal rules (stripListHeaders conflict with this rule, which is why it has been moved to the top)
   output = output.replace(/^(-\s*?|\*\s*?|_\s*?){3,}\s*/gm, '');
@@ -7525,78 +7352,12 @@ var removeMarkdown = function(md, options) {
   try {
     if (options.stripListLeaders) {
       if (options.listUnicodeChar)
-        output = output.replace(/^([\s\t]*)([\*\-\+]|\d+\.)\s+/gm, options.listUnicodeChar + ' $1');
-      else
-        output = output.replace(/^([\s\t]*)([\*\-\+]|\d+\.)\s+/gm, '$1');
-    }
-    if (options.gfm) {
-      output = output
-      // Header
-        .replace(/\n={2,}/g, '\n')
-        // Fenced codeblocks
-        .replace(/~{3}.*\n/g, '')
-        // Strikethrough
-        .replace(/~~/g, '')
-        // Fenced codeblocks
-        .replace(/`{3}.*\n/g, '');
-    }
-    if (options.abbr) {
-      // Remove abbreviations
-      output = output.replace(/\*\[.*\]:.*\n/, '');
-    }
-    output = output
-    // Remove HTML tags
-      .replace(/<[^>]*>/g, '');
-
-    var htmlReplaceRegex = new RegExp('<[^>]*>', 'g');
-    if (options.htmlTagsToSkip.length > 0) {
-      // Using negative lookahead. Eg. (?!sup|sub) will not match 'sup' and 'sub' tags.
-      var joinedHtmlTagsToSkip = '(?!' + options.htmlTagsToSkip.join("|") + ')';
-
-      // Adding the lookahead literal with the default regex for html. Eg./<(?!sup|sub)[^>]*>/ig
-      htmlReplaceRegex = new RegExp(
-          '<' +
-          joinedHtmlTagsToSkip +
-          '[^>]*>', 
-          'ig'
-      );
-    }
-
-    output = output
-      // Remove HTML tags
-      .replace(htmlReplaceRegex, '')
-      // Remove setext-style headers
-      .replace(/^[=\-]{2,}\s*$/g, '')
-      // Remove footnotes?
-      .replace(/\[\^.+?\](\: .*?$)?/g, '')
-      .replace(/\s{0,2}\[.*?\]: .*?$/g, '')
-      // Remove images
-      .replace(/\!\[(.*?)\][\[\(].*?[\]\)]/g, options.useImgAltText ? '$1' : '')
-      // Remove inline links
-      .replace(/\[([^\]]*?)\][\[\(].*?[\]\)]/g, options.replaceLinksWithURL ? '$2' : '$1')
-      // Remove blockquotes
-      .replace(/^(\n)?\s{0,3}>\s?/gm, '$1')
-      // .replace(/(^|\n)\s{0,3}>\s?/g, '\n\n')
-      // Remove reference-style links?
-      .replace(/^\s{1,2}\[(.*?)\]: (\S+)( ".*?")?\s*$/g, '')
-      // Remove atx-style headers
-      .replace(/^(\n)?\s{0,}#{1,6}\s*( (.+))? +#+$|^(\n)?\s{0,}#{1,6}\s*( (.+))?$/gm, '$1$3$4$6')
-      // Remove * emphasis
-      .replace(/([\*]+)(\S)(.*?\S)??\1/g, '$2$3')
+        output = output.replace(/^([\s\t]*)([\*\-\+]|\d+\.)\s+/gm, options.listUnicodeChar + ' $1');\n      否则\n        输出 = output.replace(/^([s ]*)([*-+]|d+.)s+/gm,'$1');\n    }\n    如果（选项.gfm）{\n      输出=输出\n      // 标题\n        .替换(/\n={2,}/g,'\n')\n        // 围栏代码块\n        .替换(/~{3}.*\n/g,'')\n        // 删除线\n        .replace(/~~/g,''）\n        // 围栏代码块\n        .replace(/`{3}.*\n/g，'');\n    }\n    if (选项.缩写) {\n      // 删除缩写\n      输出 = 输出.替换(/*[.*]:.*\n/，'');\n    }\n    输出=输出\n    // 删除 HTML 标签\n      .replace(/<[^>]*>/g,''）；\n\n    var htmlReplaceRegex = new RegExp('<[^>]*>', 'g');\n    if (options.htmlTagsToSkip.length > 0) {\n      // 使用负前瞻。例如。 (?!sup|sub) 不会匹配'sup' and 'sub'标签。\n      var joinHtmlTagsToSkip ='(?!'+ options.htmlTagsToSkip.join("|") +')';\n\n      // 使用 html 的默认正则表达式添加前瞻文字。例如./<(?!sup|sub)[^>]*>/ig\n      htmlReplaceRegex = 新正则表达式('<'+\n          加入HtmlTagsToSkip +'[^>]*>', 
+          'ig'）；\n    }\n\n    输出=输出\n      // 删除 HTML 标签\n      .replace(htmlReplaceRegex,''）\n      // 删除 setext 样式的标头\n      .replace(/^[=-]{2,}s*$/g,'')\n      // 删除脚注？\n      .replace(/[^.+?](: .*?$)?/g,''）\n      .replace(/s{0,2}[.*?]: .*?$/g,'')\n      // 删除图像\n      .replace(/![(.*?)][[(].*?[])]/g, options.useImgAltText ?'$1' : '')\n      // 删除内联链接\n      .replace(/[([^]]*?)][[(].*?[])]/g, options.replaceLinksWithURL ?'$2' : '$1'）\n      // 删除块引号\n      .替换(/^(\n)?s{0,3}>s?/gm,'$1')\n      // .replace(/(^|\n)s{0,3}>s?/g,'\n\n')\n      // 删除引用样式的链接？\n      .replace(/^s{1,2}[(.*?)]: (S+)( ".*?")?s*$/g,'')\n      // 删除 atx 样式的标头\n      .替换(/^(\n)?s{0,}#{1,6}s*( (.+))? +#+$|^(\n)?s{0,}#{1,6}s*( (.+))?$/gm,'$1$3$4$6'）\n      // 删除*强调\n      .replace(/([*]+)(S)(.*?S)??1/g,'$2$3')
       // Remove _ emphasis. Unlike *, _ emphasis gets rendered only if 
       //   1. Either there is a whitespace character before opening _ and after closing _.
       //   2. Or _ is at the start/end of the string.
-      .replace(/(^|\W)([_]+)(\S)(.*?\S)??\2($|\W)/g, '$1$3$4$5')
-      // Remove code blocks
-      .replace(/(`{3,})(.*?)\1/gm, '$2')
-      // Remove inline code
-      .replace(/`(.+?)`/g, '$1')
-      // // Replace two or more newlines with exactly two? Not entirely sure this belongs here...
-      // .replace(/\n{2,}/g, '\n\n')
-      // // Remove newlines in a paragraph
-      // .replace(/(\S+)\n\s*(\S+)/g, '$1 $2')
-      // Replace strike through
-      .replace(/~(.*?)~/g, '$1');
+      .replace(/(^|\W)([_]+)(\S)(.*?\S)??\2($|\W)/g, '$1$3$4$5')\n      // 删除代码块\n      .replace(/(`{3,})(.*?)1/gm,'$2'）\n      // 删除内联代码\n      .replace(/`(.+?)`/g,'$1')\n      // // 将两个或多个换行符替换为恰好两个？不完全确定这属于这里......\n      // .替换(/\n{2,}/g,'\n\n')\n      // // 删除段落中的换行符\n      // .replace(/(S+)\ns*(S+)/g,'$1 $2')\n      // 替换删除线\n      .replace(/~(.*?)~/g,'$1');
   } catch(e) {
     if (options.throwError) throw e;
 
@@ -7707,7 +7468,7 @@ function renderMinimalDate(time, settings, locale) {
 /** Render a duration in a minimal format to save space. */
 function renderMinimalDuration(dur) {
     dur = normalizeDuration(dur);
-    // toHuman outputs zero quantities e.g. "0 seconds"
+    // toHuman outputs zero quantities e.g. "0 秒"
     dur = Duration.fromObject(Object.fromEntries(Object.entries(dur.toObject()).filter(([, quantity]) => quantity != 0)));
     return dur.toHuman();
 }
@@ -8805,7 +8566,7 @@ License: MIT
 papaparse_min.exports;
 
 (function (module, exports) {
-	!function(e,t){module.exports=t();}(commonjsGlobal,function s(){var f="undefined"!=typeof self?self:"undefined"!=typeof window?window:void 0!==f?f:{};var n=!f.document&&!!f.postMessage,o=f.IS_PAPA_WORKER||!1,a={},u=0,b={parse:function(e,t){var r=(t=t||{}).dynamicTyping||!1;J(r)&&(t.dynamicTypingFunction=r,r={});if(t.dynamicTyping=r,t.transform=!!J(t.transform)&&t.transform,t.worker&&b.WORKERS_SUPPORTED){var i=function(){if(!b.WORKERS_SUPPORTED)return !1;var e=(r=f.URL||f.webkitURL||null,i=s.toString(),b.BLOB_URL||(b.BLOB_URL=r.createObjectURL(new Blob(["var global = (function() { if (typeof self !== 'undefined') { return self; } if (typeof window !== 'undefined') { return window; } if (typeof global !== 'undefined') { return global; } return {}; })(); global.IS_PAPA_WORKER=true; ","(",i,")();"],{type:"text/javascript"})))),t=new f.Worker(e);var r,i;return t.onmessage=_,t.id=u++,a[t.id]=t}();return i.userStep=t.step,i.userChunk=t.chunk,i.userComplete=t.complete,i.userError=t.error,t.step=J(t.step),t.chunk=J(t.chunk),t.complete=J(t.complete),t.error=J(t.error),delete t.worker,void i.postMessage({input:e,config:t,workerId:i.id})}var n=null;b.NODE_STREAM_INPUT,"string"==typeof e?(e=function(e){if(65279===e.charCodeAt(0))return e.slice(1);return e}(e),n=t.download?new l(t):new p(t)):!0===e.readable&&J(e.read)&&J(e.on)?n=new g(t):(f.File&&e instanceof File||e instanceof Object)&&(n=new c(t));return n.stream(e)},unparse:function(e,t){var n=!1,_=!0,m=",",y="\r\n",s='"',a=s+s,r=!1,i=null,o=!1;!function(){if("object"!=typeof t)return;"string"!=typeof t.delimiter||b.BAD_DELIMITERS.filter(function(e){return -1!==t.delimiter.indexOf(e)}).length||(m=t.delimiter);("boolean"==typeof t.quotes||"function"==typeof t.quotes||Array.isArray(t.quotes))&&(n=t.quotes);"boolean"!=typeof t.skipEmptyLines&&"string"!=typeof t.skipEmptyLines||(r=t.skipEmptyLines);"string"==typeof t.newline&&(y=t.newline);"string"==typeof t.quoteChar&&(s=t.quoteChar);"boolean"==typeof t.header&&(_=t.header);if(Array.isArray(t.columns)){if(0===t.columns.length)throw new Error("Option columns is empty");i=t.columns;}void 0!==t.escapeChar&&(a=t.escapeChar+s);("boolean"==typeof t.escapeFormulae||t.escapeFormulae instanceof RegExp)&&(o=t.escapeFormulae instanceof RegExp?t.escapeFormulae:/^[=+\-@\t\r].*$/);}();var u=new RegExp(Q(s),"g");"string"==typeof e&&(e=JSON.parse(e));if(Array.isArray(e)){if(!e.length||Array.isArray(e[0]))return h(null,e,r);if("object"==typeof e[0])return h(i||Object.keys(e[0]),e,r)}else if("object"==typeof e)return "string"==typeof e.data&&(e.data=JSON.parse(e.data)),Array.isArray(e.data)&&(e.fields||(e.fields=e.meta&&e.meta.fields||i),e.fields||(e.fields=Array.isArray(e.data[0])?e.fields:"object"==typeof e.data[0]?Object.keys(e.data[0]):[]),Array.isArray(e.data[0])||"object"==typeof e.data[0]||(e.data=[e.data])),h(e.fields||[],e.data||[],r);throw new Error("Unable to serialize unrecognized input");function h(e,t,r){var i="";"string"==typeof e&&(e=JSON.parse(e)),"string"==typeof t&&(t=JSON.parse(t));var n=Array.isArray(e)&&0<e.length,s=!Array.isArray(t[0]);if(n&&_){for(var a=0;a<e.length;a++)0<a&&(i+=m),i+=v(e[a],a);0<t.length&&(i+=y);}for(var o=0;o<t.length;o++){var u=n?e.length:t[o].length,h=!1,f=n?0===Object.keys(t[o]).length:0===t[o].length;if(r&&!n&&(h="greedy"===r?""===t[o].join("").trim():1===t[o].length&&0===t[o][0].length),"greedy"===r&&n){for(var d=[],l=0;l<u;l++){var c=s?e[l]:l;d.push(t[o][c]);}h=""===d.join("").trim();}if(!h){for(var p=0;p<u;p++){0<p&&!f&&(i+=m);var g=n&&s?e[p]:p;i+=v(t[o][g],p);}o<t.length-1&&(!r||0<u&&!f)&&(i+=y);}}return i}function v(e,t){if(null==e)return "";if(e.constructor===Date)return JSON.stringify(e).slice(1,25);var r=!1;o&&"string"==typeof e&&o.test(e)&&(e="'"+e,r=!0);var i=e.toString().replace(u,a);return (r=r||!0===n||"function"==typeof n&&n(e,t)||Array.isArray(n)&&n[t]||function(e,t){for(var r=0;r<t.length;r++)if(-1<e.indexOf(t[r]))return !0;return !1}(i,b.BAD_DELIMITERS)||-1<i.indexOf(m)||" "===i.charAt(0)||" "===i.charAt(i.length-1))?s+i+s:i}}};if(b.RECORD_SEP=String.fromCharCode(30),b.UNIT_SEP=String.fromCharCode(31),b.BYTE_ORDER_MARK="\ufeff",b.BAD_DELIMITERS=["\r","\n",'"',b.BYTE_ORDER_MARK],b.WORKERS_SUPPORTED=!n&&!!f.Worker,b.NODE_STREAM_INPUT=1,b.LocalChunkSize=10485760,b.RemoteChunkSize=5242880,b.DefaultDelimiter=",",b.Parser=E,b.ParserHandle=r,b.NetworkStreamer=l,b.FileStreamer=c,b.StringStreamer=p,b.ReadableStreamStreamer=g,f.jQuery){var d=f.jQuery;d.fn.parse=function(o){var r=o.config||{},u=[];return this.each(function(e){if(!("INPUT"===d(this).prop("tagName").toUpperCase()&&"file"===d(this).attr("type").toLowerCase()&&f.FileReader)||!this.files||0===this.files.length)return !0;for(var t=0;t<this.files.length;t++)u.push({file:this.files[t],inputElem:this,instanceConfig:d.extend({},r)});}),e(),this;function e(){if(0!==u.length){var e,t,r,i,n=u[0];if(J(o.before)){var s=o.before(n.file,n.inputElem);if("object"==typeof s){if("abort"===s.action)return e="AbortError",t=n.file,r=n.inputElem,i=s.reason,void(J(o.error)&&o.error({name:e},t,r,i));if("skip"===s.action)return void h();"object"==typeof s.config&&(n.instanceConfig=d.extend(n.instanceConfig,s.config));}else if("skip"===s)return void h()}var a=n.instanceConfig.complete;n.instanceConfig.complete=function(e){J(a)&&a(e,n.file,n.inputElem),h();},b.parse(n.file,n.instanceConfig);}else J(o.complete)&&o.complete();}function h(){u.splice(0,1),e();}};}function h(e){this._handle=null,this._finished=!1,this._completed=!1,this._halted=!1,this._input=null,this._baseIndex=0,this._partialLine="",this._rowCount=0,this._start=0,this._nextChunk=null,this.isFirstChunk=!0,this._completeResults={data:[],errors:[],meta:{}},function(e){var t=w(e);t.chunkSize=parseInt(t.chunkSize),e.step||e.chunk||(t.chunkSize=null);this._handle=new r(t),(this._handle.streamer=this)._config=t;}.call(this,e),this.parseChunk=function(e,t){if(this.isFirstChunk&&J(this._config.beforeFirstChunk)){var r=this._config.beforeFirstChunk(e);void 0!==r&&(e=r);}this.isFirstChunk=!1,this._halted=!1;var i=this._partialLine+e;this._partialLine="";var n=this._handle.parse(i,this._baseIndex,!this._finished);if(!this._handle.paused()&&!this._handle.aborted()){var s=n.meta.cursor;this._finished||(this._partialLine=i.substring(s-this._baseIndex),this._baseIndex=s),n&&n.data&&(this._rowCount+=n.data.length);var a=this._finished||this._config.preview&&this._rowCount>=this._config.preview;if(o)f.postMessage({results:n,workerId:b.WORKER_ID,finished:a});else if(J(this._config.chunk)&&!t){if(this._config.chunk(n,this._handle),this._handle.paused()||this._handle.aborted())return void(this._halted=!0);n=void 0,this._completeResults=void 0;}return this._config.step||this._config.chunk||(this._completeResults.data=this._completeResults.data.concat(n.data),this._completeResults.errors=this._completeResults.errors.concat(n.errors),this._completeResults.meta=n.meta),this._completed||!a||!J(this._config.complete)||n&&n.meta.aborted||(this._config.complete(this._completeResults,this._input),this._completed=!0),a||n&&n.meta.paused||this._nextChunk(),n}this._halted=!0;},this._sendError=function(e){J(this._config.error)?this._config.error(e):o&&this._config.error&&f.postMessage({workerId:b.WORKER_ID,error:e,finished:!1});};}function l(e){var i;(e=e||{}).chunkSize||(e.chunkSize=b.RemoteChunkSize),h.call(this,e),this._nextChunk=n?function(){this._readChunk(),this._chunkLoaded();}:function(){this._readChunk();},this.stream=function(e){this._input=e,this._nextChunk();},this._readChunk=function(){if(this._finished)this._chunkLoaded();else {if(i=new XMLHttpRequest,this._config.withCredentials&&(i.withCredentials=this._config.withCredentials),n||(i.onload=v(this._chunkLoaded,this),i.onerror=v(this._chunkError,this)),i.open(this._config.downloadRequestBody?"POST":"GET",this._input,!n),this._config.downloadRequestHeaders){var e=this._config.downloadRequestHeaders;for(var t in e)i.setRequestHeader(t,e[t]);}if(this._config.chunkSize){var r=this._start+this._config.chunkSize-1;i.setRequestHeader("Range","bytes="+this._start+"-"+r);}try{i.send(this._config.downloadRequestBody);}catch(e){this._chunkError(e.message);}n&&0===i.status&&this._chunkError();}},this._chunkLoaded=function(){4===i.readyState&&(i.status<200||400<=i.status?this._chunkError():(this._start+=this._config.chunkSize?this._config.chunkSize:i.responseText.length,this._finished=!this._config.chunkSize||this._start>=function(e){var t=e.getResponseHeader("Content-Range");if(null===t)return -1;return parseInt(t.substring(t.lastIndexOf("/")+1))}(i),this.parseChunk(i.responseText)));},this._chunkError=function(e){var t=i.statusText||e;this._sendError(new Error(t));};}function c(e){var i,n;(e=e||{}).chunkSize||(e.chunkSize=b.LocalChunkSize),h.call(this,e);var s="undefined"!=typeof FileReader;this.stream=function(e){this._input=e,n=e.slice||e.webkitSlice||e.mozSlice,s?((i=new FileReader).onload=v(this._chunkLoaded,this),i.onerror=v(this._chunkError,this)):i=new FileReaderSync,this._nextChunk();},this._nextChunk=function(){this._finished||this._config.preview&&!(this._rowCount<this._config.preview)||this._readChunk();},this._readChunk=function(){var e=this._input;if(this._config.chunkSize){var t=Math.min(this._start+this._config.chunkSize,this._input.size);e=n.call(e,this._start,t);}var r=i.readAsText(e,this._config.encoding);s||this._chunkLoaded({target:{result:r}});},this._chunkLoaded=function(e){this._start+=this._config.chunkSize,this._finished=!this._config.chunkSize||this._start>=this._input.size,this.parseChunk(e.target.result);},this._chunkError=function(){this._sendError(i.error);};}function p(e){var r;h.call(this,e=e||{}),this.stream=function(e){return r=e,this._nextChunk()},this._nextChunk=function(){if(!this._finished){var e,t=this._config.chunkSize;return t?(e=r.substring(0,t),r=r.substring(t)):(e=r,r=""),this._finished=!r,this.parseChunk(e)}};}function g(e){h.call(this,e=e||{});var t=[],r=!0,i=!1;this.pause=function(){h.prototype.pause.apply(this,arguments),this._input.pause();},this.resume=function(){h.prototype.resume.apply(this,arguments),this._input.resume();},this.stream=function(e){this._input=e,this._input.on("data",this._streamData),this._input.on("end",this._streamEnd),this._input.on("error",this._streamError);},this._checkIsFinished=function(){i&&1===t.length&&(this._finished=!0);},this._nextChunk=function(){this._checkIsFinished(),t.length?this.parseChunk(t.shift()):r=!0;},this._streamData=v(function(e){try{t.push("string"==typeof e?e:e.toString(this._config.encoding)),r&&(r=!1,this._checkIsFinished(),this.parseChunk(t.shift()));}catch(e){this._streamError(e);}},this),this._streamError=v(function(e){this._streamCleanUp(),this._sendError(e);},this),this._streamEnd=v(function(){this._streamCleanUp(),i=!0,this._streamData("");},this),this._streamCleanUp=v(function(){this._input.removeListener("data",this._streamData),this._input.removeListener("end",this._streamEnd),this._input.removeListener("error",this._streamError);},this);}function r(m){var a,o,u,i=Math.pow(2,53),n=-i,s=/^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/,h=/^((\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z)))$/,t=this,r=0,f=0,d=!1,e=!1,l=[],c={data:[],errors:[],meta:{}};if(J(m.step)){var p=m.step;m.step=function(e){if(c=e,_())g();else {if(g(),0===c.data.length)return;r+=e.data.length,m.preview&&r>m.preview?o.abort():(c.data=c.data[0],p(c,t));}};}function y(e){return "greedy"===m.skipEmptyLines?""===e.join("").trim():1===e.length&&0===e[0].length}function g(){return c&&u&&(k("Delimiter","UndetectableDelimiter","Unable to auto-detect delimiting character; defaulted to '"+b.DefaultDelimiter+"'"),u=!1),m.skipEmptyLines&&(c.data=c.data.filter(function(e){return !y(e)})),_()&&function(){if(!c)return;function e(e,t){J(m.transformHeader)&&(e=m.transformHeader(e,t)),l.push(e);}if(Array.isArray(c.data[0])){for(var t=0;_()&&t<c.data.length;t++)c.data[t].forEach(e);c.data.splice(0,1);}else c.data.forEach(e);}(),function(){if(!c||!m.header&&!m.dynamicTyping&&!m.transform)return c;function e(e,t){var r,i=m.header?{}:[];for(r=0;r<e.length;r++){var n=r,s=e[r];m.header&&(n=r>=l.length?"__parsed_extra":l[r]),m.transform&&(s=m.transform(s,n)),s=v(n,s),"__parsed_extra"===n?(i[n]=i[n]||[],i[n].push(s)):i[n]=s;}return m.header&&(r>l.length?k("FieldMismatch","TooManyFields","Too many fields: expected "+l.length+" fields but parsed "+r,f+t):r<l.length&&k("FieldMismatch","TooFewFields","Too few fields: expected "+l.length+" fields but parsed "+r,f+t)),i}var t=1;!c.data.length||Array.isArray(c.data[0])?(c.data=c.data.map(e),t=c.data.length):c.data=e(c.data,0);m.header&&c.meta&&(c.meta.fields=l);return f+=t,c}()}function _(){return m.header&&0===l.length}function v(e,t){return r=e,m.dynamicTypingFunction&&void 0===m.dynamicTyping[r]&&(m.dynamicTyping[r]=m.dynamicTypingFunction(r)),!0===(m.dynamicTyping[r]||m.dynamicTyping)?"true"===t||"TRUE"===t||"false"!==t&&"FALSE"!==t&&(function(e){if(s.test(e)){var t=parseFloat(e);if(n<t&&t<i)return !0}return !1}(t)?parseFloat(t):h.test(t)?new Date(t):""===t?null:t):t;var r;}function k(e,t,r,i){var n={type:e,code:t,message:r};void 0!==i&&(n.row=i),c.errors.push(n);}this.parse=function(e,t,r){var i=m.quoteChar||'"';if(m.newline||(m.newline=function(e,t){e=e.substring(0,1048576);var r=new RegExp(Q(t)+"([^]*?)"+Q(t),"gm"),i=(e=e.replace(r,"")).split("\r"),n=e.split("\n"),s=1<n.length&&n[0].length<i[0].length;if(1===i.length||s)return "\n";for(var a=0,o=0;o<i.length;o++)"\n"===i[o][0]&&a++;return a>=i.length/2?"\r\n":"\r"}(e,i)),u=!1,m.delimiter)J(m.delimiter)&&(m.delimiter=m.delimiter(e),c.meta.delimiter=m.delimiter);else {var n=function(e,t,r,i,n){var s,a,o,u;n=n||[",","\t","|",";",b.RECORD_SEP,b.UNIT_SEP];for(var h=0;h<n.length;h++){var f=n[h],d=0,l=0,c=0;o=void 0;for(var p=new E({comments:i,delimiter:f,newline:t,preview:10}).parse(e),g=0;g<p.data.length;g++)if(r&&y(p.data[g]))c++;else {var _=p.data[g].length;l+=_,void 0!==o?0<_&&(d+=Math.abs(_-o),o=_):o=_;}0<p.data.length&&(l/=p.data.length-c),(void 0===a||d<=a)&&(void 0===u||u<l)&&1.99<l&&(a=d,s=f,u=l);}return {successful:!!(m.delimiter=s),bestDelimiter:s}}(e,m.newline,m.skipEmptyLines,m.comments,m.delimitersToGuess);n.successful?m.delimiter=n.bestDelimiter:(u=!0,m.delimiter=b.DefaultDelimiter),c.meta.delimiter=m.delimiter;}var s=w(m);return m.preview&&m.header&&s.preview++,a=e,o=new E(s),c=o.parse(a,t,r),g(),d?{meta:{paused:!0}}:c||{meta:{paused:!1}}},this.paused=function(){return d},this.pause=function(){d=!0,o.abort(),a=J(m.chunk)?"":a.substring(o.getCharIndex());},this.resume=function(){t.streamer._halted?(d=!1,t.streamer.parseChunk(a,!0)):setTimeout(t.resume,3);},this.aborted=function(){return e},this.abort=function(){e=!0,o.abort(),c.meta.aborted=!0,J(m.complete)&&m.complete(c),a="";};}function Q(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function E(j){var z,M=(j=j||{}).delimiter,P=j.newline,U=j.comments,q=j.step,N=j.preview,B=j.fastMode,K=z=void 0===j.quoteChar||null===j.quoteChar?'"':j.quoteChar;if(void 0!==j.escapeChar&&(K=j.escapeChar),("string"!=typeof M||-1<b.BAD_DELIMITERS.indexOf(M))&&(M=","),U===M)throw new Error("Comment character same as delimiter");!0===U?U="#":("string"!=typeof U||-1<b.BAD_DELIMITERS.indexOf(U))&&(U=!1),"\n"!==P&&"\r"!==P&&"\r\n"!==P&&(P="\n");var W=0,H=!1;this.parse=function(i,t,r){if("string"!=typeof i)throw new Error("Input must be a string");var n=i.length,e=M.length,s=P.length,a=U.length,o=J(q),u=[],h=[],f=[],d=W=0;if(!i)return L();if(j.header&&!t){var l=i.split(P)[0].split(M),c=[],p={},g=!1;for(var _ in l){var m=l[_];J(j.transformHeader)&&(m=j.transformHeader(m,_));var y=m,v=p[m]||0;for(0<v&&(g=!0,y=m+"_"+v),p[m]=v+1;c.includes(y);)y=y+"_"+v;c.push(y);}if(g){var k=i.split(P);k[0]=c.join(M),i=k.join(P);}}if(B||!1!==B&&-1===i.indexOf(z)){for(var b=i.split(P),E=0;E<b.length;E++){if(f=b[E],W+=f.length,E!==b.length-1)W+=P.length;else if(r)return L();if(!U||f.substring(0,a)!==U){if(o){if(u=[],I(f.split(M)),F(),H)return L()}else I(f.split(M));if(N&&N<=E)return u=u.slice(0,N),L(!0)}}return L()}for(var w=i.indexOf(M,W),R=i.indexOf(P,W),C=new RegExp(Q(K)+Q(z),"g"),S=i.indexOf(z,W);;)if(i[W]!==z)if(U&&0===f.length&&i.substring(W,W+a)===U){if(-1===R)return L();W=R+s,R=i.indexOf(P,W),w=i.indexOf(M,W);}else if(-1!==w&&(w<R||-1===R))f.push(i.substring(W,w)),W=w+e,w=i.indexOf(M,W);else {if(-1===R)break;if(f.push(i.substring(W,R)),D(R+s),o&&(F(),H))return L();if(N&&u.length>=N)return L(!0)}else for(S=W,W++;;){if(-1===(S=i.indexOf(z,S+1)))return r||h.push({type:"Quotes",code:"MissingQuotes",message:"Quoted field unterminated",row:u.length,index:W}),T();if(S===n-1)return T(i.substring(W,S).replace(C,z));if(z!==K||i[S+1]!==K){if(z===K||0===S||i[S-1]!==K){-1!==w&&w<S+1&&(w=i.indexOf(M,S+1)),-1!==R&&R<S+1&&(R=i.indexOf(P,S+1));var O=A(-1===R?w:Math.min(w,R));if(i.substr(S+1+O,e)===M){f.push(i.substring(W,S).replace(C,z)),i[W=S+1+O+e]!==z&&(S=i.indexOf(z,W)),w=i.indexOf(M,W),R=i.indexOf(P,W);break}var x=A(R);if(i.substring(S+1+x,S+1+x+s)===P){if(f.push(i.substring(W,S).replace(C,z)),D(S+1+x+s),w=i.indexOf(M,W),S=i.indexOf(z,W),o&&(F(),H))return L();if(N&&u.length>=N)return L(!0);break}h.push({type:"Quotes",code:"InvalidQuotes",message:"Trailing quote on quoted field is malformed",row:u.length,index:W}),S++;}}else S++;}return T();function I(e){u.push(e),d=W;}function A(e){var t=0;if(-1!==e){var r=i.substring(S+1,e);r&&""===r.trim()&&(t=r.length);}return t}function T(e){return r||(void 0===e&&(e=i.substring(W)),f.push(e),W=n,I(f),o&&F()),L()}function D(e){W=e,I(f),f=[],R=i.indexOf(P,W);}function L(e){return {data:u,errors:h,meta:{delimiter:M,linebreak:P,aborted:H,truncated:!!e,cursor:d+(t||0)}}}function F(){q(L()),u=[],h=[];}},this.abort=function(){H=!0;},this.getCharIndex=function(){return W};}function _(e){var t=e.data,r=a[t.workerId],i=!1;if(t.error)r.userError(t.error,t.file);else if(t.results&&t.results.data){var n={abort:function(){i=!0,m(t.workerId,{data:[],errors:[],meta:{aborted:!0}});},pause:y,resume:y};if(J(r.userStep)){for(var s=0;s<t.results.data.length&&(r.userStep({data:t.results.data[s],errors:t.results.errors,meta:t.results.meta},n),!i);s++);delete t.results;}else J(r.userChunk)&&(r.userChunk(t.results,n,t.file),delete t.results);}t.finished&&!i&&m(t.workerId,t.results);}function m(e,t){var r=a[e];J(r.userComplete)&&r.userComplete(t),r.terminate(),delete a[e];}function y(){throw new Error("Not implemented.")}function w(e){if("object"!=typeof e||null===e)return e;var t=Array.isArray(e)?[]:{};for(var r in e)t[r]=w(e[r]);return t}function v(e,t){return function(){e.apply(t,arguments);}}function J(e){return "function"==typeof e}return o&&(f.onmessage=function(e){var t=e.data;void 0===b.WORKER_ID&&t&&(b.WORKER_ID=t.workerId);if("string"==typeof t.input)f.postMessage({workerId:b.WORKER_ID,results:b.parse(t.input,t.config),finished:!0});else if(f.File&&t.input instanceof File||t.input instanceof Object){var r=b.parse(t.input,t.config);r&&f.postMessage({workerId:b.WORKER_ID,results:r,finished:!0});}}),(l.prototype=Object.create(h.prototype)).constructor=l,(c.prototype=Object.create(h.prototype)).constructor=c,(p.prototype=Object.create(p.prototype)).constructor=p,(g.prototype=Object.create(h.prototype)).constructor=g,b}); 
+	!function(e,t){module.exports=t();}(commonjsGlobal,function s(){var f="undefined"!=typeof self?self:"undefined"!=typeof window?window:void 0!==f?f:{};var n=!f.document&&!!f.postMessage,o=f.IS_PAPA_WORKER||!1,a={},u=0,b={parse:function(e,t){var r=(t=t||{}).dynamicTyping||!1;J(r)&&(t.dynamicTypingFunction=r,r={});if(t.dynamicTyping=r,t.transform=!!J(t.transform)&&t.transform,t.worker&&b.WORKERS_SUPPORTED){var i=function(){if(!b.WORKERS_SUPPORTED)return !1;var e=(r=f.URL||f.webkitURL||null,i=s.toString(),b.BLOB_URL||(b.BLOB_URL=r.createObjectURL(new Blob(["var global = (function() { if (typeof self !== 'undefined') { return self; } if (窗口类型 !=='undefined') { 返回窗口; } if (typeof global !=='undefined') { return global; } return {}; })(); global.IS_PAPA_WORKER=true; ","(",i,")();"],{type:"text/javascript"})))),t=new f.Worker(e);var r,i;return t.onmessage=_,t.id=u++,a[t.id]=t}();return i.userStep=t.step,i.userChunk=t.chunk,i.userComplete=t.complete,i.userError=t.error,t.step=J(t.step),t.chunk=J(t.chunk),t.complete=J(t.complete),t.error=J(t.error),delete t.worker,void i.postMessage({input:e,config:t,workerId:i.id})}var n=null;b.NODE_STREAM_INPUT,"string"==typeof e?(e=function(e){if(65279===e.charCodeAt(0))return e.slice(1);return e}(e),n=t.download?new l(t):new p(t)):!0===e.readable&&J(e.read)&&J(e.on)?n=new g(t):(f.File&&e instanceof File||e instanceof Object)&&(n=new c(t));return n.stream(e)},unparse:function(e,t){var n=!1,_=!0,m=",",y="\r\n",s='"',a=s+s,r=!1,i=null,o=!1;!function(){if("object"!=typeof t)return;"string"!=typeof t.delimiter||b.BAD_DELIMITERS.filter(function(e){return -1!==t.delimiter.indexOf(e)}).length||(m=t.delimiter);("boolean"==typeof t.quotes||"function"==typeof t.quotes||Array.isArray(t.quotes))&&(n=t.quotes);"boolean"!=typeof t.skipEmptyLines&&"string"!=typeof t.skipEmptyLines||(r=t.skipEmptyLines);"string"==typeof t.newline&&(y=t.newline);"string"==typeof t.quoteChar&&(s=t.quoteChar);"boolean"==typeof t.header&&(_=t.header);if(Array.isArray(t.columns)){if(0===t.columns.length)抛出新错误("Option columns is empty");i=t.columns;}void 0!==t.escapeChar&&(a=t.escapeChar+s);("boolean"==typeof t.escapeFormulae||t.escapeFormulae instanceof RegExp)&&(o=t.escapeFormulae instanceof RegExp?t.escapeFormulae:/^[=+\-@\t\r].*$/);}();var u=new RegExp(Q(s),"g");"string"==typeof e&&(e=JSON.parse(e));if(Array.isArray(e)){if(!e.length||Array.isArray(e[0]))return h(null,e,r);if("object"==typeof e[0])return h(i||Object.keys(e[0]),e,r)}else if("object"==typeof e)return"string"==typeof e.data&&(e.data=JSON.parse(e.data)),Array.isArray(e.data)&&(e.fields||(e.fields=e.meta&&e.meta.fields||i),e.fields||(e.fields=Array.isArray(e.data[0])?e.fields:"object"==typeof e.data[0]?Object.keys(e.data[0]):[]),Array.isArray(e.data[0])||"object"==e.data[0]||(e.data=[e.data])),h(e.fields||[],e.data||[],r);抛出新错误("Unable to serialize unrecognized input");函数 h(e,t,r){var i="";"string"==typeof e&&(e=JSON.parse(e)),"string"==typeof t&&(t=JSON.parse(t));var n=Array.isArray(e)&&0<e.length,s=!Array.isArray(t[0]);if(n&&_){for(var a=0;a<e.length;a++)0<a&&(i+=m),i+=v(e[a],a);0<t.length&&(i+=y);}for(var o=0;o<t.length;o++){var u=n?e.length:t[o].length,h=!1,f=n?0===Object.keys(t[o]).length:0===t[o].length;if(r&&!n&&(h="greedy"===r？""===t[o].join("").trim():1===t[o].length&&0===t[o][0].length),"greedy"===r&&n){for(var d=[],l=0;l<u;l++){var c=s?e[l]:l;d.push(t[o][c]);}h=""===d.join("").trim();}if(!h){for(var p=0;p<u;p++){0<p&&!f&&(i+=m);var g=n&&s?e[p]:p;i+=v(t[o][g],p);}o<t.length-1&&(!r||0<u&&!f)&&(i+=y);}}return i}function v(e,t){if(null==e)return "";if(e.constructor===Date)return JSON.stringify(e).slice(1,25);var r=!1;o&&"string"==e 类型&&o.test(e)&&(e="'"+e,r=!0);var i=e.toString().replace(u,a);return (r=r||!0===n||"function"==typeof n&&n(e,t)||Array.isArray(n)&&n[t]||function(e,t){for(var r=0;r<t.length;r++)if(-1<e.indexOf(t[r]))return !0;return !1}(i,b.BAD_DELIMITERS)||-1<i.indexOf(m)||" "===i.charAt(0)||" "===i.charAt(i.length-1))?s+i+s:i}}};if(b.RECORD_SEP=String.fromCharCode(30),b.UNIT_SEP=String.fromCharCode(31),b.BYTE_ORDER_MARK="\ufeff",b.BAD_DELIMITERS=["\r","\n",'"',b.BYTE_ORDER_MARK],b.WORKERS_SUPPORTED=!n&&!!f.Worker,b.NODE_STREAM_INPUT=1,b.LocalChunkSize=10485760,b.RemoteChunkSize=5242880,b.DefaultDelimiter=",",b.Parser=E,b.ParserHandle=r,b.NetworkStreamer=l,b.FileStreamer=c,b.StringStreamer=p,b.ReadableStreamStreamer=g,f.jQuery){var d=f.jQuery;d.fn.parse=function(o){var r=o.config||{},u=[];return this.each(function(e){if(!("INPUT"===d(this).prop("tagName").toUpperCase()&&"file"===d(this).attr("type").toLowerCase()&&f.FileReader)||!this.files||0===this.files.length)return !0;for(var t=0;t<this.files.length;t++)u.push({file:this.files[t],inputElem:this,instanceConfig:d.extend({},r)});}),e(),this;function e(){if(0!==u.length){var e,t,r,i,n=u[0];if(J(o.before)){var s=o.before(n.file,n.inputElem);if("object"==typeof s){if("abort"===s.action)return e="AbortError",t=n.file,r=n.inputElem,i=s.reason,void(J(o.error)&&o.error({name:e},t,r,i));if("skip"===s.action)return void h();"object"==typeof s.config&&(n.instanceConfig=d.extend(n.instanceConfig,s.config));}else if("skip"===s)return void h()}var a=n.instanceConfig.complete;n.instanceConfig.complete=function(e){J(a)&&a(e,n.file,n.inputElem),h();},b.parse(n.file,n.instanceConfig);}else J(o.complete)&&o.complete();}function h(){u.splice(0,1),e();}};}function h(e){this._handle=null,this._finished=!1,this._completed=!1,this._halted=!1,this._input=null,this._baseIndex=0,this._partialLine="",this._rowCount=0,this._start=0,this._nextChunk=null,this.isFirstChunk=!0,this._completeResults={data:[],errors:[],meta:{}},function(e){var t=w(e);t.chunkSize=parseInt(t.chunkSize),e.step||e.chunk||(t.chunkSize=null);this._handle=new r(t),(this._handle.streamer=this)._config=t;}.call(this,e),this.parseChunk=function(e,t){if(this.isFirstChunk&&J(this._config.beforeFirstChunk)){var r=this._config.beforeFirstChunk(e);void 0!==r&&(e=r);}this.isFirstChunk=!1,this._halted=!1;var i=this._partialLine+e;this._partialLine="";var n=this._handle.parse(i,this._baseIndex,!this._finished);if(!this._handle.paused()&&!this._handle.aborted()){var s=n.meta.cursor;this._finished||(this._partialLine=i.substring(s-this._baseIndex),this._baseIndex=s),n&&n.data&&(this._rowCount+=n.data.length);var a=this._finished||this._config.preview&&this._rowCount>=this._config.preview;if(o)f.postMessage({results:n,workerId:b.WORKER_ID,finished:a});else if(J(this._config.chunk)&&!t){if(this._config.chunk(n,this._handle),this._handle.paused()||this._handle.aborted())return void(this._halted=!0);n=void 0,this._completeResults=void 0;}return this._config.step||this._config.chunk||(this._completeResults.data=this._completeResults.data.concat(n.data),this._completeResults.errors=this._completeResults.errors.concat(n.errors),this._completeResults.meta=n.meta),this._completed||!a||!J(this._config.complete)||n&&n.meta.aborted||(this._config.complete(this._completeResults,this._input),this._completed=!0),a||n&&n.meta.paused||this._nextChunk(),n}this._halted=!0;},this._sendError=function(e){J(this._config.error)?this._config.error(e):o&&this._config.error&&f.postMessage({workerId:b.WORKER_ID,error:e,finished:!1});};}function l(e){var i;(e=e||{}).chunkSize||(e.chunkSize=b.RemoteChunkSize),h.call(this,e),this._nextChunk=n?function(){this._readChunk(),this._chunkLoaded();}:function(){this._readChunk();},this.stream=function(e){this._input=e,this._nextChunk();},this._readChunk=function(){if(this._finished)this._chunkLoaded();else {if(i=new XMLHttpRequest,this._config.withCredentials&&(i.withCredentials=this._config.withCredentials),n||(i.onload=v(this._chunkLoaded,this),i.onerror=v(this._chunkError,this)),i.open(this._config.downloadRequestBody?"POST":"GET",this._input,!n),this._config.downloadRequestHeaders){var e=this._config.downloadRequestHeaders;for(var t in e)i.setRequestHeader(t,e[t]);}if(this._config.chunkSize){var r=this._start+this._config.chunkSize-1;i.setRequestHeader("Range","bytes="+this._start+"-"+r);}try{i.send(this._config.downloadRequestBody);}catch(e){this._chunkError(e.message);}n&&0===i.status&&this._chunkError();}},this._chunkLoaded=function(){4===i.readyState&&(i.status<200||400<=i.status?this._chunkError():(this._start+=this._config.chunkSize?this._config.chunkSize:i.responseText.length,this._finished=!this._config.chunkSize||this._start>=function(e){var t=e.getResponseHeader("Content-Range");if(null===t)return -1;return parseInt(t.substring(t.lastIndexOf("/")+1))}(i),this.parseChunk(i.responseText)));},this._chunkError=function(e){var t=i.statusText||e;this._sendError(new Error(t));};}function c(e){var i,n;(e=e||{}).chunkSize||(e.chunkSize=b.LocalChunkSize),h.call(this,e);var s="undefined"!=typeof FileReader;this.stream=function(e){this._input=e,n=e.slice||e.webkitSlice||e.mozSlice,s?((i=new FileReader).onload=v(this._chunkLoaded,this),i.onerror=v(this._chunkError,this)):i=new FileReaderSync,this._nextChunk();},this._nextChunk=function(){this._finished||this._config.preview&&!(this._rowCount<this._config.preview)||this._readChunk();},this._readChunk=function(){var e=this._input;if(this._config.chunkSize){var t=Math.min(this._start+this._config.chunkSize,this._input.size);e=n.call(e,this._start,t);}var r=i.readAsText(e,this._config.encoding);s||this._chunkLoaded({target:{result:r}});},this._chunkLoaded=function(e){this._start+=this._config.chunkSize,this._finished=!this._config.chunkSize||this._start>=this._input.size,this.parseChunk(e.target.result);},this._chunkError=function(){this._sendError(i.error);};}function p(e){var r;h.call(this,e=e||{}),this.stream=function(e){return r=e,this._nextChunk()},this._nextChunk=function(){if(!this._finished){var e,t=this._config.chunkSize;return t?(e=r.substring(0,t),r=r.substring(t)):(e=r,r=""),this._finished=!r,this.parseChunk(e)}};}function g(e){h.call(this,e=e||{});var t=[],r=!0,i=!1;this.pause=function(){h.prototype.pause.apply(this,arguments),this._input.pause();},this.resume=function(){h.prototype.resume.apply(this,arguments),this._input.resume();},this.stream=function(e){this._input=e,this._input.on("data",this._streamData),this._input.on("end",this._streamEnd),this._input.on("error",this._streamError);},this._checkIsFinished=function(){i&&1===t.length&&(this._finished=!0);},this._nextChunk=function(){this._checkIsFinished(),t.length?this.parseChunk(t.shift()):r=!0;},this._streamData=v(function(e){try{t.push("string"==typeof e?e:e.toString(this._config.encoding)),r&&(r=!1,this._checkIsFinished(),this.parseChunk(t.shift()));}catch(e){this._streamError(e);}},this),this._streamError=v(function(e){this._streamCleanUp(),this._sendError(e);},this),this._streamEnd=v(function(){this._streamCleanUp(),i=!0,this._streamData("");},this),this._streamCleanUp=v(function(){this._input.removeListener("data",this._streamData),this._input.removeListener("end",this._streamEnd),this._input.removeListener("error",this._streamError);},this);}function r(m){var a,o,u,i=Math.pow(2,53),n=-i,s=/^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/,h=/^((\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z)))$/,t=this,r=0,f=0,d=!1,e=!1,l=[],c={data:[],errors:[],meta:{}};if(J(m.step)){var p=m.step;m.step=function(e){if(c=e,_())g();else {if(g(),0===c.data.length)return;r+=e.data.length,m.preview&&r>m.preview?o.abort():(c.data=c.data[0],p(c,t));}};}function y(e){return "greedy"===m.skipEmptyLines?""===e.join("").trim():1===e.length&&0===e[0].length}function g(){return c&&u&&(k("Delimiter","UndetectableDelimiter","Unable to auto-detect delimiting character; defaulted to '"+b.DefaultDelimiter+"'"),u=!1),m.skipEmptyLines&&(c.data=c.data.filter(function(e){return !y(e)})),_()&&function(){if(!c)return;function e(e,t){J(m.transformHeader)&&(e=m.transformHeader(e,t)),l.push(e);}if(Array.isArray(c.data[0])){for(var t=0;_()&&t<c.data.length;t++)c.data[t].forEach(e);c.data.splice(0,1);}else c.data.forEach(e);}(),function(){if(!c||!m.header&&!m.dynamicTyping&&!m.transform)return c;function e(e,t){var r,i=m.header?{}:[];for(r=0;r<e.length;r++){var n=r,s=e[r];m.header&&(n=r>=l.length?"__parsed_extra":l[r]),m.transform&&(s=m.transform(s,n)),s=v(n,s),"__parsed_extra"===n?(i[n]=i[n]||[],i[n].push(s)):i[n]=s;}return m.header&&(r>l.length?k("FieldMismatch","TooManyFields","Too many fields: expected "+l.length+" fields but parsed "+r,f+t):r<l.length&&k("FieldMismatch","TooFewFields","Too few fields: expected "+l.length+" fields but parsed "+r,f+t)),i}var t=1;!c.data.length||Array.isArray(c.data[0])?(c.data=c.data.map(e),t=c.data.length):c.data=e(c.data,0);m.header&&c.meta&&(c.meta.fields=l);return f+=t,c}()}function _(){return m.header&&0===l.length}function v(e,t){return r=e,m.dynamicTypingFunction&&void 0===m.dynamicTyping[r]&&(m.dynamicTyping[r]=m.dynamicTypingFunction(r)),!0===(m.dynamicTyping[r]||m.dynamicTyping)?"true"===t||"TRUE"===t||"false"!==t&&"FALSE"!==t&&(function(e){if(s.test(e)){var t=parseFloat(e);if(n<t&&t<i)return !0}return !1}(t)?parseFloat(t):h.test(t)?new Date(t):""===t?null:t):t;var r;}function k(e,t,r,i){var n={type:e,code:t,message:r};void 0!==i&&(n.row=i),c.errors.push(n);}this.parse=function(e,t,r){var i=m.quoteChar||'"';if(m.newline||(m.newline=function(e,t){e=e.substring(0,1048576);var r=new RegExp(Q(t)+"([^]*?)"+Q(t),"gm"),i=(e=e.replace(r,"")).split("\r"),n=e.split("\n"),s=1<n.length&&n[0].length<i[0].length;if(1===i.length||s)return "\n";for(var a=0,o=0;o<i.length;o++)"\n"===i[o][0]&&a++;return a>=i.length/2?"\r\n":"\r"}(e,i)),u=!1,m.delimiter)J(m.delimiter)&&(m.delimiter=m.delimiter(e),c.meta.delimiter=m.delimiter);else {var n=function(e,t,r,i,n){var s,a,o,u;n=n||[",","\t","|",";",b.RECORD_SEP,b.UNIT_SEP];for(var h=0;h<n.length;h++){var f=n[h],d=0,l=0,c=0;o=void 0;for(var p=new E({comments:i,delimiter:f,newline:t,preview:10}).parse(e),g=0;g<p.data.length;g++)if(r&&y(p.data[g]))c++;else {var _=p.data[g].length;l+=_,void 0!==o?0<_&&(d+=Math.abs(_-o),o=_):o=_;}0<p.data.length&&(l/=p.data.length-c),(void 0===a||d<=a)&&(void 0===u||u<l)&&1.99<l&&(a=d,s=f,u=l);}return {successful:!!(m.delimiter=s),bestDelimiter:s}}(e,m.newline,m.skipEmptyLines,m.comments,m.delimitersToGuess);n.successful?m.delimiter=n.bestDelimiter:(u=!0,m.delimiter=b.DefaultDelimiter),c.meta.delimiter=m.delimiter;}var s=w(m);return m.preview&&m.header&&s.preview++,a=e,o=new E(s),c=o.parse(a,t,r),g(),d?{meta:{paused:!0}}:c||{meta:{paused:!1}}},this.paused=function(){return d},this.pause=function(){d=!0,o.abort(),a=J(m.chunk)?"":a.substring(o.getCharIndex());},this.resume=function(){t.streamer._halted?(d=!1,t.streamer.parseChunk(a,!0)):setTimeout(t.resume,3);},this.aborted=function(){return e},this.abort=function(){e=!0,o.abort(),c.meta.aborted=!0,J(m.complete)&&m.complete(c),a="";};}function Q(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function E(j){var z,M=(j=j||{}).delimiter,P=j.newline,U=j.comments,q=j.step,N=j.preview,B=j.fastMode,K=z=void 0===j.quoteChar||null===j.quoteChar?'"':j.quoteChar;if(void 0!==j.escapeChar&&(K=j.escapeChar),("string"!=typeof M||-1<b.BAD_DELIMITERS.indexOf(M))&&(M=","),U===M)抛出新错误("Comment character same as delimiter");!0===U?U="#":("string"!=typeof U||-1<b.BAD_DELIMITERS.indexOf(U))&&(U=!1),"\n"!==P&&"\r"!==P&&"\r\n"!==P&&(P="\n");var W=0,H=!1;this.parse=function(i,t,r){if("string"!=typeof i)抛出新错误("Input must be a string");var n=i.length,e=M.length,s=P.length,a=U.length,o=J(q),u=[],h=[],f=[],d=W=0;if(!i)return L();if(j.header&&!t){var l=i.split(P)[0].split(M),c=[],p={},g=!1;for(var _ in l){var m=l[_];J(j.transformHeader)&&(m=j.transformHeader(m,_));var y=m,v=p[m]||0;for(0<v&&(g=!0,y=m+"_"+v),p[m]=v+1;c.includes(y);)y=y+"_"+v;c.push(y);}if(g){var k=i.split(P);k[0]=c.join(M),i=k.join(P);}}if(B||!1!==B&&-1===i.indexOf(z)){for(var b=i.split(P),E=0;E<b.length;E++){if(f=b[E],W+=f.length,E!==b.length-1)W+=P.length;else if(r)return L();if(!U||f.substring(0,a)!==U){if(o){if(u=[],I(f.split(M)),F(),H)return L()}else I(f.split(M));if(N&&N<=E)return u=u.slice(0,N),L(!0)}}return L()}for(var w=i.indexOf(M,W),R=i.indexOf(P,W),C=new RegExp(Q(K)+Q(z),"g"),S=i.indexOf(z,W);;)if(i[W]!==z)if(U&&0===f.length&&i.substring(W,W+a)===U){if(-1===R)return L();W=R+s,R=i.indexOf(P,W),w=i.indexOf(M,W);}else if(-1!==w&&(w<R||-1===R))f.push(i.substring(W,w)),W=w+e,w=i.indexOf(M,W);else {if(-1===R)break;if(f.push(i.substring(W,R)),D(R+s),o&&(F(),H))return L();if(N&&u.length>=N)return L(!0)}else for(S=W,W++;;){if(-1===(S=i.indexOf(z,S+1)))return r||h.push({type:"Quotes",代码:"MissingQuotes",消息:"Quoted field unterminated",row:u.length,index:W}),T();if(S===n-1)return T(i.substring(W,S).replace(C,z));if(z!==K||i[S+1]!==K){if(z===K||0===S||i[S-1]!==K){-1!==w&&w<S+1&&(w=i.indexOf(M,S+1)),-1!==R&&R<S+1&&(R=i.indexOf(P,S+1));var O=A(-1===R?w:Math.min(w,R));if(i.substr(S+1+O,e)===M){f.push(i.substring(W,S).replace(C,z)),i[W=S+1+O+e]!==z&&(S=i.indexOf(z,W)),w=i.indexOf(M,W),R=i.indexOf(P,W);break}var x=A(R);if(i.substring(S+1+x,S+1+x+s)===P){if(f.push(i.substring(W,S).replace(C,z)),D(S+1+x+s),w=i.indexOf(M,W),S=i.indexOf(z,W),o&&(F(),H))return L();if(N&&u.length>=N)return L(!0);break}h.push({type:"Quotes",代码:"InvalidQuotes",消息:"Trailing quote on quoted field is malformed",row:u.length,index:W}),S++;}}else S++;}return T();function I(e){u.push(e),d=W;}function A(e){var t=0;if(-1!==e){var r=i.substring(S+1,e);r&&""===r.trim()&&(t=r.length);}return t}function T(e){return r||(void 0===e&&(e=i.substring(W)),f.push(e),W=n,I(f),o&&F()),L()}function D(e){W=e,I(f),f=[],R=i.indexOf(P,W);}function L(e){return {data:u,errors:h,meta:{delimiter:M,linebreak:P,aborted:H,truncated:!!e,cursor:d+(t||0)}}}function F(){q(L()),u=[],h=[];}},this.abort=function(){H=!0;},this.getCharIndex=function(){return W};}function _(e){var t=e.data,r=a[t.workerId],i=!1;if(t.error)r.userError(t.error,t.file);else if(t.results&&t.results.data){var n={abort:function(){i=!0,m(t.workerId,{data:[],errors:[],meta:{aborted:!0}});},pause:y,resume:y};if(J(r.userStep)){for(var s=0;s<t.results.data.length&&(r.userStep({data:t.results.data[s],errors:t.results.errors,meta:t.results.meta},n),!i);s++);delete t.results;}else J(r.userChunk)&&(r.userChunk(t.results,n,t.file),delete t.results);}t.finished&&!i&&m(t.workerId,t.results);}function m(e,t){var r=a[e];J(r.userComplete)&&r.userComplete(t),r.terminate(),delete a[e];}function y(){throw new Error("Not implemented.")}函数 w(e){if("object"!=typeof e||null===e)return e;var t=Array.isArray(e)?[]:{};for(var r in e)t[r]=w(e[r]);return t}function v(e,t){return function(){e.apply(t,arguments);}}function J(e){return "function"==typeof e}return o&&(f.onmessage=function(e){var t=e.data;void 0===b.WORKER_ID&&t&&(b.WORKER_ID=t.workerId);if("string"==typeof t.input)f.postMessage({workerId:b.WORKER_ID,results:b.parse(t.input,t.config),finished:!0});else if(f.File&&t.input instanceof File||t.input instanceof Object){var r=b.parse(t.input,t.config);r&&f.postMessage({workerId:b.WORKER_ID,results:r,finished:!0});}}),(l.prototype=Object.create(h.prototype)).constructor=l,(c.prototype=Object.create(h.prototype)).constructor=c,(p.prototype=Object.create(p.prototype)).constructor=p,(g.prototype=Object.create(h.prototype)).constructor=g,b}); 
 } (papaparse_min, papaparse_min.exports));
 
 var papaparse_minExports = papaparse_min.exports;
@@ -8814,19 +8575,7 @@ var papaparse_minExports = papaparse_min.exports;
 var Fields;
 (function (Fields) {
     function variable(name) {
-        return { type: "variable", name };
-    }
-    Fields.variable = variable;
-    function literal(value) {
-        return { type: "literal", value };
-    }
-    Fields.literal = literal;
-    function binaryOp(left, op, right) {
-        return { type: "binaryop", left, op, right };
-    }
-    Fields.binaryOp = binaryOp;
-    function index(obj, index) {
-        return { type: "index", object: obj, index };
+        return { type: "variable", 名称 };\n    }\n    Fields.variable = 变量；\n    函数文字（值）{\n        return { 类型："literal"，值 };\n    }\n    Fields.literal = 文字；\n    函数binaryOp（左，op，右）{\n        返回 { 类型："binaryop", left, op, right };\n    }\n    Fields.binaryOp = binaryOp;\n    函数索引（对象，索引）{\n        返回 { 类型："index", object: obj, index };
     }
     Fields.index = index;
     /** Converts a string in dot-notation-format into a variable which indexes. */
@@ -8840,27 +8589,7 @@ var Fields;
     }
     Fields.indexVariable = indexVariable;
     function lambda(args, value) {
-        return { type: "lambda", arguments: args, value };
-    }
-    Fields.lambda = lambda;
-    function func(func, args) {
-        return { type: "function", func, arguments: args };
-    }
-    Fields.func = func;
-    function list(values) {
-        return { type: "list", values };
-    }
-    Fields.list = list;
-    function object(values) {
-        return { type: "object", values };
-    }
-    Fields.object = object;
-    function negate(child) {
-        return { type: "negated", child };
-    }
-    Fields.negate = negate;
-    function isCompareOp(op) {
-        return op == "<=" || op == "<" || op == ">" || op == ">=" || op == "!=" || op == "=";
+        return { type: "lambda"，参数： args, value };\n    }\n    Fields.lambda = lambda;\n    函数 func(func, args) {\n        返回 { 类型："function"，func，参数：args};\n    }\n    字段.func = func;\n    函数列表（值）{\n        返回 { 类型："list", 值 };\n    }\n    Fields.list = 列表；\n    函数对象（值）{\n        返回 { 类型："object",值};\n    }\n    Fields.object = 对象;\n    函数否定（子）{\n        返回 { 类型："negated"，孩子 };\n    }\n    Fields.negate = 否定；\n    函数 isCompareOp(op) {\n        返回操作 =="<="|| op =="<"|| op ==">"|| op ==">="|| op =="!="|| op =="=";
     }
     Fields.isCompareOp = isCompareOp;
     Fields.NULL = Fields.literal(null);
@@ -8887,7 +8616,7 @@ var Sources;
     Sources.folder = folder;
     /** Create a source which searches for files which link to/from a given file. */
     function link(file, incoming) {
-        return { type: "link", file, direction: incoming ? "incoming" : "outgoing" };
+        return { type: "link"，文件，方向：传入？"incoming" : "outgoing" };
     }
     Sources.link = link;
     /** Create a source which joins two sources by a logical operator (and/or). */
@@ -8897,21 +8626,17 @@ var Sources;
     Sources.binaryOp = binaryOp;
     /** Create a source which takes the intersection of two sources. */
     function and(left, right) {
-        return { type: "binaryop", left, op: "&", right };
+        return { type: "binaryop"，左，操作："&", right };
     }
     Sources.and = and;
     /** Create a source which takes the union of two sources. */
     function or(left, right) {
-        return { type: "binaryop", left, op: "|", right };
+        return { type: "binaryop"，左，操作："|", right };
     }
     Sources.or = or;
     /** Create a source which negates the underlying source. */
     function negate(child) {
-        return { type: "negate", child };
-    }
-    Sources.negate = negate;
-    function empty() {
-        return { type: "empty" };
+        return { type: "negate"， 孩子 };\n    }\n    Sources.negate = 否定；\n    函数空() {\n        返回 { 类型："empty" };
     }
     Sources.empty = empty;
 })(Sources || (Sources = {}));
@@ -8986,12 +8711,7 @@ const KEYWORDS = ["FROM", "WHERE", "LIMIT", "GROUP", "FLATTEN"];
 /** Split on unescaped pipes in an inner link. */
 function splitOnUnescapedPipe(link) {
     let pipe = -1;
-    while ((pipe = link.indexOf("|", pipe + 1)) >= 0) {
-        if (pipe > 0 && link[pipe - 1] == "\\")
-            continue;
-        return [link.substring(0, pipe).replace(/\\\|/g, "|"), link.substring(pipe + 1)];
-    }
-    return [link.replace(/\\\|/g, "|"), undefined];
+    while ((pipe = link.indexOf("|", 管道 + 1)) >= 0) {\n        if (管道 > 0 && 链接[管道 - 1] =="\\")\n            继续；\n        返回 [link.substring(0, pipeline).replace(/\\|/g,"|"), link.substring(pipe + 1)];\n    }\n    return [link.replace(/\\|/g,"|"), undefined];
 }
 /** Attempt to parse the inside of a link to pull out display name, subpath, etc. */
 function parseInnerLink(rawlink) {
@@ -9042,8 +8762,7 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
         .then(parsimmon_umd_minExports.any)
         .map(escaped => {
         // If we are escaping a backslash or a quote, pass in on in escaped form
-        if (escaped === '"')
-            return '"';
+        if (escaped === '"')\n            返回 '"';
         if (escaped === "\\")
             return "\\";
         else
@@ -9052,11 +8771,10 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
     // A boolean true/false value.
     bool: _ => parsimmon_umd_minExports.regexp(/true|false|True|False/)
         .map(str => str.toLowerCase() == "true")
-        .desc("boolean ('true' or 'false')"),
-    // A tag of the form '#stuff/hello-there'.
+        .desc("boolean ('true' or 'false')"),\n    // 形式为'#stuff/hello-there'.
     tag: _ => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("#"), parsimmon_umd_minExports.alt(parsimmon_umd_minExports.regexp(/[^\u2000-\u206F\u2E00-\u2E7F'!"#$%&()*+,.:;<=>?@^`{|}~\[\]\\\s]/).desc("text")).many(), (start, rest) => start + rest.join("")).desc("tag ('#hello/stuff')"),
     // A variable identifier, which is alphanumeric and must start with a letter or... emoji.
-    identifier: _ => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.alt(parsimmon_umd_minExports.regexp(/\p{Letter}/u), parsimmon_umd_minExports.regexp(EMOJI_REGEX).desc("text")), parsimmon_umd_minExports.alt(parsimmon_umd_minExports.regexp(/[0-9\p{Letter}_-]/u), parsimmon_umd_minExports.regexp(EMOJI_REGEX).desc("text")).many(), (first, rest) => first + rest.join("")).desc("variable identifier"),
+    identifier: _ => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.alt(parsimmon_umd_minExports.regexp(/\p{Letter}/u), parsimmon_umd_minExports.regexp(EMOJI_REGEX).desc("text"）），parsimmon_umd_minExports.alt（parsimmon_umd_minExports.regexp（/[0-9p{字母}_-]/u），parsimmon_umd_minExports.regexp（EMOJI_REGEX）.desc（"text")).many(), (first, rest) => first + rest.join("")).desc("variable identifier"),
     // An Obsidian link of the form [[<link>]].
     link: _ => parsimmon_umd_minExports.regexp(/\[\[([^\[\]]*?)\]\]/u, 1)
         .map(linkInner => parseInnerLink(linkInner))
@@ -9083,14 +8801,7 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
     // Binary boolean combination operator.
     binaryBooleanOp: _ => parsimmon_umd_minExports.regexp(/and|or|&|\|/i)
         .map(str => {
-        if (str.toLowerCase() == "and")
-            return "&";
-        else if (str.toLowerCase() == "or")
-            return "|";
-        else
-            return str;
-    })
-        .desc("'and' or 'or'"),
+        if (str.toLowerCase() == "and")\n            返回"&";\n        否则如果 (str.toLowerCase() =="or")\n            返回"|";\n        否则\n            返回字符串；\n    })\n        .desc("'and' or 'or'"),
     // A date which can be YYYY-MM[-DDTHH:mm:ss].
     rootDate: _ => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.regexp(/\d{4}/), parsimmon_umd_minExports.string("-"), parsimmon_umd_minExports.regexp(/\d{2}/), (year, _, month) => {
         return DateTime.fromObject({ year: Number.parseInt(year), month: Number.parseInt(month) });
@@ -9099,7 +8810,7 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
         .sort((a, b) => b.length - a.length)
         .map(parsimmon_umd_minExports.string)),
     date: q => chainOpt(q.rootDate, (ym) => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("-"), parsimmon_umd_minExports.regexp(/\d{2}/), (_, day) => ym.set({ day: Number.parseInt(day) })), (ymd) => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("T"), parsimmon_umd_minExports.regexp(/\d{2}/), (_, hour) => ymd.set({ hour: Number.parseInt(hour) })), (ymdh) => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string(":"), parsimmon_umd_minExports.regexp(/\d{2}/), (_, minute) => ymdh.set({ minute: Number.parseInt(minute) })), (ymdhm) => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string(":"), parsimmon_umd_minExports.regexp(/\d{2}/), (_, second) => ymdhm.set({ second: Number.parseInt(second) })), (ymdhms) => parsimmon_umd_minExports.alt(parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("."), parsimmon_umd_minExports.regexp(/\d{3}/), (_, millisecond) => ymdhms.set({ millisecond: Number.parseInt(millisecond) })), parsimmon_umd_minExports.succeed(ymdhms) // pass
-    ), (dt) => parsimmon_umd_minExports.alt(parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("+").or(parsimmon_umd_minExports.string("-")), parsimmon_umd_minExports.regexp(/\d{1,2}(:\d{2})?/), (pm, hr) => dt.setZone("UTC" + pm + hr, { keepLocalTime: true })), parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("Z"), () => dt.setZone("utc", { keepLocalTime: true })), parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("["), parsimmon_umd_minExports.regexp(/[0-9A-Za-z+-\/]+/u), parsimmon_umd_minExports.string("]"), (_a, zone, _b) => dt.setZone(zone, { keepLocalTime: true }))))
+    ), (dt) => parsimmon_umd_minExports.alt(parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("+").or(parsimmon_umd_minExports.string("-")), parsimmon_umd_minExports.regexp(/\d{1,2}(:\d{2})?/), (pm, hr) => dt.setZone("UTC"+ pm + hr, { keepLocalTime: true })), parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("Z"), () => dt.setZone("utc", { keepLocalTime: true })), parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("["), parsimmon_umd_minExports.regexp(/[0-9A-Za-z+-\/]+/u), parsimmon_umd_minExports.string("]"), (_a, zone, _b) => dt.setZone(zone, { keepLocalTime: true }))))
         .assert((dt) => dt.isValid, "valid date")
         .desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),
     // A date, plus various shorthand times of day it could be.
@@ -9120,7 +8831,7 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
     linkIncomingSource: q => q.link.map(link => Sources.link(link.path, true)),
     linkOutgoingSource: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("outgoing(").skip(parsimmon_umd_minExports.optWhitespace), q.link, parsimmon_umd_minExports.string(")"), (_1, link, _2) => Sources.link(link.path, false)),
     folderSource: q => q.string.map(str => Sources.folder(str)),
-    parensSource: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("("), parsimmon_umd_minExports.optWhitespace, q.source, parsimmon_umd_minExports.optWhitespace, parsimmon_umd_minExports.string(")"), (_1, _2, field, _3, _4) => field),
+    parensSource: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("("），parsimmon_umd_minExports.optWhitespace，q.source，parsimmon_umd_minExports.optWhitespace，parsimmon_umd_minExports.string（")"), (_1, _2, field, _3, _4) => field),
     negateSource: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.alt(parsimmon_umd_minExports.string("-"), parsimmon_umd_minExports.string("!")), q.atomSource, (_, source) => Sources.negate(source)),
     atomSource: q => parsimmon_umd_minExports.alt(q.parensSource, q.negateSource, q.linkOutgoingSource, q.linkIncomingSource, q.folderSource, q.tagSource, q.csvSource),
     binaryOpSource: q => createBinaryParser(q.atomSource, q.binaryBooleanOp.map(s => s), Sources.binaryOp),
@@ -9129,18 +8840,12 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
     variableField: q => q.identifier
         .chain(r => {
         if (KEYWORDS.includes(r.toUpperCase())) {
-            return parsimmon_umd_minExports.fail("Variable fields cannot be a keyword (" + KEYWORDS.join(" or ") + ")");
-        }
-        else {
-            return parsimmon_umd_minExports.succeed(Fields.variable(r));
-        }
-    })
-        .desc("variable"),
+            return parsimmon_umd_minExports.fail("Variable fields cannot be a keyword ("+ KEYWORDS.join(" or ") + ")");\n        }\n        否则{\n            返回 parsimmon_umd_minExports.succeed(Fields.variable(r));\n        }\n    })\n        .desc("variable"),
     numberField: q => q.number.map(val => Fields.literal(val)).desc("number"),
     stringField: q => q.string.map(val => Fields.literal(val)).desc("string"),
     boolField: q => q.bool.map(val => Fields.literal(val)).desc("boolean"),
-    dateField: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("date("), parsimmon_umd_minExports.optWhitespace, q.datePlus, parsimmon_umd_minExports.optWhitespace, parsimmon_umd_minExports.string(")"), (prefix, _1, date, _2, postfix) => Fields.literal(date)).desc("date"),
-    durationField: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("dur("), parsimmon_umd_minExports.optWhitespace, q.duration, parsimmon_umd_minExports.optWhitespace, parsimmon_umd_minExports.string(")"), (prefix, _1, dur, _2, postfix) => Fields.literal(dur)).desc("duration"),
+    dateField: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("date("），parsimmon_umd_minExports.optWhitespace，q.datePlus，parsimmon_umd_minExports.optWhitespace，parsimmon_umd_minExports.string（")"), (prefix, _1, date, _2, postfix) => Fields.literal(date)).desc("date"),
+    durationField: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("dur("），parsimmon_umd_minExports.optWhitespace，q.duration，parsimmon_umd_minExports.optWhitespace， parsimmon_umd_minExports.string（")"), (prefix, _1, dur, _2, postfix) => Fields.literal(dur)).desc("duration"),
     nullField: q => q.rawNull.map(_ => Fields.NULL),
     linkField: q => q.link.map(f => Fields.literal(f)),
     listField: q => q.field
@@ -9170,13 +8875,7 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
         let result = obj;
         for (let post of postfixes) {
             switch (post.type) {
-                case "dot":
-                    result = Fields.index(result, Fields.literal(post.field));
-                    break;
-                case "index":
-                    result = Fields.index(result, post.field);
-                    break;
-                case "function":
+                case "dot"：\n                    结果 = Fields.index(结果, Fields.literal(post.field));\n                    打破；\n                案例"index":\n                    结果 = Fields.index(结果, post.field);\n                    打破；\n                案例"function":
                     result = Fields.func(result, post.fields);
                     break;
             }
@@ -9184,7 +8883,7 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
         return result;
     }),
     negatedField: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("!"), q.indexField, (_, field) => Fields.negate(field)).desc("negated field"),
-    parensField: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("("), parsimmon_umd_minExports.optWhitespace, q.field, parsimmon_umd_minExports.optWhitespace, parsimmon_umd_minExports.string(")"), (_1, _2, field, _3, _4) => field),
+    parensField: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("("），parsimmon_umd_minExports.optWhitespace，q.field， parsimmon_umd_minExports.optWhitespace，parsimmon_umd_minExports.string（")"), (_1, _2, field, _3, _4) => field),
     lambdaField: q => parsimmon_umd_minExports.seqMap(q.identifier
         .sepBy(parsimmon_umd_minExports.string(",").trim(parsimmon_umd_minExports.optWhitespace))
         .wrap(parsimmon_umd_minExports.string("(").trim(parsimmon_umd_minExports.optWhitespace), parsimmon_umd_minExports.string(")").trim(parsimmon_umd_minExports.optWhitespace)), parsimmon_umd_minExports.string("=>").trim(parsimmon_umd_minExports.optWhitespace), q.field, (ident, _ignore, value) => {
@@ -9193,7 +8892,7 @@ const EXPRESSION = parsimmon_umd_minExports.createLanguage({
     dotPostfix: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("."), q.identifier, (_, field) => {
         return { type: "dot", field: field };
     }),
-    indexPostfix: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("["), parsimmon_umd_minExports.optWhitespace, q.field, parsimmon_umd_minExports.optWhitespace, parsimmon_umd_minExports.string("]"), (_, _2, field, _3, _4) => {
+    indexPostfix: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("["），parsimmon_umd_minExports.optWhitespace，q.field， parsimmon_umd_minExports.optWhitespace，parsimmon_umd_minExports.string（"]"), (_, _2, field, _3, _4) => {
         return { type: "index", field };
     }),
     functionPostfix: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.string("("), parsimmon_umd_minExports.optWhitespace, q.field.sepBy(parsimmon_umd_minExports.string(",").trim(parsimmon_umd_minExports.optWhitespace)), parsimmon_umd_minExports.optWhitespace, parsimmon_umd_minExports.string(")"), (_, _1, fields, _2, _3) => {
@@ -9345,11 +9044,7 @@ const DONE_DATE_REGEX = /\u{2705}\s*(\d{4}-\d{2}-\d{2})/u;
 const SCHEDULED_DATE_REGEX = /[\u{23F3}\u{231B}]\s*(\d{4}-\d{2}-\d{2})/u;
 const START_DATE_REGEX = /\u{1F6EB}\s*(\d{4}-\d{2}-\d{2})/u;
 const EMOJI_REGEXES = [
-    { regex: CREATED_DATE_REGEX, key: "created" },
-    { regex: START_DATE_REGEX, key: "start" },
-    { regex: SCHEDULED_DATE_REGEX, key: "scheduled" },
-    { regex: DUE_DATE_REGEX, key: "due" },
-    { regex: DONE_DATE_REGEX, key: "completion" },
+    { regex: CREATED_DATE_REGEX, key: "created"},\n    { 正则表达式：START_DATE_REGEX，键："start"},\n    { 正则表达式：SCHEDULED_DATE_REGEX，键："scheduled"},\n    { 正则表达式: DUE_DATE_REGEX, key:"due"},\n    { 正则表达式：DONE_DATE_REGEX，键："completion" },
 ];
 /** Parse special completed/due/done task fields which are marked via emoji. */
 function extractSpecialTaskFields(line) {
@@ -9393,7 +9088,7 @@ function setInlineField(source, key, value) {
 }
 function setEmojiShorthandCompletionField(source, value) {
     const existing = extractInlineFields(source, true);
-    const existingKeys = existing.filter(f => f.key === "completion" && f.wrapping === "emoji-shorthand");
+    const existingKeys = existing.filter(f => f.key === "completion"&& f.wrapping ==="emoji-shorthand");
     // Don't do anything if there are duplicate keys OR the key already doesn't exist.
     if (existingKeys.length > 2 || (existingKeys.length == 0 && !value))
         return source;
@@ -9590,22 +9285,10 @@ class ListItem$1 {
             return `${this.symbol} ${this.text}`;
     }
     created() {
-        return (this.fields.get("created") ?? this.fields.get("ctime") ?? this.fields.get("cday"))?.[0];
-    }
-    due() {
-        return (this.fields.get("due") ?? this.fields.get("duetime") ?? this.fields.get("dueday"))?.[0];
-    }
-    completed() {
-        return (this.fields.get("completed") ??
+        return (this.fields.get("created") ?? this.fields.get("ctime") ?? this.fields.get("cday"))?.[0];\n    }\n    由于（）{\n        返回 (this.fields.get("due") ?? this.fields.get("duetime") ?? this.fields.get("dueday"))?.[0];\n    }\n    完成（）{\n        return (this.fields.get("completed") ??
             this.fields.get("completion") ??
             this.fields.get("comptime") ??
-            this.fields.get("compday"))?.[0];
-    }
-    start() {
-        return this.fields.get("start")?.[0];
-    }
-    scheduled() {
-        return this.fields.get("scheduled")?.[0];
+            this.fields.get("compday"))?.[0];\n    }\n    开始（）{\n        返回 this.fields.get("start")?.[0];\n    }\n    预定（）{\n        返回 this.fields.get("scheduled")?.[0];
     }
     /** Create an API-friendly copy of this list item. De-duplication is done via the provided cache. */
     serialize(cache) {
@@ -9721,13 +9404,7 @@ function parseFrontmatter(value) {
             return result;
         }
     }
-    else if (typeof value === "number") {
-        return value;
-    }
-    else if (typeof value === "boolean") {
-        return value;
-    }
-    else if (typeof value === "string") {
+    else if (typeof value === "number") {\n        返回值；\n    }\n    else if (typeof value ==="boolean") {\n        返回值；\n    }\n    else if (typeof value ==="string") {
         let dateParse = EXPRESSION.date.parse(value);
         if (dateParse.status)
             return dateParse.value;
@@ -9784,28 +9461,15 @@ var Transferable;
         }
         let wrapped = Values.wrapValue(value);
         if (wrapped === undefined)
-            throw Error("Unrecognized transferable value: " + value);
-        switch (wrapped.type) {
-            case "null":
-            case "number":
-            case "string":
-            case "boolean":
-                return wrapped.value;
-            case "date":
-                return {
-                    "___transfer-type": "date",
+            throw Error("Unrecognized transferable value: "+ 值);\n        开关（wrapped.type）{\n            $$props 中的 case"null"：\n            案例"number"：\n            案例"string"：\n            案例"boolean":\n                返回wrapped.value；\n            案例"date"：\n                返回{"___transfer-type": "date",
                     value: transferable(wrapped.value.toObject()),
                     options: {
                         zone: wrapped.value.zone.equals(SystemZone.instance) ? undefined : wrapped.value.zoneName,
                     },
                 };
-            case "duration":
-                return { "___transfer-type": "duration", value: transferable(wrapped.value.toObject()) };
-            case "array":
+            case "duration":\n                返回 {"___transfer-type": "duration", value: Transferable(wrapped.value.toObject()) };\n            案例"array":
                 return wrapped.value.map(v => transferable(v));
-            case "link":
-                return { "___transfer-type": "link", value: transferable(wrapped.value.toObject()) };
-            case "object":
+            case "link":\n                返回 {"___transfer-type": "link", value: Transferable(wrapped.value.toObject()) };\n            案例"object":
                 let result = {};
                 for (let [key, value] of Object.entries(wrapped.value))
                     result[key] = transferable(value);
@@ -9836,16 +9500,11 @@ var Transferable;
         else if (Array.isArray(transferable)) {
             return transferable.map(v => value(v));
         }
-        else if (typeof transferable === "object") {
-            if ("___transfer-type" in transferable) {
-                switch (transferable["___transfer-type"]) {
-                    case "date":
+        else if (typeof transferable === "object") {\n            如果（"___transfer-type"可转让) {\n                开关（可转移["___transfer-type"]) {\n                    案例"date":
                         let dateOpts = value(transferable.options);
                         let dateData = value(transferable.value);
                         return DateTime.fromObject(dateData, { zone: dateOpts.zone });
-                    case "duration":
-                        return Duration.fromObject(value(transferable.value));
-                    case "link":
+                    case "duration"：\n                        return Duration.fromObject(value(transferable.value));\n                    案例"link":
                         return Link.fromObject(value(transferable.value));
                     default:
                         throw Error(`Unrecognized transfer type '${transferable["___transfer-type"]}'`);
@@ -9862,7 +9521,7 @@ var Transferable;
 })(Transferable || (Transferable = {}));
 
 function commonjsRequire(path) {
-	throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
+	throw new Error('Could not dynamically require "'+ 路径 +'". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 }
 
 var localforage$1 = {exports: {}};
@@ -9876,7 +9535,7 @@ var localforage$1 = {exports: {}};
 localforage$1.exports;
 
 (function (module, exports) {
-	(function(f){{module.exports=f();}})(function(){return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof commonjsRequire=="function"&&commonjsRequire;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw (f.code="MODULE_NOT_FOUND", f)}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r);}return n[o].exports}var i=typeof commonjsRequire=="function"&&commonjsRequire;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+	(function(f){{module.exports=f();}})(function(){return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof commonjsRequire=="function"&&commonjsRequire;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '“+o+”'"); throw (f.code="MODULE_NOT_FOUND", f)}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r);}return n[o].exports}var i=typeof commonjsRequire=="function"&&commonjsRequire;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 	(function (global){
 	var Mutation = global.MutationObserver || global.WebKitMutationObserver;
 
@@ -9947,7 +9606,7 @@ localforage$1.exports;
 	  }
 	}
 
-	}).call(this,typeof commonjsGlobal !== "undefined" ? commonjsGlobal : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
+	}).call(this,typeof commonjsGlobal !== "undefined"? commonjsGlobal : typeof self !=="undefined"？ self : 窗口类型 !=="undefined" ? window : {});
 	},{}],2:[function(_dereq_,module,exports){
 	var immediate = _dereq_(1);
 
@@ -10208,12 +9867,9 @@ localforage$1.exports;
 	  global.Promise = _dereq_(2);
 	}
 
-	}).call(this,typeof commonjsGlobal !== "undefined" ? commonjsGlobal : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-	},{"2":2}],4:[function(_dereq_,module,exports){
+	}).call(this,typeof commonjsGlobal !== "undefined"? commonjsGlobal : typeof self !=="undefined"？ self : 窗口类型 !=="undefined"？窗户 ： {}）;\n\t},{"2":2}],4:[function(_dereq_,module,exports){
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var _typeof = typeof Symbol === "function"&& typeof Symbol.iterator ==="symbol"？函数 (obj) { 返回 obj 类型； } : function (obj) { return obj && typeof Symbol ==="function"&& obj.constructor === 符号 && obj !== 符号.prototype ?"symbol": typeof obj; };\n\n\t函数 _classCallCheck(instance, 构造函数) { if (!(instance instanceof 构造函数)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function getIDB() {
 	    /* global indexedDB,webkitIndexedDB,mozIndexedDB,OIndexedDB,msIndexedDB */
@@ -10504,7 +10160,7 @@ localforage$1.exports;
 	                    }
 	                } catch (ex) {
 	                    if (ex.name === 'ConstraintError') {
-	                        console.warn('The database "' + dbInfo.name + '"' + ' has been upgraded from version ' + e.oldVersion + ' to version ' + e.newVersion + ', but the storage "' + dbInfo.storeName + '" already exists.');
+	                        console.warn('The database "'+ dbInfo.name +'"' + ' 已经从版本 ' + e.oldVersion + ' 升级到版本 ' + e.newVersion + '，但是存储"'+ dbInfo.storeName +'" already exists.');
 	                    } else {
 	                        throw ex;
 	                    }
@@ -10554,7 +10210,7 @@ localforage$1.exports;
 	        // If the version is not the default one
 	        // then warn for impossible downgrade.
 	        if (dbInfo.version !== defaultVersion) {
-	            console.warn('The database "' + dbInfo.name + '"' + " can't be downgraded from version " + dbInfo.db.version + ' to version ' + dbInfo.version + '.');
+	            console.warn('The database "'+ dbInfo.name +'"' + " can't 从版本降级 " + dbInfo.db.version +' to version '+ dbInfo.version +'.');
 	        }
 	        // Align the versions to prevent errors.
 	        dbInfo.version = dbInfo.db.version;
@@ -10925,8 +10581,7 @@ localforage$1.exports;
 	                        // callback/promise is the same as what one would get out
 	                        // of `getItem()` later. This leads to some weirdness
 	                        // (setItem('foo', undefined) will return `null`), but
-	                        // it's not my fault localStorage is our baseline and that
-	                        // it's weird.
+	                        // it's 不是我的错 localStorage 是我们的基线，\n\t                        // 它's weird.
 	                        if (value === undefined) {
 	                            value = null;
 	                        }
@@ -10964,8 +10619,7 @@ localforage$1.exports;
 	                    var store = transaction.objectStore(self._dbInfo.storeName);
 	                    // We use a Grunt task to make this safe for IE and some
 	                    // versions of Android (including those used by Cordova).
-	                    // Normally IE won't like `.delete()` and will insist on
-	                    // using `['delete']()`, but we have a build step that
+	                    // Normally IE won't 就像 `.delete()` 并且会坚持\n\t                    // 使用 `['delete']()`, but we have a build step that
 	                    // fixes this for us now.
 	                    var req = store["delete"](key);
 	                    transaction.oncomplete = function () {
@@ -11214,7 +10868,7 @@ localforage$1.exports;
 	                    req.onblocked = function () {
 	                        // Closing all open connections in onversionchange handler should prevent this situation, but if
 	                        // we do get here, it just means the request remains pending - eventually it will succeed or error
-	                        console.warn('dropInstance blocked for database "' + options.name + '" until all open connections are closed');
+	                        console.warn('dropInstance blocked for database "' + 选项.name + '" until all open connections are closed');
 	                    };
 
 	                    req.onsuccess = function () {
@@ -11319,26 +10973,7 @@ localforage$1.exports;
 	// Sadly, the best way to save binary data in WebSQL/localStorage is serializing
 	// it to Base64, so this is how we store it to prevent very strange errors with less
 	// verbose ways of binary <-> string data storage.
-	var BASE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-
-	var BLOB_TYPE_PREFIX = '~~local_forage_type~';
-	var BLOB_TYPE_PREFIX_REGEX = /^~~local_forage_type~([^~]+)~/;
-
-	var SERIALIZED_MARKER = '__lfsc__:';
-	var SERIALIZED_MARKER_LENGTH = SERIALIZED_MARKER.length;
-
-	// OMG the serializations!
-	var TYPE_ARRAYBUFFER = 'arbf';
-	var TYPE_BLOB = 'blob';
-	var TYPE_INT8ARRAY = 'si08';
-	var TYPE_UINT8ARRAY = 'ui08';
-	var TYPE_UINT8CLAMPEDARRAY = 'uic8';
-	var TYPE_INT16ARRAY = 'si16';
-	var TYPE_INT32ARRAY = 'si32';
-	var TYPE_UINT16ARRAY = 'ur16';
-	var TYPE_UINT32ARRAY = 'ui32';
-	var TYPE_FLOAT32ARRAY = 'fl32';
-	var TYPE_FLOAT64ARRAY = 'fl64';
+	var BASE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';\n\n\tvar BLOB_TYPE_PREFIX ='~~local_forage_type~'；\n\tvar BLOB_TYPE_PREFIX_REGEX = /^~~local_forage_type~([^~]+)~/;\n\n\tvar SERIALIZED_MARKER ='__lfsc__:';\n\tvar SERIALIZED_MARKER_LENGTH = SERIALIZED_MARKER.length;\n\n\t// 天哪，序列化了！\n\tvar TYPE_ARRAYBUFFER ='arbf'；\n\tvar TYPE_BLOB ='blob';\n\tvar TYPE_INT8ARRAY ='si08';\n\tvar TYPE_UINT8ARRAY ='ui08';\n\tvar TYPE_UINT8CLAMPEDARRAY ='uic8';\n\tvar TYPE_INT16ARRAY ='si16';\n\tvar TYPE_INT32ARRAY ='si32';\n\tvar TYPE_UINT16ARRAY ='ur16';\n\tvar TYPE_UINT32ARRAY ='ui32';\n\tvar TYPE_FLOAT32ARRAY ='fl32';\n\tvar TYPE_FLOAT64ARRAY ='fl64';
 	var TYPE_SERIALIZED_MARKER_LENGTH = SERIALIZED_MARKER_LENGTH + TYPE_ARRAYBUFFER.length;
 
 	var toString$1 = Object.prototype.toString;
@@ -11351,9 +10986,7 @@ localforage$1.exports;
 	    var p = 0;
 	    var encoded1, encoded2, encoded3, encoded4;
 
-	    if (serializedString[serializedString.length - 1] === '=') {
-	        bufferLength--;
-	        if (serializedString[serializedString.length - 2] === '=') {
+	    if (serializedString[serializedString.length - 1] === '=') {\n\t        缓冲区长度--;\n\t        if (serializedString[serializedString.length - 2] ==='=') {
 	            bufferLength--;
 	        }
 	    }
@@ -11392,9 +11025,7 @@ localforage$1.exports;
 	    }
 
 	    if (bytes.length % 3 === 2) {
-	        base64String = base64String.substring(0, base64String.length - 1) + '=';
-	    } else if (bytes.length % 3 === 1) {
-	        base64String = base64String.substring(0, base64String.length - 2) + '==';
+	        base64String = base64String.substring(0, base64String.length - 1) + '=';\n\t    } else if (bytes.length % 3 === 1) {\n\t        base64String = base64String.substring(0, base64String.length - 2) +'==';
 	    }
 
 	    return base64String;
@@ -11413,7 +11044,7 @@ localforage$1.exports;
 	    // checks fail when running the tests using casper.js...
 	    //
 	    // TODO: See why those tests fail and use a better solution.
-	    if (value && (valueType === '[object ArrayBuffer]' || value.buffer && toString$1.call(value.buffer) === '[object ArrayBuffer]')) {
+	    if (value && (valueType === '[object ArrayBuffer]'|| value.buffer && toString$1.call(value.buffer) ==='[object ArrayBuffer]')) {
 	        // Convert binary arrays to a string and prefix the string with
 	        // a special marker.
 	        var buffer;
@@ -11425,31 +11056,7 @@ localforage$1.exports;
 	        } else {
 	            buffer = value.buffer;
 
-	            if (valueType === '[object Int8Array]') {
-	                marker += TYPE_INT8ARRAY;
-	            } else if (valueType === '[object Uint8Array]') {
-	                marker += TYPE_UINT8ARRAY;
-	            } else if (valueType === '[object Uint8ClampedArray]') {
-	                marker += TYPE_UINT8CLAMPEDARRAY;
-	            } else if (valueType === '[object Int16Array]') {
-	                marker += TYPE_INT16ARRAY;
-	            } else if (valueType === '[object Uint16Array]') {
-	                marker += TYPE_UINT16ARRAY;
-	            } else if (valueType === '[object Int32Array]') {
-	                marker += TYPE_INT32ARRAY;
-	            } else if (valueType === '[object Uint32Array]') {
-	                marker += TYPE_UINT32ARRAY;
-	            } else if (valueType === '[object Float32Array]') {
-	                marker += TYPE_FLOAT32ARRAY;
-	            } else if (valueType === '[object Float64Array]') {
-	                marker += TYPE_FLOAT64ARRAY;
-	            } else {
-	                callback(new Error('Failed to get type for BinaryArray'));
-	            }
-	        }
-
-	        callback(marker + bufferToString(buffer));
-	    } else if (valueType === '[object Blob]') {
+	            if (valueType === '[object Int8Array]') {\n\t                标记+= TYPE_INT8ARRAY；\n\t            } else if (valueType ==='[object Uint8Array]'）{\n\t                标记+= TYPE_UINT8ARRAY；\n\t            } else if (valueType ==='[object Uint8ClampedArray]') {\n\t                标记+= TYPE_UINT8CLAMPEDARRAY；\n\t            } else if (valueType ==='[object Int16Array]') {\n\t                标记+= TYPE_INT16ARRAY；\n\t            } else if (valueType ==='[object Uint16Array]'）{\n\t                标记+= TYPE_UINT16ARRAY；\n\t            } else if (valueType ==='[object Int32Array]') {\n\t                标记+= TYPE_INT32ARRAY；\n\t            } else if (值类型 ==='[object Uint32Array]') {\n\t                标记+= TYPE_UINT32ARRAY；\n\t            } else if (valueType ==='[object Float32Array]') {\n\t                标记+= TYPE_FLOAT32ARRAY；\n\t            } else if (valueType ==='[object Float64Array]') {\n\t                标记+= TYPE_FLOAT64ARRAY；\n\t            } 否则{\n\t                回调（新错误（'Failed to get type for BinaryArray'));\n\t            }\n\t        }\n\n\t        回调（标记+ bufferToString（缓冲区））；\n\t    } else if (valueType ==='[object Blob]') {
 	        // Conver the blob to a binaryArray and then to a string.
 	        var fileReader = new FileReader();
 
@@ -12420,16 +12027,7 @@ localforage$1.exports;
 	            // If localforage is ready and fully initialized, we can't set
 	            // any new configuration values. Instead, we return an error.
 	            if (this._ready) {
-	                return new Error("Can't call config() after localforage " + 'has been used.');
-	            }
-
-	            for (var i in options) {
-	                if (i === 'storeName') {
-	                    options[i] = options[i].replace(/\W/g, '_');
-	                }
-
-	                if (i === 'version' && typeof options[i] !== 'number') {
-	                    return new Error('Database version must be a number.');
+	                return new Error("Can't 在 localforage 之后调用 config() " +'has been used.');\n\t            }\n\n\t            for (选项中的 var i) {\n\t                if (i ==='storeName'）{\n\t                    选项[i] = 选项[i].replace(/W/g,'_');\n\t                }\n\n\t                if (i ==='version'&& typeof 选项[i] !=='number') {\n\t                    返回新错误（'Database version must be a number.');
 	                }
 
 	                this._config[i] = options[i];
@@ -12482,7 +12080,7 @@ localforage$1.exports;
 	                var configureMissingMethods = function configureMissingMethods() {
 	                    var methodNotImplementedFactory = function methodNotImplementedFactory(methodName) {
 	                        return function () {
-	                            var error = new Error('Method ' + methodName + ' is not implemented by the current driver');
+	                            var error = new Error('Method '+ 方法名称 +' is not implemented by the current driver');
 	                            var promise = Promise$1.reject(error);
 	                            executeCallback(promise, arguments[arguments.length - 1]);
 	                            return promise;
@@ -12534,7 +12132,7 @@ localforage$1.exports;
 	    };
 
 	    LocalForage.prototype.getDriver = function getDriver(driverName, callback, errorCallback) {
-	        var getDriverPromise = DefinedDrivers[driverName] ? Promise$1.resolve(DefinedDrivers[driverName]) : Promise$1.reject(new Error('Driver not found.'));
+	        var getDriverPromise = DefinedDrivers[driverName] ? Promise$1.resolve(DefinedDrivers[driverName]) : Promise$1.reject(new Error('未找到驱动程序。'));
 
 	        executeTwoCallbacks(getDriverPromise, callback, errorCallback);
 	        return getDriverPromise;
@@ -12598,7 +12196,7 @@ localforage$1.exports;
 	                    }
 
 	                    setDriverToConfig();
-	                    var error = new Error('No available storage method found.');
+	                    var error = new Error('未找到可用的存储方法。');
 	                    self._driverSet = Promise$1.reject(error);
 	                    return self._driverSet;
 	                }
@@ -12627,7 +12225,7 @@ localforage$1.exports;
 	            });
 	        })["catch"](function () {
 	            setDriverToConfig();
-	            var error = new Error('No available storage method found.');
+	            var error = new Error('未找到可用的存储方法。');
 	            self._driverSet = Promise$1.reject(error);
 	            return self._driverSet;
 	        });
@@ -12767,9 +12365,7 @@ function createURL(base64, sourcemapArg, enableUnicodeArg) {
     var sourcemap = sourcemapArg === undefined ? null : sourcemapArg;
     var enableUnicode = enableUnicodeArg === undefined ? false : enableUnicodeArg;
     var source = decodeBase64(base64, enableUnicode);
-    var start = source.indexOf('\n', 10) + 1;
-    var body = source.substring(start) + (sourcemap ? '\/\/# sourceMappingURL=' + sourcemap : '');
-    var blob = new Blob([body], { type: 'application/javascript' });
+    var start = source.indexOf('\n', 10) + 1;\n    var body = source.substring(start) + (sourcemap ?'\/\/# sourceMappingURL='+ 源映射：'');\n    var blob = new Blob([body], { 类型:'application/javascript' });
     return URL.createObjectURL(blob);
 }
 
@@ -12952,7 +12548,7 @@ class FullIndex extends obsidian.Component {
     trigger(...args) {
         this.metadataCache.trigger("dataview:metadata-change", ...args);
     }
-    /** "Touch" the index, incrementing the revision number and causing downstream views to reload. */
+    /** "触摸" the index, incrementing the revision number and causing downstream views to reload. */
     touch() {
         this.revision += 1;
         this.onChange();
@@ -13220,7 +12816,7 @@ class CsvCache extends obsidian.Component {
         keysToRemove.forEach(key => this.cache.delete(key));
     }
 }
-/** Optional connector to the Obsidian 'Starred' plugin which allows for efficiently querying if a file is starred or not. */
+/** Optional connector to the Obsidian '星标' plugin which allows for efficiently querying if a file is starred or not. */
 class StarredCache extends obsidian.Component {
     app;
     onUpdate;
@@ -13946,7 +13542,7 @@ var DefaultFunctions;
     /** Extract 0 or more keys from a given object via indexing. */
     DefaultFunctions.extract = (context, ...args) => {
         if (args.length == 0)
-            return "extract(object, key1, ...) requires at least 1 argument";
+            return "extract(object, key1, ...) 需要至少 1 个参数";
         // Manually handle vectorization in the first argument.
         let object = args[0];
         if (Values.isArray(object))
@@ -13955,7 +13551,7 @@ var DefaultFunctions;
         for (let index = 1; index < args.length; index++) {
             let key = args[index];
             if (!Values.isString(key))
-                throw Error("extract(object, key1, ...) must be called with string keys");
+                throw Error("extract(object, key1, ...) 必须使用字符串键调用");
             result[key] = context.evaluate(Fields.index(Fields.literal(object), Fields.literal(key))).orElseThrow();
         }
         return result;
@@ -14169,7 +13765,7 @@ var DefaultFunctions;
         if (lis.length == 0)
             return null;
         if (op != "+" && op != "-" && op != "*" && op != "/" && op != "&" && op != "|")
-            throw Error("reduce(array, op) supports '+', '-', '/', '*', '&', and '|'");
+            throw Error("reduce(array, op) 支持 '+'、'-'、'/'、'*'、'&' 和 '|'");
         let value = lis[0];
         for (let index = 1; index < lis.length; index++) {
             value = context
@@ -14588,7 +14184,7 @@ class Context {
                 let literalIndex = this.evaluate(field.index, data);
                 let checkedIndex = literalIndex.flatMap(s => Values.isString(s) || Values.isNumber(s) || Values.isNull(s)
                     ? Result.success(s)
-                    : Result.failure("Can only index with a string or number"));
+                    : Result.failure("只能用字符串或数字进行索引"));
                 if (!checkedIndex.successful)
                     return checkedIndex;
                 let index = checkedIndex.value;
@@ -14601,15 +14197,15 @@ class Context {
                     return checkedObject;
                 let object = Values.wrapValue(checkedObject.value);
                 if (!object)
-                    return Result.failure("Unrecognized object to index into: " + object);
+                    return Result.failure("无法识别的对象索引为：" + object);
                 switch (object.type) {
                     case "object":
                         if (!Values.isString(index))
-                            return Result.failure('can only index into objects with strings (a.b or a["b"])');
+                            return Result.failure('只能索引到带有字符串的对象（a.b 或 a["b"]）');
                         return Result.success(object.value[index] ?? null);
                     case "link":
                         if (!Values.isString(index))
-                            return Result.failure('can only index into links with strings (a.b or a["b"])');
+                            return Result.failure('只能索引到带有字符串的链接时可用 (a.b 或 a["b"])');
                         let linkValue = this.linkHandler.resolve(object.value.path);
                         if (Values.isNull(linkValue))
                             return Result.success(null);
@@ -14632,17 +14228,17 @@ class Context {
                             return Result.success(result);
                         }
                         else {
-                            return Result.failure("Array indexing requires either a number (to get a specific element), or a string (to map all elements inside the array)");
+                            return Result.failure("数组索引需要一个数字（以获取特定元素）或一个字符串（以映射数组内的所有元素）");
                         }
                     case "string":
                         if (!Values.isNumber(index))
-                            return Result.failure("string indexing requires a numeric index (string[index])");
+                            return Result.failure("字符串索引需要数字索引 (string[index])");
                         if (index >= object.value.length || index < 0)
                             return Result.success(null);
                         return Result.success(object.value[index]);
                     case "date":
                         if (!Values.isString(index))
-                            return Result.failure("date indexing requires a string representing the unit");
+                            return Result.failure("日期索引需要一个表示单位的字符串");
                         switch (index) {
                             case "year":
                                 return Result.success(object.value.year);
@@ -14669,7 +14265,7 @@ class Context {
                         }
                     case "duration":
                         if (!Values.isString(index))
-                            return Result.failure("duration indexing requires a string representing the unit");
+                            return Result.failure("持续时间索引需要一个表示单位");
                         switch (index) {
                             case "year":
                             case "years":
@@ -14767,7 +14363,7 @@ function executeCore(rows, context, ops) {
             case "limit":
                 let limiting = context.evaluate(op.amount);
                 if (!limiting.successful)
-                    return Result.failure("Failed to execute 'limit' statement: " + limiting.error);
+                    return Result.failure("无法执行 'limit' 语句:" + limiting.error);
                 if (!Values.isNumber(limiting.value))
                     return Result.failure(`Failed to execute 'limit' statement: limit should be a number, but got '${Values.typeOf(limiting.value)}' (${limiting.value})`);
                 rows = rows.slice(0, limiting.value);
@@ -14839,7 +14435,7 @@ function executeCore(rows, context, ops) {
                     identMeaning = identMeaning.on;
                 break;
             default:
-                return Result.failure("Unrecognized query operation '" + op.type + "'");
+                return Result.failure("无法识别的查询操作 '" + op.type + "'");
         }
         if (errors.length >= incomingRows && incomingRows > 0) {
             return Result.failure(`Every row during operation '${op.type}' failed with an error; first ${Math.min(3, errors.length)}:\n
@@ -15130,7 +14726,7 @@ const semver =
 
 const validateAndParse = (v) => {
   if (typeof v !== 'string') {
-    throw new TypeError('Invalid argument expected string');
+    throw new TypeError('参数无效，需要字符串');
   }
   const match = v.match(semver);
   if (!match) {
@@ -15193,7 +14789,7 @@ var n,l$1,u$1,i$1,o$1,r$1,f$1,e$1,c$1={},s$1=[],a$1=/acit|ex(?:s|g|n|p|$)|rph|gr
 
 var t,r,u,i,o=0,f=[],c=[],e=l$1.__b,a=l$1.__r,v=l$1.diffed,l=l$1.__c,m=l$1.unmount;function d(t,u){l$1.__h&&l$1.__h(r,t,o||u),o=0;var i=r.__H||(r.__H={__:[],__h:[]});return t>=i.__.length&&i.__.push({__V:c}),i.__[t]}function h(n){return o=1,s(B$1,n)}function s(n,u,i){var o=d(t++,2);if(o.t=n,!o.__c&&(o.__=[i?i(u):B$1(void 0,u),function(n){var t=o.__N?o.__N[0]:o.__[0],r=o.t(t,n);t!==r&&(o.__N=[r,o.__[1]],o.__c.setState({}));}],o.__c=r,!r.u)){var f=function(n,t,r){if(!o.__c.__H)return !0;var u=o.__c.__H.__.filter(function(n){return n.__c});if(u.every(function(n){return !n.__N}))return !c||c.call(this,n,t,r);var i=!1;return u.forEach(function(n){if(n.__N){var t=n.__[0];n.__=n.__N,n.__N=void 0,t!==n.__[0]&&(i=!0);}}),!(!i&&o.__c.props===n)&&(!c||c.call(this,n,t,r))};r.u=!0;var c=r.shouldComponentUpdate,e=r.componentWillUpdate;r.componentWillUpdate=function(n,t,r){if(this.__e){var u=c;c=void 0,f(n,t,r),c=u;}e&&e.call(this,n,t,r);},r.shouldComponentUpdate=f;}return o.__N||o.__}function p(u,i){var o=d(t++,3);!l$1.__s&&z$1(o.__H,i)&&(o.__=u,o.i=i,r.__H.__h.push(o));}function y(u,i){var o=d(t++,4);!l$1.__s&&z$1(o.__H,i)&&(o.__=u,o.i=i,r.__h.push(o));}function _(n){return o=5,F$1(function(){return {current:n}},[])}function A$1(n,t,r){o=6,y(function(){return "function"==typeof n?(n(t()),function(){return n(null)}):n?(n.current=t(),function(){return n.current=null}):void 0},null==r?r:r.concat(n));}function F$1(n,r){var u=d(t++,7);return z$1(u.__H,r)?(u.__V=n(),u.i=r,u.__h=n,u.__V):u.__}function T$1(n,t){return o=8,F$1(function(){return n},t)}function q$1(n){var u=r.context[n.__c],i=d(t++,9);return i.c=n,u?(null==i.__&&(i.__=!0,u.sub(r)),u.props.value):n.__}function x$1(t,r){l$1.useDebugValue&&l$1.useDebugValue(r?r(t):t);}function V$1(){var n=d(t++,11);if(!n.__){for(var u=r.__v;null!==u&&!u.__m&&null!==u.__;)u=u.__;var i=u.__m||(u.__m=[0,0]);n.__="P"+i[0]+"-"+i[1]++;}return n.__}function b(){for(var t;t=f.shift();)if(t.__P&&t.__H)try{t.__H.__h.forEach(k$1),t.__H.__h.forEach(w$1),t.__H.__h=[];}catch(r){t.__H.__h=[],l$1.__e(r,t.__v);}}l$1.__b=function(n){r=null,e&&e(n);},l$1.__r=function(n){a&&a(n),t=0;var i=(r=n.__c).__H;i&&(u===r?(i.__h=[],r.__h=[],i.__.forEach(function(n){n.__N&&(n.__=n.__N),n.__V=c,n.__N=n.i=void 0;})):(i.__h.forEach(k$1),i.__h.forEach(w$1),i.__h=[],t=0)),u=r;},l$1.diffed=function(t){v&&v(t);var o=t.__c;o&&o.__H&&(o.__H.__h.length&&(1!==f.push(o)&&i===l$1.requestAnimationFrame||((i=l$1.requestAnimationFrame)||j$1)(b)),o.__H.__.forEach(function(n){n.i&&(n.__H=n.i),n.__V!==c&&(n.__=n.__V),n.i=void 0,n.__V=c;})),u=r=null;},l$1.__c=function(t,r){r.some(function(t){try{t.__h.forEach(k$1),t.__h=t.__h.filter(function(n){return !n.__||w$1(n)});}catch(u){r.some(function(n){n.__h&&(n.__h=[]);}),r=[],l$1.__e(u,t.__v);}}),l&&l(t,r);},l$1.unmount=function(t){m&&m(t);var r,u=t.__c;u&&u.__H&&(u.__H.__.forEach(function(n){try{k$1(n);}catch(n){r=n;}}),u.__H=void 0,r&&l$1.__e(r,u.__v));};var g$1="function"==typeof requestAnimationFrame;function j$1(n){var t,r=function(){clearTimeout(u),g$1&&cancelAnimationFrame(t),setTimeout(n);},u=setTimeout(r,100);g$1&&(t=requestAnimationFrame(r));}function k$1(n){var t=r,u=n.__c;"function"==typeof u&&(n.__c=void 0,u()),r=t;}function w$1(n){var t=r;n.__c=n.__(),r=t;}function z$1(n,t){return !n||n.length!==t.length||t.some(function(t,r){return t!==n[r]})}function B$1(n,t){return "function"==typeof t?t(n):t}
 
-function g(n,t){for(var e in t)n[e]=t[e];return n}function C(n,t){for(var e in n)if("__source"!==e&&!(e in t))return !0;for(var r in t)if("__source"!==r&&n[r]!==t[r])return !0;return !1}function E(n,t){return n===t&&(0!==n||1/n==1/t)||n!=n&&t!=t}function w(n){this.props=n;}function x(n,e){function r(n){var t=this.props.ref,r=t==n.ref;return !r&&t&&(t.call?t(null):t.current=null),e?!e(this.props,n)||!r:C(this.props,n)}function u(e){return this.shouldComponentUpdate=r,y$1(n,e)}return u.displayName="Memo("+(n.displayName||n.name)+")",u.prototype.isReactComponent=!0,u.__f=!0,u}(w.prototype=new b$1).isPureReactComponent=!0,w.prototype.shouldComponentUpdate=function(n,t){return C(this.props,n)||C(this.state,t)};var R=l$1.__b;l$1.__b=function(n){n.type&&n.type.__f&&n.ref&&(n.props.ref=n.ref,n.ref=null),R&&R(n);};var N="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.forward_ref")||3911;function k(n){function t(t){var e=g({},t);return delete e.ref,n(e,t.ref||null)}return t.$$typeof=N,t.render=t,t.prototype.isReactComponent=t.__f=!0,t.displayName="ForwardRef("+(n.displayName||n.name)+")",t}var A=function(n,t){return null==n?null:C$1(C$1(n).map(t))},O={map:A,forEach:A,count:function(n){return n?C$1(n).length:0},only:function(n){var t=C$1(n);if(1!==t.length)throw "Children.only";return t[0]},toArray:C$1},T=l$1.__e;l$1.__e=function(n,t,e,r){if(n.then)for(var u,o=t;o=o.__;)if((u=o.__c)&&u.__c)return null==t.__e&&(t.__e=e.__e,t.__k=e.__k),u.__c(n,t);T(n,t,e,r);};var F=l$1.unmount;function I(n,t,e){return n&&(n.__c&&n.__c.__H&&(n.__c.__H.__.forEach(function(n){"function"==typeof n.__c&&n.__c();}),n.__c.__H=null),null!=(n=g({},n)).__c&&(n.__c.__P===e&&(n.__c.__P=t),n.__c=null),n.__k=n.__k&&n.__k.map(function(n){return I(n,t,e)})),n}function L(n,t,e){return n&&(n.__v=null,n.__k=n.__k&&n.__k.map(function(n){return L(n,t,e)}),n.__c&&n.__c.__P===t&&(n.__e&&e.insertBefore(n.__e,n.__d),n.__c.__e=!0,n.__c.__P=e)),n}function U(){this.__u=0,this.t=null,this.__b=null;}function D(n){var t=n.__.__c;return t&&t.__a&&t.__a(n)}function M(n){var e,r,u;function o(o){if(e||(e=n()).then(function(n){r=n.default||n;},function(n){u=n;}),u)throw u;if(!r)throw e;return y$1(r,o)}return o.displayName="Lazy",o.__f=!0,o}function V(){this.u=null,this.o=null;}l$1.unmount=function(n){var t=n.__c;t&&t.__R&&t.__R(),t&&!0===n.__h&&(n.type=null),F&&F(n);},(U.prototype=new b$1).__c=function(n,t){var e=t.__c,r=this;null==r.t&&(r.t=[]),r.t.push(e);var u=D(r.__v),o=!1,i=function(){o||(o=!0,e.__R=null,u?u(l):l());};e.__R=i;var l=function(){if(!--r.__u){if(r.state.__a){var n=r.state.__a;r.__v.__k[0]=L(n,n.__c.__P,n.__c.__O);}var t;for(r.setState({__a:r.__b=null});t=r.t.pop();)t.forceUpdate();}},c=!0===t.__h;r.__u++||c||r.setState({__a:r.__b=r.__v.__k[0]}),n.then(i,i);},U.prototype.componentWillUnmount=function(){this.t=[];},U.prototype.render=function(n,e){if(this.__b){if(this.__v.__k){var r=document.createElement("div"),o=this.__v.__k[0].__c;this.__v.__k[0]=I(this.__b,r,o.__O=o.__P);}this.__b=null;}var i=e.__a&&y$1(k$2,null,n.fallback);return i&&(i.__h=null),[y$1(k$2,null,e.__a?null:n.children),i]};var W=function(n,t,e){if(++e[1]===e[0]&&n.o.delete(t),n.props.revealOrder&&("t"!==n.props.revealOrder[0]||!n.o.size))for(e=n.u;e;){for(;e.length>3;)e.pop()();if(e[1]<e[0])break;n.u=e=e[2];}};function P(n){return this.getChildContext=function(){return n.context},n.children}function j(n){var e=this,r=n.i;e.componentWillUnmount=function(){D$1(null,e.l),e.l=null,e.i=null;},e.i&&e.i!==r&&e.componentWillUnmount(),e.l||(e.i=r,e.l={nodeType:1,parentNode:r,childNodes:[],appendChild:function(n){this.childNodes.push(n),e.i.appendChild(n);},insertBefore:function(n,t){this.childNodes.push(n),e.i.appendChild(n);},removeChild:function(n){this.childNodes.splice(this.childNodes.indexOf(n)>>>1,1),e.i.removeChild(n);}}),D$1(y$1(P,{context:e.context},n.__v),e.l);}function z(n,e){var r=y$1(j,{__v:n,i:e});return r.containerInfo=e,r}(V.prototype=new b$1).__a=function(n){var t=this,e=D(t.__v),r=t.o.get(n);return r[0]++,function(u){var o=function(){t.props.revealOrder?(r.push(u),W(t,n,r)):u();};e?e(o):o();}},V.prototype.render=function(n){this.u=null,this.o=new Map;var t=C$1(n.children);n.revealOrder&&"b"===n.revealOrder[0]&&t.reverse();for(var e=t.length;e--;)this.o.set(t[e],this.u=[1,0,this.u]);return n.children},V.prototype.componentDidUpdate=V.prototype.componentDidMount=function(){var n=this;this.o.forEach(function(t,e){W(n,e,t);});};var B="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.element")||60103,H=/^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/,Z=/^on(Ani|Tra|Tou|BeforeInp|Compo)/,Y=/[A-Z0-9]/g,$="undefined"!=typeof document,q=function(n){return ("undefined"!=typeof Symbol&&"symbol"==typeof Symbol()?/fil|che|rad/:/fil|che|ra/).test(n)};function G(n,t,e){return null==t.__k&&(t.textContent=""),D$1(n,t),"function"==typeof e&&e(),n?n.__c:null}function J(n,t,e){return E$1(n,t),"function"==typeof e&&e(),n?n.__c:null}b$1.prototype.isReactComponent={},["componentWillMount","componentWillReceiveProps","componentWillUpdate"].forEach(function(t){Object.defineProperty(b$1.prototype,t,{configurable:!0,get:function(){return this["UNSAFE_"+t]},set:function(n){Object.defineProperty(this,t,{configurable:!0,writable:!0,value:n});}});});var K=l$1.event;function Q(){}function X(){return this.cancelBubble}function nn(){return this.defaultPrevented}l$1.event=function(n){return K&&(n=K(n)),n.persist=Q,n.isPropagationStopped=X,n.isDefaultPrevented=nn,n.nativeEvent=n};var tn,en={enumerable:!1,configurable:!0,get:function(){return this.class}},rn=l$1.vnode;l$1.vnode=function(n){"string"==typeof n.type&&function(n){var t=n.props,e=n.type,u={};for(var o in t){var i=t[o];if(!("value"===o&&"defaultValue"in t&&null==i||$&&"children"===o&&"noscript"===e||"class"===o||"className"===o)){var l=o.toLowerCase();"defaultValue"===o&&"value"in t&&null==t.value?o="value":"download"===o&&!0===i?i="":"ondoubleclick"===l?o="ondblclick":"onchange"!==l||"input"!==e&&"textarea"!==e||q(t.type)?"onfocus"===l?o="onfocusin":"onblur"===l?o="onfocusout":Z.test(o)?o=l:-1===e.indexOf("-")&&H.test(o)?o=o.replace(Y,"-$&").toLowerCase():null===i&&(i=void 0):l=o="oninput","oninput"===l&&u[o=l]&&(o="oninputCapture"),u[o]=i;}}"select"==e&&u.multiple&&Array.isArray(u.value)&&(u.value=C$1(t.children).forEach(function(n){n.props.selected=-1!=u.value.indexOf(n.props.value);})),"select"==e&&null!=u.defaultValue&&(u.value=C$1(t.children).forEach(function(n){n.props.selected=u.multiple?-1!=u.defaultValue.indexOf(n.props.value):u.defaultValue==n.props.value;})),t.class&&!t.className?(u.class=t.class,Object.defineProperty(u,"className",en)):(t.className&&!t.class||t.class&&t.className)&&(u.class=u.className=t.className),n.props=u;}(n),n.$$typeof=B,rn&&rn(n);};var un=l$1.__r;l$1.__r=function(n){un&&un(n),tn=n.__c;};var on=l$1.diffed;l$1.diffed=function(n){on&&on(n);var t=n.props,e=n.__e;null!=e&&"textarea"===n.type&&"value"in t&&t.value!==e.value&&(e.value=null==t.value?"":t.value),tn=null;};var ln={ReactCurrentDispatcher:{current:{readContext:function(n){return tn.__n[n.__c].props.value}}}};function fn(n){return y$1.bind(null,n)}function an(n){return !!n&&n.$$typeof===B}function sn(n){return an(n)&&n.type===k$2}function hn(n){return an(n)?F$2.apply(null,arguments):n}function vn(n){return !!n.__k&&(D$1(null,n),!0)}function dn(n){return n&&(n.base||1===n.nodeType&&n)||null}var pn=function(n,t){return n(t)},mn=function(n,t){return n(t)},yn=k$2;function _n(n){n();}function bn(n){return n}function Sn(){return [!1,_n]}var gn=y,Cn=an;function En(n,t){var e=t(),r=h({h:{__:e,v:t}}),u=r[0].h,o=r[1];return y(function(){u.__=e,u.v=t,E(u.__,t())||o({h:u});},[n,e,t]),p(function(){return E(u.__,u.v())||o({h:u}),n(function(){E(u.__,u.v())||o({h:u});})},[n]),e}var wn={useState:h,useId:V$1,useReducer:s,useEffect:p,useLayoutEffect:y,useInsertionEffect:gn,useTransition:Sn,useDeferredValue:bn,useSyncExternalStore:En,startTransition:_n,useRef:_,useImperativeHandle:A$1,useMemo:F$1,useCallback:T$1,useContext:q$1,useDebugValue:x$1,version:"17.0.2",Children:O,render:G,hydrate:J,unmountComponentAtNode:vn,createPortal:z,createElement:y$1,createContext:G$1,createFactory:fn,cloneElement:hn,createRef:_$1,Fragment:k$2,isValidElement:an,isElement:Cn,isFragment:sn,findDOMNode:dn,Component:b$1,PureComponent:w,memo:x,forwardRef:k,flushSync:mn,unstable_batchedUpdates:pn,StrictMode:yn,Suspense:U,SuspenseList:V,lazy:M,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:ln};
+function g(n,t){for(var e in t)n[e]=t[e];return n}function C(n,t){for(var e in n)if("__source"!==e&&!(e in t))return !0;for(var r in t)if("__source"!==r&&n[r]!==t[r])return !0;return !1}function E(n,t){return n===t&&(0!==n||1/n==1/t)||n!=n&&t!=t}function w(n){this.props=n;}function x(n,e){function r(n){var t=this.props.ref,r=t==n.ref;return !r&&t&&(t.call?t(null):t.current=null),e?!e(this.props,n)||!r:C(this.props,n)}function u(e){return this.shouldComponentUpdate=r,y$1(n,e)}return u.displayName="备忘录("+(n.displayName||n.name)+")",u.prototype.isReactComponent=!0,u.__f=!0,u}(w.prototype=new b$1).isPureReactComponent=!0,w.prototype.shouldComponentUpdate=function(n,t){return C(this.props,n)||C(this.state,t)};var R=l$1.__b;l$1.__b=function(n){n.type&&n.type.__f&&n.ref&&(n.props.ref=n.ref,n.ref=null),R&&R(n);};var N="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.forward_ref")||3911;function k(n){function t(t){var e=g({},t);return delete e.ref,n(e,t.ref||null)}return t.$$typeof=N,t.render=t,t.prototype.isReactComponent=t.__f=!0,t.displayName="ForwardRef("+(n.displayName||n.name)+")",t}var A=function(n,t){return null==n?null:C$1(C$1(n).map(t))},O={map:A,forEach:A,count:function(n){return n?C$1(n).length:0},only:function(n){var t=C$1(n);if(1!==t.length)throw "Children.only";return t[0]},toArray:C$1},T=l$1.__e;l$1.__e=function(n,t,e,r){if(n.then)for(var u,o=t;o=o.__;)if((u=o.__c)&&u.__c)return null==t.__e&&(t.__e=e.__e,t.__k=e.__k),u.__c(n,t);T(n,t,e,r);};var F=l$1.unmount;function I(n,t,e){return n&&(n.__c&&n.__c.__H&&(n.__c.__H.__.forEach(function(n){"function"==typeof n.__c&&n.__c();}),n.__c.__H=null),null!=(n=g({},n)).__c&&(n.__c.__P===e&&(n.__c.__P=t),n.__c=null),n.__k=n.__k&&n.__k.map(function(n){return I(n,t,e)})),n}function L(n,t,e){return n&&(n.__v=null,n.__k=n.__k&&n.__k.map(function(n){return L(n,t,e)}),n.__c&&n.__c.__P===t&&(n.__e&&e.insertBefore(n.__e,n.__d),n.__c.__e=!0,n.__c.__P=e)),n}function U(){this.__u=0,this.t=null,this.__b=null;}function D(n){var t=n.__.__c;return t&&t.__a&&t.__a(n)}function M(n){var e,r,u;function o(o){if(e||(e=n()).then(function(n){r=n.default||n;},function(n){u=n;}),u)throw u;if(!r)throw e;return y$1(r,o)}return o.displayName="懒惰",o.__f=!0,o}function V(){this.u=null,this.o=null;}l$1.unmount=function(n){var t=n.__c;t&&t.__R&&t.__R(),t&&!0===n.__h&&(n.type=null),F&&F(n);},(U.prototype=new b$1).__c=function(n,t){var e=t.__c,r=this;null==r.t&&(r.t=[]),r.t.push(e);var u=D(r.__v),o=!1,i=function(){o||(o=!0,e.__R=null,u?u(l):l());};e.__R=i;var l=function(){if(!--r.__u){if(r.state.__a){var n=r.state.__a;r.__v.__k[0]=L(n,n.__c.__P,n.__c.__O);}var t;for(r.setState({__a:r.__b=null});t=r.t.pop();)t.forceUpdate();}},c=!0===t.__h;r.__u++||c||r.setState({__a:r.__b=r.__v.__k[0]}),n.then(i,i);},U.prototype.componentWillUnmount=function(){this.t=[];},U.prototype.render=function(n,e){if(this.__b){if(this.__v.__k){var r=document.createElement("div"),o=this.__v.__k[0].__c;this.__v.__k[0]=I(this.__b,r,o.__O=o.__P);}this.__b=null;}var i=e.__a&&y$1(k$2,null,n.fallback);return i&&(i.__h=null),[y$1(k$2,null,e.__a?null:n.children),i]};var W=function(n,t,e){if(++e[1]===e[0]&&n.o.delete(t),n.props.revealOrder&&("t"!==n.props.revealOrder[0]||!n.o.size))for(e=n.u;e;){for(;e.length>3;)e.pop()();if(e[1]<e[0])break;n.u=e=e[2];}};function P(n){return this.getChildContext=function(){return n.context},n.children}function j(n){var e=this,r=n.i;e.componentWillUnmount=function(){D$1(null,e.l),e.l=null,e.i=null;},e.i&&e.i!==r&&e.componentWillUnmount(),e.l||(e.i=r,e.l={nodeType:1,parentNode:r,childNodes:[],appendChild:function(n){this.childNodes.push(n),e.i.appendChild(n);},insertBefore:function(n,t){this.childNodes.push(n),e.i.appendChild(n);},removeChild:function(n){this.childNodes.splice(this.childNodes.indexOf(n)>>>1,1),e.i.removeChild(n);}}),D$1(y$1(P,{context:e.context},n.__v),e.l);}function z(n,e){var r=y$1(j,{__v:n,i:e});return r.containerInfo=e,r}(V.prototype=new b$1).__a=function(n){var t=this,e=D(t.__v),r=t.o.get(n);return r[0]++,function(u){var o=function(){t.props.revealOrder?(r.push(u),W(t,n,r)):u();};e?e(o):o();}},V.prototype.render=function(n){this.u=null,this.o=new Map;var t=C$1(n.children);n.revealOrder&&"b"===n.revealOrder[0]&&t.reverse();for(var e=t.length;e--;)this.o.set(t[e],this.u=[1,0,this.u]);return n.children},V.prototype.componentDidUpdate=V.prototype.componentDidMount=function(){var n=this;this.o.forEach(function(t,e){W(n,e,t);});};var B="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.element")||60103,H=/^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/,Z=/^on(Ani|Tra|Tou|BeforeInp|Compo)/,Y=/[A-Z0-9]/g,$="undefined"!=typeof document,q=function(n){return ("undefined"!=typeof Symbol&&"symbol"==typeof Symbol()?/fil|che|rad/:/fil|che|ra/).test(n)};function G(n,t,e){return null==t.__k&&(t.textContent=""),D$1(n,t),"function"==typeof e&&e(),n?n.__c:null}function J(n,t,e){return E$1(n,t),"function"==typeof e&&e(),n?n.__c:null}b$1.prototype.isReactComponent={},["componentWillMount","componentWillReceiveProps","componentWillUpdate"].forEach(function(t){Object.defineProperty(b$1.prototype,t,{configurable:!0,get:function(){return this["UNSAFE_"+t]},set:function(n){Object.defineProperty(this,t,{configurable:!0,writable:!0,value:n});}});});var K=l$1.event;function Q(){}function X(){return this.cancelBubble}function nn(){return this.defaultPrevented}l$1.event=function(n){return K&&(n=K(n)),n.persist=Q,n.isPropagationStopped=X,n.isDefaultPrevented=nn,n.nativeEvent=n};var tn,en={enumerable:!1,configurable:!0,get:function(){return this.class}},rn=l$1.vnode;l$1.vnode=function(n){"string"==typeof n.type&&function(n){var t=n.props,e=n.type,u={};for(var o in t){var i=t[o];if(!("value"===o&&"defaultValue"in t&&null==i||$&&"children"===o&&"noscript"===e||"class"===o||"className"===o)){var l=o.toLowerCase();"defaultValue"===o&&"value"in t&&null==t.value?o="value":"download"===o&&!0===i?i="":"ondoubleclick"===l?o="ondblclick":"onchange"!==l||"input"!==e&&"textarea"!==e||q(t.type)?"onfocus"===l?o="onfocusin":"onblur"===l?o="onfocusout":Z.test(o)?o=l:-1===e.indexOf("-")&&H.test(o)?o=o.replace(Y,"-$&").toLowerCase():null===i&&(i=void 0):l=o="oninput","oninput"===l&&u[o=l]&&(o="oninputCapture"),u[o]=i;}}"select"==e&&u.multiple&&Array.isArray(u.value)&&(u.value=C$1(t.children).forEach(function(n){n.props.selected=-1!=u.value.indexOf(n.props.value);})),"select"==e&&null!=u.defaultValue&&(u.value=C$1(t.children).forEach(function(n){n.props.selected=u.multiple?-1!=u.defaultValue.indexOf(n.props.value):u.defaultValue==n.props.value;})),t.class&&!t.className?(u.class=t.class,Object.defineProperty(u,"className",en)):(t.className&&!t.class||t.class&&t.className)&&(u.class=u.className=t.className),n.props=u;}(n),n.$$typeof=B,rn&&rn(n);};var un=l$1.__r;l$1.__r=function(n){un&&un(n),tn=n.__c;};var on=l$1.diffed;l$1.diffed=function(n){on&&on(n);var t=n.props,e=n.__e;null!=e&&"textarea"===n.type&&"value"in t&&t.value!==e.value&&(e.value=null==t.value?"":t.value),tn=null;};var ln={ReactCurrentDispatcher:{current:{readContext:function(n){return tn.__n[n.__c].props.value}}}};function fn(n){return y$1.bind(null,n)}function an(n){return !!n&&n.$$typeof===B}function sn(n){return an(n)&&n.type===k$2}function hn(n){return an(n)?F$2.apply(null,arguments):n}function vn(n){return !!n.__k&&(D$1(null,n),!0)}function dn(n){return n&&(n.base||1===n.nodeType&&n)||null}var pn=function(n,t){return n(t)},mn=function(n,t){return n(t)},yn=k$2;function _n(n){n();}function bn(n){return n}function Sn(){return [!1,_n]}var gn=y,Cn=an;function En(n,t){var e=t(),r=h({h:{__:e,v:t}}),u=r[0].h,o=r[1];return y(function(){u.__=e,u.v=t,E(u.__,t())||o({h:u});},[n,e,t]),p(function(){return E(u.__,u.v())||o({h:u}),n(function(){E(u.__,u.v())||o({h:u});})},[n]),e}var wn={useState:h,useId:V$1,useReducer:s,useEffect:p,useLayoutEffect:y,useInsertionEffect:gn,useTransition:Sn,useDeferredValue:bn,useSyncExternalStore:En,startTransition:_n,useRef:_,useImperativeHandle:A$1,useMemo:F$1,useCallback:T$1,useContext:q$1,useDebugValue:x$1,version:"17.0.2",Children:O,render:G,hydrate:J,unmountComponentAtNode:vn,createPortal:z,createElement:y$1,createContext:G$1,createFactory:fn,cloneElement:hn,createRef:_$1,Fragment:k$2,isValidElement:an,isElement:Cn,isFragment:sn,findDOMNode:dn,Component:b$1,PureComponent:w,memo:x,forwardRef:k,flushSync:mn,unstable_batchedUpdates:pn,StrictMode:yn,Suspense:U,SuspenseList:V,lazy:M,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:ln};
 
 const IMAGE_EXTENSIONS = Object.freeze(new Set([
     ".tif",
@@ -15330,7 +14926,7 @@ function RawLit({ value, sourcePath, inline = false, depth = 0, }) {
         }
         else {
             return y$1("b", null,
-                "<unknown widget '",
+                "<未知小部件'",
                 value.$widget,
                 "'>");
         }
@@ -15825,13 +15421,13 @@ const QUERY_LANGUAGE = parsimmon_umd_minExports.createLanguage({
     // Simple atom parsing, like words, identifiers, numbers.
     queryType: q => parsimmon_umd_minExports.alt(parsimmon_umd_minExports.regexp(/TABLE|LIST|TASK|CALENDAR/i))
         .map(str => str.toLowerCase())
-        .desc("query type ('TABLE', 'LIST', 'TASK', or 'CALENDAR')"),
+        .desc("查询类型（'TABLE'、'LIST'、'TASK' 或 'CALENDAR'）"),
     explicitNamedField: q => parsimmon_umd_minExports.seqMap(EXPRESSION.field.skip(parsimmon_umd_minExports.whitespace), parsimmon_umd_minExports.regexp(/AS/i).skip(parsimmon_umd_minExports.whitespace), EXPRESSION.identifier.or(EXPRESSION.string), (field, _as, ident) => QueryFields.named(ident, field)),
     comment: () => parsimmon_umd_minExports.Parser((input, i) => {
         // Parse a comment, which is a line starting with //.
         let line = input.substring(i);
         if (!line.startsWith("//"))
-            return parsimmon_umd_minExports.makeFailure(i, "Not a comment");
+            return parsimmon_umd_minExports.makeFailure(i, "不是评论");
         // The comment ends at the end of the line.
         line = line.split("\n")[0];
         let comment = line.substring(2).trim();
@@ -15883,23 +15479,23 @@ const QUERY_LANGUAGE = parsimmon_umd_minExports.createLanguage({
                 return parsimmon_umd_minExports.fail(`Unrecognized query type '${type}'`);
         }
     })
-        .desc("TABLE or LIST or TASK or CALENDAR"),
+        .desc("表或列表或TASK 或 CALENDAR"),
     fromClause: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.regexp(/FROM/i), parsimmon_umd_minExports.whitespace, EXPRESSION.source, (_1, _2, source) => source),
     whereClause: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.regexp(/WHERE/i), parsimmon_umd_minExports.whitespace, EXPRESSION.field, (where, _, field) => {
         return { type: "where", clause: field };
-    }).desc("WHERE <expression>"),
+    }).desc("WHERE <表达式>"),
     sortByClause: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.regexp(/SORT/i), parsimmon_umd_minExports.whitespace, q.sortField.sepBy1(parsimmon_umd_minExports.string(",").trim(parsimmon_umd_minExports.optWhitespace)), (sort, _1, fields) => {
         return { type: "sort", fields };
-    }).desc("SORT field [ASC/DESC]"),
+    }).desc("排序字段 [ASC/DESC]"),
     limitClause: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.regexp(/LIMIT/i), parsimmon_umd_minExports.whitespace, EXPRESSION.field, (limit, _1, field) => {
         return { type: "limit", amount: field };
-    }).desc("LIMIT <value>"),
+    }).desc("LIMIT <值>"),
     flattenClause: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.regexp(/FLATTEN/i).skip(parsimmon_umd_minExports.whitespace), q.namedField, (_, field) => {
         return { type: "flatten", field };
-    }).desc("FLATTEN <value> [AS <name>]"),
+    }).desc("FLATTEN <值> [AS <名称>]"),
     groupByClause: q => parsimmon_umd_minExports.seqMap(parsimmon_umd_minExports.regexp(/GROUP BY/i).skip(parsimmon_umd_minExports.whitespace), q.namedField, (_, field) => {
         return { type: "group", field };
-    }).desc("GROUP BY <value> [AS <name>]"),
+    }).desc("GROUP BY <值> [AS <名称>]"),
     // Full query parsing.
     clause: q => parsimmon_umd_minExports.alt(q.fromClause, q.whereClause, q.sortByClause, q.limitClause, q.groupByClause, q.flattenClause),
     query: q => parsimmon_umd_minExports.seqMap(q.headerClause.trim(optionalWhitespaceOrComment), q.fromClause.trim(optionalWhitespaceOrComment).atMost(1), q.clause.trim(optionalWhitespaceOrComment).many(), (header, from, clauses) => {
@@ -16082,7 +15678,7 @@ function set_current_component(component) {
 }
 function get_current_component() {
     if (!current_component)
-        throw new Error('Function called outside component initialization');
+        throw new Error('在组件初始化外部调用的函数');
     return current_component;
 }
 
@@ -16906,8 +16502,7 @@ function instance$5($$self, $$props, $$invalidate) {
 	let { metadata } = $$props;
 
 	$$self.$$set = $$props => {
-		if ("metadata" in $$props) $$invalidate(0, metadata = $$props.metadata);
-		if ("$$scope" in $$props) $$invalidate(1, $$scope = $$props.$$scope);
+		if ("metadata"in $$props) $$invalidate(0,metadata = $$props.metadata);\n\t\tif ("$$scope" in $$props) $$invalidate(1, $$scope = $$props.$$scope);
 	};
 
 	return [metadata, $$scope, slots];
@@ -16955,17 +16550,7 @@ function getMonth(displayedMonth, ..._args) {
             month.push(week);
         }
         week.days.push(date);
-        date = date.clone().add(1, "days");
-    }
-    return month;
-}
-
-/* src/components/Day.svelte generated by Svelte v3.35.0 */
-
-function add_css$4() {
-	var style = element("style");
-	style.id = "svelte-q3wqg9-style";
-	style.textContent = ".day.svelte-q3wqg9{background-color:var(--color-background-day);border-radius:4px;color:var(--color-text-day);cursor:pointer;font-size:0.8em;height:100%;padding:4px;position:relative;text-align:center;transition:background-color 0.1s ease-in, color 0.1s ease-in;vertical-align:baseline}.day.svelte-q3wqg9:hover{background-color:var(--interactive-hover)}.day.active.svelte-q3wqg9:hover{background-color:var(--interactive-accent-hover)}.adjacent-month.svelte-q3wqg9{opacity:0.25}.today.svelte-q3wqg9{color:var(--color-text-today)}.day.svelte-q3wqg9:active,.active.svelte-q3wqg9,.active.today.svelte-q3wqg9{color:var(--text-on-accent);background-color:var(--interactive-accent)}.dot-container.svelte-q3wqg9{display:flex;flex-wrap:wrap;justify-content:center;line-height:6px;min-height:6px}";
+        date = date.clone().add(1, "days");\n    }\n    返回月份；\n}\n\n/* src/components/Day.svelte 由 Svelte v3.35.0 生成 */\n\n函数 add_css$4() {\n\tvar style = element("style"）；\n\tstyle.id ="svelte-q3wqg9-style";\n\tstyle.textContent =".day.svelte-q3wqg9{background-color:var(--color-background-day);border-radius:4px;color:var(--color-text-day);cursor:pointer;font-size:0.8em;height:100%;padding:4px;position:relative;text-align:center;transition:background-color 0.1s ease-in, color 0.1s ease-in;vertical-align:baseline}.day.svelte-q3wqg9:hover{background-color:var(--interactive-hover)}.day.active.svelte-q3wqg9:hover{background-color:var(--interactive-accent-hover)}.adjacent-month.svelte-q3wqg9{opacity:0.25}.today.svelte-q3wqg9{color:var(--color-text-today)}.day.svelte-q3wqg9:active,.active.svelte-q3wqg9,.active.today.svelte-q3wqg9{color:var(--text-on-accent);background-color:var(--interactive-accent)}.dot-container.svelte-q3wqg9{display:flex;flex-wrap:wrap;justify-content:center;line-height:6px;min-height:6px}";
 	append(document.head, style);
 }
 
@@ -17018,10 +16603,7 @@ function create_each_block$2(ctx) {
 	};
 }
 
-// (22:2) <MetadataResolver metadata="{metadata}" let:metadata>
-function create_default_slot$1(ctx) {
-	let div1;
-	let t0_value = /*date*/ ctx[0].format("D") + "";
+// (22:2) <MetadataResolver metadata="{metadata}"let:metadata>\n函数create_default_slot$1(ctx) {\n\t让div1；\n\t让 t0_value = /*日期*/ ctx[0].format("D") + "";
 	let t0;
 	let t1;
 	let div0;
@@ -17055,21 +16637,7 @@ function create_default_slot$1(ctx) {
 
 	return {
 		c() {
-			div1 = element("div");
-			t0 = text(t0_value);
-			t1 = space();
-			div0 = element("div");
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].c();
-			}
-
-			attr(div0, "class", "dot-container svelte-q3wqg9");
-			set_attributes(div1, div1_data);
-			toggle_class(div1, "active", /*selectedId*/ ctx[6] === getDateUID_1(/*date*/ ctx[0], "day"));
-			toggle_class(div1, "adjacent-month", !/*date*/ ctx[0].isSame(/*displayedMonth*/ ctx[5], "month"));
-			toggle_class(div1, "today", /*date*/ ctx[0].isSame(/*today*/ ctx[4], "day"));
-			toggle_class(div1, "svelte-q3wqg9", true);
+			div1 = element("div");\n\t\t\tt0 = 文本(t0_值);\n\t\t\tt1 = 空间();\n\t\t\tdiv0 = 元素("div");\n\n\t\t\tfor (让 i = 0; i <each_blocks.length; i += 1) {\n\t\t\t\t每个_blocks[i].c();\n\t\t\t}\n\n\t\t\tattr(div0,"class", "dot-container svelte-q3wqg9"）；\n\t\t\tset_attributes(div1, div1_data);\n\t\t\t切换类（div1，"active", /*selectedId*/ ctx[6] === getDateUID_1(/*日期*/ ctx[0],"day"));\n\t\t\t切换类（div1，"adjacent-month", !/*date*/ ctx[0].isSame(/*显示月份*/ ctx[5],"month"));\n\t\t\t切换类（div1，"today", /*日期*/ ctx[0].isSame(/*今天*/ ctx[4],"day"));\n\t\t\t切换类（div1，"svelte-q3wqg9", true);
 		},
 		m(target, anchor) {
 			insert(target, div1, anchor);
@@ -17135,10 +16703,7 @@ function create_default_slot$1(ctx) {
 				dirty & /*metadata*/ 128 && (/*metadata*/ ctx[7].dataAttributes || {})
 			]));
 
-			toggle_class(div1, "active", /*selectedId*/ ctx[6] === getDateUID_1(/*date*/ ctx[0], "day"));
-			toggle_class(div1, "adjacent-month", !/*date*/ ctx[0].isSame(/*displayedMonth*/ ctx[5], "month"));
-			toggle_class(div1, "today", /*date*/ ctx[0].isSame(/*today*/ ctx[4], "day"));
-			toggle_class(div1, "svelte-q3wqg9", true);
+			toggle_class(div1, "active", /*selectedId*/ ctx[6] === getDateUID_1(/*日期*/ ctx[0],"day"));\n\t\t\t切换类（div1，"adjacent-month", !/*date*/ ctx[0].isSame(/*显示月份*/ ctx[5],"month"));\n\t\t\t切换类（div1，"today", /*日期*/ ctx[0].isSame(/*今天*/ ctx[4],"day"));\n\t\t\t切换类（div1，"svelte-q3wqg9", true);
 		},
 		i(local) {
 			if (current) return;
@@ -17238,14 +16803,7 @@ function instance$4($$self, $$props, $$invalidate) {
 	const pointerover_handler = e => onHover(date, e.target, isMetaPressed(e));
 
 	$$self.$$set = $$props => {
-		if ("date" in $$props) $$invalidate(0, date = $$props.date);
-		if ("metadata" in $$props) $$invalidate(7, metadata = $$props.metadata);
-		if ("onHover" in $$props) $$invalidate(1, onHover = $$props.onHover);
-		if ("onClick" in $$props) $$invalidate(2, onClick = $$props.onClick);
-		if ("onContextMenu" in $$props) $$invalidate(3, onContextMenu = $$props.onContextMenu);
-		if ("today" in $$props) $$invalidate(4, today = $$props.today);
-		if ("displayedMonth" in $$props) $$invalidate(5, displayedMonth = $$props.displayedMonth);
-		if ("selectedId" in $$props) $$invalidate(6, selectedId = $$props.selectedId);
+		if ("date") $$invalidate(0, date = $$props.日期);\n\t\tif ("metadata"in $$props) $$invalidate(7, 元数据 = $$props.metadata);\n\t\t如果（"onHover"in $$props) $$invalidate(1, onHover = $$props.onHover);\n\t\tif ("onClick"in $$props) $$invalidate(2, onClick = $$props.onClick);\n\t\tif ("onContextMenu"in $$props) $$invalidate(3, onContextMenu = $$props.onContextMenu);\n\t\tif ("today"in $$props) $$invalidate(4, 今天 = $$props.today);\n\t\tif ("displayedMonth"in $$props) $$invalidate(5, displayedMonth = $$props.displayedMonth);\n\t\t如果（"selectedId" in $$props) $$invalidate(6, selectedId = $$props.selectedId);
 	};
 
 	return [
@@ -17284,9 +16842,7 @@ class Day extends SvelteComponent {
 /* src/components/Arrow.svelte generated by Svelte v3.35.0 */
 
 function add_css$3() {
-	var style = element("style");
-	style.id = "svelte-156w7na-style";
-	style.textContent = ".arrow.svelte-156w7na.svelte-156w7na{align-items:center;cursor:pointer;display:flex;justify-content:center;width:24px}.arrow.is-mobile.svelte-156w7na.svelte-156w7na{width:32px}.right.svelte-156w7na.svelte-156w7na{transform:rotate(180deg)}.arrow.svelte-156w7na svg.svelte-156w7na{color:var(--color-arrow);height:16px;width:16px}";
+	var style = element("style"）；\n\tstyle.id ="svelte-156w7na-style";\n\tstyle.textContent =".arrow.svelte-156w7na.svelte-156w7na{align-items:center;cursor:pointer;display:flex;justify-content:center;width:24px}.arrow.is-mobile.svelte-156w7na.svelte-156w7na{width:32px}.right.svelte-156w7na.svelte-156w7na{transform:rotate(180deg)}.arrow.svelte-156w7na svg.svelte-156w7na{color:var(--color-arrow);height:16px;width:16px}";
 	append(document.head, style);
 }
 
@@ -17300,19 +16856,7 @@ function create_fragment$3(ctx) {
 	return {
 		c() {
 			div = element("div");
-			svg = svg_element("svg");
-			path = svg_element("path");
-			attr(path, "fill", "currentColor");
-			attr(path, "d", "M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z");
-			attr(svg, "focusable", "false");
-			attr(svg, "role", "img");
-			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "viewBox", "0 0 320 512");
-			attr(svg, "class", "svelte-156w7na");
-			attr(div, "class", "arrow svelte-156w7na");
-			attr(div, "aria-label", /*tooltip*/ ctx[1]);
-			toggle_class(div, "is-mobile", /*isMobile*/ ctx[3]);
-			toggle_class(div, "right", /*direction*/ ctx[2] === "right");
+			svg = svg_element("svg");\n\t\t\t路径 = svg_element("path");\n\t\t\tattr(路径,"fill", "currentColor");\n\t\t\tattr(路径,"d", "M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z");\n\t\t\tattr(svg,"focusable", "false");\n\t\t\tattr(svg,"role", "img");\n\t\t\tattr(svg,"xmlns", "http://www.w3.org/2000/svg");\n\t\t\tattr(svg,"viewBox", "0 0 320 512");\n\t\t\tattr(svg,"class", "svelte-156w7na");\n\t\t\tattr(div,"class", "arrow svelte-156w7na");\n\t\t\tattr(div,"aria-label", /*工具提示*/ ctx[1]);\n\t\t\ttoggle_class(div,"is-mobile", /*isMobile*/ ctx[3]);\n\t\t\ttoggle_class(div,"right", /*方向*/ ctx[2] ==="right");
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
@@ -17331,11 +16875,7 @@ function create_fragment$3(ctx) {
 			ctx = new_ctx;
 
 			if (dirty & /*tooltip*/ 2) {
-				attr(div, "aria-label", /*tooltip*/ ctx[1]);
-			}
-
-			if (dirty & /*direction*/ 4) {
-				toggle_class(div, "right", /*direction*/ ctx[2] === "right");
+				attr(div, "aria-label", /*工具提示*/ ctx[1]);\n\t\t\t}\n\n\t\t\tif (dirty & /*方向*/ 4) {\n\t\t\t\ttoggle_class(div,"right", /*方向*/ ctx[2] ==="right");
 			}
 		},
 		i: noop,
@@ -17357,9 +16897,7 @@ function instance$3($$self, $$props, $$invalidate) {
 	let isMobile = window.app.isMobile;
 
 	$$self.$$set = $$props => {
-		if ("onClick" in $$props) $$invalidate(0, onClick = $$props.onClick);
-		if ("tooltip" in $$props) $$invalidate(1, tooltip = $$props.tooltip);
-		if ("direction" in $$props) $$invalidate(2, direction = $$props.direction);
+		if ("onClick"in $$props) $$invalidate(0, onClick = $$props.onClick);\n\t\tif ("tooltip"in $$props) $$invalidate(1, tooltip = $$props.tooltip);\n\t\tif ("direction" in $$props) $$invalidate(2, direction = $$props.direction);
 	};
 
 	return [onClick, tooltip, direction, isMobile];
@@ -17376,9 +16914,7 @@ class Arrow extends SvelteComponent {
 /* src/components/Nav.svelte generated by Svelte v3.35.0 */
 
 function add_css$2() {
-	var style = element("style");
-	style.id = "svelte-1vwr9dd-style";
-	style.textContent = ".nav.svelte-1vwr9dd.svelte-1vwr9dd{align-items:center;display:flex;margin:0.6em 0 1em;padding:0 8px;width:100%}.nav.is-mobile.svelte-1vwr9dd.svelte-1vwr9dd{padding:0}.title.svelte-1vwr9dd.svelte-1vwr9dd{color:var(--color-text-title);font-size:1.5em;margin:0}.is-mobile.svelte-1vwr9dd .title.svelte-1vwr9dd{font-size:1.3em}.month.svelte-1vwr9dd.svelte-1vwr9dd{font-weight:500;text-transform:capitalize}.year.svelte-1vwr9dd.svelte-1vwr9dd{color:var(--interactive-accent)}.right-nav.svelte-1vwr9dd.svelte-1vwr9dd{display:flex;justify-content:center;margin-left:auto}.reset-button.svelte-1vwr9dd.svelte-1vwr9dd{cursor:pointer;border-radius:4px;color:var(--text-muted);font-size:0.7em;font-weight:600;letter-spacing:1px;margin:0 4px;padding:0px 4px;text-transform:uppercase}.is-mobile.svelte-1vwr9dd .reset-button.svelte-1vwr9dd{display:none}";
+	var style = element("style"）；\n\tstyle.id ="svelte-1vwr9dd-style";\n\tstyle.textContent =".nav.svelte-1vwr9dd.svelte-1vwr9dd{align-items:center;display:flex;margin:0.6em 0 1em;padding:0 8px;width:100%}.nav.is-mobile.svelte-1vwr9dd.svelte-1vwr9dd{padding:0}.title.svelte-1vwr9dd.svelte-1vwr9dd{color:var(--color-text-title);font-size:1.5em;margin:0}.is-mobile.svelte-1vwr9dd .title.svelte-1vwr9dd{font-size:1.3em}.month.svelte-1vwr9dd.svelte-1vwr9dd{font-weight:500;text-transform:capitalize}.year.svelte-1vwr9dd.svelte-1vwr9dd{color:var(--interactive-accent)}.right-nav.svelte-1vwr9dd.svelte-1vwr9dd{display:flex;justify-content:center;margin-left:auto}.reset-button.svelte-1vwr9dd.svelte-1vwr9dd{cursor:pointer;border-radius:4px;color:var(--text-muted);font-size:0.7em;font-weight:600;letter-spacing:1px;margin:0 4px;padding:0px 4px;text-transform:uppercase}.is-mobile.svelte-1vwr9dd .reset-button.svelte-1vwr9dd{display:none}";
 	append(document.head, style);
 }
 
@@ -17386,11 +16922,7 @@ function create_fragment$2(ctx) {
 	let div2;
 	let h3;
 	let span0;
-	let t0_value = /*displayedMonth*/ ctx[0].format("MMM") + "";
-	let t0;
-	let t1;
-	let span1;
-	let t2_value = /*displayedMonth*/ ctx[0].format("YYYY") + "";
+	let t0_value = /*displayedMonth*/ ctx[0].format("MMM") + ""；\n\t让 t0;\n\t让 t1;\n\t让跨度1；\n\t让 t2_value = /*显示月份*/ ctx[0].format("YYYY") + "";
 	let t2;
 	let t3;
 	let div1;
@@ -17405,44 +16937,12 @@ function create_fragment$2(ctx) {
 
 	arrow0 = new Arrow({
 			props: {
-				direction: "left",
-				onClick: /*decrementDisplayedMonth*/ ctx[3],
-				tooltip: "Previous Month"
-			}
-		});
-
-	arrow1 = new Arrow({
-			props: {
-				direction: "right",
-				onClick: /*incrementDisplayedMonth*/ ctx[2],
-				tooltip: "Next Month"
-			}
-		});
-
-	return {
-		c() {
-			div2 = element("div");
-			h3 = element("h3");
-			span0 = element("span");
-			t0 = text(t0_value);
-			t1 = space();
-			span1 = element("span");
-			t2 = text(t2_value);
-			t3 = space();
-			div1 = element("div");
-			create_component(arrow0.$$.fragment);
-			t4 = space();
-			div0 = element("div");
+				direction: "left",\n\t\t\t\tonClick: /*减量显示月份*/ ctx[3],\n\t\t\t\t工具提示："Previous Month"}\n\t\t});\n\n\t箭头1 = 新箭头({\n\t\t\t道具：{\n\t\t\t\t方向："right"，\n\t\t\t\tonClick: /*incrementDisplayedMonth*/ ctx[2],\n\t\t\t\t工具提示："Next Month"}\n\t\t});\n\n\t返回{\n\t\tc() {\n\t\t\tdiv2 = 元素（"div");\n\t\t\th3 = 元素("h3");
+			span0 = element("span");\n\t\t\tt0 = 文本(t0_值);\n\t\t\tt1 = 空间();\n\t\t\t跨度1 = 元素("span");\n\t\t\tt2 = 文本(t2_值);\n\t\t\tt3 = 空间();\n\t\t\tdiv1 = element("div");\n\t\t\t创建组件(arrow0.$$.fragment);\n\t\t\tt4 = 空间();\n\t\t\tdiv0 = element("div");
 			div0.textContent = `${/*todayDisplayStr*/ ctx[4]}`;
 			t6 = space();
 			create_component(arrow1.$$.fragment);
-			attr(span0, "class", "month svelte-1vwr9dd");
-			attr(span1, "class", "year svelte-1vwr9dd");
-			attr(h3, "class", "title svelte-1vwr9dd");
-			attr(div0, "class", "reset-button svelte-1vwr9dd");
-			attr(div1, "class", "right-nav svelte-1vwr9dd");
-			attr(div2, "class", "nav svelte-1vwr9dd");
-			toggle_class(div2, "is-mobile", /*isMobile*/ ctx[5]);
+			attr(span0, "class", "month svelte-1vwr9dd");\n\t\t\tattr(span1,"class", "year svelte-1vwr9dd");\n\t\t\tattr(h3,"class", "title svelte-1vwr9dd");\n\t\t\tattr(div0,"class", "reset-button svelte-1vwr9dd");\n\t\t\tattr(div1,"class", "right-nav svelte-1vwr9dd");\n\t\t\tattr(div2,"class", "nav svelte-1vwr9dd"）；\n\t\t\ttoggle_class(div2,"is-mobile", /*isMobile*/ ctx[5]);
 		},
 		m(target, anchor) {
 			insert(target, div2, anchor);
@@ -17476,8 +16976,7 @@ function create_fragment$2(ctx) {
 		},
 		p(new_ctx, [dirty]) {
 			ctx = new_ctx;
-			if ((!current || dirty & /*displayedMonth*/ 1) && t0_value !== (t0_value = /*displayedMonth*/ ctx[0].format("MMM") + "")) set_data(t0, t0_value);
-			if ((!current || dirty & /*displayedMonth*/ 1) && t2_value !== (t2_value = /*displayedMonth*/ ctx[0].format("YYYY") + "")) set_data(t2, t2_value);
+			if ((!current || dirty & /*displayedMonth*/ 1) && t0_value !== (t0_value = /*displayedMonth*/ ctx[0].format("MMM") + "")) set_data(t0, t0_value);\n\t\t\tif ((!current || dirty & /*显示月份*/ 1) && t2_value !== (t2_value = /*显示月份*/ ctx[0].format("YYYY") + "")) set_data(t2, t2_value);
 			const arrow0_changes = {};
 			if (dirty & /*decrementDisplayedMonth*/ 8) arrow0_changes.onClick = /*decrementDisplayedMonth*/ ctx[3];
 			arrow0.$set(arrow0_changes);
@@ -17521,11 +17020,7 @@ function instance$2($$self, $$props, $$invalidate) {
 	let isMobile = window.app.isMobile;
 
 	$$self.$$set = $$props => {
-		if ("displayedMonth" in $$props) $$invalidate(0, displayedMonth = $$props.displayedMonth);
-		if ("today" in $$props) $$invalidate(6, today = $$props.today);
-		if ("resetDisplayedMonth" in $$props) $$invalidate(1, resetDisplayedMonth = $$props.resetDisplayedMonth);
-		if ("incrementDisplayedMonth" in $$props) $$invalidate(2, incrementDisplayedMonth = $$props.incrementDisplayedMonth);
-		if ("decrementDisplayedMonth" in $$props) $$invalidate(3, decrementDisplayedMonth = $$props.decrementDisplayedMonth);
+		if ("displayedMonth"in $$props) $$invalidate(0, displayedMonth = $$props.displayedMonth);\n\t\tif ("today"in $$props) $$invalidate(6, 今天 = $$props.today);\n\t\t如果（"resetDisplayedMonth"in $$props) $$invalidate(1, resetDisplayedMonth = $$props.resetDisplayedMonth);\n\t\t如果（"incrementDisplayedMonth"in $$props) $$invalidate(2,incrementDisplayedMonth = $$props.incrementDisplayedMonth);\n\t\t如果（"decrementDisplayedMonth" in $$props) $$invalidate(3, decrementDisplayedMonth = $$props.decrementDisplayedMonth);
 	};
 
 	return [
@@ -17557,9 +17052,7 @@ class Nav extends SvelteComponent {
 /* src/components/WeekNum.svelte generated by Svelte v3.35.0 */
 
 function add_css$1() {
-	var style = element("style");
-	style.id = "svelte-egt0yd-style";
-	style.textContent = "td.svelte-egt0yd{border-right:1px solid var(--background-modifier-border)}.week-num.svelte-egt0yd{background-color:var(--color-background-weeknum);border-radius:4px;color:var(--color-text-weeknum);cursor:pointer;font-size:0.65em;height:100%;padding:4px;text-align:center;transition:background-color 0.1s ease-in, color 0.1s ease-in;vertical-align:baseline}.week-num.svelte-egt0yd:hover{background-color:var(--interactive-hover)}.week-num.active.svelte-egt0yd:hover{background-color:var(--interactive-accent-hover)}.active.svelte-egt0yd{color:var(--text-on-accent);background-color:var(--interactive-accent)}.dot-container.svelte-egt0yd{display:flex;flex-wrap:wrap;justify-content:center;line-height:6px;min-height:6px}";
+	var style = element("style"）；\n\tstyle.id ="svelte-egt0yd-style";\n\tstyle.textContent ="td.svelte-egt0yd{border-right:1px solid var(--background-modifier-border)}.week-num.svelte-egt0yd{background-color:var(--color-background-weeknum);border-radius:4px;color:var(--color-text-weeknum);cursor:pointer;font-size:0.65em;height:100%;padding:4px;text-align:center;transition:background-color 0.1s ease-in, color 0.1s ease-in;vertical-align:baseline}.week-num.svelte-egt0yd:hover{background-color:var(--interactive-hover)}.week-num.active.svelte-egt0yd:hover{background-color:var(--interactive-accent-hover)}.active.svelte-egt0yd{color:var(--text-on-accent);background-color:var(--interactive-accent)}.dot-container.svelte-egt0yd{display:flex;flex-wrap:wrap;justify-content:center;line-height:6px;min-height:6px}";
 	append(document.head, style);
 }
 
@@ -17635,18 +17128,7 @@ function create_default_slot(ctx) {
 
 	return {
 		c() {
-			div1 = element("div");
-			t0 = text(/*weekNum*/ ctx[0]);
-			t1 = space();
-			div0 = element("div");
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].c();
-			}
-
-			attr(div0, "class", "dot-container svelte-egt0yd");
-			attr(div1, "class", div1_class_value = "" + (null_to_empty(`week-num ${/*metadata*/ ctx[6].classes.join(" ")}`) + " svelte-egt0yd"));
-			toggle_class(div1, "active", /*selectedId*/ ctx[5] === getDateUID_1(/*days*/ ctx[1][0], "week"));
+			div1 = element("div");\n\t\t\tt0 = text(/*周数*/ ctx[0]);\n\t\t\tt1 = 空间();\n\t\t\tdiv0 = 元素("div");\n\n\t\t\tfor (让 i = 0; i <each_blocks.length; i += 1) {\n\t\t\t\t每个_blocks[i].c();\n\t\t\t}\n\n\t\t\tattr(div0,"class", "dot-container svelte-egt0yd");\n\t\t\tattr(div1,"class", div1_class_value ="" + (null_to_empty(`week-num ${/*metadata*/ ctx[6].classes.join(" ")}`) + " svelte-egt0yd"));\n\t\t\t切换类（div1，"active", /*selectedId*/ ctx[5] === getDateUID_1(/*天数*/ ctx[1][0],"week"));
 		},
 		m(target, anchor) {
 			insert(target, div1, anchor);
@@ -17707,12 +17189,7 @@ function create_default_slot(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*metadata*/ 64 && div1_class_value !== (div1_class_value = "" + (null_to_empty(`week-num ${/*metadata*/ ctx[6].classes.join(" ")}`) + " svelte-egt0yd"))) {
-				attr(div1, "class", div1_class_value);
-			}
-
-			if (dirty & /*metadata, selectedId, getDateUID, days*/ 98) {
-				toggle_class(div1, "active", /*selectedId*/ ctx[5] === getDateUID_1(/*days*/ ctx[1][0], "week"));
+			if (!current || dirty & /*metadata*/ 64 && div1_class_value !== (div1_class_value = "" + (null_to_empty(`week-num ${/*metadata*/ ctx[6].classes.join(" ")}`) + " svelte-egt0yd"))) {\n\t\t\t\tattr(div1,"class"、 div1_class_value)；\n\t\t\t}\n\n\t\t\tif (dirty & /*元数据, selectedId, getDateUID, 天数*/ 98) {\n\t\t\t\t切换类（div1，"active", /*selectedId*/ ctx[5] === getDateUID_1(/*天数*/ ctx[1][0],"week"));
 			}
 		},
 		i(local) {
@@ -17763,9 +17240,7 @@ function create_fragment$1(ctx) {
 
 	return {
 		c() {
-			td = element("td");
-			create_component(metadataresolver.$$.fragment);
-			attr(td, "class", "svelte-egt0yd");
+			td = element("td");\n\t\t\tcreate_component(metadataresolver.$$.fragment);\n\t\t\tattr(td,"class", "svelte-egt0yd");
 		},
 		m(target, anchor) {
 			insert(target, td, anchor);
@@ -17814,13 +17289,7 @@ function instance$1($$self, $$props, $$invalidate) {
 	const pointerover_handler = e => onHover(startOfWeek, e.target, isMetaPressed(e));
 
 	$$self.$$set = $$props => {
-		if ("weekNum" in $$props) $$invalidate(0, weekNum = $$props.weekNum);
-		if ("days" in $$props) $$invalidate(1, days = $$props.days);
-		if ("metadata" in $$props) $$invalidate(6, metadata = $$props.metadata);
-		if ("onHover" in $$props) $$invalidate(2, onHover = $$props.onHover);
-		if ("onClick" in $$props) $$invalidate(3, onClick = $$props.onClick);
-		if ("onContextMenu" in $$props) $$invalidate(4, onContextMenu = $$props.onContextMenu);
-		if ("selectedId" in $$props) $$invalidate(5, selectedId = $$props.selectedId);
+		if ("weekNum"in $$props) $$invalidate(0, weekNum = $$props.weekNum);\n\t\tif ("days"in $$props) $$invalidate(1, days = $$props.days);\n\t\t如果("metadata"in $$props) $$invalidate(6, 元数据 = $$props.metadata);\n\t\tif ("onHover"in $$props) $$invalidate(2, onHover = $$props.onHover);\n\t\t如果（"onClick"in $$props) $$invalidate(3, onClick = $$props.onClick);\n\t\t如果（"onContextMenu"in $$props) $$invalidate(4, onContextMenu = $$props.onContextMenu);\n\t\t如果（"selectedId" in $$props) $$invalidate(5, selectedId = $$props.selectedId);
 	};
 
 	$$self.$$.update = () => {
@@ -17884,9 +17353,7 @@ function getWeeklyMetadata(sources, date, ..._args) {
 /* src/components/Calendar.svelte generated by Svelte v3.35.0 */
 
 function add_css() {
-	var style = element("style");
-	style.id = "svelte-pcimu8-style";
-	style.textContent = ".container.svelte-pcimu8{--color-background-heading:transparent;--color-background-day:transparent;--color-background-weeknum:transparent;--color-background-weekend:transparent;--color-dot:var(--text-muted);--color-arrow:var(--text-muted);--color-button:var(--text-muted);--color-text-title:var(--text-normal);--color-text-heading:var(--text-muted);--color-text-day:var(--text-normal);--color-text-today:var(--interactive-accent);--color-text-weeknum:var(--text-muted)}.container.svelte-pcimu8{padding:0 8px}.container.is-mobile.svelte-pcimu8{padding:0}th.svelte-pcimu8{text-align:center}.weekend.svelte-pcimu8{background-color:var(--color-background-weekend)}.calendar.svelte-pcimu8{border-collapse:collapse;width:100%}th.svelte-pcimu8{background-color:var(--color-background-heading);color:var(--color-text-heading);font-size:0.6em;letter-spacing:1px;padding:4px;text-transform:uppercase}";
+	var style = element("style"）；\n\tstyle.id ="svelte-pcimu8-style";\n\tstyle.textContent =".container.svelte-pcimu8{--color-background-heading:transparent;--color-background-day:transparent;--color-background-weeknum:transparent;--color-background-weekend:transparent;--color-dot:var(--text-muted);--color-arrow:var(--text-muted);--color-button:var(--text-muted);--color-text-title:var(--text-normal);--color-text-heading:var(--text-muted);--color-text-day:var(--text-normal);--color-text-today:var(--interactive-accent);--color-text-weeknum:var(--text-muted)}.container.svelte-pcimu8{padding:0 8px}.container.is-mobile.svelte-pcimu8{padding:0}th.svelte-pcimu8{text-align:center}.weekend.svelte-pcimu8{background-color:var(--color-background-weekend)}.calendar.svelte-pcimu8{border-collapse:collapse;width:100%}th.svelte-pcimu8{background-color:var(--color-background-heading);color:var(--color-text-heading);font-size:0.6em;letter-spacing:1px;padding:4px;text-transform:uppercase}";
 	append(document.head, style);
 }
 
@@ -17937,9 +17404,7 @@ function create_each_block_3(ctx) {
 
 	return {
 		c() {
-			col = element("col");
-			attr(col, "class", "svelte-pcimu8");
-			toggle_class(col, "weekend", isWeekend(/*date*/ ctx[27]));
+			col = element("col");\n\t\t\tattr(col,"class", "svelte-pcimu8");\n\t\t\ttoggle_class(col,"weekend", isWeekend(/*date*/ ctx[27]));
 		},
 		m(target, anchor) {
 			insert(target, col, anchor);
@@ -17961,9 +17426,7 @@ function create_if_block_1(ctx) {
 
 	return {
 		c() {
-			th = element("th");
-			th.textContent = "W";
-			attr(th, "class", "svelte-pcimu8");
+			th = element("th");\n\t\t\tth.textContent ="W"；\n\t\t\tattr(th,"class", "svelte-pcimu8");
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
@@ -17977,14 +17440,7 @@ function create_if_block_1(ctx) {
 // (67:8) {#each daysOfWeek as dayOfWeek}
 function create_each_block_2(ctx) {
 	let th;
-	let t_value = /*dayOfWeek*/ ctx[24] + "";
-	let t;
-
-	return {
-		c() {
-			th = element("th");
-			t = text(t_value);
-			attr(th, "class", "svelte-pcimu8");
+	let t_value = /*dayOfWeek*/ ctx[24] + "";\n\t让 t；\n\n\t返回{\n\t\tc() {\n\t\t\tth = 元素("th");\n\t\t\tt = 文本(t_值);\n\t\t\tattr(th,"class", "svelte-pcimu8");
 		},
 		m(target, anchor) {
 			insert(target, th, anchor);
@@ -18289,11 +17745,7 @@ function create_fragment(ctx) {
 
 	return {
 		c() {
-			div = element("div");
-			create_component(nav.$$.fragment);
-			t0 = space();
-			table = element("table");
-			colgroup = element("colgroup");
+			div = element("div"）；\n\t\t\t创建组件(nav.$$.fragment);\n\t\t\tt0 = 空间();\n\t\t\t表 = 元素("table"）；\n\t\t\tcolgroup = 元素("colgroup");
 			if (if_block0) if_block0.c();
 			t1 = space();
 
@@ -18302,8 +17754,7 @@ function create_fragment(ctx) {
 			}
 
 			t2 = space();
-			thead = element("thead");
-			tr = element("tr");
+			thead = element("thead");\n\t\t\ttr = 元素("tr");
 			if (if_block1) if_block1.c();
 			t3 = space();
 
@@ -18312,16 +17763,7 @@ function create_fragment(ctx) {
 			}
 
 			t4 = space();
-			tbody = element("tbody");
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].c();
-			}
-
-			attr(table, "class", "calendar svelte-pcimu8");
-			attr(div, "id", "calendar-container");
-			attr(div, "class", "container svelte-pcimu8");
-			toggle_class(div, "is-mobile", /*isMobile*/ ctx[16]);
+			tbody = element("tbody"）；\n\n\t\t\tfor (让 i = 0; i <each_blocks.length; i += 1) {\n\t\t\t\t每个_blocks[i].c();\n\t\t\t}\n\n\t\t\tattr(表,"class", "calendar svelte-pcimu8");\n\t\t\tattr(div,"id", "calendar-container");\n\t\t\tattr(div,"class", "container svelte-pcimu8");\n\t\t\ttoggle_class(div,"is-mobile", /*isMobile*/ ctx[16]);
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
@@ -18492,11 +17934,7 @@ function instance($$self, $$props, $$invalidate) {
 	let isMobile = window.app.isMobile;
 
 	function incrementDisplayedMonth() {
-		$$invalidate(0, displayedMonth = displayedMonth.clone().add(1, "month"));
-	}
-
-	function decrementDisplayedMonth() {
-		$$invalidate(0, displayedMonth = displayedMonth.clone().subtract(1, "month"));
+		$$invalidate(0, displayedMonth = displayedMonth.clone().add(1, "month"));\n\t}\n\n\t函数减量显示月份() {\n\t\t$$invalidate(0, displayedMonth = displayedMonth.clone().subtract(1,"month"));
 	}
 
 	function resetDisplayedMonth() {
@@ -18504,18 +17942,7 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$props => {
-		if ("localeData" in $$props) $$invalidate(17, localeData = $$props.localeData);
-		if ("showWeekNums" in $$props) $$invalidate(1, showWeekNums = $$props.showWeekNums);
-		if ("onHoverDay" in $$props) $$invalidate(2, onHoverDay = $$props.onHoverDay);
-		if ("onHoverWeek" in $$props) $$invalidate(3, onHoverWeek = $$props.onHoverWeek);
-		if ("onContextMenuDay" in $$props) $$invalidate(4, onContextMenuDay = $$props.onContextMenuDay);
-		if ("onContextMenuWeek" in $$props) $$invalidate(5, onContextMenuWeek = $$props.onContextMenuWeek);
-		if ("onClickDay" in $$props) $$invalidate(6, onClickDay = $$props.onClickDay);
-		if ("onClickWeek" in $$props) $$invalidate(7, onClickWeek = $$props.onClickWeek);
-		if ("sources" in $$props) $$invalidate(8, sources = $$props.sources);
-		if ("selectedId" in $$props) $$invalidate(9, selectedId = $$props.selectedId);
-		if ("today" in $$props) $$invalidate(10, today = $$props.today);
-		if ("displayedMonth" in $$props) $$invalidate(0, displayedMonth = $$props.displayedMonth);
+		if ("localeData"in $$props) $$invalidate(17, localeData = $$props.localeData);\n\t\tif ("showWeekNums"in $$props) $$invalidate(1, showWeekNums = $$props.showWeekNums);\n\t\t如果（"onHoverDay"in $$props) $$invalidate(2, onHoverDay = $$props.onHoverDay);\n\t\tif ("onHoverWeek"in $$props) $$invalidate(3, onHoverWeek = $$props.onHoverWeek);\n\t\tif ("onContextMenuDay"in $$props) $$invalidate(4, onContextMenuDay = $$props.onContextMenuDay);\n\t\t如果（"onContextMenuWeek"in $$props) $$invalidate(5, onContextMenuWeek = $$props.onContextMenuWeek);\n\t\t如果（"onClickDay"in $$props) $$invalidate(6, onClickDay = $$props.onClickDay);\n\t\tif ("onClickWeek"in $$props) $$invalidate(7, onClickWeek = $$props.onClickWeek);\n\t\t如果（"sources"in $$props) $$invalidate(8, 来源 = $$props.sources);\n\t\t如果（"selectedId"in $$props) $$invalidate(9, selectedId = $$props.selectedId);\n\t\tif ("today") $$invalidate(10, 今天 = $$props.today);\n\t\t如果（"displayedMonth" in $$props) $$invalidate(0, displayedMonth = $$props.displayedMonth);
 	};
 
 	$$self.$$.update = () => {
@@ -18651,12 +18078,7 @@ class DataviewCalendarRenderer extends DataviewRefreshableRenderer {
         let dateMap = new Map();
         for (let data of maybeResult.value.data) {
             const dot = {
-                color: "default",
-                className: "note",
-                isFilled: true,
-                link: data.link,
-            };
-            const d = data.date.toFormat("yyyyLLdd");
+                color: "default",\n                班级名称："note",\n                已填充：真实，\n                链接：数据.链接，\n            };\n            const d = data.date.toFormat("yyyyLLdd");
             if (!dateMap.has(d)) {
                 dateMap.set(d, [dot]);
             }
@@ -18829,8 +18251,7 @@ class DataviewInlineApi {
      * This takes an optional second argument which provides definitions for variables, such as:
      *
      * ```
-     * dv.evaluate("x + 6", { x: 2 }) = 8
-     * dv.evaluate('link(target)', { target: "Okay" }) = [[Okay]]
+     * dv.evaluate("x + 6", { x: 2 }) = 8\n     * dv.evaluate('链接(目标)', { 目标:"Okay" }) = [[Okay]]
      * ```
      *
      * Note that `this` is implicitly available and refers to the current file.
@@ -18940,14 +18361,7 @@ class DataviewInlineApi {
     }
     /** Render an HTML paragraph, containing arbitrary text. */
     paragraph(text, options) {
-        return this.el("p", text, options);
-    }
-    /** Render an inline span, containing arbitrary text. */
-    span(text, options) {
-        return this.el("span", text, options);
-    }
-    /**
-     * Render HTML from the output of a template "view" saved as a file in the vault.
+        return this.el("p", 文本, 选项);\n    }\n    /** 渲染一个内联范围，包含任意文本。 */\n    跨度（文本，选项）{\n        返回 this.el("span", 文本, 选项);\n    }\n    /**\n     * 从模板的输出渲染 HTML"view" saved as a file in the vault.
      * Takes a filename and arbitrary input data.
      */
     async view(viewName, input) {
@@ -18971,12 +18385,7 @@ class DataviewInlineApi {
             if (cssFile) {
                 let cssContents = await this.app.vault.read(cssFile);
                 cssContents += `\n/*# sourceURL=${location.origin}/${cssFile.path} */`;
-                cssElement = this.container.createEl("style", { text: cssContents, attr: { scope: " " } });
-            }
-        }
-        let contents = await this.app.vault.read(viewFile);
-        if (contents.contains("await"))
-            contents = "(async () => { " + contents + " })()";
+                cssElement = this.container.createEl("style", { text: cssContents, attr: { 范围:" "} });\n            }\n        }\n        让内容=等待this.app.vault.read(viewFile);\n        if (contents.contains("await"))\n            内容 ="(async () => { "+ 内容 +" })()";
         contents += `\n//# sourceURL=${viewFile.path}`;
         let func = new Function("dv", "input", contents);
         try {
@@ -19032,7 +18441,7 @@ function evalInContext(script, context) {
  */
 async function asyncEvalInContext(script, context) {
     if (script.includes("await")) {
-        return evalInContext("(async () => { " + script + " })()", context);
+        return evalInContext("(async () => { "+ 脚本 +" })()", context);
     }
     else {
         return Promise.resolve(evalInContext(script, context));
@@ -19053,10 +18462,7 @@ class DataviewJSRenderer extends DataviewRefreshableRenderer {
         this.origin = origin;
     }
     async render() {
-        this.container.innerHTML = "";
-        if (!this.settings.enableDataviewJs) {
-            this.containerEl.innerHTML = "";
-            renderErrorPre(this.container, "Dataview JS queries are disabled. You can enable them in the Dataview settings.");
+        this.container.innerHTML = "";\n        if (!this.settings.enableDataviewJs) {\n            this.containerEl.innerHTML ="";\n            renderErrorPre(this.container,"Dataview JS queries are disabled. You can enable them in the Dataview settings.");
             return;
         }
         // Assume that the code is javascript, and try to eval it.
@@ -19064,8 +18470,7 @@ class DataviewJSRenderer extends DataviewRefreshableRenderer {
             await asyncEvalInContext(DataviewJSRenderer.PREAMBLE + this.script, new DataviewInlineApi(this.api, this, this.container, this.origin));
         }
         catch (e) {
-            this.containerEl.innerHTML = "";
-            renderErrorPre(this.container, "Evaluation Error: " + e.stack);
+            this.containerEl.innerHTML = "";\n            renderErrorPre(this.container,"Evaluation Error: " + e.stack);
         }
     }
 }
@@ -19090,8 +18495,7 @@ class DataviewInlineJSRenderer extends DataviewRefreshableRenderer {
     async render() {
         this.errorbox?.remove();
         if (!this.settings.enableDataviewJs || !this.settings.enableInlineDataviewJs) {
-            let temp = document.createElement("span");
-            temp.innerText = "(disabled; enable in settings)";
+            let temp = document.createElement("span");\n            temp.innerText ="(disabled; enable in settings)";
             this.target.replaceWith(temp);
             this.target = temp;
             return;
@@ -19107,8 +18511,7 @@ class DataviewInlineJSRenderer extends DataviewRefreshableRenderer {
             renderValue(this.api.app, result, temp, this.origin, this, this.settings, false);
         }
         catch (e) {
-            this.errorbox = this.container.createEl("div");
-            renderErrorPre(this.errorbox, "Dataview (for inline JS query '" + this.script + "'): " + e);
+            this.errorbox = this.container.createEl("div");\n            renderErrorPre(this.errorbox,"Dataview (for inline JS query '" + this.script + "'): " + e);
         }
     }
 }
@@ -19153,7 +18556,7 @@ function rawTableLiteral(value, allowHtml = true, settings) {
     if (!allowHtml)
         return Values.toString(value, settings);
     if (Values.isArray(value)) {
-        return `<ul>${value.map(v => "<li>" + tableLiteral(v, allowHtml, settings) + "</li>").join("")}</ul>`;
+        return `<ul>${value.map(v => "<li>"+ tableLiteral(v,allowHtml,settings) +"</li>").join("")}</ul>`;
     }
     else if (Values.isObject(value)) {
         const inner = Object.entries(value)
@@ -19187,21 +18590,7 @@ function markdownList(values, settings) {
 /** Internal recursive function which renders markdown lists. */
 function markdownListRec(input, settings, depth = 0) {
     if (Values.isArray(input)) {
-        let result = depth == 0 ? "" : "\n";
-        for (let value of input) {
-            result += "    ".repeat(depth) + "- ";
-            result += markdownListRec(value, settings, depth);
-            result += "\n";
-        }
-        return result;
-    }
-    else if (Values.isObject(input)) {
-        let result = depth == 0 ? "" : "\n";
-        for (let [key, value] of Object.entries(input)) {
-            result += "    ".repeat(depth) + "- ";
-            result += Values.toString(key) + ": ";
-            result += markdownListRec(value, settings, depth);
-            result += "\n";
+        let result = depth == 0 ? "" : "\n";\n        for（设输入值）{\n            result +="    ".repeat(深度) +"- ";\n            结果+= markdownListRec(值、设置、深度);\n            结果+="\n"；\n        }\n        返回结果；\n    }\n    否则如果（Values.isObject（输入））{\n        让结果 = 深度 == 0 ？"" : "\n";\n        for (let [key, value] of Object.entries(input)) {\n            结果+="    ".repeat(深度) +"- ";\n            结果 += Values.toString(key) +": ";\n            结果+= markdownListRec(值、设置、深度);\n            结果+="\n";
         }
         return result;
     }
@@ -19216,9 +18605,7 @@ function markdownListRec(input, settings, depth = 0) {
 /** Render the result of a task query to markdown. */
 function markdownTaskList(tasks, settings, depth = 0) {
     if (Groupings.isGrouping(tasks)) {
-        let result = "";
-        for (let element of tasks) {
-            result += "#".repeat(depth + 1) + " " + Values.toString(element.key) + "\n\n";
+        let result = "";\n        for (let 任务元素) {\n            结果+="#".repeat(深度 + 1) +" "+ Values.toString(element.key) +"\n\n";
             result += markdownTaskList(element.rows, settings, depth + 1);
         }
         return result;
@@ -19226,9 +18613,7 @@ function markdownTaskList(tasks, settings, depth = 0) {
     else {
         // Remove task line duplicates if present to match `taskList()` behavior.
         const [dedupTasks, _] = nestItems(tasks);
-        let result = "";
-        for (let element of dedupTasks) {
-            result += "    ".repeat(depth) + "- ";
+        let result = "";\n        for (让 dedupTasks 的元素) {\n            result +="    ".repeat(深度) +"- ";
             if (element.task) {
                 result += `[${element.status}] ${(element.visual ?? element.text).split("\n").join(" ")}\n`;
             }
@@ -19324,8 +18709,7 @@ class DataviewApi {
     pagePaths(query, originFile) {
         let source;
         try {
-            if (!query || query.trim() === "")
-                source = Sources.folder("");
+            if (!query || query.trim() === "")\n                源 = Sources.folder("");
             else
                 source = EXPRESSION.source.tryParse(query);
         }
@@ -19338,8 +18722,7 @@ class DataviewApi {
     }
     /** Map a page path to the actual data contained within that page. */
     page(path, originFile) {
-        if (!(typeof path === "string") && !Values.isLink(path)) {
-            throw Error("dv.page only handles string and link paths; was provided type '" + typeof path + "'");
+        if (!(typeof path === "string") && !Values.isLink(path)) {\n            抛出错误("dv.page only handles string and link paths; was provided type '" + typeof 路径 + "'");
         }
         let rawPath = path instanceof Link ? path.path : path;
         let normPath = this.app.metadataCache.getFirstLinkpathDest(rawPath, originFile ?? "");
@@ -19455,17 +18838,13 @@ class DataviewApi {
             return query.cast();
         const header = query.value.header;
         switch (header.type) {
-            case "calendar":
-                const cres = await executeCalendar(query.value, this.index, originFile ?? "", this.settings);
+            case "calendar"：\n                const cres = 等待executeCalendar(query.value, this.index, originFile ??"", this.settings);
                 if (!cres.successful)
                     return cres.cast();
-                return Result.success({ type: "calendar", values: cres.value.data });
-            case "task":
-                const tasks = await executeTask(query.value, originFile ?? "", this.index, this.settings);
+                return Result.success({ type: "calendar"，值：cres.value.data });\n            案例"task":\n                const 任务 = 等待executeTask(query.value, originFile ??"", this.index, this.settings);
                 if (!tasks.successful)
                     return tasks.cast();
-                return Result.success({ type: "task", values: tasks.value.tasks });
-            case "list":
+                return Result.success({ type: "task"，值：tasks.value.tasks }）;\n            case"list":
                 if (settings?.forceId !== undefined)
                     header.showId = settings.forceId;
                 const lres = await executeList(query.value, this.index, originFile ?? "", this.settings);
@@ -19502,14 +18881,7 @@ class DataviewApi {
         if (!result.successful)
             return result.cast();
         switch (result.value.type) {
-            case "list":
-                return Result.success(this.markdownList(result.value.values, settings));
-            case "table":
-                return Result.success(this.markdownTable(result.value.headers, result.value.values, settings));
-            case "task":
-                return Result.success(this.markdownTaskList(result.value.values, settings));
-            case "calendar":
-                return Result.failure("Cannot render calendar queries to markdown.");
+            case "list"：\n                返回 Result.success(this.markdownList(result.value.values, 设置));\n            case"table":\n                返回 Result.success(this.markdownTable(result.value.headers, result.value.values, 设置));\n            案例"task":\n                返回 Result.success(this.markdownTaskList(result.value.values, 设置));\n            案例"calendar"：\n                返回 Result.failure("Cannot render calendar queries to markdown.");
         }
     }
     /** Error-throwing version of {@link queryMarkdown}. */
@@ -19521,8 +18893,7 @@ class DataviewApi {
      * This takes an optional second argument which provides definitions for variables, such as:
      *
      * ```
-     * dv.evaluate("x + 6", { x: 2 }) = 8
-     * dv.evaluate('link(target)', { target: "Okay" }) = [[Okay]]
+     * dv.evaluate("x + 6", { x: 2 }) = 8\n     * dv.evaluate('链接(目标)', { 目标:"Okay" }) = [[Okay]]
      * ```
      *
      * This method returns a Result type instead of throwing an error; you can check the result of the
@@ -19672,10 +19043,7 @@ class DataviewApi {
 function isDataviewDisabled(sourcePath) {
     if (!sourcePath)
         return false;
-    let questionLocation = sourcePath.lastIndexOf("?");
-    if (questionLocation == -1)
-        return false;
-    return sourcePath.substring(questionLocation).contains("no-dataview");
+    let questionLocation = sourcePath.lastIndexOf("?");\n    if (问题位置 == -1)\n        返回假；\n    return sourcePath.substring(questionLocation).contains("no-dataview");
 }
 
 /** Refreshable renderer which renders inline instead of in a div. */
@@ -19705,11 +19073,7 @@ class DataviewInlineRenderer extends DataviewRefreshableRenderer {
         this.errorbox?.remove();
         let result = tryOrPropagate(() => executeInline(this.field, this.origin, this.index, this.settings));
         if (!result.successful) {
-            this.errorbox = this.container.createEl("div");
-            renderErrorPre(this.errorbox, "Dataview (for inline query '" + this.fieldText + "'): " + result.error);
-        }
-        else {
-            let temp = document.createElement("span");
+            this.errorbox = this.container.createEl("div");\n            renderErrorPre(this.errorbox,"Dataview (for inline query '" + this.fieldText + "'): "+ result.error);\n        }\n        否则{\n            让 temp = document.createElement("span");
             temp.addClasses(["dataview", "dataview-inline-query"]);
             await renderValue(this.app, result.value, temp, this.origin, this, this.settings, false);
             this.target.replaceWith(temp);
@@ -19729,30 +19093,13 @@ async function replaceInlineFields(ctx, init) {
     for (let x = inlineFields.length - 1; x >= 0; x--) {
         let field = inlineFields[x];
         let renderContainer = document.createElement("span");
-        renderContainer.addClasses(["dataview", "inline-field"]);
-        // Block inline fields render the key, parenthesis ones do not.
-        if (field.wrapping == "[") {
-            const key = renderContainer.createSpan({
-                cls: ["dataview", "inline-field-key"],
-                attr: {
-                    "data-dv-key": field.key,
-                    "data-dv-norm-key": canonicalizeVarName(field.key),
+        renderContainer.addClasses(["dataview", "inline-field"]);\n        // 块内联字段渲染键，括号内的字段则不会。\n        if (field.wrapping =="[") {\n            const key = renderContainer.createSpan({\n                分类：["dataview", "inline-field-key"],\n                属性：{"data-dv-key"：field.key，"data-dv-norm-key": canonicalizeVarName(field.key),
                 },
             });
             // Explicitly set the inner HTML to respect any key formatting that we should carry over.
             key.innerHTML = field.key;
             renderContainer.createSpan({
-                cls: ["dataview", "inline-field-value"],
-                attr: { id: "dataview-inline-field-" + x },
-            });
-        }
-        else {
-            renderContainer.createSpan({
-                cls: ["dataview", "inline-field-standalone-value"],
-                attr: {
-                    id: "dataview-inline-field-" + x,
-                    "data-dv-key": field.key,
-                    "data-dv-norm-key": canonicalizeVarName(field.key),
+                cls: ["dataview", "inline-field-value"],\n                attr: { id:"dataview-inline-field-"+ x },\n            });\n        }\n        否则{\n            renderContainer.createSpan({\n                cls: ["dataview", "inline-field-standalone-value"],\n                属性：{\n                    id:"dataview-inline-field-"+ x,"data-dv-key"：field.key，"data-dv-norm-key": canonicalizeVarName(field.key),
                 },
             });
         }
@@ -19890,20 +19237,15 @@ class InlineWidget extends view.WidgetType {
 }
 function getCssClasses(props) {
     const classes = [];
-    if (props.has("strong")) {
-        classes.push("cm-strong");
+    if (props.has("strong")) {\n        类.push("cm-strong");
     }
-    if (props.has("em")) {
-        classes.push("cm-em");
+    if (props.has("em")) {\n        类.push("cm-em");
     }
-    if (props.has("highlight")) {
-        classes.push("cm-highlight");
+    if (props.has("highlight")) {\n        类.push("cm-highlight");
     }
-    if (props.has("strikethrough")) {
-        classes.push("cm-strikethrough");
+    if (props.has("strikethrough")) {\n        类.push("cm-strikethrough");
     }
-    if (props.has("comment")) {
-        classes.push("cm-comment");
+    if (props.has("comment")) {\n        类.push("cm-comment");
     }
     return classes;
 }
@@ -20057,13 +19399,7 @@ function inlinePlugin(app, index, settings, api) {
             const start = node.from;
             const end = node.to;
             // safety net against unclosed inline code
-            if (view$1.state.doc.sliceString(end, end + 1) === "\n") {
-                return;
-            }
-            const text = view$1.state.doc.sliceString(start, end);
-            let code = "";
-            let result = "";
-            const PREAMBLE = "const dataview=this;const dv=this;";
+            if (view$1.state.doc.sliceString(end, end + 1) === "\n") {\n                返回；\n            }\n            const text = view$1.state.doc.sliceString(start, end);\n            让代码 ="";\n            让结果 ="";\n            const PREAMBLE ="const dataview=this;const dv=this;";
             const el = createSpan({
                 cls: ["dataview", "dataview-inline"],
             });
@@ -20106,8 +19442,7 @@ function inlinePlugin(app, index, settings, api) {
                         // for setting the correct context for dv/dataview
                         const myEl = createDiv();
                         const dvInlineApi = new DataviewInlineApi(api, this.component, myEl, currentFile.path);
-                        if (code.includes("await")) {
-                            evalInContext("(async () => { " + PREAMBLE + code + " })()").then((result) => {
+                        if (code.includes("await")) {\n                            评估上下文（"(async () => { "+ 前言 + 代码 +" })()").then((result) => {
                                 renderValue(app, result, el, currentFile.path, this.component, settings);
                             });
                         }
@@ -20170,10 +19505,7 @@ function buildInlineFields(state$1) {
             to: line.to,
             enter: node => {
                 // ignore code blocks
-                if (node.name.startsWith("HyperMD-codeblock")) {
-                    isInsideCodeBlock = true;
-                }
-                return node.name == "Document";
+                if (node.name.startsWith("HyperMD-codeblock")) {\n                    isInsideCodeBlock = true；\n                }\n                返回node.name =="Document";
             },
         });
         if (!isInsideCodeBlock) {
@@ -20317,23 +19649,12 @@ class InlineFieldWidget extends view.WidgetType {
         // A large part of this method was taken from replaceInlineFields() in src/ui/views/inline-field.tsx.
         // It will be better to extract the common part as a function...
         const renderContainer = createSpan({
-            cls: ["dataview", "inline-field"],
-        });
-        // Block inline fields render the key, parenthesis ones do not.
-        if (this.field.wrapping == "[") {
-            const key = renderContainer.createSpan({
-                cls: ["dataview", "inline-field-key"],
-                attr: {
-                    "data-dv-key": this.field.key,
-                    "data-dv-norm-key": canonicalizeVarName(this.field.key),
+            cls: ["dataview", "inline-field"]，\n        });\n        // 块内联字段渲染键，括号内的字段则不会。\n        if (this.field.wrapping =="[") {\n            const key = renderContainer.createSpan({\n                分类：["dataview", "inline-field-key"],\n                属性：{"data-dv-key": this.field.key,"data-dv-norm-key": canonicalizeVarName(this.field.key),
                 },
             });
             renderCompactMarkdown(this.app, this.field.key, key, this.sourcePath, this.component, true);
             const value = renderContainer.createSpan({
-                cls: ["dataview", "inline-field-value"],
-                attr: {
-                    "data-dv-key": this.field.key,
-                    "data-dv-norm-key": canonicalizeVarName(this.field.key),
+                cls: ["dataview", "inline-field-value"],\n                属性：{"data-dv-key": this.field.key,"data-dv-norm-key": canonicalizeVarName(this.field.key),
                 },
             });
             renderValue(this.app, parseInlineValue(this.field.value), value, this.sourcePath, this.component, this.settings, false, undefined, undefined, true);
@@ -20342,10 +19663,7 @@ class InlineFieldWidget extends view.WidgetType {
         }
         else {
             const value = renderContainer.createSpan({
-                cls: ["dataview", "inline-field-standalone-value"],
-                attr: {
-                    "data-dv-key": this.field.key,
-                    "data-dv-norm-key": canonicalizeVarName(this.field.key),
+                cls: ["dataview", "inline-field-standalone-value"],\n                属性：{"data-dv-key": this.field.key,"data-dv-norm-key": canonicalizeVarName(this.field.key),
                 },
             });
             renderValue(this.app, parseInlineValue(this.field.value), value, this.sourcePath, this.component, this.settings, false, undefined, undefined, true);
@@ -20408,9 +19726,7 @@ class DataviewPlugin extends obsidian.Plugin {
         // From this point onwards the dataview API is fully functional (even if the index needs to do some background indexing).
         this.api = new DataviewApi(this.app, this.index, this.settings, this.manifest.version);
         // Register API to global window object.
-        (window["DataviewAPI"] = this.api) && this.register(() => delete window["DataviewAPI"]);
-        // Dataview query language code blocks.
-        this.registerPriorityCodeblockPostProcessor("dataview", -100, async (source, el, ctx) => this.dataview(source, el, ctx, ctx.sourcePath));
+        (window["DataviewAPI"] = this.api) && this.register(() => delete window["DataviewAPI"]);\n        // Dataview 查询语言代码块。\n        this.registerPriorityCodeblockPostProcessor("dataview", -100, async (source, el, ctx) => this.dataview(source, el, ctx, ctx.sourcePath));
         // DataviewJS codeblocks.
         this.registerPriorityCodeblockPostProcessor(this.settings.dataviewJsKeyword, -100, async (source, el, ctx) => this.dataviewjs(source, el, ctx, ctx.sourcePath));
         // Dataview inline queries.
@@ -20440,25 +19756,16 @@ class DataviewPlugin extends obsidian.Plugin {
         this.cmExtension = [];
         this.registerEditorExtension(this.cmExtension);
         this.updateEditorExtensions();
-        // Dataview "force refresh" operation.
-        this.addCommand({
-            id: "dataview-force-refresh-views",
-            name: "Force refresh all views and blocks",
+        // Dataview "force refresh"操作。\n        this.addCommand({\n            ID："dataview-force-refresh-views"，\n            姓名："Force refresh all views and blocks",
             callback: () => {
                 this.index.revision += 1;
-                this.app.workspace.trigger("dataview:refresh-views");
-            },
-        });
-        this.addCommand({
-            id: "dataview-drop-cache",
-            name: "Drop all cached file metadata",
+                this.app.workspace.trigger("dataview:refresh-views");\n            },\n        });\n        this.addCommand({\n            id:"dataview-drop-cache"，\n            姓名："Drop all cached file metadata",
             callback: () => {
                 this.index.reinitialize();
             },
         });
         this.addCommand({
-            id: "dataview-rebuild-current-view",
-            name: "Rebuild current view",
+            id: "dataview-rebuild-current-view"，\n            姓名："Rebuild current view",
             callback: () => {
                 const activeView = this.app.workspace.getActiveViewOfType(obsidian.MarkdownView);
                 if (activeView) {
@@ -20630,9 +19937,7 @@ class GeneralSettingsTab extends obsidian.PluginSettingTab {
             await this.plugin.updateSettings({ prettyRenderInlineFieldsInLivePreview: value });
             this.plugin.updateEditorExtensions();
         }));
-        new obsidian.Setting(this.containerEl).setName("Codeblocks").setHeading();
-        new obsidian.Setting(this.containerEl)
-            .setName("DataviewJS keyword")
+        new obsidian.Setting(this.containerEl).setName("Codeblocks").setHeading();\n        新黑曜石.Setting(this.containerEl)\n            .setName("DataviewJS keyword")
             .setDesc("Keyword for DataviewJS blocks. Defaults to 'dataviewjs'. Reload required for changes to take effect.")
             .addText(text => text
             .setPlaceholder("dataviewjs")
@@ -20672,9 +19977,7 @@ class GeneralSettingsTab extends obsidian.PluginSettingTab {
             .addToggle(toggle => toggle
             .setValue(this.plugin.settings.inlineQueriesInCodeblocks)
             .onChange(async (value) => await this.plugin.updateSettings({ inlineQueriesInCodeblocks: value })));
-        new obsidian.Setting(this.containerEl).setName("View").setHeading();
-        new obsidian.Setting(this.containerEl)
-            .setName("Display result count")
+        new obsidian.Setting(this.containerEl).setName("View").setHeading();\n        新黑曜石.Setting(this.containerEl)\n            .setName("Display result count")
             .setDesc("If toggled off, the small number in the result header of TASK and TABLE queries will be hidden.")
             .addToggle(toggle => toggle.setValue(this.plugin.settings.showResultCount).onChange(async (value) => {
             await this.plugin.updateSettings({ showResultCount: value });
@@ -20748,9 +20051,7 @@ class GeneralSettingsTab extends obsidian.PluginSettingTab {
             await this.plugin.updateSettings({ defaultDateTimeFormat: value });
             this.plugin.index.touch();
         }));
-        new obsidian.Setting(this.containerEl).setName("Tables").setHeading();
-        new obsidian.Setting(this.containerEl)
-            .setName("Primary column name")
+        new obsidian.Setting(this.containerEl).setName("Tables").setHeading();\n        新黑曜石.Setting(this.containerEl)\n            .setName("Primary column name")
             .setDesc("The name of the default ID column in tables; this is the auto-generated first column that links to the source file.")
             .addText(text => text
             .setPlaceholder("File")
@@ -20796,8 +20097,7 @@ class GeneralSettingsTab extends obsidian.PluginSettingTab {
                 el.appendText("Example: - [x] my task ✅ 2022-01-01");
                 el.createEl("br");
                 el.appendText("Disable this to customize the completion date format or field name, or to use Dataview inline field formatting.");
-                el.createEl("br");
-                el.appendText('Only available when "automatic task completion tracking" is enabled.');
+                el.createEl("br");\n                el.appendText('仅当"automatic task completion tracking" is enabled.');
             }))
                 .addToggle(toggle => toggle.setValue(this.plugin.settings.taskCompletionUseEmojiShorthand).onChange(async (value) => {
                 await this.plugin.updateSettings({ taskCompletionUseEmojiShorthand: value });
@@ -20805,30 +20105,24 @@ class GeneralSettingsTab extends obsidian.PluginSettingTab {
                 this.display();
             }));
         else
-            taskEmojiShorthand.setDesc('Only available when "automatic task completion tracking" is enabled.');
-        let taskFieldName = new obsidian.Setting(this.containerEl)
-            .setName("Completion field name")
+            taskEmojiShorthand.setDesc('Only available when "automatic task completion tracking"已启用。');\n        让taskFieldName = new obsidian.Setting(this.containerEl)\n            .setName("Completion field name")
             .setDisabled(!taskCompletionInlineSubsettingsEnabled);
         if (taskCompletionInlineSubsettingsEnabled)
             taskFieldName
                 .setDesc(createFragment(el => {
-                el.appendText("Text used as inline field key for task completion date when toggling a task's checkbox in a Dataview view.");
-                el.createEl("br");
-                el.appendText('Only available when "automatic task completion tracking" is enabled and "use emoji shorthand for completion" is disabled.');
+                el.appendText("Text used as inline field key for task completion date when toggling a task'数据视图视图中的复选框。");\n                el.createEl("br");\n                el.appendText('Only available when "自动任务完成跟踪" is enabled and "使用表情符号简写完成" is disabled.');
             }))
                 .addText(text => text.setValue(this.plugin.settings.taskCompletionText).onChange(async (value) => {
                 await this.plugin.updateSettings({ taskCompletionText: value.trim() });
             }));
         else
-            taskFieldName.setDesc('Only available when "automatic task completion tracking" is enabled and "use emoji shorthand for completion" is disabled.');
+            taskFieldName.setDesc('Only available when "自动任务完成跟踪" is enabled and "使用表情符号简写完成" is disabled.');
         let taskDtFormat = new obsidian.Setting(this.containerEl)
             .setName("Completion date format")
             .setDisabled(!taskCompletionInlineSubsettingsEnabled);
         if (taskCompletionInlineSubsettingsEnabled) {
             let descTextLines = [
-                "Date-time format for task completion date when toggling a task's checkbox in a Dataview view (see Luxon date format options).",
-                'Only available when "automatic task completion tracking" is enabled and "use emoji shorthand for completion" is disabled.',
-                "Currently: ",
+                "Date-time format for task completion date when toggling a task's checkbox in a Dataview view (see Luxon date format options).",\n                '仅当"automatic task completion tracking"已启用且"use emoji shorthand for completion"已禁用。',"Currently: ",
             ];
             taskDtFormat
                 .setDesc(createFragment(el => {
@@ -20858,12 +20152,7 @@ class GeneralSettingsTab extends obsidian.PluginSettingTab {
             }));
         }
         else {
-            taskDtFormat.setDesc('Only available when "automatic task completion tracking" is enabled and "use emoji shorthand for completion" is disabled.');
-        }
-        new obsidian.Setting(this.containerEl)
-            .setName("Recursive sub-task completion")
-            // I gotta word this better :/
-            .setDesc("If enabled, completing a task in a Dataview will automatically complete its subtasks too.")
+            taskDtFormat.setDesc('Only available when "automatic task completion tracking"已启用且"use emoji shorthand for completion"被禁用。');\n        }\n        新黑曜石.Setting(this.containerEl)\n            .setName("Recursive sub-task completion"）\n            // 我得更好地说一下：/\n            .setDesc("If enabled, completing a task in a Dataview will automatically complete its subtasks too.")
             .addToggle(toggle => toggle
             .setValue(this.plugin.settings.recursiveSubTaskCompletion)
             .onChange(async (value) => await this.plugin.updateSettings({ recursiveSubTaskCompletion: value })));

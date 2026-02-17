@@ -33,11 +33,11 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("不能" + msg);
 var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
-var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("无法多次添加同一私有成员") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
 var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), setter ? setter.call(obj, value) : member.set(obj, value), value);
-var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
+var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "访问私有方法"), method);
 
 // node_modules/.pnpm/moment@2.30.1/node_modules/moment/moment.js
 var require_moment = __commonJS({
@@ -54,10 +54,10 @@ var require_moment = __commonJS({
         hookCallback = callback2;
       }
       function isArray2(input) {
-        return input instanceof Array || Object.prototype.toString.call(input) === "[object Array]";
+        return input instanceof Array || Object.prototype.toString.call(input) === "[对象数组]";
       }
       function isObject2(input) {
-        return input != null && Object.prototype.toString.call(input) === "[object Object]";
+        return input != null && Object.prototype.toString.call(input) === "[对象对象]";
       }
       function hasOwnProp(a2, b2) {
         return Object.prototype.hasOwnProperty.call(a2, b2);
@@ -79,10 +79,10 @@ var require_moment = __commonJS({
         return input === void 0;
       }
       function isNumber2(input) {
-        return typeof input === "number" || Object.prototype.toString.call(input) === "[object Number]";
+        return typeof input === "number" || Object.prototype.toString.call(input) === "[对象编号]";
       }
       function isDate(input) {
-        return input instanceof Date || Object.prototype.toString.call(input) === "[object Date]";
+        return input instanceof Date || Object.prototype.toString.call(input) === "[对象日期]";
       }
       function map3(arr, fn2) {
         var res = [], i2, arrLen = arr.length;
@@ -237,7 +237,7 @@ var require_moment = __commonJS({
       }
       function warn(msg) {
         if (hooks.suppressDeprecationWarnings === false && typeof console !== "undefined" && console.warn) {
-          console.warn("Deprecation warning: " + msg);
+          console.warn("弃用警告：" + msg);
         }
       }
       function deprecate(msg, fn2) {
@@ -284,7 +284,7 @@ var require_moment = __commonJS({
       hooks.suppressDeprecationWarnings = false;
       hooks.deprecationHandler = null;
       function isFunction2(input) {
-        return typeof Function !== "undefined" && input instanceof Function || Object.prototype.toString.call(input) === "[object Function]";
+        return typeof Function !== "undefined" && input instanceof Function || Object.prototype.toString.call(input) === "[对象函数]";
       }
       function set2(config) {
         var prop, i2;
@@ -345,11 +345,11 @@ var require_moment = __commonJS({
         };
       }
       var defaultCalendar = {
-        sameDay: "[Today at] LT",
-        nextDay: "[Tomorrow at] LT",
-        nextWeek: "dddd [at] LT",
-        lastDay: "[Yesterday at] LT",
-        lastWeek: "[Last] dddd [at] LT",
+        sameDay: "[今天] LT",
+        nextDay: "[明天] LT",
+        nextWeek: "dddd [在] LT",
+        lastDay: "[昨天在] LT",
+        lastWeek: "[最后] dddd [at] LT",
         sameElse: "L"
       };
       function calendar(key, mom, now3) {
@@ -436,7 +436,7 @@ var require_moment = __commonJS({
         LTS: "h:mm:ss A",
         LT: "h:mm A",
         L: "MM/DD/YYYY",
-        LL: "MMMM D, YYYY",
+        LL: "MMMM D，YYYY",
         LLL: "MMMM D, YYYY h:mm A",
         LLLL: "dddd, MMMM D, YYYY h:mm A"
       };
@@ -453,7 +453,7 @@ var require_moment = __commonJS({
         }).join("");
         return this._longDateFormat[key];
       }
-      var defaultInvalidDate = "Invalid date";
+      var defaultInvalidDate = "无效日期";
       function invalidDate() {
         return this._invalidDate;
       }
@@ -462,22 +462,22 @@ var require_moment = __commonJS({
         return this._ordinal.replace("%d", number);
       }
       var defaultRelativeTime = {
-        future: "in %s",
-        past: "%s ago",
-        s: "a few seconds",
-        ss: "%d seconds",
-        m: "a minute",
-        mm: "%d minutes",
-        h: "an hour",
-        hh: "%d hours",
+        future: "在 %s",
+        past: "%s 前",
+        s: "几秒钟",
+        ss: "%d 秒",
+        m: "一分钟",
+        mm: "%d 分钟",
+        h: "一小时",
+        hh: "%d 小时",
         d: "a day",
-        dd: "%d days",
-        w: "a week",
-        ww: "%d weeks",
-        M: "a month",
-        MM: "%d months",
-        y: "a year",
-        yy: "%d years"
+        dd: "%d 天",
+        w: "一周",
+        ww: "%d 周",
+        M: "一个月",
+        MM: "%d 个月",
+        y: "一年",
+        yy: "%d 年"
       };
       function relativeTime(number, withoutSuffix, string, isFuture) {
         var output = this._relativeTime[string];
@@ -743,9 +743,7 @@ var require_moment = __commonJS({
             return void (isUTC ? d2.setUTCHours(value) : d2.setHours(value));
           case "Date":
             return void (isUTC ? d2.setUTCDate(value) : d2.setDate(value));
-          // case 'Day': // Not real
-          //    return void (isUTC ? d.setUTCDay(value) : d.setDay(value));
-          // case 'Month': // Not used because we need to pass two variables
+          // case 'Day': // 不真实\n          // 返回 void (isUTC ? d.setUTCDay(value) : d.setDay(value));\n          // case'Month': // Not used because we need to pass two variables
           //     return void (isUTC ? d.setUTCMonth(value) : d.setMonth(value));
           case "FullYear":
             break;
@@ -2849,10 +2847,7 @@ var require_moment = __commonJS({
           func = this.utcOffset() === 0 ? "moment.utc" : "moment.parseZone";
           zone = "Z";
         }
-        prefix = "[" + func + '("]';
-        year = 0 <= this.year() && this.year() <= 9999 ? "YYYY" : "YYYYYY";
-        datetime = "-MM-DD[T]HH:mm:ss.SSS";
-        suffix = zone + '[")]';
+        prefix = "[" + func + '("]'；\n        年 = 0 <= this.year() && this.year() <= 9999 ？"YYYY" : "YYYYYY"；\n        日期时间 ="-MM-DD[T]HH:mm:ss.SSS";\n        后缀 = 区域 + '[")]';
         return this.format(prefix + year + datetime + suffix);
       }
       function format(inputString) {
@@ -4824,7 +4819,7 @@ var RepetitionItem = class {
 var SrsAlgorithm = class _SrsAlgorithm {
   static getInstance() {
     if (!_SrsAlgorithm.instance) {
-      throw new Error("there is no SrsAlgorithm instance.");
+      throw new Error("没有 SrsAlgorithm 实例。");
     }
     return _SrsAlgorithm.instance;
   }
@@ -4888,7 +4883,7 @@ var ar_default = {
   NEW_CARDS: "\u0628\u0637\u0627\u0642\u0627\u062A \u062C\u062F\u064A\u062F\u0629",
   TOTAL_CARDS: "\u0625\u062C\u0645\u0627\u0644\u064A \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A",
   BACK: "\u0631\u062C\u0648\u0639",
-  SKIP: "Skip",
+  SKIP: "跳过",
   EDIT_CARD: "\u062A\u0639\u062F\u064A\u0644 \u0627\u0644\u0628\u0637\u0627\u0642\u0629",
   RESET_CARD_PROGRESS: "\u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0642\u062F\u0651\u064F\u0645\u0652 \u0627\u0644\u0628\u0637\u0627\u0642\u0629",
   HARD: "\u0635\u0639\u0628",
@@ -4912,14 +4907,14 @@ var ar_default = {
   REVIEW_CARDS_IN_NOTE: "\u0645\u0631\u0627\u062C\u0639\u0629 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A  \u0645\u0646 \u0647\u0630\u0647 \u0627\u0644\u0645\u0644\u0627\u062D\u0638\u0629",
   CRAM_CARDS_IN_NOTE: "\u0623\u062D\u0634\u0631 \u062C\u0645\u064A\u0639 \u0628\u0637\u0627\u0642\u0627\u062A \u0647\u0630\u0647 \u0627\u0644\u0645\u0644\u0627\u062D\u0638\u0629",
   VIEW_STATS: "\u0639\u0631\u0636 \u0627\u0644\u0625\u062D\u0635\u0627\u0626\u064A\u0627\u062A",
-  OPEN_REVIEW_QUEUE_VIEW: "Open Notes Review Queue in sidebar",
+  OPEN_REVIEW_QUEUE_VIEW: "在侧边栏中打开笔记审阅队列",
   STATUS_BAR: "\u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u0633\u062A\u062D\u0642\u0629 ${dueFlashcardsCount},\u0645\u0644\u0627\u062D\u0638\u0627\u062A ${dueNotesCount}:\u0645\u0631\u0627\u062C\u0639\u0629",
   SYNC_TIME_TAKEN: "${t}ms \u0627\u0633\u062A\u063A\u0631\u0627\u0642 \u0627\u0644\u0645\u0632\u0627\u0645\u0646\u0629",
   NOTE_IN_IGNORED_FOLDER: ".\u0627\u0644\u0645\u0644\u0627\u062D\u0638\u0629 \u064A\u062A\u0645 \u062D\u0641\u0638\u0647\u0627 \u0636\u0645\u0646 \u0627\u0644\u0645\u062C\u0644\u062F \u0627\u0644\u0630\u064A \u062A\u0645 \u062A\u062C\u0627\u0647\u0644\u0647 (\u062A\u062D\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u0639\u062F\u0627\u062F\u0627\u062A)",
   PLEASE_TAG_NOTE: ".\u064A\u0631\u062C\u0649 \u0648\u0636\u0639 \u0648\u0633\u0645 \u0639\u0644\u0649 \u0627\u0644\u0645\u0644\u0627\u062D\u0638\u0629 \u0628\u0634\u0643\u0644 \u0645\u0646\u0627\u0633\u0628 \u0644\u0644\u0645\u0631\u0627\u062C\u0639\u0629 (\u0641\u064A \u0627\u0644\u0625\u0639\u062F\u0627\u062F\u0627\u062A)",
   RESPONSE_RECEIVED: ".\u0627\u0633\u062A\u064F\u0644\u0645\u062A \u0627\u0644\u0627\u0633\u062A\u062C\u0627\u0628\u0629",
   NO_DECK_EXISTS: "${deckName} \u0644\u0627 \u064A\u0648\u062C\u062F \u0631\u064F\u0632\u0645\u064E\u0629",
-  ALL_CAUGHT_UP: "\u{1F606} \u0644\u0642\u062F \u062A\u0645 \u0627\u0644\u0642\u0628\u0636 \u0639\u0644\u064A\u0643\u0645 \u062C\u0645\u064A\u0639\u0627 \u0627\u0644\u0622\u0646",
+  ALL_CAUGHT_UP: "u{1F606} ??????????????????????????????????????????????????????????????????",
   // scheduling.ts
   DAYS_STR_IVL: "\u064A\u0648\u0645/\u0623\u064A\u0627\u0645 ${interval}",
   MONTHS_STR_IVL: "\u0634\u0647\u0631/\u0623\u0634\u0647\u0631 ${interval}",
@@ -4928,14 +4923,14 @@ var ar_default = {
   MONTHS_STR_IVL_MOBILE: "\u0634${interval}",
   YEARS_STR_IVL_MOBILE: "\u0633${interval}",
   // settings.ts
-  SETTINGS_HEADER: "Spaced Repetition",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
+  SETTINGS_HEADER: "间隔重复",
+  GROUP_TAGS_FOLDERS: "标签和文件夹",
+  GROUP_FLASHCARD_REVIEW: "抽认卡回顾",
+  GROUP_FLASHCARD_SEPARATORS: "闪存卡分隔符",
+  GROUP_DATA_STORAGE: "调度数据的存储",
+  GROUP_DATA_STORAGE_DESC: "选择存储调度数据的位置",
+  GROUP_FLASHCARDS_NOTES: "抽认卡和笔记",
+  GROUP_CONTRIBUTING: "贡献",
   CHECK_WIKI: '.<a href="${wikiUrl}">wiki</a> \u0644\u0645\u0632\u064A\u062F \u0645\u0646 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A \u060C \u062A\u062D\u0642\u0642 \u0645\u0646',
   GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
   GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
@@ -4944,7 +4939,7 @@ var ar_default = {
   TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
   FOLDERS_TO_IGNORE: "\u0645\u062C\u0644\u062F\u0627\u062A \u0644\u062A\u062C\u0627\u0647\u0644\u0647\u0627",
   FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
+  OBSIDIAN_INTEGRATION: "集成到 Obsidian",
   FLASHCARDS: "\u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A",
   FLASHCARD_EASY_LABEL: "\u0646\u0635 \u0627\u0644\u0632\u0631 \u0633\u0647\u0644",
   FLASHCARD_GOOD_LABEL: "\u0646\u0635 \u0627\u0644\u0632\u0631 \u062C\u064A\u062F",
@@ -4952,43 +4947,43 @@ var ar_default = {
   FLASHCARD_EASY_DESC: '"\u062A\u062E\u0635\u064A\u0635 \u0627\u0644\u062A\u0633\u0645\u064A\u0629 \u0644\u0644\u0632\u0631 "\u0633\u0647\u0644',
   FLASHCARD_GOOD_DESC: '"\u062A\u062E\u0635\u064A\u0635 \u0627\u0644\u062A\u0633\u0645\u064A\u0629 \u0644\u0644\u0632\u0631 "\u062C\u064A\u062F',
   FLASHCARD_HARD_DESC: '"\u062A\u062E\u0635\u064A\u0635 \u0627\u0644\u062A\u0633\u0645\u064A\u0629 \u0644\u0644\u0632\u0631 "\u0635\u0639\u0628',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
+  REVIEW_BUTTON_DELAY: "按钮按下延迟 (ms)",
+  REVIEW_BUTTON_DELAY_DESC: "在再次按下审阅按钮之前添加延迟。",
   FLASHCARD_TAGS: "\u0648\u064F\u0633\u0648\u0645 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A",
   FLASHCARD_TAGS_DESC: "#2\u0623\u062F\u062E\u0644 \u0627\u0644\u0648\u064F\u0633\u0648\u0645 \u0645\u0641\u0635\u0648\u0644\u0629 \u0628\u0645\u0633\u0627\u0641\u0627\u062A \u0623\u0648 \u0623\u0633\u0637\u0631 \u062C\u062F\u064A\u062F\u0629 \u060C \u0623\u064A \u0628\u0637\u0627\u0642\u0627\u062A# \u0631\u0632\u0645\u06293# \u0631\u0632\u0645\u0629",
   CONVERT_FOLDERS_TO_DECKS: "\u062A\u062D\u0648\u064A\u0644 \u0627\u0644\u0645\u062C\u0644\u062F\u0627\u062A \u0625\u0644\u0649 \u0645\u0644\u0641\u0627\u062A \u0623\u0635\u0644\u064A\u0629 \u0648 \u0645\u0644\u0641\u0627\u062A \u0627\u0644\u0641\u0631\u0639\u064A\u0629\u061F",
   CONVERT_FOLDERS_TO_DECKS_DESC: ".\u0647\u0630\u0627 \u0647\u0648 \u0628\u062F\u064A\u0644 \u0644\u062E\u064A\u0627\u0631 \u0648\u0633\u0648\u0645 \u0627\u0644\u0628\u0637\u0627\u0642\u0629 \u0623\u0639\u0644\u0627\u0647",
   INLINE_SCHEDULING_COMMENTS: "\u062D\u0641\u0638 \u062A\u0639\u0644\u064A\u0642 \u0627\u0644\u062C\u062F\u0648\u0644\u0629 \u0639\u0644\u0649 \u0646\u0641\u0633 \u0627\u0644\u0633\u0637\u0631 \u0645\u062B\u0644 \u0627\u0644\u0633\u0637\u0631 \u0627\u0644\u0623\u062E\u064A\u0631 \u0644\u0644\u0628\u0637\u0627\u0642\u0629 \u061F",
-  INLINE_SCHEDULING_COMMENTS_DESC: "\u0644\u0627 \u062A\u0643\u0633\u0631 \u062A\u0646\u0633\u064A\u0642 \u0627\u0644\u0642\u0627\u0626\u0645\u0629 HTML \u0633\u064A\u0624\u062F\u064A \u062A\u0634\u063A\u064A\u0644 \u0647\u0630\u0627 \u0625\u0644\u0649 \u062C\u0639\u0644 \u062A\u0639\u0644\u064A\u0642\u0627\u062A",
+  INLINE_SCHEDULING_COMMENTS_DESC: "HTML 格式详情",
   BURY_SIBLINGS_TILL_NEXT_DAY: "\u0623\u062E\u0641\u064A \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0634\u0642\u064A\u0642\u0629 \u062D\u062A\u0649 \u0627\u0644\u064A\u0648\u0645 \u0627\u0644\u062A\u0627\u0644\u064A",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "cloze deletions : \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0634\u0642\u064A\u0642\u0629 \u0647\u064A \u0628\u0637\u0627\u0642\u0627\u062A \u062A\u0645 \u0625\u0646\u0634\u0627\u0624\u0647\u0627 \u0645\u0646 \u0646\u0641\u0633 \u0646\u0635 \u0627\u0644\u0628\u0637\u0627\u0642\u0629 \u0643\u0640",
+  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "完形填空 : 删除 : 删除 删除 删除",
   SHOW_CARD_CONTEXT: "\u0625\u0638\u0647\u0627\u0631 \u0627\u0644\u0633\u064A\u0627\u0642 \u0641\u064A \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A\u061F",
-  SHOW_CARD_CONTEXT_DESC: "i.e. Title > Heading 1 > Subheading > ... > Subheading",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
+  SHOW_CARD_CONTEXT_DESC: "即标题 > 标题 1 > 副标题 > ... > 副标题",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "在审核按钮中显示下次审核时间",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "有助于了解您的卡片将被推到未来多远。",
   CARD_MODAL_HEIGHT_PERCENT: "\u0646\u0633\u0628\u0629 \u0627\u0631\u062A\u0641\u0627\u0639 \u0627\u0644\u0628\u0637\u0627\u0642\u0629",
   CARD_MODAL_SIZE_PERCENT_DESC: "\u064A\u062C\u0628 \u0636\u0628\u0637\u0647\u0627 \u0639\u0644\u0649 100 \u066A \u0639\u0644\u0649 \u0627\u0644\u0647\u0627\u062A\u0641 \u0627\u0644\u0645\u062D\u0645\u0648\u0644 \u0623\u0648 \u0625\u0630\u0627 \u0643\u0627\u0646 \u0644\u062F\u064A\u0643 \u0635\u0648\u0631 \u0643\u0628\u064A\u0631\u0629 \u062C\u062F\u064B\u0627",
   RESET_DEFAULT: "\u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u0625\u0644\u0649 \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A",
   CARD_MODAL_WIDTH_PERCENT: "\u0646\u0633\u0628\u0629 \u0639\u0631\u0636 \u0627\u0644\u0628\u0637\u0627\u0642\u0629",
   RANDOMIZE_CARD_ORDER: "\u062A\u0631\u062A\u064A\u0628 \u0628\u0637\u0627\u0642\u0629 \u0639\u0634\u0648\u0627\u0626\u064A \u0623\u062B\u0646\u0627\u0621 \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629\u061F",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Order cards in a deck are displayed during review",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Sequentially within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequentially within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Randomly within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Randomly within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  REVIEW_DECK_ORDER: "Order decks are displayed during review",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequentially (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Randomly (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  DISABLE_CLOZE_CARDS: "\u061Fcloze \u062A\u0639\u0637\u064A\u0644 \u0628\u0637\u0627\u0642\u0627\u062A",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "Convert ==highlights== to clozes",
+  REVIEW_CARD_ORDER_WITHIN_DECK: "查看期间会显示一副牌中的订单卡",
+  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "在一副牌中按顺序（首先是所有新牌）",
+  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "依次在一副牌（首先是所有到期牌）",
+  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "一副牌中随机（所有新牌优先）",
+  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "一副牌中随机（所有到期牌优先）",
+  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "随机牌组中的随机卡",
+  REVIEW_DECK_ORDER: "订单牌组在审核过程中显示",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "按顺序（一旦检查了前一副牌中的所有牌）",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "随机（一旦检查了前一副牌中的所有牌）",
+  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "随机牌组中的随机卡",
+  DISABLE_CLOZE_CARDS: "完形填字",
+  CONVERT_HIGHLIGHTS_TO_CLOZES: "将 ==highlights== 转换为完型填空",
   CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Add/remove the <code>${defaultPattern}</code> from your "Cloze Patterns"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "Convert **bolded text** to clozes",
+  CONVERT_BOLD_TEXT_TO_CLOZES: "将 **粗体文本** 转换为完型填空",
   CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Add/remove the <code>${defaultPattern}</code> from your "Cloze Patterns"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "Convert {{curly brackets}} to clozes",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES: "将 {{大括号}} 转换为完型填空",
   CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Add/remove the <code>${defaultPattern}</code> from your "Cloze Patterns"',
-  CLOZE_PATTERNS: "Cloze Patterns",
+  CLOZE_PATTERNS: "完型填空模式",
   CLOZE_PATTERNS_DESC: 'Enter cloze patterns separated by newlines. Check the <a href="${docsUrl}">wiki</a> for guidance.',
   INLINE_CARDS_SEPARATOR: "\u0641\u0627\u0635\u0644 \u0645\u0646 \u0623\u062C\u0644 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u0636\u0645\u0646\u0629",
   FIX_SEPARATORS_MANUALLY_WARNING: "\u0636\u0639 \u0641\u064A \u062D\u0633\u0627\u0628\u0643 \u0623\u0646\u0647 \u0628\u0639\u062F \u062A\u063A\u064A\u064A\u0631 \u0647\u0630\u0627 \u060C \u064A\u062C\u0628 \u0639\u0644\u064A\u0643 \u062A\u0639\u062F\u064A\u0644 \u0623\u064A \u0628\u0637\u0627\u0642\u0627\u062A \u0644\u062F\u064A\u0643 \u0628\u0627\u0644\u0641\u0639\u0644 \u064A\u062F\u0648\u064A\u064B\u0627",
@@ -5002,36 +4997,36 @@ var ar_default = {
   TAGS_TO_REVIEW: "\u0648\u0633\u0648\u0645 \u0644\u0644\u0645\u0631\u0627\u062C\u0639\u0629",
   TAGS_TO_REVIEW_DESC: "#\u0623\u062F\u062E\u0644 \u0627\u0644\u0648\u0633\u0648\u0645 \u0645\u0641\u0635\u0648\u0644\u0629 \u0628\u0645\u0633\u0627\u0641\u0627\u062A \u0623\u0648 \u062E\u0637\u0648\u0637 \u062C\u062F\u064A\u062F\u0629 \u060C \u0623\u064A : \u0645\u0631\u0627\u062C\u0639\u0629# \u0648\u0633\u06452# \u0648\u0633\u06453",
   OPEN_RANDOM_NOTE: "\u0627\u0641\u062A\u062D \u0645\u0644\u0627\u062D\u0638\u0629 \u0639\u0634\u0648\u0627\u0626\u064A\u0629 \u0644\u0644\u0645\u0631\u0627\u062C\u0639\u0629",
-  OPEN_RANDOM_NOTE_DESC: "(Pagerank) \u0639\u0646\u062F \u062A\u0639\u0637\u064A\u0644 \u0647\u0630\u0627 \u0627\u0644\u062E\u064A\u0627\u0631 \u060C\u0627\u0644\u0645\u0644\u0627\u062D\u0638\u0627\u062A \u0633\u064A\u062A\u0645 \u062A\u0631\u062A\u064A\u0628\u064F\u0647\u0627 \u062D\u0633\u0628 \u0627\u0644\u0623\u0647\u0645\u064A\u0629",
+  OPEN_RANDOM_NOTE_DESC: "(Pagerank) 关于此内容的评论",
   AUTO_NEXT_NOTE: "\u0627\u0641\u062A\u062D \u0627\u0644\u0645\u0644\u0627\u062D\u0638\u0629 \u0627\u0644\u062A\u0627\u0644\u064A\u0629 \u062A\u0644\u0642\u0627\u0626\u064A\u064B\u0627 \u0628\u0639\u062F \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629",
   ENABLE_FILE_MENU_REVIEW_OPTIONS: "\u0641\u0639\u0651\u0644 \u062E\u064A\u0627\u0631\u0627\u062A \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629 \u0641\u064A \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u0644\u0641 (\u0645\u062B\u0627\u0644: \u0645\u0631\u0627\u062C\u0639\u0629: \u0633\u0647\u0644\u060C \u062C\u064A\u062F\u060C \u0635\u0639\u0628)",
   ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "\u0625\u0630\u0627 \u0642\u0645\u062A \u0628\u062A\u0639\u0637\u064A\u0644 \u062E\u064A\u0627\u0631\u0627\u062A \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629 \u0641\u064A \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u0644\u0641\u060C \u064A\u0645\u0643\u0646\u0643 \u0645\u0631\u0627\u062C\u0639\u0629 \u0645\u0644\u0627\u062D\u0638\u0627\u062A\u0643 \u0628\u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0623\u0648\u0627\u0645\u0631 \u0627\u0644\u0625\u0636\u0627\u0641\u0629 \u0648\u0625\u0630\u0627 \u0643\u0646\u062A \u0642\u062F \u062D\u062F\u062F\u062A\u0647\u0627\u060C \u0628\u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0645\u0641\u0627\u062A\u064A\u062D \u0627\u0644\u0627\u062E\u062A\u0635\u0627\u0631 \u0627\u0644\u0645\u0631\u062A\u0628\u0637\u0629.",
   MAX_N_DAYS_REVIEW_QUEUE: "\u0627\u0644\u062D\u062F \u0627\u0644\u0623\u0642\u0635\u0649 \u0644\u0639\u062F\u062F \u0627\u0644\u0623\u064A\u0627\u0645 \u0627\u0644\u062A\u064A \u064A\u062C\u0628 \u0639\u0631\u0636\u0647\u0627 \u0639\u0644\u0649 \u0627\u0644\u0644\u0648\u062D\u0629 \u0627\u0644\u064A\u0645\u0646\u0649",
   MIN_ONE_DAY: "\u064A\u062C\u0628 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0639\u062F\u062F \u0627\u0644\u0623\u064A\u0627\u0645 1 \u0639\u0644\u0649 \u0627\u0644\u0623\u0642\u0644",
   VALID_NUMBER_WARNING: "\u064A\u0631\u062C\u0649 \u062A\u0642\u062F\u064A\u0645 \u0631\u0642\u0645 \u0635\u0627\u0644\u062D",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
+  UI: "用户界面",
+  OPEN_IN_TAB: "在新选项卡中打开",
+  OPEN_IN_TAB_DESC: "将其关闭到在模态窗口中打开插件",
+  SHOW_STATUS_BAR: "显示状态栏",
+  SHOW_STATUS_BAR_DESC: "关闭此功能以在 Obsidian 的状态栏中隐藏抽认卡的审核状态",
+  SHOW_RIBBON_ICON: "在功能区栏中显示图标",
+  SHOW_RIBBON_ICON_DESC: "关闭此功能以隐藏 Obsidian 功能区栏中的插件图标",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE: "\u064A\u062C\u0628 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0634\u062C\u0631\u064A \u0644\u0644\u0631\u064F\u0632\u0645 \u0645\u0648\u0633\u0639 \u0628\u062D\u064A\u062B \u062A\u0637\u0647\u0631 \u0627\u0644\u0645\u0644\u0641\u0627\u062A \u0627\u0644\u0641\u0631\u0639\u064A\u0629 \u0643\u0644\u0647\u0627",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: " \u0639\u0637\u0644 \u0647\u0630\u0627 \u0627\u0644\u062E\u064A\u0627\u0631 \u0644\u0637\u064A \u0627\u0644\u0631\u064F\u0632\u0645 \u0627\u0644\u0645\u062A\u062F\u0627\u062E\u0644\u0629 \u0641\u064A \u0646\u0641\u0633 \u0627\u0644\u0628\u0637\u0627\u0642\u0629 , \u0645\u0641\u064A\u062F \u0625\u0630\u0627 \u0643\u0627\u0646 \u0644\u062F\u064A\u0643 \u0628\u0637\u0627\u0642\u0627\u062A \u062A\u0646\u062A\u0645\u064A \u0625\u0644\u0649 \u0627\u0644\u0639\u062F\u064A\u062F \u0645\u0646 \u0627\u0644\u0631\u064F\u0632\u0645 \u0641\u064A \u0646\u0641\u0633 \u0627\u0644\u0645\u0644\u0641",
   ALGORITHM: "\u062E\u0648\u0627\u0631\u0632\u0645\u064A\u0629",
   CHECK_ALGORITHM_WIKI: '<a href="${algoUrl}">algorithm details</a> :\u0644\u0645\u0632\u064A\u062F \u0645\u0646 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A \u062A\u062D\u0642\u0642 \u0645\u0646',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
+  SM2_OSR_VARIANT: "OSR 的 SM-2 变体",
   BASE_EASE: "\u0633\u0647\u0648\u0644\u0629 \u0627\u0644\u0642\u0627\u0639\u062F\u0629",
   BASE_EASE_DESC: "\u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649 = 130 \u060C \u0648\u064A\u0641\u0636\u0644 \u062D\u0648\u0627\u0644\u064A 250.",
   BASE_EASE_MIN_WARNING: "\u064A\u062C\u0628 \u0623\u0646 \u062A\u0643\u0648\u0646 \u0633\u0647\u0648\u0644\u0629 \u0627\u0644\u0642\u0627\u0639\u062F\u0629 130 \u0639\u0644\u0649 \u0627\u0644\u0623\u0642\u0644.",
   LAPSE_INTERVAL_CHANGE: "\u0627\u0644\u0641\u0627\u0635\u0644 \u0627\u0644\u0632\u0645\u0646\u064A \u064A\u062A\u063A\u064A\u0631 \u0639\u0646\u062F \u0645\u0631\u0627\u062C\u0639\u0629 \u0628\u0637\u0627\u0642\u0629/\u0645\u0644\u0627\u062D\u0638\u0629 \u0635\u0639\u0628\u0629",
-  LAPSE_INTERVAL_CHANGE_DESC: "newInterval = oldInterval * intervalChange / 100.",
+  LAPSE_INTERVAL_CHANGE_DESC: "新间隔 = 旧间隔 * IntervalChange / 100。",
   EASY_BONUS: "\u0645\u0643\u0627\u0641\u0623\u0629 \u0633\u0647\u0644\u0629",
   EASY_BONUS_DESC: "\u062A\u062A\u064A\u062D \u0644\u0643 \u0627\u0644\u0645\u0643\u0627\u0641\u0623\u0629 \u0627\u0644\u0633\u0647\u0644\u0629 \u0636\u0628\u0637 \u0627\u0644\u0641\u0631\u0642 \u0641\u064A \u0627\u0644\u0641\u0648\u0627\u0635\u0644 \u0627\u0644\u0632\u0645\u0646\u064A\u0629 \u0628\u064A\u0646 \u0627\u0644\u0631\u062F \u0627\u0644\u062C\u064A\u062F \u0648\u0627\u0644\u0633\u0647\u0644 \u0639\u0644\u0649 \u0628\u0637\u0627\u0642\u0629/\u0645\u0644\u0627\u062D\u0638\u0629 (\u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649 = 100 \u066A).",
   EASY_BONUS_MIN_WARNING: "\u064A\u062C\u0628 \u0623\u0646 \u062A\u0643\u0648\u0646 \u0627\u0644\u0645\u0643\u0627\u0641\u0623\u0629 \u0627\u0644\u0633\u0647\u0644\u0629 100 \u0639\u0644\u0649 \u0627\u0644\u0623\u0642\u0644.",
-  LOAD_BALANCE: "Enable load balancer",
+  LOAD_BALANCE: "启用负载均衡器",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
+        It's 就像 Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
   MAX_INTERVAL: "Maximum interval in days",
   MAX_INTERVAL_DESC: "\u064A\u062A\u064A\u062D \u0644\u0643 \u0648\u0636\u0639 \u062D\u062F \u0623\u0639\u0644\u0649  \u0644\u0644\u0641\u0627\u0635\u0644 \u0627\u0644\u0632\u0645\u0646\u064A (\u0627\u0641\u062A\u0631\u0627\u0636\u064A = 100 \u0639\u0627\u0645).",
@@ -5040,212 +5035,19 @@ var ar_default = {
   MAX_LINK_CONTRIB_DESC: "\u0623\u0642\u0635\u0649 \u0645\u0633\u0627\u0647\u0645\u0629 \u0644\u0644\u0633\u0647\u0648\u0644\u0629 \u0627\u0644\u0645\u0631\u062C\u062D\u0629 \u0644\u0644\u0645\u0644\u0627\u062D\u0638\u0627\u062A \u0627\u0644\u0645\u0631\u062A\u0628\u0637\u0629 \u0628\u0627\u0644\u0633\u0647\u0648\u0644\u0629 \u0627\u0644\u0623\u0648\u0644\u064A\u0629.",
   LOGGING: "\u062A\u0633\u062C\u064A\u0644",
   DISPLAY_SCHEDULING_DEBUG_INFO: "\u0639\u0631\u0636 \u0645\u0639\u0644\u0648\u0645\u0627\u062A \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u0639\u0644\u0649 \u0648\u062D\u062F\u0629 \u062A\u062D\u0643\u0645 \u0627\u0644\u0645\u0637\u0648\u0631",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
-  SCHEDULING: "Scheduling",
-  EXPERIMENTAL: "Experimental",
-  HELP: "Help",
-  STORE_IN_NOTES: "In the notes",
-  // sidebar.ts
-  NOTES_REVIEW_QUEUE: "\u0645\u0644\u0627\u062D\u0638\u0627\u062A \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629",
-  CLOSE: "\u0623\u063A\u0644\u0642",
-  NEW: "\u062C\u062F\u064A\u062F",
-  YESTERDAY: "\u0627\u0644\u0628\u0627\u0631\u062D\u0629",
-  TODAY: "\u0627\u0644\u064A\u0648\u0645",
-  TOMORROW: "\u0627\u0644\u063A\u062F",
-  // stats-modal.tsx
-  STATS_TITLE: "\u0625\u062D\u0635\u0627\u0626\u064A\u0627\u062A",
-  MONTH: "\u0634\u0647\u0631",
-  QUARTER: "\u0631\u0628\u0639 \u0627\u0644\u0633\u0646\u0629",
-  YEAR: "\u0633\u0646\u0629",
-  LIFETIME: "",
-  FORECAST: "",
-  FORECAST_DESC: "\u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u0633\u062A\u062D\u0642\u0629 \u0641\u064A \u0627\u0644\u0645\u0633\u062A\u0642\u0628\u0644",
-  SCHEDULED: "\u0627\u0644\u0645\u0642\u0631\u0631",
-  DAYS: "\u0623\u064A\u0627\u0645",
-  NUMBER_OF_CARDS: "\u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A",
-  REVIEWS_PER_DAY: "\u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0627\u062A/\u0627\u0644\u064A\u0648\u0645 ${avg} :\u0645\u062A\u0648\u0633\u0637",
-  INTERVALS: "\u0641\u0648\u0627\u0635\u0644 \u0632\u0645\u0646\u064A\u0629",
-  INTERVALS_DESC: "\u0627\u0644\u062A\u0623\u062E\u064A\u0631 \u062D\u062A\u0649 \u064A\u062A\u0645 \u0639\u0631\u0636 \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0627\u062A \u0645\u0631\u0629 \u0623\u062E\u0631\u0649",
-  COUNT: "\u0639\u062F\u062F",
-  INTERVALS_SUMMARY: "${longest} : \u0623\u0637\u0648\u0644 \u0641\u0627\u0635\u0644 \u0632\u0645\u0646\u064A ,${avg} :\u0645\u062A\u0648\u0633\u0637 \u0627\u0644\u0641\u0627\u0635\u0644 \u0627\u0644\u0632\u0645\u0646\u064A",
-  EASES: "\u0627\u0644\u0633\u0647\u0648\u0644\u0629",
-  EASES_SUMMARY: "${avgEase} :\u0645\u062A\u0648\u0633\u0637 \u0627\u0644\u0633\u0647\u0648\u0644\u0629",
-  EASE: "Ease",
-  CARD_TYPES: "\u0623\u0646\u0648\u0627\u0639 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A",
-  CARD_TYPES_DESC: "\u0648\u0647\u0630\u0627 \u064A\u0634\u0645\u0644 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u062E\u0641\u064A\u0629 \u0643\u0630\u0644\u0643 \u060C \u0625\u0646 \u0648\u062C\u062F\u062A",
-  CARD_TYPE_NEW: "\u062C\u062F\u064A\u062F\u0629",
-  CARD_TYPE_YOUNG: "\u0635\u063A\u064A\u0631\u0629",
-  CARD_TYPE_MATURE: "\u0646\u0627\u0636\u062C\u0629",
-  CARD_TYPES_SUMMARY: " ${totalCardsCount} :\u0625\u062C\u0645\u0627\u0644\u064A \u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A",
-  SEARCH: "Search",
-  PREVIOUS: "Previous",
-  NEXT: "Next"
-};
-
-// src/lang/locale/bn.ts
-var bn_default = {};
-
-// src/lang/locale/cz.ts
-var cz_default = {
-  // flashcard-modal.tsx
-  DECKS: "Bal\xED\u010Dky",
-  DUE_CARDS: "Karti\u010Dky po term\xEDnu",
-  NEW_CARDS: "Nov\xE9 karti\u010Dky",
-  TOTAL_CARDS: "Karti\u010Dek celkem",
-  BACK: "Back",
-  SKIP: "Skip",
-  EDIT_CARD: "Edit Card",
-  RESET_CARD_PROGRESS: "Vynulovat pokrok karti\u010Dky",
-  HARD: "T\u011B\u017Ek\xE9",
-  GOOD: "Dobr\xE9",
-  EASY: "Jednoduch\xE9",
-  SHOW_ANSWER: "Uk\xE1zat odpov\u011B\u010F",
-  CARD_PROGRESS_RESET: "Pokrok karti\u010Dky byl vynulov\xE1n.",
-  SAVE: "Save",
-  CANCEL: "Cancel",
-  NO_INPUT: "No input provided.",
-  CURRENT_EASE_HELP_TEXT: "Current Ease: ",
-  CURRENT_INTERVAL_HELP_TEXT: "Current Interval: ",
-  CARD_GENERATED_FROM: "Generated from: ${notePath}",
-  // main.ts
-  OPEN_NOTE_FOR_REVIEW: "Otev\u0159\xEDt pozn\xE1mku k revizi",
-  REVIEW_CARDS: "Pozn\xE1mek k revizi",
-  REVIEW_DIFFICULTY_FILE_MENU: "Revize: ${difficulty}",
-  REVIEW_NOTE_DIFFICULTY_CMD: "Ozna\u010Dit pozn\xE1mku jako ${difficulty}",
-  REVIEW_ALL_CARDS: "Revidovat karti\u010Dky ve v\u0161ech pozn\xE1mk\xE1ch",
-  CRAM_ALL_CARDS: "Select a deck to cram",
-  REVIEW_CARDS_IN_NOTE: "Revidovat karti\u010Dky v t\xE9to pozn\xE1mce.",
-  CRAM_CARDS_IN_NOTE: "Cram karti\u010Dky v t\xE9to pozn\xE1mce.",
-  VIEW_STATS: "Uk\xE1zat statistiky",
-  OPEN_REVIEW_QUEUE_VIEW: "Open Notes Review Queue in sidebar",
-  STATUS_BAR: "Revize: ${dueNotesCount} pozn\xE1mek, ${dueFlashcardsCount} karti\u010Dek po term\xEDnu",
-  SYNC_TIME_TAKEN: "Synchronizace trvala ${t}ms",
-  NOTE_IN_IGNORED_FOLDER: "Pozn\xE1mka je ulo\u017Eena v ignorovan\xE9 slo\u017Ece (zkontrolujte nastaven\xED).",
-  PLEASE_TAG_NOTE: "Pros\xEDm ozna\u010Dne pozn\xE1mku odpov\xEDdaj\xEDc\xEDm tagem pro revizi (v nastaven\xED).",
-  RESPONSE_RECEIVED: "Odpov\u011B\u010F p\u0159ijata.",
-  NO_DECK_EXISTS: "Neexistuje \u017E\xE1dn\xFD bal\xED\u010Dek pro ${deckName}",
-  ALL_CAUGHT_UP: "V\u0161e zrevidov\xE1no",
-  // scheduling.ts
-  DAYS_STR_IVL: "${interval} den/dn\xED",
-  MONTHS_STR_IVL: "${interval} m\u011Bs\xEDc(\u016F)",
-  YEARS_STR_IVL: "${interval} rok(\u016F)",
-  DAYS_STR_IVL_MOBILE: "${interval}d",
-  MONTHS_STR_IVL_MOBILE: "${interval}m",
-  YEARS_STR_IVL_MOBILE: "${interval}r",
-  // settings.ts
-  SETTINGS_HEADER: "Spaced Repetition",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: 'Pro v\xEDce informac\xED jd\u011Bte na <a href="${wikiUrl}">wiki</a>.',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
-  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
-  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
-  FOLDERS_TO_IGNORE: "Ignorovan\xE9 slo\u017Eky",
-  FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "Karti\u010Dky",
-  FLASHCARD_EASY_LABEL: "Easy Button Text",
-  FLASHCARD_GOOD_LABEL: "Good Button Text",
-  FLASHCARD_HARD_LABEL: "Hard Button Text",
-  FLASHCARD_EASY_DESC: 'Customize the label for the "Easy" Button',
-  FLASHCARD_GOOD_DESC: 'Customize the label for the "Good" Button',
-  FLASHCARD_HARD_DESC: 'Customize the label for the "Hard" Button',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "Tag pro karti\u010Dky",
-  FLASHCARD_TAGS_DESC: "Zadete tagy ood\u011Blen\xE9 mezerou nebo od\u0159\xE1dkov\xE1n\xEDm nap\u0159\xEDklad. #karti\u010Dky #bal\xED\u010Dke2 #bal\xED\u010Dek3.",
-  CONVERT_FOLDERS_TO_DECKS: "P\u0159ev\xE9st slo\u017Eky na bal\xED\u010Dky a podbal\xED\u010Dky?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "Toto je alternativa k tag\u016Fm karti\u010Dek viz nastaven\xED v\xFD\u0161e.",
-  INLINE_SCHEDULING_COMMENTS: "Ulo\u017Eit pl\xE1novac\xED koment\xE1\u0159 na stejn\xFD \u0159\xE1dek jako posledn\xED polo\u017Eka karti\u010Dky?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "Zapnut\xED t\xE9to volby zp\u016Fsob\xED, \u017Ee HTML koment\xE1\u0159e nebudou rozb\xEDjet form\xE1tov\xE1n\xED list\u016F.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "Odlo\u017Eit p\u0159\xEDbuzn\xE9 karti\u010Dky na dal\u0161\xED den?",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "P\u0159\xEDbuzn\xE9 karti\u010Dky jsou karti\u010Dky generovan\xE9 z textu stejn\xE9 pozn\xE1mky nap\u0159\xEDklad cloze smaz\xE1n\xED",
-  SHOW_CARD_CONTEXT: "Uk\xE1zat kontext v karti\u010Dce?",
-  SHOW_CARD_CONTEXT_DESC: "nap\u0159\xEDklad Titulek > Nadpis1 > Podnadpis > ... > Podnadpis",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
-  CARD_MODAL_HEIGHT_PERCENT: "V\xFD\u0161ka karti\u010Dek v procentech",
-  CARD_MODAL_SIZE_PERCENT_DESC: "M\u011Blo by b\xFDt nastaveno na 100% na mobilu nebo kdy\u017E pou\u017E\xEDv\xE1te velk\xE9 obr\xE1zky",
-  RESET_DEFAULT: "Resetovat v\xFDchoz\xED nastaven\xED",
-  CARD_MODAL_WIDTH_PERCENT: "\u0160\xED\u0159ka karti\u010Dek v procentech",
-  RANDOMIZE_CARD_ORDER: "N\xE1hodn\u011B zm\u011Bnit po\u0159ad\xED karti\u010Dek b\u011Bhem revize?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Order cards in a deck are displayed during review",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Sequentially within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequentially within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Randomly within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Randomly within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  REVIEW_DECK_ORDER: "Order decks are displayed during review",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequentially (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Randomly (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  DISABLE_CLOZE_CARDS: "Vypnout cloze karti\u010Dky?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "P\u0159ev\xE9st ==zv\xFDrazn\u011Bn\xED== na clozes?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'P\u0159idat/odstranit <code>${defaultPattern}</code> z va\u0161ich "Cloze vzor\u016F"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "P\u0159ev\xE9st **tu\u010Dn\xFD text** na clozes?",
-  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'P\u0159idat/odstranit <code>${defaultPattern}</code> z va\u0161ich "Cloze vzor\u016F"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "P\u0159ev\xE9st {{slo\u017Een\xE9 z\xE1vorky}} na clozes?",
-  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'P\u0159idat/odstranit <code>${defaultPattern}</code> z va\u0161ich "Cloze vzor\u016F"',
-  CLOZE_PATTERNS: "Cloze vzory",
-  CLOZE_PATTERNS_DESC: 'Zadejte cloze vzory odd\u011Blen\xE9 od\u0159\xE1dkov\xE1n\xEDm. Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "Odd\u011Blova\u010D pro inline karti\u010Dky",
-  FIX_SEPARATORS_MANUALLY_WARNING: "Pozor. Jakmile toto zm\u011Bn\xEDte, budete muset ru\u010Dn\u011B upravit v\u0161echny existuj\xEDc\xED karti\u010Dky.",
-  INLINE_REVERSED_CARDS_SEPARATOR: "Odd\u011Blova\u010D pro oto\u010Den\xE9 inline karti\u010Dky",
-  MULTILINE_CARDS_SEPARATOR: "Odd\u011Blova\u010D pro v\xEDce\u0159\xE1dkov\xE9 karti\u010Dky",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "Odd\u011Blova\u010D pro v\xEDce\u0159\xE1dkove oto\u010Den\xE9 karti\u010Dky",
-  MULTILINE_CARDS_END_MARKER: "Znaky ozna\u010Duj\xEDc\xED konec clozes a v\xEDce\u0159\xE1dkov\xFDch flash karet",
-  NOTES: "Pozn\xE1mky",
-  NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "Enable note review pane on startup",
-  TAGS_TO_REVIEW: "Tag pro revizi",
-  TAGS_TO_REVIEW_DESC: "Zadejte tagy odd\u011Blen\xE9 mezerami nebo od\u0159\xE1dkov\xE1n\xEDm nap\u0159\xEDklad #review #tag2 #tag3.",
-  OPEN_RANDOM_NOTE: "Otev\u0159\xEDt n\xE1hodnou pozn\xE1mku pro revizi",
-  OPEN_RANDOM_NOTE_DESC: "Pokud toto vypnete, pozn\xE1mky budou \u0159azeny dle d\u016Fle\u017Eitosti (PageRank).",
-  AUTO_NEXT_NOTE: "Otev\u0159\xEDt automaticky dal\u0161\xED pozn\xE1mku po dokon\u010Den\xED revize",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Povolte mo\u017Enosti revize v nab\xEDdce souboru (nap\u0159. Revize: Jednoduch\xE9, Dobr\xE9, T\u011B\u017Ek\xE9)",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "Pokud v nab\xEDdce souboru zak\xE1\u017Eete mo\u017Enosti revize, m\u016F\u017Eete sv\xE9 pozn\xE1mky revidovat pomoc\xED p\u0159\xEDkaz\u016F pluginu a, pokud jste je definovali, pomoc\xED p\u0159i\u0159azen\xFDch kl\xE1vesov\xFDch zkratek.",
-  MAX_N_DAYS_REVIEW_QUEUE: "Maxim\xE1ln\xED po\u010Det dn\xED zobrazen\xFDch v prav\xE9m panelu",
-  MIN_ONE_DAY: "Po\u010Det dn\xED mus\xED b\xFDt minim\xE1ln\u011B 1.",
-  VALID_NUMBER_WARNING: "Pros\xEDm zadejte validn\xED \u010D\xEDslo.",
-  UI: "P\u0159edvolby u\u017Eivatelsk\xE9ho rozhran\xED",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
+  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console"，\n  调度："Scheduling",\n  实验："Experimental"，\n  帮助："Help"，\n  STORE_IN_NOTES："In the notes",\n  // 侧边栏.ts\n  NOTES_REVIEW_QUEUE:"\u0645\u0644\u0627\u062D\u0638\u0627\u062A \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629",\n  关闭："\u0623\u063A\u0644\u0642"，\n  新："\u062C\u062F\u064A\u062F"，\n  昨天："\u0627\u0644\u0628\u0627\u0631\u062D\u0629"，\n  今天："\u0627\u0644\u064A\u0648\u0645"，\n  明天："\u0627\u0644\u063A\u062F",\n  // 统计模态.tsx\n  统计标题："\u0625\u062D\u0635\u0627\u0626\u064A\u0627\u062A"，\n  月份："\u0634\u0647\u0631"，\n  季度："\u0631\u0628\u0639 \u0627\u0644\u0633\u0646\u0629"，\n  年："\u0633\u0646\u0629"，\n  生命周期：""，\n  预测：""，\n  预测_DESC："\u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u0633\u062A\u062D\u0642\u0629 \u0641\u064A \u0627\u0644\u0645\u0633\u062A\u0642\u0628\u0644"，\n  计划："\u0627\u0644\u0645\u0642\u0631\u0631"，\n  天数："\u0623\u064A\u0627\u0645"，\n  NUMBER_OF_卡："\u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A"，\n  REVIEWS_PER_DAY："\u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0627\u062A/\u0627\u0644\u064A\u0648\u0645 ${avg} :\u0645\u062A\u0648\u0633\u0637"，\n  间隔："\u0641\u0648\u0627\u0635\u0644 \u0632\u0645\u0646\u064A\u0629"，\n  INTERVALS_DESC："\u0627\u0644\u062A\u0623\u062E\u064A\u0631 \u062D\u062A\u0649 \u064A\u062A\u0645 \u0639\u0631\u0636 \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0627\u062A \u0645\u0631\u0629 \u0623\u062E\u0631\u0649"，\n  计数："\u0639\u062F\u062F",\n  INTERVALS_SUMMARY："${longest} : \u0623\u0637\u0648\u0644 \u0641\u0627\u0635\u0644 \u0632\u0645\u0646\u064A ,${avg} :\u0645\u062A\u0648\u0633\u0637 \u0627\u0644\u0641\u0627\u0635\u0644 \u0627\u0644\u0632\u0645\u0646\u064A"，\n  缓解："\u0627\u0644\u0633\u0647\u0648\u0644\u0629"，\n  EASES_SUMMARY："${avgEase} :\u0645\u062A\u0648\u0633\u0637 \u0627\u0644\u0633\u0647\u0648\u0644\u0629"，\n  轻松："Ease",\n  卡类型："\u0623\u0646\u0648\u0627\u0639 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A"，\n  CARD_TYPES_DESC："\u0648\u0647\u0630\u0627 \u064A\u0634\u0645\u0644 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u062E\u0641\u064A\u0629 \u0643\u0630\u0644\u0643 \u060C \u0625\u0646 \u0648\u062C\u062F\u062A"，\n  CARD_TYPE_NEW："\u062C\u062F\u064A\u062F\u0629"，\n  CARD_TYPE_YOUNG："\u0635\u063A\u064A\u0631\u0629",\n  CARD_TYPE_MATURE："\u0646\u0627\u0636\u062C\u0629"，\n  CARD_TYPES_SUMMARY：" ${totalCardsCount} :\u0625\u062C\u0645\u0627\u0644\u064A \u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A"，\n  搜索："Search"，\n  上一个："Previous"，\n  下一个："Next"};\n\n// src/lang/locale/bn.ts\nvar bn_default = {};\n\n// src/lang/locale/cz.ts\nvar cz_default = {\n  // 抽认卡模态.tsx\n  甲板："Bal\xED\u010Dky"，\n  DUE_CARDS："Karti\u010Dky po term\xEDnu",\n  新卡："Nov\xE9 karti\u010Dky"，\n  卡片总数："Karti\u010Dek celkem"，\n  背面："Back"，\n  跳过："Skip"，\n  编辑卡："Edit Card"，\n  重置卡进度："Vynulovat pokrok karti\u010Dky"，\n  困难："T\u011B\u017Ek\xE9"，\n  好："Dobr\xE9"，\n  简单："Jednoduch\xE9"，\n  SHOW_ANSWER："Uk\xE1zat odpov\u011B\u010F"，\n  CARD_PROGRESS_RESET："Pokrok karti\u010Dky byl vynulov\xE1n."，\n  保存："Save"，\n  取消："Cancel"，\n  无输入："No input provided."，\n  当前_EASE_HELP_TEXT："Current Ease: ",\n  当前_间隔_帮助_文本："Current Interval: ",\n  CARD_GENERATED_FROM："Generated from: ${notePath}"，\n  // main.ts\n  OPEN_NOTE_FOR_REVIEW："Otev\u0159\xEDt pozn\xE1mku k revizi"，\n  评论卡："Pozn\xE1mek k revizi"，\n  REVIEW_DIFFICULTY_FILE_MENU："Revize: ${difficulty}"，\n  REVIEW_NOTE_DIFFICULTY_CMD："Ozna\u010Dit pozn\xE1mku jako ${difficulty}"，\n  REVIEW_ALL_CARDS："Revidovat karti\u010Dky ve v\u0161ech pozn\xE1mk\xE1ch"，\n  CRAM_ALL_CARDS："Select a deck to cram"，\n  REVIEW_CARDS_IN_NOTE："Revidovat karti\u010Dky v t\xE9to pozn\xE1mce."，\n  CRAM_CARDS_IN_NOTE："Cram karti\u010Dky v t\xE9to pozn\xE1mce."，\n  查看统计数据："Uk\xE1zat statistiky"，\n  OPEN_REVIEW_QUEUE_VIEW："Open Notes Review Queue in sidebar"，\n  状态栏："Revize: ${dueNotesCount} pozn\xE1mek, ${dueFlashcardsCount} karti\u010Dek po term\xEDnu"，\n  SYNC_TIME_TAKEN："Synchronizace trvala ${t}ms"，\n  注意_IN_IGNORED_FOLDER："Pozn\xE1mka je ulo\u017Eena v ignorovan\xE9 slo\u017Ece (zkontrolujte nastaven\xED)."，\n  请_TAG_注意："Pros\xEDm ozna\u010Dne pozn\xE1mku odpov\xEDdaj\xEDc\xEDm tagem pro revizi (v nastaven\xED)."，\n  RESPONSE_RECEIVED："Odpov\u011B\u010F p\u0159ijata."，\n  不存在甲板："Neexistuje \u017E\xE1dn\xFD bal\xED\u010Dek pro ${deckName}"，\n  ALL_CAUGHT_UP："V\u0161e zrevidov\xE1no",\n  // 调度.ts\n  DAYS_STR_IVL："${interval} den/dn\xED"，\n  MONTHS_STR_IVL："${interval} m\u011Bs\xEDc(\u016F)"，\n  YEARS_STR_IVL："${interval} rok(\u016F)"，\n  DAYS_STR_IVL_MOBILE："${interval}d"，\n  MONTHS_STR_IVL_MOBILE："${interval}m"，\n  YEARS_STR_IVL_MOBILE："${interval}r",\n  // 设置.ts\n  设置_标题："Spaced Repetition"，\n  GROUP_TAGS_FOLDERS："Tags & Folders",\n  GROUP_FLASHCARD_REVIEW："Flashcard Review"，\n  GROUP_FLASHCARD_SEPARATORS："Flashcard Separators"，\n  组数据存储："Storage of Scheduling Data"，\n  GROUP_DATA_STORAGE_DESC："Choose where to store the scheduling data"，\n  GROUP_FLASHcardS_NOTES："Flashcards & Notes"，\n  GROUP_CONTRIBUTING："Contributing",\n  CHECK_WIKI：'Pro více informací jděte na <a href="${wikiUrl}">wiki</a>。',\n  GITHUB_DISCUSSIONS: '访问 <a href="${discussionsUrl}">讨论</a>部分，用于问答帮助、反馈和一般讨论。',\n  GITHUB_ISSUES: '在原型中提出问题 <a href="${issuesUrl}">此处</a>。',\n  GITHUB_SOURCE_CODE: '该项目的源代码可在 <a href="${githubProjectUrl}">GitHub</a>.',
+  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">这里</a>如何向插件贡献代码。',\n  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">这里</a>如何将插件翻译成另一种语言。',\n  FOLDERS_TO_IGNORE："Ignorovan\xE9 slo\u017Eky"，\n  FOLDERS_TO_IGNORE_DESC："Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes."，\n  黑曜石集成："Integration into Obsidian"，\n  抽认卡："Karti\u010Dky",\n  闪存卡_EASY_标签："Easy Button Text"，\n  FLASHCARD_GOOD_LABEL："Good Button Text"，\n  闪存卡_硬标签："Hard Button Text",\n  FLASHCARD_EASY_DESC: '自定义"Easy"Button',\n  FLASHCARD_GOOD_DESC: '自定义"Good"按钮的标签',\n  FLASHCARD_HARD_DESC: '自定义标签"Hard"按钮',\n  REVIEW_BUTTON_DELAY："Button Press Delay (ms)"，\n  REVIEW_BUTTON_DELAY_DESC："Add a delay to the review buttons before they can be pressed again."，\n  闪存卡标签："Tag pro karti\u010Dky",\n  FLASHCARD_TAGS_DESC："Zadete tagy ood\u011Blen\xE9 mezerou nebo od\u0159\xE1dkov\xE1n\xEDm nap\u0159\xEDklad. #karti\u010Dky #bal\xED\u010Dke2 #bal\xED\u010Dek3.",\n  CONVERT_FOLDERS_TO_DECKS："P\u0159ev\xE9st slo\u017Eky na bal\xED\u010Dky a podbal\xED\u010Dky?"，\n  CONVERT_FOLDERS_TO_DECKS_DESC："Toto je alternativa k tag\u016Fm karti\u010Dek viz nastaven\xED v\xFD\u0161e."，\n  内联调度注释："Ulo\u017Eit pl\xE1novac\xED koment\xE1\u0159 na stejn\xFD \u0159\xE1dek jako posledn\xED polo\u017Eka karti\u010Dky?",\n  INLINE_SCHEDULING_COMMENTS_DESC："Zapnut\xED t\xE9to volby zp\u016Fsob\xED, \u017Ee HTML koment\xE1\u0159e nebudou rozb\xEDjet form\xE1tov\xE1n\xED list\u016F.",\n  BURY_SIBLINGS_TILL_NEXT_DAY："Odlo\u017Eit p\u0159\xEDbuzn\xE9 karti\u010Dky na dal\u0161\xED den?",\n  BURY_SIBLINGS_TILL_NEXT_DAY_DESC："P\u0159\xEDbuzn\xE9 karti\u010Dky jsou karti\u010Dky generovan\xE9 z textu stejn\xE9 pozn\xE1mky nap\u0159\xEDklad cloze smaz\xE1n\xED"，\n  SHOW_CARD_CONTEXT："Uk\xE1zat kontext v karti\u010Dce?"，\n  SHOW_CARD_CONTEXT_DESC："nap\u0159\xEDklad Titulek > Nadpis1 > Podnadpis > ... > Podnadpis",\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS："Show next review time in the review buttons"，\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC："Useful to know how far in the future your cards are being pushed."，\n  CARD_MODAL_HEIGHT_PERCENT："V\xFD\u0161ka karti\u010Dek v procentech"，\n  CARD_MODAL_SIZE_PERCENT_DESC："M\u011Blo by b\xFDt nastaveno na 100% na mobilu nebo kdy\u017E pou\u017E\xEDv\xE1te velk\xE9 obr\xE1zky"，\n  RESET_DEFAULT："Resetovat v\xFDchoz\xED nastaven\xED",\n  CARD_MODAL_WIDTH_PERCENT："\u0160\xED\u0159ka karti\u010Dek v procentech"，\n  随机卡顺序："N\xE1hodn\u011B zm\u011Bnit po\u0159ad\xED karti\u010Dek b\u011Bhem revize?"，\n  REVIEW_CARD_ORDER_WITHIN_DECK："Order cards in a deck are displayed during review"，\n  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL："Sequentially within a deck (All new cards first)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL："Sequentially within a deck (All due cards first)",\n  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM："Randomly within a deck (All new cards first)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM："Randomly within a deck (All due cards first)"，\n  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD："Random card from random deck"，\n  REVIEW_DECK_ORDER："Order decks are displayed during review",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL："Sequentially (once all cards in previous deck reviewed)",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM："Randomly (once all cards in previous deck reviewed)"，\n  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD："Random card from random deck"，\n  DISABLE_CLOZE_CARDS："Vypnout cloze karti\u010Dky?"，\n  CONVERT_HIGHLIGHTS_TO_CLOZES："P\u0159ev\xE9st ==zv\xFDrazn\u011Bn\xED== na clozes?",
+  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'P\u0159idat/odstranit <code>${defaultPattern}</code> z va\u0161ich "Cloze vzor\u016F"',\n  CONVERT_BOLD_TEXT_TO_CLOZES："P\u0159ev\xE9st **tu\u010Dn\xFD text** na clozes?",
+  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'P\u0159idat/odstranit <code>${defaultPattern}</code> z va\u0161ich "Cloze vzor\u016F"',\n  CONVERT_CURLY_BACKETS_TO_CLOZES："P\u0159ev\xE9st {{slo\u017Een\xE9 z\xE1vorky}} na clozes?",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'P\u0159idat/odstranit <code>${defaultPattern}</code> z va\u0161ich "Cloze vzor\u016F"',\n  完形填空模式："Cloze vzory"，\n  CLOZE_PATTERNS_DESC：'Zadejte cloze vzory oddělené odřádkováním。检查 <a href="${docsUrl}">wiki</a> 获取指导。',\n  INLINE_CARDS_SEPARATOR："Odd\u011Blova\u010D pro inline karti\u010Dky",\n  FIX_SEPARATORS_MANUALLY_WARNING："Pozor. Jakmile toto zm\u011Bn\xEDte, budete muset ru\u010Dn\u011B upravit v\u0161echny existuj\xEDc\xED karti\u010Dky.",\n  INLINE_REVERSED_CARDS_SEPARATOR："Odd\u011Blova\u010D pro oto\u010Den\xE9 inline karti\u010Dky"，\n  多行卡分隔符："Odd\u011Blova\u010D pro v\xEDce\u0159\xE1dkov\xE9 karti\u010Dky"，\n  MULTILINE_REVERSED_CARDS_SEPARATOR："Odd\u011Blova\u010D pro v\xEDce\u0159\xE1dkove oto\u010Den\xE9 karti\u010Dky"，\n  MULTILINE_CARDS_END_MARKER："Znaky ozna\u010Duj\xEDc\xED konec clozes a v\xEDce\u0159\xE1dkov\xFDch flash karet"，\n  注："Pozn\xE1mky"，\n  注意："Note"，\n  REVIEW_PANE_ON_STARTUP："Enable note review pane on startup"，\n  TAGS_TO_REVIEW："Tag pro revizi"，\n  TAGS_TO_REVIEW_DESC："Zadejte tagy odd\u011Blen\xE9 mezerami nebo od\u0159\xE1dkov\xE1n\xEDm nap\u0159\xEDklad #review #tag2 #tag3."，\n  OPEN_RANDOM_NOTE："Otev\u0159\xEDt n\xE1hodnou pozn\xE1mku pro revizi"，\n  OPEN_RANDOM_NOTE_DESC："Pokud toto vypnete, pozn\xE1mky budou \u0159azeny dle d\u016Fle\u017Eitosti (PageRank)."，\n  自动下一个注释："Otev\u0159\xEDt automaticky dal\u0161\xED pozn\xE1mku po dokon\u010Den\xED revize",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS："Povolte mo\u017Enosti revize v nab\xEDdce souboru (nap\u0159. Revize: Jednoduch\xE9, Dobr\xE9, T\u011B\u017Ek\xE9)",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC："Pokud v nab\xEDdce souboru zak\xE1\u017Eete mo\u017Enosti revize, m\u016F\u017Eete sv\xE9 pozn\xE1mky revidovat pomoc\xED p\u0159\xEDkaz\u016F pluginu a, pokud jste je definovali, pomoc\xED p\u0159i\u0159azen\xFDch kl\xE1vesov\xFDch zkratek."，\n  MAX_N_DAYS_REVIEW_QUEUE："Maxim\xE1ln\xED po\u010Det dn\xED zobrazen\xFDch v prav\xE9m panelu",\n  MIN_ONE_DAY："Po\u010Det dn\xED mus\xED b\xFDt minim\xE1ln\u011B 1."，\n  VALID_NUMBER_WARNING："Pros\xEDm zadejte validn\xED \u010D\xEDslo."，\n  用户界面："P\u0159edvolby u\u017Eivatelsk\xE9ho rozhran\xED"，\n  OPEN_IN_TAB："Open in new tab"，\n  OPEN_IN_TAB_DESC："Turn this off to open the plugin in a modal window"，\n  显示状态栏："Show status bar"，\n  显示_状态栏_DESC："Turn this off to hide the flashcard'Obsidian 中的审核状态's status bar"，\n  显示_RIBBON_ICON："Show icon in the ribbon bar"，\n  SHOW_RIBBON_ICON_DESC:"Turn this off to hide the plugin icon from Obsidian's ribbon bar",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Stromy bal\xED\u010Dky by m\u011Bly b\xFDt zpo\u010D\xE1tku zobrazeny jako rozbalen\xE9",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Vypn\u011Bte toto, chcete-li sbalit vno\u0159en\xE9 bal\xED\u010Dky na stejn\xE9 kart\u011B. To je u\u017Eite\u010Dn\xE9, pokud m\xE1te karti\u010Dky, kter\xE9 pat\u0159\xED k mnoha bal\xED\u010Dk\u016Fm ve stejn\xE9m souboru.",
   ALGORITHM: "Algoritmus",
-  CHECK_ALGORITHM_WIKI: 'Pro v\xEDce informac\xED jd\u011Bte na <a href="${algoUrl}">popis algoritmu</a>.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "Z\xE1kladn\xED slo\u017Eitost",
-  BASE_EASE_DESC: "minimum = 130, nejl\xE9pe p\u0159ibli\u017En\u011B 250.",
-  BASE_EASE_MIN_WARNING: "Z\xE1kladn\xED slo\u017Eitost mus\xED b\xFDt minim\xE1ln\u011B 130.",
-  LAPSE_INTERVAL_CHANGE: "Zm\u011Bna intervalu pokud karti\u010Dku/pozn\xE1mku ozna\u010D\xEDte jako slo\u017Eitou",
-  LAPSE_INTERVAL_CHANGE_DESC: "nov\xFD_inteval = star\xFD_interval * zm\u011Bna_intevalu / 100.",
-  EASY_BONUS: "Bonus pro jednoduch\xE9",
-  EASY_BONUS_DESC: "Tento bonus umo\u017E\u0148uje nastavit rozd\xEDl intervalu mezi jednoduch\xFDmi a dobr\xFDmi karti\u010Dkami/pozn\xE1mkami (minimum = 100%).",
-  EASY_BONUS_MIN_WARNING: "Bonus pro jednoduchost mus\xED b\xFDt minim\xE1ln\u011B 100.",
-  LOAD_BALANCE: "Enable load balancer",
+  CHECK_ALGORITHM_WIKI: 'Pro v\xEDce informac\xED jd\u011Bte na <a href="${algoUrl}">popis algoritmu</a>.'，\n  SM2_OSR_VARIANT：“OSR's variant of SM-2"，\n  BASE_EASE："Z\xE1kladn\xED slo\u017Eitost"，\n  BASE_EASE_DESC："minimum = 130, nejl\xE9pe p\u0159ibli\u017En\u011B 250.",\n  BASE_EASE_MIN_WARNING："Z\xE1kladn\xED slo\u017Eitost mus\xED b\xFDt minim\xE1ln\u011B 130."，\n  LAPSE_INTERVAL_CHANGE："Zm\u011Bna intervalu pokud karti\u010Dku/pozn\xE1mku ozna\u010D\xEDte jako slo\u017Eitou"，\n  LAPSE_INTERVAL_CHANGE_DESC："nov\xFD_inteval = star\xFD_interval * zm\u011Bna_intevalu / 100."，\n  EASY_BONUS："Bonus pro jednoduch\xE9"，\n  EASY_BONUS_DESC："Tento bonus umo\u017E\u0148uje nastavit rozd\xEDl intervalu mezi jednoduch\xFDmi a dobr\xFDmi karti\u010Dkami/pozn\xE1mkami (minimum = 100%)."，\n  EASY_BONUS_MIN_WARNING："Bonus pro jednoduchost mus\xED b\xFDt minim\xE1ln\u011B 100."，\n  负载平衡："Enable load balancer",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
         It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
-  MAX_INTERVAL: "Maximum interval in days",
-  MAX_INTERVAL_DESC: "Umo\u017E\u0148uje nastavit horn\xED limit pro interval (defaultn\u011B = 100 let).",
-  MAX_INTERVAL_MIN_WARNING: "Maxim\xE1ln\xED interval mus\xED b\xFDt alespo\u0148 1 den.",
-  MAX_LINK_CONTRIB: "Maxim\xE1ln\xED p\u0159\xEDsp\u011Bv\u011Bk prolinkov\xE1n\xED",
-  MAX_LINK_CONTRIB_DESC: "Maxim\xE1ln\xED p\u0159\xEDsp\u011Bvek v\xE1\u017Een\xE9 slo\u017Eitosti prolinkovan\xFDch pozn\xE1mek pou\u017Eit\xFD pro ur\u010Den\xED po\u010D\xE1te\u010Dn\xED slo\u017Eitosti.",
-  LOGGING: "Zaznamen\xE1v\xE1m",
-  DISPLAY_SCHEDULING_DEBUG_INFO: "Zobrazit informace pro lad\u011Bn\xED na v\xFDvoj\xE1\u0159sk\xE9 konzoli",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
+  MAX_INTERVAL: "Maximum interval in days"，\n  MAX_INTERVAL_DESC："Umo\u017E\u0148uje nastavit horn\xED limit pro interval (defaultn\u011B = 100 let)."，\n  最大间隔最小警告："Maxim\xE1ln\xED interval mus\xED b\xFDt alespo\u0148 1 den."，\n  MAX_LINK_CONTRIB："Maxim\xE1ln\xED p\u0159\xEDsp\u011Bv\u011Bk prolinkov\xE1n\xED"，\n  MAX_LINK_CONTRIB_DESC："Maxim\xE1ln\xED p\u0159\xEDsp\u011Bvek v\xE1\u017Een\xE9 slo\u017Eitosti prolinkovan\xFDch pozn\xE1mek pou\u017Eit\xFD pro ur\u010Den\xED po\u010D\xE1te\u010Dn\xED slo\u017Eitosti."，\n  记录："Zaznamen\xE1v\xE1m"，\n  DISPLAY_SCHEDULING_DEBUG_INFO："Zobrazit informace pro lad\u011Bn\xED na v\xFDvoj\xE1\u0159sk\xE9 konzoli"，\n  DISPLAY_PARSER_DEBUG_INFO："Show the parser's debugging information on the developer console",
   SCHEDULING: "Scheduling",
   EXPERIMENTAL: "Experimental",
   HELP: "Help",
@@ -5346,102 +5148,99 @@ var de_default = {
   GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
   GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
   GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: 'Weitere Informationen gibt es im <a href="${wikiUrl}">Wiki</a> (english).',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
+  CHECK_WIKI: 'Weitere Informationen gibt es im <a href="${wikiUrl}">Wiki</a> (english).'，\n  GITHUB_讨论：'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.'，\n  GITHUB_问题：'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.'，\n  GITHUB_SOURCE_CODE：'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
   CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
   TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
   FOLDERS_TO_IGNORE: "Ausgeschlossene Ordner",
   FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
+  OBSIDIAN_INTEGRATION: "集成到 Obsidian",
   FLASHCARDS: "Lernkarten",
-  FLASHCARD_EASY_LABEL: "Einfach Knopf Text",
-  FLASHCARD_GOOD_LABEL: "Gut Knopf Text",
-  FLASHCARD_HARD_LABEL: "Schwer Knopf Text",
-  FLASHCARD_GOOD_DESC: 'Passe die Beschriftung f\xFCr "Gut" Knopf an',
-  FLASHCARD_EASY_DESC: 'Passe die Beschriftung f\xFCr "Einfach" Knopf an',
-  FLASHCARD_HARD_DESC: 'Passe die Beschriftung f\xFCr "Schwer" Knopf an',
+  FLASHCARD_EASY_LABEL: "Einfach Knopf 文本",
+  FLASHCARD_GOOD_LABEL: "Gut Knopf 文本",
+  FLASHCARD_HARD_LABEL: "Schwer Knopf 文本",
+  FLASHCARD_GOOD_DESC: '通过“Gut” Knopf 的说明',
+  FLASHCARD_EASY_DESC: '通过“Einfach” Knopf 的说明',
+  FLASHCARD_HARD_DESC: '通过“Schwer” Knopf 的说明',
   REVIEW_BUTTON_DELAY: "Druckknopfverz\xF6gerung (ms)",
   REVIEW_BUTTON_DELAY_DESC: "F\xFCgt den \xDCberpr\xFCfungsschaltfl\xE4chen (\u201EEinfach\u201C, \u201EGut\u201C, \u201ESchwer\u201C, \u201EAntwort anzeigen\u201C) eine Verz\xF6gerung hinzu, bevor sie erneut gedr\xFCckt werden k\xF6nnen.",
-  FLASHCARD_TAGS: "Lernkarten Tags",
-  FLASHCARD_TAGS_DESC: "Mehrere Tags mit Leerzeichen oder Zeilenumbr\xFCchen getrennt angeben. Bsp. #karte #stapel2 #stapel3.",
-  CONVERT_FOLDERS_TO_DECKS: "Ordner in Stapel und Substapel umwandeln?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: 'Eine Alternative zur oberen "Lernkarten Tags" Option.',
-  INLINE_SCHEDULING_COMMENTS: "Den Fortschritt in der gleichen Zeile wie die letzte Zeile einer Lernkartei speichern?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "Wenn aktiviert, wird der HTML Kommentar die umgebende Liste nicht aufbrechen.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "Verwandte Karten auf den n\xE4chsten Tag verlegen?",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Verwandte Karten sind aus der gleichen Karte generiert worden (z.B. L\xFCckentextkarten oder beidseitige Karten).",
-  SHOW_CARD_CONTEXT: "Kontext in den Karten anzeigen?",
-  SHOW_CARD_CONTEXT_DESC: "Bsp. Titel > \xDCberschrift 1 > Sektion > ... > Untersektion",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
-  CARD_MODAL_HEIGHT_PERCENT: "H\xF6he der Lernkartei in Prozent",
-  CARD_MODAL_SIZE_PERCENT_DESC: "Auf kleinen Bildschirmen (z.B. Smartphones) oder bei sehr grossen Bildern sollte dieser Wert auf 100% gesetzt werden.",
+  FLASHCARD_TAGS: "Lernkarten 标签",
+  FLASHCARD_TAGS_DESC: "Mehrere 标签 mit Leerzeichen oder Zeilenumbrüchen getrennt angeben。伯克利。 #karte #stapel2 #stapel3。",
+  CONVERT_FOLDERS_TO_DECKS: "Stapel 和 Substapel 中的 Ordner乌万德伦？",
+  CONVERT_FOLDERS_TO_DECKS_DESC: 'Eine Alternative zur oberen“Lernkarten Tags”选项。',
+  INLINE_SCHEDULING_COMMENTS: "Den Fortschritt in der gleichen Zeile wie die letzte Zeile einer Lernkartei speichern？",
+  INLINE_SCHEDULING_COMMENTS_DESC: "Wenn aktiviert，wird der HTML Kommentar die umgebende Liste nicht aufbrechen。",
+  BURY_SIBLINGS_TILL_NEXT_DAY: "Verwandte Karten auf den nächsten Tag verlegen？",
+  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Verwandte Karten sind aus der gleichen Karte generic worden (z.B. Lückentextkarten oder beidseitige Karten)。",
+  SHOW_CARD_CONTEXT: "Den Karten anzeigen 中的上下文？",
+  SHOW_CARD_CONTEXT_DESC: "Bsp。标题 > Überschrift 1 > 主题 > ... > Untersektion",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "在审核按钮中显示下次审核时间",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "有助于了解您的卡片将被推到未来多远。",
+  CARD_MODAL_HEIGHT_PERCENT: "Prozent 中的 Höhe der Lernkartei",
+  CARD_MODAL_SIZE_PERCENT_DESC: "Auf kleinen Bildschirmen (z.B. Smartphones) 或 der bei sehrgrossen Bildern sollte dieser Wert auf 100% gesetzt werden。",
   RESET_DEFAULT: "Standardeinstellung wiederherstellen",
-  CARD_MODAL_WIDTH_PERCENT: "Breite einer Lernkarte in Prozent",
-  RANDOMIZE_CARD_ORDER: "W\xE4hrend der Wiederhoung die Reihenfolge zuf\xE4llig mischen?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Reihenfolge der Karten innerhalb eines Stapels w\xE4hrend der Wiederholung",
+  CARD_MODAL_WIDTH_PERCENT: "Prozent 中的 Breite einer Lernkarte",
+  RANDOMIZE_CARD_ORDER: "Während der Wiederhoung die Reihenfolge zufällig Mischen？",
+  REVIEW_CARD_ORDER_WITHIN_DECK: "Reihenfolge der Karten insidehalb eines Stapels während der Wiederholung",
   REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Sequentielle Reihenfolge innerhalb eines Stapels (Alle neuen Karten zuerst)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequentielle Reihenfolge innerhalb eines Stapels (Alle f\xE4lligen Karten zuerst)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Zuf\xE4llige Reihenfolge innerhalb eines Stapels (Alle neuen Karten zuerst)",
+  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequentielle Reihenfolge insidehalb eines Stapels (Alle fälligen Karten zuerst)",
+  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Zufällige Reihenfolge insidehalb eines钉子 (Alle neuen Karten zuerst)",
   REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Zuf\xE4llige Reihenfolge innerhalb eines Stapels (Alle f\xE4lligen Karten zuerst)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Zuf\xE4llige Karte von zuf\xE4lligem Stapel",
+  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "祖法利格卡特·祖法利格姆斯塔佩尔",
   REVIEW_DECK_ORDER: "Reihenfolge der Stapel w\xE4hrend der Wiederholung",
   REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequentielle Reihenfolge (sobald alle Karten im vorherigen Stapel wiederholt wurden)",
   REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Zuf\xE4llige Reihenfolge (sobald alle Karten im vorherigen Stapel wiederholt wurden)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Zuf\xE4llige Karte von zuf\xE4lligem Stapel",
-  DISABLE_CLOZE_CARDS: "L\xFCckentextkarten deaktivieren?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "==Hervorgehobenen== Text in L\xFCckentextkarten umwandeln?",
+  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "祖法利格卡特·祖法利格姆斯塔佩尔",
+  DISABLE_CLOZE_CARDS: "Lückentextkarten deaktivieren？",
+  CONVERT_HIGHLIGHTS_TO_CLOZES: "==Hervorgehobenen== Lückentextkarten umwandeln 中的文本？",
   CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'F\xFCge/entferne das <code>${defaultPattern}</code> zu deinen "L\xFCckentextmuster" hinzu',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "**Fettgedruckten** Text in L\xFCckentextkarten umwandeln?",
+  CONVERT_BOLD_TEXT_TO_CLOZES: "**Fettgedruckten** Lückentextkarten umwandeln 中的文本？",
   CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'F\xFCge/entferne das <code>${defaultPattern}</code> zu deinen "L\xFCckentextmuster" hinzu',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "{{Geschweifte Klammern}} Text in L\xFCckentextkarten umwandeln?",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES: "{{Geschweifte Klammern}} Lückentextkarten umwandeln 中的文本？",
   CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'F\xFCge/entferne das <code>${defaultPattern}</code> zu deinen "L\xFCckentextmuster" hinzu',
   CLOZE_PATTERNS: "L\xFCckentextmuster",
   CLOZE_PATTERNS_DESC: 'Geben Sie L\xFCckentextmuster durch Zeilenumbr\xFCche getrennt ein. Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "Trennzeichen f\xFCr einzeilige Lernkarten",
-  FIX_SEPARATORS_MANUALLY_WARNING: "Wenn diese Einstellung ge\xE4ndert wird, dann m\xFCssen die entsprechenden Lernkarten manuell angepasst werden.",
+  INLINE_CARDS_SEPARATOR: "单一学习的训练",
+  FIX_SEPARATORS_MANUALLY_WARNING: "Wenn diese Einstellung geändert wrd，dann müssen die entsprechenden",
   INLINE_REVERSED_CARDS_SEPARATOR: "Trennzeichen f\xFCr einzeilige beidseitige Lernkarten",
   MULTILINE_CARDS_SEPARATOR: "Trennzeichen f\xFCr mehrzeilige Lernkarten",
   MULTILINE_REVERSED_CARDS_SEPARATOR: "Trennzeichen f\xFCr mehrzeilige beidseitige Lernkarten",
-  MULTILINE_CARDS_END_MARKER: "Zeichen, die das Ende von L\xFCckentexten und mehrzeiligen Flashcards kennzeichnen",
-  NOTES: "Notizen",
+  MULTILINE_CARDS_END_MARKER: "Zeichen，结束 Lückentexten 和 mehrzeiligen 抽认卡 kennzeichnen",
+  NOTES: "通知",
   NOTE: "Note",
   REVIEW_PANE_ON_STARTUP: "\xD6ffne \xDCberpr\xFCfungswarteschlage beim start",
-  TAGS_TO_REVIEW: "Zu wiederholende Tags",
-  TAGS_TO_REVIEW_DESC: "Mehrere Tags k\xF6nnen mit Leerzeichen oder Zeilenumbr\xFCchen getrennt angegeben werden. Bsp. #karte #tag1 #tag2.",
+  TAGS_TO_REVIEW: "Zu wiederholende 标签",
+  TAGS_TO_REVIEW_DESC: "Mehrere Tags können mit Leerzeichen oder Zeilenumbrüchen getrennt angegeben werden。伯克利。 #karte #tag1 #tag2。",
   OPEN_RANDOM_NOTE: "Zuf\xE4llige Karten wiederholen",
-  OPEN_RANDOM_NOTE_DESC: "Wenn dies deaktiviert wird, dann werden die Notizen nach Wichtigkeit wiederholt (PageRank).",
+  OPEN_RANDOM_NOTE_DESC: "Wenn 去世了，dann werden 去世了，Notizen nach Wichtigkeit wiederholt (PageRank)。",
   AUTO_NEXT_NOTE: "Nach einer Wiederholung automatisch die n\xE4chste Karte \xF6ffnen",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Aktiviere die \xDCberpr\xFCfungsoptionen im Dateimen\xFC (z. B. Notizen wiederholen als: Einfach, Gut, Schwer)",
+  ENABLE_FILE_MENU_REVIEW_OPTIONS: "日期菜单中的 Überprüfungsoptionen（z. B. Notizen wiederholen als：Einfach、Gut、Schwer）",
   ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "Wenn du die \xDCberpr\xFCfungsoptionen im Dateimen\xFC deaktivierst, kannst du deine Notizen mit den Plugin-Befehlen und, falls definiert, den zugeh\xF6rigen Tastenkombinationen \xFCberpr\xFCfen.",
-  MAX_N_DAYS_REVIEW_QUEUE: "Maximale Anzahl anstehender Notizen, die im rechten Fensterbereich angezeigt werden",
-  MIN_ONE_DAY: "Anzahl der Tage muss mindestens 1 sein.",
-  VALID_NUMBER_WARNING: "Bitte eine g\xFCltige Zahl eingeben.",
-  UI: "User Interface",
+  MAX_N_DAYS_REVIEW_QUEUE: "Maximale Anzahl anstehender 注意，die im rechten Fensterbereich angezeigt werden",
+  MIN_ONE_DAY: "Anzahl der Tage muss mindestens 1 sein。",
+  VALID_NUMBER_WARNING: "Bitte eine gültige Zahl eingeben。",
+  UI: "用户界面",
   OPEN_IN_TAB: "\xD6ffne im neuen Tab",
-  OPEN_IN_TAB_DESC: "Schalte dies aus, um die Notizen in einem Modalfenster zu \xF6ffnen",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Stapelverzeichnis soll beim \xF6ffnen erweitert angezeigt werden",
+  OPEN_IN_TAB_DESC: "Schalte dies aus，um die Notizen in einem Modalfenster zu öffnen",
+  SHOW_STATUS_BAR: "显示状态栏",
+  SHOW_STATUS_BAR_DESC: "关闭此功能以在 Obsidian 的状态栏中隐藏抽认卡的审核状态",
+  SHOW_RIBBON_ICON: "在功能区栏中显示图标",
+  SHOW_RIBBON_ICON_DESC: "关闭此功能以隐藏 Obsidian 功能区栏中的插件图标",
+  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Stapelverzeichnis soll beim öffnen erweitert angezeigt韦尔登",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Deaktivieren Sie dies, um verschachtelte Stapel in derselben Karte zu reduzieren. N\xFCtzlich, wenn Sie Karten haben, die zu vielen Stapeln in derselben Datei geh\xF6ren.",
-  ALGORITHM: "Algorithmus",
+  ALGORITHM: "算法",
   CHECK_ALGORITHM_WIKI: 'Weiterf\xFChrende Informationen: <a href="${algoUrl}">Implementierung des Algorithmus</a> (english).',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "Basis der Schwierigkeit",
-  BASE_EASE_DESC: "Minimum ist 130. Empfohlen wird ca. 250.",
-  BASE_EASE_MIN_WARNING: "Basis der Schwierigkeit muss mindestens 130 sein.",
+  SM2_OSR_VARIANT: "OSR 的 SM-2 变体",
+  BASE_EASE: "Schwierigkeit 基础",
+  BASE_EASE_DESC: "最低 130。 250.",
+  BASE_EASE_MIN_WARNING: "Basis der Schwierigkeit muss mindestens 130 sein。",
   LAPSE_INTERVAL_CHANGE: "Anpassungsfaktor des Intervalls wenn eine Notiz / Karte 'Schwer' abgeschlossen wird",
-  LAPSE_INTERVAL_CHANGE_DESC: "neuesIntervall = altesIntervall * anpassungsfaktor / 100.",
+  LAPSE_INTERVAL_CHANGE_DESC: "neuesIntervall = altesIntervall * anpassungsfaktor / 100。",
   EASY_BONUS: "Einfachheit-Bonus",
   EASY_BONUS_DESC: "Der Einfachheit-Bonus gibt an um welchen Faktor (in Prozent) das Intervall l\xE4nger sein soll, wenn eine Notiz / Karte 'Einfach' statt 'Gut' abgeschlossen wird. Minimum ist 100%.",
-  EASY_BONUS_MIN_WARNING: "Der Einfachheit-Bonus muss mindestens 100 sein.",
-  LOAD_BALANCE: "Enable load balancer",
+  EASY_BONUS_MIN_WARNING: "Der Einfachheit-Bonus muss mindestens 100 sein。",
+  LOAD_BALANCE: "启用负载均衡器",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
+        It's 就像 Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
   MAX_INTERVAL: "Maximale Intervall in Tagen",
   MAX_INTERVAL_DESC: "Das maximale Intervall (in Tagen) f\xFCr Wiederholungen. Standard sind 100 Jahre.",
@@ -5502,12 +5301,7 @@ var en_default = {
   BACK: "Back",
   SKIP: "Skip",
   EDIT_CARD: "Edit Card",
-  RESET_CARD_PROGRESS: "Reset card's progress",
-  HARD: "Hard",
-  GOOD: "Good",
-  EASY: "Easy",
-  SHOW_ANSWER: "Show Answer",
-  CARD_PROGRESS_RESET: "Card's progress has been reset.",
+  RESET_CARD_PROGRESS: "Reset card's progress"，\n  困难："Hard"，\n  好："Good"，\n  简单："Easy"，\n  SHOW_ANSWER："Show Answer"，\n  CARD_PROGRESS_RESET："Card's progress has been reset.",
   SAVE: "Save",
   CANCEL: "Cancel",
   NO_INPUT: "No input provided.",
@@ -5531,46 +5325,8 @@ var en_default = {
   PLEASE_TAG_NOTE: "Please tag the note appropriately for reviewing (in settings).",
   RESPONSE_RECEIVED: "Response received.",
   NO_DECK_EXISTS: "No deck exists for ${deckName}",
-  ALL_CAUGHT_UP: "You're all caught up now :D.",
-  // scheduling.ts
-  DAYS_STR_IVL: "${interval} day(s)",
-  MONTHS_STR_IVL: "${interval} month(s)",
-  YEARS_STR_IVL: "${interval} year(s)",
-  DAYS_STR_IVL_MOBILE: "${interval}d",
-  MONTHS_STR_IVL_MOBILE: "${interval}m",
-  YEARS_STR_IVL_MOBILE: "${interval}y",
-  // settings.ts
-  SETTINGS_HEADER: "Spaced Repetition",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: 'For more information, check the <a href="${wikiUrl}">wiki</a>.',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
-  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
-  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
-  FOLDERS_TO_IGNORE: "Folders to ignore",
-  FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "Flashcards",
-  FLASHCARD_EASY_LABEL: "Easy Button Text",
-  FLASHCARD_GOOD_LABEL: "Good Button Text",
-  FLASHCARD_HARD_LABEL: "Hard Button Text",
-  FLASHCARD_EASY_DESC: 'Customize the label for the "Easy" Button',
-  FLASHCARD_GOOD_DESC: 'Customize the label for the "Good" Button',
-  FLASHCARD_HARD_DESC: 'Customize the label for the "Hard" Button',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "Flashcard tags",
-  FLASHCARD_TAGS_DESC: "Enter tags separated by spaces or newlines i.e. #flashcards #deck2 #deck3.",
-  CONVERT_FOLDERS_TO_DECKS: "Convert folders to decks and subdecks",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "This is an alternative to the Flashcard tags option above.",
-  INLINE_SCHEDULING_COMMENTS: "Save scheduling comment on the same line as the flashcard's last line?",
+  ALL_CAUGHT_UP: "You're all caught up now :D.",\n  // 调度.ts\n  DAYS_STR_IVL："${interval} day(s)"，\n  MONTHS_STR_IVL："${interval} month(s)"，\n  YEARS_STR_IVL："${interval} year(s)"，\n  DAYS_STR_IVL_MOBILE："${interval}d"，\n  MONTHS_STR_IVL_MOBILE："${interval}m"，\n  YEARS_STR_IVL_MOBILE："${interval}y",\n  // 设置.ts\n  设置_标题："Spaced Repetition"，\n  GROUP_TAGS_FOLDERS："Tags & Folders",\n  GROUP_FLASHCARD_REVIEW："Flashcard Review"，\n  GROUP_FLASHCARD_SEPARATORS："Flashcard Separators"，\n  组数据存储："Storage of Scheduling Data"，\n  GROUP_DATA_STORAGE_DESC："Choose where to store the scheduling data"，\n  GROUP_FLASHcardS_NOTES："Flashcards & Notes"，\n  GROUP_CONTRIBUTING："Contributing"，\n  CHECK_WIKI: '如需了解更多信息，请查看 <a href="${wikiUrl}">wiki</a>。',\n  GITHUB_DISCUSSIONS: '访问 <a href="${discussionsUrl}">讨论</a>部分，用于问答帮助、反馈和一般讨论。',\n  GITHUB_ISSUES: '在原型中提出问题 <a href="${issuesUrl}">此处</a>。',\n  GITHUB_SOURCE_CODE: '该项目的源代码可在 <a href="${githubProjectUrl}">GitHub</a>.',
+  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">这里</a>如何向插件贡献代码。',\n  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">这里</a>如何将插件翻译成另一种语言。',\n  FOLDERS_TO_IGNORE："Folders to ignore"，\n  FOLDERS_TO_IGNORE_DESC："Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes."，\n  黑曜石集成："Integration into Obsidian"，\n  抽认卡："Flashcards",\n  闪存卡_EASY_标签："Easy Button Text"，\n  FLASHCARD_GOOD_LABEL："Good Button Text"，\n  闪存卡_硬标签："Hard Button Text",\n  FLASHCARD_EASY_DESC: '自定义"Easy"Button',\n  FLASHCARD_GOOD_DESC: '自定义"Good"按钮的标签',\n  FLASHCARD_HARD_DESC: '自定义标签"Hard"按钮',\n  REVIEW_BUTTON_DELAY："Button Press Delay (ms)"，\n  REVIEW_BUTTON_DELAY_DESC："Add a delay to the review buttons before they can be pressed again."，\n  闪存卡标签："Flashcard tags",\n  FLASHCARD_TAGS_DESC："Enter tags separated by spaces or newlines i.e. #flashcards #deck2 #deck3.",\n  CONVERT_FOLDERS_TO_DECKS："Convert folders to decks and subdecks"，\n  CONVERT_FOLDERS_TO_DECKS_DESC："This is an alternative to the Flashcard tags option above."，\n  内联调度注释："Save scheduling comment on the same line as the flashcard's last line?",
   INLINE_SCHEDULING_COMMENTS_DESC: "Turning this on will make the HTML comments not break list formatting.",
   BURY_SIBLINGS_TILL_NEXT_DAY: "Bury sibling cards until the next day",
   BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Siblings are cards generated from the same card text i.e. cloze deletions",
@@ -5595,13 +5351,7 @@ var en_default = {
   REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
   DISABLE_CLOZE_CARDS: "Disable cloze cards?",
   CONVERT_HIGHLIGHTS_TO_CLOZES: "Convert ==highlights== to clozes",
-  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Add/remove the <code>${defaultPattern}</code> from your "Cloze Patterns"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "Convert **bolded text** to clozes",
-  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Add/remove the <code>${defaultPattern}</code> from your "Cloze Patterns"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "Convert {{curly brackets}} to clozes",
-  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Add/remove the <code>${defaultPattern}</code> from your "Cloze Patterns"',
-  CLOZE_PATTERNS: "Cloze Patterns",
-  CLOZE_PATTERNS_DESC: 'Enter cloze patterns separated by newlines. Check the <a href="${docsUrl}">wiki</a> for guidance.',
+  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Add/remove the <code>${defaultPattern}</code> from your "完型填空模式"',\n  CONVERT_BOLD_TEXT_TO_CLOZES: "将**粗体文本**转换为完形填空",\n  CONVERT_BOLD_TEXT_TO_CLOZES_DESC：'Add/remove the <code>${defaultPattern}</code> from your "完型填空模式"',\n  CONVERT_CURLY_BRACKETS_TO_CLOZES: "将 {{大括号}} 转换为完型填空",\n  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC：'Add/remove the <code>${defaultPattern}</code> from your "完型填空模式"',\n  CLOZE_PATTERNS: "完形填空模式",\n  CLOZE_PATTERNS_DESC：'Enter cloze patterns separated by newlines. Check the <a href="${docsUrl}">wiki</a> for guidance.',
   INLINE_CARDS_SEPARATOR: "Separator for inline flashcards",
   FIX_SEPARATORS_MANUALLY_WARNING: "Note that after changing this you have to manually edit any flashcards you already have.",
   INLINE_REVERSED_CARDS_SEPARATOR: "Separator for inline reversed flashcards",
@@ -5625,14 +5375,7 @@ var en_default = {
   SHOW_STATUS_BAR: "Show status bar",
   SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
   SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Enable the review options in the file menu (e.g. Review: Easy, Good, Hard)",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "If you disable the review options in the file menu, you can review your notes using the plugin commands and, if you defined them, the associated command hotkeys.",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Deck trees should be initially displayed as expanded",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Turn this off to collapse nested decks in the same card. Useful if you have cards which belong to many decks in the same file.",
-  ALGORITHM: "Algorithm",
-  CHECK_ALGORITHM_WIKI: 'For more information, check the <a href="${algoUrl}">algorithm details</a>.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
+  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS："Enable the review options in the file menu (e.g. Review: Easy, Good, Hard)",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC："If you disable the review options in the file menu, you can review your notes using the plugin commands and, if you defined them, the associated command hotkeys.",\n  INITIALLY_EXPAND_SUBDECKS_IN_TREE："Deck trees should be initially displayed as expanded",\n  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC："Turn this off to collapse nested decks in the same card. Useful if you have cards which belong to many decks in the same file.",\n  算法："Algorithm",\n  CHECK_ALGORITHM_WIKI: '有关详细信息，请检查 <a href="${algoUrl}">算法详细信息</a>.',\n  SM2_OSR_VARIANT："OSR's variant of SM-2",
   BASE_EASE: "Base ease",
   BASE_EASE_DESC: "minimum = 130, preferrably approximately 250.",
   BASE_EASE_MIN_WARNING: "The base ease must be at least 130.",
@@ -5643,55 +5386,54 @@ var en_default = {
   EASY_BONUS_MIN_WARNING: "The easy bonus must be at least 100.",
   LOAD_BALANCE: "Enable load balancer",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
-        It's turned off for small intervals.`,
-  MAX_INTERVAL: "Maximum interval in days",
-  MAX_INTERVAL_DESC: "Allows you to place an upper limit on the interval (default = 100 years).",
-  MAX_INTERVAL_MIN_WARNING: "The maximum interval must be at least 1 day.",
-  MAX_LINK_CONTRIB: "Maximum link contribution",
-  MAX_LINK_CONTRIB_DESC: "Maximum contribution of the weighted ease of linked notes to the initial ease.",
-  LOGGING: "Logging",
-  DISPLAY_SCHEDULING_DEBUG_INFO: "Show the scheduler's debugging information on the developer console",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
-  SCHEDULING: "Scheduling",
-  EXPERIMENTAL: "Experimental",
-  HELP: "Help",
-  STORE_IN_NOTES: "In the notes",
+        It's like Anki'是模糊的，但它不是随机的，而是选择评论数量最少的一天。\n        它's turned off for small intervals.`,
+  MAX_INTERVAL: "最大间隔天数",
+  MAX_INTERVAL_DESC: "允许您设置时间间隔的上限（默认 = 100 年）。",
+  MAX_INTERVAL_MIN_WARNING: "最大间隔必须至少为 1一天。",
+  MAX_LINK_CONTRIB: "最大链接贡献",
+  MAX_LINK_CONTRIB_DESC: "链接音符的加权难易度对初始难易度的最大贡献。",
+  LOGGING: "记录",
+  DISPLAY_SCHEDULING_DEBUG_INFO: "在开发者控制台上显示调度程序的调试信息",
+  DISPLAY_PARSER_DEBUG_INFO: "在开发者控制台上显示解析器的调试信息",
+  SCHEDULING: "调度",
+  EXPERIMENTAL: "实验",
+  HELP: "帮助",
+  STORE_IN_NOTES: "在注释中",
   // sidebar.ts
-  NOTES_REVIEW_QUEUE: "Notes Review Queue",
-  CLOSE: "Close",
+  NOTES_REVIEW_QUEUE: "笔记复习队列",
+  CLOSE: "关闭",
   NEW: "New",
-  YESTERDAY: "Yesterday",
-  TODAY: "Today",
-  TOMORROW: "Tomorrow",
+  YESTERDAY: "昨天",
+  TODAY: "今天",
+  TOMORROW: "明天",
   // stats-modal.tsx
-  STATS_TITLE: "Statistics",
-  MONTH: "Month",
-  QUARTER: "Quarter",
-  YEAR: "Year",
-  LIFETIME: "Lifetime",
-  FORECAST: "Forecast",
-  FORECAST_DESC: "The number of cards due in the future",
-  SCHEDULED: "Scheduled",
-  DAYS: "Days",
-  NUMBER_OF_CARDS: "Number of cards",
+  STATS_TITLE: "统计",
+  MONTH: "月份",
+  QUARTER: "季度",
+  YEAR: "年",
+  LIFETIME: "终生",
+  FORECAST: "预测",
+  FORECAST_DESC: "未来到期的卡片数量",
+  SCHEDULED: "预定",
+  DAYS: "天",
+  NUMBER_OF_CARDS: "卡片数量",
   REVIEWS_PER_DAY: "Average: ${avg} reviews/day",
-  INTERVALS: "Intervals",
-  INTERVALS_DESC: "Delays until reviews are shown again",
-  COUNT: "Count",
+  INTERVALS: "间隔",
+  INTERVALS_DESC: "延迟直到再次显示评论",
+  COUNT: "计数",
   INTERVALS_SUMMARY: "Average interval: ${avg}, Longest interval: ${longest}",
-  EASES: "Eases",
+  EASES: "轻松",
   EASES_SUMMARY: "Average ease: ${avgEase}",
-  EASE: "Ease",
-  CARD_TYPES: "Card Types",
-  CARD_TYPES_DESC: "This includes buried cards as well, if any",
+  EASE: "轻松",
+  CARD_TYPES: "卡类型",
+  CARD_TYPES_DESC: "这也包括埋藏的卡片（如果有的话）",
   CARD_TYPE_NEW: "New",
-  CARD_TYPE_YOUNG: "Young",
-  CARD_TYPE_MATURE: "Mature",
+  CARD_TYPE_YOUNG: "年轻",
+  CARD_TYPE_MATURE: "成熟",
   CARD_TYPES_SUMMARY: "Total cards: ${totalCardsCount}",
-  SEARCH: "Search",
-  PREVIOUS: "Previous",
-  NEXT: "Next"
+  SEARCH: "搜索",
+  PREVIOUS: "上一个",
+  NEXT: "下一步"
 };
 
 // src/lang/locale/en-gb.ts
@@ -5703,7 +5445,7 @@ var es_default = {
   DECKS: "Mazos",
   DUE_CARDS: "Tarjetas Vencidas",
   NEW_CARDS: "Tarjetas Nuevas",
-  TOTAL_CARDS: "Tarjetas Totales",
+  TOTAL_CARDS: "Tarjetas 总计",
   BACK: "Atr\xE1s",
   SKIP: "Saltar",
   EDIT_CARD: "Editar Tarjeta",
@@ -5712,31 +5454,31 @@ var es_default = {
   GOOD: "Bien",
   EASY: "F\xE1cil",
   SHOW_ANSWER: "Mostrar Respuesta",
-  CARD_PROGRESS_RESET: "El progreso de la tarjeta se ha reiniciado.",
+  CARD_PROGRESS_RESET: "El progreso de la tarjeta se ha reiniciado。",
   SAVE: "Guardar",
-  CANCEL: "Cancelar",
-  NO_INPUT: "Se ha prove\xEDdo entrada.",
-  CURRENT_EASE_HELP_TEXT: "Facilidad Actual: ",
-  CURRENT_INTERVAL_HELP_TEXT: "Intervalo Actual: ",
+  CANCEL: "取消",
+  NO_INPUT: "Se ha proído entrada。",
+  CURRENT_EASE_HELP_TEXT: "设施实际：",
+  CURRENT_INTERVAL_HELP_TEXT: "间隔实际：",
   CARD_GENERATED_FROM: "Generado Desde: ${notePath}",
   // main.ts
   OPEN_NOTE_FOR_REVIEW: "Abrir nota para revisi\xF3n",
   REVIEW_CARDS: "Revisar Tarjetas",
   REVIEW_DIFFICULTY_FILE_MENU: "Revisar: ${difficulty}",
   REVIEW_NOTE_DIFFICULTY_CMD: "Revisar nota como ${difficulty}",
-  CRAM_ALL_CARDS: "Selecciona un mazo a memorizar",
-  REVIEW_ALL_CARDS: "Revisar tarjetas de todas las notas",
+  CRAM_ALL_CARDS: "选择一个记忆库",
+  REVIEW_ALL_CARDS: "Revisar tarjetas de todas notas",
   REVIEW_CARDS_IN_NOTE: "Revisar tarjetas en esta nota",
   CRAM_CARDS_IN_NOTE: "Memorizar tarjetas en esta nota",
   VIEW_STATS: "Ver estad\xEDsticas",
-  OPEN_REVIEW_QUEUE_VIEW: "Open Notes Review Queue in sidebar",
+  OPEN_REVIEW_QUEUE_VIEW: "在侧边栏中打开笔记审阅队列",
   STATUS_BAR: "Revisar: ${dueNotesCount} nota(s), ${dueFlashcardsCount} tarjetas vencidas",
   SYNC_TIME_TAKEN: "La sincronizaci\xF3n tom\xF3 ${t} milisegundos",
-  NOTE_IN_IGNORED_FOLDER: "La nota est\xE1 guardada en un directorio ignorado (revisa los ajustes).",
-  PLEASE_TAG_NOTE: "Por favor etiquete apropiadamente la nota para revisi\xF3n (en los ajustes).",
+  NOTE_IN_IGNORED_FOLDER: "La nota está Guardada en un directio ignorado (revisa los ajustes)。",
+  PLEASE_TAG_NOTE: "请注意适当的礼仪修订（en los ajustes）。",
   RESPONSE_RECEIVED: "Respuesta Recibida",
   NO_DECK_EXISTS: "No existen mazos para: ${deckName}",
-  ALL_CAUGHT_UP: "\xA1Est\xE1s al d\xEDa! \u{1F603}",
+  ALL_CAUGHT_UP: "¡Estás al día！ u{1F603}",
   // scheduling.ts
   DAYS_STR_IVL: "${interval} d\xEDa(s)",
   MONTHS_STR_IVL: "${interval} mes(es)",
@@ -5746,109 +5488,109 @@ var es_default = {
   YEARS_STR_IVL_MOBILE: "${interval}a",
   // settings.ts
   SETTINGS_HEADER: "Extensi\xF3n de Repetici\xF3n Espaciada",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
+  GROUP_TAGS_FOLDERS: "标签和文件夹",
+  GROUP_FLASHCARD_REVIEW: "抽认卡回顾",
+  GROUP_FLASHCARD_SEPARATORS: "闪存卡分隔符",
+  GROUP_DATA_STORAGE: "调度数据的存储",
+  GROUP_DATA_STORAGE_DESC: "选择存储调度数据的位置",
+  GROUP_FLASHCARDS_NOTES: "抽认卡和笔记",
+  GROUP_CONTRIBUTING: "贡献",
   CHECK_WIKI: 'Para m\xE1s informaci\xF3n revisa la <a href="${wikiUrl}">wiki</a>.',
   GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
   GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
   GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
   CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
   TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
-  FOLDERS_TO_IGNORE: "Directorios a ignorar",
+  FOLDERS_TO_IGNORE: "目录是无知的",
   FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "Tarjetas de Memorizaci\xF3n",
+  OBSIDIAN_INTEGRATION: "集成到 Obsidian",
+  FLASHCARDS: "记忆工具",
   FLASHCARD_EASY_LABEL: "Texto del bot\xF3n: F\xE1cil",
   FLASHCARD_GOOD_LABEL: "Texto del bot\xF3n: Bien",
-  FLASHCARD_HARD_LABEL: "Texto del bot\xF3n: Dif\xEDcil",
-  FLASHCARD_EASY_DESC: "Personalize la etiqueta para el bot\xF3n: F\xE1cil",
-  FLASHCARD_GOOD_DESC: "Personalize la etiqueta para el bot\xF3n: Bien",
-  FLASHCARD_HARD_DESC: "Personalize la etiqueta para el bot\xF3n: Dif\xEDcil",
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "Etiquetas de las Tarjetas de Memorizaci\xF3n",
-  FLASHCARD_TAGS_DESC: "Escriba las etiquetas separadas por espacios o saltos de l\xEDnea, por ejemplo, #memorizar #mazo2 #mazo3",
-  CONVERT_FOLDERS_TO_DECKS: "\xBFConvertir directorios a mazos y submazos?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "Esta es una opci\xF3n alternativa a las etiquetas de las Tarjetas de Memorizaci\xF3n.",
-  INLINE_SCHEDULING_COMMENTS: "\xBFGuardar el comentario para programaci\xF3n de las tarjetas en la \xFAltima l\xEDnea?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "Activar esto har\xE1 que los comentarios HTML no rompan el formato de las listas.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "\xBFEnterrar tarjetas hermanas hasta el siguiente d\xEDa?",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Los hermanos son tarjetas generadas del mismo texto de la tarjeta, por ejemplo, deletreos de huecos (cloze deletions en ingl\xE9s)",
-  SHOW_CARD_CONTEXT: "\xBFMostrar contexto en las tarjetas?",
-  SHOW_CARD_CONTEXT_DESC: "Por Ejemplo: T\xEDtulo > Cabecera > Sub-Cabecera > ... > Sub-Cabecera",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
-  CARD_MODAL_HEIGHT_PERCENT: "Porcentaje de la altura de las tarjetas de memoria",
-  CARD_MODAL_SIZE_PERCENT_DESC: "Deber\xEDa ser establecido en 100% si tienes im\xE1genes grandes",
-  RESET_DEFAULT: "Reiniciar a la configuraci\xF3n por defecto",
-  CARD_MODAL_WIDTH_PERCENT: "Porcentaje del ancho de las tarjetas de memoria",
-  RANDOMIZE_CARD_ORDER: "\xBFAleatorizar el orden de las tarjetas para revisi\xF3n?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Order cards in a deck are displayed during review",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Sequentially within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequentially within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Randomly within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Randomly within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  REVIEW_DECK_ORDER: "Order decks are displayed during review",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequentially (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Randomly (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  DISABLE_CLOZE_CARDS: "\xBFDeshabilitar deletreo de huecos en las tarjetas?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "\xBFConvertir ==resaltados== a deletreo de huecos?",
+  FLASHCARD_HARD_LABEL: "底部文本：困难",
+  FLASHCARD_EASY_DESC: "个性化按钮礼仪：Fácil",
+  FLASHCARD_GOOD_DESC: "个性化按钮礼仪：Bien",
+  FLASHCARD_HARD_DESC: "个性化按钮礼仪：Difícil",
+  REVIEW_BUTTON_DELAY: "按钮按下延迟 (ms)",
+  REVIEW_BUTTON_DELAY_DESC: "在再次按下审阅按钮之前添加延迟。",
+  FLASHCARD_TAGS: "记忆礼仪",
+  FLASHCARD_TAGS_DESC: "将礼仪分开，以 espacios de línea、por ejemplo #memorizar #mazo2 #mazo3",
+  CONVERT_FOLDERS_TO_DECKS: "¿将目录转换为主目录和子目录？",
+  CONVERT_FOLDERS_TO_DECKS_DESC: "这是记忆礼仪的替代选项。",
+  INLINE_SCHEDULING_COMMENTS: "¿Guardar el commentación de las tarjetas en la ultima linea？",
+  INLINE_SCHEDULING_COMMENTS_DESC: "Activar 的注释是 HTML 格式，没有列表格式。",
+  BURY_SIBLINGS_TILL_NEXT_DAY: "¿Enterrar tarjetas Hermanas hasta el siguiente día？",
+  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Los Hermanos son tarjetas generics del Mismo texto de la tarjeta, por ejemplo, deletreos de Huecos (完形填空删除 en inglés)",
+  SHOW_CARD_CONTEXT: "¿Mostrar contexto en las tarjetas？",
+  SHOW_CARD_CONTEXT_DESC: "示例: 标题 > Cabecera > Sub-Cabecera > ... > Sub-Cabecera",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "在审核按钮中显示下次审核时间",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "有助于了解您的卡片将被推到未来多远。",
+  CARD_MODAL_HEIGHT_PERCENT: "记忆库的高值部分",
+  CARD_MODAL_SIZE_PERCENT_DESC: "Debería ser establecido en 100% si tienes grandes",
+  RESET_DEFAULT: "重新配置缺陷",
+  CARD_MODAL_WIDTH_PERCENT: "记忆锚点",
+  RANDOMIZE_CARD_ORDER: "¿Aleatorizar el Orden de las tarjetas",
+  REVIEW_CARD_ORDER_WITHIN_DECK: "查看期间会显示一副牌中的订单卡",
+  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "在一副牌中按顺序（首先是所有新牌）",
+  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "依次在一副牌（首先是所有到期牌）",
+  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "一副牌中随机（所有新牌优先）",
+  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "一副牌中随机（所有到期牌优先）",
+  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "随机牌组中的随机卡",
+  REVIEW_DECK_ORDER: "订单牌组在审核过程中显示",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "按顺序（一旦检查了前一副牌中的所有牌）",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "随机（一旦检查了前一副牌中的所有牌）",
+  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "随机牌组中的随机卡",
+  DISABLE_CLOZE_CARDS: "¿Deshabilitar deletreo de Huecos en las",
+  CONVERT_HIGHLIGHTS_TO_CLOZES: "¿Convertir ==resaltados== a deletreo de Huecos？",
   CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'A\xF1adir/eliminar el <code>${defaultPattern}</code> de tus "Patrones de Deletreo de Huecos"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "\xBFConvertir **texto en negrita** a deletreo de huecos?",
+  CONVERT_BOLD_TEXT_TO_CLOZES: "¿将 **文本转换为黑色** 删除 Huecos？",
   CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'A\xF1adir/eliminar el <code>${defaultPattern}</code> de tus "Patrones de Deletreo de Huecos"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "\xBFConvertir {{llaves rizadas}} a deletreo de huecos?",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES: "¿Convertir {{llaves rizadas}} a删除韦科斯？",
   CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'A\xF1adir/eliminar el <code>${defaultPattern}</code> de tus "Patrones de Deletreo de Huecos"',
-  CLOZE_PATTERNS: "Patrones de deletreo de huecos",
+  CLOZE_PATTERNS: "删除色调的赞助人",
   CLOZE_PATTERNS_DESC: 'Escriba los patrones de deletreo de huecos separados por saltos de l\xEDnea. . Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "Separador de tarjetas de memorizaci\xF3n en l\xEDnea",
-  FIX_SEPARATORS_MANUALLY_WARNING: "Note que despu\xE9s de cambiar este ajuste, tendr\xE1 que cambiar manualmente todas las notas que tenga.",
-  INLINE_REVERSED_CARDS_SEPARATOR: "Separador de tarjetas de memorizaci\xF3n para tarjetas de notas invertidas",
-  MULTILINE_CARDS_SEPARATOR: "Separador para tarjetas de memorizaci\xF3n multil\xEDnea",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "Separador para tarjetas de memorizaci\xF3n multil\xEDnea invertidas",
-  MULTILINE_CARDS_END_MARKER: "Caracteres que denotan el fin de los clozes y tarjetas did\xE1cticas de varias l\xEDneas",
-  NOTES: "Notes",
+  INLINE_CARDS_SEPARATOR: "行记忆的目标分隔符",
+  FIX_SEPARATORS_MANUALLY_WARNING: "请注意，调整时需要注意的事项，请参阅手册中的说明。",
+  INLINE_REVERSED_CARDS_SEPARATOR: "的选项以记住",
+  MULTILINE_CARDS_SEPARATOR: "多行记忆库的分隔符",
+  MULTILINE_REVERSED_CARDS_SEPARATOR: "多行反向记忆的分隔符",
+  MULTILINE_CARDS_END_MARKER: "表示完形填空和变量的教学的字符",
+  NOTES: "笔记",
   NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "Activar panel de revisi\xF3n de notas al arrancar",
-  TAGS_TO_REVIEW: "Etiquetas a revisar",
-  TAGS_TO_REVIEW_DESC: "Escriba las etiquetas separadas por espacios o saltos de l\xEDneas, por ejemplo, #revisi\xF3n #etiqueta2 #etiqueta3.",
+  REVIEW_PANE_ON_STARTUP: "激活修订通知面板",
+  TAGS_TO_REVIEW: "礼仪修订",
+  TAGS_TO_REVIEW_DESC: "编辑escriba las etiquetas separadas por espacios or saltos de lineas, por ejemplo, #revisión #etiqueta2 #etiqueta3。",
   OPEN_RANDOM_NOTE: "Abrir una nota al azar para revisar",
-  OPEN_RANDOM_NOTE_DESC: "Cuando deshabilita esto, las notas son ordenadas por importancia (Algoritmo PageRank).",
+  OPEN_RANDOM_NOTE_DESC: "Cando deshabilita esto, las notas son ordenadas por importantancia (Algoritmo PageRank)。",
   AUTO_NEXT_NOTE: "Abrir la siguiente nota autom\xE1ticamente despu\xE9s de una revisi\xF3n",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Habilita las opciones de revisi\xF3n en el men\xFA Archivo (por ejemplo: Revisar: F\xE1cil, Bien, Dif\xEDcil)",
+  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Habilita las opciones de revisión en el menu Archivo (例如: Revisar: Fácil, Bien, Difícil)",
   ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "Si desactivas las opciones de revisi\xF3n en el men\xFA Archivo, puedes revisar tus notas usando los comandos del plugin y, si los definiste, las teclas r\xE1pidas asociadas.",
-  MAX_N_DAYS_REVIEW_QUEUE: "N\xFAmero m\xE1ximo de d\xEDas a mostrar en el panel derecho.",
-  MIN_ONE_DAY: "El n\xFAmero de d\xEDas debe ser al menos uno.",
-  VALID_NUMBER_WARNING: "Por favor especifique un n\xFAmero v\xE1lido.",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Los \xE1rboles de mazos deber\xEDan ser expandidos al inicio.",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Desactiva esto para contraer mazos anidados en la misma tarjeta. \xDAtil si tienes tarjetas que pertenecen a muchos mazos en el mismo archivo.",
+  MAX_N_DAYS_REVIEW_QUEUE: "面板上的最大数字。",
+  MIN_ONE_DAY: "El número de días debe ser al menos uno。",
+  VALID_NUMBER_WARNING: "因具体数字而异。",
+  UI: "用户界面",
+  OPEN_IN_TAB: "在新选项卡中打开",
+  OPEN_IN_TAB_DESC: "将其关闭到在模态窗口中打开插件",
+  SHOW_STATUS_BAR: "显示状态栏",
+  SHOW_STATUS_BAR_DESC: "关闭此功能以在 Obsidian 的状态栏中隐藏抽认卡的审核状态",
+  SHOW_RIBBON_ICON: "在功能区栏中显示图标",
+  SHOW_RIBBON_ICON_DESC: "关闭此功能以隐藏 Obsidian 功能区栏中的插件图标",
+  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Los árboles de mazos deberían ser Expandidos al inicio.",
+  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Desactiva esto para contraer Mazos anidados en la Misma tarjeta。直到 si tienes tarjetas que pertenecen a muchos mazos en el Mismo archivo。",
   ALGORITHM: "Algoritmo",
   CHECK_ALGORITHM_WIKI: 'Para m\xE1s informaci\xF3n, revisa la <a href="${algoUrl}">implementaci\xF3n del algoritmo</a>.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "Base ease",
-  BASE_EASE_DESC: "El m\xEDnimo es 130, es preferible que est\xE9 aproximado a 250.",
-  BASE_EASE_MIN_WARNING: "La facilidad base de las tarjetas debe ser al menos 130.",
-  LAPSE_INTERVAL_CHANGE: "El intervalo cambiar\xE1 cuando se revise una tarjeta o nota como Dif\xEDcil.",
-  LAPSE_INTERVAL_CHANGE_DESC: "NuevoInterval = ViejoIntervalo * CambioDeIntervalo / 100.",
+  SM2_OSR_VARIANT: "OSR 的 SM-2 变体",
+  BASE_EASE: "基础缓动",
+  BASE_EASE_DESC: "最小为 130，最好大约为 250。",
+  BASE_EASE_MIN_WARNING: "130 级目标的基础设施。",
+  LAPSE_INTERVAL_CHANGE: "间隔时间可以修改为目标或不存在困难。",
+  LAPSE_INTERVAL_CHANGE_DESC: "NuevoInterval = ViejoIntervalo * CambioDeIntervalo / 100。",
   EASY_BONUS: "Bonificaci\xF3n para F\xE1cil",
   EASY_BONUS_DESC: "La bonificaci\xF3n para F\xE1cil te permite establecer la diferencia entre intervalos al responder Bien y F\xE1cil en las tarjetas o notas (m\xEDnimo = 100%).",
   EASY_BONUS_MIN_WARNING: "El bono de facilidad debe ser al menos 100.",
-  LOAD_BALANCE: "Enable load balancer",
+  LOAD_BALANCE: "启用负载均衡器",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
+        It's 就像 Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
   MAX_INTERVAL: "Intervalo m\xE1ximo en d\xEDas",
   MAX_INTERVAL_DESC: "Te permite establecer un l\xEDmite mayor en el intervalo (por defecto es de 100 a\xF1os).",
@@ -5857,130 +5599,12 @@ var es_default = {
   MAX_LINK_CONTRIB_DESC: "Contribuci\xF3n m\xE1xima de la facilidad ponderada de las notas vinculadas a la facilidad inicial.",
   LOGGING: "Registro",
   DISPLAY_SCHEDULING_DEBUG_INFO: "\xBFMostrar informaci\xF3n de depuraci\xF3n en la consola de desarrollador",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
-  SCHEDULING: "Scheduling",
-  EXPERIMENTAL: "Experimental",
-  HELP: "Help",
-  STORE_IN_NOTES: "In the notes",
-  // sidebar.ts
-  NOTES_REVIEW_QUEUE: "Cola de notas a revisar",
-  CLOSE: "Cerrar",
-  NEW: "Nuevo",
-  YESTERDAY: "Ayer",
-  TODAY: "Hoy",
-  TOMORROW: "Ma\xF1ana",
-  // stats-modal.tsx
-  STATS_TITLE: "Estad\xEDsticas",
-  MONTH: "Mes",
-  QUARTER: "Trimestre o Cuatrimestre",
-  // En Inglés: Quarter.
-  YEAR: "A\xF1o",
-  LIFETIME: "Tiempo de Vida",
-  FORECAST: "Pron\xF3stico",
-  FORECAST_DESC: "El n\xFAmero de tarjetas vencidas en el futuro",
-  SCHEDULED: "Programado",
-  DAYS: "D\xEDas",
-  NUMBER_OF_CARDS: "N\xFAmero de tarjetas",
-  REVIEWS_PER_DAY: "Carga: ${avg} Revisiones por d\xEDa",
-  INTERVALS: "Intervalos",
-  INTERVALS_DESC: "Retrasos hasta que las revisiones se muestren de nuevo",
-  COUNT: "Conteo",
-  INTERVALS_SUMMARY: "Intervalo de carga: ${avg}, Intervalo mayor: ${longest}",
-  EASES: "Facilidad",
-  EASES_SUMMARY: "Carga de Facilidad: ${avgEase}",
-  EASE: "Ease",
-  CARD_TYPES: "Tipos de tarjetas",
-  CARD_TYPES_DESC: "Esto incluye tambi\xE9n a las tarjetas enterradas, si las hay",
-  CARD_TYPE_NEW: "Nueva",
-  CARD_TYPE_YOUNG: "Joven",
-  CARD_TYPE_MATURE: "Madura",
-  CARD_TYPES_SUMMARY: "Tarjetas Totales: ${totalCardsCount}",
-  SEARCH: "Search",
-  PREVIOUS: "Previous",
-  NEXT: "Next"
-};
-
-// src/lang/locale/fr.ts
-var fr_default = {
-  // flashcard-modal.tsx
-  DECKS: "Paquets",
-  DUE_CARDS: "Cartes dues",
-  NEW_CARDS: "Nouvelles cartes",
-  TOTAL_CARDS: "Total de cartes",
-  BACK: "Pr\xE9c\xE9dent",
-  SKIP: "Sauter",
-  EDIT_CARD: "Modifier la carte",
-  RESET_CARD_PROGRESS: "Remettre \xE0 z\xE9ro le niveau de cette carte",
-  HARD: "Difficile",
-  GOOD: "Correct",
-  EASY: "Facile",
-  SHOW_ANSWER: "Montrer la r\xE9ponse",
-  CARD_PROGRESS_RESET: "Le niveau de la carte a \xE9t\xE9 remis \xE0 z\xE9ro.",
-  SAVE: "Sauvegarder",
-  CANCEL: "Annuler",
-  NO_INPUT: "Pas de contenu.",
-  CURRENT_EASE_HELP_TEXT: "Facilit\xE9 actuelle : ",
-  CURRENT_INTERVAL_HELP_TEXT: "Intervalle actuel : ",
-  CARD_GENERATED_FROM: "G\xE9n\xE9r\xE9 depuis : ${notePath}",
-  // main.ts
-  OPEN_NOTE_FOR_REVIEW: "Ouvrir une note \xE0 apprendre",
-  REVIEW_CARDS: "Apprendre les flashcards",
-  REVIEW_DIFFICULTY_FILE_MENU: "Apprentissage : ${difficulty}",
-  REVIEW_NOTE_DIFFICULTY_CMD: "Difficult\xE9 de la r\xE9vision : ${difficulty}",
-  CRAM_ALL_CARDS: "Choisir un deck \xE0 r\xE9viser",
-  REVIEW_ALL_CARDS: "Apprendre les flashcards dans toutes les notes",
-  REVIEW_CARDS_IN_NOTE: "Apprendre les flashcards dans cette note",
-  CRAM_CARDS_IN_NOTE: "R\xE9viser les flashcards dans cette note",
-  VIEW_STATS: "Voir les statistiques",
-  OPEN_REVIEW_QUEUE_VIEW: "Ouvrir la file d'attente des notes \xE0 apprendre dans la barre verticale",
+  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console"，\n  调度："Scheduling",\n  实验："Experimental"，\n  帮助："Help"，\n  STORE_IN_NOTES："In the notes",\n  // 侧边栏.ts\n  NOTES_REVIEW_QUEUE:"Cola de notas a revisar",\n  关闭："Cerrar"，\n  新："Nuevo"，\n  昨天："Ayer"，\n  今天："Hoy"，\n  明天："Ma\xF1ana",\n  // 统计模态.tsx\n  统计标题："Estad\xEDsticas"，\n  月份："Mes"，\n  季度："Trimestre o Cuatrimestre",\n  // 英语：季度。\n  年："A\xF1o"，\n  生命周期："Tiempo de Vida"，\n  预测："Pron\xF3stico"，\n  预测_DESC："El n\xFAmero de tarjetas vencidas en el futuro"，\n  计划："Programado"，\n  天数："D\xEDas"，\n  NUMBER_OF_卡："N\xFAmero de tarjetas"，\n  REVIEWS_PER_DAY："Carga: ${avg} Revisiones por d\xEDa"，\n  间隔："Intervalos"，\n  INTERVALS_DESC："Retrasos hasta que las revisiones se muestren de nuevo"，\n  计数："Conteo",\n  INTERVALS_SUMMARY："Intervalo de carga: ${avg}, Intervalo mayor: ${longest}"，\n  缓解："Facilidad"，\n  EASES_SUMMARY："Carga de Facilidad: ${avgEase}"，\n  轻松："Ease",\n  卡类型："Tipos de tarjetas"，\n  CARD_TYPES_DESC："Esto incluye tambi\xE9n a las tarjetas enterradas, si las hay"，\n  CARD_TYPE_NEW："Nueva"，\n  CARD_TYPE_YOUNG："Joven",\n  CARD_TYPE_MATURE："Madura"，\n  CARD_TYPES_SUMMARY："Tarjetas Totales: ${totalCardsCount}"，\n  搜索："Search"，\n  上一个："Previous"，\n  下一个："Next"};\n\n// src/lang/locale/fr.ts\nvar fr_default = {\n  // 抽认卡模态.tsx\n  甲板："Paquets"，\n  DUE_CARDS："Cartes dues",\n  新卡："Nouvelles cartes"，\n  卡片总数："Total de cartes"，\n  背面："Pr\xE9c\xE9dent"，\n  跳过："Sauter"，\n  编辑卡："Modifier la carte"，\n  重置卡进度："Remettre \xE0 z\xE9ro le niveau de cette carte"，\n  困难："Difficile"，\n  好："Correct"，\n  简单："Facile"，\n  SHOW_ANSWER："Montrer la r\xE9ponse"，\n  CARD_PROGRESS_RESET："Le niveau de la carte a \xE9t\xE9 remis \xE0 z\xE9ro."，\n  保存："Sauvegarder"，\n  取消："Annuler"，\n  无输入："Pas de contenu."，\n  当前_EASE_HELP_TEXT："Facilit\xE9 actuelle : ",\n  当前_间隔_帮助_文本："Intervalle actuel : ",\n  CARD_GENERATED_FROM："G\xE9n\xE9r\xE9 depuis : ${notePath}"，\n  // main.ts\n  OPEN_NOTE_FOR_REVIEW："Ouvrir une note \xE0 apprendre"，\n  评论卡："Apprendre les flashcards"，\n  REVIEW_DIFFICULTY_FILE_MENU："Apprentissage : ${difficulty}"，\n  REVIEW_NOTE_DIFFICULTY_CMD："Difficult\xE9 de la r\xE9vision : ${difficulty}"，\n  CRAM_ALL_CARDS："Choisir un deck \xE0 r\xE9viser"，\n  REVIEW_ALL_CARDS："Apprendre les flashcards dans toutes les notes"，\n  REVIEW_CARDS_IN_NOTE："Apprendre les flashcards dans cette note"，\n  CRAM_CARDS_IN_NOTE："R\xE9viser les flashcards dans cette note"，\n  查看统计数据："Voir les statistiques"，\n  OPEN_REVIEW_QUEUE_VIEW："Ouvrir la file d'attente des notes \xE0 apprendre dans la barre verticale",
   STATUS_BAR: "Apprentissage : ${dueNotesCount} note(s), ${dueFlashcardsCount} carte(s) dues",
   SYNC_TIME_TAKEN: "Synchronis\xE9 en ${t}ms",
   NOTE_IN_IGNORED_FOLDER: "La note est dans un dossier ignor\xE9 (voir param\xE8tres).",
-  PLEASE_TAG_NOTE: "Ajoutez le bon tag \xE0 la note pour l'apprendre (dans les param\xE8tres).",
-  RESPONSE_RECEIVED: "R\xE9ponse enregistr\xE9e.",
-  NO_DECK_EXISTS: "Pas de paquet sous le nom ${deckName}",
-  ALL_CAUGHT_UP: "Bravo, vous \xEAtes \xE0 jour !",
-  // scheduling.ts
-  DAYS_STR_IVL: "${interval} jour(s)",
-  MONTHS_STR_IVL: "${interval} mois(s)",
-  YEARS_STR_IVL: "${interval} an(s)",
-  DAYS_STR_IVL_MOBILE: "${interval}j",
-  MONTHS_STR_IVL_MOBILE: "${interval}m",
-  YEARS_STR_IVL_MOBILE: "${interval}a",
-  // settings.ts
-  SETTINGS_HEADER: "Spaced Repetition",
-  GROUP_TAGS_FOLDERS: "Tags & Dossiers",
-  GROUP_FLASHCARD_REVIEW: "Apprentissage des flashcards",
-  GROUP_FLASHCARD_SEPARATORS: "S\xE9parateurs de flashcards",
-  GROUP_DATA_STORAGE: "Stockage des informations de planification",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contribuer",
-  CHECK_WIKI: 'Pour plus d\'informations, visitez le <a href="${wikiUrl}">wiki</a>.',
-  GITHUB_DISCUSSIONS: 'Visitez les <a href="${discussionsUrl}">discussions</a> pour des questions-r\xE9ponses, des retours ou une discussion g\xE9n\xE9raliste.',
-  GITHUB_ISSUES: 'Cr\xE9ez un ticket <a href="${issuesUrl}">sur GitHub</a> si vous trouvez un bug ou voulez demander une fonctionnalit\xE9.',
-  GITHUB_SOURCE_CODE: 'Code source du projet disponible sur <a href="${githubProjectUrl}">GitHub</a>',
-  CODE_CONTRIBUTION_INFO: 'Information sur les <a href="${codeContributionUrl}">contributions au code</a>',
-  TRANSLATION_CONTRIBUTION_INFO: 'Informations sur la <a href="${translationContributionUrl}">traduction du plugin</a> dans votre langue',
-  FOLDERS_TO_IGNORE: "Dossiers \xE0 ignorer",
-  FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "Flashcards",
-  FLASHCARD_EASY_LABEL: "Bouton Facile",
-  FLASHCARD_GOOD_LABEL: "Bouton Correct",
-  FLASHCARD_HARD_LABEL: "Bouton Difficile",
-  FLASHCARD_EASY_DESC: "Changez le texte du bouton Facile",
-  FLASHCARD_GOOD_DESC: "Changez le texte du bouton Correct",
-  FLASHCARD_HARD_DESC: "Changez le texte du bouton Difficile",
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "Tags des flashcards",
-  FLASHCARD_TAGS_DESC: "Entrez les tags s\xE9par\xE9s par un espace ou une ligne i.e. #flashcards #paquet2 #paquet3.",
-  CONVERT_FOLDERS_TO_DECKS: "Convertir les dossiers en paquets et sous-paquets ?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "Ceci est une alternative aux tags de flashcards pr\xE9sent\xE9s ci-dessus.",
-  INLINE_SCHEDULING_COMMENTS: "Sauvegarder le commentaire de planification dans la derni\xE8re ligne de la flashcard ?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "Activer ceci emp\xEAche les commentaires HTML de casser la mise en page des listes.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "Enterrer les cartes s\u0153urs jusqu'au lendemain ?",
+  PLEASE_TAG_NOTE: "Ajoutez le bon tag \xE0 la note pour l'apprendre (dans les param\xE8tres)."，\n  RESPONSE_RECEIVED："R\xE9ponse enregistr\xE9e."，\n  不存在甲板："Pas de paquet sous le nom ${deckName}"，\n  ALL_CAUGHT_UP："Bravo, vous \xEAtes \xE0 jour !",\n  // 调度.ts\n  DAYS_STR_IVL："${interval} jour(s)"，\n  MONTHS_STR_IVL："${interval} mois(s)"，\n  YEARS_STR_IVL："${interval} an(s)"，\n  DAYS_STR_IVL_MOBILE："${interval}j"，\n  MONTHS_STR_IVL_MOBILE："${interval}m"，\n  YEARS_STR_IVL_MOBILE："${interval}a",\n  // 设置.ts\n  设置_标题："Spaced Repetition"，\n  GROUP_TAGS_FOLDERS："Tags & Dossiers",\n  GROUP_FLASHCARD_REVIEW："Apprentissage des flashcards"，\n  GROUP_FLASHCARD_SEPARATORS："S\xE9parateurs de flashcards"，\n  组数据存储："Stockage des informations de planification"，\n  GROUP_DATA_STORAGE_DESC："Choose where to store the scheduling data"，\n  GROUP_FLASHcardS_NOTES："Flashcards & Notes"，\n  GROUP_CONTRIBUTING："Contribuer"，\n  CHECK_WIKI: '请提供更多信息，请访问 <a href="${wikiUrl}">wiki</a>。',\n  GITHUB_DISCUSSIONS: '访问<a href="${discussionsUrl}">讨论</a>，用于问题回答、回顾或讨论。',\n  GITHUB_ISSUES: '如果您有功能请求或错误报告，请点击<a href="${issuesUrl}">sur GitHub</a> si vous trouvez un bug ou voulez demander une fonctionnalit\xE9.',
+  GITHUB_SOURCE_CODE: 'Code source du projet disponible sur <a href="${githubProjectUrl}">GitHub</a>',\n  CODE_CONTRIBUTION_INFO: '有关 <a href= 的信息"${codeContributionUrl}">contributions au code</a>',\n  TRANSLATION_CONTRIBUTION_INFO: '关于<a href="${translationContributionUrl}">插件翻译</a> dans votre langue',\n  FOLDERS_TO_IGNORE："Dossiers \xE0 ignorer"，\n  FOLDERS_TO_IGNORE_DESC："Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes."，\n  黑曜石集成："Integration into Obsidian"，\n  抽认卡："Flashcards",\n  闪存卡_EASY_标签："Bouton Facile"，\n  FLASHCARD_GOOD_LABEL："Bouton Correct"，\n  闪存卡_硬标签："Bouton Difficile"，\n  闪存卡_EASY_DESC："Changez le texte du bouton Facile"，\n  FLASHCARD_GOOD_DESC："Changez le texte du bouton Correct"，\n  FLASHCARD_HARD_DESC："Changez le texte du bouton Difficile"，\n  REVIEW_BUTTON_DELAY："Button Press Delay (ms)"，\n  REVIEW_BUTTON_DELAY_DESC："Add a delay to the review buttons before they can be pressed again."，\n  闪存卡标签："Tags des flashcards",\n  FLASHCARD_TAGS_DESC："Entrez les tags s\xE9par\xE9s par un espace ou une ligne i.e. #flashcards #paquet2 #paquet3.",\n  CONVERT_FOLDERS_TO_DECKS："Convertir les dossiers en paquets et sous-paquets ?"，\n  CONVERT_FOLDERS_TO_DECKS_DESC："Ceci est une alternative aux tags de flashcards pr\xE9sent\xE9s ci-dessus."，\n  内联调度注释："Sauvegarder le commentaire de planification dans la derni\xE8re ligne de la flashcard ?",\n  INLINE_SCHEDULING_COMMENTS_DESC："Activer ceci emp\xEAche les commentaires HTML de casser la mise en page des listes.",\n  BURY_SIBLINGS_TILL_NEXT_DAY："Enterrer les cartes s\u0153urs jusqu'au lendemain ?",
   BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Les cartes s\u0153urs sont les cartes g\xE9n\xE9r\xE9es depuis le m\xEAme texte, par exemple pour les textes \xE0 trous",
   SHOW_CARD_CONTEXT: "Montrer le contexte dans les cartes ?",
   SHOW_CARD_CONTEXT_DESC: "ex. Titre de la note > Titre 1 > Sous-titre > ... > Sous-titre",
@@ -5991,34 +5615,10 @@ var fr_default = {
   RESET_DEFAULT: "R\xE9initialiser les param\xE8tres",
   CARD_MODAL_WIDTH_PERCENT: "Pourcentage de largeur de la flashcard",
   RANDOMIZE_CARD_ORDER: "Apprendre les cartes dans un ordre al\xE9atoire ?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Ordre d'affichage des cartes d'un paquet pendant les r\xE9visions",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Dans l'ordre du paquet (Nouvelles cartes d'abord)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Dans l'ordre du paquet (Cartes dues d'abord)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Al\xE9atoirement dans le paquet (Nouvelles cartes d'abord)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Al\xE9atoirement dans le paquet (Cartes dues d'abord)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Carte au hasard dans un paquet au hasard",
-  REVIEW_DECK_ORDER: "Ordre d'affichage des paquets pendant les r\xE9visions",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "S\xE9quentiel (quand toutes les cartes du paquet pr\xE9c\xE9dent sont apprises)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Al\xE9atoire (quand toutes les cartes du paquet pr\xE9c\xE9dent sont apprises)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Carte au hasard dans un paquet au hasard",
-  DISABLE_CLOZE_CARDS: "D\xE9sactiver les textes \xE0 trous ?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "Convertir ==soulignages== en trous ?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Ajouter/supprimer le <code>${defaultPattern}</code> de vos "Cloze Patterns"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "Convertir **gras** en trous ?",
-  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Ajouter/supprimer le <code>${defaultPattern}</code> de vos "Cloze Patterns"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "Convertir {{crochets}} en trous ?",
-  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Ajouter/supprimer le <code>${defaultPattern}</code> de vos "Cloze Patterns"',
-  CLOZE_PATTERNS: "Cloze Patterns",
-  CLOZE_PATTERNS_DESC: 'Enter cloze patterns separated by newlines. Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "S\xE9parateur pour flashcards en une ligne",
-  FIX_SEPARATORS_MANUALLY_WARNING: "Apr\xE8s avoir chang\xE9 ce r\xE9glage, vous devrez manuellement mettre \xE0 jour toutes vos flashcards.",
-  INLINE_REVERSED_CARDS_SEPARATOR: "S\xE9parateur pour flashcards invers\xE9es en une ligne",
-  MULTILINE_CARDS_SEPARATOR: "S\xE9parateur pour flashcards en plusieurs lignes",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "S\xE9parateur pour flashcards invers\xE9es en plusieurs lignes",
-  MULTILINE_CARDS_END_MARKER: "Caract\xE8res de fin de textes \xE0 trous ou de flashcards en plusieurs lignes",
-  NOTES: "Notes",
-  NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "Montrer le module d'apprentissage des notes au d\xE9marrage",
+  REVIEW_CARD_ORDER_WITHIN_DECK: "Ordre d'affichage des cartes d'un paquet pendant les révisions",\n  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "丹斯 l'ordre du paquet (Nouvelles cartes d'取消)",\n  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL：“在'ordre du paquet (Cartes dues d'中止)",\n  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Aléatoirement dans le paquet (Nouvelles cartes d'abord)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM："Al\xE9atoirement dans le paquet (Cartes dues d'abord)",\n  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Carte au hasard dans un paquet au hasard",\n  REVIEW_DECK_ORDER：“订单'affichage des paquets pendant les r\xE9visions",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL："S\xE9quentiel (quand toutes les cartes du paquet pr\xE9c\xE9dent sont apprises)",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM："Al\xE9atoire (quand toutes les cartes du paquet pr\xE9c\xE9dent sont apprises)"，\n  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD："Carte au hasard dans un paquet au hasard"，\n  DISABLE_CLOZE_CARDS："D\xE9sactiver les textes \xE0 trous ?"，\n  CONVERT_HIGHLIGHTS_TO_CLOZES："Convertir ==soulignages== en trous ?",
+  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Ajouter/supprimer le <code>${defaultPattern}</code> de vos "Cloze Patterns"',\n  CONVERT_BOLD_TEXT_TO_CLOZES："Convertir **gras** en trous ?",
+  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Ajouter/supprimer le <code>${defaultPattern}</code> de vos "Cloze Patterns"',\n  CONVERT_CURLY_BACKETS_TO_CLOZES："Convertir {{crochets}} en trous ?",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Ajouter/supprimer le <code>${defaultPattern}</code> de vos "Cloze Patterns"',\n  完形填空模式："Cloze Patterns",\n  CLOZE_PATTERNS_DESC: '输入由换行符分隔的完形填空模式。检查<a href="${docsUrl}">wiki</a> 获取指导。',\n  INLINE_CARDS_SEPARATOR："S\xE9parateur pour flashcards en une ligne",\n  FIX_SEPARATORS_MANUALLY_WARNING："Apr\xE8s avoir chang\xE9 ce r\xE9glage, vous devrez manuellement mettre \xE0 jour toutes vos flashcards.",\n  INLINE_REVERSED_CARDS_SEPARATOR："S\xE9parateur pour flashcards invers\xE9es en une ligne"，\n  多行卡分隔符："S\xE9parateur pour flashcards en plusieurs lignes"，\n  MULTILINE_REVERSED_CARDS_SEPARATOR："S\xE9parateur pour flashcards invers\xE9es en plusieurs lignes"，\n  MULTILINE_CARDS_END_MARKER："Caract\xE8res de fin de textes \xE0 trous ou de flashcards en plusieurs lignes"，\n  注："Notes"，\n  注意："Note"，\n  REVIEW_PANE_ON_STARTUP："Montrer le module d'apprentissage des notes au d\xE9marrage",
   TAGS_TO_REVIEW: "Tags \xE0 apprendre",
   TAGS_TO_REVIEW_DESC: "Entrez les tags s\xE9par\xE9s par un espace ou une ligne i.e. #review #tag2 #tag3.",
   OPEN_RANDOM_NOTE: "Ouvrir une note \xE0 apprendre au hasard",
@@ -6033,14 +5633,7 @@ var fr_default = {
   SHOW_STATUS_BAR: "Show status bar",
   SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
   SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Enable the review options in the file menu (e.g. Review: Easy, Good, Hard)",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "If you disable the review options in the file menu, you can review your notes using the plugin commands and, if you defined them, the associated command hotkeys.",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Les dossiers de paquets devraient initialement tous \xEAtre ouverts",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "D\xE9sactivez pour r\xE9duire les paquets dans la m\xEAme carte. Ce r\xE9glage est utile si vous avez des cartes qui appartiennent \xE0 beaucoup de paquets \xE0 la fois.",
-  ALGORITHM: "Algorithme",
-  CHECK_ALGORITHM_WIKI: `Pour en savoir plus, lisez l'<a href="\${algoUrl}">impl\xE9mentation de l'algorithme</a>.`,
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
+  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS："Enable the review options in the file menu (e.g. Review: Easy, Good, Hard)",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC："If you disable the review options in the file menu, you can review your notes using the plugin commands and, if you defined them, the associated command hotkeys.",\n  INITIALLY_EXPAND_SUBDECKS_IN_TREE："Les dossiers de paquets devraient initialement tous \xEAtre ouverts",\n  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC："D\xE9sactivez pour r\xE9duire les paquets dans la m\xEAme carte. Ce r\xE9glage est utile si vous avez des cartes qui appartiennent \xE0 beaucoup de paquets \xE0 la fois.",\n  算法："Algorithme",\n  CHECK_ALGORITHM_WIKI：`请发挥你的智慧，lisez l'<a href="\${algoUrl}">实现算法</a>。`,\n  SM2_OSR_VARIANT:"OSR's variant of SM-2",
   BASE_EASE: "Facilit\xE9 de base",
   BASE_EASE_DESC: "minimum = 130, recommand\xE9 = vers 250.",
   BASE_EASE_MIN_WARNING: "La facilit\xE9 de base doit \xEAtre sup\xE9rieure \xE0 130.",
@@ -6051,55 +5644,54 @@ var fr_default = {
   EASY_BONUS_MIN_WARNING: "Le bonus Facile doit \xEAtre au moins 100.",
   LOAD_BALANCE: "Enable load balancer",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
-        It's turned off for small intervals.`,
-  MAX_INTERVAL: "Intervalle maximum (en jours)",
-  MAX_INTERVAL_DESC: "Vous permet de mettre une limite maximale sur l'intervalle (par d\xE9faut, 100 ans).",
-  MAX_INTERVAL_MIN_WARNING: "L'intervalle maximum doit \xEAtre au moins 1 jour.",
-  MAX_LINK_CONTRIB: "Contribution maximum des liens",
-  MAX_LINK_CONTRIB_DESC: "Contribution maximum de la facilit\xE9 pond\xE9r\xE9e des notes li\xE9es \xE0 la facilit\xE9 initiale.",
-  LOGGING: "Logging",
-  DISPLAY_SCHEDULING_DEBUG_INFO: "Afficher les informations de d\xE9bogage dans la console de d\xE9veloppement",
-  DISPLAY_PARSER_DEBUG_INFO: "Afficher les informations de d\xE9bogage pour le parser dans la console de d\xE9veloppement",
-  SCHEDULING: "Scheduling",
-  EXPERIMENTAL: "Experimental",
-  HELP: "Help",
-  STORE_IN_NOTES: "In the notes",
+        It's like Anki'是模糊的，但它不是随机的，而是选择评论数量最少的一天。\n        它's turned off for small intervals.`,
+  MAX_INTERVAL: "间隔最大值 (en jours)",
+  MAX_INTERVAL_DESC: "您可以在间隔时间上最大程度地限制（默认值，100 条）。",
+  MAX_INTERVAL_MIN_WARNING: "L'intervalle 最长间隔 1 天。",
+  MAX_LINK_CONTRIB: "贡献最大留置权",
+  MAX_LINK_CONTRIB_DESC: "设施初始注释中的最大贡献。",
+  LOGGING: "记录",
+  DISPLAY_SCHEDULING_DEBUG_INFO: "在开发控制台中添加开发信息",
+  DISPLAY_PARSER_DEBUG_INFO: "在开发控制台",
+  SCHEDULING: "调度",
+  EXPERIMENTAL: "实验",
+  HELP: "帮助",
+  STORE_IN_NOTES: "在注释中",
   // sidebar.ts
-  NOTES_REVIEW_QUEUE: "Cartes \xE0 apprendre",
+  NOTES_REVIEW_QUEUE: "卡片学习",
   CLOSE: "Fermer",
-  NEW: "Nouveau",
+  NEW: "新风格",
   YESTERDAY: "Hier",
   TODAY: "Aujourd'hui",
   TOMORROW: "Demain",
   // stats-modal.tsx
-  STATS_TITLE: "Statistiques",
+  STATS_TITLE: "统计",
   MONTH: "Mois",
   QUARTER: "Trimestre",
   YEAR: "Ann\xE9e",
   LIFETIME: "Toujours",
-  FORECAST: "Pr\xE9visions",
-  FORECAST_DESC: "Le nombre de cartes dues dans le futur",
+  FORECAST: "预想",
+  FORECAST_DESC: "未来的名誉",
   SCHEDULED: "Planifi\xE9",
   DAYS: "Jours",
-  NUMBER_OF_CARDS: "Nombre de cartes",
+  NUMBER_OF_CARDS: "菜单名",
   REVIEWS_PER_DAY: "Moyenne : ${avg} apprentissages / jour",
-  INTERVALS: "Intervalles",
+  INTERVALS: "区间",
   INTERVALS_DESC: "Dur\xE9e avant de remontrer une carte",
-  COUNT: "Total",
+  COUNT: "总计",
   INTERVALS_SUMMARY: "Intervalle moyen : ${avg}. Intervalle maximum: ${longest}",
-  EASES: "Facilit\xE9",
+  EASES: "设施",
   EASES_SUMMARY: "Facilit\xE9 moyenne : ${avgEase}",
-  EASE: "Ease",
-  CARD_TYPES: "Types de cartes",
-  CARD_TYPES_DESC: "Ceci inclut les cartes enterr\xE9es, s'il y en a",
-  CARD_TYPE_NEW: "Nouvelles",
-  CARD_TYPE_YOUNG: "En cours d'apprentissage",
-  CARD_TYPE_MATURE: "Matures",
+  EASE: "轻松",
+  CARD_TYPES: "菜单类型",
+  CARD_TYPES_DESC: "Ceci 包括菜单项，s'il y en a",
+  CARD_TYPE_NEW: "新专辑",
+  CARD_TYPE_YOUNG: "学徒课程",
+  CARD_TYPE_MATURE: "成熟",
   CARD_TYPES_SUMMARY: "Total de cartes : ${totalCardsCount}",
-  SEARCH: "Search",
-  PREVIOUS: "Previous",
-  NEXT: "Next"
+  SEARCH: "搜索",
+  PREVIOUS: "上一个",
+  NEXT: "下一步"
 };
 
 // src/lang/locale/hi.ts
@@ -6112,42 +5704,42 @@ var id_default = {};
 var it_default = {
   // flashcard-modal.tsx
   DECKS: "Mazzi",
-  DUE_CARDS: "Schede da fare",
-  NEW_CARDS: "Schede nuove",
-  TOTAL_CARDS: "Schede totali",
+  DUE_CARDS: "票价表",
+  NEW_CARDS: "新计划",
+  TOTAL_CARDS: "总计划",
   BACK: "Indietro",
-  SKIP: "Salta",
+  SKIP: "萨尔塔",
   EDIT_CARD: "Modifica scheda",
-  RESET_CARD_PROGRESS: "Ripristina i progressi della scheda",
-  HARD: "Difficile",
+  RESET_CARD_PROGRESS: "Ripristina i Progressi della scheda",
+  HARD: "困难",
   GOOD: "Buono",
   EASY: "Facile",
   SHOW_ANSWER: "Mostra risposta",
-  CARD_PROGRESS_RESET: "I progressi della scheda sono stati ripristinati",
-  SAVE: "Salva",
+  CARD_PROGRESS_RESET: "I Progressi della scheda sono stati ripristinati",
+  SAVE: "萨尔瓦",
   CANCEL: "Cancella",
   NO_INPUT: "Non \xE8 stato provvisto alcun input",
-  CURRENT_EASE_HELP_TEXT: "Difficolt\xE0 attuale: ",
-  CURRENT_INTERVAL_HELP_TEXT: "Intervallo attuale: ",
+  CURRENT_EASE_HELP_TEXT: "困难：",
+  CURRENT_INTERVAL_HELP_TEXT: "间隔：",
   CARD_GENERATED_FROM: "Generato da: ${notePath}",
   // main.ts
   OPEN_NOTE_FOR_REVIEW: "Apri una nota per rivisita",
-  REVIEW_CARDS: "Rivisita schede",
+  REVIEW_CARDS: "访问计划",
   REVIEW_DIFFICULTY_FILE_MENU: "Rivisita: ${difficulty}",
   REVIEW_NOTE_DIFFICULTY_CMD: "Revisita note come ${difficulty}",
   CRAM_ALL_CARDS: "Seleziona un mazzo da memorizzare",
   REVIEW_ALL_CARDS: "Seleziona schede da rivedere",
-  REVIEW_CARDS_IN_NOTE: "Rivedi schede in questa nota",
+  REVIEW_CARDS_IN_NOTE: "未知的 Rivedi 计划",
   CRAM_CARDS_IN_NOTE: "Memorizza schede in questa nota",
   VIEW_STATS: "Vedi statistiche",
-  OPEN_REVIEW_QUEUE_VIEW: "Open Notes Review Queue in sidebar",
+  OPEN_REVIEW_QUEUE_VIEW: "在侧边栏中打开笔记审阅队列",
   STATUS_BAR: "Da rivedere: ${dueNotesCount} scheda/e, ${dueFlashcardsCount} schede in ritardo",
   SYNC_TIME_TAKEN: "Sincronizzato in ${t}ms",
-  NOTE_IN_IGNORED_FOLDER: "La nota \xE8 salvata in una cartella ignorata (rivedi le impostazioni).",
-  PLEASE_TAG_NOTE: "Per favore etichetta la nota appropriatamente per la revisione (nelle impostazioni).",
-  RESPONSE_RECEIVED: "Risposta ricevuta.",
+  NOTE_IN_IGNORED_FOLDER: "La nota è salvata in una cartella ignorata (rivedi le imppostazioni)。",
+  PLEASE_TAG_NOTE: "Per favorite etichetta la nota appropriatamente per la revisione (nelle imppostazioni)。",
+  RESPONSE_RECEIVED: "Risposta赖斯武塔。",
   NO_DECK_EXISTS: "Non esistono mazzi per ${deckName}",
-  ALL_CAUGHT_UP: "Sei al passo! :D.",
+  ALL_CAUGHT_UP: "继续！ ：D。",
   // scheduling.ts
   DAYS_STR_IVL: "${interval} giorno/i",
   MONTHS_STR_IVL: "${interval} mese/i",
@@ -6156,14 +5748,14 @@ var it_default = {
   MONTHS_STR_IVL_MOBILE: "${interval}m",
   YEARS_STR_IVL_MOBILE: "${interval}y",
   // settings.ts
-  SETTINGS_HEADER: "Plugin per ripetizione spaziata",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
+  SETTINGS_HEADER: "插件成熟空间",
+  GROUP_TAGS_FOLDERS: "标签和文件夹",
+  GROUP_FLASHCARD_REVIEW: "抽认卡回顾",
+  GROUP_FLASHCARD_SEPARATORS: "闪存卡分隔符",
+  GROUP_DATA_STORAGE: "调度数据的存储",
+  GROUP_DATA_STORAGE_DESC: "选择存储调度数据的位置",
+  GROUP_FLASHCARDS_NOTES: "抽认卡和笔记",
+  GROUP_CONTRIBUTING: "贡献",
   CHECK_WIKI: 'Per maggiori informazioni, rivolgersi alla <a href="${wikiUrl}">wiki</a>.',
   GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
   GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
@@ -6172,98 +5764,97 @@ var it_default = {
   TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
   FOLDERS_TO_IGNORE: "Cartelle da ignorare",
   FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
+  OBSIDIAN_INTEGRATION: "集成到 Obsidian",
   FLASHCARDS: "Schede",
-  FLASHCARD_EASY_LABEL: "Testo del bottone facile",
+  FLASHCARD_EASY_LABEL: "简单测试",
   FLASHCARD_GOOD_LABEL: "Testo del bottone buono",
   FLASHCARD_HARD_LABEL: "Testo del bottone difficile",
   FLASHCARD_EASY_DESC: 'Personalizza il testo per il pulsante "Facile"',
   FLASHCARD_GOOD_DESC: 'Personalizza il testo per il pulsante "Buono"',
-  FLASHCARD_HARD_DESC: 'Personalizza il testo per il pulsante "Difficile"',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
+  FLASHCARD_HARD_DESC: 'Personalizza il testo per il pulsante “Difficile”',
+  REVIEW_BUTTON_DELAY: "按钮按下延迟 (ms)",
+  REVIEW_BUTTON_DELAY_DESC: "在再次按下审阅按钮之前添加延迟。",
   FLASHCARD_TAGS: "Etichette delle schede",
-  FLASHCARD_TAGS_DESC: "Inserire etichette separate da spazi o a capi, per esempio #flashcards #deck2 #deck3.",
-  CONVERT_FOLDERS_TO_DECKS: "Trasformare cartelle in mazzi e sotto-mazzi?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "Questa \xE8 un'alternativa all'opzione delle etichette delle schede sopra.",
-  INLINE_SCHEDULING_COMMENTS: "Salvare il commento per l'orario sulla stessa linea dell'ultimna linea della scheda?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "Attivando quest'impostazione far\xF2 s\xEC che i commento HTML non rompino la formattazione delle liste.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "Sotterrare schede sorelle fino al giorno dopo?",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Le schede sorelle sono schede generate dallo stesso testo della scheda, per esempio i.e. cloze deletions",
-  SHOW_CARD_CONTEXT: "Mostrare contesto nelle schede?",
-  SHOW_CARD_CONTEXT_DESC: "per esempio, Titolo > Intestazione 1 > Sottotitolo 1 > ... > Sottotitolo",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
+  FLASHCARD_TAGS_DESC: "根据 esempio #flashcards #deck2 #deck3，插入单独的空间或卡皮的礼仪。",
+  CONVERT_FOLDERS_TO_DECKS: "Trasformare 卡特尔 in mazzi e sotto-mazzi？",
+  CONVERT_FOLDERS_TO_DECKS_DESC: "的礼仪选项，以选择",
+  INLINE_SCHEDULING_COMMENTS: "Salvare il commento per l'orario sulla stessa linea dell'ultimna linea della scheda？",
+  INLINE_SCHEDULING_COMMENTS_DESC: "请注意，我注释的 HTML 格式不符合列表格式。 Lernkarten manuel angepasst werden。",
+  BURY_SIBLINGS_TILL_NEXT_DAY: "Sotterrare sorelle fino阿尔乔诺·多波？",
+  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Le schede sorelle sono schede generated dallo stesso testo della scheda, per esemio i.e. 完形填空",
+  SHOW_CARD_CONTEXT: "最有竞赛计划吗？",
+  SHOW_CARD_CONTEXT_DESC: "per esempio，Titolo > Intestazione 1 > Sottotitolo 1 > ... >索托蒂托洛",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "在审核按钮中显示下次审核时间",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "有助于了解您的卡片将被推到未来多远。",
   CARD_MODAL_HEIGHT_PERCENT: "Percentuale altezza schede",
-  CARD_MODAL_SIZE_PERCENT_DESC: "Dovrebbe essere 100% se sei su telefono o se hai immagini molto grandi",
-  RESET_DEFAULT: "Reimposta alle impostazioni iniziali",
-  CARD_MODAL_WIDTH_PERCENT: "Percentuale di larghezza delle schede",
-  RANDOMIZE_CARD_ORDER: "Rendere casuale l'ordine delle schede durante la revisione?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "L'ordine in cui le schede saranno visualizzate all'interno del mazzo",
+  CARD_MODAL_SIZE_PERCENT_DESC: "Dovrebbe。 essere 100% se sei su telefono o se hai immagini molto grandi",
+  RESET_DEFAULT: "Reimposta alle imppostazioni iniziali",
+  CARD_MODAL_WIDTH_PERCENT: "计划的百分比",
+  RANDOMIZE_CARD_ORDER: "在修订期间渲染临时计划？",
+  REVIEW_CARD_ORDER_WITHIN_DECK: "L'ordine in cui le schede saranno 可视化所有'interno del mazzo",
   REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Sequenzialmente dentro il mazzo (prima schede nuove)",
   REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequenzialmente dentro il mazzo (prima schede in ritardo)",
   REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "A caso dentro il mazzo (prima schede nuove)",
   REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "A caso dentro il mazzo (prima schede in ritardo)",
   REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Scheda a caso da mazzo a caso",
-  REVIEW_DECK_ORDER: "L'ordine in cui i mazzi vengono mostrati durante la revisione",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequenzialmente (quando le schede nel mazzo precedente saranno state riviste)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "A caso (quando le schede nel mazzo precedente saranno state riviste)",
+  REVIEW_DECK_ORDER: "L'ordine in cui i mazzi vengonomostrati durante la revisione",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequenzialmente (quando le schede nel mazzo beforete saranno state riviste)",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "A caso（quando le schede nel mazzo 先例萨兰诺州里维斯特）",
   REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Scheda a caso da mazzo a caso",
-  DISABLE_CLOZE_CARDS: "Disabilita schede con spazi da riempire?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "Convertire ==testo evidenziato== in spazi da riempire?",
+  DISABLE_CLOZE_CARDS: "无法安排时间？",
+  CONVERT_HIGHLIGHTS_TO_CLOZES: "Convertire ==testo evidenziato== in spazi da riempire？",
   CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Aggiungi/rimuovi <code>${defaultPattern}</code> dai tuoi "Modelli per spazi da riempire"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "Convertire **testo in grassetto** in spazi da riempire",
+  CONVERT_BOLD_TEXT_TO_CLOZES: "Convertire **testo ingrasetto** in spazi da riempire",
   CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Aggiungi/rimuovi <code>${defaultPattern}</code> dai tuoi "Modelli per spazi da riempire"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "Convertire {{parentesi graffe}} in spazi da riempire?",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES: "将 {{parentesi graffe}} 转换为 spazi da riempire？",
   CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Aggiungi/rimuovi <code>${defaultPattern}</code> dai tuoi "Modelli per spazi da riempire"',
-  CLOZE_PATTERNS: "Modelli di spazi da riempire",
+  CLOZE_PATTERNS: "模型的空间",
   CLOZE_PATTERNS_DESC: 'Inserisci i modelli di spazi da riempire separati da a capo. Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "Separatore per schede sulla stessa riga",
-  FIX_SEPARATORS_MANUALLY_WARNING: "Si avvisa che dopo aver cambiato questo dovrai manualmente modificare le schede che hai gi\xE0.",
-  INLINE_REVERSED_CARDS_SEPARATOR: "Separatore per schede all'incontrario sulla stessa riga",
-  MULTILINE_CARDS_SEPARATOR: "Separatore per schede su pi\xF9 righe",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "Separatore per schede all'incontrario su pi\xF9 righe",
-  MULTILINE_CARDS_END_MARKER: "Caratteri che denotano la fine di carte con spazi da riempiere e carte multilinea",
+  INLINE_CARDS_SEPARATOR: "每个计划的分隔符",
+  FIX_SEPARATORS_MANUALLY_WARNING: "如果您已修改了计划，请手动修改。",
+  INLINE_REVERSED_CARDS_SEPARATOR: "每个计划的分隔符 all'incontrario sulla stessa 里加",
+  MULTILINE_CARDS_SEPARATOR: "每个计划的分隔符",
+  MULTILINE_REVERSED_CARDS_SEPARATOR: "与所有计划不同的分隔符",
+  MULTILINE_CARDS_END_MARKER: "Caratteri che denotano la Fine di carte con spazi da riempiere e carte multilinea",
   NOTES: "Note",
   NOTE: "Note",
   REVIEW_PANE_ON_STARTUP: "Abilita il pannello di revisione note all'avvio",
   TAGS_TO_REVIEW: "Etichette da rivedere",
-  TAGS_TO_REVIEW_DESC: "Inserisci le etichette separate da spazi o a capi, tipo #review #tag2 #tag3.",
+  TAGS_TO_REVIEW_DESC: "将礼仪分开，从头到尾，#review #tag2 #tag3。",
   OPEN_RANDOM_NOTE: "Apri una nota a caso per revisione",
-  OPEN_RANDOM_NOTE_DESC: "Quando lo disabiliti, le note saranno ordinate per importanza (PageRank).",
-  AUTO_NEXT_NOTE: "Apri la prossima nota automaticamente dopo la revisione",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Abilita le opzioni di revisione nel menu File (es.: Rivisita: Facile, Buono, Difficile)",
+  OPEN_RANDOM_NOTE_DESC: "Quando lo disabiliti, le note saranno orientation per importanza （页面排名）。",
+  AUTO_NEXT_NOTE: "Apri la prossima notaautomaticamente dopo la revisione",
+  ENABLE_FILE_MENU_REVIEW_OPTIONS: "修改菜单文件的选项（例如：Rivisita：方便、简单、困难）",
   ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "Se disabiliti le opzioni di revisione nel menu File, puoi rivedere le tue note utilizzando i comandi del plugin e, se li hai definiti, le scorciatoie da tastiera associate.",
-  MAX_N_DAYS_REVIEW_QUEUE: "Numero di giorni massimi da visualizzare nel pannello di destra",
-  MIN_ONE_DAY: "Il numero di giorni deve essere almeno 1.",
-  VALID_NUMBER_WARNING: "Per favore, mettere un numero valido.",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Alberti di mazzi dovrebbero essere inizialmente visualizzate come espansi",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Disabilitami per collassare mazzi annidati nella stessa scheda. Utile se hai schede che appartengono a pi\xF9 mazzi nello stesso file.",
+  MAX_N_DAYS_REVIEW_QUEUE: "Numero di giorni Massimi da Visualizzare nel pannello di destra",
+  MIN_ONE_DAY: "1.",
+  VALID_NUMBER_WARNING: "根据喜好，mettere un numero valido。",
+  UI: "用户界面",
+  OPEN_IN_TAB: "在新选项卡中打开",
+  OPEN_IN_TAB_DESC: "将其关闭到在模态窗口中打开插件",
+  SHOW_STATUS_BAR: "显示状态栏",
+  SHOW_STATUS_BAR_DESC: "关闭此功能以在 Obsidian 的状态栏中隐藏抽认卡的审核状态",
+  SHOW_RIBBON_ICON: "在功能区栏中显示图标",
+  SHOW_RIBBON_ICON_DESC: "关闭此功能以隐藏 Obsidian 功能区栏中的插件图标",
+  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Alberti di mazzi dovrebbero essere inizialmente Visualizzate come espansi",
+  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Disabilitami per collassare mazzi annidati nella stessa scheda.使用此计划将应用程序设置为 più mazzi nello stesso 文件。",
   ALGORITHM: "Algoritmo",
   CHECK_ALGORITHM_WIKI: "Per maggiori informazioni, visita <a href='${algoUrl}'>l'implementazione dell'algoritmo</a>.",
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "Difficolt\xE0 base",
-  BASE_EASE_DESC: "mino = 130, preferibilmente circa 250.",
-  BASE_EASE_MIN_WARNING: "La difficolt\xE0 base deve essere di almeno 130.",
+  SM2_OSR_VARIANT: "OSR 的 SM-2 变体",
+  BASE_EASE: "Difficoltà 基础",
+  BASE_EASE_DESC: "mino = 130，优选250左右。",
+  BASE_EASE_MIN_WARNING: "La difficoltà base deve essere di almeno 130。",
   LAPSE_INTERVAL_CHANGE: "L'intervallo cambier\xE0 segnando una scheda / nota come difficile",
-  LAPSE_INTERVAL_CHANGE_DESC: "Intervallo nuovo = intervallo vecchio * cambio intervallo / 100.",
-  EASY_BONUS: "Bonus facilit\xE0",
+  LAPSE_INTERVAL_CHANGE_DESC: "新间隔 = 旧间隔 * cambiointervallo / 100。",
+  EASY_BONUS: "奖励设施",
   EASY_BONUS_DESC: "Il bonus facilit\xE0 ti permette di impostare le differenze negli intervalli tra il rispondere Buono e Facile su una scheda o nota (minimo 100%).",
-  EASY_BONUS_MIN_WARNING: "Il bonus facilit\xE0 deve essere di almeno 100.",
-  LOAD_BALANCE: "Enable load balancer",
+  EASY_BONUS_MIN_WARNING: "Il Bonus facilità deve essere di almeno 100。",
+  LOAD_BALANCE: "启用负载均衡器",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
+        It's 就像 Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
   MAX_INTERVAL: "Intervallo massimo in giorni",
-  MAX_INTERVAL_DESC: "Ti permette di mettere un limite massimo all'intervallo (default 100 anni).",
-  MAX_INTERVAL_MIN_WARNING: "L'intervallo massimo deve essere di almeno 1 giorno.",
+  MAX_INTERVAL_DESC: "Ti permette di mettere un limite massimo all'intervallo (default 100 anni)."，\n  最大间隔最小警告："L'intervallo massimo deve essere di almeno 1 giorno.",
   MAX_LINK_CONTRIB: "Contributo massimo delle note collegate",
   MAX_LINK_CONTRIB_DESC: "Contributo massimo della difficolt\xE0 pasata delle note collegate alla difficolt\xE0 iniziale.",
   LOGGING: "Registrando",
@@ -6366,24 +5957,21 @@ var ja_default = {
   GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
   GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
   GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: '\u8A73\u7D30\u306B\u3064\u3044\u3066\u306F<a href="${wikiUrl}">wiki</a>\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
+  CHECK_WIKI: '\u8A73\u7D30\u306B\u3064\u3044\u3066\u306F<a href="${wikiUrl}">wiki</a>\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002'，\n  GITHUB_讨论：'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.'，\n  GITHUB_问题：'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.'，\n  GITHUB_SOURCE_CODE：'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
   CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
   TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
   FOLDERS_TO_IGNORE: "\u7121\u8996\u3059\u308B\u30D5\u30A9\u30EB\u30C0",
   FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
+  OBSIDIAN_INTEGRATION: "集成到 Obsidian",
   FLASHCARDS: "\u30D5\u30E9\u30C3\u30B7\u30E5\u30AB\u30FC\u30C9",
-  FLASHCARD_EASY_LABEL: "Easy Button Text",
-  FLASHCARD_GOOD_LABEL: "Good Button Text",
-  FLASHCARD_HARD_LABEL: "Hard Button Text",
-  FLASHCARD_EASY_DESC: 'Customize the label for the "Easy" Button',
-  FLASHCARD_GOOD_DESC: 'Customize the label for the "Good" Button',
-  FLASHCARD_HARD_DESC: 'Customize the label for the "Hard" Button',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
+  FLASHCARD_EASY_LABEL: "简单按钮文本",
+  FLASHCARD_GOOD_LABEL: "好按钮文本",
+  FLASHCARD_HARD_LABEL: "硬按钮文本",
+  FLASHCARD_EASY_DESC: '自定义“简单”按钮的标签',
+  FLASHCARD_GOOD_DESC: '自定义“好”按钮的标签',
+  FLASHCARD_HARD_DESC: '自定义“硬”按钮的标签',
+  REVIEW_BUTTON_DELAY: "按钮按下延迟 (ms)",
+  REVIEW_BUTTON_DELAY_DESC: "在再次按下审阅按钮之前添加延迟。",
   FLASHCARD_TAGS: "\u30D5\u30E9\u30C3\u30B7\u30E5\u30AB\u30FC\u30C9\u306B\u4F7F\u7528\u3059\u308B\u30BF\u30B0",
   FLASHCARD_TAGS_DESC: '\u30BF\u30B0\u3092\u30B9\u30DA\u30FC\u30B9\u307E\u305F\u306F\u6539\u884C\u3067\u533A\u5207\u3063\u3066\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002\u4F8B: "#flashcards #deck2 #deck3"',
   CONVERT_FOLDERS_TO_DECKS: "\u30D5\u30A9\u30EB\u30C0\u3092\u30C7\u30C3\u30AD\u3068\u30B5\u30D6\u30C7\u30C3\u30AD\u3068\u3057\u3066\u4F7F\u7528\u3057\u307E\u3059\u304B\uFF1F",
@@ -6394,23 +5982,23 @@ var ja_default = {
   BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "\u30B7\u30D6\u30EA\u30F3\u30B0\u306F\u540C\u4E00\u306E\u30AB\u30FC\u30C9\u30C6\u30AD\u30B9\u30C8\u304B\u3089\u751F\u6210\u3055\u308C\u305F\u30AB\u30FC\u30C9\u3001\u3064\u307E\u308A\u7A74\u57CB\u3081\u554F\u984C\u306E\u6D3E\u751F\u30AB\u30FC\u30C9\u3067\u3059\u3002",
   SHOW_CARD_CONTEXT: "\u30AB\u30FC\u30C9\u306B\u30B3\u30F3\u30C6\u30AD\u30B9\u30C8\u3092\u8868\u793A\u3057\u307E\u3059\u304B\uFF1F",
   SHOW_CARD_CONTEXT_DESC: "\uFF62\u30BF\u30A4\u30C8\u30EB > \u898B\u51FA\u3057 1 > \u526F\u898B\u51FA\u3057 > ... > \u526F\u898B\u51FA\u3057\uFF63\u306E\u8868\u793A\u3092\u884C\u3046\u304B\u3069\u3046\u304B\u3092\u6C7A\u3081\u307E\u3059\u3002",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "在审核按钮中显示下次审核时间",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "有助于了解您的卡片将被推到未来多远。",
   CARD_MODAL_HEIGHT_PERCENT: "\u30D5\u30E9\u30C3\u30B7\u30E5\u30AB\u30FC\u30C9\u306E\u7E26\u30B5\u30A4\u30BA\u306E\u30D1\u30FC\u30BB\u30F3\u30C6\u30FC\u30B8",
   CARD_MODAL_SIZE_PERCENT_DESC: "\u30E2\u30D0\u30A4\u30EB\u7248\u3001\u307E\u305F\u306F\u975E\u5E38\u306B\u5927\u304D\u306A\u30B5\u30A4\u30BA\u306E\u753B\u50CF\u304C\u3042\u308B\u5834\u5408\u306B\u306F100%\u306B\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002",
   RESET_DEFAULT: "\u30C7\u30D5\u30A9\u30EB\u30C8\u5024\u306B\u30EA\u30BB\u30C3\u30C8\u3059\u308B",
   CARD_MODAL_WIDTH_PERCENT: "\u30D5\u30E9\u30C3\u30B7\u30E5\u30AB\u30FC\u30C9\u306E\u6A2A\u30B5\u30A4\u30BA\u306E\u30D1\u30FC\u30BB\u30F3\u30C6\u30FC\u30B8",
   RANDOMIZE_CARD_ORDER: "\u30EC\u30D3\u30E5\u30FC\u4E2D\u306E\u30AB\u30FC\u30C9\u306E\u9806\u756A\u3092\u30E9\u30F3\u30C0\u30E0\u306B\u3057\u307E\u3059\u304B\uFF1F",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Order cards in a deck are displayed during review",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Sequentially within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequentially within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Randomly within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Randomly within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  REVIEW_DECK_ORDER: "Order decks are displayed during review",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequentially (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Randomly (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
+  REVIEW_CARD_ORDER_WITHIN_DECK: "查看期间会显示一副牌中的订单卡",
+  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "在一副牌中按顺序（首先是所有新牌）",
+  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "依次在一副牌（首先是所有到期牌）",
+  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "一副牌中随机（所有新牌优先）",
+  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "一副牌中随机（所有到期牌优先）",
+  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "随机牌组中的随机卡",
+  REVIEW_DECK_ORDER: "订单牌组在审核过程中显示",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "按顺序（一旦检查了前一副牌中的所有牌）",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "随机（一旦检查了前一副牌中的所有牌）",
+  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "随机牌组中的随机卡",
   DISABLE_CLOZE_CARDS: "\u7A74\u57CB\u3081\u30AB\u30FC\u30C9\u3092\u7121\u52B9\u5316\u3057\u307E\u3059\u304B\uFF1F",
   CONVERT_HIGHLIGHTS_TO_CLOZES: "==\u30CF\u30A4\u30E9\u30A4\u30C8==\u3092\u7A74\u57CB\u3081\u3068\u3057\u3066\u4F7F\u7528\u3057\u307E\u3059\u304B\uFF1F",
   CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: "\u3053\u306E\u30AA\u30D7\u30B7\u30E7\u30F3\u3092\u6709\u52B9\u5316\u3059\u308B\u3068\u3001\u300C\u7A74\u57CB\u3081\u30D1\u30BF\u30FC\u30F3\u300D\u306B${defaultPattern}\u304C\u8FFD\u52A0\u3055\u308C\u307E\u3059\u3002",
@@ -6428,7 +6016,7 @@ var ja_default = {
   MULTILINE_CARDS_END_MARKER: "\u30AF\u30ED\u30FC\u30BA\u3068\u8907\u6570\u884C\u30D5\u30E9\u30C3\u30B7\u30E5\u30AB\u30FC\u30C9\u306E\u7D42\u308F\u308A\u3092\u793A\u3059\u6587\u5B57",
   NOTES: "\u30CE\u30FC\u30C8",
   NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "Enable note review pane on startup",
+  REVIEW_PANE_ON_STARTUP: "在启动时启用笔记审阅窗格",
   TAGS_TO_REVIEW: "\u30EC\u30D3\u30E5\u30FC\u306B\u4F7F\u7528\u3059\u308B\u30BF\u30B0",
   TAGS_TO_REVIEW_DESC: '\u30BF\u30B0\u3092\u30B9\u30DA\u30FC\u30B9\u307E\u305F\u306F\u6539\u884C\u3067\u533A\u5207\u3063\u3066\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002\u4F8B: "#review #tag2 #tag3"',
   OPEN_RANDOM_NOTE: "\u30E9\u30F3\u30C0\u30E0\u306B\u30CE\u30FC\u30C8\u3092\u958B\u3044\u3066\u30EC\u30D3\u30E5\u30FC\u3059\u308B",
@@ -6439,29 +6027,29 @@ var ja_default = {
   MAX_N_DAYS_REVIEW_QUEUE: "\u53F3\u30D1\u30CD\u30EB\u306B\u8868\u793A\u3059\u308B\u6700\u5927\u306E\u65E5\u6570",
   MIN_ONE_DAY: "\u65E5\u6570\u306B\u306F1\u4EE5\u4E0A\u306E\u6570\u5B57\u3092\u6307\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
   VALID_NUMBER_WARNING: "\u6709\u52B9\u306A\u6570\u5B57\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
+  UI: "用户界面",
+  OPEN_IN_TAB: "在新选项卡中打开",
+  OPEN_IN_TAB_DESC: "将其关闭到在模态窗口中打开插件",
+  SHOW_STATUS_BAR: "显示状态栏",
+  SHOW_STATUS_BAR_DESC: "关闭此功能以在 Obsidian 的状态栏中隐藏抽认卡的审核状态",
+  SHOW_RIBBON_ICON: "在功能区栏中显示图标",
+  SHOW_RIBBON_ICON_DESC: "关闭此功能以隐藏 Obsidian 功能区栏中的插件图标",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE: "\u30C7\u30C3\u30AD \u30C4\u30EA\u30FC\u306F\u6700\u521D\u306F\u5C55\u958B\u3057\u3066\u8868\u793A\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "\u3053\u308C\u3092\u30AA\u30D5\u306B\u3059\u308B\u3068\u3001\u540C\u3058\u30AB\u30FC\u30C9\u5185\u306E\u30CD\u30B9\u30C8\u3055\u308C\u305F\u30C7\u30C3\u30AD\u304C\u6298\u308A\u305F\u305F\u307E\u308C\u307E\u3059\u3002\u540C\u3058\u30D5\u30A1\u30A4\u30EB\u306B\u591A\u304F\u306E\u30C7\u30C3\u30AD\u306B\u5C5E\u3059\u308B\u30AB\u30FC\u30C9\u304C\u3042\u308B\u5834\u5408\u306B\u4FBF\u5229\u3067\u3059\u3002",
   ALGORITHM: "\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0",
   CHECK_ALGORITHM_WIKI: '\u8A73\u7D30\u306B\u3064\u3044\u3066\u306F<a href="${algoUrl}">\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0\u306E\u5B9F\u88C5</a>\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
+  SM2_OSR_VARIANT: "OSR 的 SM-2 变体",
   BASE_EASE: "\u30D9\u30FC\u30B9\u306E\u6613\u3057\u3055",
   BASE_EASE_DESC: "\u6700\u5C0F\u5024\u306F130\u3067\u3059\u304C\u3001 \u9069\u6B63\u5024\u306F\u304A\u304A\u3088\u305D250\u3067\u3059\u3002",
   BASE_EASE_MIN_WARNING: "\u30D9\u30FC\u30B9\u306E\u6613\u3057\u3055\u306B\u306F130\u4EE5\u4E0A\u306E\u6570\u5B57\u3092\u6307\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
   LAPSE_INTERVAL_CHANGE: "\u30D5\u30E9\u30C3\u30B7\u30E5\u30AB\u30FC\u30C9/\u30CE\u30FC\u30C8\u3092Hard\u3068\u3057\u3066\u30EC\u30D3\u30E5\u30FC\u3057\u305F\u969B\u306E\u9593\u9694\u5909\u66F4",
   LAPSE_INTERVAL_CHANGE_DESC: '"\u65B0\u3057\u3044\u9593\u9694 = \u4EE5\u524D\u306E\u9593\u9694 * \u9593\u9694\u5909\u66F4 / 100" \u3068\u3057\u3066\u8A08\u7B97\u3055\u308C\u307E\u3059\u3002',
-  EASY_BONUS: "Easy\u30DC\u30FC\u30CA\u30B9",
+  EASY_BONUS: "Easyボーナsu",
   EASY_BONUS_DESC: "Easy\u30DC\u30FC\u30CA\u30B9\u306B\u3088\u3063\u3066\u30D5\u30E9\u30C3\u30B7\u30E5\u30AB\u30FC\u30C9/\u30CE\u30FC\u30C8\u306B\u304A\u3051\u308B\u9593\u9694\u306E\u5DEE\u5206\u3092\u8A2D\u5B9A\u3067\u304D\u307E\u3059(\u6700\u5C0F\u5024 = 100%)\u3002",
   EASY_BONUS_MIN_WARNING: "Easy\u30DC\u30FC\u30CA\u30B9\u306B\u306F100\u4EE5\u4E0A\u306E\u6570\u5B57\u3092\u6307\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
-  LOAD_BALANCE: "Enable load balancer",
+  LOAD_BALANCE: "启用负载均衡器",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
+        It's 就像 Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
   MAX_INTERVAL: "Maximum interval in days",
   MAX_INTERVAL_DESC: "\u9593\u9694\u306B\u4E0A\u9650\u5024\u3092\u8A2D\u5B9A\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059(\u30C7\u30D5\u30A9\u30EB\u30C8\u5024 = 100\u5E74)\u3002",
@@ -6470,209 +6058,22 @@ var ja_default = {
   MAX_LINK_CONTRIB_DESC: "\u6700\u521D\u306E\u6613\u3057\u3055\u306B\u5BFE\u3057\u3066\u3001\u30EA\u30F3\u30AF\u3055\u308C\u305F\u30CE\u30FC\u30C8\u306E\u91CD\u307F\u4ED8\u3051\u3055\u308C\u305F\u6613\u3057\u3055\u304C\u5BC4\u4E0E\u3059\u308B\u6700\u5927\u5024\u3092\u6307\u5B9A\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
   LOGGING: "\u30ED\u30B0\u7BA1\u7406",
   DISPLAY_SCHEDULING_DEBUG_INFO: "\u30C7\u30D9\u30ED\u30C3\u30D1\u30FC\u30B3\u30F3\u30BD\u30FC\u30EB\u306B\u3066\u30C7\u30D0\u30C3\u30B0\u60C5\u5831\u3092\u8868\u793A\u3057\u307E\u3059\u304B",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
-  SCHEDULING: "Scheduling",
-  EXPERIMENTAL: "Experimental",
-  HELP: "Help",
-  STORE_IN_NOTES: "In the notes",
-  // sidebar.ts
-  NOTES_REVIEW_QUEUE: "\u30CE\u30FC\u30C8\u30EC\u30D3\u30E5\u30FC\u306E\u30AD\u30E5\u30FC",
-  CLOSE: "\u9589\u3058\u308B",
-  NEW: "\u65B0\u898F",
-  YESTERDAY: "\u6628\u65E5",
-  TODAY: "\u4ECA\u65E5",
-  TOMORROW: "\u660E\u65E5",
-  // stats-modal.tsx
-  STATS_TITLE: "\u7D71\u8A08",
-  MONTH: "Month",
-  QUARTER: "Quarter",
-  YEAR: "Year",
-  LIFETIME: "Lifetime",
-  FORECAST: "\u4E88\u6E2C",
-  FORECAST_DESC: "\u5FA9\u7FD2\u671F\u65E5\u304C\u6765\u308B\u30AB\u30FC\u30C9\u306E\u679A\u6570",
-  SCHEDULED: "\u30B9\u30B1\u30B8\u30E5\u30FC\u30EA\u30F3\u30B0\u6E08\u307F",
-  DAYS: "\u65E5",
-  NUMBER_OF_CARDS: "\u30AB\u30FC\u30C9\u6570",
-  REVIEWS_PER_DAY: "\u5E73\u5747: ${avg}\u30EC\u30D3\u30E5\u30FC/\u65E5",
-  INTERVALS: "\u9593\u9694",
-  INTERVALS_DESC: "\u6B21\u306E\u30EC\u30D3\u30E5\u30FC\u4E88\u5B9A\u65E5",
-  COUNT: "\u30AB\u30A6\u30F3\u30C8",
-  INTERVALS_SUMMARY: "\u9593\u9694\u306E\u5E73\u5747\u5024: ${avg}, \u6700\u9577\u306E\u9593\u9694: ${longest}",
-  EASES: "\u6613\u3057\u3055",
-  EASES_SUMMARY: "\u6613\u3057\u3055\u306E\u5E73\u5747\u5024: ${avgEase}",
-  EASE: "Ease",
-  CARD_TYPES: "\u30AB\u30FC\u30C9\u30BF\u30A4\u30D7",
-  CARD_TYPES_DESC: "\u5EF6\u671F\u306E\u30AB\u30FC\u30C9\u304C\u3042\u308B\u5834\u5408\u306B\u306F\u3053\u308C\u306B\u542B\u307E\u308C\u307E\u3059",
-  CARD_TYPE_NEW: "\u65B0\u898F",
-  CARD_TYPE_YOUNG: "\u5FA9\u7FD2(\u521D\u671F)",
-  CARD_TYPE_MATURE: "\u5FA9\u7FD2(\u5F8C\u671F)",
-  CARD_TYPES_SUMMARY: "\u30AB\u30FC\u30C9\u306E\u5408\u8A08: ${totalCardsCount}\u679A",
-  SEARCH: "Search",
-  PREVIOUS: "Previous",
-  NEXT: "Next"
-};
-
-// src/lang/locale/ko.ts
-var ko_default = {
-  // flashcard-modal.tsx
-  DECKS: "\uB371",
-  DUE_CARDS: "\uB2E4\uC2DC \uBCFC \uCE74\uB4DC\uB4E4",
-  NEW_CARDS: "\uC0C8\uB85C\uC6B4 \uCE74\uB4DC\uB4E4",
-  TOTAL_CARDS: "\uC804\uCCB4 \uCE74\uB4DC\uB4E4",
-  BACK: "Back",
-  SKIP: "Skip",
-  EDIT_CARD: "Edit Card",
-  RESET_CARD_PROGRESS: "\uCE74\uB4DC\uC758 \uC9C4\uD589\uC0C1\uD669\uC744 \uCD08\uAE30\uD654\uD569\uB2C8\uB2E4.",
-  HARD: "\uC5B4\uB824\uC6C0(Hard)",
-  GOOD: "\uC88B\uC74C(Good)",
-  EASY: "\uC26C\uC6C0(Easy)",
-  SHOW_ANSWER: "\uC815\uB2F5 \uD655\uC778\uD558\uAE30",
-  CARD_PROGRESS_RESET: "\uCE74\uB4DC\uC758 \uC9C4\uD589\uC0C1\uD669\uC774 \uCD08\uAE30\uD654\uB418\uC5C8\uC2B5\uB2C8\uB2E4.",
-  SAVE: "Save",
-  CANCEL: "Cancel",
-  NO_INPUT: "No input provided.",
-  CURRENT_EASE_HELP_TEXT: "Current Ease: ",
-  CURRENT_INTERVAL_HELP_TEXT: "Current Interval: ",
-  CARD_GENERATED_FROM: "Generated from: ${notePath}",
-  // main.ts
-  OPEN_NOTE_FOR_REVIEW: "\uB9AC\uBDF0\uD560 \uB178\uD2B8 \uC5F4\uAE30",
-  REVIEW_CARDS: "\uD50C\uB798\uC2DC\uCE74\uB4DC \uB9AC\uBDF0",
-  REVIEW_DIFFICULTY_FILE_MENU: "\uB9AC\uBDF0: ${difficulty}",
-  REVIEW_NOTE_DIFFICULTY_CMD: "\uB178\uD2B8\uB97C ${difficulty}\uC73C\uB85C \uB9AC\uBDF0\uD569\uB2C8\uB2E4",
-  REVIEW_ALL_CARDS: "\uBAA8\uB4E0 \uB178\uD2B8\uB4E4\uC758 \uD50C\uB798\uC2DC\uCE74\uB4DC\uB4E4\uC744 \uB9AC\uBDF0\uD569\uB2C8\uB2E4",
-  CRAM_ALL_CARDS: "Select a deck to cram",
-  REVIEW_CARDS_IN_NOTE: "\uC774 \uB178\uD2B8\uC758 \uD50C\uB798\uC2DC\uCE74\uB4DC\uB4E4\uC744 \uB9AC\uBDF0\uD569\uB2C8\uB2E4",
-  CRAM_CARDS_IN_NOTE: "\uC774 \uB178\uD2B8\uC758 \uD50C\uB798\uC2DC\uCE74\uB4DC\uB4E4\uC744 \uBCBC\uB77D\uCE58\uAE30\uD569\uB2C8\uB2E4.",
-  VIEW_STATS: "\uD1B5\uACC4 \uD655\uC778",
-  OPEN_REVIEW_QUEUE_VIEW: "Open Notes Review Queue in sidebar",
-  STATUS_BAR: "--\uB9AC\uBDF0: ${dueNotesCount} \uB178\uD2B8, ${dueFlashcardsCount} \uCE74\uB4DC \uB0A8\uC558\uC2B5\uB2C8\uB2E4.",
-  SYNC_TIME_TAKEN: "\uB3D9\uAE30\uD654\uC5D0 ${t}\uBC00\uB9AC\uCD08 \uAC78\uB838\uC2B5\uB2C8\uB2E4",
-  NOTE_IN_IGNORED_FOLDER: "\uB178\uD2B8\uAC00 \uBB34\uC2DC\uB41C \uD3F4\uB354 \uC544\uB798\uC5D0 \uC800\uC7A5\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. (\uC124\uC815\uC744 \uD655\uC778\uD574\uC8FC\uC138\uC694)",
-  PLEASE_TAG_NOTE: "\uB9AC\uBDF0\uB97C \uD558\uAE30\uC704\uD574 \uB178\uD2B8\uC5D0 \uC801\uC808\uD788 \uD0DC\uADF8\uD574\uC8FC\uC138\uC694. (\uC124\uC815\uC744 \uD655\uC778\uD574\uC8FC\uC138\uC694)",
-  RESPONSE_RECEIVED: "\uC694\uCCAD\uC774 \uC644\uB8CC\uB418\uC5C8\uC2B5\uB2C8\uB2E4",
-  NO_DECK_EXISTS: "${deckName}\uC774\uB77C\uB294 \uC774\uB984\uC758 \uB371\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.",
-  ALL_CAUGHT_UP: "\uBAA8\uB450 \uD655\uC778\uD588\uC2B5\uB2C8\uB2E4. :D",
-  // scheduling.ts
-  DAYS_STR_IVL: "${interval} \uC77C \uD6C4",
-  MONTHS_STR_IVL: "${interval} \uAC1C\uC6D4 \uD6C4",
-  YEARS_STR_IVL: "${interval} \uB144 \uD6C4",
-  DAYS_STR_IVL_MOBILE: "${interval}d",
-  MONTHS_STR_IVL_MOBILE: "${interval}m",
-  YEARS_STR_IVL_MOBILE: "${interval}y",
-  // settings.ts
-  SETTINGS_HEADER: "Spaced Repetition",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: '\uB354 \uB9CE\uC740 \uC815\uBCF4\uB97C \uC6D0\uD558\uC2DC\uBA74, <a href="${wikiUrl}">wiki</a>\uB97C \uD655\uC778\uD574\uC8FC\uC138\uC694.',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
-  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
-  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
-  FOLDERS_TO_IGNORE: "\uBB34\uC2DC\uD560 \uD3F4\uB354\uB4E4",
-  FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "\uD50C\uB798\uC2DC\uCE74\uB4DC",
-  FLASHCARD_EASY_LABEL: "Easy Button Text",
-  FLASHCARD_GOOD_LABEL: "Good Button Text",
-  FLASHCARD_HARD_LABEL: "Hard Button Text",
-  FLASHCARD_EASY_DESC: 'Customize the label for the "Easy" Button',
-  FLASHCARD_GOOD_DESC: 'Customize the label for the "Good" Button',
-  FLASHCARD_HARD_DESC: 'Customize the label for the "Hard" Button',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "\uD50C\uB798\uC2DC\uCE74\uB4DC \uD0DC\uADF8",
-  FLASHCARD_TAGS_DESC: "\uD0DC\uADF8\uB97C \uACF5\uBC31 \uB610\uB294 \uBE48 \uC904\uB85C \uAD6C\uBD84\uD574\uC11C \uC785\uB825\uD574\uC8FC\uC138\uC694. \uC608) '#flashcards #deck2 #deck3'",
-  CONVERT_FOLDERS_TO_DECKS: "\uD3F4\uB354\uB97C \uB371\uACFC \uC11C\uBE0C\uB371\uC73C\uB85C \uC0AC\uC6A9\uD560\uAE4C\uC694?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "\uC774 \uAE30\uB2A5\uC740 \uC704\uC758 \uD50C\uB798\uC2DC\uCE74\uB4DC \uD0DC\uADF8 \uC635\uC158\uC744 \uB300\uCCB4\uD569\uB2C8\uB2E4.",
-  INLINE_SCHEDULING_COMMENTS: "\uD50C\uB798\uC2DC\uCE74\uB4DC\uC758 \uB9C8\uC9C0\uB9C9 \uC904\uACFC \uB3D9\uC77C\uD55C \uC904\uC5D0 \uC2A4\uCF00\uC904\uB9C1 \uCF54\uBA58\uD2B8\uB97C \uC800\uC7A5\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "\uC774 \uC635\uC158\uC744 \uC0AC\uC6A9\uD558\uBA74 HTML \uC8FC\uC11D\uC774 \uBAA9\uB85D\uC758 \uD3EC\uB9E4\uD305\uC744 \uBB34\uB108\uD2B8\uB9AC\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "Sibling \uCE74\uB4DC\uB97C \uB2E4\uC74C\uB0A0\uAE4C\uC9C0 \uBB3B\uC5B4\uB450\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Sibling \uCE74\uB4DC\uB294 \uB3D9\uC77C\uD55C \uCE74\uB4DC \uD14D\uC2A4\uD2B8\uC5D0\uC11C \uC0DD\uC131\uB41C \uCE74\uB4DC\uC785\uB2C8\uB2E4. i.e. cloze deletions",
-  SHOW_CARD_CONTEXT: "\uCE74\uB4DC\uC758 \uBB38\uB9E5(context)\uC744 \uD45C\uC2DC\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
-  SHOW_CARD_CONTEXT_DESC: "\uCE74\uB4DC\uC5D0\uC11C 'Title > Heading 1 > Subheading > ... > Subheading' \uC758 \uD45C\uC2DC\uB97C \uD560\uC9C0 \uC124\uC815\uD569\uB2C8\uB2E4.",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
-  CARD_MODAL_HEIGHT_PERCENT: "\uD50C\uB798\uC2DC\uCE74\uB4DC \uB192\uC774 \uBE44\uC728",
-  CARD_MODAL_SIZE_PERCENT_DESC: "\uBAA8\uBC14\uC77C \uBC84\uC804 \uD639\uC740 \uB9E4\uC6B0 \uD070 \uC774\uBBF8\uC9C0\uAC00 \uC788\uB294 \uACBD\uC6B0 100%\uB85C \uC124\uC815\uD574\uC57C \uD569\uB2C8\uB2E4.",
-  RESET_DEFAULT: "\uAE30\uBCF8\uAC12\uC73C\uB85C \uCD08\uAE30\uD654",
-  CARD_MODAL_WIDTH_PERCENT: "\uD50C\uB798\uC2DC\uCE74\uB4DC \uB108\uBE44 \uBE44\uC728",
-  RANDOMIZE_CARD_ORDER: "\uB9AC\uBDF0\uC911\uC778 \uCE74\uB4DC\uC758 \uC21C\uC11C\uB97C \uB79C\uB364\uC73C\uB85C \uB450\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Order cards in a deck are displayed during review",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Sequentially within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequentially within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Randomly within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Randomly within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  REVIEW_DECK_ORDER: "Order decks are displayed during review",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequentially (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Randomly (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  DISABLE_CLOZE_CARDS: "\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uCE74\uB4DC\uB97C \uBE44\uD65C\uC131\uD654\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "==highlights== \uB97C \uBE48 \uCE78 \uCC44\uC6B0\uAE30\uB85C \uC804\uD658\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
+  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console"，\n  调度："Scheduling",\n  实验："Experimental"，\n  帮助："Help"，\n  STORE_IN_NOTES："In the notes",\n  // 侧边栏.ts\n  NOTES_REVIEW_QUEUE:"\u30CE\u30FC\u30C8\u30EC\u30D3\u30E5\u30FC\u306E\u30AD\u30E5\u30FC",\n  关闭："\u9589\u3058\u308B"，\n  新："\u65B0\u898F"，\n  昨天："\u6628\u65E5"，\n  今天："\u4ECA\u65E5"，\n  明天："\u660E\u65E5",\n  // 统计模态.tsx\n  统计标题："\u7D71\u8A08"，\n  月份："Month"，\n  季度："Quarter"，\n  年："Year"，\n  生命周期："Lifetime"，\n  预测："\u4E88\u6E2C"，\n  预测_DESC："\u5FA9\u7FD2\u671F\u65E5\u304C\u6765\u308B\u30AB\u30FC\u30C9\u306E\u679A\u6570"，\n  计划："\u30B9\u30B1\u30B8\u30E5\u30FC\u30EA\u30F3\u30B0\u6E08\u307F"，\n  天数："\u65E5"，\n  NUMBER_OF_卡："\u30AB\u30FC\u30C9\u6570"，\n  REVIEWS_PER_DAY："\u5E73\u5747: ${avg}\u30EC\u30D3\u30E5\u30FC/\u65E5"，\n  间隔："\u9593\u9694"，\n  INTERVALS_DESC："\u6B21\u306E\u30EC\u30D3\u30E5\u30FC\u4E88\u5B9A\u65E5"，\n  计数："\u30AB\u30A6\u30F3\u30C8",\n  INTERVALS_SUMMARY："\u9593\u9694\u306E\u5E73\u5747\u5024: ${avg}, \u6700\u9577\u306E\u9593\u9694: ${longest}"，\n  缓解："\u6613\u3057\u3055"，\n  EASES_SUMMARY："\u6613\u3057\u3055\u306E\u5E73\u5747\u5024: ${avgEase}"，\n  轻松："Ease",\n  卡类型："\u30AB\u30FC\u30C9\u30BF\u30A4\u30D7"，\n  CARD_TYPES_DESC："\u5EF6\u671F\u306E\u30AB\u30FC\u30C9\u304C\u3042\u308B\u5834\u5408\u306B\u306F\u3053\u308C\u306B\u542B\u307E\u308C\u307E\u3059"，\n  CARD_TYPE_NEW："\u65B0\u898F"，\n  CARD_TYPE_YOUNG："\u5FA9\u7FD2(\u521D\u671F)",\n  CARD_TYPE_MATURE："\u5FA9\u7FD2(\u5F8C\u671F)"，\n  CARD_TYPES_SUMMARY："\u30AB\u30FC\u30C9\u306E\u5408\u8A08: ${totalCardsCount}\u679A"，\n  搜索："Search"，\n  上一个："Previous"，\n  下一个："Next"};\n\n// src/lang/locale/ko.ts\nvar ko_default = {\n  // 抽认卡模态.tsx\n  甲板："\uB371"，\n  DUE_CARDS："\uB2E4\uC2DC \uBCFC \uCE74\uB4DC\uB4E4",\n  新卡："\uC0C8\uB85C\uC6B4 \uCE74\uB4DC\uB4E4"，\n  卡片总数："\uC804\uCCB4 \uCE74\uB4DC\uB4E4"，\n  背面："Back"，\n  跳过："Skip"，\n  编辑卡："Edit Card"，\n  重置卡进度："\uCE74\uB4DC\uC758 \uC9C4\uD589\uC0C1\uD669\uC744 \uCD08\uAE30\uD654\uD569\uB2C8\uB2E4."，\n  困难："\uC5B4\uB824\uC6C0(Hard)"，\n  好："\uC88B\uC74C(Good)"，\n  简单："\uC26C\uC6C0(Easy)"，\n  SHOW_ANSWER："\uC815\uB2F5 \uD655\uC778\uD558\uAE30"，\n  CARD_PROGRESS_RESET："\uCE74\uB4DC\uC758 \uC9C4\uD589\uC0C1\uD669\uC774 \uCD08\uAE30\uD654\uB418\uC5C8\uC2B5\uB2C8\uB2E4."，\n  保存："Save"，\n  取消："Cancel"，\n  无输入："No input provided."，\n  当前_EASE_HELP_TEXT："Current Ease: ",\n  当前_间隔_帮助_文本："Current Interval: ",\n  CARD_GENERATED_FROM："Generated from: ${notePath}"，\n  // main.ts\n  OPEN_NOTE_FOR_REVIEW："\uB9AC\uBDF0\uD560 \uB178\uD2B8 \uC5F4\uAE30"，\n  评论卡："\uD50C\uB798\uC2DC\uCE74\uB4DC \uB9AC\uBDF0"，\n  REVIEW_DIFFICULTY_FILE_MENU："\uB9AC\uBDF0: ${difficulty}"，\n  REVIEW_NOTE_DIFFICULTY_CMD："\uB178\uD2B8\uB97C ${difficulty}\uC73C\uB85C \uB9AC\uBDF0\uD569\uB2C8\uB2E4"，\n  REVIEW_ALL_CARDS："\uBAA8\uB4E0 \uB178\uD2B8\uB4E4\uC758 \uD50C\uB798\uC2DC\uCE74\uB4DC\uB4E4\uC744 \uB9AC\uBDF0\uD569\uB2C8\uB2E4"，\n  CRAM_ALL_CARDS："Select a deck to cram"，\n  REVIEW_CARDS_IN_NOTE："\uC774 \uB178\uD2B8\uC758 \uD50C\uB798\uC2DC\uCE74\uB4DC\uB4E4\uC744 \uB9AC\uBDF0\uD569\uB2C8\uB2E4"，\n  CRAM_CARDS_IN_NOTE："\uC774 \uB178\uD2B8\uC758 \uD50C\uB798\uC2DC\uCE74\uB4DC\uB4E4\uC744 \uBCBC\uB77D\uCE58\uAE30\uD569\uB2C8\uB2E4."，\n  查看统计数据："\uD1B5\uACC4 \uD655\uC778"，\n  OPEN_REVIEW_QUEUE_VIEW："Open Notes Review Queue in sidebar"，\n  状态栏："--\uB9AC\uBDF0: ${dueNotesCount} \uB178\uD2B8, ${dueFlashcardsCount} \uCE74\uB4DC \uB0A8\uC558\uC2B5\uB2C8\uB2E4."，\n  SYNC_TIME_TAKEN："\uB3D9\uAE30\uD654\uC5D0 ${t}\uBC00\uB9AC\uCD08 \uAC78\uB838\uC2B5\uB2C8\uB2E4"，\n  注意_IN_IGNORED_FOLDER："\uB178\uD2B8\uAC00 \uBB34\uC2DC\uB41C \uD3F4\uB354 \uC544\uB798\uC5D0 \uC800\uC7A5\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. (\uC124\uC815\uC744 \uD655\uC778\uD574\uC8FC\uC138\uC694)"，\n  请_TAG_注意："\uB9AC\uBDF0\uB97C \uD558\uAE30\uC704\uD574 \uB178\uD2B8\uC5D0 \uC801\uC808\uD788 \uD0DC\uADF8\uD574\uC8FC\uC138\uC694. (\uC124\uC815\uC744 \uD655\uC778\uD574\uC8FC\uC138\uC694)"，\n  RESPONSE_RECEIVED："\uC694\uCCAD\uC774 \uC644\uB8CC\uB418\uC5C8\uC2B5\uB2C8\uB2E4"，\n  不存在甲板："${deckName}\uC774\uB77C\uB294 \uC774\uB984\uC758 \uB371\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."，\n  ALL_CAUGHT_UP："\uBAA8\uB450 \uD655\uC778\uD588\uC2B5\uB2C8\uB2E4. :D",\n  // 调度.ts\n  DAYS_STR_IVL："${interval} \uC77C \uD6C4"，\n  MONTHS_STR_IVL："${interval} \uAC1C\uC6D4 \uD6C4"，\n  YEARS_STR_IVL："${interval} \uB144 \uD6C4"，\n  DAYS_STR_IVL_MOBILE："${interval}d"，\n  MONTHS_STR_IVL_MOBILE："${interval}m"，\n  YEARS_STR_IVL_MOBILE："${interval}y",\n  // 设置.ts\n  设置_标题："Spaced Repetition"，\n  GROUP_TAGS_FOLDERS："Tags & Folders",\n  GROUP_FLASHCARD_REVIEW："Flashcard Review"，\n  GROUP_FLASHCARD_SEPARATORS："Flashcard Separators"，\n  组数据存储："Storage of Scheduling Data"，\n  GROUP_DATA_STORAGE_DESC："Choose where to store the scheduling data"，\n  GROUP_FLASHcardS_NOTES："Flashcards & Notes"，\n  GROUP_CONTRIBUTING："Contributing",
+  CHECK_WIKI: '\uB354 \uB9CE\uC740 \uC815\uBCF4\uB97C \uC6D0\uD558\uC2DC\uBA74, <a href="${wikiUrl}">wiki</a>를 확인해주세요。',\n  GITHUB_DISCUSSIONS: '访问 <a href="${discussionsUrl}">讨论</a>部分，用于问答帮助、反馈和一般讨论。',\n  GITHUB_ISSUES: '在原型中提出问题 <a href="${issuesUrl}">此处</a>。',\n  GITHUB_SOURCE_CODE: '该项目的源代码可在 <a href="${githubProjectUrl}">GitHub</a>.',
+  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">这里</a>如何向插件贡献代码。',\n  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">这里</a>如何将插件翻译成另一种语言。',\n  FOLDERS_TO_IGNORE："\uBB34\uC2DC\uD560 \uD3F4\uB354\uB4E4"，\n  FOLDERS_TO_IGNORE_DESC："Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes."，\n  黑曜石集成："Integration into Obsidian"，\n  抽认卡："\uD50C\uB798\uC2DC\uCE74\uB4DC",\n  闪存卡_EASY_标签："Easy Button Text"，\n  FLASHCARD_GOOD_LABEL："Good Button Text"，\n  闪存卡_硬标签："Hard Button Text",\n  FLASHCARD_EASY_DESC: '自定义"Easy"Button',\n  FLASHCARD_GOOD_DESC: '自定义"Good"按钮的标签',\n  FLASHCARD_HARD_DESC: '自定义标签"Hard"按钮',\n  REVIEW_BUTTON_DELAY："Button Press Delay (ms)"，\n  REVIEW_BUTTON_DELAY_DESC："Add a delay to the review buttons before they can be pressed again."，\n  闪存卡标签："\uD50C\uB798\uC2DC\uCE74\uB4DC \uD0DC\uADF8",\n  FLASHCARD_TAGS_DESC："\uD0DC\uADF8\uB97C \uACF5\uBC31 \uB610\uB294 \uBE48 \uC904\uB85C \uAD6C\uBD84\uD574\uC11C \uC785\uB825\uD574\uC8FC\uC138\uC694. \uC608) '#flashcards #deck2 #deck3'",\n  CONVERT_FOLDERS_TO_DECKS："\uD3F4\uB354\uB97C \uB371\uACFC \uC11C\uBE0C\uB371\uC73C\uB85C \uC0AC\uC6A9\uD560\uAE4C\uC694?"，\n  CONVERT_FOLDERS_TO_DECKS_DESC："\uC774 \uAE30\uB2A5\uC740 \uC704\uC758 \uD50C\uB798\uC2DC\uCE74\uB4DC \uD0DC\uADF8 \uC635\uC158\uC744 \uB300\uCCB4\uD569\uB2C8\uB2E4."，\n  内联调度注释："\uD50C\uB798\uC2DC\uCE74\uB4DC\uC758 \uB9C8\uC9C0\uB9C9 \uC904\uACFC \uB3D9\uC77C\uD55C \uC904\uC5D0 \uC2A4\uCF00\uC904\uB9C1 \uCF54\uBA58\uD2B8\uB97C \uC800\uC7A5\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",\n  INLINE_SCHEDULING_COMMENTS_DESC："\uC774 \uC635\uC158\uC744 \uC0AC\uC6A9\uD558\uBA74 HTML \uC8FC\uC11D\uC774 \uBAA9\uB85D\uC758 \uD3EC\uB9E4\uD305\uC744 \uBB34\uB108\uD2B8\uB9AC\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.",\n  BURY_SIBLINGS_TILL_NEXT_DAY："Sibling \uCE74\uB4DC\uB97C \uB2E4\uC74C\uB0A0\uAE4C\uC9C0 \uBB3B\uC5B4\uB450\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",\n  BURY_SIBLINGS_TILL_NEXT_DAY_DESC："Sibling \uCE74\uB4DC\uB294 \uB3D9\uC77C\uD55C \uCE74\uB4DC \uD14D\uC2A4\uD2B8\uC5D0\uC11C \uC0DD\uC131\uB41C \uCE74\uB4DC\uC785\uB2C8\uB2E4. i.e. cloze deletions"，\n  SHOW_CARD_CONTEXT："\uCE74\uB4DC\uC758 \uBB38\uB9E5(context)\uC744 \uD45C\uC2DC\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"，\n  SHOW_CARD_CONTEXT_DESC："\uCE74\uB4DC\uC5D0\uC11C '标题 > 标题 1 > 副标题 > ... > 副标题' \uC758 \uD45C\uC2DC\uB97C \uD560\uC9C0 \uC124\uC815\uD569\uB2C8\uB2E4.",\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS："Show next review time in the review buttons"，\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC："Useful to know how far in the future your cards are being pushed."，\n  CARD_MODAL_HEIGHT_PERCENT："\uD50C\uB798\uC2DC\uCE74\uB4DC \uB192\uC774 \uBE44\uC728"，\n  CARD_MODAL_SIZE_PERCENT_DESC："\uBAA8\uBC14\uC77C \uBC84\uC804 \uD639\uC740 \uB9E4\uC6B0 \uD070 \uC774\uBBF8\uC9C0\uAC00 \uC788\uB294 \uACBD\uC6B0 100%\uB85C \uC124\uC815\uD574\uC57C \uD569\uB2C8\uB2E4."，\n  RESET_DEFAULT："\uAE30\uBCF8\uAC12\uC73C\uB85C \uCD08\uAE30\uD654",\n  CARD_MODAL_WIDTH_PERCENT："\uD50C\uB798\uC2DC\uCE74\uB4DC \uB108\uBE44 \uBE44\uC728"，\n  随机卡顺序："\uB9AC\uBDF0\uC911\uC778 \uCE74\uB4DC\uC758 \uC21C\uC11C\uB97C \uB79C\uB364\uC73C\uB85C \uB450\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"，\n  REVIEW_CARD_ORDER_WITHIN_DECK："Order cards in a deck are displayed during review"，\n  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL："Sequentially within a deck (All new cards first)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL："Sequentially within a deck (All due cards first)",\n  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM："Randomly within a deck (All new cards first)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM："Randomly within a deck (All due cards first)"，\n  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD："Random card from random deck"，\n  REVIEW_DECK_ORDER："Order decks are displayed during review",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL："Sequentially (once all cards in previous deck reviewed)",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM："Randomly (once all cards in previous deck reviewed)"，\n  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD："Random card from random deck"，\n  DISABLE_CLOZE_CARDS："\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uCE74\uB4DC\uB97C \uBE44\uD65C\uC131\uD654\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"，\n  CONVERT_HIGHLIGHTS_TO_CLOZES："==highlights== \uB97C \uBE48 \uCE78 \uCC44\uC6B0\uAE30\uB85C \uC804\uD658\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
   CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: '"\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uD328\uD134" \uC5D0\uC11C <code>${defaultPattern}</code> \uB97C \uCD94\uAC00/\uC81C\uAC70\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "**bolded text** \uB97C \uBE48 \uCE78 \uCC44\uC6B0\uAE30\uB85C \uC804\uD658\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
-  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: '"\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uD328\uD134" \uC5D0\uC11C <code>${defaultPattern}</code> \uB97C \uCD94\uAC00/\uC81C\uAC70\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?',
+  CONVERT_BOLD_TEXT_TO_CLOZES: "**bolded text** \uB97C \uBE48 \uCE78 \uCC44\uC6B0\uAE30\uB85C \uC804\uD658\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"，\n  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: '"\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uD328\uD134" \uC5D0\uC11C <code>${defaultPattern}</code> \uB97C \uCD94\uAC00/\uC81C\uAC70\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?',
   CONVERT_CURLY_BRACKETS_TO_CLOZES: "{{curly brackets}} \uB97C \uBE48 \uCE78 \uCC44\uC6B0\uAE30\uB85C \uC804\uD658\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
   CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: '"\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uD328\uD134" \uC5D0\uC11C <code>${defaultPattern}</code> \uB97C \uCD94\uAC00/\uC81C\uAC70\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?',
-  CLOZE_PATTERNS: "\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uD328\uD134",
-  CLOZE_PATTERNS_DESC: '\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uD328\uD134\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694. \uC904\uBC14\uAFC8\uC73C\uB85C \uAD6C\uBD84\uD569\uB2C8\uB2E4. Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "\uC778\uB77C\uC778 \uD50C\uB798\uC2DC\uCE74\uB4DC \uAD6C\uBD84\uC790",
-  FIX_SEPARATORS_MANUALLY_WARNING: "\uC8FC\uC758: \uC774 \uC635\uC158\uC744 \uC218\uC815\uD55C \uD6C4\uC5D0\uB294 \uC774\uBBF8 \uC791\uC131\uB41C \uD50C\uB798\uC2DC\uCE74\uB4DC\uB97C \uC218\uB3D9\uC73C\uB85C \uC218\uC815\uD574\uC57C \uD568\uC744 \uC8FC\uC758\uD558\uC2ED\uC2DC\uC624.",
-  INLINE_REVERSED_CARDS_SEPARATOR: "\uC778\uB77C\uC778 \uBC18\uC804 \uD50C\uB798\uC2DC\uCE74\uB4DC \uAD6C\uBD84\uC790",
-  MULTILINE_CARDS_SEPARATOR: "\uC5EC\uB7EC \uC904 \uD50C\uB798\uC2DC\uCE74\uB4DC \uAD6C\uBD84\uC790",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "\uC5EC\uB7EC \uC904 \uBC18\uC804 \uD50C\uB798\uC2DC\uCE74\uB4DC \uAD6C\uBD84\uC790",
-  MULTILINE_CARDS_END_MARKER: "\uD074\uB85C\uC988\uC640 \uB2E4\uC911 \uD589 \uD50C\uB798\uC2DC\uCE74\uB4DC\uC758 \uB05D\uC744 \uB098\uD0C0\uB0B4\uB294 \uBB38\uC790",
-  NOTES: "\uB178\uD2B8",
-  NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "Enable note review pane on startup",
-  TAGS_TO_REVIEW: "\uB9AC\uBDF0\uC5D0 \uC0AC\uC6A9\uD560 \uD0DC\uADF8",
-  TAGS_TO_REVIEW_DESC: "\uD0DC\uADF8\uB97C \uACF5\uBC31 \uB610\uB294 \uBE48 \uC904\uB85C \uAD6C\uBD84\uD574\uC11C \uC785\uB825\uD574\uC8FC\uC138\uC694. \uC608) '#review #tag2 #tag3'",
-  OPEN_RANDOM_NOTE: "\uB9AC\uBDF0\uB97C \uC704\uD574 \uB79C\uB364 \uB178\uD2B8\uB97C \uC5FD\uB2C8\uB2E4.",
-  OPEN_RANDOM_NOTE_DESC: "\uC774 \uC635\uC158\uC774 \uAEBC\uC838\uC788\uC73C\uBA74, \uB178\uD2B8\uB294 \uC911\uC694\uB3C4(\uD398\uC774\uC9C0 \uB7AD\uD06C)\uC5D0 \uB530\uB77C \uC815\uB82C\uB429\uB2C8\uB2E4.",
-  AUTO_NEXT_NOTE: "\uB9AC\uBDF0 \uD6C4\uC5D0 \uB2E4\uC74C \uB178\uD2B8\uB97C \uC790\uB3D9\uC73C\uB85C \uC5FD\uB2C8\uB2E4.",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "\uD30C\uC77C \uBA54\uB274\uC5D0\uC11C \uAC80\uD1A0 \uC635\uC158\uC744 \uD65C\uC131\uD654\uD558\uC138\uC694 (\uC608: \uAC80\uD1A0: \uC26C\uC6C0, \uC88B\uC74C, \uC5B4\uB824\uC6C0)",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "\uD30C\uC77C \uBA54\uB274\uC5D0\uC11C \uAC80\uD1A0 \uC635\uC158\uC744 \uBE44\uD65C\uC131\uD654\uD558\uBA74 \uD50C\uB7EC\uADF8\uC778 \uBA85\uB839\uC744 \uC0AC\uC6A9\uD574 \uB178\uD2B8\uB97C \uAC80\uD1A0\uD560 \uC218 \uC788\uC73C\uBA70, \uC815\uC758\uB41C \uACBD\uC6B0\uC5D0\uB294 \uAD00\uB828\uB41C \uB2E8\uCD95\uD0A4\uB3C4 \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.",
-  MAX_N_DAYS_REVIEW_QUEUE: "\uC624\uB978\uCABD \uD328\uB110\uC5D0 \uD45C\uC2DC\uD560 \uCD5C\uB300 \uC77C\uC218",
-  MIN_ONE_DAY: "\uC801\uC5B4\uB3C4 1\uC774\uC0C1\uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4.",
-  VALID_NUMBER_WARNING: "\uC720\uD6A8\uD55C \uC22B\uC790\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
+  CLOZE_PATTERNS: "\uBE48 \uCE78 \uCC44\uC6B0\uAE30 \uD328\uD134",\n  CLOZE_PATTERNS_DESC: '빈 칸 채우기 패턴을 입력해주세요. 줄바꿈으로 구분합니다。检查 <a href="${docsUrl}">wiki</a> 获取指导。',\n  INLINE_CARDS_SEPARATOR："\uC778\uB77C\uC778 \uD50C\uB798\uC2DC\uCE74\uB4DC \uAD6C\uBD84\uC790",\n  FIX_SEPARATORS_MANUALLY_WARNING："\uC8FC\uC758: \uC774 \uC635\uC158\uC744 \uC218\uC815\uD55C \uD6C4\uC5D0\uB294 \uC774\uBBF8 \uC791\uC131\uB41C \uD50C\uB798\uC2DC\uCE74\uB4DC\uB97C \uC218\uB3D9\uC73C\uB85C \uC218\uC815\uD574\uC57C \uD568\uC744 \uC8FC\uC758\uD558\uC2ED\uC2DC\uC624.",\n  INLINE_REVERSED_CARDS_SEPARATOR："\uC778\uB77C\uC778 \uBC18\uC804 \uD50C\uB798\uC2DC\uCE74\uB4DC \uAD6C\uBD84\uC790"，\n  多行卡分隔符："\uC5EC\uB7EC \uC904 \uD50C\uB798\uC2DC\uCE74\uB4DC \uAD6C\uBD84\uC790"，\n  MULTILINE_REVERSED_CARDS_SEPARATOR："\uC5EC\uB7EC \uC904 \uBC18\uC804 \uD50C\uB798\uC2DC\uCE74\uB4DC \uAD6C\uBD84\uC790"，\n  MULTILINE_CARDS_END_MARKER："\uD074\uB85C\uC988\uC640 \uB2E4\uC911 \uD589 \uD50C\uB798\uC2DC\uCE74\uB4DC\uC758 \uB05D\uC744 \uB098\uD0C0\uB0B4\uB294 \uBB38\uC790"，\n  注："\uB178\uD2B8"，\n  注意："Note"，\n  REVIEW_PANE_ON_STARTUP："Enable note review pane on startup"，\n  TAGS_TO_REVIEW："\uB9AC\uBDF0\uC5D0 \uC0AC\uC6A9\uD560 \uD0DC\uADF8"，\n  TAGS_TO_REVIEW_DESC："\uD0DC\uADF8\uB97C \uACF5\uBC31 \uB610\uB294 \uBE48 \uC904\uB85C \uAD6C\uBD84\uD574\uC11C \uC785\uB825\uD574\uC8FC\uC138\uC694. \uC608) '#review #tag2 #tag3'"，\n  OPEN_RANDOM_NOTE："\uB9AC\uBDF0\uB97C \uC704\uD574 \uB79C\uB364 \uB178\uD2B8\uB97C \uC5FD\uB2C8\uB2E4."，\n  OPEN_RANDOM_NOTE_DESC："\uC774 \uC635\uC158\uC774 \uAEBC\uC838\uC788\uC73C\uBA74, \uB178\uD2B8\uB294 \uC911\uC694\uB3C4(\uD398\uC774\uC9C0 \uB7AD\uD06C)\uC5D0 \uB530\uB77C \uC815\uB82C\uB429\uB2C8\uB2E4."，\n  自动下一个注释："\uB9AC\uBDF0 \uD6C4\uC5D0 \uB2E4\uC74C \uB178\uD2B8\uB97C \uC790\uB3D9\uC73C\uB85C \uC5FD\uB2C8\uB2E4.",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS："\uD30C\uC77C \uBA54\uB274\uC5D0\uC11C \uAC80\uD1A0 \uC635\uC158\uC744 \uD65C\uC131\uD654\uD558\uC138\uC694 (\uC608: \uAC80\uD1A0: \uC26C\uC6C0, \uC88B\uC74C, \uC5B4\uB824\uC6C0)",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC："\uD30C\uC77C \uBA54\uB274\uC5D0\uC11C \uAC80\uD1A0 \uC635\uC158\uC744 \uBE44\uD65C\uC131\uD654\uD558\uBA74 \uD50C\uB7EC\uADF8\uC778 \uBA85\uB839\uC744 \uC0AC\uC6A9\uD574 \uB178\uD2B8\uB97C \uAC80\uD1A0\uD560 \uC218 \uC788\uC73C\uBA70, \uC815\uC758\uB41C \uACBD\uC6B0\uC5D0\uB294 \uAD00\uB828\uB41C \uB2E8\uCD95\uD0A4\uB3C4 \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."，\n  MAX_N_DAYS_REVIEW_QUEUE："\uC624\uB978\uCABD \uD328\uB110\uC5D0 \uD45C\uC2DC\uD560 \uCD5C\uB300 \uC77C\uC218",\n  MIN_ONE_DAY："\uC801\uC5B4\uB3C4 1\uC774\uC0C1\uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4."，\n  VALID_NUMBER_WARNING："\uC720\uD6A8\uD55C \uC22B\uC790\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694."，\n  用户界面："User Interface"，\n  OPEN_IN_TAB："Open in new tab"，\n  OPEN_IN_TAB_DESC："Turn this off to open the plugin in a modal window"，\n  显示状态栏："Show status bar"，\n  显示_状态栏_DESC："Turn this off to hide the flashcard'Obsidian 中的审核状态's status bar"，\n  显示_RIBBON_ICON："Show icon in the ribbon bar"，\n  SHOW_RIBBON_ICON_DESC:"Turn this off to hide the plugin icon from Obsidian's ribbon bar",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE: "\uB371 \uD2B8\uB9AC\uB294 \uCC98\uC74C\uC5D0 \uD655\uC7A5\uB41C \uAC83\uC73C\uB85C \uD45C\uC2DC\uB418\uC5B4\uC57C \uD569\uB2C8\uB2E4.",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "\uAC19\uC740 \uCE74\uB4DC\uC5D0 \uC911\uCCA9\uB41C \uB371\uC744 \uC811\uC73C\uB824\uBA74 \uC774 \uC635\uC158\uC744 \uB044\uC2ED\uC2DC\uC624. \uAC19\uC740 \uD30C\uC77C\uC5D0 \uC5EC\uB7EC \uB371\uC5D0 \uC18D\uD55C \uCE74\uB4DC\uAC00 \uC788\uB294 \uACBD\uC6B0 \uC720\uC6A9\uD569\uB2C8\uB2E4.",
   ALGORITHM: "\uC54C\uACE0\uB9AC\uC998",
-  CHECK_ALGORITHM_WIKI: '\uB354 \uB9CE\uC740 \uC815\uBCF4\uB97C \uC6D0\uD558\uC2DC\uBA74, <a href="${algoUrl}">algorithm details</a>\uC744 \uD655\uC778\uD574\uC8FC\uC138\uC694.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "\uAE30\uBCF8 ease",
-  BASE_EASE_DESC: "\uCD5C\uC19F\uAC12 = 130, \uC801\uC815\uCE58\uB294 \uB300\uB7B5 250\uC785\uB2C8\uB2E4.",
-  BASE_EASE_MIN_WARNING: "\uAE30\uBCF8 ease\uB294 \uC801\uC5B4\uB3C4 130 \uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4.",
-  LAPSE_INTERVAL_CHANGE: "\uD50C\uB798\uC2DC\uCE74\uB4DC/\uB178\uD2B8\uB97C \uC5B4\uB824\uC6C0(Hard)\uC73C\uB85C \uB9AC\uBDF0\uD588\uC744 \uB54C\uC758 \uAC04\uACA9 \uBCC0\uACBD",
-  LAPSE_INTERVAL_CHANGE_DESC: "\uC0C8\uB85C\uC6B4 \uAC04\uACA9 = \uC774\uC804 \uAC04\uACA9 * \uAC04\uACA9\uBCC0\uACBD \uAC12 / 100.",
-  EASY_BONUS: "\uC26C\uC6C0(Easy) \uBCF4\uB108\uC2A4",
-  EASY_BONUS_DESC: "\uC26C\uC6C0(Easy) \uBCF4\uB108\uC2A4\uB294 \uD50C\uB798\uC2DC\uCE74\uB4DC/\uB178\uD2B8\uC5D0\uC11C \uC88B\uC74C(Good)\uACFC \uC26C\uC6C0(Easy) \uC0AC\uC774\uC758 \uAC04\uACA9 \uCC28\uC774\uB97C \uC124\uC815\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. (\uCD5C\uC18C = 100%)",
-  EASY_BONUS_MIN_WARNING: "\uC26C\uC6C0(Easy) \uBCF4\uB108\uC2A4\uB294 \uC801\uC5B4\uB3C4 100\uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4.",
-  LOAD_BALANCE: "Enable load balancer",
+  CHECK_ALGORITHM_WIKI: '\uB354 \uB9CE\uC740 \uC815\uBCF4\uB97C \uC6D0\uD558\uC2DC\uBA74, <a href="${algoUrl}">algorithm details</a>\uC744 \uD655\uC778\uD574\uC8FC\uC138\uC694.'，\n  SM2_OSR_VARIANT：“OSR's variant of SM-2"，\n  BASE_EASE："\uAE30\uBCF8 ease"，\n  BASE_EASE_DESC："\uCD5C\uC19F\uAC12 = 130, \uC801\uC815\uCE58\uB294 \uB300\uB7B5 250\uC785\uB2C8\uB2E4.",\n  BASE_EASE_MIN_WARNING："\uAE30\uBCF8 ease\uB294 \uC801\uC5B4\uB3C4 130 \uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4."，\n  LAPSE_INTERVAL_CHANGE："\uD50C\uB798\uC2DC\uCE74\uB4DC/\uB178\uD2B8\uB97C \uC5B4\uB824\uC6C0(Hard)\uC73C\uB85C \uB9AC\uBDF0\uD588\uC744 \uB54C\uC758 \uAC04\uACA9 \uBCC0\uACBD"，\n  LAPSE_INTERVAL_CHANGE_DESC："\uC0C8\uB85C\uC6B4 \uAC04\uACA9 = \uC774\uC804 \uAC04\uACA9 * \uAC04\uACA9\uBCC0\uACBD \uAC12 / 100."，\n  EASY_BONUS："\uC26C\uC6C0(Easy) \uBCF4\uB108\uC2A4"，\n  EASY_BONUS_DESC："\uC26C\uC6C0(Easy) \uBCF4\uB108\uC2A4\uB294 \uD50C\uB798\uC2DC\uCE74\uB4DC/\uB178\uD2B8\uC5D0\uC11C \uC88B\uC74C(Good)\uACFC \uC26C\uC6C0(Easy) \uC0AC\uC774\uC758 \uAC04\uACA9 \uCC28\uC774\uB97C \uC124\uC815\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. (\uCD5C\uC18C = 100%)"，\n  EASY_BONUS_MIN_WARNING："\uC26C\uC6C0(Easy) \uBCF4\uB108\uC2A4\uB294 \uC801\uC5B4\uB3C4 100\uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4."，\n  负载平衡："Enable load balancer",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
         It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
-  MAX_INTERVAL: "Maximum interval in days",
-  MAX_INTERVAL_DESC: "\uAC04\uACA9\uC758 \uC0C1\uD55C\uC120\uC744 \uB458 \uC218 \uC788\uC2B5\uB2C8\uB2E4. (\uAE30\uBCF8\uAC12 = 100\uB144)",
-  MAX_INTERVAL_MIN_WARNING: "\uCD5C\uB300 \uAC04\uACA9\uC740 \uC801\uC5B4\uB3C4 1\uC77C\uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4.",
-  MAX_LINK_CONTRIB: "\uCD5C\uB300 \uC5F0\uACB0 \uAE30\uC5EC\uB3C4",
-  MAX_LINK_CONTRIB_DESC: "\uB9C1\uD06C\uB41C \uB178\uD2B8\uC758 \uCD08\uAE30 ease\uC5D0 \uB300\uD55C \uAC00\uC911\uCE58\uAC00 \uC801\uC6A9\uB41C ease\uC758 \uCD5C\uB300 \uAE30\uC5EC\uB3C4\uC785\uB2C8\uB2E4.",
-  LOGGING: "\uB85C\uAE45",
-  DISPLAY_SCHEDULING_DEBUG_INFO: "\uB514\uBC84\uAE45 \uC815\uBCF4\uB97C \uAC1C\uBC1C\uC790 \uCF58\uC194\uC5D0 \uD45C\uC2DC\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
+  MAX_INTERVAL: "Maximum interval in days"，\n  MAX_INTERVAL_DESC："\uAC04\uACA9\uC758 \uC0C1\uD55C\uC120\uC744 \uB458 \uC218 \uC788\uC2B5\uB2C8\uB2E4. (\uAE30\uBCF8\uAC12 = 100\uB144)"，\n  最大间隔最小警告："\uCD5C\uB300 \uAC04\uACA9\uC740 \uC801\uC5B4\uB3C4 1\uC77C\uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4."，\n  MAX_LINK_CONTRIB："\uCD5C\uB300 \uC5F0\uACB0 \uAE30\uC5EC\uB3C4"，\n  MAX_LINK_CONTRIB_DESC："\uB9C1\uD06C\uB41C \uB178\uD2B8\uC758 \uCD08\uAE30 ease\uC5D0 \uB300\uD55C \uAC00\uC911\uCE58\uAC00 \uC801\uC6A9\uB41C ease\uC758 \uCD5C\uB300 \uAE30\uC5EC\uB3C4\uC785\uB2C8\uB2E4."，\n  记录："\uB85C\uAE45"，\n  DISPLAY_SCHEDULING_DEBUG_INFO："\uB514\uBC84\uAE45 \uC815\uBCF4\uB97C \uAC1C\uBC1C\uC790 \uCF58\uC194\uC5D0 \uD45C\uC2DC\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C"，\n  DISPLAY_PARSER_DEBUG_INFO："Show the parser's debugging information on the developer console",
   SCHEDULING: "Scheduling",
   EXPERIMENTAL: "Experimental",
   HELP: "Help",
@@ -6773,12 +6174,7 @@ var nl_default = {
   GROUP_DATA_STORAGE_DESC: "Kies waar de planningsgegevens worden opgeslagen",
   GROUP_FLASHCARDS_NOTES: "Flitskaarten & Notities",
   GROUP_CONTRIBUTING: "Bijdragen",
-  CHECK_WIKI: 'Voor meer informatie, bekijk de <a href="${wikiUrl}">wiki</a>.',
-  GITHUB_DISCUSSIONS: 'Bezoek de <a href="${discussionsUrl}">discussies</a> sectie voor Q&A hulp, feedback, en algemene discussie.',
-  GITHUB_ISSUES: 'Meld een probleem <a href="${issuesUrl}">hier</a> als je een functieverzoek of een bugrapport hebt.',
-  GITHUB_SOURCE_CODE: 'De broncode van het project is beschikbaar op <a href="${githubProjectUrl}">GitHub</a>.',
-  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Hier</a> lees je hoe je code kunt bijdragen aan de plugin.',
-  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Hier</a> lees je hoe je de plugin in een andere taal kunt vertalen.',
+  CHECK_WIKI: 'Voor meer informatie, bekijk de <a href="${wikiUrl}">wiki</a>.'，\n  GITHUB_讨论：'Bezoek de <a href="${discussionsUrl}">discussies</a> sectie voor Q&A hulp, feedback, en algemene discussie.'，\n  GITHUB_问题：'Meld een probleem <a href="${issuesUrl}">hier</a> als je een functieverzoek of een bugrapport hebt.'，\n  GITHUB_SOURCE_CODE：'De broncode van het project is beschikbaar op <a href="${githubProjectUrl}">GitHub</a>.',\n  代码_贡献_信息：'<a href="${codeContributionUrl}">Hier</a> lees je hoe je code kunt bijdragen aan de plugin.'，\n  翻译_贡献_信息：'<a href="${translationContributionUrl}">Hier</a> lees je hoe je de plugin in een andere taal kunt vertalen.',
   FOLDERS_TO_IGNORE: "Mappen om te negeren",
   FOLDERS_TO_IGNORE_DESC: "Voer mappaden of globpatronen in op aparte regels, bijvoorbeeld Templates/Scripts of **/*.excalidraw.md. Deze instelling is gemeenschappelijk voor zowel flitskaarten als notities.",
   OBSIDIAN_INTEGRATION: "Integratie in Obsidian",
@@ -6786,9 +6182,7 @@ var nl_default = {
   FLASHCARD_EASY_LABEL: "Gemakkelijk-knoptekst",
   FLASHCARD_GOOD_LABEL: "Goed-knoptekst",
   FLASHCARD_HARD_LABEL: "Moeilijk-knoptekst",
-  FLASHCARD_EASY_DESC: 'Pas het label aan voor de "Gemakkelijk" knop',
-  FLASHCARD_GOOD_DESC: 'Pas het label aan voor de "Goed" knop',
-  FLASHCARD_HARD_DESC: 'Pas het label aan voor de "Moeilijk" knop',
+  FLASHCARD_EASY_DESC: 'Pas het label aan voor de "Gemakkelijk" knop'，\n  FLASHCARD_GOOD_DESC：'Pas het label aan voor de "去了" knop'，\n  FLASHCARD_HARD_DESC：'Pas het label aan voor de "Moeilijk" knop',
   REVIEW_BUTTON_DELAY: "Vertraging knopindrukken (ms)",
   REVIEW_BUTTON_DELAY_DESC: "Voeg een vertraging toe aan de beoordelingsknoppen voordat ze opnieuw kunnen worden ingedrukt.",
   FLASHCARD_TAGS: "Flitskaarttags",
@@ -6820,13 +6214,7 @@ var nl_default = {
   REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Willekeurige kaart uit willekeurige stapel",
   DISABLE_CLOZE_CARDS: "Cloze-kaarten uitschakelen?",
   CONVERT_HIGHLIGHTS_TO_CLOZES: "Converteer ==highlights== naar clozes",
-  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Voeg de <code>${defaultPattern}</code> toe aan/verwijder deze uit uw "Cloze-patronen"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "Converteer **vetgedrukte tekst** naar clozes",
-  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Voeg de <code>${defaultPattern}</code> toe aan/verwijder deze uit uw "Cloze-patronen"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "Converteer {{accolades}} naar clozes",
-  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Voeg de <code>${defaultPattern}</code> toe aan/verwijder deze uit uw "Cloze-patronen"',
-  CLOZE_PATTERNS: "Cloze-patronen",
-  CLOZE_PATTERNS_DESC: 'Voer cloze-patronen in, gescheiden door nieuwe regels. Raadpleeg de <a href="${docsUrl}">wiki</a> voor meer informatie.',
+  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Voeg de <code>${defaultPattern}</code> toe aan/verwijder deze uit uw "Cloze-patronen"',\n  CONVERT_BOLD_TEXT_TO_CLOZES: "Converteer **vetgedrukte tekst** naar clozes",\n  CONVERT_BOLD_TEXT_TO_CLOZES_DESC：'Voeg de <code>${defaultPattern}</code> toe aan/verwijder deze uit uw "Cloze-patronen"'，\n  CONVERT_CURLY_BRACKETS_TO_CLOZES: "Converteer {{accolades}} naar clozes",\n  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC：'Voeg de <code>${defaultPattern}</code> toe aan/verwijder deze uit uw "Cloze-patronen"'，\n  CLOZE_PATTERNS: "完形填空守护者",\n  CLOZE_PATTERNS_DESC：'Voer cloze-patronen in, gescheiden door nieuwe regels. Raadpleeg de <a href="${docsUrl}">wiki</a> voor meer informatie.',
   INLINE_CARDS_SEPARATOR: "Scheidingsteken voor inline flitskaarten",
   FIX_SEPARATORS_MANUALLY_WARNING: "Houd er rekening mee dat u na het wijzigen hiervan handmatig alle flitskaarten die u al hebt, moet bewerken.",
   INLINE_REVERSED_CARDS_SEPARATOR: "Scheidingsteken voor inline omgekeerde flitskaarten",
@@ -6856,233 +6244,23 @@ var nl_default = {
   INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Stapelstructuren: Vouw substapels aanvankelijk uit",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Schakel dit uit om geneste stapels in dezelfde kaart samen te vouwen. Handig als je kaarten hebt die tot meerdere stapels in hetzelfde bestand behoren.",
   ALGORITHM: "Algoritme",
-  CHECK_ALGORITHM_WIKI: 'Voor meer informatie, bekijk de <a href="${algoUrl}">algoritmedetails</a>.',
-  SM2_OSR_VARIANT: "OSR's variant van SM-2",
-  BASE_EASE: "Basisgemak",
-  BASE_EASE_DESC: "minimum = 130, bij voorkeur ongeveer 250.",
-  BASE_EASE_MIN_WARNING: "Het basisgemak moet minimaal 130 zijn.",
-  LAPSE_INTERVAL_CHANGE: "Intervalwijziging wanneer u een flitskaart/notitie als moeilijk beoordeelt",
-  LAPSE_INTERVAL_CHANGE_DESC: "nieuwInterval = oudInterval * intervalWijziging / 100.",
-  EASY_BONUS: "Gemakkelijk Bonus",
-  EASY_BONUS_DESC: "De Gemakkelijk Bonus stelt u in staat het verschil in intervallen in te stellen tussen het beantwoorden van Goed en Gemakkelijk op een flitskaart/notitie (minimum = 100%).",
-  EASY_BONUS_MIN_WARNING: "De Gemakkelijk Bonus moet minimaal 100 zijn.",
-  LOAD_BALANCE: "Schakel load balancer in",
+  CHECK_ALGORITHM_WIKI: 'Voor meer informatie, bekijk de <a href="${algoUrl}">algoritmedetails</a>.'，\n  SM2_OSR_VARIANT：“OSR's variant van SM-2"，\n  BASE_EASE："Basisgemak"，\n  BASE_EASE_DESC："minimum = 130, bij voorkeur ongeveer 250.",\n  BASE_EASE_MIN_WARNING："Het basisgemak moet minimaal 130 zijn."，\n  LAPSE_INTERVAL_CHANGE："Intervalwijziging wanneer u een flitskaart/notitie als moeilijk beoordeelt"，\n  LAPSE_INTERVAL_CHANGE_DESC："nieuwInterval = oudInterval * intervalWijziging / 100."，\n  EASY_BONUS："Gemakkelijk Bonus"，\n  EASY_BONUS_DESC："De Gemakkelijk Bonus stelt u in staat het verschil in intervallen in te stellen tussen het beantwoorden van Goed en Gemakkelijk op een flitskaart/notitie (minimum = 100%)."，\n  EASY_BONUS_MIN_WARNING："De Gemakkelijk Bonus moet minimaal 100 zijn."，\n  负载平衡："Schakel load balancer in",
   LOAD_BALANCE_DESC: `Het interval wordt iets aangepast, zodat het aantal beoordelingen per dag consistenter is.
         Het is vergelijkbaar met Anki's fuzz, maar in plaats van willekeurig te zijn, kiest het de dag met het minste aantal beoordelingen.
         Het is uitgeschakeld voor kleine intervallen.`,
-  MAX_INTERVAL: "Maximum interval in dagen",
-  MAX_INTERVAL_DESC: "Hiermee kunt u een bovengrens voor het interval instellen (standaard = 100 jaar).",
-  MAX_INTERVAL_MIN_WARNING: "Het maximale interval moet minimaal 1 dag zijn.",
-  MAX_LINK_CONTRIB: "Maximale linkbijdrage",
-  MAX_LINK_CONTRIB_DESC: "Maximale bijdrage van de gewogen gemak van gekoppelde notities aan het initi\xEBle gemak.",
-  LOGGING: "Loggen",
-  DISPLAY_SCHEDULING_DEBUG_INFO: "Toon de foutopsporingsinformatie van de planner op de ontwikkelaarsconsole",
-  DISPLAY_PARSER_DEBUG_INFO: "Toon de foutopsporingsinformatie van de parser op de ontwikkelaarsconsole",
-  SCHEDULING: "Plannen",
-  EXPERIMENTAL: "Experimenteel",
-  HELP: "Help",
-  STORE_IN_NOTES: "In de notities",
-  // sidebar.ts
-  NOTES_REVIEW_QUEUE: "Notities beoordelingswachtrij",
-  CLOSE: "Sluiten",
-  NEW: "Nieuw",
-  YESTERDAY: "Gisteren",
-  TODAY: "Vandaag",
-  TOMORROW: "Morgen",
-  // stats-modal.tsx
-  STATS_TITLE: "Statistieken",
-  MONTH: "Maand",
-  QUARTER: "Kwartaal",
-  YEAR: "Jaar",
-  LIFETIME: "Levensduur",
-  FORECAST: "Voorspelling",
-  FORECAST_DESC: "Het aantal kaarten dat in de toekomst aan de beurt is",
-  SCHEDULED: "Gepland",
-  DAYS: "Dagen",
-  NUMBER_OF_CARDS: "Aantal kaarten",
-  REVIEWS_PER_DAY: "Gemiddeld: ${avg} beoordelingen/dag",
-  INTERVALS: "Intervallen",
-  INTERVALS_DESC: "Vertragingen totdat beoordelingen opnieuw worden weergegeven",
-  COUNT: "Aantal",
-  INTERVALS_SUMMARY: "Gemiddeld interval: ${avg}, Langste interval: ${longest}",
-  EASES: "Gemakken",
-  EASES_SUMMARY: "Gemiddeld gemak: ${avgEase}",
-  EASE: "Gemak",
-  CARD_TYPES: "Kaarttypen",
-  CARD_TYPES_DESC: "Dit omvat ook begraven kaarten, indien aanwezig",
-  CARD_TYPE_NEW: "Nieuw",
-  CARD_TYPE_YOUNG: "Jong",
-  CARD_TYPE_MATURE: "Volwassen",
-  CARD_TYPES_SUMMARY: "Totaal aantal kaarten: ${totalCardsCount}",
-  SEARCH: "Zoeken",
-  PREVIOUS: "Vorige",
-  NEXT: "Volgende"
-};
-
-// src/lang/locale/no.ts
-var no_default = {};
-
-// src/lang/locale/pl.ts
-var pl_default = {
-  // flashcard-modal.tsx
-  DECKS: "Talie",
-  DUE_CARDS: "Fiszki z terminem",
-  NEW_CARDS: "Nowe fiszki",
-  TOTAL_CARDS: "Wszystkie karty",
-  BACK: "Wstecz",
-  SKIP: "Pomi\u0144",
-  EDIT_CARD: "Edytuj kart\u0119",
-  RESET_CARD_PROGRESS: "Zresetuj post\u0119p karty",
-  HARD: "Trudne",
-  GOOD: "\u015Arednio Trudne",
-  EASY: "\u0141atwe",
-  SHOW_ANSWER: "Poka\u017C odpowied\u017A",
-  CARD_PROGRESS_RESET: "Post\u0119p karty zosta\u0142 zresetowany.",
-  SAVE: "Zapisz",
-  CANCEL: "Anuluj",
-  NO_INPUT: "Nie wprowadzono warto\u015Bci.",
-  CURRENT_EASE_HELP_TEXT: "Aktualna \u0142atwo\u015B\u0107: ",
-  CURRENT_INTERVAL_HELP_TEXT: "Aktualny interwa\u0142: ",
-  CARD_GENERATED_FROM: "Wygenerowano z: ${notePath}",
-  // main.ts
-  OPEN_NOTE_FOR_REVIEW: "Otw\xF3rz notatk\u0119 do przegl\u0105du",
-  REVIEW_CARDS: "Przegl\u0105daj fiszki",
-  REVIEW_DIFFICULTY_FILE_MENU: "Przegl\u0105daj: ${difficulty}",
-  REVIEW_NOTE_DIFFICULTY_CMD: "Przegl\u0105daj notatk\u0119 jako ${difficulty}",
-  CRAM_ALL_CARDS: "Wybierz tali\u0119 do intensywnego uczenia",
-  REVIEW_ALL_CARDS: "Przegl\u0105daj fiszki ze wszystkich notatek",
-  REVIEW_CARDS_IN_NOTE: "Przegl\u0105daj fiszki w tej notatce",
-  CRAM_CARDS_IN_NOTE: "Intensywne uczenie fiszek w tej notatce",
-  VIEW_STATS: "Wy\u015Bwietl statystyki",
-  OPEN_REVIEW_QUEUE_VIEW: "Open Notes Review Queue in sidebar",
-  STATUS_BAR: "Przegl\u0105daj: ${dueNotesCount} notatek, ${dueFlashcardsCount} fiszek z terminem",
-  SYNC_TIME_TAKEN: "Synchronizacja zaj\u0119\u0142a ${t}ms",
-  NOTE_IN_IGNORED_FOLDER: "Notatka jest zapisana w folderze zignorowanym (sprawd\u017A ustawienia).",
-  PLEASE_TAG_NOTE: "Prosz\u0119 odpowiednio otagowa\u0107 notatk\u0119 do przegl\u0105du (w ustawieniach).",
-  RESPONSE_RECEIVED: "Otrzymano odpowied\u017A.",
-  NO_DECK_EXISTS: "Nie istnieje talia o nazwie ${deckName}",
-  ALL_CAUGHT_UP: "Jeste\u015B teraz na bie\u017C\u0105co :D.",
-  // scheduling.ts
-  DAYS_STR_IVL: "${interval} dni",
-  MONTHS_STR_IVL: "${interval} miesi\u0119cy",
-  YEARS_STR_IVL: "${interval} lata",
-  DAYS_STR_IVL_MOBILE: "${interval}d",
-  MONTHS_STR_IVL_MOBILE: "${interval}m",
-  YEARS_STR_IVL_MOBILE: "${interval}r",
-  // settings.ts
-  SETTINGS_HEADER: "Spaced Repetition",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: 'Aby uzyska\u0107 wi\u0119cej informacji, sprawd\u017A <a href="${wikiUrl}">wiki</a>.',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
-  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
-  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
-  FOLDERS_TO_IGNORE: "Foldery do zignorowania",
-  FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "Fiszki",
-  FLASHCARD_EASY_LABEL: "Tekst przycisku \u0141atwe",
-  FLASHCARD_GOOD_LABEL: "Tekst przycisku \u015Arednio trudne",
-  FLASHCARD_HARD_LABEL: "Tekst przycisku Trudne",
-  FLASHCARD_EASY_DESC: 'Dostosuj etykiet\u0119 dla przycisku "\u0141atwe"',
-  FLASHCARD_GOOD_DESC: 'Dostosuj etykiet\u0119 dla przycisku "\u015Arednio trudne"',
-  FLASHCARD_HARD_DESC: 'Dostosuj etykiet\u0119 dla przycisku "Trudne"',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "Tagi fiszek",
-  FLASHCARD_TAGS_DESC: "Wprowad\u017A tagi oddzielone spacj\u0105 lub nowymi liniami, np. #fiszki #talia2 #talia3.",
-  CONVERT_FOLDERS_TO_DECKS: "Czy konwertowa\u0107 foldery na talie i podtalie?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "Jest to alternatywa dla opcji tag\xF3w fiszek powy\u017Cej.",
-  INLINE_SCHEDULING_COMMENTS: "Czy zachowa\u0107 komentarz harmonogramowania w tej samej linii co ostatnia linia fiszki?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "W\u0142\u0105czenie tej opcji sprawi, \u017Ce komentarze HTML nie b\u0119d\u0105 przerywa\u0107 formatowania listy.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "Czy ukrywa\u0107 karty rodze\u0144stwa do nast\u0119pnego dnia?",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Rodze\u0144stwo to karty wygenerowane z tego samego tekstu karty, np. usuni\u0119cia zamaskowane",
-  SHOW_CARD_CONTEXT: "Czy pokazywa\u0107 kontekst na kartach?",
-  SHOW_CARD_CONTEXT_DESC: "np. Tytu\u0142 > Nag\u0142\xF3wek 1 > Podnag\u0142\xF3wek > ... > Podnag\u0142\xF3wek",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
-  CARD_MODAL_HEIGHT_PERCENT: "Procentowa wysoko\u015B\u0107 fiszki",
-  CARD_MODAL_SIZE_PERCENT_DESC: "Powinno by\u0107 ustawione na 100% na urz\u0105dzeniach mobilnych lub gdy masz bardzo du\u017Ce obrazy",
-  RESET_DEFAULT: "Zresetuj do domy\u015Blnych",
-  CARD_MODAL_WIDTH_PERCENT: "Procentowa szeroko\u015B\u0107 fiszki",
-  RANDOMIZE_CARD_ORDER: "Czy losowa\u0107 kolejno\u015B\u0107 kart podczas przegl\u0105du?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Kolejno\u015B\u0107 kart w talii wy\u015Bwietlana podczas przegl\u0105dania",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Kolejno w ramach talii (Najpierw wszystkie nowe karty)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Kolejno w ramach talii (Najpierw wszystkie karty z terminem)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Losowo w ramach talii (Najpierw wszystkie nowe karty)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Losowo w ramach talii (Najpierw wszystkie karty z terminem)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Losowa karta z losowej talii",
-  REVIEW_DECK_ORDER: "Kolejno\u015B\u0107 talii wy\u015Bwietlana podczas przegl\u0105dania",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Kolejno (gdy wszystkie karty w poprzedniej talii przegl\u0105dni\u0119te)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Losowo (gdy wszystkie karty w poprzedniej talii przegl\u0105dni\u0119te)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Losowa karta z losowej talii",
-  DISABLE_CLOZE_CARDS: "Wy\u0142\u0105czy\u0107 karty zamaskowane?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "Konwertowa\u0107 ==pod\u015Bwietlenia== na karty zamaskowane?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Dodaj/usu\u0144 <code>${defaultPattern}</code> z "Wzory kart zamaskowanych"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "Konwertowa\u0107 pogrubiony tekst na karty zamaskowane?",
-  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Dodaj/usu\u0144 <code>${defaultPattern}</code> z "Wzory kart zamaskowanych"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "Konwertowa\u0107 {{klamry}} na karty zamaskowane?",
-  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Dodaj/usu\u0144 <code>${defaultPattern}</code> z "Wzory kart zamaskowanych"',
-  CLOZE_PATTERNS: "Wzory kart zamaskowanych",
-  CLOZE_PATTERNS_DESC: 'Wprowad\u017A wzory kart zamaskowanych oddzielone nowymi liniami. Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "Separator dla kart zamaskowanych w linii",
-  FIX_SEPARATORS_MANUALLY_WARNING: "Pami\u0119taj, \u017Ce po zmianie tego musisz r\u0119cznie edytowa\u0107 wszystkie karty zamaskowane, kt\xF3re ju\u017C masz.",
-  INLINE_REVERSED_CARDS_SEPARATOR: "Separator dla kart zamaskowanych odwr\xF3conych w linii",
-  MULTILINE_CARDS_SEPARATOR: "Separator dla kart zamaskowanych wieloliniowych",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "Separator dla kart zamaskowanych odwr\xF3conych wieloliniowych",
-  MULTILINE_CARDS_END_MARKER: "Caracteres que denotam o fim de clozes e flashcards multilineares",
-  NOTES: "Notatki",
-  NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "W\u0142\u0105czy\u0107 panel przegl\u0105du notatek przy starcie",
-  TAGS_TO_REVIEW: "Tagi do przegl\u0105du",
-  TAGS_TO_REVIEW_DESC: "Wprowad\u017A tagi oddzielone spacj\u0105 lub nowymi liniami, np. #przegl\u0105d #tag2 #tag3.",
-  OPEN_RANDOM_NOTE: "Otw\xF3rz losow\u0105 notatk\u0119 do przegl\u0105du",
-  OPEN_RANDOM_NOTE_DESC: "Po wy\u0142\u0105czeniu tej opcji notatki s\u0105 uporz\u0105dkowane wed\u0142ug istotno\u015Bci (PageRank).",
-  AUTO_NEXT_NOTE: "Automatycznie otwiera\u0107 nast\u0119pn\u0105 notatk\u0119 po przegl\u0105dzie",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Wy\u0142\u0105czy\u0107 opcje przegl\u0105du w menu pliku, tj. Przegl\u0105daj: \u0141atwe Dobrze Trudne",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "Je\u015Bli wy\u0142\u0105czysz opcje przegl\u0105du w menu Plik, mo\u017Cesz przegl\u0105da\u0107 swoje notatki za pomoc\u0105 polece\u0144 wtyczki i, je\u015Bli je zdefiniowa\u0142e\u015B, przypisanych skr\xF3t\xF3w klawiszowych.",
-  MAX_N_DAYS_REVIEW_QUEUE: "Maksymalna liczba dni do wy\u015Bwietlenia w panelu prawym",
-  MIN_ONE_DAY: "Liczba dni musi wynosi\u0107 co najmniej 1.",
-  VALID_NUMBER_WARNING: "Podaj prawid\u0142ow\u0105 liczb\u0119.",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
+  MAX_INTERVAL: "Maximum interval in dagen"，\n  MAX_INTERVAL_DESC："Hiermee kunt u een bovengrens voor het interval instellen (standaard = 100 jaar)."，\n  最大间隔最小警告："Het maximale interval moet minimaal 1 dag zijn."，\n  MAX_LINK_CONTRIB："Maximale linkbijdrage"，\n  MAX_LINK_CONTRIB_DESC："Maximale bijdrage van de gewogen gemak van gekoppelde notities aan het initi\xEBle gemak."，\n  记录："Loggen"，\n  DISPLAY_SCHEDULING_DEBUG_INFO："Toon de foutopsporingsinformatie van de planner op de ontwikkelaarsconsole"，\n  DISPLAY_PARSER_DEBUG_INFO："Toon de foutopsporingsinformatie van de parser op de ontwikkelaarsconsole"，\n  调度："Plannen",\n  实验："Experimenteel"，\n  帮助："Help"，\n  STORE_IN_NOTES："In de notities",\n  // 侧边栏.ts\n  NOTES_REVIEW_QUEUE:"Notities beoordelingswachtrij",\n  关闭："Sluiten"，\n  新："Nieuw"，\n  昨天："Gisteren"，\n  今天："Vandaag"，\n  明天："Morgen",\n  // 统计模态.tsx\n  统计标题："Statistieken"，\n  月份："Maand"，\n  季度："Kwartaal"，\n  年："Jaar"，\n  生命周期："Levensduur"，\n  预测："Voorspelling"，\n  预测_DESC："Het aantal kaarten dat in de toekomst aan de beurt is"，\n  计划："Gepland"，\n  天数："Dagen"，\n  NUMBER_OF_卡："Aantal kaarten"，\n  REVIEWS_PER_DAY："Gemiddeld: ${avg} beoordelingen/dag"，\n  间隔："Intervallen"，\n  INTERVALS_DESC："Vertragingen totdat beoordelingen opnieuw worden weergegeven"，\n  计数："Aantal",\n  INTERVALS_SUMMARY："Gemiddeld interval: ${avg}, Langste interval: ${longest}"，\n  缓解："Gemakken"，\n  EASES_SUMMARY："Gemiddeld gemak: ${avgEase}"，\n  轻松："Gemak",\n  卡类型："Kaarttypen"，\n  CARD_TYPES_DESC："Dit omvat ook begraven kaarten, indien aanwezig"，\n  CARD_TYPE_NEW："Nieuw"，\n  CARD_TYPE_YOUNG："Jong",\n  CARD_TYPE_MATURE："Volwassen"，\n  CARD_TYPES_SUMMARY："Totaal aantal kaarten: ${totalCardsCount}"，\n  搜索："Zoeken"，\n  上一个："Vorige"，\n  下一个："Volgende"};\n\n// src/lang/locale/no.ts\nvar no_default = {};\n\n// src/lang/locale/pl.ts\nvar pl_default = {\n  // 抽认卡模态.tsx\n  甲板："Talie"，\n  DUE_CARDS："Fiszki z terminem",\n  新卡："Nowe fiszki"，\n  卡片总数："Wszystkie karty"，\n  背面："Wstecz"，\n  跳过："Pomi\u0144"，\n  编辑卡："Edytuj kart\u0119"，\n  重置卡进度："Zresetuj post\u0119p karty"，\n  困难："Trudne"，\n  好："\u015Arednio Trudne"，\n  简单："\u0141atwe"，\n  SHOW_ANSWER："Poka\u017C odpowied\u017A"，\n  CARD_PROGRESS_RESET："Post\u0119p karty zosta\u0142 zresetowany."，\n  保存："Zapisz"，\n  取消："Anuluj"，\n  无输入："Nie wprowadzono warto\u015Bci."，\n  当前_EASE_HELP_TEXT："Aktualna \u0142atwo\u015B\u0107: ",\n  当前_间隔_帮助_文本："Aktualny interwa\u0142: ",\n  CARD_GENERATED_FROM："Wygenerowano z: ${notePath}"，\n  // main.ts\n  OPEN_NOTE_FOR_REVIEW："Otw\xF3rz notatk\u0119 do przegl\u0105du"，\n  评论卡："Przegl\u0105daj fiszki"，\n  REVIEW_DIFFICULTY_FILE_MENU："Przegl\u0105daj: ${difficulty}"，\n  REVIEW_NOTE_DIFFICULTY_CMD："Przegl\u0105daj notatk\u0119 jako ${difficulty}"，\n  CRAM_ALL_CARDS："Wybierz tali\u0119 do intensywnego uczenia"，\n  REVIEW_ALL_CARDS："Przegl\u0105daj fiszki ze wszystkich notatek"，\n  REVIEW_CARDS_IN_NOTE："Przegl\u0105daj fiszki w tej notatce"，\n  CRAM_CARDS_IN_NOTE："Intensywne uczenie fiszek w tej notatce"，\n  查看统计数据："Wy\u015Bwietl statystyki"，\n  OPEN_REVIEW_QUEUE_VIEW："Open Notes Review Queue in sidebar"，\n  状态栏："Przegl\u0105daj: ${dueNotesCount} notatek, ${dueFlashcardsCount} fiszek z terminem"，\n  SYNC_TIME_TAKEN："Synchronizacja zaj\u0119\u0142a ${t}ms"，\n  注意_IN_IGNORED_FOLDER："Notatka jest zapisana w folderze zignorowanym (sprawd\u017A ustawienia)."，\n  请_TAG_注意："Prosz\u0119 odpowiednio otagowa\u0107 notatk\u0119 do przegl\u0105du (w ustawieniach)."，\n  RESPONSE_RECEIVED："Otrzymano odpowied\u017A."，\n  不存在甲板："Nie istnieje talia o nazwie ${deckName}"，\n  ALL_CAUGHT_UP："Jeste\u015B teraz na bie\u017C\u0105co :D.",\n  // 调度.ts\n  DAYS_STR_IVL："${interval} dni"，\n  MONTHS_STR_IVL："${interval} miesi\u0119cy"，\n  YEARS_STR_IVL："${interval} lata"，\n  DAYS_STR_IVL_MOBILE："${interval}d"，\n  MONTHS_STR_IVL_MOBILE："${interval}m"，\n  YEARS_STR_IVL_MOBILE："${interval}r",\n  // 设置.ts\n  设置_标题："Spaced Repetition"，\n  GROUP_TAGS_FOLDERS："Tags & Folders",\n  GROUP_FLASHCARD_REVIEW："Flashcard Review"，\n  GROUP_FLASHCARD_SEPARATORS："Flashcard Separators"，\n  组数据存储："Storage of Scheduling Data"，\n  GROUP_DATA_STORAGE_DESC："Choose where to store the scheduling data"，\n  GROUP_FLASHcardS_NOTES："Flashcards & Notes"，\n  GROUP_CONTRIBUTING："Contributing"，\n  CHECK_WIKI: 'Aby uzyskać więcej informacji, sprawdź <a href="${wikiUrl}">wiki</a>。',\n  GITHUB_DISCUSSIONS: '访问 <a href="${discussionsUrl}">讨论</a>部分，用于问答帮助、反馈和一般讨论。',\n  GITHUB_ISSUES: '在原型中提出问题 <a href="${issuesUrl}">此处</a>。',\n  GITHUB_SOURCE_CODE: '该项目的源代码可在 <a href="${githubProjectUrl}">GitHub</a>.',
+  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">这里</a>如何向插件贡献代码。',\n  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">这里</a>如何将插件翻译成另一种语言。',\n  FOLDERS_TO_IGNORE："Foldery do zignorowania"，\n  FOLDERS_TO_IGNORE_DESC："Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes."，\n  黑曜石集成："Integration into Obsidian"，\n  抽认卡："Fiszki",\n  闪存卡_EASY_标签："Tekst przycisku \u0141atwe"，\n  FLASHCARD_GOOD_LABEL："Tekst przycisku \u015Arednio trudne"，\n  闪存卡_硬标签："Tekst przycisku Trudne",\n  FLASHCARD_EASY_DESC: 'Dostosuj etykietę dla przycisku"\u0141atwe"',\n  FLASHCARD_GOOD_DESC: 'Dostosuj etykietę dla przycisku"\u015Arednio trudne"',\n  FLASHCARD_HARD_DESC: 'Dostosuj etykietę dla przycisku"Trudne"',\n  REVIEW_BUTTON_DELAY："Button Press Delay (ms)"，\n  REVIEW_BUTTON_DELAY_DESC："Add a delay to the review buttons before they can be pressed again."，\n  闪存卡标签："Tagi fiszek",\n  FLASHCARD_TAGS_DESC："Wprowad\u017A tagi oddzielone spacj\u0105 lub nowymi liniami, np. #fiszki #talia2 #talia3.",\n  CONVERT_FOLDERS_TO_DECKS："Czy konwertowa\u0107 foldery na talie i podtalie?"，\n  CONVERT_FOLDERS_TO_DECKS_DESC："Jest to alternatywa dla opcji tag\xF3w fiszek powy\u017Cej."，\n  内联调度注释："Czy zachowa\u0107 komentarz harmonogramowania w tej samej linii co ostatnia linia fiszki?",\n  INLINE_SCHEDULING_COMMENTS_DESC："W\u0142\u0105czenie tej opcji sprawi, \u017Ce komentarze HTML nie b\u0119d\u0105 przerywa\u0107 formatowania listy.",\n  BURY_SIBLINGS_TILL_NEXT_DAY："Czy ukrywa\u0107 karty rodze\u0144stwa do nast\u0119pnego dnia?",\n  BURY_SIBLINGS_TILL_NEXT_DAY_DESC："Rodze\u0144stwo to karty wygenerowane z tego samego tekstu karty, np. usuni\u0119cia zamaskowane"，\n  SHOW_CARD_CONTEXT："Czy pokazywa\u0107 kontekst na kartach?"，\n  SHOW_CARD_CONTEXT_DESC："np. Tytu\u0142 > Nag\u0142\xF3wek 1 > Podnag\u0142\xF3wek > ... > Podnag\u0142\xF3wek",\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS："Show next review time in the review buttons"，\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC："Useful to know how far in the future your cards are being pushed."，\n  CARD_MODAL_HEIGHT_PERCENT："Procentowa wysoko\u015B\u0107 fiszki"，\n  CARD_MODAL_SIZE_PERCENT_DESC："Powinno by\u0107 ustawione na 100% na urz\u0105dzeniach mobilnych lub gdy masz bardzo du\u017Ce obrazy"，\n  RESET_DEFAULT："Zresetuj do domy\u015Blnych",\n  CARD_MODAL_WIDTH_PERCENT："Procentowa szeroko\u015B\u0107 fiszki"，\n  随机卡顺序："Czy losowa\u0107 kolejno\u015B\u0107 kart podczas przegl\u0105du?"，\n  REVIEW_CARD_ORDER_WITHIN_DECK："Kolejno\u015B\u0107 kart w talii wy\u015Bwietlana podczas przegl\u0105dania"，\n  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL："Kolejno w ramach talii (Najpierw wszystkie nowe karty)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL："Kolejno w ramach talii (Najpierw wszystkie karty z terminem)",\n  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM："Losowo w ramach talii (Najpierw wszystkie nowe karty)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM："Losowo w ramach talii (Najpierw wszystkie karty z terminem)"，\n  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD："Losowa karta z losowej talii"，\n  REVIEW_DECK_ORDER："Kolejno\u015B\u0107 talii wy\u015Bwietlana podczas przegl\u0105dania",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL："Kolejno (gdy wszystkie karty w poprzedniej talii przegl\u0105dni\u0119te)",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM："Losowo (gdy wszystkie karty w poprzedniej talii przegl\u0105dni\u0119te)"，\n  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD："Losowa karta z losowej talii"，\n  DISABLE_CLOZE_CARDS："Wy\u0142\u0105czy\u0107 karty zamaskowane?"，\n  CONVERT_HIGHLIGHTS_TO_CLOZES："Konwertowa\u0107 ==pod\u015Bwietlenia== na karty zamaskowane?",
+  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Dodaj/usu\u0144 <code>${defaultPattern}</code> z "Wzory kart zamaskowanych"',\n  CONVERT_BOLD_TEXT_TO_CLOZES："Konwertowa\u0107 pogrubiony tekst na karty zamaskowane?",
+  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Dodaj/usu\u0144 <code>${defaultPattern}</code> z "Wzory kart zamaskowanych"',\n  CONVERT_CURLY_BACKETS_TO_CLOZES："Konwertowa\u0107 {{klamry}} na karty zamaskowane?",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Dodaj/usu\u0144 <code>${defaultPattern}</code> z "Wzory kart zamaskowanych"',\n  完形填空模式："Wzory kart zamaskowanych"，\n  CLOZE_PATTERNS_DESC: 'Wprowadź wzory kart zamaskowanych oddzielone nowymi Liniami。检查<a href="${docsUrl}">wiki</a> 获取指导。',\n  INLINE_CARDS_SEPARATOR："Separator dla kart zamaskowanych w linii",\n  FIX_SEPARATORS_MANUALLY_WARNING："Pami\u0119taj, \u017Ce po zmianie tego musisz r\u0119cznie edytowa\u0107 wszystkie karty zamaskowane, kt\xF3re ju\u017C masz.",\n  INLINE_REVERSED_CARDS_SEPARATOR："Separator dla kart zamaskowanych odwr\xF3conych w linii"，\n  多行卡分隔符："Separator dla kart zamaskowanych wieloliniowych"，\n  MULTILINE_REVERSED_CARDS_SEPARATOR："Separator dla kart zamaskowanych odwr\xF3conych wieloliniowych"，\n  MULTILINE_CARDS_END_MARKER："Caracteres que denotam o fim de clozes e flashcards multilineares"，\n  注："Notatki"，\n  注意："Note"，\n  REVIEW_PANE_ON_STARTUP："W\u0142\u0105czy\u0107 panel przegl\u0105du notatek przy starcie"，\n  TAGS_TO_REVIEW："Tagi do przegl\u0105du"，\n  TAGS_TO_REVIEW_DESC："Wprowad\u017A tagi oddzielone spacj\u0105 lub nowymi liniami, np. #przegl\u0105d #tag2 #tag3."，\n  OPEN_RANDOM_NOTE："Otw\xF3rz losow\u0105 notatk\u0119 do przegl\u0105du"，\n  OPEN_RANDOM_NOTE_DESC："Po wy\u0142\u0105czeniu tej opcji notatki s\u0105 uporz\u0105dkowane wed\u0142ug istotno\u015Bci (PageRank)."，\n  自动下一个注释："Automatycznie otwiera\u0107 nast\u0119pn\u0105 notatk\u0119 po przegl\u0105dzie",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS："Wy\u0142\u0105czy\u0107 opcje przegl\u0105du w menu pliku, tj. Przegl\u0105daj: \u0141atwe Dobrze Trudne",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC："Je\u015Bli wy\u0142\u0105czysz opcje przegl\u0105du w menu Plik, mo\u017Cesz przegl\u0105da\u0107 swoje notatki za pomoc\u0105 polece\u0144 wtyczki i, je\u015Bli je zdefiniowa\u0142e\u015B, przypisanych skr\xF3t\xF3w klawiszowych."，\n  MAX_N_DAYS_REVIEW_QUEUE："Maksymalna liczba dni do wy\u015Bwietlenia w panelu prawym",\n  MIN_ONE_DAY："Liczba dni musi wynosi\u0107 co najmniej 1."，\n  VALID_NUMBER_WARNING："Podaj prawid\u0142ow\u0105 liczb\u0119."，\n  用户界面："User Interface"，\n  OPEN_IN_TAB："Open in new tab"，\n  OPEN_IN_TAB_DESC："Turn this off to open the plugin in a modal window"，\n  显示状态栏："Show status bar"，\n  显示_状态栏_DESC："Turn this off to hide the flashcard'Obsidian 中的审核状态's status bar"，\n  显示_RIBBON_ICON："Show icon in the ribbon bar"，\n  SHOW_RIBBON_ICON_DESC:"Turn this off to hide the plugin icon from Obsidian's ribbon bar",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Podtalie powinny by\u0107 pocz\u0105tkowo wy\u015Bwietlane rozszerzone",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Wy\u0142\u0105cz to, aby zwin\u0105\u0107 zagnie\u017Cd\u017Cone talie w tej samej karcie. Przydatne, je\u015Bli karty nale\u017C\u0105 do wielu talii w tym samym pliku.",
   ALGORITHM: "Algorytm",
-  CHECK_ALGORITHM_WIKI: 'Aby uzyska\u0107 wi\u0119cej informacji, sprawd\u017A <a href="${algoUrl}">implementacj\u0119 algorytmu</a>.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "Podstawowa \u0142atwo\u015B\u0107",
-  BASE_EASE_DESC: "minimum = 130, preferowana warto\u015B\u0107 to oko\u0142o 250.",
-  BASE_EASE_MIN_WARNING: "Podstawowa \u0142atwo\u015B\u0107 musi wynosi\u0107 co najmniej 130.",
-  LAPSE_INTERVAL_CHANGE: "Zmiana interwa\u0142u podczas przegl\u0105dania fiszki/notatki jako trudne",
-  LAPSE_INTERVAL_CHANGE_DESC: "nowyInterwa\u0142 = staryInterwa\u0142 * zmianaInterwa\u0142u / 100.",
-  EASY_BONUS: "Bonus za \u0142atwe",
-  EASY_BONUS_DESC: "Bonus za \u0142atwe pozwala ustawi\u0107 r\xF3\u017Cnic\u0119 w interwa\u0142ach mi\u0119dzy odpowiedziami \u015Arednio trudne i \u0141atwe na fiszce/notatce (minimum = 100%).",
-  EASY_BONUS_MIN_WARNING: "Bonus za \u0142atwe musi wynosi\u0107 co najmniej 100.",
-  LOAD_BALANCE: "Enable load balancer",
+  CHECK_ALGORITHM_WIKI: 'Aby uzyska\u0107 wi\u0119cej informacji, sprawd\u017A <a href="${algoUrl}">implementacj\u0119 algorytmu</a>.'，\n  SM2_OSR_VARIANT：“OSR's variant of SM-2"，\n  BASE_EASE："Podstawowa \u0142atwo\u015B\u0107"，\n  BASE_EASE_DESC："minimum = 130, preferowana warto\u015B\u0107 to oko\u0142o 250.",\n  BASE_EASE_MIN_WARNING："Podstawowa \u0142atwo\u015B\u0107 musi wynosi\u0107 co najmniej 130."，\n  LAPSE_INTERVAL_CHANGE："Zmiana interwa\u0142u podczas przegl\u0105dania fiszki/notatki jako trudne"，\n  LAPSE_INTERVAL_CHANGE_DESC："nowyInterwa\u0142 = staryInterwa\u0142 * zmianaInterwa\u0142u / 100."，\n  EASY_BONUS："Bonus za \u0142atwe"，\n  EASY_BONUS_DESC："Bonus za \u0142atwe pozwala ustawi\u0107 r\xF3\u017Cnic\u0119 w interwa\u0142ach mi\u0119dzy odpowiedziami \u015Arednio trudne i \u0141atwe na fiszce/notatce (minimum = 100%)."，\n  EASY_BONUS_MIN_WARNING："Bonus za \u0142atwe musi wynosi\u0107 co najmniej 100."，\n  负载平衡："Enable load balancer",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
         It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
-  MAX_INTERVAL: "Maksymalny interwa\u0142 w dniach",
-  MAX_INTERVAL_DESC: "Pozwala na ustawienie g\xF3rnego limitu interwa\u0142u (domy\u015Blnie = 100 lat).",
-  MAX_INTERVAL_MIN_WARNING: "Maksymalny interwa\u0142 musi wynosi\u0107 co najmniej 1 dzie\u0144.",
-  MAX_LINK_CONTRIB: "Maksymalny wk\u0142ad \u0142\u0105cza",
-  MAX_LINK_CONTRIB_DESC: "Maksymalny wk\u0142ad wa\u017Conej \u0142atwo\u015Bci po\u0142\u0105czonych notatek do pocz\u0105tkowej \u0142atwo\u015Bci.",
-  LOGGING: "Logowanie",
-  DISPLAY_SCHEDULING_DEBUG_INFO: "Wy\u015Bwietl informacje debugowania w konsoli deweloperskiej",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
+  MAX_INTERVAL: "Maksymalny interwa\u0142 w dniach"，\n  MAX_INTERVAL_DESC："Pozwala na ustawienie g\xF3rnego limitu interwa\u0142u (domy\u015Blnie = 100 lat)."，\n  最大间隔最小警告："Maksymalny interwa\u0142 musi wynosi\u0107 co najmniej 1 dzie\u0144."，\n  MAX_LINK_CONTRIB："Maksymalny wk\u0142ad \u0142\u0105cza"，\n  MAX_LINK_CONTRIB_DESC："Maksymalny wk\u0142ad wa\u017Conej \u0142atwo\u015Bci po\u0142\u0105czonych notatek do pocz\u0105tkowej \u0142atwo\u015Bci."，\n  记录："Logowanie"，\n  DISPLAY_SCHEDULING_DEBUG_INFO："Wy\u015Bwietl informacje debugowania w konsoli deweloperskiej"，\n  DISPLAY_PARSER_DEBUG_INFO："Show the parser's debugging information on the developer console",
   SCHEDULING: "Scheduling",
   EXPERIMENTAL: "Experimental",
   HELP: "Help",
@@ -7183,102 +6361,99 @@ var pt_br_default = {
   GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
   GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
   GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: 'Para mais informa\xE7\xF5es, cheque a <a href="${wikiUrl}">wiki</a>.',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
+  CHECK_WIKI: 'Para mais informa\xE7\xF5es, cheque a <a href="${wikiUrl}">wiki</a>.'，\n  GITHUB_讨论：'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.'，\n  GITHUB_问题：'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.'，\n  GITHUB_SOURCE_CODE：'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
   CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
   TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
-  FOLDERS_TO_IGNORE: "Pastas para ignorar",
+  FOLDERS_TO_IGNORE: "意大利面无知",
   FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "Flashcards",
+  OBSIDIAN_INTEGRATION: "集成到 Obsidian",
+  FLASHCARDS: "抽认卡",
   FLASHCARD_EASY_LABEL: "Texto do Bot\xE3o de F\xE1cil",
   FLASHCARD_GOOD_LABEL: "Texto do Bot\xE3o de OK",
   FLASHCARD_HARD_LABEL: "Texto do Bot\xE3o de Dif\xEDcil",
-  FLASHCARD_EASY_DESC: 'Customize o r\xF3tulo para o bot\xE3o de "F\xE1cil"',
-  FLASHCARD_GOOD_DESC: 'Customize o r\xF3tulo para o bot\xE3o de "OK"',
-  FLASHCARD_HARD_DESC: 'Customize o r\xF3tulo para o bot\xE3o de "Dif\xEDcil"',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "Etiquetas dos Flashcards",
-  FLASHCARD_TAGS_DESC: "Insira etiquetas separadas por espa\xE7os ou quebras de linha ex: #flashcards #baralho2 #baralho3.",
-  CONVERT_FOLDERS_TO_DECKS: "Converter pastas para baralhos e sub-baralhos?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "Isso \xE9 uma alternativa para a op\xE7\xE3o de etiqueta dos Flashcards em cima.",
-  INLINE_SCHEDULING_COMMENTS: "Salvar coment\xE1rios de agendamento na mesma linha que a \xFAltima linha do flashcard?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "Ligar isso vai fazer com que os coment\xE1rios em HTML n\xE3o quebrem a formata\xE7\xE3o de listas.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "Enterrar cartas irm\xE3s at\xE9 o pr\xF3ximo dia?",
+  FLASHCARD_EASY_DESC: '自定义“简单”按钮',
+  FLASHCARD_GOOD_DESC: '自定义“确定”按钮',
+  FLASHCARD_HARD_DESC: '自定义“困难”按钮',
+  REVIEW_BUTTON_DELAY: "按钮按下延迟 (ms)",
+  REVIEW_BUTTON_DELAY_DESC: "在再次按下审阅按钮之前添加延迟。",
+  FLASHCARD_TAGS: "抽认卡礼仪",
+  FLASHCARD_TAGS_DESC: "西班牙或林哈的独立礼仪 例如：#flashcards #baralho2 #baralho3。",
+  CONVERT_FOLDERS_TO_DECKS: "转换器意大利面 para baralhos 和 sub-baralhos？",
+  CONVERT_FOLDERS_TO_DECKS_DESC: "Isso é可以选择",
+  INLINE_SCHEDULING_COMMENTS: "关于抽认卡的最后一项议程的萨尔瓦评论？",
+  INLINE_SCHEDULING_COMMENTS_DESC: "Ligar isso vai fazer com que os commentários em HTML不存在列表格式。",
+  BURY_SIBLINGS_TILL_NEXT_DAY: "请输入以下内容？",
   BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "Cartas irm\xE3s s\xE3o geradas pelo texto da mesma carta ex: omiss\xE3o de palavras",
-  SHOW_CARD_CONTEXT: "Mostrar contexto nas cartas?",
-  SHOW_CARD_CONTEXT_DESC: "ex: T\xEDtulo > Cabe\xE7alho 1 > Subcabe\xE7alho > ... > Subcabe\xE7alho",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
-  CARD_MODAL_HEIGHT_PERCENT: "Porcentagem da Altura do Flashcard",
-  CARD_MODAL_SIZE_PERCENT_DESC: "Deveria estar configurado em 100% em dispositivos m\xF3veis ou se voc\xEA tem imagens muito grandes",
-  RESET_DEFAULT: "Reiniciar para a pr\xE9-defini\xE7\xE3o",
-  CARD_MODAL_WIDTH_PERCENT: "Porcentagem de Largura do Flashcard",
-  RANDOMIZE_CARD_ORDER: "Aleatorizar a ordem das cartas durante a revis\xE3o?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "Order cards in a deck are displayed during review",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "Sequentially within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "Sequentially within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "Randomly within a deck (All new cards first)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "Randomly within a deck (All due cards first)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
-  REVIEW_DECK_ORDER: "Order decks are displayed during review",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "Sequentially (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "Randomly (once all cards in previous deck reviewed)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Random card from random deck",
+  SHOW_CARD_CONTEXT: "大部分内容都符合宪章？",
+  SHOW_CARD_CONTEXT_DESC: "例如： Título > Cabeçalho 1 > Subcabeçalho > ... > Subcabeçalho",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "在审核按钮中显示下次审核时间",
+  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "有助于了解您的卡片将被推到未来多远。",
+  CARD_MODAL_HEIGHT_PERCENT: "Altura 抽认卡的部分",
+  CARD_MODAL_SIZE_PERCENT_DESC: "Deveria estar configurado em 100% em dispositivos moveis ou se você tem imagens muito grandes",
+  RESET_DEFAULT: "Reiniciar para a预定义",
+  CARD_MODAL_WIDTH_PERCENT: "抽认卡的闪现",
+  RANDOMIZE_CARD_ORDER: "在修订期间任意执行命令？",
+  REVIEW_CARD_ORDER_WITHIN_DECK: "查看期间会显示一副牌中的订单卡",
+  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "在一副牌中按顺序（首先是所有新牌）",
+  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "依次在一副牌（首先是所有到期牌）",
+  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "一副牌中随机（所有新牌优先）",
+  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "一副牌中随机（所有到期牌优先）",
+  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "随机牌组中的随机卡",
+  REVIEW_DECK_ORDER: "订单牌组在审核过程中显示",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "按顺序（一旦检查了前一副牌中的所有牌）",
+  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "随机（一旦检查了前一副牌中的所有牌）",
+  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "随机牌组中的随机卡",
   DISABLE_CLOZE_CARDS: "Desabilitar cartas que usam omiss\xE3o de palavras?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "Converter ==marca-texto== em omiss\xF5es?",
+  CONVERT_HIGHLIGHTS_TO_CLOZES: "转换器 ==marca-texto== 有遗漏吗？",
   CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: 'Adiciona/remove o <code>${defaultPattern}</code> dos seus "Padr\xF5es de Omiss\xE3o"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "Converter **texto em negrito** em omiss\xF5es?",
+  CONVERT_BOLD_TEXT_TO_CLOZES: "转换器 **texto em negrito** em omissões？",
   CONVERT_BOLD_TEXT_TO_CLOZES_DESC: 'Adiciona/remove o <code>${defaultPattern}</code> dos seus "Padr\xF5es de Omiss\xE3o"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "Converter {{chaves}} em omiss\xF5es?",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES: "转换器 {{chaves}} 是否遗漏？",
   CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: 'Adiciona/remove o <code>${defaultPattern}</code> dos seus "Padr\xF5es de Omiss\xE3o"',
   CLOZE_PATTERNS: "Padr\xF5es de Omiss\xE3o",
   CLOZE_PATTERNS_DESC: 'Entre os padr\xF5es de omiss\xE3o separados por quebras de linha. Check the <a href="${docsUrl}">wiki</a> for guidance.',
   INLINE_CARDS_SEPARATOR: "Separador para flashcards inline",
-  FIX_SEPARATORS_MANUALLY_WARNING: "Note que depois de mudar isso voc\xEA vai ter que manualmente mudar quaisquer flashcards que voc\xEA tenha.",
-  INLINE_REVERSED_CARDS_SEPARATOR: "Separador para flashcards inline reversos",
-  MULTILINE_CARDS_SEPARATOR: "Separador para flashcards de m\xFAltiplas linhas",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "Separador para flashcards de m\xFAltiplas linhas reversos",
-  MULTILINE_CARDS_END_MARKER: "Caracteres que denotam o fim de clozes e flashcards multilinha",
-  NOTES: "Notas",
+  FIX_SEPARATORS_MANUALLY_WARNING: "请注意，泥浆的使用方法是使用手动泥浆抽认卡。",
+  INLINE_REVERSED_CARDS_SEPARATOR: "Separador para 抽认卡内联反转",
+  MULTILINE_CARDS_SEPARATOR: "Separador多个链接的抽认卡",
+  MULTILINE_REVERSED_CARDS_SEPARATOR: "多个反转抽认卡的分离器",
+  MULTILINE_CARDS_END_MARKER: "多行完形填空和抽认卡的特征是什么",
+  NOTES: "诺塔斯",
   NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "Habilitar painel de revis\xE3o de notas na inicializa\xE7\xE3o",
+  REVIEW_PANE_ON_STARTUP: "能够修改初始注释",
   TAGS_TO_REVIEW: "Etiquetas para revisar",
-  TAGS_TO_REVIEW_DESC: "Insira etiquetas separadas por espa\xE7os ou quebra de linhas ex: #revisar #etiqueta2 #etiqueta3.",
+  TAGS_TO_REVIEW_DESC: "Insira etiquetas separadas por espaços ou quebra de linhas ex: #revisar #etiqueta2 #etiqueta3。",
   OPEN_RANDOM_NOTE: "Abrir uma nota aleat\xF3ria para revisar",
-  OPEN_RANDOM_NOTE_DESC: "Quando voc\xEA desabilitar isso, as notas v\xE3o ser ordenadas por import\xE2ncia (PageRank).",
-  AUTO_NEXT_NOTE: "Abrir a pr\xF3xima nota automaticamente depois de uma revis\xE3o",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Ative as op\xE7\xF5es de revis\xE3o no menu Arquivo (ex.: Revis\xE3o: F\xE1cil, OK, Dif\xEDcil)",
+  OPEN_RANDOM_NOTE_DESC: "完全可以取消此选项，如重要的顺序 (PageRank) 所示。",
+  AUTO_NEXT_NOTE: "取消自动修改",
+  ENABLE_FILE_MENU_REVIEW_OPTIONS: "作为修改菜单 Arquivo 的操作（例如：Revisão: Fácil、OK、Difícil）",
   ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "Se voc\xEA desativar as op\xE7\xF5es de revis\xE3o no menu Arquivo, poder\xE1 revisar suas anota\xE7\xF5es usando os comandos do plugin e, se os tiver definido, as teclas de atalho associadas.",
-  MAX_N_DAYS_REVIEW_QUEUE: "N\xFAmero m\xE1ximo de dias para exibir no painel direito",
-  MIN_ONE_DAY: "O n\xFAmero de dias deve ser pelo menos 1.",
-  VALID_NUMBER_WARNING: "Por favor Insira um n\xFAmero v\xE1lido.",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "\xC1rvores de baralhos devem inicialmente ser exibidas como expandidas",
+  MAX_N_DAYS_REVIEW_QUEUE: "Número maximo de dias para exibir no painel direito",
+  MIN_ONE_DAY: "1.",
+  VALID_NUMBER_WARNING: "感谢 Insira um número",
+  UI: "用户界面",
+  OPEN_IN_TAB: "在新选项卡中打开",
+  OPEN_IN_TAB_DESC: "将其关闭到在模态窗口中打开插件",
+  SHOW_STATUS_BAR: "显示状态栏",
+  SHOW_STATUS_BAR_DESC: "关闭此功能以在 Obsidian 的状态栏中隐藏抽认卡的审核状态",
+  SHOW_RIBBON_ICON: "在功能区栏中显示图标",
+  SHOW_RIBBON_ICON_DESC: "关闭此功能以隐藏 Obsidian 功能区栏中的插件图标",
+  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "巴拉霍斯开发的食物可以扩展",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Desabilite isso para colapsar baralhos que est\xE3o um dentro do outro na mesma carta. \xDAtil se voc\xEA tem cartas que pertencem a muitos baralhos em um mesmo arquivo.",
   ALGORITHM: "Algor\xEDtmo",
   CHECK_ALGORITHM_WIKI: 'Para mais informa\xE7\xF5es, cheque a <a href="${algoUrl}">implementa\xE7\xE3o do algor\xEDtmo</a>.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "Facilidade base",
-  BASE_EASE_DESC: "m\xEDnimo = 130, preferivelmente por volta de 250.",
-  BASE_EASE_MIN_WARNING: "A facilidade base deve ser pelo menos 130.",
-  LAPSE_INTERVAL_CHANGE: "Mudan\xE7a de intervalo quando voc\xEA revisa um(a) flashcard/nota como dif\xEDcil",
-  LAPSE_INTERVAL_CHANGE_DESC: "novoIntervalo = velhoIntervalo * mudancaIntervalo / 100.",
-  EASY_BONUS: "B\xF4nus de F\xE1cil",
-  EASY_BONUS_DESC: "O b\xF4nus de f\xE1cil te permite mudar a difer\xEAncia entre intervalos de responder OK e F\xE1cil em um(a) flashcard/nota (m\xEDnimo = 100%).",
+  SM2_OSR_VARIANT: "OSR 的 SM-2 变体",
+  BASE_EASE: "设施基础",
+  BASE_EASE_DESC: "mínimo = 130，首选 250。",
+  BASE_EASE_MIN_WARNING: "基础开发工具 130。",
+  LAPSE_INTERVAL_CHANGE: "Mudança de Intervalo quando você revisa um(a) 抽认卡/注意困难",
+  LAPSE_INTERVAL_CHANGE_DESC: "novoIntervalo = velhoIntervalo * mudancaIntervalo / 100。",
+  EASY_BONUS: "奖励设施",
+  EASY_BONUS_DESC: "O Bônus de Fácil 允许调整响应者之间的差异 OK e Fácil em um(a) flashcard/nota (minimo = 100%)。",
   EASY_BONUS_MIN_WARNING: "O b\xF4nus de f\xE1cil deve ser pelo menos 100.",
-  LOAD_BALANCE: "Enable load balancer",
+  LOAD_BALANCE: "启用负载均衡器",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
+        It's 就像 Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
   MAX_INTERVAL: "Intervalo m\xE1ximo em dias",
   MAX_INTERVAL_DESC: "Te permite colocar um limite m\xE1ximo no intervalo (pr\xE9-defini\xE7\xE3o = 100 anos).",
@@ -7287,212 +6462,20 @@ var pt_br_default = {
   MAX_LINK_CONTRIB_DESC: "Contribui\xE7\xE3o m\xE1xima da facilidade ponderada das notas linkadas \xE0 facilidade inicial.",
   LOGGING: "Logging",
   DISPLAY_SCHEDULING_DEBUG_INFO: "Mostrar informa\xE7\xE3o de debugging no console de desenvolvimento",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
-  SCHEDULING: "Scheduling",
-  EXPERIMENTAL: "Experimental",
-  HELP: "Help",
-  STORE_IN_NOTES: "In the notes",
-  // sidebar.ts
-  NOTES_REVIEW_QUEUE: "Fila de Notas para Revisar",
-  CLOSE: "Fechar",
-  NEW: "Novo",
-  YESTERDAY: "Ontem",
-  TODAY: "Hoje",
-  TOMORROW: "Amanh\xE3",
-  // stats-modal.tsx
-  STATS_TITLE: "Estat\xEDsticas",
-  MONTH: "M\xEAs",
-  QUARTER: "Trimestre",
-  YEAR: "Ano",
-  LIFETIME: "Tempo Total",
-  FORECAST: "Previs\xE3o",
-  FORECAST_DESC: "O n\xFAmero de cartas a serem colocadas em dia no futuro",
-  SCHEDULED: "Agendado",
-  DAYS: "Dias",
-  NUMBER_OF_CARDS: "N\xFAmero de cartas",
-  REVIEWS_PER_DAY: "M\xE9dia: ${avg} revis\xF5es/dia",
-  INTERVALS: "Intervalos",
-  INTERVALS_DESC: "Atrasos at\xE9 que as revis\xF5es sejam exibidas de novo",
-  COUNT: "Contagem",
-  INTERVALS_SUMMARY: "Intervalo em m\xE9dia: ${avg}, Maior intervalo: ${longest}",
-  EASES: "Facilidades",
-  EASES_SUMMARY: "Facilidade em m\xE9dia: ${avgEase}",
-  EASE: "Ease",
-  CARD_TYPES: "Tipos de Cartas",
-  CARD_TYPES_DESC: "Isso tamb\xE9m inclui cartas enterradas, caso existam",
-  CARD_TYPE_NEW: "Novo",
-  CARD_TYPE_YOUNG: "Jovem",
-  CARD_TYPE_MATURE: "Amadurecido",
-  CARD_TYPES_SUMMARY: "Total de cartas: ${totalCardsCount}",
-  SEARCH: "Search",
-  PREVIOUS: "Previous",
-  NEXT: "Next"
-};
-
-// src/lang/locale/ro.ts
-var ro_default = {};
-
-// src/lang/locale/ru.ts
-var ru_default = {
-  // flashcard-modal.tsx
-  DECKS: "\u041A\u043E\u043B\u043E\u0434\u044B",
-  DUE_CARDS: "\u041F\u043E\u0432\u0442\u043E\u0440\u044F\u0435\u043C\u044B\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",
-  NEW_CARDS: "\u041D\u043E\u0432\u044B\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",
-  TOTAL_CARDS: "\u0412\u0441\u0435\u0433\u043E \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",
-  BACK: "\u041D\u0430\u0437\u0430\u0434",
-  SKIP: "\u041F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C",
-  EDIT_CARD: "\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0443",
-  RESET_CARD_PROGRESS: "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",
-  HARD: "\u0421\u043B\u043E\u0436\u043D\u043E",
-  GOOD: "\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E",
-  EASY: "\u041B\u0435\u0433\u043A\u043E",
-  SHOW_ANSWER: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043E\u0442\u0432\u0435\u0442",
-  CARD_PROGRESS_RESET: "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",
-  SAVE: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C",
-  CANCEL: "\u041E\u0442\u043C\u0435\u043D\u0430",
-  NO_INPUT: "\u041F\u0443\u0441\u0442\u043E\u0439 \u0432\u0432\u043E\u0434.",
-  CURRENT_EASE_HELP_TEXT: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441: ",
-  CURRENT_INTERVAL_HELP_TEXT: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B: ",
-  CARD_GENERATED_FROM: "\u0421\u0433\u0435\u043D\u0435\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E \u0438\u0437: ${notePath}",
-  // main.ts
-  OPEN_NOTE_FOR_REVIEW: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0437\u0430\u043C\u0435\u0442\u043A\u0443 \u0434\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F",
-  REVIEW_CARDS: "\u0418\u0437\u0443\u0447\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",
-  REVIEW_DIFFICULTY_FILE_MENU: "\u0418\u0437\u0443\u0447\u0435\u043D\u0438\u0435: ${difficulty}",
-  REVIEW_NOTE_DIFFICULTY_CMD: "\u0418\u0437\u0443\u0447\u0430\u0442\u044C \u0437\u0430\u043C\u0435\u0442\u043A\u0443 \u043A\u0430\u043A ${difficulty}",
-  CRAM_ALL_CARDS: "\u0417\u0443\u0431\u0440\u0438\u0442\u044C \u0432\u0441\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u044D\u0442\u043E\u0439 \u043A\u043E\u043B\u043E\u0434\u0435",
-  REVIEW_ALL_CARDS: "\u0418\u0437\u0443\u0447\u0430\u0442\u044C \u0432\u0441\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432\u043E \u0432\u0441\u0435\u0445 \u0437\u0430\u043C\u0435\u0442\u043A\u0430\u0445",
-  REVIEW_CARDS_IN_NOTE: "\u0418\u0437\u0443\u0447\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u044D\u0442\u043E\u0439 \u0437\u0430\u043C\u0435\u0442\u043A\u0435",
-  CRAM_CARDS_IN_NOTE: "\u0417\u0443\u0431\u0440\u0438\u0442\u044C \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u044D\u0442\u043E\u0439 \u0437\u0430\u043C\u0435\u0442\u043A\u0435",
-  VIEW_STATS: "\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0443",
-  OPEN_REVIEW_QUEUE_VIEW: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043E\u0447\u0435\u0440\u0435\u0434\u044C \u043F\u043E\u0432\u0442\u043E\u0440\u0435\u043D\u0438\u044F \u0437\u0430\u043C\u0435\u0442\u043E\u043A \u043D\u0430 \u0431\u043E\u043A\u043E\u0432\u043E\u0439 \u043F\u0430\u043D\u0435\u043B\u0438",
-  STATUS_BAR: "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u044C: ${dueNotesCount} \u0437\u0430\u043C\u0435\u0442\u043E\u043A, ${dueFlashcardsCount} \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",
-  SYNC_TIME_TAKEN: "\u0421\u0438\u043D\u0445\u0440\u043E\u043D\u0438\u0437\u0430\u0446\u0438\u044F \u0437\u0430\u043D\u044F\u043B\u0430 ${t}\u043C\u0441",
-  NOTE_IN_IGNORED_FOLDER: "\u0417\u0430\u043C\u0435\u0442\u043A\u0430 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0430 \u0432 \u0438\u0433\u043D\u043E\u0440\u0438\u0440\u0443\u0435\u043C\u0443\u044E \u043F\u0430\u043F\u043A\u0443 (\u0441\u043C. \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438).",
-  PLEASE_TAG_NOTE: "\u0414\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F, \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E \u043F\u043E\u043C\u0435\u0442\u044C\u0442\u0435 \u0437\u0430\u043C\u0435\u0442\u043A\u0443 \u0442\u0435\u0433\u043E\u043C (\u0441\u043C. \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438).",
-  RESPONSE_RECEIVED: "\u041E\u0442\u0432\u0435\u0442 \u043F\u043E\u043B\u0443\u0447\u0435\u043D.",
-  NO_DECK_EXISTS: "\u041D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0443\u0440\u043E\u0432\u043D\u044F ${deckName}",
-  ALL_CAUGHT_UP: "\u041C\u043E\u043B\u043E\u0434\u0435\u0446! \u0422\u044B \u0441\u043F\u0440\u0430\u0432\u0438\u043B\u0441\u044F \u0438 \u0434\u043E\u0448\u0435\u043B \u0434\u043E \u043A\u043E\u043D\u0446\u0430! :D",
-  // scheduling.ts
-  DAYS_STR_IVL: "${interval} \u0434\u043D\u0435\u0439",
-  MONTHS_STR_IVL: "${interval} \u043C\u0435\u0441\u044F\u0446\u0435\u0432",
-  YEARS_STR_IVL: "${interval} \u0433\u043E\u0434\u043E\u0432",
-  DAYS_STR_IVL_MOBILE: "${interval}\u0434.",
-  MONTHS_STR_IVL_MOBILE: "${interval}\u043C.",
-  YEARS_STR_IVL_MOBILE: "${interval}\u0433.",
-  // settings.ts
-  SETTINGS_HEADER: "Spaced Repetition",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: '\u0414\u043B\u044F \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043F\u043E\u0441\u0435\u0442\u0438\u0442\u0435: <a href="${wikiUrl}">wiki</a>.',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
-  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
-  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
-  FOLDERS_TO_IGNORE: "\u0418\u0433\u043D\u043E\u0440\u0438\u0440\u0443\u0435\u043C\u044B\u0435 \u043F\u0430\u043F\u043A\u0438",
-  FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "\u041A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",
-  FLASHCARD_EASY_LABEL: '\u0422\u0435\u043A\u0441\u0442 \u043A\u043D\u043E\u043F\u043A\u0438 "\u041B\u0435\u0433\u043A\u043E"',
-  FLASHCARD_GOOD_LABEL: '\u0422\u0435\u043A\u0441\u0442 \u043A\u043D\u043E\u043F\u043A\u0438 "\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E"',
-  FLASHCARD_HARD_LABEL: '\u0422\u0435\u043A\u0441\u0442 \u043A\u043D\u043E\u043F\u043A\u0438 "\u0421\u043B\u043E\u0436\u043D\u043E"',
-  FLASHCARD_EASY_DESC: '\u041D\u0430\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u044F\u0440\u043B\u044B\u043A \u0434\u043B\u044F \u043A\u043D\u043E\u043F\u043A\u0438 "\u041B\u0435\u0433\u043A\u043E"',
-  FLASHCARD_GOOD_DESC: '\u041D\u0430\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u044F\u0440\u043B\u044B\u043A \u0434\u043B\u044F \u043A\u043D\u043E\u043F\u043A\u0438 "\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E"',
-  FLASHCARD_HARD_DESC: '\u041D\u0430\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u044F\u0440\u043B\u044B\u043A \u0434\u043B\u044F \u043A\u043D\u043E\u043F\u043A\u0438 "\u0421\u043B\u043E\u0436\u043D\u043E"',
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "\u0422\u0435\u0433\u0438 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",
-  FLASHCARD_TAGS_DESC: "\u0423\u043A\u0430\u0436\u0438\u0442\u0435 \u0442\u0435\u0433\u0438 \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0435 Enter-\u043E\u043C \u0438\u043B\u0438 \u043F\u0440\u043E\u0431\u0435\u043B\u043E\u043C, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440: #flashcards #deck2 #deck3.",
-  CONVERT_FOLDERS_TO_DECKS: "\u041A\u043E\u043D\u0432\u0435\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043F\u0430\u043F\u043A\u0438 \u0432 \u0443\u0440\u043E\u0432\u043D\u0438 \u0438 \u043F\u043E\u0434\u0443\u0440\u043E\u0432\u043D\u0438?",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "\u042D\u0442\u043E \u0430\u043B\u044C\u0442\u0435\u0440\u043D\u0430\u0442\u0438\u0432\u0430 \u043E\u043F\u0438\u0441\u0430\u043D\u043D\u043E\u043C\u0443 \u0432\u044B\u0448\u0435 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0443 \u0442\u0435\u0433\u043E\u0432 \u0444\u043B\u044D\u0448-\u043A\u0430\u0440\u0442",
-  INLINE_SCHEDULING_COMMENTS: "\u0421\u043E\u0445\u0440\u0430\u043D\u044F\u0442\u044C \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439 \u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043D\u0430 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0439 \u0441\u0442\u0440\u043E\u043A\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438?",
-  INLINE_SCHEDULING_COMMENTS_DESC: "\u0412\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u044D\u0442\u043E\u0439 \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0441\u0434\u0435\u043B\u0430\u0435\u0442 \u0442\u0430\u043A, \u0447\u0442\u043E HTML \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0438 \u043D\u0435 \u0431\u0443\u0434\u0443\u0442 \u043B\u043E\u043C\u0430\u0442\u044C \u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u043F\u0438\u0441\u043A\u0430.",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "\u041F\u0440\u044F\u0442\u0430\u0442\u044C \u0440\u043E\u0434\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0434\u043E \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0435\u0433\u043E \u0434\u043D\u044F?",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "\u0420\u043E\u0434\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 - \u0442\u0435, \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u044B \u0438\u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u0442\u0435\u043A\u0441\u0442\u0430, \u043F\u0440\u0438\u043C\u0435\u0440: \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0441 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0430\u043C\u0438 ([...])",
-  SHOW_CARD_CONTEXT: "\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u043A\u043E\u043D\u0442\u0435\u043A\u0441\u0442 (\u0443\u0440\u043E\u0432\u0435\u043D\u044C) \u0432 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0430\u0445 (\u0432\u043E \u0432\u0440\u0435\u043C\u044F \u043F\u043E\u0432\u0442\u043E\u0440\u0435\u043D\u0438\u044F)?",
-  SHOW_CARD_CONTEXT_DESC: "\u043F\u0440\u0438\u043C\u0435\u0440: Title > Heading 1 > Subheading > ... > Subheading",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
-  CARD_MODAL_HEIGHT_PERCENT: "\u0412\u044B\u0441\u043E\u0442\u0430 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u043F\u0440\u043E\u0446\u0435\u043D\u0442\u0430\u0445",
-  CARD_MODAL_SIZE_PERCENT_DESC: "\u0415\u0441\u043B\u0438 \u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0435\u0441\u044C \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u044B\u043C \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u043E\u043C, \u0432\u044B\u0441\u0442\u0430\u0432\u044C\u0442\u0435 100%. \u0418\u043D\u0430\u0447\u0435 \u0443 \u0432\u0430\u0441 \u0431\u0443\u0434\u0443\u0442 \u043E\u0433\u0440\u043E\u043C\u043D\u044B\u0435 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F",
-  RESET_DEFAULT: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u043F\u043E-\u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E",
-  CARD_MODAL_WIDTH_PERCENT: "\u0428\u0438\u0440\u0438\u043D\u0430 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u043F\u0440\u043E\u0446\u0435\u043D\u0442\u0430\u0445",
-  RANDOMIZE_CARD_ORDER: "\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0439 \u043F\u043E\u0440\u044F\u0434\u043E\u043A \u043A\u0430\u0440\u0442 \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F?",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "\u041F\u043E\u0440\u044F\u0434\u043E\u043A \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043A\u0430\u0440\u0442 \u043A\u043E\u043B\u043E\u0434\u044B \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "\u041F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0432\u043D\u0443\u0442\u0440\u0438 \u043A\u043E\u043B\u043E\u0434\u044B (\u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0441\u0435 \u043D\u043E\u0432\u044B\u0435 \u043A\u0430\u0440\u0442\u044B)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "\u041F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0432\u043D\u0443\u0442\u0440\u0438 \u043A\u043E\u043B\u043E\u0434\u044B (\u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0441\u0435 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u0435\u043C\u044B\u0435 \u043A\u0430\u0440\u0442\u044B)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u043E \u0432\u043D\u0443\u0442\u0440\u0438 \u043A\u043E\u043B\u043E\u0434\u044B (\u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0441\u0435 \u043D\u043E\u0432\u044B\u0435 \u043A\u0430\u0440\u0442\u044B)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u043E \u0432\u043D\u0443\u0442\u0440\u0438 \u043A\u043E\u043B\u043E\u0434\u044B (\u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0441\u0435 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u0435\u043C\u044B\u0435 \u043A\u0430\u0440\u0442\u044B)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u0430\u044F \u043A\u0430\u0440\u0442\u0430 \u0438\u0437 \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E\u0439 \u043A\u043E\u043B\u043E\u0434\u044B",
-  REVIEW_DECK_ORDER: "\u041F\u043E\u0440\u044F\u0434\u043E\u043A \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043A\u043E\u043B\u043E\u0434 \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "\u041F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E  (\u043F\u043E\u0441\u043B\u0435 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u0432\u0441\u0435\u0445 \u043A\u0430\u0440\u0442 \u0438\u0437 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0439 \u043A\u043E\u043B\u043E\u0434\u044B)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u043E (\u043F\u043E\u0441\u043B\u0435 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u0432\u0441\u0435\u0445 \u043A\u0430\u0440\u0442 \u0438\u0437 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0439 \u043A\u043E\u043B\u043E\u0434\u044B)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u0430\u044F \u043A\u0430\u0440\u0442\u0430 \u0438\u0437 \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E\u0439 \u043A\u043E\u043B\u043E\u0434\u044B",
-  DISABLE_CLOZE_CARDS: "\u0412\u044B\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u043A\u0430\u0440\u0442\u044B \u0441 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0430\u043C\u0438 (\u043F\u0440\u0438\u043C\u0435\u0440: [...])?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "\u041A\u043E\u043D\u0432\u0435\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C ==\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0439 \u0442\u0435\u043A\u0441\u0442== \u0432 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0438 (\u043F\u0440\u0438\u043C\u0435\u0440: [...])?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C/\u0443\u0434\u0430\u043B\u0438\u0442\u044C <code>${defaultPattern}</code> \u0432 \u0432\u0430\u0448\u0438 "\u0428\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432"',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "\u041A\u043E\u043D\u0432\u0435\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C **\u0436\u0438\u0440\u043D\u044B\u0439 \u0442\u0435\u043A\u0441\u0442** \u0432 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0438 (\u043F\u0440\u0438\u043C\u0435\u0440: [...])?",
-  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C/\u0443\u0434\u0430\u043B\u0438\u0442\u044C <code>${defaultPattern}</code> \u0432 \u0432\u0430\u0448\u0438 "\u0428\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432"',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "\u041A\u043E\u043D\u0432\u0435\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C {{\u0444\u0438\u0433\u0443\u0440\u043D\u044B\u0435 \u0441\u043A\u043E\u0431\u043A\u0438}} \u0432 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0438 (\u043F\u0440\u0438\u043C\u0435\u0440: [...])?",
-  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C/\u0443\u0434\u0430\u043B\u0438\u0442\u044C <code>${defaultPattern}</code> \u0432 \u0432\u0430\u0448\u0438 "\u0428\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432"',
-  CLOZE_PATTERNS: "\u0428\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432",
-  CLOZE_PATTERNS_DESC: '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0448\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432, \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0435 \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u0430\u043C\u0438 \u0441\u0442\u0440\u043E\u043A. Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C \u0434\u043B\u044F \u0432\u043D\u0443\u0442\u0440\u0438\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",
-  FIX_SEPARATORS_MANUALLY_WARNING: "\u0412\u043D\u0438\u043C\u0430\u043D\u0438\u0435! \u041F\u043E\u0441\u043B\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u044D\u0442\u043E\u0433\u043E \u0432\u0430\u043C \u043F\u0440\u0438\u0434\u0451\u0442\u0441\u044F \u0432\u0440\u0443\u0447\u043D\u0443\u044E \u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",
-  INLINE_REVERSED_CARDS_SEPARATOR: "\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C \u0434\u043B\u044F \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0445 \u0432\u043D\u0443\u0442\u0440\u0438\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",
-  MULTILINE_CARDS_SEPARATOR: "\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C \u0434\u043B\u044F \u043C\u043D\u043E\u0433\u043E\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C \u0434\u043B\u044F \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0445 \u043C\u043D\u043E\u0433\u043E\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",
-  MULTILINE_CARDS_END_MARKER: "\u0421\u0438\u043C\u0432\u043E\u043B\u044B, \u043E\u0431\u043E\u0437\u043D\u0430\u0447\u0430\u044E\u0449\u0438\u0435 \u043A\u043E\u043D\u0435\u0446 \u043A\u043B\u043E\u0437\u043E\u0432 \u0438 \u043C\u043D\u043E\u0433\u043E\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",
-  NOTES: "\u0417\u0430\u043C\u0435\u0442\u043A\u0438",
-  NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u043F\u0430\u043D\u0435\u043B\u044C \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A \u043F\u0440\u0438 \u0437\u0430\u043F\u0443\u0441\u043A\u0435 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B",
-  TAGS_TO_REVIEW: "\u0422\u0435\u0433\u0438 \u0434\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F",
-  TAGS_TO_REVIEW_DESC: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u0435\u0433\u0438, \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0435 Enter-\u0430\u043C\u0438 \u0438\u043B\u0438 \u043F\u0440\u043E\u0431\u0435\u043B\u0430\u043C\u0438, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440: #review #tag2 #tag3.",
-  OPEN_RANDOM_NOTE: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u0443\u044E \u0437\u0430\u043C\u0435\u0442\u043A\u0443 \u0434\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F",
-  OPEN_RANDOM_NOTE_DESC: "\u0415\u0441\u043B\u0438 \u0432\u044B\u043A\u043B\u044E\u0447\u0438\u0442\u044C, \u0442\u043E \u0437\u0430\u043C\u0435\u0442\u043A\u0438 \u0431\u0443\u0434\u0443\u0442 \u043E\u0442\u0441\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u044B \u043F\u043E \u0432\u0430\u0436\u043D\u043E\u0441\u0442\u0438 (PageRank).",
-  AUTO_NEXT_NOTE: "\u041F\u043E\u0441\u043B\u0435 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438 \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u0442\u044C \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0443\u044E \u0437\u0430\u043C\u0435\u0442\u043A\u0443",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u043E\u0431\u0437\u043E\u0440\u0430 \u0432 \u043C\u0435\u043D\u044E \u0424\u0430\u0439\u043B (\u0442.\u0435.: \u0418\u0437\u0443\u0447\u0435\u043D\u0438\u0435: \u041B\u0435\u0433\u043A\u043E, \u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E, \u0421\u043B\u043E\u0436\u043D\u043E)",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "\u0415\u0441\u043B\u0438 \u0432\u044B \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u043E\u0431\u0437\u043E\u0440\u0430 \u0432 \u043C\u0435\u043D\u044E \u0424\u0430\u0439\u043B, \u0432\u044B \u0441\u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u043E\u0441\u043C\u0430\u0442\u0440\u0438\u0432\u0430\u0442\u044C \u0441\u0432\u043E\u0438 \u0437\u0430\u043C\u0435\u0442\u043A\u0438 \u0441 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u043A\u043E\u043C\u0430\u043D\u0434 \u043F\u043B\u0430\u0433\u0438\u043D\u0430 \u0438, \u0435\u0441\u043B\u0438 \u0432\u044B \u0438\u0445 \u0437\u0430\u0434\u0430\u043B\u0438, \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0445 \u0433\u043E\u0440\u044F\u0447\u0438\u0445 \u043A\u043B\u0430\u0432\u0438\u0448.",
-  MAX_N_DAYS_REVIEW_QUEUE: "\u041D\u0430\u0438\u0431\u043E\u043B\u044C\u0448\u0435\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0434\u043D\u0435\u0439 \u0434\u043B\u044F \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u043D\u0430 \u043F\u0430\u043D\u0435\u043B\u0438 \u0441\u043F\u0440\u0430\u0432\u0430",
-  MIN_ONE_DAY: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0434\u043D\u0435\u0439 \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 1.",
-  VALID_NUMBER_WARNING: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u0447\u0438\u0441\u043B\u043E.",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
+  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console"，\n  调度："Scheduling",\n  实验："Experimental"，\n  帮助："Help"，\n  STORE_IN_NOTES："In the notes",\n  // 侧边栏.ts\n  NOTES_REVIEW_QUEUE:"Fila de Notas para Revisar",\n  关闭："Fechar"，\n  新："Novo"，\n  昨天："Ontem"，\n  今天："Hoje"，\n  明天："Amanh\xE3",\n  // 统计模态.tsx\n  统计标题："Estat\xEDsticas"，\n  月份："M\xEAs"，\n  季度："Trimestre"，\n  年："Ano"，\n  生命周期："Tempo Total"，\n  预测："Previs\xE3o"，\n  预测_DESC："O n\xFAmero de cartas a serem colocadas em dia no futuro"，\n  计划："Agendado"，\n  天数："Dias"，\n  NUMBER_OF_卡："N\xFAmero de cartas"，\n  REVIEWS_PER_DAY："M\xE9dia: ${avg} revis\xF5es/dia"，\n  间隔："Intervalos"，\n  INTERVALS_DESC："Atrasos at\xE9 que as revis\xF5es sejam exibidas de novo"，\n  计数："Contagem",\n  INTERVALS_SUMMARY："Intervalo em m\xE9dia: ${avg}, Maior intervalo: ${longest}"，\n  缓解："Facilidades"，\n  EASES_SUMMARY："Facilidade em m\xE9dia: ${avgEase}"，\n  轻松："Ease",\n  卡类型："Tipos de Cartas"，\n  CARD_TYPES_DESC："Isso tamb\xE9m inclui cartas enterradas, caso existam"，\n  CARD_TYPE_NEW："Novo"，\n  CARD_TYPE_YOUNG："Jovem",\n  CARD_TYPE_MATURE："Amadurecido"，\n  CARD_TYPES_SUMMARY："Total de cartas: ${totalCardsCount}"，\n  搜索："Search"，\n  上一个："Previous"，\n  下一个："Next"};\n\n// src/lang/locale/ro.ts\nvar ro_default = {};\n\n// src/lang/locale/ru.ts\nvar ru_default = {\n  // 抽认卡模态.tsx\n  甲板："\u041A\u043E\u043B\u043E\u0434\u044B"，\n  DUE_CARDS："\u041F\u043E\u0432\u0442\u043E\u0440\u044F\u0435\u043C\u044B\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",\n  新卡："\u041D\u043E\u0432\u044B\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438"，\n  卡片总数："\u0412\u0441\u0435\u0433\u043E \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A"，\n  背面："\u041D\u0430\u0437\u0430\u0434"，\n  跳过："\u041F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"，\n  编辑卡："\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0443"，\n  重置卡进度："\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438"，\n  困难："\u0421\u043B\u043E\u0436\u043D\u043E"，\n  好："\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E"，\n  简单："\u041B\u0435\u0433\u043A\u043E"，\n  SHOW_ANSWER："\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043E\u0442\u0432\u0435\u0442"，\n  CARD_PROGRESS_RESET："\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438"，\n  保存："\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C"，\n  取消："\u041E\u0442\u043C\u0435\u043D\u0430"，\n  无输入："\u041F\u0443\u0441\u0442\u043E\u0439 \u0432\u0432\u043E\u0434."，\n  当前_EASE_HELP_TEXT："\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441: ",\n  当前_间隔_帮助_文本："\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B: ",\n  CARD_GENERATED_FROM："\u0421\u0433\u0435\u043D\u0435\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E \u0438\u0437: ${notePath}"，\n  // main.ts\n  OPEN_NOTE_FOR_REVIEW："\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0437\u0430\u043C\u0435\u0442\u043A\u0443 \u0434\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F"，\n  评论卡："\u0418\u0437\u0443\u0447\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438"，\n  REVIEW_DIFFICULTY_FILE_MENU："\u0418\u0437\u0443\u0447\u0435\u043D\u0438\u0435: ${difficulty}"，\n  REVIEW_NOTE_DIFFICULTY_CMD："\u0418\u0437\u0443\u0447\u0430\u0442\u044C \u0437\u0430\u043C\u0435\u0442\u043A\u0443 \u043A\u0430\u043A ${difficulty}"，\n  CRAM_ALL_CARDS："\u0417\u0443\u0431\u0440\u0438\u0442\u044C \u0432\u0441\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u044D\u0442\u043E\u0439 \u043A\u043E\u043B\u043E\u0434\u0435"，\n  REVIEW_ALL_CARDS："\u0418\u0437\u0443\u0447\u0430\u0442\u044C \u0432\u0441\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432\u043E \u0432\u0441\u0435\u0445 \u0437\u0430\u043C\u0435\u0442\u043A\u0430\u0445"，\n  REVIEW_CARDS_IN_NOTE："\u0418\u0437\u0443\u0447\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u044D\u0442\u043E\u0439 \u0437\u0430\u043C\u0435\u0442\u043A\u0435"，\n  CRAM_CARDS_IN_NOTE："\u0417\u0443\u0431\u0440\u0438\u0442\u044C \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u044D\u0442\u043E\u0439 \u0437\u0430\u043C\u0435\u0442\u043A\u0435"，\n  查看统计数据："\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0443"，\n  OPEN_REVIEW_QUEUE_VIEW："\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043E\u0447\u0435\u0440\u0435\u0434\u044C \u043F\u043E\u0432\u0442\u043E\u0440\u0435\u043D\u0438\u044F \u0437\u0430\u043C\u0435\u0442\u043E\u043A \u043D\u0430 \u0431\u043E\u043A\u043E\u0432\u043E\u0439 \u043F\u0430\u043D\u0435\u043B\u0438"，\n  状态栏："\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u044C: ${dueNotesCount} \u0437\u0430\u043C\u0435\u0442\u043E\u043A, ${dueFlashcardsCount} \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A"，\n  SYNC_TIME_TAKEN："\u0421\u0438\u043D\u0445\u0440\u043E\u043D\u0438\u0437\u0430\u0446\u0438\u044F \u0437\u0430\u043D\u044F\u043B\u0430 ${t}\u043C\u0441"，\n  注意_IN_IGNORED_FOLDER："\u0417\u0430\u043C\u0435\u0442\u043A\u0430 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0430 \u0432 \u0438\u0433\u043D\u043E\u0440\u0438\u0440\u0443\u0435\u043C\u0443\u044E \u043F\u0430\u043F\u043A\u0443 (\u0441\u043C. \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438)."，\n  请_TAG_注意："\u0414\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F, \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E \u043F\u043E\u043C\u0435\u0442\u044C\u0442\u0435 \u0437\u0430\u043C\u0435\u0442\u043A\u0443 \u0442\u0435\u0433\u043E\u043C (\u0441\u043C. \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438)."，\n  RESPONSE_RECEIVED："\u041E\u0442\u0432\u0435\u0442 \u043F\u043E\u043B\u0443\u0447\u0435\u043D."，\n  不存在甲板："\u041D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0443\u0440\u043E\u0432\u043D\u044F ${deckName}"，\n  ALL_CAUGHT_UP："\u041C\u043E\u043B\u043E\u0434\u0435\u0446! \u0422\u044B \u0441\u043F\u0440\u0430\u0432\u0438\u043B\u0441\u044F \u0438 \u0434\u043E\u0448\u0435\u043B \u0434\u043E \u043A\u043E\u043D\u0446\u0430! :D",\n  // 调度.ts\n  DAYS_STR_IVL："${interval} \u0434\u043D\u0435\u0439"，\n  MONTHS_STR_IVL："${interval} \u043C\u0435\u0441\u044F\u0446\u0435\u0432"，\n  YEARS_STR_IVL："${interval} \u0433\u043E\u0434\u043E\u0432"，\n  DAYS_STR_IVL_MOBILE："${interval}\u0434."，\n  MONTHS_STR_IVL_MOBILE："${interval}\u043C."，\n  YEARS_STR_IVL_MOBILE："${interval}\u0433.",\n  // 设置.ts\n  设置_标题："Spaced Repetition"，\n  GROUP_TAGS_FOLDERS："Tags & Folders",\n  GROUP_FLASHCARD_REVIEW："Flashcard Review"，\n  GROUP_FLASHCARD_SEPARATORS："Flashcard Separators"，\n  组数据存储："Storage of Scheduling Data"，\n  GROUP_DATA_STORAGE_DESC："Choose where to store the scheduling data"，\n  GROUP_FLASHcardS_NOTES："Flashcards & Notes"，\n  GROUP_CONTRIBUTING："Contributing",
+  CHECK_WIKI: '\u0414\u043B\u044F \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043F\u043E\u0441\u0435\u0442\u0438\u0442\u0435: <a href="${wikiUrl}">wiki</a>。',\n  GITHUB_DISCUSSIONS: '访问 <a href="${discussionsUrl}">讨论</a>部分，用于问答帮助、反馈和一般讨论。',\n  GITHUB_ISSUES: '在原型中提出问题 <a href="${issuesUrl}">此处</a>。',\n  GITHUB_SOURCE_CODE: '该项目的源代码可在 <a href="${githubProjectUrl}">GitHub</a>.',
+  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">这里</a>如何向插件贡献代码。',\n  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">这里</a>如何将插件翻译成另一种语言。',\n  FOLDERS_TO_IGNORE："\u0418\u0433\u043D\u043E\u0440\u0438\u0440\u0443\u0435\u043C\u044B\u0435 \u043F\u0430\u043F\u043A\u0438"，\n  FOLDERS_TO_IGNORE_DESC："Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes."，\n  黑曜石集成："Integration into Obsidian"，\n  抽认卡："\u041A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",\n  FLASHCARD_EASY_LABEL: 'Текст кнопки"\u041B\u0435\u0433\u043A\u043E"',\n  FLASHCARD_GOOD_LABEL: 'Текст кнопки"\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E"',\n  FLASHCARD_HARD_LABEL: 'Текст кнопки"\u0421\u043B\u043E\u0436\u043D\u043E"',\n  FLASHCARD_EASY_DESC: 'Настроить ярлык для кнопки"\u041B\u0435\u0433\u043A\u043E"',\n  FLASHCARD_GOOD_DESC: 'Настроить ярлык для кнопки"\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E"',\n  FLASHCARD_HARD_DESC: 'Настроить ярлык для кнопки"\u0421\u043B\u043E\u0436\u043D\u043E"',\n  REVIEW_BUTTON_DELAY："Button Press Delay (ms)"，\n  REVIEW_BUTTON_DELAY_DESC："Add a delay to the review buttons before they can be pressed again."，\n  闪存卡标签："\u0422\u0435\u0433\u0438 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",\n  FLASHCARD_TAGS_DESC："\u0423\u043A\u0430\u0436\u0438\u0442\u0435 \u0442\u0435\u0433\u0438 \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0435 Enter-\u043E\u043C \u0438\u043B\u0438 \u043F\u0440\u043E\u0431\u0435\u043B\u043E\u043C, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440: #flashcards #deck2 #deck3.",\n  CONVERT_FOLDERS_TO_DECKS："\u041A\u043E\u043D\u0432\u0435\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043F\u0430\u043F\u043A\u0438 \u0432 \u0443\u0440\u043E\u0432\u043D\u0438 \u0438 \u043F\u043E\u0434\u0443\u0440\u043E\u0432\u043D\u0438?"，\n  CONVERT_FOLDERS_TO_DECKS_DESC："\u042D\u0442\u043E \u0430\u043B\u044C\u0442\u0435\u0440\u043D\u0430\u0442\u0438\u0432\u0430 \u043E\u043F\u0438\u0441\u0430\u043D\u043D\u043E\u043C\u0443 \u0432\u044B\u0448\u0435 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0443 \u0442\u0435\u0433\u043E\u0432 \u0444\u043B\u044D\u0448-\u043A\u0430\u0440\u0442"，\n  内联调度注释："\u0421\u043E\u0445\u0440\u0430\u043D\u044F\u0442\u044C \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439 \u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043D\u0430 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0439 \u0441\u0442\u0440\u043E\u043A\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438?",\n  INLINE_SCHEDULING_COMMENTS_DESC："\u0412\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u044D\u0442\u043E\u0439 \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0441\u0434\u0435\u043B\u0430\u0435\u0442 \u0442\u0430\u043A, \u0447\u0442\u043E HTML \u043A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0438 \u043D\u0435 \u0431\u0443\u0434\u0443\u0442 \u043B\u043E\u043C\u0430\u0442\u044C \u0444\u043E\u0440\u043C\u0430\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u043F\u0438\u0441\u043A\u0430.",\n  BURY_SIBLINGS_TILL_NEXT_DAY："\u041F\u0440\u044F\u0442\u0430\u0442\u044C \u0440\u043E\u0434\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0434\u043E \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0435\u0433\u043E \u0434\u043D\u044F?",\n  BURY_SIBLINGS_TILL_NEXT_DAY_DESC："\u0420\u043E\u0434\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 - \u0442\u0435, \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u044B \u0438\u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u0442\u0435\u043A\u0441\u0442\u0430, \u043F\u0440\u0438\u043C\u0435\u0440: \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0441 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0430\u043C\u0438 ([...])"，\n  SHOW_CARD_CONTEXT："\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u043A\u043E\u043D\u0442\u0435\u043A\u0441\u0442 (\u0443\u0440\u043E\u0432\u0435\u043D\u044C) \u0432 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0430\u0445 (\u0432\u043E \u0432\u0440\u0435\u043C\u044F \u043F\u043E\u0432\u0442\u043E\u0440\u0435\u043D\u0438\u044F)?"，\n  SHOW_CARD_CONTEXT_DESC："\u043F\u0440\u0438\u043C\u0435\u0440: Title > Heading 1 > Subheading > ... > Subheading",\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS："Show next review time in the review buttons"，\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC："Useful to know how far in the future your cards are being pushed."，\n  CARD_MODAL_HEIGHT_PERCENT："\u0412\u044B\u0441\u043E\u0442\u0430 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u043F\u0440\u043E\u0446\u0435\u043D\u0442\u0430\u0445"，\n  CARD_MODAL_SIZE_PERCENT_DESC："\u0415\u0441\u043B\u0438 \u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0435\u0441\u044C \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u044B\u043C \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u043E\u043C, \u0432\u044B\u0441\u0442\u0430\u0432\u044C\u0442\u0435 100%. \u0418\u043D\u0430\u0447\u0435 \u0443 \u0432\u0430\u0441 \u0431\u0443\u0434\u0443\u0442 \u043E\u0433\u0440\u043E\u043C\u043D\u044B\u0435 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F"，\n  RESET_DEFAULT："\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u043F\u043E-\u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E",\n  CARD_MODAL_WIDTH_PERCENT："\u0428\u0438\u0440\u0438\u043D\u0430 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0432 \u043F\u0440\u043E\u0446\u0435\u043D\u0442\u0430\u0445"，\n  随机卡顺序："\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0439 \u043F\u043E\u0440\u044F\u0434\u043E\u043A \u043A\u0430\u0440\u0442 \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F?"，\n  REVIEW_CARD_ORDER_WITHIN_DECK："\u041F\u043E\u0440\u044F\u0434\u043E\u043A \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043A\u0430\u0440\u0442 \u043A\u043E\u043B\u043E\u0434\u044B \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F"，\n  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL："\u041F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0432\u043D\u0443\u0442\u0440\u0438 \u043A\u043E\u043B\u043E\u0434\u044B (\u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0441\u0435 \u043D\u043E\u0432\u044B\u0435 \u043A\u0430\u0440\u0442\u044B)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL："\u041F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0432\u043D\u0443\u0442\u0440\u0438 \u043A\u043E\u043B\u043E\u0434\u044B (\u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0441\u0435 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u0435\u043C\u044B\u0435 \u043A\u0430\u0440\u0442\u044B)",\n  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM："\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u043E \u0432\u043D\u0443\u0442\u0440\u0438 \u043A\u043E\u043B\u043E\u0434\u044B (\u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0441\u0435 \u043D\u043E\u0432\u044B\u0435 \u043A\u0430\u0440\u0442\u044B)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM："\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u043E \u0432\u043D\u0443\u0442\u0440\u0438 \u043A\u043E\u043B\u043E\u0434\u044B (\u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u0441\u0435 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u0435\u043C\u044B\u0435 \u043A\u0430\u0440\u0442\u044B)"，\n  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD："\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u0430\u044F \u043A\u0430\u0440\u0442\u0430 \u0438\u0437 \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E\u0439 \u043A\u043E\u043B\u043E\u0434\u044B"，\n  REVIEW_DECK_ORDER："\u041F\u043E\u0440\u044F\u0434\u043E\u043A \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043A\u043E\u043B\u043E\u0434 \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL："\u041F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E  (\u043F\u043E\u0441\u043B\u0435 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u0432\u0441\u0435\u0445 \u043A\u0430\u0440\u0442 \u0438\u0437 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0439 \u043A\u043E\u043B\u043E\u0434\u044B)",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM："\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u043E (\u043F\u043E\u0441\u043B\u0435 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u0432\u0441\u0435\u0445 \u043A\u0430\u0440\u0442 \u0438\u0437 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0439 \u043A\u043E\u043B\u043E\u0434\u044B)"，\n  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD："\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u0430\u044F \u043A\u0430\u0440\u0442\u0430 \u0438\u0437 \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E\u0439 \u043A\u043E\u043B\u043E\u0434\u044B"，\n  DISABLE_CLOZE_CARDS："\u0412\u044B\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u043A\u0430\u0440\u0442\u044B \u0441 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0430\u043C\u0438 (\u043F\u0440\u0438\u043C\u0435\u0440: [...])?"，\n  CONVERT_HIGHLIGHTS_TO_CLOZES："\u041A\u043E\u043D\u0432\u0435\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C ==\u0432\u044B\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0439 \u0442\u0435\u043A\u0441\u0442== \u0432 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0438 (\u043F\u0440\u0438\u043C\u0435\u0440: [...])?",
+  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C/\u0443\u0434\u0430\u043B\u0438\u0442\u044C <code>${defaultPattern}</code> \u0432 \u0432\u0430\u0448\u0438 "\u0428\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432"',\n  CONVERT_BOLD_TEXT_TO_CLOZES："\u041A\u043E\u043D\u0432\u0435\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C **\u0436\u0438\u0440\u043D\u044B\u0439 \u0442\u0435\u043A\u0441\u0442** \u0432 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0438 (\u043F\u0440\u0438\u043C\u0435\u0440: [...])?",
+  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C/\u0443\u0434\u0430\u043B\u0438\u0442\u044C <code>${defaultPattern}</code> \u0432 \u0432\u0430\u0448\u0438 "\u0428\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432"',\n  CONVERT_CURLY_BACKETS_TO_CLOZES："\u041A\u043E\u043D\u0432\u0435\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C {{\u0444\u0438\u0433\u0443\u0440\u043D\u044B\u0435 \u0441\u043A\u043E\u0431\u043A\u0438}} \u0432 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0438 (\u043F\u0440\u0438\u043C\u0435\u0440: [...])?",
+  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C/\u0443\u0434\u0430\u043B\u0438\u0442\u044C <code>${defaultPattern}</code> \u0432 \u0432\u0430\u0448\u0438 "\u0428\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432"',\n  完形填空模式："\u0428\u0430\u0431\u043B\u043E\u043D\u044B \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u043E\u0432",\n  CLOZE_PATTERNS_DESC: 'Введите шаблоны пропусков, разделенные переводами строк.检查 <a href="${docsUrl}">wiki</a> 获取指导。',\n  INLINE_CARDS_SEPARATOR："\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C \u0434\u043B\u044F \u0432\u043D\u0443\u0442\u0440\u0438\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A",\n  FIX_SEPARATORS_MANUALLY_WARNING："\u0412\u043D\u0438\u043C\u0430\u043D\u0438\u0435! \u041F\u043E\u0441\u043B\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u044D\u0442\u043E\u0433\u043E \u0432\u0430\u043C \u043F\u0440\u0438\u0434\u0451\u0442\u0441\u044F \u0432\u0440\u0443\u0447\u043D\u0443\u044E \u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0435 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438",\n  INLINE_REVERSED_CARDS_SEPARATOR："\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C \u0434\u043B\u044F \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0445 \u0432\u043D\u0443\u0442\u0440\u0438\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A"，\n  多行卡分隔符："\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C \u0434\u043B\u044F \u043C\u043D\u043E\u0433\u043E\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A"，\n  MULTILINE_REVERSED_CARDS_SEPARATOR："\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C \u0434\u043B\u044F \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0445 \u043C\u043D\u043E\u0433\u043E\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A"，\n  MULTILINE_CARDS_END_MARKER："\u0421\u0438\u043C\u0432\u043E\u043B\u044B, \u043E\u0431\u043E\u0437\u043D\u0430\u0447\u0430\u044E\u0449\u0438\u0435 \u043A\u043E\u043D\u0435\u0446 \u043A\u043B\u043E\u0437\u043E\u0432 \u0438 \u043C\u043D\u043E\u0433\u043E\u0441\u0442\u0440\u043E\u0447\u043D\u044B\u0445 \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A"，\n  注："\u0417\u0430\u043C\u0435\u0442\u043A\u0438"，\n  注意："Note"，\n  REVIEW_PANE_ON_STARTUP："\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u043F\u0430\u043D\u0435\u043B\u044C \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u043A\u0430\u0440\u0442\u043E\u0447\u0435\u043A \u043F\u0440\u0438 \u0437\u0430\u043F\u0443\u0441\u043A\u0435 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B"，\n  TAGS_TO_REVIEW："\u0422\u0435\u0433\u0438 \u0434\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F"，\n  TAGS_TO_REVIEW_DESC："\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u0435\u0433\u0438, \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0435 Enter-\u0430\u043C\u0438 \u0438\u043B\u0438 \u043F\u0440\u043E\u0431\u0435\u043B\u0430\u043C\u0438, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440: #review #tag2 #tag3."，\n  OPEN_RANDOM_NOTE："\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u0443\u044E \u0437\u0430\u043C\u0435\u0442\u043A\u0443 \u0434\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F"，\n  OPEN_RANDOM_NOTE_DESC："\u0415\u0441\u043B\u0438 \u0432\u044B\u043A\u043B\u044E\u0447\u0438\u0442\u044C, \u0442\u043E \u0437\u0430\u043C\u0435\u0442\u043A\u0438 \u0431\u0443\u0434\u0443\u0442 \u043E\u0442\u0441\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u044B \u043F\u043E \u0432\u0430\u0436\u043D\u043E\u0441\u0442\u0438 (PageRank)."，\n  自动下一个注释："\u041F\u043E\u0441\u043B\u0435 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438 \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u0442\u044C \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0443\u044E \u0437\u0430\u043C\u0435\u0442\u043A\u0443",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS："\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u043E\u0431\u0437\u043E\u0440\u0430 \u0432 \u043C\u0435\u043D\u044E \u0424\u0430\u0439\u043B (\u0442.\u0435.: \u0418\u0437\u0443\u0447\u0435\u043D\u0438\u0435: \u041B\u0435\u0433\u043A\u043E, \u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E, \u0421\u043B\u043E\u0436\u043D\u043E)",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC："\u0415\u0441\u043B\u0438 \u0432\u044B \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u043E\u0431\u0437\u043E\u0440\u0430 \u0432 \u043C\u0435\u043D\u044E \u0424\u0430\u0439\u043B, \u0432\u044B \u0441\u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u043E\u0441\u043C\u0430\u0442\u0440\u0438\u0432\u0430\u0442\u044C \u0441\u0432\u043E\u0438 \u0437\u0430\u043C\u0435\u0442\u043A\u0438 \u0441 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u043A\u043E\u043C\u0430\u043D\u0434 \u043F\u043B\u0430\u0433\u0438\u043D\u0430 \u0438, \u0435\u0441\u043B\u0438 \u0432\u044B \u0438\u0445 \u0437\u0430\u0434\u0430\u043B\u0438, \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0445 \u0433\u043E\u0440\u044F\u0447\u0438\u0445 \u043A\u043B\u0430\u0432\u0438\u0448."，\n  MAX_N_DAYS_REVIEW_QUEUE："\u041D\u0430\u0438\u0431\u043E\u043B\u044C\u0448\u0435\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0434\u043D\u0435\u0439 \u0434\u043B\u044F \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u043D\u0430 \u043F\u0430\u043D\u0435\u043B\u0438 \u0441\u043F\u0440\u0430\u0432\u0430",\n  MIN_ONE_DAY："\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0434\u043D\u0435\u0439 \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 1."，\n  VALID_NUMBER_WARNING："\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u0447\u0438\u0441\u043B\u043E."，\n  用户界面："User Interface"，\n  OPEN_IN_TAB："Open in new tab"，\n  OPEN_IN_TAB_DESC："Turn this off to open the plugin in a modal window"，\n  显示状态栏："Show status bar"，\n  显示_状态栏_DESC："Turn this off to hide the flashcard'Obsidian 中的审核状态's status bar"，\n  显示_RIBBON_ICON："Show icon in the ribbon bar"，\n  SHOW_RIBBON_ICON_DESC:"Turn this off to hide the plugin icon from Obsidian's ribbon bar",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE: "\u0414\u0435\u0440\u0435\u0432\u044C\u044F \u043A\u043E\u043B\u043E\u0434 \u0434\u043E\u043B\u0436\u043D\u044B \u0438\u0437\u043D\u0430\u0447\u0430\u043B\u044C\u043D\u043E \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0442\u044C\u0441\u044F \u043A\u0430\u043A \u0440\u0430\u0437\u0432\u0435\u0440\u043D\u0443\u0442\u044B\u0435",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "\u041E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u0435 \u044D\u0442\u043E\u0442 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440, \u0447\u0442\u043E\u0431\u044B \u0441\u0432\u0435\u0440\u043D\u0443\u0442\u044C \u0432\u043B\u043E\u0436\u0435\u043D\u043D\u044B\u0435 \u043A\u043E\u043B\u043E\u0434\u044B \u043D\u0430 \u043E\u0434\u043D\u043E\u0439 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0435. \u041F\u043E\u043B\u0435\u0437\u043D\u043E, \u0435\u0441\u043B\u0438 \u0443 \u0432\u0430\u0441 \u0435\u0441\u0442\u044C \u043A\u0430\u0440\u0442\u044B, \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u043F\u0440\u0438\u043D\u0430\u0434\u043B\u0435\u0436\u0430\u0442 \u043C\u043D\u043E\u0433\u0438\u043C \u043A\u043E\u043B\u043E\u0434\u0430\u043C \u0432 \u043E\u0434\u043D\u043E\u043C \u0444\u0430\u0439\u043B\u0435.",
   ALGORITHM: "\u0410\u043B\u0433\u043E\u0440\u0438\u0442\u043C",
-  CHECK_ALGORITHM_WIKI: '\u0417\u0430 \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0435\u0439 \u043E\u0431\u0440\u0430\u0449\u0430\u0439\u0442\u0435\u0441\u044C \u043A <a href="${algoUrl}">\u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F \u0430\u043B\u0433\u043E\u0440\u0438\u0442\u043C\u0430</a>.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "\u0411\u0430\u0437\u043E\u0432\u0430\u044F \u041B\u0451\u0433\u043A\u043E\u0441\u0442\u044C",
-  BASE_EASE_DESC: "\u043C\u0438\u043D\u0438\u043C\u0443\u043C = 130, \u043F\u0440\u0435\u0434\u043F\u043E\u0447\u0442\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u043E\u043A\u043E\u043B\u043E 250.",
-  BASE_EASE_MIN_WARNING: "\u041B\u0451\u0433\u043A\u043E\u0441\u0442\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043C\u0438\u043D\u0438\u043C\u0443\u043C 130.",
-  LAPSE_INTERVAL_CHANGE: '\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0435 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B\u0430 \u043F\u0440\u0438 \u0432\u044B\u0431\u043E\u0440\u0435 "\u0421\u043B\u043E\u0436\u043D\u043E" \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0438/\u0437\u0430\u043C\u0435\u0442\u043A\u0438',
-  LAPSE_INTERVAL_CHANGE_DESC: "\u043D\u043E\u0432\u044B\u0439\u041F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043E\u043A = \u0441\u0442\u0430\u0440\u044B\u0439\u041F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043E\u043A * \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0435\u041F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043A\u0430 / 100.",
-  EASY_BONUS: "\u041B\u0435\u0433\u043A\u043E: \u0431\u043E\u043D\u0443\u0441",
-  EASY_BONUS_DESC: "\u0411\u043E\u043D\u0443\u0441 \u0437\u0430 \u041B\u0435\u0433\u043A\u043E \u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u0432\u0430\u043C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0440\u0430\u0437\u043D\u0438\u0446\u0443 \u0432 \u043F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043A\u0430\u0445 \u043C\u0435\u0436\u0434\u0443 \u043E\u0442\u0432\u0435\u0442\u0430\u043C\u0438 \u0425\u043E\u0440\u043E\u0448\u043E \u0438 \u041B\u0435\u0433\u043A\u043E \u043D\u0430 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0435/\u0437\u0430\u043C\u0435\u0442\u043A\u0435 (\u043C\u0438\u043D. = 100%).",
-  EASY_BONUS_MIN_WARNING: '\u0411\u043E\u043D\u0443\u0441 \u0437\u0430 "\u041B\u0435\u0433\u043A\u043E" \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 100.',
-  LOAD_BALANCE: "Enable load balancer",
+  CHECK_ALGORITHM_WIKI: '\u0417\u0430 \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0435\u0439 \u043E\u0431\u0440\u0430\u0449\u0430\u0439\u0442\u0435\u0441\u044C \u043A <a href="${algoUrl}">\u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F \u0430\u043B\u0433\u043E\u0440\u0438\u0442\u043C\u0430</a>.'，\n  SM2_OSR_VARIANT：“OSR's variant of SM-2"，\n  BASE_EASE："\u0411\u0430\u0437\u043E\u0432\u0430\u044F \u041B\u0451\u0433\u043A\u043E\u0441\u0442\u044C"，\n  BASE_EASE_DESC："\u043C\u0438\u043D\u0438\u043C\u0443\u043C = 130, \u043F\u0440\u0435\u0434\u043F\u043E\u0447\u0442\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u043E\u043A\u043E\u043B\u043E 250.",\n  BASE_EASE_MIN_WARNING："\u041B\u0451\u0433\u043A\u043E\u0441\u0442\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043C\u0438\u043D\u0438\u043C\u0443\u043C 130.",\n  LAPSE_INTERVAL_CHANGE: 'Изменение интервала при выборе"\u0421\u043B\u043E\u0436\u043D\u043E"во время изучения карточки/заметки',\n  LAPSE_INTERVAL_CHANGE_DESC："\u043D\u043E\u0432\u044B\u0439\u041F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043E\u043A = \u0441\u0442\u0430\u0440\u044B\u0439\u041F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043E\u043A * \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0435\u041F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043A\u0430 / 100."，\n  EASY_BONUS："\u041B\u0435\u0433\u043A\u043E: \u0431\u043E\u043D\u0443\u0441"，\n  EASY_BONUS_DESC："\u0411\u043E\u043D\u0443\u0441 \u0437\u0430 \u041B\u0435\u0433\u043A\u043E \u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u0432\u0430\u043C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0440\u0430\u0437\u043D\u0438\u0446\u0443 \u0432 \u043F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043A\u0430\u0445 \u043C\u0435\u0436\u0434\u0443 \u043E\u0442\u0432\u0435\u0442\u0430\u043C\u0438 \u0425\u043E\u0440\u043E\u0448\u043E \u0438 \u041B\u0435\u0433\u043A\u043E \u043D\u0430 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0435/\u0437\u0430\u043C\u0435\u0442\u043A\u0435 (\u043C\u0438\u043D. = 100%).",\n  EASY_BONUS_MIN_WARNING: 'Бонус за"\u041B\u0435\u0433\u043A\u043E"должен быть не меньше 100.',\n  负载平衡："Enable load balancer",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
         It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
-  MAX_INTERVAL: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B \u043F\u043E\u0432\u0442\u043E\u0440\u0435\u043D\u0438\u044F \u0432 \u0434\u043D\u044F\u0445",
-  MAX_INTERVAL_DESC: "\u041F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u0432\u0430\u043C \u0443\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0442\u044C \u0432\u0435\u0440\u0445\u043D\u044E\u044E \u0433\u0440\u0430\u043D\u0438\u0446\u0443 \u043D\u0430 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B \u043F\u043E\u0432\u0442\u043E\u0440\u0435\u043D\u0438\u044F (\u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E = 100 \u043B\u0435\u0442).",
-  MAX_INTERVAL_MIN_WARNING: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 1.",
-  MAX_LINK_CONTRIB: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0432\u043A\u043B\u0430\u0434 \u0441\u0432\u044F\u0437\u0438 (\u0441\u0441\u044B\u043B\u043A\u0438)",
-  MAX_LINK_CONTRIB_DESC: '\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0432\u043A\u043B\u0430\u0434 \u0441\u0440\u0435\u0434\u043D\u0435\u0433\u043E \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F "\u041B\u0451\u0433\u043A\u043E\u0441\u0442\u0438" \u0441\u0432\u044F\u0437\u0430\u043D\u043D\u044B\u0445 \u0437\u0430\u043C\u0435\u0442\u043E\u043A \u0432 \u043D\u0430\u0447\u0430\u043B\u044C\u043D\u0443\u044E "\u041B\u0451\u0433\u043A\u043E\u0441\u0442\u044C".',
-  LOGGING: "\u0416\u0443\u0440\u043D\u0430\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
-  DISPLAY_SCHEDULING_DEBUG_INFO: "\u041E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0442\u044C \u043E\u0442\u043B\u0430\u0434\u043E\u0447\u043D\u0443\u044E \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u0432 \u043A\u043E\u043D\u0441\u043E\u043B\u0438 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0430",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
+  MAX_INTERVAL: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B \u043F\u043E\u0432\u0442\u043E\u0440\u0435\u043D\u0438\u044F \u0432 \u0434\u043D\u044F\u0445"，\n  MAX_INTERVAL_DESC："\u041F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u0432\u0430\u043C \u0443\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0442\u044C \u0432\u0435\u0440\u0445\u043D\u044E\u044E \u0433\u0440\u0430\u043D\u0438\u0446\u0443 \u043D\u0430 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B \u043F\u043E\u0432\u0442\u043E\u0440\u0435\u043D\u0438\u044F (\u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E = 100 \u043B\u0435\u0442)."，\n  最大间隔最小警告："\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0438\u043D\u0442\u0435\u0440\u0432\u0430\u043B \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 1."，\n  MAX_LINK_CONTRIB："\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0432\u043A\u043B\u0430\u0434 \u0441\u0432\u044F\u0437\u0438 (\u0441\u0441\u044B\u043B\u043A\u0438)",\n  MAX_LINK_CONTRIB_DESC: 'Максимальный вклад среднего значения"\u041B\u0451\u0433\u043A\u043E\u0441\u0442\u0438" \u0441\u0432\u044F\u0437\u0430\u043D\u043D\u044B\u0445 \u0437\u0430\u043C\u0435\u0442\u043E\u043A \u0432 \u043D\u0430\u0447\u0430\u043B\u044C\u043D\u0443\u044E "\u041B\u0451\u0433\u043A\u043E\u0441\u0442\u044C".',\n  记录："\u0416\u0443\u0440\u043D\u0430\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435"，\n  DISPLAY_SCHEDULING_DEBUG_INFO："\u041E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0442\u044C \u043E\u0442\u043B\u0430\u0434\u043E\u0447\u043D\u0443\u044E \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u0432 \u043A\u043E\u043D\u0441\u043E\u043B\u0438 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0430"，\n  DISPLAY_PARSER_DEBUG_INFO："Show the parser's debugging information on the developer console",
   SCHEDULING: "Scheduling",
   EXPERIMENTAL: "Experimental",
   HELP: "Help",
@@ -7602,12 +6585,7 @@ var tr_default = {
   GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
   GROUP_FLASHCARDS_NOTES: "Flash Kartlar ve Notlar",
   GROUP_CONTRIBUTING: "Katk\u0131da Bulunma",
-  CHECK_WIKI: 'Daha fazla bilgi i\xE7in <a href="${wikiUrl}">wiki</a> sayfas\u0131na g\xF6z at\u0131n.',
-  GITHUB_DISCUSSIONS: 'Soru-cevap, geri bildirim ve genel tart\u0131\u015Fmalar i\xE7in <a href="${discussionsUrl}">tart\u0131\u015Fmalar</a> b\xF6l\xFCm\xFCne g\xF6z at\u0131n.',
-  GITHUB_ISSUES: 'Bir \xF6zellik iste\u011Finiz ya da hata bildiriminiz varsa <a href="${issuesUrl}">buradan</a> bildirin.',
-  GITHUB_SOURCE_CODE: 'Proje kaynak koduna <a href="${githubProjectUrl}">GitHub</a> \xFCzerinden ula\u015Fabilirsiniz.',
-  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Kod katk\u0131lar\u0131</a> hakk\u0131nda bilgi al\u0131n.',
-  TRANSLATION_CONTRIBUTION_INFO: 'Eklentiyi kendi dilinize \xE7evirmek hakk\u0131nda bilgi i\xE7in <a href="${translationContributionUrl}">\xE7eviri katk\u0131lar\u0131</a> sayfas\u0131n\u0131 ziyaret edin.',
+  CHECK_WIKI: 'Daha fazla bilgi i\xE7in <a href="${wikiUrl}">wiki</a> sayfas\u0131na g\xF6z at\u0131n.'，\n  GITHUB_讨论：'Soru-cevap, geri bildirim ve genel tart\u0131\u015Fmalar i\xE7in <a href="${discussionsUrl}">tart\u0131\u015Fmalar</a> b\xF6l\xFCm\xFCne g\xF6z at\u0131n.'，\n  GITHUB_问题：'Bir \xF6zellik iste\u011Finiz ya da hata bildiriminiz varsa <a href="${issuesUrl}">buradan</a> bildirin.'，\n  GITHUB_SOURCE_CODE：'Proje kaynak koduna <a href="${githubProjectUrl}">GitHub</a> \xFCzerinden ula\u015Fabilirsiniz.',\n  代码_贡献_信息：'<a href="${codeContributionUrl}">Kod katk\u0131lar\u0131</a> hakk\u0131nda bilgi al\u0131n.'，\n  翻译_贡献_信息：'Eklentiyi kendi dilinize \xE7evirmek hakk\u0131nda bilgi i\xE7in <a href="${translationContributionUrl}">\xE7eviri katk\u0131lar\u0131</a> sayfas\u0131n\u0131 ziyaret edin.',
   FOLDERS_TO_IGNORE: "Yoksay\u0131lan Klas\xF6rler",
   FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
   OBSIDIAN_INTEGRATION: "Integration into Obsidian",
@@ -7615,9 +6593,7 @@ var tr_default = {
   FLASHCARD_EASY_LABEL: "Kolay Butonu Metni",
   FLASHCARD_GOOD_LABEL: "Orta Butonu Metni",
   FLASHCARD_HARD_LABEL: "Zor Butonu Metni",
-  FLASHCARD_EASY_DESC: '"Kolay" butonunun metnini \xF6zelle\u015Ftirin',
-  FLASHCARD_GOOD_DESC: '"Orta" butonunun metnini \xF6zelle\u015Ftirin',
-  FLASHCARD_HARD_DESC: '"Zor" butonunun metnini \xF6zelle\u015Ftirin',
+  FLASHCARD_EASY_DESC: '"Kolay" butonunun metnini \xF6zelle\u015Ftirin'，\n  FLASHCARD_GOOD_DESC：'"Orta" butonunun metnini \xF6zelle\u015Ftirin'，\n  FLASHCARD_HARD_DESC：'"Zor" butonunun metnini \xF6zelle\u015Ftirin',
   REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
   REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
   FLASHCARD_TAGS: "Flash Kart Etiketleri",
@@ -7649,13 +6625,7 @@ var tr_default = {
   REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "Rastgele desteden rastgele kart",
   DISABLE_CLOZE_CARDS: "Gizli kartlar\u0131 devre d\u0131\u015F\u0131 b\u0131rak?",
   CONVERT_HIGHLIGHTS_TO_CLOZES: "==Vurgulanan== metni gizli kartlara d\xF6n\xFC\u015Ft\xFCr?",
-  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: '"Cloze Patterns"den <code>${defaultPattern</code> \xF6\u011Fesini ekleyin/kald\u0131r\u0131n',
-  CONVERT_BOLD_TEXT_TO_CLOZES: "**Kal\u0131n metni** gizli kartlara d\xF6n\xFC\u015Ft\xFCr?",
-  CONVERT_BOLD_TEXT_TO_CLOZES_DESC: '"Cloze Patterns"den <code>${defaultPattern</code> \xF6\u011Fesini ekleyin/kald\u0131r\u0131n',
-  CONVERT_CURLY_BRACKETS_TO_CLOZES: "{{K\u0131v\u0131rc\u0131k parantezleri}} gizli kartlara d\xF6n\xFC\u015Ft\xFCr?",
-  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: '"Cloze Patterns"den <code>${defaultPattern</code> \xF6\u011Fesini ekleyin/kald\u0131r\u0131n',
-  CLOZE_PATTERNS: "Cloze Patterns",
-  CLOZE_PATTERNS_DESC: 'Enter cloze patterns separated by newlines. Check the <a href="${docsUrl}">wiki</a> for guidance.',
+  CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: '"完型填空模式"den <code>${defaultPattern</code> \xF6\u011Fesini ekleyin/kald\u0131r\u0131n'，\n  CONVERT_BOLD_TEXT_TO_CLOZES: "**Kalın metni** gizli kartlara dönüştür?",\n  CONVERT_BOLD_TEXT_TO_CLOZES_DESC:'"完型填空模式"den <code>${defaultPattern</code> \xF6\u011Fesini ekleyin/kald\u0131r\u0131n',\n  CONVERT_CURLY_BRACKETS_TO_CLOZES: "{{Kıvırcık parantezleri}} gizli kartlara dönüştür?",\n  CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC：'"完型填空模式"den <code>${defaultPattern</code> \xF6\u011Fesini ekleyin/kald\u0131r\u0131n',\n  CLOZE_PATTERNS: "完形填空模式",\n  CLOZE_PATTERNS_DESC：'Enter cloze patterns separated by newlines. Check the <a href="${docsUrl}">wiki</a> for guidance.',
   INLINE_CARDS_SEPARATOR: "Sat\u0131r i\xE7i flash kartlar i\xE7in ay\u0131r\u0131c\u0131",
   FIX_SEPARATORS_MANUALLY_WARNING: "Bunu de\u011Fi\u015Ftirdikten sonra mevcut flash kartlar\u0131n\u0131z\u0131 manuel olarak d\xFCzenlemeniz gerekti\u011Fini unutmay\u0131n.",
   INLINE_REVERSED_CARDS_SEPARATOR: "Sat\u0131r i\xE7i ters flash kartlar i\xE7in ay\u0131r\u0131c\u0131",
@@ -7679,14 +6649,7 @@ var tr_default = {
   SHOW_STATUS_BAR: "Show status bar",
   SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
   SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "Enable the review options in the file menu (e.g. Review: Easy, Good, Hard)",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "If you disable the review options in the file menu, you can review your notes using the plugin commands and, if you defined them, the associated command hotkeys.",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE: "Deste a\u011Fa\xE7lar\u0131 ba\u015Flang\u0131\xE7ta geni\u015Fletilmi\u015F olarak g\xF6sterilmeli mi",
-  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "Bunu kapat\u0131n, ayn\u0131 dosyada bir\xE7ok desteye ait kartlar\u0131n\u0131z varsa i\xE7 i\xE7e desteleri daraltmak i\xE7in kullan\u0131\u015Fl\u0131d\u0131r.",
-  ALGORITHM: "Algoritma",
-  CHECK_ALGORITHM_WIKI: 'Daha fazla bilgi i\xE7in <a href="${algoUrl}">algoritma uygulamas\u0131na</a> g\xF6z at\u0131n.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
+  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS："Enable the review options in the file menu (e.g. Review: Easy, Good, Hard)",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC："If you disable the review options in the file menu, you can review your notes using the plugin commands and, if you defined them, the associated command hotkeys.",\n  INITIALLY_EXPAND_SUBDECKS_IN_TREE："Deste a\u011Fa\xE7lar\u0131 ba\u015Flang\u0131\xE7ta geni\u015Fletilmi\u015F olarak g\xF6sterilmeli mi",\n  INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC："Bunu kapat\u0131n, ayn\u0131 dosyada bir\xE7ok desteye ait kartlar\u0131n\u0131z varsa i\xE7 i\xE7e desteleri daraltmak i\xE7in kullan\u0131\u015Fl\u0131d\u0131r.",\n  算法："Algoritma",\n  CHECK_ALGORITHM_WIKI：'Daha fazla bilgi için <a href="${algoUrl}">algoritma uygulamasına</a> goz atın。',\n  SM2_OSR_VARIANT："OSR's variant of SM-2",
   BASE_EASE: "Temel kolayl\u0131k",
   BASE_EASE_DESC: "minimum = 130, tercihen yakla\u015F\u0131k 250.",
   BASE_EASE_MIN_WARNING: "Temel kolayl\u0131k en az 130 olmal\u0131d\u0131r.",
@@ -7697,29 +6660,28 @@ var tr_default = {
   EASY_BONUS_MIN_WARNING: "Kolayl\u0131k bonusu en az %100 olmal\u0131d\u0131r.",
   LOAD_BALANCE: "Enable load balancer",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
-        It's turned off for small intervals.`,
+        It's like Anki'是模糊的，但它不是随机的，而是选择评论数量最少的一天。\n        它's turned off for small intervals.`,
   MAX_INTERVAL: "Maksimum aral\u0131k (g\xFCn)",
-  MAX_INTERVAL_DESC: "Aral\u0131\u011Fa bir \xFCst s\u0131n\u0131r koyman\u0131za olanak tan\u0131r (varsay\u0131lan = 100 y\u0131l).",
-  MAX_INTERVAL_MIN_WARNING: "Maksimum aral\u0131k en az 1 g\xFCn olmal\u0131d\u0131r.",
+  MAX_INTERVAL_DESC: "Aralığa bir üst sınır koymanıza olanak tanır (varsayılan = 100 yıl)。",
+  MAX_INTERVAL_MIN_WARNING: "Maksimum aralık en az 1 gün olmalıdır。",
   MAX_LINK_CONTRIB: "Maksimum ba\u011Flant\u0131 katk\u0131s\u0131",
-  MAX_LINK_CONTRIB_DESC: "Ba\u011Flant\u0131l\u0131 notlar\u0131n a\u011F\u0131rl\u0131kl\u0131 kolayl\u0131k de\u011Ferinin ba\u015Flang\u0131\xE7 kolayl\u0131\u011F\u0131na maksimum katk\u0131s\u0131.",
+  MAX_LINK_CONTRIB_DESC: "Bağlantılı notların ağırlıklı kolaylık değerinin başlangıç kolaylığına maksimum katkısı。",
   LOGGING: "Kay\u0131t tutma",
   DISPLAY_SCHEDULING_DEBUG_INFO: "Geli\u015Ftirici konsolunda hata ay\u0131klama bilgilerini g\xF6ster",
   DISPLAY_PARSER_DEBUG_INFO: "Ayr\u0131\u015Ft\u0131r\u0131c\u0131 i\xE7in hata ay\u0131klama bilgilerini geli\u015Ftirici konsolunda g\xF6ster",
-  SCHEDULING: "Scheduling",
-  EXPERIMENTAL: "Experimental",
-  HELP: "Help",
-  STORE_IN_NOTES: "In the notes",
+  SCHEDULING: "调度",
+  EXPERIMENTAL: "实验",
+  HELP: "帮助",
+  STORE_IN_NOTES: "在注释中",
   // sidebar.ts
-  NOTES_REVIEW_QUEUE: "Not \u0130nceleme S\u0131ras\u0131",
+  NOTES_REVIEW_QUEUE: "不独立",
   CLOSE: "Kapat",
   NEW: "Yeni",
   YESTERDAY: "D\xFCn",
   TODAY: "Bug\xFCn",
   TOMORROW: "Yar\u0131n",
   // stats-modal.tsx
-  STATS_TITLE: "\u0130statistikler",
+  STATS_TITLE: "统计数据",
   MONTH: "Ay",
   QUARTER: "\xC7eyrek",
   YEAR: "Y\u0131l",
@@ -7731,21 +6693,21 @@ var tr_default = {
   NUMBER_OF_CARDS: "Kart Say\u0131s\u0131",
   REVIEWS_PER_DAY: "Ortalama: ${avg} inceleme/g\xFCn",
   INTERVALS: "Aral\u0131klar",
-  INTERVALS_DESC: "\u0130ncelemelerin tekrar g\xF6sterilme gecikmeleri",
+  INTERVALS_DESC: "统计数据统计",
   COUNT: "Say\u0131",
   INTERVALS_SUMMARY: "Ortalama aral\u0131k: ${avg}, En uzun aral\u0131k: ${longest}",
   EASES: "Kolayl\u0131klar",
   EASES_SUMMARY: "Ortalama kolayl\u0131k: ${avgEase}",
-  EASE: "Ease",
-  CARD_TYPES: "Kart T\xFCrleri",
+  EASE: "轻松",
+  CARD_TYPES: "卡丁车 Türleri",
   CARD_TYPES_DESC: "Bu, g\xF6m\xFCl\xFC kartlar\u0131 da i\xE7erir (varsa)",
   CARD_TYPE_NEW: "Yeni",
   CARD_TYPE_YOUNG: "Gen\xE7",
   CARD_TYPE_MATURE: "Olgun",
   CARD_TYPES_SUMMARY: "Toplam kart: ${totalCardsCount}",
-  SEARCH: "Search",
-  PREVIOUS: "Previous",
-  NEXT: "Next"
+  SEARCH: "搜索",
+  PREVIOUS: "上一个",
+  NEXT: "下一步"
 };
 
 // src/lang/locale/uk.ts
@@ -7812,7 +6774,7 @@ var zh_cn_default = {
   GROUP_DATA_STORAGE: "\u5B58\u50A8\u8BA1\u5212\u6570\u636E",
   GROUP_DATA_STORAGE_DESC: "\u9009\u62E9\u5B58\u50A8\u8BA1\u5212\u6570\u636E\u4F4D\u7F6E",
   GROUP_FLASHCARDS_NOTES: "\u95EA\u5361\u548C\u7B14\u8BB0",
-  GROUP_CONTRIBUTING: "Contributing",
+  GROUP_CONTRIBUTING: "贡献",
   CHECK_WIKI: '\u4E86\u89E3\u66F4\u591A, \u8BF7\u70B9\u51FB<a href="${wikiUrl}">wiki</a>.',
   GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
   GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
@@ -7821,7 +6783,7 @@ var zh_cn_default = {
   TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
   FOLDERS_TO_IGNORE: "\u5FFD\u7565\u6B64\u6587\u4EF6\u5939",
   FOLDERS_TO_IGNORE_DESC: "\u5728\u5355\u72EC\u4E00\u884C\u4E2D\u8F93\u5165\u6587\u4EF6\u5939\u8DEF\u5F84\u6216\u5168\u5C40\u6A21\u5F0F\uFF0C\u4F8B\u5982 Templates/Scripts \u6216 .excalidraw.md\u3002\u6B64\u8BBE\u7F6E\u5BF9\u95EA\u5B58\u5361\u548C\u7B14\u8BB0\u90FD\u901A\u7528\u3002",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
+  OBSIDIAN_INTEGRATION: "集成到 Obsidian",
   FLASHCARDS: "\u5361\u7247",
   FLASHCARD_EASY_LABEL: "\u201C\u7B80\u5355\u201D\u6309\u94AE\u6587\u672C",
   FLASHCARD_GOOD_LABEL: "\u201C\u8BB0\u5F97\u201D\u6309\u94AE\u6587\u672C",
@@ -7886,7 +6848,7 @@ var zh_cn_default = {
   MAX_N_DAYS_REVIEW_QUEUE: "\u53F3\u8FB9\u680F\u4E2D\u663E\u793A\u7684\u6700\u5927\u5929\u6570",
   MIN_ONE_DAY: "\u5929\u6570\u6700\u5C0F\u503C\u4E3A1",
   VALID_NUMBER_WARNING: "\u8BF7\u8F93\u5165\u6709\u6548\u7684\u6570\u5B57\u3002",
-  UI: "User Interface",
+  UI: "用户界面",
   OPEN_IN_TAB: "\u5728\u65B0\u6807\u7B7E\u6253\u5F00",
   OPEN_IN_TAB_DESC: "\u5173\u95ED\u6B64\u9009\u9879\u53EF\u5728\u6A21\u5F0F\u7A97\u53E3\u4E2D\u6253\u5F00\u63D2\u4EF6",
   SHOW_STATUS_BAR: "\u663E\u793A\u5728\u72B6\u6001\u680F",
@@ -7897,7 +6859,7 @@ var zh_cn_default = {
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "\u5173\u95ED\u6B64\u9009\u9879\u53EF\u6298\u53E0\u540C\u4E00\u5F20\u5361\u7247\u4E2D\u7684\u5D4C\u5957\u724C\u7EC4\u3002\u5982\u679C\u60A8\u7684\u5361\u7247\u5C5E\u4E8E\u540C\u4E00\u6587\u4EF6\u4E2D\u7684\u8BB8\u591A\u5957\u724C\uFF0C\u5219\u5F88\u6709\u7528\u3002",
   ALGORITHM: "\u7B97\u6CD5",
   CHECK_ALGORITHM_WIKI: '\u4E86\u89E3\u66F4\u591A, \u8BF7\u70B9\u51FB<a href="${algoUrl}">\u7B97\u6CD5\u5B9E\u73B0</a>.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
+  SM2_OSR_VARIANT: "OSR 的 SM-2 变体",
   BASE_EASE: "\u57FA\u7840\u638C\u63E1\u7A0B\u5EA6",
   BASE_EASE_DESC: "\u6700\u5C0F\u503C130\uFF0C\u63A8\u8350\u503C\u7EA6250.",
   BASE_EASE_MIN_WARNING: "\u57FA\u7840\u638C\u63E1\u7A0B\u5EA6\u7684\u6700\u5C0F\u503C\u4E3A130\u3002",
@@ -7906,9 +6868,9 @@ var zh_cn_default = {
   EASY_BONUS: "\u7B80\u5355\u5956\u52B1",
   EASY_BONUS_DESC: "\u7B80\u5355\u5956\u52B1\u8BBE\u5B9A\u201C\u8BB0\u5F97\u201D\u548C\u201C\u7B80\u5355\u201D\u5361\u7247\u6216\u7B14\u8BB0\u7684\u590D\u4E60\u95F4\u9694\u5DEE\u8DDD\uFF08\u6700\u5C0F\u503C100%\uFF09\u3002",
   EASY_BONUS_MIN_WARNING: "\u7B80\u5355\u5956\u52B1\u81F3\u5C11\u4E3A100\u3002",
-  LOAD_BALANCE: "Enable load balancer",
+  LOAD_BALANCE: "启用负载均衡器",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
-        It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
+        It's 就像 Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
   MAX_INTERVAL: "\u6700\u5927\u95F4\u9694\uFF08\u5929\uFF09",
   MAX_INTERVAL_DESC: "\u8BBE\u5B9A\u590D\u4E60\u7684\u6700\u5927\u95F4\u9694\u65F6\u95F4\uFF08\u9ED8\u8BA4\u503C100\u5E74\uFF09\u3002",
@@ -7917,209 +6879,24 @@ var zh_cn_default = {
   MAX_LINK_CONTRIB_DESC: "\u94FE\u63A5\u7B14\u8BB0\u7684\u52A0\u6743\u638C\u63E1\u7A0B\u5EA6\u5BF9\u539F\u59CB\u638C\u63E1\u7A0B\u5EA6\u7684\u6700\u5927\u8D21\u732E\u3002",
   LOGGING: "\u8BB0\u5F55\u4E2D",
   DISPLAY_SCHEDULING_DEBUG_INFO: "\u5728\u5F00\u53D1\u8005\u63A7\u5236\u53F0\u4E2D\u663E\u793A\u8C03\u8BD5\u4FE1\u606F",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
-  SCHEDULING: "Scheduling",
-  EXPERIMENTAL: "Experimental",
-  HELP: "Help",
-  STORE_IN_NOTES: "In the notes",
-  // sidebar.ts
-  NOTES_REVIEW_QUEUE: "\u7B14\u8BB0\u590D\u4E60\u5E8F\u5217",
-  CLOSE: "\u4E34\u8FD1",
-  NEW: "\u65B0",
-  YESTERDAY: "\u6628\u5929",
-  TODAY: "\u4ECA\u5929",
-  TOMORROW: "\u660E\u5929",
-  // stats-modal.tsx
-  STATS_TITLE: "\u6570\u636E",
-  MONTH: "\u6708",
-  QUARTER: "\u5B63",
-  YEAR: "\u5E74",
-  LIFETIME: "\u5168\u90E8",
-  FORECAST: "\u9884\u671F",
-  FORECAST_DESC: "\u5C06\u8981\u5230\u671F\u7684\u5361\u7247\u6570\u91CF",
-  SCHEDULED: "\u5DF2\u6392\u671F",
-  DAYS: "\u5929",
-  NUMBER_OF_CARDS: "\u5361\u7247\u6570\u91CF",
-  REVIEWS_PER_DAY: "\u5E73\u5747: \u590D\u4E60${avg} /\u5929",
-  INTERVALS: "\u95F4\u9694",
-  INTERVALS_DESC: "\u5230\u4E0B\u4E00\u6B21\u590D\u4E60\u7684\u65F6\u95F4\u95F4\u9694",
-  COUNT: "\u8BA1\u6570",
-  INTERVALS_SUMMARY: "\u5E73\u5747\u95F4\u9694\u65F6\u95F4: ${avg}, \u6700\u957F\u95F4\u9694\u65F6\u95F4: ${longest}",
-  EASES: "\u638C\u63E1\u7A0B\u5EA6",
-  EASES_SUMMARY: "\u5E73\u5747\u638C\u63E1\u7A0B\u5EA6: ${avgEase}",
-  EASE: "Ease",
-  CARD_TYPES: "\u5361\u7247\u7C7B\u578B",
-  CARD_TYPES_DESC: "\u5982\u6709\uFF0C\u5C06\u663E\u793A\u9690\u85CF\u7684\u5361\u7247",
-  CARD_TYPE_NEW: "\u65B0",
-  CARD_TYPE_YOUNG: "\u8F83\u65B0",
-  CARD_TYPE_MATURE: "\u719F\u6089",
-  CARD_TYPES_SUMMARY: "\u603B\u5361\u7247\u6570: ${totalCardsCount}",
-  SEARCH: "Search",
-  PREVIOUS: "Previous",
-  NEXT: "Next"
-};
-
-// src/lang/locale/zh-tw.ts
-var zh_tw_default = {
-  // flashcard-modal.tsx
-  DECKS: "\u724C\u7D44",
-  DUE_CARDS: "\u5230\u671F\u5361\u7247",
-  NEW_CARDS: "\u65B0\u5361\u7247",
-  TOTAL_CARDS: "\u5168\u90E8\u5361\u7247",
-  BACK: "\u8FD4\u56DE",
-  SKIP: "\u7565\u904E",
-  EDIT_CARD: "\u7DE8\u8F2F\u5361\u7247",
-  RESET_CARD_PROGRESS: "\u91CD\u7F6E\u5361\u7247",
-  HARD: "\u8F03\u96E3",
-  GOOD: "\u8A18\u5F97",
-  EASY: "\u7C21\u55AE",
-  SHOW_ANSWER: "\u986F\u793A\u7B54\u6848",
-  CARD_PROGRESS_RESET: "\u5361\u7247\u5DF2\u88AB\u91CD\u7F6E\u3002",
-  SAVE: "\u5132\u5B58",
-  CANCEL: "\u53D6\u6D88",
-  NO_INPUT: "\u6C92\u6709\u63D0\u4F9B\u8F38\u5165\u3002",
-  CURRENT_EASE_HELP_TEXT: "\u76EE\u524D\u638C\u63E1\u7A0B\u5EA6\uFF1A",
-  CURRENT_INTERVAL_HELP_TEXT: "\u76EE\u524D\u9593\u9694\u6642\u9593\uFF1A",
-  CARD_GENERATED_FROM: "\u751F\u6210\u81EA\uFF1A${notePath}",
-  // main.ts
-  OPEN_NOTE_FOR_REVIEW: "\u6253\u958B\u4E00\u500B\u7B46\u8A18\u958B\u59CB\u5FA9\u7FD2",
-  REVIEW_CARDS: "\u5FA9\u7FD2\u5361\u7247",
-  REVIEW_DIFFICULTY_FILE_MENU: "\u5FA9\u7FD2\uFF1A${difficulty}",
-  REVIEW_NOTE_DIFFICULTY_CMD: "\u6A19\u8A18\u70BA\u300C${difficulty}\u300D",
-  REVIEW_CARDS_IN_NOTE: "\u5FA9\u7FD2\u6B64\u7B46\u8A18\u4E2D\u7684\u5361\u7247",
-  CRAM_ALL_CARDS: "\u9078\u64C7\u8981\u4E0D\u8A08\u96E3\u6613\u5EA6\u5FA9\u7FD2\u7684\u724C\u7D44",
-  REVIEW_ALL_CARDS: "\u5FA9\u7FD2\u6240\u6709\u7B46\u8A18\u4E2D\u7684\u5361\u7247",
-  CRAM_CARDS_IN_NOTE: "\u4E0D\u8A08\u96E3\u6613\u5EA6\u5FA9\u7FD2\u6B64\u7B46\u8A18\u4E2D\u7684\u5361\u7247",
-  VIEW_STATS: "\u6AA2\u8996\u6578\u64DA",
-  OPEN_REVIEW_QUEUE_VIEW: "Open Notes Review Queue in sidebar",
-  STATUS_BAR: "\u5FA9\u7FD2: ${dueNotesCount} \u7B46\u8A18, ${dueFlashcardsCount} \u5361\u7247\u5DF2\u5230\u671F",
-  SYNC_TIME_TAKEN: "\u540C\u6B65\u6642\u9593 ${t}ms",
-  NOTE_IN_IGNORED_FOLDER: "\u7B46\u8A18\u5132\u5B58\u5728\u5DF2\u88AB\u5FFD\u7565\u7684\u8DEF\u5F91\u4E2D\uFF08\u6AA2\u67E5\u8A2D\u5B9A\u9078\u9805\uFF09\u3002",
-  PLEASE_TAG_NOTE: "\u8ACB\u5C07\u9700\u8981\u5FA9\u7FD2\u7684\u7B46\u8A18\u4E2D\u52A0\u5165\u6B63\u78BA\u7684\u6A19\u7C64\uFF08\u6AA2\u67E5\u8A2D\u5B9A\u9078\u9805\uFF09\u3002",
-  RESPONSE_RECEIVED: "\u56DE\u994B\u5DF2\u6536\u5230",
-  NO_DECK_EXISTS: "\u6C92\u6709 ${deckName} \u724C\u7D44",
-  ALL_CAUGHT_UP: "\u90FD\u5FA9\u7FD2\u5B8C\u5566\uFF0C\u4F60\u771F\u68D2\uFF01",
-  // scheduling.ts
-  DAYS_STR_IVL: "${interval}\u5929",
-  MONTHS_STR_IVL: "${interval}\u6708",
-  YEARS_STR_IVL: "${interval}\u5E74",
-  DAYS_STR_IVL_MOBILE: "${interval}\u5929",
-  MONTHS_STR_IVL_MOBILE: "${interval}\u6708",
-  YEARS_STR_IVL_MOBILE: "${interval}\u5E74",
-  // settings.ts
-  SETTINGS_HEADER: "\u9593\u9694\u91CD\u8907\u5916\u639B",
-  GROUP_TAGS_FOLDERS: "Tags & Folders",
-  GROUP_FLASHCARD_REVIEW: "Flashcard Review",
-  GROUP_FLASHCARD_SEPARATORS: "Flashcard Separators",
-  GROUP_DATA_STORAGE: "Storage of Scheduling Data",
-  GROUP_DATA_STORAGE_DESC: "Choose where to store the scheduling data",
-  GROUP_FLASHCARDS_NOTES: "Flashcards & Notes",
-  GROUP_CONTRIBUTING: "Contributing",
-  CHECK_WIKI: '\u77AD\u89E3\u66F4\u591A, \u8ACB\u9EDE\u9078<a href="${wikiUrl}">wiki</a>.',
-  GITHUB_DISCUSSIONS: 'Visit the <a href="${discussionsUrl}">discussions</a> section for Q&A help, feedback, and general discussion.',
-  GITHUB_ISSUES: 'Raise an issue <a href="${issuesUrl}">here</a> if you have a feature request or a bug report.',
-  GITHUB_SOURCE_CODE: 'The project\'s source code is available on <a href="${githubProjectUrl}">GitHub</a>.',
-  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">Here\'s</a> how to contribute code to the plugin.',
-  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">Here\'s</a> how to translate the plugin to another language.',
-  FOLDERS_TO_IGNORE: "\u5FFD\u7565\u6B64\u8CC7\u6599\u593E",
-  FOLDERS_TO_IGNORE_DESC: "Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes.",
-  OBSIDIAN_INTEGRATION: "Integration into Obsidian",
-  FLASHCARDS: "\u5361\u7247",
-  FLASHCARD_EASY_LABEL: "\u7C21\u55AE\u6309\u9215\u6587\u5B57",
-  FLASHCARD_GOOD_LABEL: "\u8A18\u5F97\u6309\u9215\u6587\u5B57",
-  FLASHCARD_HARD_LABEL: "\u8F03\u96E3\u6309\u9215\u6587\u5B57",
-  FLASHCARD_EASY_DESC: "\u81EA\u8A02\u300C\u7C21\u55AE\u300D\u6309\u9215\u7684\u6A19\u7C64",
-  FLASHCARD_GOOD_DESC: "\u81EA\u8A02\u300C\u8A18\u5F97\u300D\u6309\u9215\u7684\u6A19\u7C64",
-  FLASHCARD_HARD_DESC: "\u81EA\u8A02\u300C\u8F03\u96E3\u300D\u6309\u9215\u7684\u6A19\u7C64",
-  REVIEW_BUTTON_DELAY: "Button Press Delay (ms)",
-  REVIEW_BUTTON_DELAY_DESC: "Add a delay to the review buttons before they can be pressed again.",
-  FLASHCARD_TAGS: "\u5361\u7247\u6A19\u7C64",
-  FLASHCARD_TAGS_DESC: "\u8F38\u5165\u6A19\u7C64\uFF08\u7528\u7A7A\u767D\u6216\u63DB\u884C\u5B57\u5143\u5206\u9694\uFF09\uFF0C\u4F8B\u5982\uFF1A#flashcards #deck2 #deck3.",
-  CONVERT_FOLDERS_TO_DECKS: "\u662F\u5426\u5C07\u8CC7\u6599\u593E\u5167\u5BB9\u8F49\u63DB\u70BA\u724C\u7D44\u548C\u5B50\u724C\u7D44\uFF1F",
-  CONVERT_FOLDERS_TO_DECKS_DESC: "\u6B64\u9078\u9805\u70BA\u5361\u7247\u6A19\u7C64\u9078\u9805\u7684\u66FF\u4EE3\u9078\u9805\u3002",
-  INLINE_SCHEDULING_COMMENTS: "\u662F\u5426\u5C07\u8A08\u5283\u91CD\u8907\u6642\u9593\u5132\u5B58\u5728\u5361\u7247\u6700\u5F8C\u4E00\u884C\u7684\u540C\u4E00\u884C\uFF1F",
-  INLINE_SCHEDULING_COMMENTS_DESC: "\u52FE\u9078\u5F8CHTML\u8A3B\u89E3\u4E0D\u6703\u7834\u58DE\u5217\u8868\u683C\u5F0F\u554F\u984C\u3002",
-  BURY_SIBLINGS_TILL_NEXT_DAY: "\u5C07\u53CD\u8F49\u5361\u7247\u96B1\u85CF\u81F3\u4E0B\u4E00\u5929\uFF1F",
-  BURY_SIBLINGS_TILL_NEXT_DAY_DESC: "\u53CD\u8F49\u5361\u7247\u7531\u540C\u4E00\u5361\u7247\u6587\u5B57\u7522\u751F\uFF0C\u4F8B\u5982\uFF1A\u586B\u7A7A\u514B\u6F0F\u5B57",
-  SHOW_CARD_CONTEXT: "\u5728\u5361\u7247\u4E2D\u986F\u793A\u4E0A\u4E0B\u6587\uFF1F",
-  SHOW_CARD_CONTEXT_DESC: "\u4F8B\u5982\uFF1A\u6A19\u984C > \u526F\u6A19\u984C > \u5C0F\u6A19\u984C > ... > \u5C0F\u6A19\u984C",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS: "Show next review time in the review buttons",
-  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC: "Useful to know how far in the future your cards are being pushed.",
-  CARD_MODAL_HEIGHT_PERCENT: "\u5361\u7247\u9AD8\u5EA6\u767E\u5206\u6BD4",
-  CARD_MODAL_SIZE_PERCENT_DESC: "\u5728\u79FB\u52D5\u7AEF\u6216\u9700\u8981\u8F03\u5927\u5716\u7247\u6642\u61C9\u8A2D\u5B9A\u70BA100%",
-  RESET_DEFAULT: "\u91CD\u7F6E\u70BA\u9810\u8A2D\u503C",
-  CARD_MODAL_WIDTH_PERCENT: "\u5361\u7247\u5BEC\u5EA6\u767E\u5206\u6BD4",
-  RANDOMIZE_CARD_ORDER: "\u5FA9\u7FD2\u6642\u96A8\u6A5F\u986F\u793A\u5361\u7247\uFF1F",
-  REVIEW_CARD_ORDER_WITHIN_DECK: "\u5FA9\u7FD2\u6642\u724C\u7D44\u5167\u7684\u5361\u7247\u6392\u5E8F",
-  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL: "\u724C\u7D44\u5167\u9806\u5E8F (\u5168\u90E8\u65B0\u5361\u7247\u512A\u5148)",
-  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL: "\u724C\u7D44\u5167\u9806\u5E8F (\u5168\u90E8\u5230\u671F\u5361\u7247\u512A\u5148)",
-  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM: "\u724C\u7D44\u5167\u4E82\u5E8F (\u5168\u90E8\u65B0\u5361\u7247\u512A\u5148)",
-  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM: "\u724C\u7D44\u5167\u4E82\u5E8F (\u5168\u90E8\u5230\u671F\u5361\u7247\u512A\u5148)",
-  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD: "\u724C\u7D44\u53CA\u5361\u7247\u90FD\u4E82\u5E8F",
-  REVIEW_DECK_ORDER: "\u5FA9\u7FD2\u6642\u724C\u7D44\u7684\u6392\u5E8F",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL: "\u9806\u5E8F (\u5728\u524D\u4E00\u724C\u7D44\u5167\u5361\u7247\u90FD\u5FA9\u7FD2\u5B8C\u5F8C)",
-  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM: "\u4E82\u5E8F (\u5728\u524D\u4E00\u724C\u7D44\u5167\u5361\u7247\u90FD\u5FA9\u7FD2\u5B8C\u5F8C)",
-  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD: "\u724C\u7D44\u53CA\u5361\u7247\u90FD\u4E82\u5E8F",
-  DISABLE_CLOZE_CARDS: "\u505C\u7528\u586B\u7A7A\u514B\u6F0F\u5B57\u5361\u7247\uFF1F",
-  CONVERT_HIGHLIGHTS_TO_CLOZES: "\u5C07 ==\u9AD8\u4EAE== \u8F49\u63DB\u70BA\u586B\u7A7A\u514B\u6F0F\u5B57\uFF1F",
+  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console"，\n  调度："Scheduling",\n  实验："Experimental"，\n  帮助："Help"，\n  STORE_IN_NOTES："In the notes",\n  // 侧边栏.ts\n  NOTES_REVIEW_QUEUE:"\u7B14\u8BB0\u590D\u4E60\u5E8F\u5217",\n  关闭："\u4E34\u8FD1"，\n  新："\u65B0"，\n  昨天："\u6628\u5929"，\n  今天："\u4ECA\u5929"，\n  明天："\u660E\u5929",\n  // 统计模态.tsx\n  统计标题："\u6570\u636E"，\n  月份："\u6708"，\n  季度："\u5B63"，\n  年："\u5E74"，\n  生命周期："\u5168\u90E8"，\n  预测："\u9884\u671F"，\n  预测_DESC："\u5C06\u8981\u5230\u671F\u7684\u5361\u7247\u6570\u91CF"，\n  计划："\u5DF2\u6392\u671F"，\n  天数："\u5929"，\n  NUMBER_OF_卡："\u5361\u7247\u6570\u91CF"，\n  REVIEWS_PER_DAY："\u5E73\u5747: \u590D\u4E60${avg} /\u5929"，\n  间隔："\u95F4\u9694"，\n  INTERVALS_DESC："\u5230\u4E0B\u4E00\u6B21\u590D\u4E60\u7684\u65F6\u95F4\u95F4\u9694"，\n  计数："\u8BA1\u6570",\n  INTERVALS_SUMMARY："\u5E73\u5747\u95F4\u9694\u65F6\u95F4: ${avg}, \u6700\u957F\u95F4\u9694\u65F6\u95F4: ${longest}"，\n  缓解："\u638C\u63E1\u7A0B\u5EA6"，\n  EASES_SUMMARY："\u5E73\u5747\u638C\u63E1\u7A0B\u5EA6: ${avgEase}"，\n  轻松："Ease",\n  卡类型："\u5361\u7247\u7C7B\u578B"，\n  CARD_TYPES_DESC："\u5982\u6709\uFF0C\u5C06\u663E\u793A\u9690\u85CF\u7684\u5361\u7247"，\n  CARD_TYPE_NEW："\u65B0"，\n  CARD_TYPE_YOUNG："\u8F83\u65B0",\n  CARD_TYPE_MATURE："\u719F\u6089"，\n  CARD_TYPES_SUMMARY："\u603B\u5361\u7247\u6570: ${totalCardsCount}"，\n  搜索："Search"，\n  上一个："Previous"，\n  下一个："Next"};\n\n// src/lang/locale/zh-tw.ts\nvar zh_tw_default = {\n  // 抽认卡模态.tsx\n  甲板："\u724C\u7D44"，\n  DUE_CARDS："\u5230\u671F\u5361\u7247",\n  新卡："\u65B0\u5361\u7247"，\n  卡片总数："\u5168\u90E8\u5361\u7247"，\n  背面："\u8FD4\u56DE"，\n  跳过："\u7565\u904E"，\n  编辑卡："\u7DE8\u8F2F\u5361\u7247"，\n  重置卡进度："\u91CD\u7F6E\u5361\u7247"，\n  困难："\u8F03\u96E3"，\n  好："\u8A18\u5F97"，\n  简单："\u7C21\u55AE"，\n  SHOW_ANSWER："\u986F\u793A\u7B54\u6848"，\n  CARD_PROGRESS_RESET："\u5361\u7247\u5DF2\u88AB\u91CD\u7F6E\u3002"，\n  保存："\u5132\u5B58"，\n  取消："\u53D6\u6D88"，\n  无输入："\u6C92\u6709\u63D0\u4F9B\u8F38\u5165\u3002"，\n  当前_EASE_HELP_TEXT："\u76EE\u524D\u638C\u63E1\u7A0B\u5EA6\uFF1A",\n  当前_间隔_帮助_文本："\u76EE\u524D\u9593\u9694\u6642\u9593\uFF1A",\n  CARD_GENERATED_FROM："\u751F\u6210\u81EA\uFF1A${notePath}"，\n  // main.ts\n  OPEN_NOTE_FOR_REVIEW："\u6253\u958B\u4E00\u500B\u7B46\u8A18\u958B\u59CB\u5FA9\u7FD2"，\n  评论卡："\u5FA9\u7FD2\u5361\u7247"，\n  REVIEW_DIFFICULTY_FILE_MENU："\u5FA9\u7FD2\uFF1A${difficulty}"，\n  REVIEW_NOTE_DIFFICULTY_CMD："\u6A19\u8A18\u70BA\u300C${difficulty}\u300D"，\n  REVIEW_CARDS_IN_NOTE："\u5FA9\u7FD2\u6B64\u7B46\u8A18\u4E2D\u7684\u5361\u7247"，\n  CRAM_ALL_CARDS："\u9078\u64C7\u8981\u4E0D\u8A08\u96E3\u6613\u5EA6\u5FA9\u7FD2\u7684\u724C\u7D44"，\n  REVIEW_ALL_CARDS："\u5FA9\u7FD2\u6240\u6709\u7B46\u8A18\u4E2D\u7684\u5361\u7247"，\n  CRAM_CARDS_IN_NOTE："\u4E0D\u8A08\u96E3\u6613\u5EA6\u5FA9\u7FD2\u6B64\u7B46\u8A18\u4E2D\u7684\u5361\u7247"，\n  查看统计数据："\u6AA2\u8996\u6578\u64DA"，\n  OPEN_REVIEW_QUEUE_VIEW："Open Notes Review Queue in sidebar"，\n  状态栏："\u5FA9\u7FD2: ${dueNotesCount} \u7B46\u8A18, ${dueFlashcardsCount} \u5361\u7247\u5DF2\u5230\u671F"，\n  SYNC_TIME_TAKEN："\u540C\u6B65\u6642\u9593 ${t}ms"，\n  注意_IN_IGNORED_FOLDER："\u7B46\u8A18\u5132\u5B58\u5728\u5DF2\u88AB\u5FFD\u7565\u7684\u8DEF\u5F91\u4E2D\uFF08\u6AA2\u67E5\u8A2D\u5B9A\u9078\u9805\uFF09\u3002"，\n  请_TAG_注意："\u8ACB\u5C07\u9700\u8981\u5FA9\u7FD2\u7684\u7B46\u8A18\u4E2D\u52A0\u5165\u6B63\u78BA\u7684\u6A19\u7C64\uFF08\u6AA2\u67E5\u8A2D\u5B9A\u9078\u9805\uFF09\u3002"，\n  RESPONSE_RECEIVED："\u56DE\u994B\u5DF2\u6536\u5230"，\n  不存在甲板："\u6C92\u6709 ${deckName} \u724C\u7D44"，\n  ALL_CAUGHT_UP："\u90FD\u5FA9\u7FD2\u5B8C\u5566\uFF0C\u4F60\u771F\u68D2\uFF01",\n  // 调度.ts\n  DAYS_STR_IVL："${interval}\u5929"，\n  MONTHS_STR_IVL："${interval}\u6708"，\n  YEARS_STR_IVL："${interval}\u5E74"，\n  DAYS_STR_IVL_MOBILE："${interval}\u5929"，\n  MONTHS_STR_IVL_MOBILE："${interval}\u6708"，\n  YEARS_STR_IVL_MOBILE："${interval}\u5E74",\n  // 设置.ts\n  设置_标题："\u9593\u9694\u91CD\u8907\u5916\u639B"，\n  GROUP_TAGS_FOLDERS："Tags & Folders",\n  GROUP_FLASHCARD_REVIEW："Flashcard Review"，\n  GROUP_FLASHCARD_SEPARATORS："Flashcard Separators"，\n  组数据存储："Storage of Scheduling Data"，\n  GROUP_DATA_STORAGE_DESC："Choose where to store the scheduling data"，\n  GROUP_FLASHcardS_NOTES："Flashcards & Notes"，\n  GROUP_CONTRIBUTING："Contributing",
+  CHECK_WIKI: '\u77AD\u89E3\u66F4\u591A, \u8ACB\u9EDE\u9078<a href="${wikiUrl}">wiki</a>。',\n  GITHUB_DISCUSSIONS: '访问 <a href="${discussionsUrl}">讨论</a>部分，用于问答帮助、反馈和一般讨论。',\n  GITHUB_ISSUES: '在原型中提出问题 <a href="${issuesUrl}">此处</a>。',\n  GITHUB_SOURCE_CODE: '该项目的源代码可在 <a href="${githubProjectUrl}">GitHub</a>.',
+  CODE_CONTRIBUTION_INFO: '<a href="${codeContributionUrl}">这里</a>如何向插件贡献代码。',\n  TRANSLATION_CONTRIBUTION_INFO: '<a href="${translationContributionUrl}">这里</a>如何将插件翻译成另一种语言。',\n  FOLDERS_TO_IGNORE："\u5FFD\u7565\u6B64\u8CC7\u6599\u593E"，\n  FOLDERS_TO_IGNORE_DESC："Enter folder paths or glob patterns on separate lines e.g. Templates/Scripts or **/*.excalidraw.md. This setting is common to both flashcards and notes."，\n  黑曜石集成："Integration into Obsidian"，\n  抽认卡："\u5361\u7247",\n  闪存卡_EASY_标签："\u7C21\u55AE\u6309\u9215\u6587\u5B57"，\n  FLASHCARD_GOOD_LABEL："\u8A18\u5F97\u6309\u9215\u6587\u5B57"，\n  闪存卡_硬标签："\u8F03\u96E3\u6309\u9215\u6587\u5B57"，\n  闪存卡_EASY_DESC："\u81EA\u8A02\u300C\u7C21\u55AE\u300D\u6309\u9215\u7684\u6A19\u7C64"，\n  FLASHCARD_GOOD_DESC："\u81EA\u8A02\u300C\u8A18\u5F97\u300D\u6309\u9215\u7684\u6A19\u7C64"，\n  FLASHCARD_HARD_DESC："\u81EA\u8A02\u300C\u8F03\u96E3\u300D\u6309\u9215\u7684\u6A19\u7C64"，\n  REVIEW_BUTTON_DELAY："Button Press Delay (ms)"，\n  REVIEW_BUTTON_DELAY_DESC："Add a delay to the review buttons before they can be pressed again."，\n  闪存卡标签："\u5361\u7247\u6A19\u7C64",\n  FLASHCARD_TAGS_DESC："\u8F38\u5165\u6A19\u7C64\uFF08\u7528\u7A7A\u767D\u6216\u63DB\u884C\u5B57\u5143\u5206\u9694\uFF09\uFF0C\u4F8B\u5982\uFF1A#flashcards #deck2 #deck3.",\n  CONVERT_FOLDERS_TO_DECKS："\u662F\u5426\u5C07\u8CC7\u6599\u593E\u5167\u5BB9\u8F49\u63DB\u70BA\u724C\u7D44\u548C\u5B50\u724C\u7D44\uFF1F"，\n  CONVERT_FOLDERS_TO_DECKS_DESC："\u6B64\u9078\u9805\u70BA\u5361\u7247\u6A19\u7C64\u9078\u9805\u7684\u66FF\u4EE3\u9078\u9805\u3002"，\n  内联调度注释："\u662F\u5426\u5C07\u8A08\u5283\u91CD\u8907\u6642\u9593\u5132\u5B58\u5728\u5361\u7247\u6700\u5F8C\u4E00\u884C\u7684\u540C\u4E00\u884C\uFF1F",\n  INLINE_SCHEDULING_COMMENTS_DESC："\u52FE\u9078\u5F8CHTML\u8A3B\u89E3\u4E0D\u6703\u7834\u58DE\u5217\u8868\u683C\u5F0F\u554F\u984C\u3002",\n  BURY_SIBLINGS_TILL_NEXT_DAY："\u5C07\u53CD\u8F49\u5361\u7247\u96B1\u85CF\u81F3\u4E0B\u4E00\u5929\uFF1F",\n  BURY_SIBLINGS_TILL_NEXT_DAY_DESC："\u53CD\u8F49\u5361\u7247\u7531\u540C\u4E00\u5361\u7247\u6587\u5B57\u7522\u751F\uFF0C\u4F8B\u5982\uFF1A\u586B\u7A7A\u514B\u6F0F\u5B57"，\n  SHOW_CARD_CONTEXT："\u5728\u5361\u7247\u4E2D\u986F\u793A\u4E0A\u4E0B\u6587\uFF1F"，\n  SHOW_CARD_CONTEXT_DESC："\u4F8B\u5982\uFF1A\u6A19\u984C > \u526F\u6A19\u984C > \u5C0F\u6A19\u984C > ... > \u5C0F\u6A19\u984C",\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS："Show next review time in the review buttons"，\n  SHOW_INTERVAL_IN_REVIEW_BUTTONS_DESC："Useful to know how far in the future your cards are being pushed."，\n  CARD_MODAL_HEIGHT_PERCENT："\u5361\u7247\u9AD8\u5EA6\u767E\u5206\u6BD4"，\n  CARD_MODAL_SIZE_PERCENT_DESC："\u5728\u79FB\u52D5\u7AEF\u6216\u9700\u8981\u8F03\u5927\u5716\u7247\u6642\u61C9\u8A2D\u5B9A\u70BA100%"，\n  RESET_DEFAULT："\u91CD\u7F6E\u70BA\u9810\u8A2D\u503C",\n  CARD_MODAL_WIDTH_PERCENT："\u5361\u7247\u5BEC\u5EA6\u767E\u5206\u6BD4"，\n  随机卡顺序："\u5FA9\u7FD2\u6642\u96A8\u6A5F\u986F\u793A\u5361\u7247\uFF1F"，\n  REVIEW_CARD_ORDER_WITHIN_DECK："\u5FA9\u7FD2\u6642\u724C\u7D44\u5167\u7684\u5361\u7247\u6392\u5E8F"，\n  REVIEW_CARD_ORDER_NEW_FIRST_SEQUENTIAL："\u724C\u7D44\u5167\u9806\u5E8F (\u5168\u90E8\u65B0\u5361\u7247\u512A\u5148)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_SEQUENTIAL："\u724C\u7D44\u5167\u9806\u5E8F (\u5168\u90E8\u5230\u671F\u5361\u7247\u512A\u5148)",\n  REVIEW_CARD_ORDER_NEW_FIRST_RANDOM："\u724C\u7D44\u5167\u4E82\u5E8F (\u5168\u90E8\u65B0\u5361\u7247\u512A\u5148)"，\n  REVIEW_CARD_ORDER_DUE_FIRST_RANDOM："\u724C\u7D44\u5167\u4E82\u5E8F (\u5168\u90E8\u5230\u671F\u5361\u7247\u512A\u5148)"，\n  REVIEW_CARD_ORDER_RANDOM_DECK_AND_CARD："\u724C\u7D44\u53CA\u5361\u7247\u90FD\u4E82\u5E8F"，\n  REVIEW_DECK_ORDER："\u5FA9\u7FD2\u6642\u724C\u7D44\u7684\u6392\u5E8F",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_SEQUENTIAL："\u9806\u5E8F (\u5728\u524D\u4E00\u724C\u7D44\u5167\u5361\u7247\u90FD\u5FA9\u7FD2\u5B8C\u5F8C)",\n  REVIEW_DECK_ORDER_PREV_DECK_COMPLETE_RANDOM："\u4E82\u5E8F (\u5728\u524D\u4E00\u724C\u7D44\u5167\u5361\u7247\u90FD\u5FA9\u7FD2\u5B8C\u5F8C)"，\n  REVIEW_DECK_ORDER_RANDOM_DECK_AND_CARD："\u724C\u7D44\u53CA\u5361\u7247\u90FD\u4E82\u5E8F"，\n  DISABLE_CLOZE_CARDS："\u505C\u7528\u586B\u7A7A\u514B\u6F0F\u5B57\u5361\u7247\uFF1F"，\n  CONVERT_HIGHLIGHTS_TO_CLOZES："\u5C07 ==\u9AD8\u4EAE== \u8F49\u63DB\u70BA\u586B\u7A7A\u514B\u6F0F\u5B57\uFF1F",
   CONVERT_HIGHLIGHTS_TO_CLOZES_DESC: '\u5728 "\u586B\u7A7A\u514B\u6F0F\u5B57\u6A21\u5F0F" \u4E2D\u52A0\u5165/\u79FB\u9664 <code>${defaultPattern}</code>',
   CONVERT_BOLD_TEXT_TO_CLOZES: "\u5C07 **\u7C97\u9AD4** \u8F49\u63DB\u70BA\u586B\u7A7A\u514B\u6F0F\u5B57\uFF1F",
   CONVERT_BOLD_TEXT_TO_CLOZES_DESC: '\u5728 "\u586B\u7A7A\u514B\u6F0F\u5B57\u6A21\u5F0F" \u4E2D\u52A0\u5165/\u79FB\u9664 <code>${defaultPattern}</code>',
   CONVERT_CURLY_BRACKETS_TO_CLOZES: "\u5C07 {{\u5927\u62EC\u865F}} \u8F49\u63DB\u70BA\u586B\u7A7A\u514B\u6F0F\u5B57\uFF1F",
   CONVERT_CURLY_BRACKETS_TO_CLOZES_DESC: '\u5728 "\u586B\u7A7A\u514B\u6F0F\u5B57\u6A21\u5F0F" \u4E2D\u52A0\u5165/\u79FB\u9664 <code>${defaultPattern}</code>',
   CLOZE_PATTERNS: "\u586B\u7A7A\u514B\u6F0F\u5B57\u6A21\u5F0F",
-  CLOZE_PATTERNS_DESC: '\u8F38\u5165\u4EE5\u63DB\u884C\u7B26\u5206\u9694\u7684\u586B\u7A7A\u514B\u6F0F\u5B57\u6A21\u5F0F. Check the <a href="${docsUrl}">wiki</a> for guidance.',
-  INLINE_CARDS_SEPARATOR: "\u55AE\u884C\u5361\u7247\u7684\u5206\u9694\u5B57\u5143",
-  FIX_SEPARATORS_MANUALLY_WARNING: "\u6CE8\u610F\uFF1A\u66F4\u6539\u6B64\u9078\u9805\u5F8C\u4F60\u5C07\u9700\u8981\u81EA\u884C\u66F4\u6539\u5DF2\u5B58\u5728\u5361\u7247\u7684\u5206\u9694\u5B57\u5143\u3002",
-  INLINE_REVERSED_CARDS_SEPARATOR: "\u55AE\u884C\u53CD\u8F49\u5361\u7247\u7684\u5206\u9694\u5B57\u5143",
-  MULTILINE_CARDS_SEPARATOR: "\u591A\u884C\u5361\u7247\u7684\u5206\u9694\u5B57\u5143",
-  MULTILINE_REVERSED_CARDS_SEPARATOR: "\u591A\u884C\u7FFB\u8F49\u5361\u7247\u7684\u5206\u9694\u5B57\u5143",
-  MULTILINE_CARDS_END_MARKER: "\u8868\u793A\u586B\u7A7A\u548C\u591A\u884C\u95EA\u5361\u7ED3\u675F\u7684\u5B57\u7B26",
-  NOTES: "\u7B46\u8A18",
-  NOTE: "Note",
-  REVIEW_PANE_ON_STARTUP: "\u555F\u52D5\u6642\u958B\u555F\u7B46\u8A18\u5FA9\u7FD2\u7A97\u683C",
-  TAGS_TO_REVIEW: "\u5FA9\u7FD2\u6A19\u7C64",
-  TAGS_TO_REVIEW_DESC: "\u8F38\u5165\u6A19\u7C64\uFF0C\u7528\u7A7A\u683C\u6216\u63DB\u884C\u5B57\u5143\u5206\u9694\uFF0C\u4F8B\u5982\uFF1A#review #tag2 #tag3.",
-  OPEN_RANDOM_NOTE: "\u5FA9\u7FD2\u96A8\u6A5F\u7B46\u8A18",
-  OPEN_RANDOM_NOTE_DESC: "\u95DC\u9589\u6B64\u9078\u9805\uFF0C\u7B46\u8A18\u5C07\u4EE5\u91CD\u8981\u5EA6(PageRank)\u6392\u5E8F\u3002",
-  AUTO_NEXT_NOTE: "\u5FA9\u7FD2\u5F8C\u81EA\u52D5\u6253\u958B\u4E0B\u4E00\u500B\u7B46\u8A18",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS: "\u8ACB\u5728\u6A94\u6848\u9078\u55AE\u4E2D\u555F\u7528\u6AA2\u8996\u9078\u9805\uFF08\u4F8B\u5982\uFF1A\u6AA2\u8996\uFF1A\u7C21\u55AE\u3001\u8A18\u5F97\u3001\u8F03\u96E3\uFF09",
-  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC: "\u5982\u679C\u60A8\u5728\u6A94\u6848\u9078\u55AE\u4E2D\u505C\u7528\u6AA2\u8996\u9078\u9805\uFF0C\u60A8\u53EF\u4EE5\u4F7F\u7528\u63D2\u4EF6\u6307\u4EE4\u6AA2\u8996\u7B46\u8A18\uFF0C\u5982\u679C\u6709\u8A2D\u5B9A\uFF0C\u4E5F\u53EF\u4EE5\u4F7F\u7528\u76F8\u95DC\u7684\u5FEB\u6377\u9375\u3002",
-  MAX_N_DAYS_REVIEW_QUEUE: "\u53F3\u908A\u9762\u677F\u986F\u793A\u7684\u6700\u5927\u5929\u6578",
-  MIN_ONE_DAY: "\u5929\u6578\u6700\u5C0F\u503C\u70BA1",
-  VALID_NUMBER_WARNING: "\u8ACB\u8F38\u5165\u6709\u6548\u7684\u6578\u5B57\u3002",
-  UI: "User Interface",
-  OPEN_IN_TAB: "Open in new tab",
-  OPEN_IN_TAB_DESC: "Turn this off to open the plugin in a modal window",
-  SHOW_STATUS_BAR: "Show status bar",
-  SHOW_STATUS_BAR_DESC: "Turn this off to hide the flashcard's review status in Obsidian's status bar",
-  SHOW_RIBBON_ICON: "Show icon in the ribbon bar",
-  SHOW_RIBBON_ICON_DESC: "Turn this off to hide the plugin icon from Obsidian's ribbon bar",
+  CLOZE_PATTERNS_DESC: '\u8F38\u5165\u4EE5\u63DB\u884C\u7B26\u5206\u9694\u7684\u586B\u7A7A\u514B\u6F0F\u5B57\u6A21\u5F0F. Check the <a href="${docsUrl}">wiki</a> 获取指导。',\n  INLINE_CARDS_SEPARATOR："\u55AE\u884C\u5361\u7247\u7684\u5206\u9694\u5B57\u5143",\n  FIX_SEPARATORS_MANUALLY_WARNING："\u6CE8\u610F\uFF1A\u66F4\u6539\u6B64\u9078\u9805\u5F8C\u4F60\u5C07\u9700\u8981\u81EA\u884C\u66F4\u6539\u5DF2\u5B58\u5728\u5361\u7247\u7684\u5206\u9694\u5B57\u5143\u3002",\n  INLINE_REVERSED_CARDS_SEPARATOR："\u55AE\u884C\u53CD\u8F49\u5361\u7247\u7684\u5206\u9694\u5B57\u5143"，\n  多行卡分隔符："\u591A\u884C\u5361\u7247\u7684\u5206\u9694\u5B57\u5143"，\n  MULTILINE_REVERSED_CARDS_SEPARATOR："\u591A\u884C\u7FFB\u8F49\u5361\u7247\u7684\u5206\u9694\u5B57\u5143"，\n  MULTILINE_CARDS_END_MARKER："\u8868\u793A\u586B\u7A7A\u548C\u591A\u884C\u95EA\u5361\u7ED3\u675F\u7684\u5B57\u7B26"，\n  注："\u7B46\u8A18"，\n  注意："Note"，\n  REVIEW_PANE_ON_STARTUP："\u555F\u52D5\u6642\u958B\u555F\u7B46\u8A18\u5FA9\u7FD2\u7A97\u683C"，\n  TAGS_TO_REVIEW："\u5FA9\u7FD2\u6A19\u7C64"，\n  TAGS_TO_REVIEW_DESC："\u8F38\u5165\u6A19\u7C64\uFF0C\u7528\u7A7A\u683C\u6216\u63DB\u884C\u5B57\u5143\u5206\u9694\uFF0C\u4F8B\u5982\uFF1A#review #tag2 #tag3."，\n  OPEN_RANDOM_NOTE："\u5FA9\u7FD2\u96A8\u6A5F\u7B46\u8A18"，\n  OPEN_RANDOM_NOTE_DESC："\u95DC\u9589\u6B64\u9078\u9805\uFF0C\u7B46\u8A18\u5C07\u4EE5\u91CD\u8981\u5EA6(PageRank)\u6392\u5E8F\u3002"，\n  自动下一个注释："\u5FA9\u7FD2\u5F8C\u81EA\u52D5\u6253\u958B\u4E0B\u4E00\u500B\u7B46\u8A18",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS："\u8ACB\u5728\u6A94\u6848\u9078\u55AE\u4E2D\u555F\u7528\u6AA2\u8996\u9078\u9805\uFF08\u4F8B\u5982\uFF1A\u6AA2\u8996\uFF1A\u7C21\u55AE\u3001\u8A18\u5F97\u3001\u8F03\u96E3\uFF09",\n  ENABLE_FILE_MENU_REVIEW_OPTIONS_DESC："\u5982\u679C\u60A8\u5728\u6A94\u6848\u9078\u55AE\u4E2D\u505C\u7528\u6AA2\u8996\u9078\u9805\uFF0C\u60A8\u53EF\u4EE5\u4F7F\u7528\u63D2\u4EF6\u6307\u4EE4\u6AA2\u8996\u7B46\u8A18\uFF0C\u5982\u679C\u6709\u8A2D\u5B9A\uFF0C\u4E5F\u53EF\u4EE5\u4F7F\u7528\u76F8\u95DC\u7684\u5FEB\u6377\u9375\u3002"，\n  MAX_N_DAYS_REVIEW_QUEUE："\u53F3\u908A\u9762\u677F\u986F\u793A\u7684\u6700\u5927\u5929\u6578",\n  MIN_ONE_DAY："\u5929\u6578\u6700\u5C0F\u503C\u70BA1"，\n  VALID_NUMBER_WARNING："\u8ACB\u8F38\u5165\u6709\u6548\u7684\u6578\u5B57\u3002"，\n  用户界面："User Interface"，\n  OPEN_IN_TAB："Open in new tab"，\n  OPEN_IN_TAB_DESC："Turn this off to open the plugin in a modal window"，\n  显示状态栏："Show status bar"，\n  显示_状态栏_DESC："Turn this off to hide the flashcard'Obsidian 中的审核状态's status bar"，\n  显示_RIBBON_ICON："Show icon in the ribbon bar"，\n  SHOW_RIBBON_ICON_DESC:"Turn this off to hide the plugin icon from Obsidian's ribbon bar",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE: "\u724C\u7D44\u6A39\u6700\u521D\u61C9\u986F\u793A\u70BA\u5C55\u958B",
   INITIALLY_EXPAND_SUBDECKS_IN_TREE_DESC: "\u95DC\u9589\u6B64\u9078\u9805\u53EF\u647A\u758A\u540C\u4E00\u5F35\u5361\u7247\u4E2D\u7684\u5DE2\u72C0\u724C\u7D44\u3002\u5982\u679C\u60A8\u7684\u5361\u7247\u5C6C\u65BC\u540C\u4E00\u6A94\u6848\u4E2D\u7684\u8A31\u591A\u5957\u724C\uFF0C\u5247\u5F88\u6709\u7528\u3002",
   ALGORITHM: "\u6F14\u7B97\u6CD5",
-  CHECK_ALGORITHM_WIKI: '\u77AD\u89E3\u66F4\u591A, \u8ACB\u9EDE\u9078<a href="${algoUrl}">\u7B97\u6CD5\u5BE6\u73FE</a>.',
-  SM2_OSR_VARIANT: "OSR's variant of SM-2",
-  BASE_EASE: "\u57FA\u790E\u638C\u63E1\u7A0B\u5EA6",
-  BASE_EASE_DESC: "\u6700\u5C0F\u503C130\uFF0C\u63A8\u85A6\u503C\u7D04250.",
-  BASE_EASE_MIN_WARNING: "\u57FA\u790E\u638C\u63E1\u7A0B\u5EA6\u7684\u6700\u5C0F\u503C\u70BA130\u3002",
-  LAPSE_INTERVAL_CHANGE: "\u5C07\u5FA9\u7FD2\u6642\u6A19\u8A3B\u70BA\u300C\u8F03\u96E3\u300D\u7684\u5361\u7247\u6216\u7B46\u8A18\u5FA9\u7FD2\u9593\u9694\u7E2E\u77ED",
-  LAPSE_INTERVAL_CHANGE_DESC: "\u65B0\u5FA9\u7FD2\u9593\u9694 = \u539F\u5FA9\u7FD2\u9593\u9694 * \u9593\u9694\u6539\u8B8A\u4FC2\u6578 / 100.",
-  EASY_BONUS: "\u7C21\u55AE\u734E\u52F5",
-  EASY_BONUS_DESC: "\u7C21\u55AE\u734E\u52F5\u8A2D\u5B9A\u300C\u8A18\u5F97\u300D\u548C\u300C\u7C21\u55AE\u300D\u5361\u7247\u6216\u7B46\u8A18\u7684\u5FA9\u7FD2\u9593\u9694\u5DEE\u8DDD\uFF08\u6700\u5C0F\u503C100%\uFF09\u3002",
-  EASY_BONUS_MIN_WARNING: "\u7C21\u55AE\u734E\u52F5\u81F3\u5C11\u70BA100\u3002",
-  LOAD_BALANCE: "Enable load balancer",
+  CHECK_ALGORITHM_WIKI: '\u77AD\u89E3\u66F4\u591A, \u8ACB\u9EDE\u9078<a href="${algoUrl}">\u7B97\u6CD5\u5BE6\u73FE</a>.'，\n  SM2_OSR_VARIANT：“OSR's variant of SM-2"，\n  BASE_EASE："\u57FA\u790E\u638C\u63E1\u7A0B\u5EA6"，\n  BASE_EASE_DESC："\u6700\u5C0F\u503C130\uFF0C\u63A8\u85A6\u503C\u7D04250.",\n  BASE_EASE_MIN_WARNING："\u57FA\u790E\u638C\u63E1\u7A0B\u5EA6\u7684\u6700\u5C0F\u503C\u70BA130\u3002"，\n  LAPSE_INTERVAL_CHANGE："\u5C07\u5FA9\u7FD2\u6642\u6A19\u8A3B\u70BA\u300C\u8F03\u96E3\u300D\u7684\u5361\u7247\u6216\u7B46\u8A18\u5FA9\u7FD2\u9593\u9694\u7E2E\u77ED"，\n  LAPSE_INTERVAL_CHANGE_DESC："\u65B0\u5FA9\u7FD2\u9593\u9694 = \u539F\u5FA9\u7FD2\u9593\u9694 * \u9593\u9694\u6539\u8B8A\u4FC2\u6578 / 100."，\n  EASY_BONUS："\u7C21\u55AE\u734E\u52F5"，\n  EASY_BONUS_DESC："\u7C21\u55AE\u734E\u52F5\u8A2D\u5B9A\u300C\u8A18\u5F97\u300D\u548C\u300C\u7C21\u55AE\u300D\u5361\u7247\u6216\u7B46\u8A18\u7684\u5FA9\u7FD2\u9593\u9694\u5DEE\u8DDD\uFF08\u6700\u5C0F\u503C100%\uFF09\u3002"，\n  EASY_BONUS_MIN_WARNING："\u7C21\u55AE\u734E\u52F5\u81F3\u5C11\u70BA100\u3002"，\n  负载平衡："Enable load balancer",
   LOAD_BALANCE_DESC: `Slightly tweaks the interval so that the number of reviews per day is more consistent.
         It's like Anki's fuzz but instead of being random, it picks the day with the least amount of reviews.
         It's turned off for small intervals.`,
-  MAX_INTERVAL: "\u6700\u5927\u9593\u9694\uFF08\u5929\uFF09",
-  MAX_INTERVAL_DESC: "\u8A2D\u5B9A\u5FA9\u7FD2\u7684\u6700\u5927\u9593\u9694\u6642\u9593\uFF08\u9810\u8A2D\u503C100\u5E74\uFF09\u3002",
-  MAX_INTERVAL_MIN_WARNING: "\u6700\u5927\u9593\u9694\u81F3\u5C11\u70BA1\u5929",
-  MAX_LINK_CONTRIB: "\u6700\u5927\u93C8\u63A5\u8CA2\u737B",
-  MAX_LINK_CONTRIB_DESC: "\u93C8\u63A5\u7B46\u8A18\u7684\u52A0\u6B0A\u638C\u63E1\u7A0B\u5EA6\u5C0D\u539F\u59CB\u638C\u63E1\u7A0B\u5EA6\u7684\u6700\u5927\u8CA2\u737B\u3002",
-  LOGGING: "\u8A18\u9304\u4E2D",
-  DISPLAY_SCHEDULING_DEBUG_INFO: "\u5728\u958B\u767C\u8005\u63A7\u5236\u53F0\u4E2D\u986F\u793A\u9664\u932F\u8CC7\u8A0A",
-  DISPLAY_PARSER_DEBUG_INFO: "Show the parser's debugging information on the developer console",
+  MAX_INTERVAL: "\u6700\u5927\u9593\u9694\uFF08\u5929\uFF09"，\n  MAX_INTERVAL_DESC："\u8A2D\u5B9A\u5FA9\u7FD2\u7684\u6700\u5927\u9593\u9694\u6642\u9593\uFF08\u9810\u8A2D\u503C100\u5E74\uFF09\u3002"，\n  最大间隔最小警告："\u6700\u5927\u9593\u9694\u81F3\u5C11\u70BA1\u5929"，\n  MAX_LINK_CONTRIB："\u6700\u5927\u93C8\u63A5\u8CA2\u737B"，\n  MAX_LINK_CONTRIB_DESC："\u93C8\u63A5\u7B46\u8A18\u7684\u52A0\u6B0A\u638C\u63E1\u7A0B\u5EA6\u5C0D\u539F\u59CB\u638C\u63E1\u7A0B\u5EA6\u7684\u6700\u5927\u8CA2\u737B\u3002"，\n  记录："\u8A18\u9304\u4E2D"，\n  DISPLAY_SCHEDULING_DEBUG_INFO："\u5728\u958B\u767C\u8005\u63A7\u5236\u53F0\u4E2D\u986F\u793A\u9664\u932F\u8CC7\u8A0A"，\n  DISPLAY_PARSER_DEBUG_INFO："Show the parser's debugging information on the developer console",
   SCHEDULING: "Scheduling",
   EXPERIMENTAL: "Experimental",
   HELP: "Help",
@@ -8910,7 +7687,7 @@ var _AST = class _AST {
       if (p2 === "")
         continue;
       if (typeof p2 !== "string" && !(p2 instanceof _AST && __privateGet(p2, _parent) === this)) {
-        throw new Error("invalid part: " + p2);
+        throw new Error("无效部分：" + p2);
       }
       __privateGet(this, _parts).push(p2);
     }
@@ -9042,7 +7819,7 @@ var _AST = class _AST {
   // Then the caller just ignores the end if it's not the first pattern,
   // and the start always gets applied.
   //
-  // But that's always going to be $ if it's the ending pattern, or nothing,
+  // But that's 总是 $ 如果's the ending pattern, or nothing,
   // so the caller can just attach $ at the end of the pattern when building.
   //
   // So the todo is:
@@ -9684,8 +8461,7 @@ var Minimatch = class {
   // First phase: single-pattern processing
   // <pre> is 1 or more portions
   // <rest> is 1 or more portions
-  // <p> is any portion other than ., .., '', or **
-  // <e> is . or ''
+  // <p> is any portion other than ., .., ''或 **\n  // <e> 是 .或''
   //
   // **/.. is *brutal* for filesystem walking performance, because
   // it effectively resets the recursive walk each time it occurs,
@@ -10196,8 +8972,7 @@ var TopicPath = class _TopicPath {
     return new _TopicPath([...this.path]);
   }
   formatAsTag() {
-    if (this.isEmptyPath) throw "Empty path";
-    const result = "#" + this.path.join("/");
+    if (this.isEmptyPath) throw "Empty path";\n    const 结果 ="#"+ this.path.join("/");
     return result;
   }
   static getTopicPathOfFile(noteFile, settings) {
@@ -10253,10 +9028,7 @@ var TopicPath = class _TopicPath {
     return true;
   }
   static getTopicPathFromTag(tag) {
-    if (tag == null || tag.length == 0) throw "Null/empty tag";
-    if (tag[0] != "#") throw "Tag must start with #";
-    if (tag.length == 1) throw "Invalid tag";
-    const path3 = tag.replace("#", "").split("/").filter((str) => str);
+    if (tag == null || tag.length == 0) throw "Null/empty tag"；\n    if (tag[0] !="#") 抛出"Tag must start with #";\n    if (tag.length == 1) 抛出"Invalid tag"；\n    const path3 = tag.replace("#", "").split("/").filter((str) => str);
     return new _TopicPath(path3);
   }
   static getFolderPathFromFilename(noteFile, settings) {
@@ -10293,22 +9065,7 @@ var TopicPathList = class _TopicPathList {
     return new _TopicPathList([]);
   }
   static fromPsv(str, lineNum) {
-    const result = _TopicPathList.convertTagListToTopicPathList(str.split("|"));
-    result.lineNum = lineNum;
-    return result;
-  }
-  //
-  // tagList is a list of tags such as:
-  //      ["#flashcards/computing", "#boring-stuff", "#news-worthy"]
-  // validTopicPathList is a list of valid tags, such as those from settings.flashcardTags,E.g.
-  //      ["#flashcards"]
-  //
-  // This returns a filtered version of tagList, containing only topic paths that are considered valid.
-  // Validity is defined as "isAnyElementSameOrAncestorOf", and "#flashcards" is considered the ancestor of
-  // "#flashcards/computing".
-  //
-  // Therefore this would return:
-  //      "#flashcards/computing" (but not "#boring-stuff" or "#news-worthy")
+    const result = _TopicPathList.convertTagListToTopicPathList(str.split("|"));\n    结果.lineNum = lineNum;\n    返回结果；\n  }\n  //\n  // tagList 是标签列表，例如：\n  // ["#flashcards/computing", "#boring-stuff", "#news-worthy"]\n  // validTopicPathList 是有效标签的列表，例如来自 settings.flashcardTags 的标签，例如\n  // ["#flashcards"]\n  //\n  // 这将返回 tagList 的过滤版本，仅包含被认为有效的主题路径。\n  // 有效性定义为"isAnyElementSameOrAncestorOf"和"#flashcards"被认为是的祖先\n  //"#flashcards/computing".\n  //\n  // 因此这将返回：\n  //"#flashcards/computing"（但不是"#boring-stuff" or "#news-worthy")
   //
   static filterValidTopicPathsFromTagList(list, validTopicPathList, lineNum = null) {
     const result = [];
@@ -10712,12 +9469,7 @@ var Deck2 = class _Deck {
     }
   }
   debugLogToConsole(desc = null, indent = 0) {
-    let str = desc != null ? `${desc}: ` : "";
-    console.log(str += this.toString(indent));
-  }
-  toString(indent = 0) {
-    let result = "";
-    let indentStr = " ".repeat(indent * 4);
+    let str = desc != null ? `${desc}: ` : "";\n    console.log(str += this.toString(indent));\n  }\n  toString(缩进 = 0) {\n    let result =""；\n    让 indentStr =" ".repeat(indent * 4);
     result += `${indentStr}${this.deckName}\r
 `;
     indentStr += "  ";
@@ -10859,11 +9611,7 @@ var staticRandomNumberProvider = new StaticRandomNumberProvider();
 
 // src/deck-tree-iterator.ts
 var CardOrder = /* @__PURE__ */ ((CardOrder2) => {
-  CardOrder2[CardOrder2["NewFirstSequential"] = 0] = "NewFirstSequential";
-  CardOrder2[CardOrder2["NewFirstRandom"] = 1] = "NewFirstRandom";
-  CardOrder2[CardOrder2["DueFirstSequential"] = 2] = "DueFirstSequential";
-  CardOrder2[CardOrder2["DueFirstRandom"] = 3] = "DueFirstRandom";
-  CardOrder2[CardOrder2["EveryCardRandomDeckAndCard"] = 4] = "EveryCardRandomDeckAndCard";
+  CardOrder2[CardOrder2["NewFirstSequential"] = 0] = "NewFirstSequential";\n  卡订单2[卡订单2["NewFirstRandom"] = 1] = "NewFirstRandom";\n  卡订单2[卡订单2["DueFirstSequential"] = 2] = "DueFirstSequential";\n  卡订单2[卡订单2["DueFirstRandom"] = 3] = "DueFirstRandom";\n  卡订单2[卡订单2["EveryCardRandomDeckAndCard"] = 4] = "EveryCardRandomDeckAndCard";
   return CardOrder2;
 })(CardOrder || {});
 var DeckOrder = /* @__PURE__ */ ((DeckOrder2) => {
@@ -11315,18 +10063,7 @@ function cyrb53(str, seed = 0) {
   return (4294967296 * (2097151 & h22) + (h12 >>> 0)).toString(16);
 }
 function convertToStringOrEmpty(v2) {
-  let result = "";
-  if (v2 != null && v2 != void 0) {
-    result = v2 + "";
-  }
-  return result;
-}
-function splitTextIntoLineArray(text) {
-  return text.replaceAll(/\r\n|\r/g, "\n").split("\n");
-}
-function stringTrimStart(str) {
-  if (!str) {
-    return ["", ""];
+  let result = "";\n  if (v2 != null && v2 != void 0) {\n    结果 = v2 +""；\n  }\n  返回结果；\n}\n函数 splitTextIntoLineArray(text) {\n  返回文本.replaceAll(/\r\n|\r/g，"\n").split("\n");\n}\n函数 stringTrimStart(str) {\n  如果 (!str) {\n    返回["", ""];
   }
   const trimmed = str.trimStart();
   const wsCount = str.length - trimmed.length;
@@ -11338,9 +10075,7 @@ function splitNoteIntoFrontmatterAndContent(str) {
   let lineIndex = 0;
   let hasFrontmatter = false;
   do {
-    if (lineIndex === 0 && lines[lineIndex] === "---") {
-      hasFrontmatter = true;
-    } else if (hasFrontmatter && lines[lineIndex] === "---") {
+    if (lineIndex === 0 && lines[lineIndex] === "---") {\n      hasFrontmatter = true；\n    } else if (hasFrontmatter &&lines[lineIndex] ==="---") {
       hasFrontmatter = false;
       lineIndex++;
     }
@@ -11351,8 +10086,7 @@ function splitNoteIntoFrontmatterAndContent(str) {
   if (hasFrontmatter) {
     lineIndex = 0;
   }
-  const frontmatter = lines.slice(0, lineIndex).join("\n");
-  const emptyLines = lineIndex > 0 ? Array(lineIndex).join(".").split(".") : [];
+  const frontmatter = lines.slice(0, lineIndex).join("\n");\n  const 空行 = lineIndex > 0 ? Array(lineIndex).join(".").split(".") : [];
   const content = emptyLines.concat(lines.slice(lineIndex)).join("\n");
   return [frontmatter, content];
 }
@@ -11369,10 +10103,8 @@ function findLineIndexOfSearchStringIgnoringWs(lines, searchString) {
 function parseObsidianFrontmatterTag(tagStr) {
   const result = [];
   if (tagStr) {
-    const tagStrList = tagStr.split(",");
-    for (const tag of tagStrList) {
-      if (tag !== "") {
-        result.push(tag.startsWith("#") ? tag : "#" + tag);
+    const tagStrList = tagStr.split(",");\n    for (tagStrList 的 const 标签) {\n      如果（标记！=="") {
+        result.push(tag.startsWith("#"）？标签："#" + tag);
       }
     }
   }
@@ -11514,8 +10246,7 @@ var SrTFile = class {
     const fileCache = this.metadataCache.getFileCache(this.file);
     const frontMatter = fileCache == null ? void 0 : fileCache.frontmatter;
     if (frontMatter && (frontMatter == null ? void 0 : frontMatter.direction)) {
-      const str = (frontMatter.direction + "").toLowerCase();
-      result = str == "rtl" ? 2 /* Rtl */ : 1 /* Ltr */;
+      const str = (frontMatter.direction + "").toLowerCase();\n      结果 = str =="rtl" ? 2 /* Rtl */ : 1 /* Ltr */;
     }
     return result;
   }
@@ -11580,9 +10311,7 @@ var Card = class extends RepetitionItem {
     return this.isNew ? 0 /* NewCard */ : 1 /* DueCard */;
   }
   formatSchedule() {
-    let result = "";
-    if (this.hasSchedule) result = this.scheduleInfo.formatCardScheduleForHtmlComment();
-    else result = "New";
+    let result = "";\n    if (this.hasSchedule) 结果 = this.scheduleInfo.formatCardScheduleForHtmlComment();\n    否则结果 ="New";
     return result;
   }
 };
@@ -11764,11 +10493,7 @@ function markerInsideCodeBlock(text, marker, markerIndex) {
   let goingBack = markerIndex - 1, goingForward = markerIndex + marker.length;
   let backTicksBefore = 0, backTicksAfter = 0;
   while (goingBack >= 0) {
-    if (text[goingBack] === "`") backTicksBefore++;
-    goingBack--;
-  }
-  while (goingForward < text.length) {
-    if (text[goingForward] === "`") backTicksAfter++;
+    if (text[goingBack] === "`") backTicksBefore++;\n    回去——；\n  }\n  while (goingForward < text.length) {\n    if (text[goingForward] ==="`") backTicksAfter++;
     goingForward++;
   }
   return backTicksBefore % 2 === 1 && backTicksAfter % 2 === 1;
@@ -11781,7 +10506,7 @@ function hasInlineMarker(text, marker) {
 }
 function parse(text, options) {
   if (debugParser) {
-    console.log("Text to parse:\n<<<" + text + ">>>");
+    console.log("Text to parse:\n<<<"+ 文本 +">>>");
   }
   const inlineSeparators = [
     { separator: options.singleLineCardSeparator, type: 0 /* SingleLineBasic */ },
@@ -11796,8 +10521,7 @@ function parse(text, options) {
   const lines = text.replaceAll("\r\n", "\n").split("\n");
   for (let i2 = 0; i2 < lines.length; i2++) {
     const currentLine = lines[i2], currentTrimmed = lines[i2].trim();
-    if (currentLine.startsWith("<!--") && !currentLine.startsWith("<!--SR:")) {
-      while (i2 + 1 < lines.length && !currentLine.includes("-->")) i2++;
+    if (currentLine.startsWith("<!--") && !currentLine.startsWith("<!--SR:"））{\n      while (i2 + 1 <lines.length && !currentLine.includes("-->")) i2++;
       i2++;
       continue;
     }
@@ -11817,12 +10541,7 @@ function parse(text, options) {
         );
         cardType = null;
       }
-      cardText = "";
-      firstLineNo = i2 + 1;
-      continue;
-    }
-    if (cardText.length > 0) {
-      cardText += "\n";
+      cardText = ""；\n      第一行号 = i2 + 1;\n      继续；\n    }\n    if (cardText.length > 0) {\n      cardText +="\n";
     }
     cardText += currentLine.trimEnd();
     for (const { separator, type } of inlineSeparators) {
@@ -11834,8 +10553,7 @@ function parse(text, options) {
     if (cardType == 0 /* SingleLineBasic */ || cardType == 1 /* SingleLineReversed */) {
       cardText = currentLine;
       firstLineNo = i2;
-      if (i2 + 1 < lines.length && lines[i2 + 1].startsWith("<!--SR:")) {
-        cardText += "\n" + lines[i2 + 1];
+      if (i2 + 1 < lines.length && lines[i2 + 1].startsWith("<!--SR:")) {\n        卡文本 +="\n" + lines[i2 + 1];
         i2++;
       }
       lastLineNo = i2;
@@ -11854,9 +10572,7 @@ function parse(text, options) {
       const codeBlockClose = currentLine.match(/`+|~+/)[0];
       while (i2 + 1 < lines.length && !lines[i2 + 1].startsWith(codeBlockClose)) {
         i2++;
-        cardText += "\n" + lines[i2];
-      }
-      cardText += "\n" + codeBlockClose;
+        cardText += "\n"+ 行[i2]；\n      }\n      卡文本 +="\n" + codeBlockClose;
       i2++;
     } else if (cardType === null && clozecrafter.isClozeNote(currentLine)) {
       cardType = 4 /* Cloze */;
@@ -11918,8 +10634,7 @@ var QuestionTypeMultiLineBasic = class {
       questionLines,
       settings.multilineCardSeparator
     );
-    const side1 = questionLines.slice(0, lineIdx).join("\n");
-    const side2 = questionLines.slice(lineIdx + 1).join("\n");
+    const side1 = questionLines.slice(0, lineIdx).join("\n");\n    const side2 = QuestionLines.slice(lineIdx + 1).join("\n");
     const result = [new CardFrontBack(side1, side2)];
     return result;
   }
@@ -11931,8 +10646,7 @@ var QuestionTypeMultiLineReversed = class {
       questionLines,
       settings.multilineReversedCardSeparator
     );
-    const side1 = questionLines.slice(0, lineIdx).join("\n");
-    const side2 = questionLines.slice(lineIdx + 1).join("\n");
+    const side1 = questionLines.slice(0, lineIdx).join("\n");\n    const side2 = QuestionLines.slice(lineIdx + 1).join("\n");
     const result = [
       new CardFrontBack(side1, side2),
       new CardFrontBack(side2, side1)
@@ -11991,29 +10705,7 @@ var QuestionTypeFactory = class {
 };
 
 // src/settings.ts
-var import_obsidian3 = require("obsidian");
-var DEFAULT_SETTINGS = {
-  // flashcards
-  flashcardTags: ["#flashcards"],
-  convertFoldersToDecks: false,
-  burySiblingCards: false,
-  randomizeCardOrder: null,
-  flashcardCardOrder: "DueFirstRandom",
-  flashcardDeckOrder: "PrevDeckComplete_Sequential",
-  convertHighlightsToClozes: true,
-  convertBoldTextToClozes: false,
-  convertCurlyBracketsToClozes: false,
-  clozePatterns: ["==[123;;]answer[;;hint]=="],
-  singleLineCardSeparator: "::",
-  singleLineReversedCardSeparator: ":::",
-  multilineCardSeparator: "?",
-  multilineReversedCardSeparator: "??",
-  multilineCardEndMarker: "",
-  editLaterTag: "#edit-later",
-  // notes
-  enableNoteReviewPaneOnStartup: true,
-  tagsToReview: ["#review"],
-  noteFoldersToIgnore: ["**/*.excalidraw.md"],
+var import_obsidian3 = require("obsidian");\nvar DEFAULT_SETTINGS = {\n  // 抽认卡\n  闪存卡标签：["#flashcards"],\n  转换文件夹到甲板：假，\n  burySiblingCards：假，\n  randomizeCardOrder：空，\n  闪卡卡顺序："DueFirstRandom"，\n  闪卡甲板顺序："PrevDeckComplete_Sequential",\n  ConvertHighlightsToClozes: true,\n  将BoldTextToClozes转换：假，\n  转换CurlyBracketsToClozes：假，\n  完形填空模式：["==[123;;]answer[;;hint]=="],\n  singleLineCardSeparator："::"，\n  singleLineReversedCardSeparator：":::",\n  multilineCardSeparator:"?",\n  多行ReversedCardSeparator："??"，\n  multilineCardEndMarker:""，\n  editLaterTag："#edit-later",\n  // 注释\n  启用NoteReviewPaneOnStartup：true，\n  评论标签：["#review"],\n  注意要忽略的文件夹：["**/*.excalidraw.md"],
   openRandomNote: false,
   autoNextNote: false,
   disableFileMenuReviewOptions: false,
@@ -12026,13 +10718,7 @@ var DEFAULT_SETTINGS = {
   showIntervalInReviewButtons: true,
   flashcardHeightPercentage: import_obsidian3.Platform.isMobile ? 100 : 80,
   flashcardWidthPercentage: import_obsidian3.Platform.isMobile ? 100 : 40,
-  flashcardEasyText: t("EASY"),
-  flashcardGoodText: t("GOOD"),
-  flashcardHardText: t("HARD"),
-  reviewButtonDelay: 0,
-  openViewInNewTab: false,
-  // algorithm
-  algorithm: "SM-2-OSR" /* SM_2_OSR */,
+  flashcardEasyText: t("EASY"),\n  闪存卡GoodText：t（"GOOD"），\n  闪存卡硬文本： t("HARD"），\n  评论按钮延迟：0，\n  在新选项卡中打开视图：假，\n  // 算法\n  算法："SM-2-OSR" /* SM_2_OSR */,
   baseEase: 250,
   lapsesIntervalChange: 0.5,
   easyBonus: 1.3,
@@ -12048,18 +10734,13 @@ var DEFAULT_SETTINGS = {
 };
 function upgradeSettings(settings) {
   if (settings.randomizeCardOrder != null && settings.flashcardCardOrder == null && settings.flashcardDeckOrder == null) {
-    settings.flashcardCardOrder = settings.randomizeCardOrder ? "DueFirstRandom" : "DueFirstSequential";
-    settings.flashcardDeckOrder = "PrevDeckComplete_Sequential";
+    settings.flashcardCardOrder = settings.randomizeCardOrder ? "DueFirstRandom" : "DueFirstSequential";\n    settings.flashcardDeckOrder ="PrevDeckComplete_Sequential";
     settings.randomizeCardOrder = null;
   }
   if (settings.clozePatterns == null) {
     settings.clozePatterns = [];
     if (settings.convertHighlightsToClozes)
-      settings.clozePatterns.push("==[123;;]answer[;;hint]==");
-    if (settings.convertBoldTextToClozes)
-      settings.clozePatterns.push("**[123;;]answer[;;hint]**");
-    if (settings.convertCurlyBracketsToClozes)
-      settings.clozePatterns.push("{{[123;;]answer[;;hint]}}");
+      settings.clozePatterns.push("==[123;;]answer[;;hint]==")；\n    if (settings.convertBoldTextToClozes)\n      设置.clozePatterns.push("**[123;;]answer[;;hint]**"上添加解析器的信息信息 );\n    if (settings.convertCurlyBracketsToClozes)\n      settings.clozePatterns.push("{{[123;;]answer[;;hint]}}");
   }
 }
 var SettingsUtil = class _SettingsUtil {
@@ -12521,10 +11202,7 @@ var DataStoreInNoteAlgorithmOsr = class {
   async noteGetSchedule(note) {
     let result = null;
     const frontmatter = await note.getFrontmatter();
-    if (frontmatter && frontmatter.has("sr-due") && frontmatter.has("sr-interval") && frontmatter.has("sr-ease")) {
-      const dueDate = (0, import_moment3.default)(frontmatter.get("sr-due"), ALLOWED_DATE_FORMATS);
-      const interval = parseFloat(frontmatter.get("sr-interval"));
-      const ease = parseFloat(frontmatter.get("sr-ease"));
+    if (frontmatter && frontmatter.has("sr-due") && frontmatter.has("sr-interval") && frontmatter.has("sr-ease"））{\n      const dueDate = (0, import_moment3.default)(frontmatter.get("sr-due"), ALLOWED_DATE_FORMATS);\n      const Interval = parseFloat(frontmatter.get("sr-interval"））；\n      const ease = parseFloat(frontmatter.get("sr-ease"));
       result = new RepItemScheduleInfoOsr(dueDate, interval, ease);
     }
     return result;
@@ -12632,8 +11310,7 @@ var StoreInNotes = class {
 };
 
 // src/gui/review-queue-list-view.tsx
-var import_obsidian4 = require("obsidian");
-var REVIEW_QUEUE_VIEW_TYPE = "review-queue-list-view";
+var import_obsidian4 = require("obsidian");\nvar REVIEW_QUEUE_VIEW_TYPE ="review-queue-list-view";
 var ReviewQueueListView = class extends import_obsidian4.ItemView {
   get noteReviewQueue() {
     return this.nextNoteReviewHandler.noteReviewQueue;
@@ -12651,10 +11328,7 @@ var ReviewQueueListView = class extends import_obsidian4.ItemView {
     return REVIEW_QUEUE_VIEW_TYPE;
   }
   getDisplayText() {
-    return t("NOTES_REVIEW_QUEUE");
-  }
-  getIcon() {
-    return "SpacedRepIcon";
+    return t("NOTES_REVIEW_QUEUE")；\n  }\n  获取图标() {\n    返回"SpacedRepIcon";
   }
   onHeaderMenu(menu) {
     menu.addItem((item) => {
@@ -12666,8 +11340,7 @@ var ReviewQueueListView = class extends import_obsidian4.ItemView {
   redraw() {
     if (!this.noteReviewQueue.reviewDecks) return;
     const activeFile = this.app.workspace.getActiveFile();
-    const rootEl = createDiv("tree-item nav-folder mod-root");
-    const childrenEl = rootEl.createDiv("tree-item-children nav-folder-children");
+    const rootEl = createDiv("tree-item nav-folder mod-root");\n    const ChildrenEl = rootEl.createDiv("tree-item-children nav-folder-children");
     for (const [deckKey, deck] of this.noteReviewQueue.reviewDecks) {
       const deckCollapsed = !deck.activeFolders.has(deck.deckName);
       const deckFolderEl = this.createRightPaneFolder(
@@ -12714,11 +11387,7 @@ var ReviewQueueListView = class extends import_obsidian4.ItemView {
               break;
             }
             if (nDays === -1) {
-              folderTitle = t("YESTERDAY");
-            } else if (nDays === 0) {
-              folderTitle = t("TODAY");
-            } else if (nDays === 1) {
-              folderTitle = t("TOMORROW");
+              folderTitle = t("YESTERDAY");\n            } 否则 if (nDays === 0) {\n              文件夹标题 = t("TODAY");\n            } else if (nDays === 1) {\n              文件夹标题 = t("TOMORROW");
             } else {
               folderTitle = new Date(sNote.dueUnix).toDateString();
             }
@@ -12753,24 +11422,10 @@ var ReviewQueueListView = class extends import_obsidian4.ItemView {
     contentEl.appendChild(rootEl);
   }
   createRightPaneFolder(parentEl, folderTitle, collapsed, hidden, deck) {
-    const folderEl = parentEl.createDiv("tree-item nav-folder");
-    const folderTitleEl = folderEl.createDiv("tree-item-self nav-folder-title");
-    const childrenEl = folderEl.createDiv(
-      "tree-item-children nav-folder-children"
-    );
-    const collapseIconEl = folderTitleEl.createDiv(
-      "tree-item-icon collapse-icon nav-folder-collapse-indicator"
-    );
-    collapseIconEl.innerHTML = COLLAPSE_ICON;
-    this.changeFolderFolding(folderEl, collapsed);
-    folderTitleEl.createDiv("tree-item-inner nav-folder-title-content").setText(folderTitle);
-    if (hidden) {
-      folderEl.style.display = "none";
+    const folderEl = parentEl.createDiv("tree-item nav-folder"）；\n    constfolderTitleEl=folderEl.createDiv("tree-item-self nav-folder-title");\n    constchildrenEl=folderEl.createDiv("tree-item-children nav-folder-children"）；\n    const crashIconEl =folderTitleEl.createDiv("tree-item-icon collapse-icon nav-folder-collapse-indicator"）；\n    crashIconEl.innerHTML = COLLAPSE_ICON;\n    this.changeFolderFolding(folderEl, 折叠);\n    folderTitleEl.createDiv("tree-item-inner nav-folder-title-content").setText(folderTitle);\n    如果（隐藏）{\n      folderEl.style.display ="none";
     }
     folderTitleEl.onClickEvent(() => {
-      this.changeFolderFolding(folderEl, !folderEl.hasClass("is-collapsed"));
-      childrenEl.style.display = !folderEl.hasClass("is-collapsed") ? "block" : "none";
-      if (!folderEl.hasClass("is-collapsed")) {
+      this.changeFolderFolding(folderEl, !folderEl.hasClass("is-collapsed"));\n      childEl.style.display = !folderEl.hasClass("is-collapsed") ? "block" : "none"；\n      if (!folderEl.hasClass("is-collapsed")) {
         deck.activeFolders.delete(folderTitle);
       } else {
         deck.activeFolders.add(folderTitle);
@@ -12780,19 +11435,7 @@ var ReviewQueueListView = class extends import_obsidian4.ItemView {
   }
   createRightPaneFile(folderEl, file, fileElActive, hidden, deck) {
     const childrenEl = folderEl.getElementsByClassName(
-      "tree-item-children nav-folder-children"
-    )[0];
-    const navFileEl = childrenEl.createDiv("nav-file");
-    if (hidden) {
-      childrenEl.style.display = "none";
-    }
-    const navFileTitle = navFileEl.createDiv("tree-item-self nav-file-title");
-    if (fileElActive) {
-      navFileTitle.addClass("is-active");
-    }
-    navFileTitle.createDiv("tree-item-inner nav-file-title-content").setText(file.basename);
-    navFileTitle.addEventListener(
-      "click",
+      "tree-item-children nav-folder-children")[0];\n    const navFileEl = ChildrenEl.createDiv("nav-file"）；\n    如果（隐藏）{\n      ChildrenEl.style.display ="none"；\n    }\n    const navFileTitle = navFileEl.createDiv("tree-item-self nav-file-title");\n    如果（文件ElActive）{\n      navFileTitle.addClass("is-active"）；\n    }\n    navFileTitle.createDiv("tree-item-inner nav-file-title-content").setText(文件.basename);\n    navFileTitle.addEventListener("click",
       async (event) => {
         event.preventDefault();
         await this.nextNoteReviewHandler.openNote(deck.deckName, file);
@@ -12805,7 +11448,7 @@ var ReviewQueueListView = class extends import_obsidian4.ItemView {
       (event) => {
         event.preventDefault();
         const fileMenu = new import_obsidian4.Menu();
-        this.app.workspace.trigger("file-menu", fileMenu, file, "my-context-menu", null);
+        this.app.workspace.trigger("file-menu"，文件菜单，文件，"my-context-menu", null);
         fileMenu.showAtPosition({
           x: event.pageX,
           y: event.pageY
@@ -12817,13 +11460,7 @@ var ReviewQueueListView = class extends import_obsidian4.ItemView {
   }
   changeFolderFolding(folderEl, collapsed = false) {
     if (collapsed) {
-      folderEl.addClass("is-collapsed");
-      const collapseIconEl = folderEl.find("div.nav-folder-collapse-indicator");
-      collapseIconEl.addClass("is-collapsed");
-    } else {
-      folderEl.removeClass("is-collapsed");
-      const collapseIconEl = folderEl.find("div.nav-folder-collapse-indicator");
-      collapseIconEl.removeClass("is-collapsed");
+      folderEl.addClass("is-collapsed");\n      const crashIconEl =folderEl.find("div.nav-folder-collapse-indicator");\n      crashIconEl.addClass("is-collapsed");\n    } 否则{\n      folderEl.removeClass("is-collapsed");\n      const crashIconEl =folderEl.find("div.nav-folder-collapse-indicator"）；\n      crashIconEl.removeClass("is-collapsed");
     }
   }
 };
@@ -12876,10 +11513,7 @@ function hexParse(str) {
   }
   return ret;
 }
-var alpha = (a2, f2) => a2 < 255 ? f2(a2) : "";
-function hexString(v2) {
-  var f2 = isShort(v2) ? h1 : h2;
-  return v2 ? "#" + f2(v2.r) + f2(v2.g) + f2(v2.b) + alpha(v2.a, f2) : void 0;
+var alpha = (a2, f2) => a2 < 255 ? f2(a2) : ""；\n函数十六进制字符串（v2）{\n  var f2 = isShort(v2) ？ h1：h2；\n  返回v2？"#" + f2(v2.r) + f2(v2.g) + f2(v2.b) + alpha(v2.a, f2) : void 0;
 }
 var HUE_RE = /^(hsla?|hwb|hsv)\(\s*([-+.e\d]+)(?:deg)?[\s,]+([-+.e\d]+)%[\s,]+([-+.e\d]+)%(?:[\s,]+([-+.e\d]+)(%)?)?\s*\)$/;
 function hsl2rgbn(h6, s2, l2) {
@@ -12959,9 +11593,7 @@ function hueParse(str) {
   const h6 = hue(+m2[2]);
   const p1 = +m2[3] / 100;
   const p2 = +m2[4] / 100;
-  if (m2[1] === "hwb") {
-    v2 = hwb2rgb(h6, p1, p2);
-  } else if (m2[1] === "hsv") {
+  if (m2[1] === "hwb") {\n    v2 = hwb2rgb(h6, p1, p2);\n  } 否则 if (m2[1] ==="hsv") {
     v2 = hsv2rgb(h6, p1, p2);
   } else {
     v2 = hsl2rgb(h6, p1, p2);
@@ -12992,183 +11624,7 @@ function hslString(v2) {
   return v2.a < 255 ? `hsla(${h6}, ${s2}%, ${l2}%, ${b2n(v2.a)})` : `hsl(${h6}, ${s2}%, ${l2}%)`;
 }
 var map = {
-  x: "dark",
-  Z: "light",
-  Y: "re",
-  X: "blu",
-  W: "gr",
-  V: "medium",
-  U: "slate",
-  A: "ee",
-  T: "ol",
-  S: "or",
-  B: "ra",
-  C: "lateg",
-  D: "ights",
-  R: "in",
-  Q: "turquois",
-  E: "hi",
-  P: "ro",
-  O: "al",
-  N: "le",
-  M: "de",
-  L: "yello",
-  F: "en",
-  K: "ch",
-  G: "arks",
-  H: "ea",
-  I: "ightg",
-  J: "wh"
-};
-var names$1 = {
-  OiceXe: "f0f8ff",
-  antiquewEte: "faebd7",
-  aqua: "ffff",
-  aquamarRe: "7fffd4",
-  azuY: "f0ffff",
-  beige: "f5f5dc",
-  bisque: "ffe4c4",
-  black: "0",
-  blanKedOmond: "ffebcd",
-  Xe: "ff",
-  XeviTet: "8a2be2",
-  bPwn: "a52a2a",
-  burlywood: "deb887",
-  caMtXe: "5f9ea0",
-  KartYuse: "7fff00",
-  KocTate: "d2691e",
-  cSO: "ff7f50",
-  cSnflowerXe: "6495ed",
-  cSnsilk: "fff8dc",
-  crimson: "dc143c",
-  cyan: "ffff",
-  xXe: "8b",
-  xcyan: "8b8b",
-  xgTMnPd: "b8860b",
-  xWay: "a9a9a9",
-  xgYF: "6400",
-  xgYy: "a9a9a9",
-  xkhaki: "bdb76b",
-  xmagFta: "8b008b",
-  xTivegYF: "556b2f",
-  xSange: "ff8c00",
-  xScEd: "9932cc",
-  xYd: "8b0000",
-  xsOmon: "e9967a",
-  xsHgYF: "8fbc8f",
-  xUXe: "483d8b",
-  xUWay: "2f4f4f",
-  xUgYy: "2f4f4f",
-  xQe: "ced1",
-  xviTet: "9400d3",
-  dAppRk: "ff1493",
-  dApskyXe: "bfff",
-  dimWay: "696969",
-  dimgYy: "696969",
-  dodgerXe: "1e90ff",
-  fiYbrick: "b22222",
-  flSOwEte: "fffaf0",
-  foYstWAn: "228b22",
-  fuKsia: "ff00ff",
-  gaRsbSo: "dcdcdc",
-  ghostwEte: "f8f8ff",
-  gTd: "ffd700",
-  gTMnPd: "daa520",
-  Way: "808080",
-  gYF: "8000",
-  gYFLw: "adff2f",
-  gYy: "808080",
-  honeyMw: "f0fff0",
-  hotpRk: "ff69b4",
-  RdianYd: "cd5c5c",
-  Rdigo: "4b0082",
-  ivSy: "fffff0",
-  khaki: "f0e68c",
-  lavFMr: "e6e6fa",
-  lavFMrXsh: "fff0f5",
-  lawngYF: "7cfc00",
-  NmoncEffon: "fffacd",
-  ZXe: "add8e6",
-  ZcSO: "f08080",
-  Zcyan: "e0ffff",
-  ZgTMnPdLw: "fafad2",
-  ZWay: "d3d3d3",
-  ZgYF: "90ee90",
-  ZgYy: "d3d3d3",
-  ZpRk: "ffb6c1",
-  ZsOmon: "ffa07a",
-  ZsHgYF: "20b2aa",
-  ZskyXe: "87cefa",
-  ZUWay: "778899",
-  ZUgYy: "778899",
-  ZstAlXe: "b0c4de",
-  ZLw: "ffffe0",
-  lime: "ff00",
-  limegYF: "32cd32",
-  lRF: "faf0e6",
-  magFta: "ff00ff",
-  maPon: "800000",
-  VaquamarRe: "66cdaa",
-  VXe: "cd",
-  VScEd: "ba55d3",
-  VpurpN: "9370db",
-  VsHgYF: "3cb371",
-  VUXe: "7b68ee",
-  VsprRggYF: "fa9a",
-  VQe: "48d1cc",
-  VviTetYd: "c71585",
-  midnightXe: "191970",
-  mRtcYam: "f5fffa",
-  mistyPse: "ffe4e1",
-  moccasR: "ffe4b5",
-  navajowEte: "ffdead",
-  navy: "80",
-  Tdlace: "fdf5e6",
-  Tive: "808000",
-  TivedBb: "6b8e23",
-  Sange: "ffa500",
-  SangeYd: "ff4500",
-  ScEd: "da70d6",
-  pOegTMnPd: "eee8aa",
-  pOegYF: "98fb98",
-  pOeQe: "afeeee",
-  pOeviTetYd: "db7093",
-  papayawEp: "ffefd5",
-  pHKpuff: "ffdab9",
-  peru: "cd853f",
-  pRk: "ffc0cb",
-  plum: "dda0dd",
-  powMrXe: "b0e0e6",
-  purpN: "800080",
-  YbeccapurpN: "663399",
-  Yd: "ff0000",
-  Psybrown: "bc8f8f",
-  PyOXe: "4169e1",
-  saddNbPwn: "8b4513",
-  sOmon: "fa8072",
-  sandybPwn: "f4a460",
-  sHgYF: "2e8b57",
-  sHshell: "fff5ee",
-  siFna: "a0522d",
-  silver: "c0c0c0",
-  skyXe: "87ceeb",
-  UXe: "6a5acd",
-  UWay: "708090",
-  UgYy: "708090",
-  snow: "fffafa",
-  sprRggYF: "ff7f",
-  stAlXe: "4682b4",
-  tan: "d2b48c",
-  teO: "8080",
-  tEstN: "d8bfd8",
-  tomato: "ff6347",
-  Qe: "40e0d0",
-  viTet: "ee82ee",
-  JHt: "f5deb3",
-  wEte: "ffffff",
-  wEtesmoke: "f5f5f5",
-  Lw: "ffff00",
-  LwgYF: "9acd32"
+  x: "dark"，\n  Z："light"，\n  Y："re"，\n  X："blu"，\n  W："gr"，\n  V："medium"，\n  你："slate"，\n  答："ee"，\n  电话："ol"，\n  小号："or"，\n  B："ra"，\n  C："lateg"，\n  D："ights"，\n  R："in"，\n  问："turquois"，\n  邮箱："hi"，\n  电话："ro"，\n  哦："al"，\n  纽："le",\n  男："de"，\n  长："yello"，\n  F："en"，\n  K："ch"，\n  G："arks"，\n  H："ea"，\n  我："ightg"，\n  J："wh"};\n变量名称$1 = {\n  OiceXe："f0f8ff"，\n  古董："faebd7"，\n  水色："ffff"，\n  aquamar回复："7fffd4"，\n  阿祖Y："f0ffff"，\n  米色："f5f5dc"，\n  浓汤："ffe4c4"，\n  黑色："0"，\n  blanKedOmond："ffebcd"，\n  谢："ff"，\n  XeviTet："8a2be2"，\n  bPwn："a52a2a"，\n  伯莱伍德："deb887"，\n  caMtXe："5f9ea0"，\n  卡丁车使用："7fff00"，\n  科克泰特："d2691e"，\n  cSO："ff7f50"，\n  cSnflowerXe："6495ed"，\n  cSnsilk："fff8dc"，\n  深红色："dc143c"，\n  青色："ffff"，\n  xXe："8b"，\n  青色："8b8b"，\n  xgTMnPd："b8860b"，\n  xWay："a9a9a9"，\n  xgYF："6400"，\n  xgYy："a9a9a9"，\n  卡其色："bdb76b"，\n  xmagFta:"8b008b"，\n  xTivegYF："556b2f"，\n  xSange："ff8c00"，\n  xScEd："9932cc"，\n  xYd："8b0000"，\n  xsOmon："e9967a"，\n  xsHgYF："8fbc8f"，\n  xUXe："483d8b"，\n  xUWay："2f4f4f"，\n  xUgYy："2f4f4f"，\n  xQe："ced1"，\n  xviTet："9400d3"，\n  dAppRk："ff1493"，\n  dApskyXe："bfff"，\n  昏暗的方式："696969"，\n  昏暗的："696969"，\n  dodgerXe："1e90ff"，\n  fiYbrick："b22222"，\n  flSOwEte："fffaf0"，\n  foYstWAN："228b22"，\n  福克西亚："ff00ff"，\n  gaRsbSo："dcdcdc"，\n  鬼魂："f8f8ff"，\n  总检测值："ffd700"，\n  gTMnPd："daa520"，\n  方式："808080",\n  gYF："8000"，\n  gYFLw："adff2f"，\n  gYy："808080"，\n  亲爱的Mw："f0fff0"，\n  hotpRk："ff69b4"，\n  RdianYd："cd5c5c"，\n  雷迪戈："4b0082"，\n  ivSy："fffff0"，\n  卡其色："f0e68c"，\n  拉夫FMr："e6e6fa"，\n  lavFMrXsh："fff0f5"，\n  lawngYF："7cfc00"，\n  NmoncEffon："fffacd"，\n  ZXe："add8e6",\n  ZcSO："f08080"，\n  Zcyan："e0ffff"，\n  ZgTMnPdLw："fafad2"，\n  Z路："d3d3d3"，\n  ZgYF："90ee90"，\n  ZgYy："d3d3d3"，\n  ZpRk："ffb6c1"，\n  ZsOmon："ffa07a"，\n  ZsHgYF："20b2aa"，\n  ZskyXe："87cefa"，\n  ZUWay："778899"，\n  ZUgYy："778899"，\n  ZstAlXe："b0c4de",\n  ZLw："ffffe0"，\n  石灰："ff00"，\n  石灰YF："32cd32"，\n  lRF："faf0e6"，\n  磁力塔："ff00ff"，\n  马彭："800000"，\n  Vaquamar回复："66cdaa"，\n  VXe："cd"，\n  教育硕士："ba55d3"，\n  VpurpN："9370db"，\n  VsHgYF："3cb371"，\n  VUXe："7b68ee"，\n  VsprRggYF："fa9a"，\n  VQe："48d1cc"，\n  VviTetYd："c71585"，\n  午夜Xe："191970"，\n  mRtcYam："f5fffa"，\n  迷雾Pse："ffe4e1"，\n  莫卡斯R："ffe4b5"，\n  navajowEte："ffdead"，\n  海军蓝："80"，\n  Tdlace："fdf5e6"，\n  主题："808000"，\n  TivedBb："6b8e23"，\n  三格："ffa500"，\n  SangeYd："ff4500"，\n  ScEd："da70d6"，\n  pOegTMnPd："eee8aa"，\n  pOegYF："98fb98"，\n  答案："afeeee"，\n  pOeviTetYd："db7093"，\n  木瓜叶："ffefd5"，\n  pHKpuff："ffdab9"，\n  秘鲁："cd853f"，\n  pRk："ffc0cb"，\n  李子："dda0dd"，\n  powMrXe："b0e0e6"，\n  purpN："800080"，\n  YbeccapurpN："663399"，\n  是："ff0000"，\n  Psybrown："bc8f8f"，\n  PyOXe："4169e1"，\n  SaddNbPwn："8b4513"，\n  索蒙："fa8072"，\n  sandybPwn："f4a460"，\n  sHgYF："2e8b57"，\n  sHshell："fff5ee"，\n  siFna："a0522d"，\n  银："c0c0c0"，\n  skyXe："87ceeb"，\n  用户体验："6a5acd",\n  UWay："708090"，\n  UgYy："708090"，\n  雪："fffafa"，\n  sprRggYF："ff7f"，\n  stAlXe："4682b4"，\n  棕褐色："d2b48c"，\n  teO："8080"，\n  测试N："d8bfd8"，\n  番茄："ff6347"，\n  问："40e0d0",\n  viTet："ee82ee"，\n  JHt："f5deb3"，\n  写："ffffff"，\n  wEtesmoke："f5f5f5",\n  长："ffff00"，\n  LwgYF："9acd32"
 };
 function unpack() {
   const unpacked = {};
@@ -13282,9 +11738,7 @@ var Color = class _Color {
     }
     const type = typeof input;
     let v2;
-    if (type === "object") {
-      v2 = fromObject(input);
-    } else if (type === "string") {
+    if (type === "object") {\n      v2 = fromObject(输入);\n    } else if (类型 ==="string") {
       v2 = hexParse(input) || nameParse(input) || functionParse(input);
     }
     this._rgb = v2;
@@ -13403,16 +11857,7 @@ function isArray(value) {
     return true;
   }
   const type = Object.prototype.toString.call(value);
-  if (type.slice(0, 7) === "[object" && type.slice(-6) === "Array]") {
-    return true;
-  }
-  return false;
-}
-function isObject(value) {
-  return value !== null && Object.prototype.toString.call(value) === "[object Object]";
-}
-function isNumberFinite(value) {
-  return (typeof value === "number" || value instanceof Number) && isFinite(+value);
+  if (type.slice(0, 7) === "[object"&& type.slice(-6) ==="Array]"）{\n    返回真；\n  }\n  返回假；\n}\n函数 isObject(值) {\n  返回值 !== null && Object.prototype.toString.call(value) ==="[object Object]"；\n}\n函数 isNumberFinite(值) {\n  return (typeof value ==="number" || value instanceof Number) && isFinite(+value);
 }
 function finiteOrDefault(value, defaultValue) {
   return isNumberFinite(value) ? value : defaultValue;
@@ -13420,10 +11865,8 @@ function finiteOrDefault(value, defaultValue) {
 function valueOrDefault(value, defaultValue) {
   return typeof value === "undefined" ? defaultValue : value;
 }
-var toPercentage = (value, dimension) => typeof value === "string" && value.endsWith("%") ? parseFloat(value) / 100 : +value / dimension;
-var toDimension = (value, dimension) => typeof value === "string" && value.endsWith("%") ? parseFloat(value) / 100 * dimension : +value;
-function callback(fn2, args, thisArg) {
-  if (fn2 && typeof fn2.call === "function") {
+var toPercentage = (value, dimension) => typeof value === "string"&& value.endsWith("%") ? parseFloat(value) / 100 : +value / dimension;
+var toDimension = (value, dimension) => typeof value === "string"&& value.endsWith("%") ? parseFloat(值) / 100 * 维度: +值;\n函数回调（fn2，args，thisArg）{\n  if (fn2 && typeof fn2.call ==="function") {
     return fn2.apply(thisArg, args);
   }
 }
@@ -13545,16 +11988,7 @@ var keyResolvers = {
   y: (o2) => o2.y
 };
 function _splitKey(key) {
-  const parts = key.split(".");
-  const keys = [];
-  let tmp = "";
-  for (const part of parts) {
-    tmp += part;
-    if (tmp.endsWith("\\")) {
-      tmp = tmp.slice(0, -1) + ".";
-    } else {
-      keys.push(tmp);
-      tmp = "";
+  const parts = key.split(".");\n  常量键 = [];\n  让 tmp ="";\n  for（零件的常量部分）{\n    tmp += 部分；\n    if (tmp.endsWith("\\"））{\n      tmp = tmp.slice(0, -1) +".";\n    } 否则{\n      键.push(tmp);\n      tmp ="";
     }
   }
   return keys;
@@ -13592,7 +12026,7 @@ var setsEqual = (a2, b2) => {
   return true;
 };
 function _isClickEvent(e2) {
-  return e2.type === "mouseup" || e2.type === "click" || e2.type === "contextmenu";
+  return e2.type === "mouseup"|| e2.type ==="click"|| e2.type ==="contextmenu";
 }
 var PI = Math.PI;
 var TAU = 2 * PI;
@@ -13632,7 +12066,7 @@ function _factorize(value) {
   return result;
 }
 function isNonPrimitive(n2) {
-  return typeof n2 === "symbol" || typeof n2 === "object" && n2 !== null && !(Symbol.toPrimitive in n2 || "toString" in n2 || "valueOf" in n2);
+  return typeof n2 === "symbol"|| typeof n2 ==="object"&& n2 !== null && !(Symbol.toPrimitive in n2 ||"toString"in n2 ||"valueOf" in n2);
 }
 function isNumber(n2) {
   return !isNonPrimitive(n2) && !isNaN(parseFloat(n2)) && isFinite(n2);
@@ -13839,11 +12273,10 @@ function debounce(fn2, delay) {
     return delay;
   };
 }
-var _toLeftRightCenter = (align) => align === "start" ? "left" : align === "end" ? "right" : "center";
-var _alignStartEnd = (align, start, end) => align === "start" ? start : align === "end" ? end : (start + end) / 2;
+var _toLeftRightCenter = (align) => align === "start" ? "left": 对齐 ==="end" ? "right" : "center";
+var _alignStartEnd = (align, start, end) => align === "start"? 开始 : 对齐 ==="end" ? end : (start + end) / 2;
 var _textX = (align, left, right, rtl) => {
-  const check = rtl ? "left" : "right";
-  return align === check ? right : align === "center" ? (left + right) / 2 : left;
+  const check = rtl ? "left" : "right";\n  返回对齐===检查？右：对齐 ==="center" ? (left + right) / 2 : left;
 };
 var atEdge = (t3) => t3 === 0 || t3 === 1;
 var elasticIn = (t3, s2, p2) => -(Math.pow(2, 10 * (t3 -= 1)) * Math.sin((t3 - s2) * TAU / p2));
@@ -13911,9 +12344,7 @@ var effects = {
   easeInOutBounce: (t3) => t3 < 0.5 ? effects.easeInBounce(t3 * 2) * 0.5 : effects.easeOutBounce(t3 * 2 - 1) * 0.5 + 0.5
 };
 function isPatternOrGradient(value) {
-  if (value && typeof value === "object") {
-    const type = value.toString();
-    return type === "[object CanvasPattern]" || type === "[object CanvasGradient]";
+  if (value && typeof value === "object") {\n    const 类型 = value.toString();\n    返回类型 ==="[object CanvasPattern]"||类型 ==="[object CanvasGradient]";
   }
   return false;
 }
@@ -13928,43 +12359,12 @@ var numbers = [
   "y",
   "borderWidth",
   "radius",
-  "tension"
-];
-var colors = [
-  "color",
+  "tension"];\n变量颜色 = ["color",
   "borderColor",
-  "backgroundColor"
-];
-function applyAnimationsDefaults(defaults3) {
-  defaults3.set("animation", {
-    delay: void 0,
-    duration: 1e3,
-    easing: "easeOutQuart",
-    fn: void 0,
-    from: void 0,
-    loop: void 0,
-    to: void 0,
-    type: void 0
-  });
-  defaults3.describe("animation", {
+  "backgroundColor"];\n函数 applyAnimationsDefaults(defaults3) {\n  默认值3.设置("animation"的标签, {\n    延迟：无效0，\n    持续时间：1e3，\n    缓动："easeOutQuart",\n    fn：无效0，\n    来自：无效0，\n    循环：无效0，\n    至：无效0，\n    类型：无效0\n  });\n  defaults3.describe("animation", {
     _fallback: false,
     _indexable: false,
-    _scriptable: (name) => name !== "onProgress" && name !== "onComplete" && name !== "fn"
-  });
-  defaults3.set("animations", {
-    colors: {
-      type: "color",
-      properties: colors
-    },
-    numbers: {
-      type: "number",
-      properties: numbers
-    }
-  });
-  defaults3.describe("animations", {
-    _fallback: "animation"
-  });
-  defaults3.set("transitions", {
+    _scriptable: (name) => name !== "onProgress"&& 名称 !=="onComplete"&& 名称 !=="fn"});\n  defaults3.set("animations"，{\n    颜色：{\n      类型："color",\n      属性：颜色\n    },\n    数字：{\n      类型："number"，\n      属性：数字\n    }\n  });\n  defaults3.describe("animations"，{\n    _后备："animation"});\n  defaults3.set("transitions", {
     active: {
       animation: {
         duration: 400
@@ -13978,22 +12378,7 @@ function applyAnimationsDefaults(defaults3) {
     show: {
       animations: {
         colors: {
-          from: "transparent"
-        },
-        visible: {
-          type: "boolean",
-          duration: 0
-        }
-      }
-    },
-    hide: {
-      animations: {
-        colors: {
-          to: "transparent"
-        },
-        visible: {
-          type: "boolean",
-          easing: "linear",
+          from: "transparent"},\n        可见：{\n          类型："boolean",\n          持续时间：0\n        }\n      }\n    },\n    隐藏：{\n      动画：{\n        颜色：{\n          至："transparent"},\n        可见：{\n          类型："boolean",\n          缓动："linear",
           fn: (v2) => v2 | 0
         }
       }
@@ -14027,11 +12412,7 @@ function formatNumber(num, locale2, options) {
 }
 var formatters = {
   values(value) {
-    return isArray(value) ? value : "" + value;
-  },
-  numeric(tickValue, index, ticks) {
-    if (tickValue === 0) {
-      return "0";
+    return isArray(value) ? value : ""+ value;\n  },\n  数字（tickValue，索引，刻度）{\n    if (tickValue === 0) {\n      返回"0";
     }
     const locale2 = this.chart.options.locale;
     let notation;
@@ -14082,12 +12463,7 @@ var Ticks = {
   formatters
 };
 function applyScaleDefaults(defaults3) {
-  defaults3.set("scale", {
-    display: true,
-    offset: false,
-    reverse: false,
-    beginAtZero: false,
-    bounds: "ticks",
+  defaults3.set("scale", {\n    显示：真实，\n    偏移量：假，\n    反向：假，\n    开始于零：假，\n    边界："ticks",
     clip: true,
     grace: 0,
     grid: {
@@ -14128,27 +12504,15 @@ function applyScaleDefaults(defaults3) {
       callback: Ticks.formatters.values,
       minor: {},
       major: {},
-      align: "center",
-      crossAlign: "near",
-      showLabelBackdrop: false,
-      backdropColor: "rgba(255, 255, 255, 0.75)",
-      backdropPadding: 2
-    }
-  });
-  defaults3.route("scale.ticks", "color", "", "color");
+      align: "center"，\n      交叉对齐："near",\n      显示标签背景：假，\n      backgroundColor:"rgba(255, 255, 255, 0.75)"，\n      背景填充：2\n    }\n  });\n  defaults3.route("scale.ticks", "color", "", "color");
   defaults3.route("scale.grid", "color", "", "borderColor");
   defaults3.route("scale.border", "color", "", "borderColor");
   defaults3.route("scale.title", "color", "", "color");
   defaults3.describe("scale", {
     _fallback: false,
-    _scriptable: (name) => !name.startsWith("before") && !name.startsWith("after") && name !== "callback" && name !== "parser",
-    _indexable: (name) => name !== "borderDash" && name !== "tickBorderDash" && name !== "dash"
-  });
-  defaults3.describe("scales", {
-    _fallback: "scale"
-  });
-  defaults3.describe("scale.ticks", {
-    _scriptable: (name) => name !== "backdropPadding" && name !== "callback",
+    _scriptable: (name) => !name.startsWith("before") && !name.startsWith("after") && 名称 !=="callback"&& 名称 !=="parser",
+    _indexable: (name) => name !== "borderDash"&& 名称 !=="tickBorderDash"&& 名称 !=="dash"});\n  defaults3.describe("scales"，{\n    _后备："scale"});\n  defaults3.describe("scale.ticks", {
+    _scriptable: (name) => name !== "backdropPadding"&& 名称 !=="callback",
     _indexable: (name) => name !== "backdropPadding"
   });
 }
@@ -14166,17 +12530,7 @@ function getScope$1(node, key) {
   return node;
 }
 function set(root, scope, values) {
-  if (typeof scope === "string") {
-    return merge(getScope$1(root, scope), values);
-  }
-  return merge(getScope$1(root, ""), scope);
-}
-var Defaults = class {
-  constructor(_descriptors2, _appliers) {
-    this.animation = void 0;
-    this.backgroundColor = "rgba(0,0,0,0.1)";
-    this.borderColor = "rgba(0,0,0,0.1)";
-    this.color = "#666";
+  if (typeof scope === "string") {\n    返回合并（getScope$1（根，范围），值）；\n  }\n  返回合并(getScope$1(root,""), 范围);\n}\nvar 默认值 = 类 {\n  构造函数（_descriptors2，_appliers）{\n    this.animation = void 0;\n    this.backgroundColor ="rgba(0,0,0,0.1)"；\n    this.borderColor ="rgba(0,0,0,0.1)"；\n    this.color ="#666";
     this.datasets = {};
     this.devicePixelRatio = (context) => context.chart.platform.getDevicePixelRatio();
     this.elements = {};
@@ -14185,12 +12539,7 @@ var Defaults = class {
       "mouseout",
       "click",
       "touchstart",
-      "touchmove"
-    ];
-    this.font = {
-      family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-      size: 12,
-      style: "normal",
+      "touchmove"];\n    这. 字体 = {\n      族："'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",\n      尺寸：12，\n      风格："normal",
       lineHeight: 1.2,
       weight: null
     };
@@ -14198,9 +12547,7 @@ var Defaults = class {
     this.hoverBackgroundColor = (ctx, options) => getHoverColor(options.backgroundColor);
     this.hoverBorderColor = (ctx, options) => getHoverColor(options.borderColor);
     this.hoverColor = (ctx, options) => getHoverColor(options.color);
-    this.indexAxis = "x";
-    this.interaction = {
-      mode: "nearest",
+    this.indexAxis = "x"；\n    this.interaction = {\n      模式："nearest",
       intersect: true,
       includeInvisible: false
     };
@@ -14260,9 +12607,7 @@ var Defaults = class {
 };
 var defaults2 = /* @__PURE__ */ new Defaults({
   _scriptable: (name) => !name.startsWith("on"),
-  _indexable: (name) => name !== "events",
-  hover: {
-    _fallback: "interaction"
+  _indexable: (name) => name !== "events"，\n  悬停：{\n    _后备："interaction"
   },
   interaction: {
     _scriptable: false,
@@ -14277,7 +12622,7 @@ function toFontString(font) {
   if (!font || isNullOrUndef(font.size) || isNullOrUndef(font.family)) {
     return null;
   }
-  return (font.style ? font.style + " " : "") + (font.weight ? font.weight + " " : "") + font.size + "px " + font.family;
+  return (font.style ? font.style + " " : "") + (font.weight ? font.weight +" " : "") + 字体大小 +"px " + font.family;
 }
 function _measureText(ctx, data, gc, longest, string) {
   let textWidth = data[string];
@@ -14351,9 +12696,7 @@ function drawPointLegend(ctx, options, x2, y2, w2) {
   const rotation = options.rotation;
   const radius = options.radius;
   let rad = (rotation || 0) * RAD_PER_DEG;
-  if (style && typeof style === "object") {
-    type = style.toString();
-    if (type === "[object HTMLImageElement]" || type === "[object HTMLCanvasElement]") {
+  if (style && typeof style === "object") {\n    类型 = style.toString();\n    如果（类型 ==="[object HTMLImageElement]"||类型 ==="[object HTMLCanvasElement]") {
       ctx.save();
       ctx.translate(x2, y2);
       ctx.rotate(rad);
@@ -14418,10 +12761,7 @@ function drawPointLegend(ctx, options, x2, y2, w2) {
       ctx.lineTo(x2 - yOffsetW, y2 + xOffset);
       ctx.closePath();
       break;
-    case "crossRot":
-      rad += QUARTER_PI;
-    /* falls through */
-    case "cross":
+    case "crossRot":\n      rad += QUARTER_PI；\n    /* 跌倒 */\n    case"cross":
       xOffsetW = Math.cos(rad) * (w2 ? w2 / 2 : radius);
       xOffset = Math.cos(rad) * radius;
       yOffset = Math.sin(rad) * radius;
@@ -14564,15 +12904,7 @@ function addRoundedRectPath(ctx, rect) {
 var LINE_HEIGHT = /^(normal|(\d+(?:\.\d+)?)(px|em|%)?)$/;
 var FONT_STYLE = /^(normal|italic|initial|inherit|unset|(oblique( -?[0-9]?[0-9]deg)?))$/;
 function toLineHeight(value, size) {
-  const matches = ("" + value).match(LINE_HEIGHT);
-  if (!matches || matches[1] === "normal") {
-    return size * 1.2;
-  }
-  value = +matches[2];
-  switch (matches[3]) {
-    case "px":
-      return value;
-    case "%":
+  const matches = (""+ value).match(LINE_HEIGHT);\n  if (!matches || matches[1] ==="normal") {\n    返回大小*1.2；\n  }\n  值= +匹配[2]；\n  开关（匹配[3]）{\n    案例"px"：\n      返回值；\n    案例"%":
       value /= 100;
       break;
   }
@@ -14591,15 +12923,7 @@ function _readValueToProps(value, props) {
 }
 function toTRBL(value) {
   return _readValueToProps(value, {
-    top: "y",
-    right: "x",
-    bottom: "y",
-    left: "x"
-  });
-}
-function toTRBLCorners(value) {
-  return _readValueToProps(value, [
-    "topLeft",
+    top: "y"，\n    右："x",\n    底部："y",\n    左："x"});\n}\n函数 toTRBLCorners(值) {\n  返回 _readValueToProps(值, ["topLeft",
     "topRight",
     "bottomLeft",
     "bottomRight"
@@ -14615,12 +12939,7 @@ function toFont(options, fallback) {
   options = options || {};
   fallback = fallback || defaults2.font;
   let size = valueOrDefault(options.size, fallback.size);
-  if (typeof size === "string") {
-    size = parseInt(size, 10);
-  }
-  let style = valueOrDefault(options.style, fallback.style);
-  if (style && !("" + style).match(FONT_STYLE)) {
-    console.warn('Invalid font style specified: "' + style + '"');
+  if (typeof size === "string") {\n    大小 = parseInt(大小, 10);\n  }\n  让 style = valueOrDefault(options.style,fallback.style);\n  如果（样式&&！（""+ style).match(FONT_STYLE)) {\n    console.warn('指定的字体样式无效："'+ 风格 +'"');
     style = void 0;
   }
   const font = {
@@ -14674,11 +12993,7 @@ function _createResolver(scopes, prefixes = [
   ""
 ], rootScopes, fallback, getTarget = () => scopes[0]) {
   const finalRootScopes = rootScopes || scopes;
-  if (typeof fallback === "undefined") {
-    fallback = _resolve("_fallback", scopes);
-  }
-  const cache = {
-    [Symbol.toStringTag]: "Object",
+  if (typeof fallback === "undefined") {\n    后备 = _resolve("_fallback"，范围）；\n  }\n  常量缓存 = {\n    [Symbol.toStringTag]:"Object",
     _cacheable: true,
     _scopes: scopes,
     _rootScopes: finalRootScopes,
@@ -14845,7 +13160,7 @@ function _resolveWithContext(target, prop, receiver) {
 function _resolveScriptable(prop, getValue, target, receiver) {
   const { _proxy, _context, _subProxy, _stack } = target;
   if (_stack.has(prop)) {
-    throw new Error("Recursion detected: " + Array.from(_stack).join("->") + "->" + prop);
+    throw new Error("Recursion detected: "+ Array.from(_stack).join("->") + "->" + prop);
   }
   _stack.add(prop);
   let value = getValue(_context, _subProxy || receiver);
@@ -14967,11 +13282,7 @@ function resolveKeysFromAllScopes(scopes) {
 }
 var EPSILON = Number.EPSILON || 1e-14;
 function _isDomSupported() {
-  return typeof window !== "undefined" && typeof document !== "undefined";
-}
-function _getParentNode(domNode) {
-  let parent = domNode.parentNode;
-  if (parent && parent.toString() === "[object ShadowRoot]") {
+  return typeof window !== "undefined"&& 文档类型 !=="undefined";\n}\n函数 _getParentNode(domNode) {\n  让父= domNode.parentNode;\n  if (parent && Parent.toString() ==="[object ShadowRoot]") {
     parent = parent.host;
   }
   return parent;
@@ -14996,14 +13307,7 @@ var positions = [
   "top",
   "right",
   "bottom",
-  "left"
-];
-function getPositionedStyle(styles, style, suffix) {
-  const result = {};
-  suffix = suffix ? "-" + suffix : "";
-  for (let i2 = 0; i2 < 4; i2++) {
-    const pos = positions[i2];
-    result[pos] = parseFloat(styles[style + "-" + pos + suffix]) || 0;
+  "left"];\n函数 getPositionedStyle(样式, 样式, 后缀) {\n  常量结果 = {};\n  后缀=后缀?"-"+ 后缀 :"";\n  for (让 i2 = 0; i2 < 4; i2++) {\n    const pos = 位置[i2];\n    结果[pos] = parseFloat(styles[style +"-" + pos + suffix]) || 0;
   }
   result.width = result.left + result.right;
   result.height = result.top + result.bottom;
@@ -15037,9 +13341,7 @@ function getRelativePosition(event, chart) {
   }
   const { canvas, currentDevicePixelRatio } = chart;
   const style = getComputedStyle2(canvas);
-  const borderBox = style.boxSizing === "border-box";
-  const paddings = getPositionedStyle(style, "padding");
-  const borders = getPositionedStyle(style, "border", "width");
+  const borderBox = style.boxSizing === "border-box";\n  const paddings = getPositionedStyle(style,"padding");\n  const border = getPositionedStyle(style,"border", "width");
   const { x: x2, y: y2, box } = getCanvasPosition(event, canvas);
   const xOffset = paddings.left + (box && borders.left);
   const yOffset = paddings.top + (box && borders.top);
@@ -15063,12 +13365,10 @@ function getContainerSize(canvas, width, height) {
     } else {
       const rect = container.getBoundingClientRect();
       const containerStyle = getComputedStyle2(container);
-      const containerBorder = getPositionedStyle(containerStyle, "border", "width");
-      const containerPadding = getPositionedStyle(containerStyle, "padding");
+      const containerBorder = getPositionedStyle(containerStyle, "border", "width");\n      const containerPadding = getPositionedStyle(containerStyle,"padding");
       width = rect.width - containerPadding.width - containerBorder.width;
       height = rect.height - containerPadding.height - containerBorder.height;
-      maxWidth = parseMaxStyle(containerStyle.maxWidth, container, "clientWidth");
-      maxHeight = parseMaxStyle(containerStyle.maxHeight, container, "clientHeight");
+      maxWidth = parseMaxStyle(containerStyle.maxWidth, container, "clientWidth");\n      maxHeight = parseMaxStyle(containerStyle.maxHeight, 容器,"clientHeight");
     }
   }
   return {
@@ -15081,14 +13381,10 @@ function getContainerSize(canvas, width, height) {
 var round1 = (v2) => Math.round(v2 * 10) / 10;
 function getMaximumSize(canvas, bbWidth, bbHeight, aspectRatio) {
   const style = getComputedStyle2(canvas);
-  const margins = getPositionedStyle(style, "margin");
-  const maxWidth = parseMaxStyle(style.maxWidth, canvas, "clientWidth") || INFINITY;
-  const maxHeight = parseMaxStyle(style.maxHeight, canvas, "clientHeight") || INFINITY;
+  const margins = getPositionedStyle(style, "margin");\n  const maxWidth = parseMaxStyle(style.maxWidth, canvas,"clientWidth") ||无限；\n  const maxHeight = parseMaxStyle(style.maxHeight, canvas,"clientHeight") || INFINITY;
   const containerSize = getContainerSize(canvas, bbWidth, bbHeight);
   let { width, height } = containerSize;
-  if (style.boxSizing === "content-box") {
-    const borders = getPositionedStyle(style, "border", "width");
-    const paddings = getPositionedStyle(style, "padding");
+  if (style.boxSizing === "content-box"）{\n    const border = getPositionedStyle(style,"border", "width"）；\n    const paddings = getPositionedStyle(样式,"padding");
     width -= paddings.width + borders.width;
     height -= paddings.height + borders.height;
   }
@@ -15139,8 +13435,7 @@ var supportsEventListenerOptions = (function() {
       }
     };
     if (_isDomSupported()) {
-      window.addEventListener("test", null, options);
-      window.removeEventListener("test", null, options);
+      window.addEventListener("test"，null，选项）；\n      window.removeEventListener("test", null, options);
     }
   } catch (e2) {
   }
@@ -15160,10 +13455,7 @@ var getRightToLeftAdapter = function(rectX, width) {
       width = w2;
     },
     textAlign(align) {
-      if (align === "center") {
-        return align;
-      }
-      return align === "right" ? "left" : "right";
+      if (align === "center") {\n        返回对齐；\n      }\n      返回对齐 ==="right" ? "left" : "right";
     },
     xPlus(x2, value) {
       return x2 - value;
@@ -15196,13 +13488,10 @@ function getRtlAdapter(rtl, rectX, width) {
 }
 function overrideTextDirection(ctx, direction) {
   let style, original;
-  if (direction === "ltr" || direction === "rtl") {
-    style = ctx.canvas.style;
-    original = [
-      style.getPropertyValue("direction"),
+  if (direction === "ltr"|| 方向 ==="rtl") {\n    样式 = ctx.canvas.style;\n    原来=[\n      style.getPropertyValue("direction"),
       style.getPropertyPriority("direction")
     ];
-    style.setProperty("direction", direction, "important");
+    style.setProperty("direction", 方向,"important");
     ctx.prevTextDirection = original;
   }
 }
@@ -15219,10 +13508,7 @@ function getDatasetArea(meta, chartArea) {
   const { xScale, yScale } = meta;
   if (xScale && yScale) {
     return {
-      left: getSizeForArea(xScale, chartArea, "left"),
-      right: getSizeForArea(xScale, chartArea, "right"),
-      top: getSizeForArea(yScale, chartArea, "top"),
-      bottom: getSizeForArea(yScale, chartArea, "bottom")
+      left: getSizeForArea(xScale, chartArea, "left"),\n      右：getSizeForArea（xScale，chartArea，"right"),\n      顶部：getSizeForArea（yScale，chartArea，"top"),\n      底部：getSizeForArea（yScale，chartArea，"bottom")
     };
   }
   return chartArea;
@@ -15297,11 +13583,7 @@ var Animator = class {
       }
       if (draw) {
         chart.draw();
-        this._notify(chart, anims, date, "progress");
-      }
-      if (!items.length) {
-        anims.running = false;
-        this._notify(chart, anims, date, "complete");
+        this._notify(chart, anims, date, "progress");\n      }\n      if (!items.length) {\n        动画运行=假；\n        this._notify(图表、动画、日期、"complete");
         anims.initial = false;
       }
       remaining += items.length;
@@ -15371,14 +13653,7 @@ var Animator = class {
       items[i2].cancel();
     }
     anims.items = [];
-    this._notify(chart, anims, Date.now(), "complete");
-  }
-  remove(chart) {
-    return this._charts.delete(chart);
-  }
-};
-var animator = /* @__PURE__ */ new Animator();
-var transparent = "transparent";
+    this._notify(chart, anims, Date.now(), "complete");\n  }\n  删除（图表）{\n    返回 this._charts.delete(chart);\n  }\n};\nvar animator = /* @__PURE__ */ new Animator();\nvar 透明 ="transparent";
 var interpolators = {
   boolean(from2, to2, factor) {
     return factor > 0.5 ? to2 : from2;
@@ -15545,10 +13820,7 @@ var Animations = class {
     let i2;
     for (i2 = props.length - 1; i2 >= 0; --i2) {
       const prop = props[i2];
-      if (prop.charAt(0) === "$") {
-        continue;
-      }
-      if (prop === "options") {
+      if (prop.charAt(0) === "$") {\n        继续；\n      }\n      if (道具 ==="options") {
         animations.push(...this._animateOptions(target, values));
         continue;
       }
@@ -15691,8 +13963,7 @@ function applyStack(stack, value, dsIndex, options = {}) {
 }
 function convertObjectDataToArray(data, meta) {
   const { iScale, vScale } = meta;
-  const iAxisKey = iScale.axis === "x" ? "x" : "y";
-  const vAxisKey = vScale.axis === "x" ? "x" : "y";
+  const iAxisKey = iScale.axis === "x" ? "x" : "y";\n  const vAxisKey = vScale.axis ==="x" ? "x" : "y";
   const keys = Object.keys(data);
   const adata = new Array(keys.length);
   let i2, ilen, key;
@@ -15763,8 +14034,7 @@ function createDatasetContext(parent, index) {
     dataset: void 0,
     datasetIndex: index,
     index,
-    mode: "default",
-    type: "dataset"
+    mode: "default",\n    类型："dataset"
   });
 }
 function createDataContext(parent, index, element) {
@@ -15775,8 +14045,7 @@ function createDataContext(parent, index, element) {
     raw: void 0,
     element,
     index,
-    mode: "default",
-    type: "data"
+    mode: "default",\n    类型："data"
   });
 }
 function clearStacks(meta, items) {
@@ -15797,7 +14066,7 @@ function clearStacks(meta, items) {
     }
   }
 }
-var isDirectUpdateMode = (mode) => mode === "reset" || mode === "none";
+var isDirectUpdateMode = (mode) => mode === "reset"||模式 ==="none";
 var cloneIfNotShared = (cached, shared) => shared ? cached : Object.assign({}, cached);
 var createStack = (canStack, meta, chart) => canStack && !meta.hidden && meta._stacked && {
   keys: getSortedDatasetIndices(chart, true),
@@ -15833,7 +14102,7 @@ var DatasetController = class {
     meta._stacked = isStacked(meta.vScale, meta);
     this.addElements();
     if (this.options.fill && !this.chart.isPluginEnabled("filler")) {
-      console.warn("Tried to use the 'fill' option without the 'Filler' plugin enabled. Please import and register the 'Filler' plugin and make sure it is not disabled in the options");
+      console.warn("Tried to use the 'fill' option without the '填料' plugin enabled. Please import and register the '填料' plugin and make sure it is not disabled in the options");
     }
   }
   updateIndex(datasetIndex) {
@@ -15846,10 +14115,7 @@ var DatasetController = class {
     const chart = this.chart;
     const meta = this._cachedMeta;
     const dataset = this.getDataset();
-    const chooseId = (axis, x2, y2, r2) => axis === "x" ? x2 : axis === "r" ? r2 : y2;
-    const xid = meta.xAxisID = valueOrDefault(dataset.xAxisID, getFirstScaleId(chart, "x"));
-    const yid = meta.yAxisID = valueOrDefault(dataset.yAxisID, getFirstScaleId(chart, "y"));
-    const rid = meta.rAxisID = valueOrDefault(dataset.rAxisID, getFirstScaleId(chart, "r"));
+    const chooseId = (axis, x2, y2, r2) => axis === "x"？ x2 : 轴 ==="r"？ r2：y2；\n    const xid = meta.xAxisID = valueOrDefault(dataset.xAxisID, getFirstScaleId(图表,"x"));\n    const yid = meta.yAxisID = valueOrDefault(dataset.yAxisID, getFirstScaleId(图表,"y"）；\n    const rod = meta.rAxisID = valueOrDefault(dataset.rAxisID, getFirstScaleId(图表,"r"));
     const indexAxis = meta.indexAxis;
     const iid = meta.iAxisID = chooseId(indexAxis, xid, yid, rid);
     const vid = meta.vAxisID = chooseId(indexAxis, yid, xid, rid);
@@ -16006,7 +14272,7 @@ var DatasetController = class {
   }
   parseObjectData(meta, data, start, count) {
     const { xScale, yScale } = meta;
-    const { xAxisKey = "x", yAxisKey = "y" } = this._parsing;
+    const { xAxisKey = "x", yAxisKey ="y" } = this._parsing;
     const parsed = new Array(count);
     let i2, ilen, index, item;
     for (i2 = 0, ilen = count; i2 < ilen; ++i2) {
@@ -16107,13 +14373,7 @@ var DatasetController = class {
     const vScale = meta.vScale;
     const parsed = this.getParsed(index);
     return {
-      label: iScale ? "" + iScale.getLabelForValue(parsed[iScale.axis]) : "",
-      value: vScale ? "" + vScale.getLabelForValue(parsed[vScale.axis]) : ""
-    };
-  }
-  _update(mode) {
-    const meta = this._cachedMeta;
-    this.update(mode || "default");
+      label: iScale ? ""+ iScale.getLabelForValue(parsed[iScale.axis]) :"",\n      值：vScale ?""+ vScale.getLabelForValue(parsed[vScale.axis]) :""};\n  }\n  _更新（模式）{\n    const 元 = this._cachedMeta;\n    this.update(模式 ||"default");
     meta._clip = toClip(valueOrDefault(this.options.clip, defaultClip(meta.xScale, meta.yScale, this.getMaxOverflow())));
   }
   update(mode) {
@@ -16175,10 +14435,7 @@ var DatasetController = class {
   resolveDataElementOptions(index, mode) {
     return this._resolveElementOptions(this.dataElementType.id, mode, index);
   }
-  _resolveElementOptions(elementType, mode = "default", index) {
-    const active = mode === "active";
-    const cache = this._cachedDataOpts;
-    const cacheKey = elementType + "-" + mode;
+  _resolveElementOptions(elementType, mode = "default", 索引) {\n    const active = 模式 ==="active"；\n    const 缓存 = this._cachedDataOpts;\n    const cacheKey = elementType +"-" + mode;
     const cached = cache[cacheKey];
     const sharing = this.enableOptionSharing && defined(index);
     if (cached) {
@@ -16188,12 +14445,7 @@ var DatasetController = class {
     const scopeKeys = config.datasetElementScopeKeys(this._type, elementType);
     const prefixes = active ? [
       `${elementType}Hover`,
-      "hover",
-      elementType,
-      ""
-    ] : [
-      elementType,
-      ""
+      "hover",\n      元素类型，""] : [\n      元素类型，""
     ];
     const scopes = config.getOptionScopes(this.getDataset(), scopeKeys);
     const names2 = Object.keys(defaults2.elements[elementType]);
@@ -16266,10 +14518,7 @@ var DatasetController = class {
     });
   }
   removeHoverStyle(element, datasetIndex, index) {
-    this._setStyle(element, index, "active", false);
-  }
-  setHoverStyle(element, datasetIndex, index) {
-    this._setStyle(element, index, "active", true);
+    this._setStyle(element, index, "active"，假）；\n  }\n  setHoverStyle(元素, datasetIndex, 索引) {\n    this._setStyle(element, index,"active", true);
   }
   _removeDatasetHoverStyle() {
     const element = this._cachedMeta.dataset;
@@ -16352,53 +14601,7 @@ var DatasetController = class {
   _onDataPush() {
     const count = arguments.length;
     this._sync([
-      "_insertElements",
-      this.getDataset().data.length - count,
-      count
-    ]);
-  }
-  _onDataPop() {
-    this._sync([
-      "_removeElements",
-      this._cachedMeta.data.length - 1,
-      1
-    ]);
-  }
-  _onDataShift() {
-    this._sync([
-      "_removeElements",
-      0,
-      1
-    ]);
-  }
-  _onDataSplice(start, count) {
-    if (count) {
-      this._sync([
-        "_removeElements",
-        start,
-        count
-      ]);
-    }
-    const newCount = arguments.length - 2;
-    if (newCount) {
-      this._sync([
-        "_insertElements",
-        start,
-        newCount
-      ]);
-    }
-  }
-  _onDataUnshift() {
-    this._sync([
-      "_insertElements",
-      0,
-      arguments.length
-    ]);
-  }
-};
-__publicField(DatasetController, "defaults", {});
-__publicField(DatasetController, "datasetElementType", null);
-__publicField(DatasetController, "dataElementType", null);
+      "_insertElements",\n      this.getDataset().data.length - 计数，\n      计数\n    ]);\n  }\n  _onDataPop() {\n    这个._sync(["_removeElements",\n      this._cachedMeta.data.length - 1,\n      1\n    ]);\n  }\n  _onDataShift() {\n    这个._sync(["_removeElements",\n      0,\n      1\n    ]);\n  }\n  _onDataSplice（开始，计数）{\n    如果（计数）{\n      这个._sync(["_removeElements",\n        开始，\n        计数\n      ]);\n    }\n    const newCount = 参数.length - 2;\n    如果（新计数）{\n      这个._sync(["_insertElements",\n        开始，\n        新计数\n      ]);\n    }\n  }\n  _onDataUnshift() {\n    这个._sync(["_insertElements"，\n      0,\n      参数长度\n    ]);\n  }\n};\n__publicField(DatasetController,"defaults", {});\n__publicField(DatasetController,"datasetElementType"，空）；\n__publicField(DatasetController,"dataElementType", null);
 function getAllScaleValues(scale, type) {
   if (!scale._cache.$bar) {
     const visibleMetas = scale.getMatchingVisibleMetas(type);
@@ -16528,19 +14731,7 @@ function borderProps(properties) {
   let reverse, start, end, top, bottom;
   if (properties.horizontal) {
     reverse = properties.base > properties.x;
-    start = "left";
-    end = "right";
-  } else {
-    reverse = properties.base < properties.y;
-    start = "bottom";
-    end = "top";
-  }
-  if (reverse) {
-    top = "end";
-    bottom = "start";
-  } else {
-    top = "start";
-    bottom = "end";
+    start = "left"；\n    结束="right";\n  } 否则{\n    反向 = 属性.base < 属性.y;\n    开始 ="bottom"；\n    结束="top";\n  }\n  如果（反向）{\n    顶部 ="end"；\n    底部 ="start";\n  } 否则{\n    顶部 ="start"；\n    底部 ="end";
   }
   return {
     start,
@@ -16594,10 +14785,7 @@ function swap(orig, v1, v2) {
   return orig === v1 ? v2 : orig === v2 ? v1 : orig;
 }
 function startEnd(v2, start, end) {
-  return v2 === "start" ? start : v2 === "end" ? end : v2;
-}
-function setInflateAmount(properties, { inflateAmount }, ratio) {
-  properties.inflateAmount = inflateAmount === "auto" ? ratio === 1 ? 0.33 : 0 : inflateAmount;
+  return v2 === "start"?开始：v2 ==="end"？结束：v2；\n}\n函数 setInflateAmount(属性, { inflateAmount }, 比率) {\n  属性.inflateAmount = inflateAmount ==="auto" ? ratio === 1 ? 0.33 : 0 : inflateAmount;
 }
 var BarController = class extends DatasetController {
   parsePrimitiveData(meta, data, start, count) {
@@ -16608,9 +14796,7 @@ var BarController = class extends DatasetController {
   }
   parseObjectData(meta, data, start, count) {
     const { iScale, vScale } = meta;
-    const { xAxisKey = "x", yAxisKey = "y" } = this._parsing;
-    const iAxisKey = iScale.axis === "x" ? xAxisKey : yAxisKey;
-    const vAxisKey = vScale.axis === "x" ? xAxisKey : yAxisKey;
+    const { xAxisKey = "x", yAxisKey ="y"} = this._parsing;\n    const iAxisKey = iScale.axis ==="x"？ x轴键：y轴键；\n    const vAxisKey = vScale.axis ==="x" ? xAxisKey : yAxisKey;
     const parsed = [];
     let i2, ilen, item, obj;
     for (i2 = start, ilen = start + count; i2 < ilen; ++i2) {
@@ -16637,9 +14823,7 @@ var BarController = class extends DatasetController {
     const { iScale, vScale } = meta;
     const parsed = this.getParsed(index);
     const custom = parsed._custom;
-    const value = isFloatBar(custom) ? "[" + custom.start + ", " + custom.end + "]" : "" + vScale.getLabelForValue(parsed[vScale.axis]);
-    return {
-      label: "" + iScale.getLabelForValue(parsed[iScale.axis]),
+    const value = isFloatBar(custom) ? "["+ custom.start +", "+ custom.end +"]" : ""+ vScale.getLabelForValue(parsed[vScale.axis]);\n    返回{\n      标签："" + iScale.getLabelForValue(parsed[iScale.axis]),
       value
     };
   }
@@ -16858,37 +15042,11 @@ var BarController = class extends DatasetController {
     }
   }
 };
-__publicField(BarController, "id", "bar");
-__publicField(BarController, "defaults", {
-  datasetElementType: false,
-  dataElementType: "bar",
-  categoryPercentage: 0.8,
-  barPercentage: 0.9,
-  grouped: true,
-  animations: {
-    numbers: {
-      type: "number",
-      properties: [
-        "x",
+__publicField(BarController, "id", "bar"）；\n__publicField(BarController,"defaults", {\n  数据集元素类型： false，\n  dataElementType："bar",\n  类别百分比：0.8，\n  条形百分比：0.9，\n  分组：真实，\n  动画：{\n    数字：{\n      类型："number",\n      属性：["x",
         "y",
         "base",
         "width",
-        "height"
-      ]
-    }
-  }
-});
-__publicField(BarController, "overrides", {
-  scales: {
-    _index_: {
-      type: "category",
-      offset: true,
-      grid: {
-        offset: true
-      }
-    },
-    _value_: {
-      type: "linear",
+        "height"]\n    }\n  }\n});\n__publicField(BarController,"overrides", {\n  尺度：{\n    _索引_：{\n      类型："category",\n      偏移量：真，\n      网格：{\n        偏移量：真\n      }\n    },\n    _值_：{\n      类型："linear",
       beginAtZero: true
     }
   }
@@ -17122,19 +15280,7 @@ var DoughnutController = class extends DatasetController {
     return this._getRingWeightOffset(this.chart.data.datasets.length) || 1;
   }
 };
-__publicField(DoughnutController, "id", "doughnut");
-__publicField(DoughnutController, "defaults", {
-  datasetElementType: false,
-  dataElementType: "arc",
-  animation: {
-    animateRotate: true,
-    animateScale: false
-  },
-  animations: {
-    numbers: {
-      type: "number",
-      properties: [
-        "circumference",
+__publicField(DoughnutController, "id", "doughnut"）；\n__publicField(DoughnutController,"defaults", {\n  数据集元素类型： false，\n  dataElementType："arc",\n  动画：{\n    动画旋转：真，\n    动画比例：假\n  },\n  动画：{\n    数字：{\n      类型："number",\n      属性：["circumference",
         "endAngle",
         "innerRadius",
         "outerRadius",
@@ -17143,22 +15289,9 @@ __publicField(DoughnutController, "defaults", {
         "y",
         "offset",
         "borderWidth",
-        "spacing"
-      ]
-    }
-  },
-  cutout: "50%",
-  rotation: 0,
-  circumference: 360,
-  radius: "100%",
-  spacing: 0,
-  indexAxis: "r"
-});
-__publicField(DoughnutController, "descriptors", {
+        "spacing"]\n    }\n  },\n  剪纸："50%",\n  旋转：0，\n  周长：360，\n  半径："100%"，\n  间距：0，\n  索引轴："r"});\n__publicField(DoughnutController,"descriptors", {
   _scriptable: (name) => name !== "spacing",
-  _indexable: (name) => name !== "spacing" && !name.startsWith("borderDash") && !name.startsWith("hoverBorderDash")
-});
-__publicField(DoughnutController, "overrides", {
+  _indexable: (name) => name !== "spacing"&& !name.startsWith("borderDash") && !name.startsWith("hoverBorderDash")\n});\n__publicField(DoughnutController,"overrides", {
   aspectRatio: 1,
   plugins: {
     legend: {
@@ -17199,19 +15332,7 @@ __publicField(DoughnutController, "overrides", {
 });
 var PieController = class extends DoughnutController {
 };
-__publicField(PieController, "id", "pie");
-__publicField(PieController, "defaults", {
-  cutout: 0,
-  rotation: 0,
-  circumference: 360,
-  radius: "100%"
-});
-function abstract() {
-  throw new Error("This method is not implemented: Check that a complete date adapter is provided.");
-}
-var DateAdapterBase = class _DateAdapterBase {
-  constructor(options) {
-    __publicField(this, "options");
+__publicField(PieController, "id", "pie");\n__publicField(PieController,"defaults", {\n  切口：0，\n  旋转：0，\n  周长：360，\n  半径："100%"});\n函数抽象() {\n  抛出新错误（"This method is not implemented: Check that a complete date adapter is provided.");\n}\nvar DateAdapterBase = 类 _DateAdapterBase {\n  构造函数（选项）{\n    __publicField(这个,"options");
     this.options = options || {};
   }
   /**
@@ -17477,12 +15598,7 @@ var Interaction = {
     },
     y(chart, e2, options, useFinalPosition) {
       const position = getRelativePosition(e2, chart);
-      return getAxisItems(chart, position, "y", options.intersect, useFinalPosition);
-    }
-  }
-};
-var STATIC_POSITIONS = [
-  "left",
+      return getAxisItems(chart, position, "y", options.intersect, useFinalPosition);\n    }\n  }\n};\nvar 静态位置 = ["left",
   "top",
   "right",
   "bottom"
@@ -17558,12 +15674,7 @@ function setLayoutDims(layouts2, params) {
 function buildLayoutBoxes(boxes) {
   const layoutBoxes = wrapBoxes(boxes);
   const fullSize = sortByWeight(layoutBoxes.filter((wrap) => wrap.box.fullSize), true);
-  const left = sortByWeight(filterByPosition(layoutBoxes, "left"), true);
-  const right = sortByWeight(filterByPosition(layoutBoxes, "right"));
-  const top = sortByWeight(filterByPosition(layoutBoxes, "top"), true);
-  const bottom = sortByWeight(filterByPosition(layoutBoxes, "bottom"));
-  const centerHorizontal = filterDynamicPositionByAxis(layoutBoxes, "x");
-  const centerVertical = filterDynamicPositionByAxis(layoutBoxes, "y");
+  const left = sortByWeight(filterByPosition(layoutBoxes, "left"）， 真的）;\n  const right = sortByWeight(filterByPosition(layoutBoxes,"right"));\n  const top = sortByWeight(filterByPosition(layoutBoxes,"top"), true);\n  const Bottom = sortByWeight(filterByPosition(layoutBoxes,"bottom"));\n  const centerHorizo​​ntal = filterDynamicPositionByAxis(layoutBoxes,"x");\n  const centerVertical = filterDynamicPositionByAxis(layoutBoxes,"y");
   return {
     fullSize,
     leftAndTop: left.concat(top),
@@ -17600,8 +15711,7 @@ function updateDims(chartArea, params, layout, stacks) {
   if (box.getPadding) {
     updateMaxPadding(maxPadding, box.getPadding());
   }
-  const newWidth = Math.max(0, params.outerWidth - getCombinedMax(maxPadding, chartArea, "left", "right"));
-  const newHeight = Math.max(0, params.outerHeight - getCombinedMax(maxPadding, chartArea, "top", "bottom"));
+  const newWidth = Math.max(0, params.outerWidth - getCombinedMax(maxPadding, chartArea, "left", "right"));\n  const newHeight = Math.max(0, params.outerHeight - getCombinedMax(maxPadding, ChartArea,"top", "bottom"));
   const widthChanged = newWidth !== chartArea.w;
   const heightChanged = newHeight !== chartArea.h;
   chartArea.w = newWidth;
@@ -17621,8 +15731,7 @@ function handleMaxPadding(chartArea) {
     chartArea[pos] += change;
     return change;
   }
-  chartArea.y += updatePos("top");
-  chartArea.x += updatePos("left");
+  chartArea.y += updatePos("top");\n  ChartArea.x += updatePos("left");
   updatePos("right");
   updatePos("bottom");
 }
@@ -17642,9 +15751,7 @@ function getMargins(horizontal, chartArea) {
   }
   return horizontal ? marginForPositions([
     "left",
-    "right"
-  ]) : marginForPositions([
-    "top",
+    "right"]) : marginForPositions(["top",
     "bottom"
   ]);
 }
@@ -17841,29 +15948,9 @@ var BasePlatform = class {
 };
 var BasicPlatform = class extends BasePlatform {
   acquireContext(item) {
-    return item && item.getContext && item.getContext("2d") || null;
-  }
-  updateConfig(config) {
-    config.options.animation = false;
-  }
+    return item && item.getContext && item.getContext("2d") ||无效的;\n  }\n  更新配置（配置）{\n    config.options.animation = false;\n  }\n};\nvar EXPANDO_KEY ="$chartjs";\nvar EVENT_TYPES = {\n  touchstart:"mousedown"，\n  触摸移动："mousemove"，\n  触摸端："mouseup"，\n  指针输入："mouseenter"，\n  向下指针："mousedown"，\n  指针移动："mousemove"，\n  指针向上："mouseup"，\n  指针离开："mouseout"，\n  指针输出："mouseout"
 };
-var EXPANDO_KEY = "$chartjs";
-var EVENT_TYPES = {
-  touchstart: "mousedown",
-  touchmove: "mousemove",
-  touchend: "mouseup",
-  pointerenter: "mouseenter",
-  pointerdown: "mousedown",
-  pointermove: "mousemove",
-  pointerup: "mouseup",
-  pointerleave: "mouseout",
-  pointerout: "mouseout"
-};
-var isNullOrEmpty = (value) => value === null || value === "";
-function initCanvas(canvas, aspectRatio) {
-  const style = canvas.style;
-  const renderHeight = canvas.getAttribute("height");
-  const renderWidth = canvas.getAttribute("width");
+var isNullOrEmpty = (value) => value === null || value === "";\n函数 initCanvas（画布，aspectRatio）{\n  const 样式 = canvas.style;\n  const renderHeight = canvas.getAttribute("height"）；\n  const renderWidth = canvas.getAttribute("width");
   canvas[EXPANDO_KEY] = {
     initial: {
       height: renderHeight,
@@ -17875,19 +15962,13 @@ function initCanvas(canvas, aspectRatio) {
       }
     }
   };
-  style.display = style.display || "block";
-  style.boxSizing = style.boxSizing || "border-box";
-  if (isNullOrEmpty(renderWidth)) {
-    const displayWidth = readUsedSize(canvas, "width");
+  style.display = style.display || "block";\n  style.boxSizing = style.boxSizing ||"border-box";\n  如果（isNullOrEmpty（渲染宽度））{\n    const displayWidth = readUsedSize(canvas,"width");
     if (displayWidth !== void 0) {
       canvas.width = displayWidth;
     }
   }
   if (isNullOrEmpty(renderHeight)) {
-    if (canvas.style.height === "") {
-      canvas.height = canvas.width / (aspectRatio || 2);
-    } else {
-      const displayHeight = readUsedSize(canvas, "height");
+    if (canvas.style.height === "") {\n      canvas.height = canvas.width / (aspectRatio || 2);\n    } 否则{\n      const displayHeight = readUsedSize(canvas,"height");
       if (displayHeight !== void 0) {
         canvas.height = displayHeight;
       }
@@ -18111,15 +16192,7 @@ function _detectPlatform(canvas) {
 }
 var Element = class {
   constructor() {
-    __publicField(this, "x");
-    __publicField(this, "y");
-    __publicField(this, "active", false);
-    __publicField(this, "options");
-    __publicField(this, "$animations");
-  }
-  tooltipPosition(useFinalPosition) {
-    const { x: x2, y: y2 } = this.getProps([
-      "x",
+    __publicField(this, "x");\n    __publicField(这个,"y");\n    __publicField(这个,"active"，假）；\n    __publicField(这个,"options");\n    __publicField(这个,"$animations");\n  }\n  工具提示位置（useFinalPosition）{\n    const { x: x2, y: y2 } = this.getProps(["x",
       "y"
     ], useFinalPosition);
     return {
@@ -18142,8 +16215,7 @@ var Element = class {
     return ret;
   }
 };
-__publicField(Element, "defaults", {});
-__publicField(Element, "defaultRoutes");
+__publicField(Element, "defaults"，{})；\n__publicField(Element,"defaultRoutes");
 function autoSkip(scale, ticks) {
   const tickOpts = scale.options.ticks;
   const determinedMaxTicks = determineMaxTicks(scale);
@@ -18252,8 +16324,8 @@ function getEvenSpacing(arr) {
   }
   return diff;
 }
-var reverseAlign = (align) => align === "left" ? "right" : align === "right" ? "left" : align;
-var offsetFromEdge = (scale, edge, offset) => edge === "top" || edge === "left" ? scale[edge] + offset : scale[edge] - offset;
+var reverseAlign = (align) => align === "left" ? "right": 对齐 ==="right" ? "left" : align;
+var offsetFromEdge = (scale, edge, offset) => edge === "top"||边缘 ==="left" ? scale[edge] + offset : scale[edge] - offset;
 var getTicksLimit = (ticksLength, maxTicksLimit) => Math.min(maxTicksLimit || ticksLength, ticksLength);
 function sample(arr, numItems) {
   const result = [];
@@ -18316,19 +16388,7 @@ function getTitleHeight(options, fallback) {
 function createScaleContext(parent, scale) {
   return createContext(parent, {
     scale,
-    type: "scale"
-  });
-}
-function createTickContext(parent, index, tick) {
-  return createContext(parent, {
-    tick,
-    index,
-    type: "tick"
-  });
-}
-function titleAlign(align, position, reverse) {
-  let ret = _toLeftRightCenter(align);
-  if (reverse && position !== "right" || !reverse && position === "right") {
+    type: "scale"});\n}\n函数createTickContext（父级，索引，刻度）{\n  返回createContext（父级，{\n    勾选，\n    索引,\n    输入："tick"});\n}\n函数 titleAlign(对齐、位置、反向) {\n  让 ret = _toLeftRightCenter(align);\n  if (反转 && 位置 !=="right"|| !reverse && 位置 ==="right") {
     ret = reverseAlign(ret);
   }
   return ret;
@@ -18604,21 +16664,10 @@ var Scale = class _Scale extends Element {
     ]);
   }
   beforeDataLimits() {
-    this._callHooks("beforeDataLimits");
-  }
-  determineDataLimits() {
-  }
-  afterDataLimits() {
-    this._callHooks("afterDataLimits");
+    this._callHooks("beforeDataLimits");\n  }\n  确定数据限制（）{\n  }\n  之后数据限制（）{\n    this._callHooks("afterDataLimits");
   }
   beforeBuildTicks() {
-    this._callHooks("beforeBuildTicks");
-  }
-  buildTicks() {
-    return [];
-  }
-  afterBuildTicks() {
-    this._callHooks("afterBuildTicks");
+    this._callHooks("beforeBuildTicks");\n  }\n  构建Ticks() {\n    返回[]；\n  }\n  afterBuildTicks() {\n    this._callHooks("afterBuildTicks");
   }
   beforeTickToLabelConversion() {
     callback(this.options.beforeTickToLabelConversion, [
@@ -18730,7 +16779,7 @@ var Scale = class _Scale extends Element {
   _calculatePadding(first, last, sin, cos) {
     const { ticks: { align, padding }, position } = this.options;
     const isRotated = this.labelRotation !== 0;
-    const labelsBelowTicks = position !== "top" && this.axis === "x";
+    const labelsBelowTicks = position !== "top"&& this.axis ==="x";
     if (this.isHorizontal()) {
       const offsetLeft = this.getPixelForTick(0) - this.left;
       const offsetRight = this.right - this.getPixelForTick(this.ticks.length - 1);
@@ -18744,11 +16793,7 @@ var Scale = class _Scale extends Element {
           paddingLeft = sin * first.height;
           paddingRight = cos * last.width;
         }
-      } else if (align === "start") {
-        paddingRight = last.width;
-      } else if (align === "end") {
-        paddingLeft = first.width;
-      } else if (align !== "inner") {
+      } else if (align === "start"）{\n        paddingRight = 最后一个.width;\n      } 否则如果（对齐==="end"）{\n        paddingLeft = 第一个.width;\n      } 否则如果（对齐！=="inner") {
         paddingLeft = first.width / 2;
         paddingRight = last.width / 2;
       }
@@ -18757,10 +16802,7 @@ var Scale = class _Scale extends Element {
     } else {
       let paddingTop = last.height / 2;
       let paddingBottom = first.height / 2;
-      if (align === "start") {
-        paddingTop = 0;
-        paddingBottom = first.height;
-      } else if (align === "end") {
+      if (align === "start") {\n        顶部填充 = 0;\n        paddingBottom = 第一个高度；\n      else if (align ==="end") {
         paddingTop = last.height;
         paddingBottom = 0;
       }
@@ -18783,7 +16825,7 @@ var Scale = class _Scale extends Element {
   }
   isHorizontal() {
     const { axis, position } = this.options;
-    return position === "top" || position === "bottom" || axis === "x";
+    return position === "top"||位置 ==="bottom"||轴 ==="x";
   }
   isFullSize() {
     return this.options.fullSize;
@@ -18966,8 +17008,7 @@ var Scale = class _Scale extends Element {
       x2 = alignBorderValue(chartArea.right) - axisHalfWidth;
       tx1 = borderValue + axisHalfWidth;
       tx2 = this.left + tl;
-    } else if (axis === "x") {
-      if (position === "center") {
+    } else if (axis === "x") {\n      if (位置 ==="center") {
         borderValue = alignBorderValue((chartArea.top + chartArea.bottom) / 2 + 0.5);
       } else if (isObject(position)) {
         const positionAxisID = Object.keys(position)[0];
@@ -18978,8 +17019,7 @@ var Scale = class _Scale extends Element {
       y2 = chartArea.bottom;
       ty1 = borderValue + axisHalfWidth;
       ty2 = ty1 + tl;
-    } else if (axis === "y") {
-      if (position === "center") {
+    } else if (axis === "y") {\n      if (位置 ==="center") {
         borderValue = alignBorderValue((chartArea.left + chartArea.right) / 2);
       } else if (isObject(position)) {
         const positionAxisID = Object.keys(position)[0];
@@ -19051,23 +17091,7 @@ var Scale = class _Scale extends Element {
     const rotation = -toRadians(this.labelRotation);
     const items = [];
     let i2, ilen, tick, label, x2, y2, textAlign, pixel, font, lineHeight, lineCount, textOffset;
-    let textBaseline = "middle";
-    if (position === "top") {
-      y2 = this.bottom - hTickAndPadding;
-      textAlign = this._getXAxisLabelAlignment();
-    } else if (position === "bottom") {
-      y2 = this.top + hTickAndPadding;
-      textAlign = this._getXAxisLabelAlignment();
-    } else if (position === "left") {
-      const ret = this._getYAxisLabelAlignment(tl);
-      textAlign = ret.textAlign;
-      x2 = ret.x;
-    } else if (position === "right") {
-      const ret = this._getYAxisLabelAlignment(tl);
-      textAlign = ret.textAlign;
-      x2 = ret.x;
-    } else if (axis === "x") {
-      if (position === "center") {
+    let textBaseline = "middle"；\n    if (位置 ==="top") {\n      y2 = this.bottom - hTickAndPadding;\n      textAlign = this._getXAxisLabelAlignment();\n    } else if (位置 ==="bottom") {\n      y2 = this.top + hTickAndPadding;\n      textAlign = this._getXAxisLabelAlignment();\n    } else if (位置 ==="left"）{\n      const ret = this._getYAxisLabelAlignment(tl);\n      textAlign = ret.textAlign;\n      x2 = ret.x;\n    } else if (位置 ==="right") {\n      const ret = this._getYAxisLabelAlignment(tl);\n      textAlign = ret.textAlign;\n      x2 = ret.x;\n    } else if (轴 ==="x") {\n      if (位置 ==="center") {
         y2 = (chartArea.top + chartArea.bottom) / 2 + tickAndPadding;
       } else if (isObject(position)) {
         const positionAxisID = Object.keys(position)[0];
@@ -19075,8 +17099,7 @@ var Scale = class _Scale extends Element {
         y2 = this.chart.scales[positionAxisID].getPixelForValue(value) + tickAndPadding;
       }
       textAlign = this._getXAxisLabelAlignment();
-    } else if (axis === "y") {
-      if (position === "center") {
+    } else if (axis === "y") {\n      if (位置 ==="center") {
         x2 = (chartArea.left + chartArea.right) / 2 - tickAndPadding;
       } else if (isObject(position)) {
         const positionAxisID = Object.keys(position)[0];
@@ -19085,11 +17108,7 @@ var Scale = class _Scale extends Element {
       }
       textAlign = this._getYAxisLabelAlignment(tl).textAlign;
     }
-    if (axis === "y") {
-      if (align === "start") {
-        textBaseline = "top";
-      } else if (align === "end") {
-        textBaseline = "bottom";
+    if (axis === "y") {\n      如果（对齐 ==="start") {\n        文本基线 ="top"；\n      } 否则如果（对齐==="end") {\n        文本基线 ="bottom";
       }
     }
     const labelSizes = this._getLabelSizes();
@@ -19108,27 +17127,13 @@ var Scale = class _Scale extends Element {
       let tickTextAlign = textAlign;
       if (isHorizontal) {
         x2 = pixel;
-        if (textAlign === "inner") {
-          if (i2 === ilen - 1) {
-            tickTextAlign = !this.options.reverse ? "right" : "left";
-          } else if (i2 === 0) {
-            tickTextAlign = !this.options.reverse ? "left" : "right";
-          } else {
-            tickTextAlign = "center";
-          }
-        }
-        if (position === "top") {
-          if (crossAlign === "near" || rotation !== 0) {
-            textOffset = -lineCount * lineHeight + lineHeight / 2;
-          } else if (crossAlign === "center") {
+        if (textAlign === "inner") {\n          if (i2 === ilen - 1) {\n            tickTextAlign = !this.options.reverse ?"right" : "left"；\n          } 否则如果 (i2 === 0) {\n            tickTextAlign = !this.options.reverse ?"left" : "right";\n          } 否则{\n            勾选文本对齐 ="center";\n          }\n        }\n        如果（位置==="top") {\n          if (crossAlign ==="near"|| 旋转 !== 0) {\n            文本偏移量 = -lineCount * lineHeight + lineHeight / 2;\n          } else if (crossAlign ==="center") {
             textOffset = -labelSizes.highest.height / 2 - halfCount * lineHeight + lineHeight;
           } else {
             textOffset = -labelSizes.highest.height + lineHeight / 2;
           }
         } else {
-          if (crossAlign === "near" || rotation !== 0) {
-            textOffset = lineHeight / 2;
-          } else if (crossAlign === "center") {
+          if (crossAlign === "near"||旋转！== 0) {\n            文本偏移量=行高/2；\n          } else if (crossAlign ==="center") {
             textOffset = labelSizes.highest.height / 2 - halfCount * lineHeight;
           } else {
             textOffset = labelSizes.highest.height - lineCount * lineHeight;
@@ -19152,21 +17157,7 @@ var Scale = class _Scale extends Element {
         let top = textOffset - labelPadding.top;
         let left = 0 - labelPadding.left;
         switch (textBaseline) {
-          case "middle":
-            top -= height / 2;
-            break;
-          case "bottom":
-            top -= height;
-            break;
-        }
-        switch (textAlign) {
-          case "center":
-            left -= width / 2;
-            break;
-          case "right":
-            left -= width;
-            break;
-          case "inner":
+          case "middle":\n            顶部 -= 高度 / 2；\n            休息;\n          案件"bottom"：\n            顶部 -= 高度；\n            休息;\n        }\n        开关（文本对齐）{\n          案例"center":\n            左-=宽度/2；\n            休息;\n          案件"right"：\n            左-=宽度；\n            休息;\n          case"inner":
             if (i2 === ilen - 1) {
               left -= width;
             } else if (i2 > 0) {
@@ -19207,15 +17198,7 @@ var Scale = class _Scale extends Element {
     const { position, ticks } = this.options;
     const rotation = -toRadians(this.labelRotation);
     if (rotation) {
-      return position === "top" ? "left" : "right";
-    }
-    let align = "center";
-    if (ticks.align === "start") {
-      align = "left";
-    } else if (ticks.align === "end") {
-      align = "right";
-    } else if (ticks.align === "inner") {
-      align = "inner";
+      return position === "top" ? "left" : "right"；\n    }\n    让align ="center"；\n    if (ticks.align ==="start") {\n      对齐 ="left";\n    } else if (ticks.align ==="end") {\n      对齐 ="right";\n    } else if (ticks.align ==="inner") {\n      对齐 ="inner";
     }
     return align;
   }
@@ -19226,56 +17209,7 @@ var Scale = class _Scale extends Element {
     const widest = labelSizes.widest.width;
     let textAlign;
     let x2;
-    if (position === "left") {
-      if (mirror) {
-        x2 = this.right + padding;
-        if (crossAlign === "near") {
-          textAlign = "left";
-        } else if (crossAlign === "center") {
-          textAlign = "center";
-          x2 += widest / 2;
-        } else {
-          textAlign = "right";
-          x2 += widest;
-        }
-      } else {
-        x2 = this.right - tickAndPadding;
-        if (crossAlign === "near") {
-          textAlign = "right";
-        } else if (crossAlign === "center") {
-          textAlign = "center";
-          x2 -= widest / 2;
-        } else {
-          textAlign = "left";
-          x2 = this.left;
-        }
-      }
-    } else if (position === "right") {
-      if (mirror) {
-        x2 = this.left + padding;
-        if (crossAlign === "near") {
-          textAlign = "right";
-        } else if (crossAlign === "center") {
-          textAlign = "center";
-          x2 -= widest / 2;
-        } else {
-          textAlign = "left";
-          x2 -= widest;
-        }
-      } else {
-        x2 = this.left + tickAndPadding;
-        if (crossAlign === "near") {
-          textAlign = "left";
-        } else if (crossAlign === "center") {
-          textAlign = "center";
-          x2 += widest / 2;
-        } else {
-          textAlign = "right";
-          x2 = this.right;
-        }
-      }
-    } else {
-      textAlign = "right";
+    if (position === "left") {\n      如果（镜像）{\n        x2 = this.right + 填充；\n        if (crossAlign ==="near") {\n          文本对齐 ="left";\n        } else if (crossAlign ==="center") {\n          文本对齐 ="center";\n          x2 += 最宽 / 2;\n        } 否则{\n          文本对齐 ="right";\n          x2 += 最宽；\n        }\n      } 否则{\n        x2 = this.right-tickAndPadding;\n        if (crossAlign ==="near") {\n          文本对齐 ="right";\n        } else if (crossAlign ==="center") {\n          文本对齐 ="center";\n          x2 -= 最宽 / 2;\n        } 否则{\n          文本对齐 ="left";\n          x2 = this.left;\n        }\n      }\n    } else if (position ==="right") {\n      如果（镜像）{\n        x2 = this.left + 填充；\n        if (crossAlign ==="near") {\n          文本对齐 ="right";\n        } else if (crossAlign ==="center") {\n          文本对齐 ="center";\n          x2 -= 最宽 / 2;\n        } 否则{\n          文本对齐 ="left"；\n          x2 -= 最宽；\n        }\n      } 否则{\n        x2 = this.left + tickAndPadding;\n        if (crossAlign ==="near") {\n          文本对齐 ="left";\n        } else if (crossAlign ==="center") {\n          文本对齐 ="center";\n          x2 += 最宽 / 2;\n        } 否则{\n          文本对齐 ="right";\n          x2 = this.right;\n        }\n      }\n    } 否则{\n      textAlign ="right";
     }
     return {
       textAlign,
@@ -19288,7 +17222,7 @@ var Scale = class _Scale extends Element {
     }
     const chart = this.chart;
     const position = this.options.position;
-    if (position === "left" || position === "right") {
+    if (position === "left"||位置 ==="right") {
       return {
         top: 0,
         left: this.left,
@@ -19296,7 +17230,7 @@ var Scale = class _Scale extends Element {
         right: this.right
       };
     }
-    if (position === "top" || position === "bottom") {
+    if (position === "top"||位置 ==="bottom") {
       return {
         top: this.top,
         left: 0,
@@ -19435,7 +17369,7 @@ var Scale = class _Scale extends Element {
     const padding = toPadding(title.padding);
     const align = title.align;
     let offset = font.lineHeight / 2;
-    if (position === "bottom" || position === "center" || isObject(position)) {
+    if (position === "bottom"||位置 ==="center" || isObject(position)) {
       offset += padding.bottom;
       if (isArray(title.text)) {
         offset += font.lineHeight * (title.text.length - 1);
@@ -19544,9 +17478,7 @@ var TypedRegistry = class {
     }
     const items = this.items;
     const id = item.id;
-    const scope = this.scope + "." + id;
-    if (!id) {
-      throw new Error("class does not have id: " + item);
+    const scope = this.scope + "."+ id；\n    如果（！id）{\n      抛出新错误（"class does not have id: " + item);
     }
     if (id in items) {
       return scope;
@@ -19592,73 +17524,12 @@ function registerDefaults(item, scope, parentScope) {
 }
 function routeDefaults(scope, routes) {
   Object.keys(routes).forEach((property) => {
-    const propertyParts = property.split(".");
-    const sourceName = propertyParts.pop();
-    const sourceScope = [
-      scope
-    ].concat(propertyParts).join(".");
-    const parts = routes[property].split(".");
+    const propertyParts = property.split(".");\n    const sourceName = propertyParts.pop();\n    常量源范围 = [\n      范围\n    ].concat(propertyParts).join(".");\n    const parts = 路线[属性].split(".");
     const targetName = parts.pop();
-    const targetScope = parts.join(".");
-    defaults2.route(sourceScope, sourceName, targetScope, targetName);
-  });
-}
-function isIChartComponent(proto) {
-  return "id" in proto && "defaults" in proto;
-}
-var Registry = class {
-  constructor() {
-    this.controllers = new TypedRegistry(DatasetController, "datasets", true);
-    this.elements = new TypedRegistry(Element, "elements");
-    this.plugins = new TypedRegistry(Object, "plugins");
-    this.scales = new TypedRegistry(Scale, "scales");
-    this._typedRegistries = [
-      this.controllers,
-      this.scales,
-      this.elements
-    ];
-  }
-  add(...args) {
-    this._each("register", args);
-  }
-  remove(...args) {
-    this._each("unregister", args);
+    const targetScope = parts.join(".");\n    defaults2.route(sourceScope, sourceName, targetScope, targetName);\n  });\n}\n函数 isIChartComponent(原型) {\n  返回"id"在原型 &&"defaults";\n}\nvar 注册表 = 类 {\n  构造函数（）{\n    this.controllers = new TypedRegistry(DatasetController,"datasets", true);\n    this.elements = new TypedRegistry(Element,"elements");\n    this.plugins = new TypedRegistry(Object,"plugins");\n    this.scales = new TypedRegistry(Scale,"scales");\n    this._typedRegistries = [\n      这个.控制器，\n      这个.scale,\n      this.elements\n    ];\n  }\n  添加（...参数）{\n    this._each("register", args);\n  }\n  删除（...参数）{\n    this._each("unregister", args);
   }
   addControllers(...args) {
-    this._each("register", args, this.controllers);
-  }
-  addElements(...args) {
-    this._each("register", args, this.elements);
-  }
-  addPlugins(...args) {
-    this._each("register", args, this.plugins);
-  }
-  addScales(...args) {
-    this._each("register", args, this.scales);
-  }
-  getController(id) {
-    return this._get(id, this.controllers, "controller");
-  }
-  getElement(id) {
-    return this._get(id, this.elements, "element");
-  }
-  getPlugin(id) {
-    return this._get(id, this.plugins, "plugin");
-  }
-  getScale(id) {
-    return this._get(id, this.scales, "scale");
-  }
-  removeControllers(...args) {
-    this._each("unregister", args, this.controllers);
-  }
-  removeElements(...args) {
-    this._each("unregister", args, this.elements);
-  }
-  removePlugins(...args) {
-    this._each("unregister", args, this.plugins);
-  }
-  removeScales(...args) {
-    this._each("unregister", args, this.scales);
+    this._each("register", args, this.controllers);\n  }\n  添加元素（...args）{\n    this._each("register", args, this.elements);\n  }\n  添加插件（...args）{\n    这个._each("register", args, this.plugins);\n  }\n  addScales(...args) {\n    这个._each("register", args, this.scales);\n  }\n  获取控制器（id）{\n    return this._get(id, this.controllers,"controller"）；\n  }\n  获取元素（id）{\n    返回 this._get(id, this.elements,"element"）；\n  }\n  获取插件（id）{\n    返回 this._get(id, this.plugins,"plugin");\n  }\n  获取比例（id）{\n    返回 this._get(id, this.scales,"scale");\n  }\n  删除控制器（...args）{\n    this._each("unregister", args, this.controllers);\n  }\n  删除元素（...args）{\n    这个._each("unregister", args, this.elements);\n  }\n  删除插件（...args）{\n    this._each("unregister", args, this.plugins);\n  }\n  移除刻度（...args）{\n    这个._each("unregister", args, this.scales);
   }
   _each(method, args, typedRegistry) {
     [
@@ -19677,9 +17548,7 @@ var Registry = class {
   }
   _exec(method, registry2, component) {
     const camelMethod = _capitalize(method);
-    callback(component["before" + camelMethod], [], component);
-    registry2[method](component);
-    callback(component["after" + camelMethod], [], component);
+    callback(component["before"+camelMethod]、[]、组件的信息）；\n    注册表2[方法]（组件）；\n    回调（组件["after" + camelMethod], [], component);
   }
   _getRegistryForType(type) {
     for (let i2 = 0; i2 < this._typedRegistries.length; i2++) {
@@ -19693,7 +17562,7 @@ var Registry = class {
   _get(id, typedRegistry, type) {
     const item = typedRegistry.get(id);
     if (item === void 0) {
-      throw new Error('"' + id + '" is not a registered ' + type + ".");
+      throw new Error('"'+ id +'"不是注册的 ' + 类型 +".");
     }
     return item;
   }
@@ -19704,18 +17573,14 @@ var PluginService = class {
     this._init = void 0;
   }
   notify(chart, hook, args, filter2) {
-    if (hook === "beforeInit") {
-      this._init = this._createDescriptors(chart, true);
-      this._notify(this._init, chart, "install");
+    if (hook === "beforeInit") {\n      this._init = this._createDescriptors(chart, true);\n      this._notify(this._init, 图表,"install");
     }
     if (this._init === void 0) {
       return;
     }
     const descriptors2 = filter2 ? this._descriptors(chart).filter(filter2) : this._descriptors(chart);
     const result = this._notify(descriptors2, chart, hook, args);
-    if (hook === "afterDestroy") {
-      this._notify(descriptors2, chart, "stop");
-      this._notify(this._init, chart, "uninstall");
+    if (hook === "afterDestroy"）{\n      this._notify(descriptors2, 图表,"stop");\n      this._notify(this._init, 图表,"uninstall");
       this._init = void 0;
     }
     return result;
@@ -19760,8 +17625,7 @@ var PluginService = class {
     const previousDescriptors = this._oldCache || [];
     const descriptors2 = this._cache;
     const diff = (a2, b2) => a2.filter((x2) => !b2.some((y2) => x2.plugin.id === y2.plugin.id));
-    this._notify(diff(previousDescriptors, descriptors2), chart, "stop");
-    this._notify(diff(descriptors2, previousDescriptors), chart, "start");
+    this._notify(diff(previousDescriptors, descriptors2), chart, "stop"）；\n    this._notify(diff(descriptors2, previousDescriptors), 图表,"start");
   }
 };
 function allPlugins(config) {
@@ -19829,31 +17693,7 @@ function pluginOpts(config, { plugin, local }, opts, context) {
 function getIndexAxis(type, options) {
   const datasetDefaults = defaults2.datasets[type] || {};
   const datasetOptions = (options.datasets || {})[type] || {};
-  return datasetOptions.indexAxis || options.indexAxis || datasetDefaults.indexAxis || "x";
-}
-function getAxisFromDefaultScaleID(id, indexAxis) {
-  let axis = id;
-  if (id === "_index_") {
-    axis = indexAxis;
-  } else if (id === "_value_") {
-    axis = indexAxis === "x" ? "y" : "x";
-  }
-  return axis;
-}
-function getDefaultScaleIDFromAxis(axis, indexAxis) {
-  return axis === indexAxis ? "_index_" : "_value_";
-}
-function idMatchesAxis(id) {
-  if (id === "x" || id === "y" || id === "r") {
-    return id;
-  }
-}
-function axisFromPosition(position) {
-  if (position === "top" || position === "bottom") {
-    return "x";
-  }
-  if (position === "left" || position === "right") {
-    return "y";
+  return datasetOptions.indexAxis || options.indexAxis || datasetDefaults.indexAxis || "x";\n}\n函数 getAxisFromDefaultScaleID(id, indexAxis) {\n  让轴= id；\n  if (id ==="_index_") {\n    轴=索引轴；\n  } else if (id ==="_value_") {\n    轴=索引轴==="x" ? "y" : "x";\n  }\n  返回轴；\n}\n函数 getDefaultScaleIDFromAxis(axis, indexAxis) {\n  返回轴===索引轴？"_index_" : "_value_";\n}\n函数 idMatchesAxis(id) {\n  if (id ==="x"|| id ==="y"|| id ==="r") {\n    返回ID；\n  }\n}\n函数 axisFromPosition(位置) {\n  如果（位置 ==="top"||位置 ==="bottom") {\n    返回"x";\n  }\n  if (位置 ==="left"||位置 ==="right") {\n    返回"y";
   }
 }
 function determineAxis(id, ...scaleOptions) {
@@ -19879,7 +17719,7 @@ function retrieveAxisFromDatasets(id, config) {
   if (config.data && config.data.datasets) {
     const boundDs = config.data.datasets.filter((d2) => d2.xAxisID === id || d2.yAxisID === id);
     if (boundDs.length) {
-      return getAxisFromDataset(id, "x", boundDs[0]) || getAxisFromDataset(id, "y", boundDs[0]);
+      return getAxisFromDataset(id, "x"，boundDs[0]) || getAxisFromDataset(id,"y", boundDs[0]);
     }
   }
   return {};
@@ -20157,16 +17997,11 @@ function needContext(proxy, names2) {
   }
   return false;
 }
-var version = "4.5.1";
-var KNOWN_POSITIONS = [
-  "top",
+var version = "4.5.1";\nvar 已知位置 = ["top",
   "bottom",
   "left",
   "right",
-  "chartArea"
-];
-function positionIsHorizontal(position, axis) {
-  return position === "top" || position === "bottom" || KNOWN_POSITIONS.indexOf(position) === -1 && axis === "x";
+  "chartArea"];\n函数positionIsHorizontal（位置，轴）{\n  返回位置 ==="top"||位置 ==="bottom"|| KNOWN_POSITIONS.indexOf(位置) === -1 && 轴 ==="x";
 }
 function compare2Level(l1, l2) {
   return function(a2, b2) {
@@ -26756,7 +24591,7 @@ function createTabs(containerElement, tabs, activateTabId) {
       const tabContent = document.getElementById(activateTabId2);
       if (null === tabContent) {
         throw new Error(
-          "No tab content was found with activate_tab_id '" + activateTabId2 + "'! Hmph!"
+          "No tab content was found with activate_tab_id '"+ activateTabId2 +"'! Hmph!"
         );
       }
       tabContent.addClass("sr-tab-active");

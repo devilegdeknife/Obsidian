@@ -41,7 +41,7 @@ function getDailyNoteSettings() {
         };
     }
     catch (err) {
-        console.info("No custom daily note settings found!", err);
+        console.info("未找到自定义每日笔记设置！", err);
     }
 }
 /**
@@ -69,7 +69,7 @@ function getWeeklyNoteSettings() {
         };
     }
     catch (err) {
-        console.info("No custom weekly note settings found!", err);
+        console.info("未找到自定义每周笔记设置！", err);
     }
 }
 /**
@@ -90,7 +90,7 @@ function getMonthlyNoteSettings() {
         };
     }
     catch (err) {
-        console.info("No custom monthly note settings found!", err);
+        console.info("未找到自定义每月笔记设置！", err);
     }
 }
 /**
@@ -111,7 +111,7 @@ function getQuarterlyNoteSettings() {
         };
     }
     catch (err) {
-        console.info("No custom quarterly note settings found!", err);
+        console.info("未找到自定义季度注释设置！例如", err);
     }
 }
 /**
@@ -132,7 +132,7 @@ function getYearlyNoteSettings() {
         };
     }
     catch (err) {
-        console.info("No custom yearly note settings found!", err);
+        console.info("未找到自定义年度注释设置！", err);
     }
 }
 
@@ -194,7 +194,7 @@ async function getTemplateInfo(template) {
     }
     catch (err) {
         console.error(`Failed to read the daily note template '${templatePath}'`, err);
-        new obsidian__default['default'].Notice("Failed to read the daily note template");
+        new obsidian__default['default'].Notice("无法读取每日笔记模板");
         return ["", null];
     }
 }
@@ -259,7 +259,7 @@ class DailyNotesFolderMissingError extends Error {
  * so it will replace {{date}}, {{title}}, and {{time}} with the
  * formatted timestamp.
  *
- * Note: it has an added bonus that it's not 'today' specific.
+ * Note: it has an added bonus that it'不是'today' specific.
  */
 async function createDailyNote(date) {
     const app = window.app;
@@ -296,8 +296,7 @@ async function createDailyNote(date) {
         return createdFile;
     }
     catch (err) {
-        console.error(`Failed to create file: '${normalizedPath}'`, err);
-        new obsidian__default['default'].Notice("Unable to create new file.");
+        console.error(`Failed to create file: '${normalizedPath}'`，错误）；\n        new obsidian__default['default'].Notice("Unable to create new file.");
     }
 }
 function getDailyNote(date, dailyNotes) {
@@ -384,8 +383,7 @@ async function createWeeklyNote(date) {
         return createdFile;
     }
     catch (err) {
-        console.error(`Failed to create file: '${normalizedPath}'`, err);
-        new obsidian__default['default'].Notice("Unable to create new file.");
+        console.error(`Failed to create file: '${normalizedPath}'`，错误）；\n        new obsidian__default['default'].Notice("Unable to create new file.");
     }
 }
 function getWeeklyNote(date, weeklyNotes) {
@@ -455,7 +453,7 @@ async function createMonthlyNote(date) {
     }
     catch (err) {
         console.error(`Failed to create file: '${normalizedPath}'`, err);
-        new obsidian__default['default'].Notice("Unable to create new file.");
+        new obsidian__default['default'].Notice("无法创建新文件。");
     }
 }
 function getMonthlyNote(date, monthlyNotes) {
@@ -470,7 +468,7 @@ function getAllMonthlyNotes() {
     const { folder } = getMonthlyNoteSettings();
     const monthlyNotesFolder = vault.getAbstractFileByPath(obsidian__default['default'].normalizePath(folder));
     if (!monthlyNotesFolder) {
-        throw new MonthlyNotesFolderMissingError("Failed to find monthly notes folder");
+        throw new MonthlyNotesFolderMissingError("找不到每月笔记文件夹");
     }
     obsidian__default['default'].Vault.recurseChildren(monthlyNotesFolder, (note) => {
         if (note instanceof obsidian__default['default'].TFile) {
@@ -491,7 +489,7 @@ class QuarterlyNotesFolderMissingError extends Error {
  * so it will replace {{date}}, {{title}}, and {{time}} with the
  * formatted timestamp.
  *
- * Note: it has an added bonus that it's not 'today' specific.
+ * Note: it has an added bonus that it'不是'today' specific.
  */
 async function createQuarterlyNote(date) {
     const { vault } = window.app;
@@ -524,8 +522,7 @@ async function createQuarterlyNote(date) {
         return createdFile;
     }
     catch (err) {
-        console.error(`Failed to create file: '${normalizedPath}'`, err);
-        new obsidian__default['default'].Notice("Unable to create new file.");
+        console.error(`Failed to create file: '${normalizedPath}'`，错误）；\n        new obsidian__default['default'].Notice("Unable to create new file.");
     }
 }
 function getQuarterlyNote(date, quarterly) {
@@ -595,7 +592,7 @@ async function createYearlyNote(date) {
     }
     catch (err) {
         console.error(`Failed to create file: '${normalizedPath}'`, err);
-        new obsidian__default['default'].Notice("Unable to create new file.");
+        new obsidian__default['default'].Notice("无法创建新文件。");
     }
 }
 function getYearlyNote(date, yearlyNotes) {
@@ -610,7 +607,7 @@ function getAllYearlyNotes() {
     const { folder } = getYearlyNoteSettings();
     const yearlyNotesFolder = vault.getAbstractFileByPath(obsidian__default['default'].normalizePath(folder));
     if (!yearlyNotesFolder) {
-        throw new YearlyNotesFolderMissingError("Failed to find yearly notes folder");
+        throw new YearlyNotesFolderMissingError("找不到年记文件夹");
     }
     obsidian__default['default'].Vault.recurseChildren(yearlyNotesFolder, (note) => {
         if (note instanceof obsidian__default['default'].TFile) {
@@ -636,7 +633,7 @@ function appHasDailyNotesPluginLoaded() {
     return periodicNotes && periodicNotes.settings?.daily?.enabled;
 }
 /**
- * XXX: "Weekly Notes" live in either the Calendar plugin or the periodic-notes plugin.
+ * XXX: "每周笔记" live in either the Calendar plugin or the periodic-notes plugin.
  * Check both until the weekly notes feature is removed from the Calendar plugin.
  */
 function appHasWeeklyNotesPluginLoaded() {
@@ -768,28 +765,28 @@ const periodConfigs = {
     },
     weekly: {
         unitOfTime: "week",
-        relativeUnit: "this week",
+        relativeUnit: "本周",
         createNote: createWeeklyNote_1,
         getNote: getWeeklyNote_1,
         getAllNotes: getAllWeeklyNotes_1,
     },
     monthly: {
         unitOfTime: "month",
-        relativeUnit: "this month",
+        relativeUnit: "这个月",
         createNote: createMonthlyNote_1,
         getNote: getMonthlyNote_1,
         getAllNotes: getAllMonthlyNotes_1,
     },
     quarterly: {
         unitOfTime: "quarter",
-        relativeUnit: "this quarter",
+        relativeUnit: "本季度",
         createNote: createQuarterlyNote_1,
         getNote: getQuarterlyNote_1,
         getAllNotes: getAllQuarterlyNotes_1,
     },
     yearly: {
         unitOfTime: "year",
-        relativeUnit: "this year",
+        relativeUnit: "今年",
         createNote: createYearlyNote_1,
         getNote: getYearlyNote_1,
         getAllNotes: getAllYearlyNotes_1,
@@ -1137,7 +1134,7 @@ function set_current_component(component) {
 }
 function get_current_component() {
     if (!current_component)
-        throw new Error('Function called outside component initialization');
+        throw new Error('在组件初始化外部调用的函数');
     return current_component;
 }
 function onMount(fn) {
@@ -2571,18 +2568,7 @@ class NoteFormatSetting extends SvelteComponent {
 	}
 }
 
-var top = 'top';
-var bottom = 'bottom';
-var right = 'right';
-var left = 'left';
-var auto = 'auto';
-var basePlacements = [top, bottom, right, left];
-var start = 'start';
-var end = 'end';
-var clippingParents = 'clippingParents';
-var viewport = 'viewport';
-var popper = 'popper';
-var reference = 'reference';
+var top = 'top'；\nvar 底部 ='bottom';\nvar 右 ='right';\nvar 左 ='left'；\nvar auto ='auto'转换声明的包装器；\nvar basePlacements = [上、下、右、左];\nvar start ='start';\n变量结束='end';\nvar ClippingParents ='clippingParents'；\nvar 视口 ='viewport';\nvar 波普尔 ='popper';\nvar 引用 ='reference';
 var variationPlacements = /*#__PURE__*/basePlacements.reduce(function (acc, placement) {
   return acc.concat([placement + "-" + start, placement + "-" + end]);
 }, []);
@@ -2590,29 +2576,11 @@ var placements = /*#__PURE__*/[].concat(basePlacements, [auto]).reduce(function 
   return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
 }, []); // modifiers that need to read the DOM
 
-var beforeRead = 'beforeRead';
-var read = 'read';
-var afterRead = 'afterRead'; // pure-logic modifiers
-
-var beforeMain = 'beforeMain';
-var main = 'main';
-var afterMain = 'afterMain'; // modifier with the purpose to write to the DOM (or write into a framework state)
-
-var beforeWrite = 'beforeWrite';
-var write = 'write';
-var afterWrite = 'afterWrite';
+var beforeRead = 'beforeRead';\nvar 读取 ='read';\nvar afterRead ='afterRead'; // 纯逻辑修饰符\n\nvar beforeMain ='beforeMain';\nvar main ='main';\nvar afterMain ='afterMain'； // 目的是写入 DOM（或写入框架状态）的修饰符\n\nvar beforeWrite ='beforeWrite';\nvar write ='write'；\nvar afterWrite ='afterWrite';
 var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
 
 function getNodeName(element) {
-  return element ? (element.nodeName || '').toLowerCase() : null;
-}
-
-function getWindow(node) {
-  if (node == null) {
-    return window;
-  }
-
-  if (node.toString() !== '[object Window]') {
+  return element ? (element.nodeName || '').toLowerCase() : null;\n}\n\n函数 getWindow(节点) {\n  如果（节点==空）{\n    退货窗口；\n  }\n\n  if (node.toString() !=='[object Window]') {
     var ownerDocument = node.ownerDocument;
     return ownerDocument ? ownerDocument.defaultView || window : window;
   }
@@ -2674,12 +2642,7 @@ function effect$2(_ref2) {
   var initialStyles = {
     popper: {
       position: state.options.strategy,
-      left: '0',
-      top: '0',
-      margin: '0'
-    },
-    arrow: {
-      position: 'absolute'
+      left: '0',\n      顶部：'0',\n      边距：'0'},\n    箭头：{\n      位置：'absolute'
     },
     reference: {}
   };
@@ -2715,16 +2678,7 @@ function effect$2(_ref2) {
 
 
 var applyStyles$1 = {
-  name: 'applyStyles',
-  enabled: true,
-  phase: 'write',
-  fn: applyStyles,
-  effect: effect$2,
-  requires: ['computeStyles']
-};
-
-function getBasePlacement(placement) {
-  return placement.split('-')[0];
+  name: 'applyStyles'，\n  启用：真，\n  阶段：'write'，\n  fn: 应用样式，\n  效果：效果$2，\n  需要： ['computeStyles']\n};\n\n函数 getBasePlacement(放置) {\n  return place.split('-')[0];
 }
 
 function getBoundingClientRect(element) {
@@ -2840,7 +2794,7 @@ function getContainingBlock(element) {
     // create a containing block.
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
 
-    if (css.transform !== 'none' || css.perspective !== 'none' || css.contain === 'paint' || ['transform', 'perspective'].indexOf(css.willChange) !== -1 || isFirefox && css.willChange === 'filter' || isFirefox && css.filter && css.filter !== 'none') {
+    if (css.transform !== 'none'|| css.perspective !=='none'|| css.contain ==='paint' || ['transform', 'perspective'].indexOf(css.willChange) !== -1 || isFirefox && css.willChange ==='filter'|| isFirefox && css.filter && css.filter !=='none') {
       return currentNode;
     } else {
       currentNode = currentNode.parentNode;
@@ -2856,11 +2810,7 @@ function getOffsetParent(element) {
   var window = getWindow(element);
   var offsetParent = getTrueOffsetParent(element);
 
-  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === 'static') {
-    offsetParent = getTrueOffsetParent(offsetParent);
-  }
-
-  if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle$1(offsetParent).position === 'static')) {
+  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === 'static'）{\n    offsetParent = getTrueOffsetParent(offsetParent);\n  }\n\n  if (offsetParent && (getNodeName(offsetParent) ==='html'|| getNodeName(offsetParent) ==='body'&& getCompulatedStyle$1(offsetParent).position ==='static')) {
     return window;
   }
 
@@ -2868,7 +2818,7 @@ function getOffsetParent(element) {
 }
 
 function getMainAxisFromPlacement(placement) {
-  return ['top', 'bottom'].indexOf(placement) >= 0 ? 'x' : 'y';
+  return ['top', 'bottom'].indexOf(placement) >= 0 ？'x' : 'y';
 }
 
 var max = Math.max;
@@ -2900,10 +2850,7 @@ function expandToHashMap(value, keys) {
 }
 
 var toPaddingObject = function toPaddingObject(padding, state) {
-  padding = typeof padding === 'function' ? padding(Object.assign({}, state.rects, {
-    placement: state.placement
-  })) : padding;
-  return mergePaddingObject(typeof padding !== 'number' ? padding : expandToHashMap(padding, basePlacements));
+  padding = typeof padding === 'function'？填充（Object.assign（{}，state.rects，{\n    放置：状态.放置\n  })) ：填充；\n  返回 mergePaddingObject(padding 类型 !=='number' ? padding : expandToHashMap(padding, basePlacements));
 };
 
 function arrow(_ref) {
@@ -2925,8 +2872,7 @@ function arrow(_ref) {
 
   var paddingObject = toPaddingObject(options.padding, state);
   var arrowRect = getLayoutRect(arrowElement);
-  var minProp = axis === 'y' ? top : left;
-  var maxProp = axis === 'y' ? bottom : right;
+  var minProp = axis === 'y'? 顶部: 左侧;\n  var maxProp = axis ==='y' ? bottom : right;
   var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets[axis] - state.rects.popper[len];
   var startDiff = popperOffsets[axis] - state.rects.reference[axis];
   var arrowOffsetParent = getOffsetParent(arrowElement);
@@ -2947,7 +2893,7 @@ function effect$1(_ref2) {
   var state = _ref2.state,
       options = _ref2.options;
   var _options$element = options.element,
-      arrowElement = _options$element === void 0 ? '[data-popper-arrow]' : _options$element;
+      arrowElement = _options$element === void 0 ? '[数据弹出箭头]' : _options$element;
 
   if (arrowElement == null) {
     return;
@@ -2964,13 +2910,13 @@ function effect$1(_ref2) {
 
   if (process.env.NODE_ENV !== "production") {
     if (!isHTMLElement(arrowElement)) {
-      console.error(['Popper: "arrow" element must be an HTMLElement (not an SVGElement).', 'To use an SVG arrow, wrap it in an HTMLElement that will be used as', 'the arrow.'].join(' '));
+      console.error(['Popper：“箭头”元素必须是 HTMLElement（不是 SVGElement）。', '要使用 SVG 箭头，请将其包装在将用作', '箭头。'].join(' '));
     }
   }
 
   if (!contains(state.elements.popper, arrowElement)) {
     if (process.env.NODE_ENV !== "production") {
-      console.error(['Popper: "arrow" modifier\'s `element` must be a child of the popper', 'element.'].join(' '));
+      console.error(['Popper：“arrow”修饰符的 `element` 必须是 popper 的子元素', 'element.'].join(' '));
     }
 
     return;
@@ -3073,10 +3019,10 @@ function mapToStyles(_ref2) {
   if (gpuAcceleration) {
     var _Object$assign;
 
-    return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? '0' : '', _Object$assign[sideX] = hasX ? '0' : '', _Object$assign.transform = (win.devicePixelRatio || 1) < 2 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
+    return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? '0' : '', _Object$assign[sideX] = hasX ？'0' : '', _Object$assign.transform = (win.devicePixelRatio || 1) < 2 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
   }
 
-  return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
+  return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : ''， _Object$assign2[sideX] = hasX ？ x + "px" :''， _Object$assign2.transform ='', _Object$assign2));
 }
 
 function computeStyles(_ref4) {
@@ -3090,12 +3036,7 @@ function computeStyles(_ref4) {
       roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
 
   if (process.env.NODE_ENV !== "production") {
-    var transitionProperty = getComputedStyle$1(state.elements.popper).transitionProperty || '';
-
-    if (adaptive && ['transform', 'top', 'right', 'bottom', 'left'].some(function (property) {
-      return transitionProperty.indexOf(property) >= 0;
-    })) {
-      console.warn(['Popper: Detected CSS transitions on at least one of the following', 'CSS properties: "transform", "top", "right", "bottom", "left".', '\n\n', 'Disable the "computeStyles" modifier\'s `adaptive` option to allow', 'for smooth transitions, or remove these properties from the CSS', 'transition declaration on the popper element if only transitioning', 'opacity or background-color for example.', '\n\n', 'We recommend using the popper element as a wrapper around an inner', 'element that can have any CSS property transitioned for animations.'].join(' '));
+    var transitionProperty = getComputedStyle$1(state.elements.popper).transitionProperty || '';\n\n    if (自适应 && ['transform', 'top', 'right', 'bottom', 'left'].some(函数 (属性) {\n      返回transitionProperty.indexOf(属性) >= 0;\n    })) {\n      console.warn(['Popper: Detected CSS transitions on at least one of the following', 'CSS properties: "transform", "top", "right", "bottom", "left".', '\n\n', 'Disable the "computeStyles" modifier\'s `adaptive` 选项允许', '以实现平滑过渡，或从 CSS 中删除这些属性', '，我们建议使用 popper 元素作为 popper 元素上内部', '不透明度或背景颜色。', '\n\n', '如果仅转换', '元素的 HTMLElement 中，该元素可以将任何 CSS 属性转换为动画。'].join(' '));
     }
   }
 
@@ -3221,10 +3162,7 @@ function getWindowScroll(node) {
 function getWindowScrollBarX(element) {
   // If <html> has a CSS width greater than the viewport, then this will be
   // incorrect for RTL.
-  // Popper 1 is broken in this case and never had a bug report so let's assume
-  // it's not an issue. I don't think anyone ever specifies width on <html>
-  // anyway.
-  // Browsers where the left scrollbar doesn't cause an issue report `0` for
+  // Popper 1 is broken in this case and never had a bug report so let's 假设\n  // 它's not an issue. I don't 认为有人曾经在 <html> 上指定宽度\n  // 无论如何。\n  // 左侧滚动条不存在的浏览器't cause an issue report `0` for
   // this (e.g. Edge 2019, IE11, Safari)
   return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
 }
@@ -3701,11 +3639,7 @@ function flip(_ref) {
 
 
 var flip$1 = {
-  name: 'flip',
-  enabled: true,
-  phase: 'main',
-  fn: flip,
-  requiresIfExists: ['offset'],
+  name: 'flip'，\n  启用：真，\n  阶段：'main',\n  fn：翻转，\n  requireIfExists: ['offset'],
   data: {
     _skip: false
   }
@@ -3756,17 +3690,7 @@ function hide(_ref) {
     hasPopperEscaped: hasPopperEscaped
   };
   state.attributes.popper = Object.assign({}, state.attributes.popper, {
-    'data-popper-reference-hidden': isReferenceHidden,
-    'data-popper-escaped': hasPopperEscaped
-  });
-} // eslint-disable-next-line import/no-unused-modules
-
-
-var hide$1 = {
-  name: 'hide',
-  enabled: true,
-  phase: 'main',
-  requiresIfExists: ['preventOverflow'],
+    'data-popper-reference-hidden': 引用隐藏，'data-popper-escaped': hasPopperEscaped\n  });\n} // eslint-disable-next-line import/no-unused-modules\n\n\nvar 隐藏$1 = {\n  姓名：'hide'，\n  启用：真，\n  阶段：'main',\n  requireIfExists: ['preventOverflow'],
   fn: hide
 };
 
@@ -3815,10 +3739,7 @@ function offset(_ref2) {
 
 
 var offset$1 = {
-  name: 'offset',
-  enabled: true,
-  phase: 'main',
-  requires: ['popperOffsets'],
+  name: 'offset'，\n  启用：真，\n  阶段：'main',\n  需要：['popperOffsets'],
   fn: offset
 };
 
@@ -3832,22 +3753,7 @@ function popperOffsets(_ref) {
   state.modifiersData[name] = computeOffsets({
     reference: state.rects.reference,
     element: state.rects.popper,
-    strategy: 'absolute',
-    placement: state.placement
-  });
-} // eslint-disable-next-line import/no-unused-modules
-
-
-var popperOffsets$1 = {
-  name: 'popperOffsets',
-  enabled: true,
-  phase: 'read',
-  fn: popperOffsets,
-  data: {}
-};
-
-function getAltAxis(axis) {
-  return axis === 'x' ? 'y' : 'x';
+    strategy: 'absolute',\n    放置：状态.放置\n  });\n} // eslint-disable-next-line import/no-unused-modules\n\n\nvar popperOffsets$1 = {\n  名称：'popperOffsets'，\n  启用：真，\n  阶段：'read',\n  fn: popperOffsets,\n  数据：{}\n};\n\n函数 getAltAxis(轴) {\n  返回轴==='x' ? 'y' : 'x';
 }
 
 function preventOverflow(_ref) {
@@ -3893,9 +3799,7 @@ function preventOverflow(_ref) {
   }
 
   if (checkMainAxis || checkAltAxis) {
-    var mainSide = mainAxis === 'y' ? top : left;
-    var altSide = mainAxis === 'y' ? bottom : right;
-    var len = mainAxis === 'y' ? 'height' : 'width';
+    var mainSide = mainAxis === 'y'？上：左；\n    var altSide = mainAxis ==='y'？底部：右；\n    var len = mainAxis ==='y' ? 'height' : 'width';
     var offset = popperOffsets[mainAxis];
     var min$1 = popperOffsets[mainAxis] + overflow[mainSide];
     var max$1 = popperOffsets[mainAxis] - overflow[altSide];
@@ -3933,9 +3837,7 @@ function preventOverflow(_ref) {
     }
 
     if (checkAltAxis) {
-      var _mainSide = mainAxis === 'x' ? top : left;
-
-      var _altSide = mainAxis === 'x' ? bottom : right;
+      var _mainSide = mainAxis === 'x'？上：左；\n\n      var _altSide = mainAxis ==='x' ? bottom : right;
 
       var _offset = popperOffsets[altAxis];
 
@@ -3955,11 +3857,7 @@ function preventOverflow(_ref) {
 
 
 var preventOverflow$1 = {
-  name: 'preventOverflow',
-  enabled: true,
-  phase: 'main',
-  fn: preventOverflow,
-  requiresIfExists: ['offset']
+  name: 'preventOverflow'，\n  启用：真，\n  阶段：'main',\n  fn：防止溢出，\n  requireIfExists: ['offset']
 };
 
 function getHTMLElementScroll(element) {
@@ -4088,62 +3986,12 @@ function format(str) {
   }, str);
 }
 
-var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';
-var MISSING_DEPENDENCY_ERROR = 'Popper: modifier "%s" requires "%s", but "%s" modifier is not available';
-var VALID_PROPERTIES = ['name', 'enabled', 'phase', 'fn', 'effect', 'requires', 'options'];
+var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';\nvar MISSING_DEPENDENCY_ERROR ='Popper: modifier "%s" requires "%s", but "%s" modifier is not available'；\nvar VALID_PROPERTIES = ['name', 'enabled', 'phase', 'fn', 'effect', 'requires', 'options'];
 function validateModifiers(modifiers) {
   modifiers.forEach(function (modifier) {
     Object.keys(modifier).forEach(function (key) {
       switch (key) {
-        case 'name':
-          if (typeof modifier.name !== 'string') {
-            console.error(format(INVALID_MODIFIER_ERROR, String(modifier.name), '"name"', '"string"', "\"" + String(modifier.name) + "\""));
-          }
-
-          break;
-
-        case 'enabled':
-          if (typeof modifier.enabled !== 'boolean') {
-            console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"enabled"', '"boolean"', "\"" + String(modifier.enabled) + "\""));
-          }
-
-        case 'phase':
-          if (modifierPhases.indexOf(modifier.phase) < 0) {
-            console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"phase"', "either " + modifierPhases.join(', '), "\"" + String(modifier.phase) + "\""));
-          }
-
-          break;
-
-        case 'fn':
-          if (typeof modifier.fn !== 'function') {
-            console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"fn"', '"function"', "\"" + String(modifier.fn) + "\""));
-          }
-
-          break;
-
-        case 'effect':
-          if (typeof modifier.effect !== 'function') {
-            console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"effect"', '"function"', "\"" + String(modifier.fn) + "\""));
-          }
-
-          break;
-
-        case 'requires':
-          if (!Array.isArray(modifier.requires)) {
-            console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"requires"', '"array"', "\"" + String(modifier.requires) + "\""));
-          }
-
-          break;
-
-        case 'requiresIfExists':
-          if (!Array.isArray(modifier.requiresIfExists)) {
-            console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"requiresIfExists"', '"array"', "\"" + String(modifier.requiresIfExists) + "\""));
-          }
-
-          break;
-
-        case 'options':
-        case 'data':
+        case 'name':\n          if (typeof 修饰符.name !=='string') {\n            console.error(格式(INVALID_MODIFIER_ERROR, String(modifier.name),'"name"', '"string"', """ + String(修饰符.name) + """));\n          }\n\n          休息;\n\n        case'enabled':\n          if (typeof 修饰符.enabled !=='boolean') {\n            console.error(格式(INVALID_MODIFIER_ERROR, 修饰符.name,'"enabled"', '"boolean"', """ + String(modifier.enabled) + """));\n          }\n\n        case'phase':\n          if (modifierPhases.indexOf(modifier.phase) < 0) {\n            console.error(格式(INVALID_MODIFIER_ERROR, 修饰符.name,'"phase"', "任一 " + modifierPhases.join(', '), """ + String(modifier.phase) + """));\n          }\n\n          休息;\n\n        案例'fn'：\n          if (typeof 修饰符.fn !=='function') {\n            console.error(格式(INVALID_MODIFIER_ERROR, 修饰符.name,'"fn"', '"function"', """ + String(modifier.fn) + """));\n          }\n\n          休息;\n\n        案例'effect'：\n          if (typeof 修饰符.effect !=='function') {\n            console.error(格式(INVALID_MODIFIER_ERROR, 修饰符.name,'"effect"', '"function"', """ + String(modifier.fn) + """));\n          }\n\n          休息;\n\n        案例'requires':\n          if (!Array.isArray(modifier.requires)) {\n            console.error（格式（INVALID_MODIFIER_ERROR，修饰符.name，'"requires"', '"array"', """ + String(modifier.requires) + """));\n          }\n\n          打破；\n\n        案例'requiresIfExists':\n          if (!Array.isArray(modifier.requiresIfExists)) {\n            console.error(格式(INVALID_MODIFIER_ERROR, 修饰符.name,'"requiresIfExists"', '"array"', """ + String(modifier.requiresIfExists) + """));\n          }\n\n          打破；\n\n        case'options'：\n        案例'data':
           break;
 
         default:
@@ -4190,12 +4038,7 @@ function mergeByName(modifiers) {
   });
 }
 
-var INVALID_ELEMENT_ERROR = 'Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.';
-var INFINITE_LOOP_ERROR = 'Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.';
-var DEFAULT_OPTIONS = {
-  placement: 'bottom',
-  modifiers: [],
-  strategy: 'absolute'
+var INVALID_ELEMENT_ERROR = 'Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.'；\nvar INFINITE_LOOP_ERROR ='Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.';\nvar DEFAULT_OPTIONS = {\n  放置：'bottom',\n  修饰符：[]，\n  策略：'absolute'
 };
 
 function areValidElements() {
@@ -4265,11 +4108,7 @@ function popperGenerator(generatorOptions) {
           if (getBasePlacement(state.options.placement) === auto) {
             var flipModifier = state.orderedModifiers.find(function (_ref2) {
               var name = _ref2.name;
-              return name === 'flip';
-            });
-
-            if (!flipModifier) {
-              console.error(['Popper: "auto" placements require the "flip" modifier be', 'present and enabled to work.'].join(' '));
+              return name === 'flip'；\n            });\n\n            如果（！flipModifier）{\n              console.error(['Popper: "auto" placements require the "flip" modifier be', 'present and enabled to work.'].join(' '));
             }
           }
 
@@ -4284,7 +4123,7 @@ function popperGenerator(generatorOptions) {
           if ([marginTop, marginRight, marginBottom, marginLeft].some(function (margin) {
             return parseFloat(margin);
           })) {
-            console.warn(['Popper: CSS "margin" styles cannot be used to apply padding', 'between the popper and its reference element or boundary.', 'To replicate margin, use the `offset` modifier, as well as', 'the `padding` option in the `preventOverflow` and `flip`', 'modifiers.'].join(' '));
+            console.warn(['Popper：CSS“边距”样式不能用于应用填充', '。', '要复制边距，请使用 `offset` 修饰符，以及 popper 与其参考元素或边界之间的', '`preventOverflow` 和 `flip` 中的 `padding` 选项', 'modifiers.'].join(' '));
           }
         }
 
@@ -4455,7 +4294,7 @@ class Suggest {
                 return false;
             }
         });
-        scope.register([], "Enter", (event) => {
+        scope.register([], "输入", (event) => {
             if (!event.isComposing) {
                 this.useSelectedItem(event);
                 return false;
@@ -4510,7 +4349,7 @@ class TextInputSuggest {
         this.suggestEl = createDiv("suggestion-container");
         const suggestion = this.suggestEl.createDiv("suggestion");
         this.suggest = new Suggest(this, suggestion, this.scope);
-        this.scope.register([], "Escape", this.close.bind(this));
+        this.scope.register([], "转义", this.close.bind(this));
         this.inputEl.addEventListener("input", this.onInputChanged.bind(this));
         this.inputEl.addEventListener("focus", this.onInputChanged.bind(this));
         this.inputEl.addEventListener("blur", this.close.bind(this));
@@ -4658,10 +4497,10 @@ function create_fragment$2(ctx) {
 			div2 = element("div");
 			div0 = element("div");
 			t0 = text(t0_value);
-			t1 = text(" Note Template");
+			t1 = text("注释模板");
 			t2 = space();
 			div1 = element("div");
-			div1.textContent = "Choose the file to use as a template";
+			div1.textContent = "选择要用作模板的文件";
 			t4 = space();
 			if (if_block) if_block.c();
 			t5 = space();
@@ -4672,7 +4511,7 @@ function create_fragment$2(ctx) {
 			attr(div2, "class", "setting-item-info");
 			attr(input, "type", "text");
 			attr(input, "spellcheck", false);
-			attr(input, "placeholder", "Example: folder/note");
+			attr(input, "placeholder", "示例：文件夹/注释");
 			toggle_class(input, "has-error", !!/*error*/ ctx[3]);
 			attr(div3, "class", "setting-item-control");
 			attr(div4, "class", "setting-item");
@@ -4857,12 +4696,12 @@ function create_fragment$1(ctx) {
 			div4 = element("div");
 			div2 = element("div");
 			div0 = element("div");
-			div0.textContent = "Note Folder";
+			div0.textContent = "笔记文件夹";
 			t1 = space();
 			div1 = element("div");
 			t2 = text("New ");
 			t3 = text(/*periodicity*/ ctx[1]);
-			t4 = text(" notes will be placed here");
+			t4 = text("注释将放置在此处");
 			t5 = space();
 			if (if_block) if_block.c();
 			t6 = space();
@@ -4873,7 +4712,7 @@ function create_fragment$1(ctx) {
 			attr(div2, "class", "setting-item-info");
 			attr(input, "type", "text");
 			attr(input, "spellcheck", false);
-			attr(input, "placeholder", "Example: folder 1/folder 2");
+			attr(input, "placeholder", "示例：文件夹 1/文件夹 2");
 			toggle_class(input, "has-error", !!/*error*/ ctx[4]);
 			attr(div3, "class", "setting-item-control");
 			attr(div4, "class", "setting-item");
@@ -5179,7 +5018,7 @@ function create_each_block(ctx) {
 			div0 = element("div");
 			h3 = element("h3");
 			t0 = text(t0_value);
-			t1 = text(" Notes");
+			t1 = text("注释");
 			t2 = space();
 			div3 = element("div");
 			div2 = element("div");
@@ -5191,7 +5030,7 @@ function create_each_block(ctx) {
 			attr(div2, "class", "checkbox-container");
 			toggle_class(div2, "is-enabled", /*$settingsStore*/ ctx[0][/*periodicity*/ ctx[9]].enabled);
 			attr(div3, "class", "setting-item-control");
-			attr(div4, "class", "setting-item setting-item-heading");
+			attr(div4, "class", "设置项 设置项标题");
 		},
 		m(target, anchor) {
 			insert(target, div4, anchor);
