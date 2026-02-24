@@ -4,24 +4,103 @@
     "type": "split",
     "children": [
       {
-        "id": "cf22e93d4360b6d0",
+        "id": "61f6b68e4d9e8146",
         "type": "tabs",
         "children": [
           {
-            "id": "1d0ad55b0c33e0aa",
+            "id": "2f63c5e6083c49fe",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00_Inbox/白珊珊，普通颜值，为什么能赢得许家印青睐，成为恒大歌舞团团长？.md",
+                "file": "02_Areas/性癖形成机制.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "白珊珊，普通颜值，为什么能赢得许家印青睐，成为恒大歌舞团团长？"
+              "title": "性癖形成机制"
+            }
+          },
+          {
+            "id": "8424ddf24a039743",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_Inbox/未命名 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名 1"
+            }
+          },
+          {
+            "id": "35ce4b2740cccb68",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.11.7"
+            }
+          },
+          {
+            "id": "063570a722360f89",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_Inbox/胖东来真有网上说的那么好吗？.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "胖东来真有网上说的那么好吗？"
+            }
+          },
+          {
+            "id": "6a2f529989173756",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02_Areas/Claude Code 快速开始.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Claude Code 快速开始"
+            }
+          },
+          {
+            "id": "6e7ad7b15ff67f01",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02_Areas/寄生心理：原子化与系统控制.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "寄生心理：原子化与系统控制"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -40,7 +119,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "byCreatedTime",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -171,8 +250,8 @@
             "state": {
               "type": "chinese-calendar-view",
               "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "日历"
+              "icon": "lucide-ghost",
+              "title": "chinese-calendar-view"
             }
           },
           {
@@ -193,8 +272,8 @@
               "state": {
                 "initialAgentId": "codex-acp"
               },
-              "icon": "bot-message-square",
-              "title": "Agent client"
+              "icon": "lucide-ghost",
+              "title": "agent-client-chat-view"
             }
           },
           {
@@ -203,12 +282,22 @@
             "state": {
               "type": "review-queue-list-view",
               "state": {},
-              "icon": "SpacedRepIcon",
-              "title": "笔记复习序列"
+              "icon": "lucide-ghost",
+              "title": "review-queue-list-view"
+            }
+          },
+          {
+            "id": "36995fc7459a0bc3",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 9
       }
     ],
     "direction": "horizontal",
@@ -217,6 +306,11 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "copilot:Open Copilot Chat": false,
+      "obsidian-spaced-repetition:复习卡片": false,
+      "agent-client:Open agent client": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -224,40 +318,41 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "bases:新建数据库": false,
-      "obsidian-excalidraw-plugin:新建绘图文件": false,
-      "obsidian-spaced-repetition:复习卡片": false,
       "obsidian42-brat:BRAT": false,
-      "agent-client:Open agent client": false
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Lookup: Open lookup view": false,
+      "smart-connections:Smart Connections: Open random connection": false
     }
   },
-  "active": "596849536852005d",
+  "active": "063570a722360f89",
   "lastOpenFiles": [
-    "00_Inbox/爆料称闫学晶之子曾用李展旭一名入读中戏，同名者控诉当年专业第一未获录取，质疑被冒名顶替，到底怎么回事？_爱在樱花雨纷飞_2026-02-15.md",
-    "00_Inbox/住在香港是一种什么样的感觉？_理科富二代_2026-02-15.md",
-    "02_Areas/_INDEX.md",
-    "00_Inbox/白珊珊，普通颜值，为什么能赢得许家印青睐，成为恒大歌舞团团长？.md",
-    "00_Inbox/爱泼斯坦情报行动证据分析.md",
-    "00_Inbox/2026年2月4日A股行情分析-铜储备与市场动态.md",
-    "00_Inbox/2026年目标.md",
-    "00_Inbox/30个任务证据矩阵.md",
-    "00_Inbox/如何评价山上彻也妹妹在公审上所说的话？_REMmmm_2026-02-12.md",
-    "00_Inbox/_INDEX.md",
-    "00_Inbox/如何看待高志凯在最新视频中称牢A为先生，并与他交流斩杀线定义？.md",
     "00_Inbox/一些男性会认为中国社会中的女性地位已经很高了？这是事实吗？.md",
+    "00_Inbox/铜市场供需深度拆解-20260207.md",
+    "00_Inbox/软件的终结（The End of Software）.md",
+    "00_Inbox/明明和很多女生感觉关系已经较亲密了，为什么在尝试和她们肢体接触后，都和我翻脸了呢？_布鲁斯韦恩_2026-02-17.md",
+    "02_Areas/亚文化符号的深层联系.md",
+    "00_Inbox/未命名 1.md",
     "00_Inbox/未命名.md",
-    "00_Inbox/一次性定投和分批定投.md",
-    "00_Inbox/白珊珊，普通颜值，为什么能赢得许家印青睐，成为恒大歌舞团团长？_水知寒_2025-07-21.md",
-    "00_Inbox/概率（Probability）的本质是什么？.md",
-    "00_Inbox/概率（Probability）的本质是什么？_Jay哥讲数学_2026-02-02.md",
-    "00_Inbox/老二次元谈谈你对现在二次元圈子的看法？_我只感到咸因_2025-12-18.md",
-    "00_Inbox/老二次元谈谈你对现在二次元圈子的看法？_猫头鹰是悖论_2026-01-10.md",
+    "04_Archives/attachments/Pasted image 20260221141940.png",
+    "00_Inbox/为什么西方从来没有想象过一个由中国支配的世界呢？_托卡马克之冠_2026-02-16.md",
+    "00_Inbox/文档格式.md",
+    "00_Inbox/中国拔尖培养与AI竞争-谷歌+知乎材料综述.md",
+    "00_Inbox/知识深化加工SOP.md",
+    "00_Inbox/这次的风波会导致名侦探柯南这部动漫下架吗？.md",
+    "00_Inbox/有没有在顶级数学期刊上发表了之后又被证明为错误的论文？.md",
+    "00_Inbox/爆料称闫学晶之子曾用李展旭一名入读中戏，同名者控诉当年专业第一未获录取，质疑被冒名顶替，到底怎么回事？_爱在樱花雨纷飞_2026-02-15.md",
+    "02_Areas/性癖形成机制.md",
+    "02_Areas/寄生心理：原子化与系统控制.md",
+    "02_Areas/Claude Code 快速开始.md",
+    "02_Areas/日本ACG短生种本位叙事模式解构.md",
+    "02_Areas/06 ExecPlan, 用 PLANS.md 拆解多小时任务.md",
+    "02_Areas/00 目录 - Codex CLI 学习路径.md",
+    "02_Areas/边缘群体“准家人”的剥削共生.md",
+    "02_Areas/05 CI 中的代码审查, Codex 结构化输出.md",
+    "02_Areas/07 代码库现代化, 用 Codex 迁移遗留系统.md",
+    "00_Inbox/谷歌 Gemini 准确率从 21% 提升至 97% 仅靠「复制粘贴」，这意味着什么？.md",
     "00_Inbox/老二次元谈谈你对现在二次元圈子的看法？__inbox_我只感到咸因_2025-12-18.md",
     "00_Inbox/老二次元谈谈你对现在二次元圈子的看法？__inbox_猫头鹰是悖论_2026-01-10.md",
-    "00_Inbox/空白草稿-inbox-03.md",
-    "00_Inbox/空白草稿-inbox-01.md",
-    "00_Inbox/空白草稿-13.md",
-    "00_Inbox/空白草稿-07.md",
-    "00_Inbox/空白草稿-06杂项-03.md",
     "04_Archives/attachments/img-20240112-171238.png",
     "04_Archives/attachments/img-20240112-171029.png",
     "04_Archives/attachments/img-20240112-170916.png",
@@ -267,7 +362,6 @@
     "04_Archives/attachments/img-20240112-163717.png",
     "04_Archives/attachments/img-20240109-200236.png",
     "04_Archives/attachments/img-20240108-161121.png",
-    "04_Archives/attachments/img-20240108-155516.png",
     "04_Archives/rename-map-refine.tsv",
     "04_Archives/attachment-map.tsv",
     "04_Archives/rename-map.tsv",

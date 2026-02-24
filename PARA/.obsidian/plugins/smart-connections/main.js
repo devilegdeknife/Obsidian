@@ -52,7 +52,7 @@ var require_base64_js = __commonJS({
     function getLens(b64) {
       var len2 = b64.length;
       if (len2 % 4 > 0) {
-        throw new Error("无效字符串。长度必须是 4 的倍数");
+        throw new Error("Invalid string. Length must be a multiple of 4");
       }
       var validLen = b64.indexOf("=");
       if (validLen === -1) validLen = len2;
@@ -239,7 +239,7 @@ var DefaultEventsAdapter = class extends SmartEventsAdapter {
   }
   emit(event_key, event = {}) {
     if (event_key === WILDCARD_KEY) {
-      throw new Error('不允许发出("*")； “*”是为通配符侦听器保留的。');
+      throw new Error('emit("*") is not allowed; "*" is reserved for wildcard listeners.');
     }
     const specific_list = this.handlers[event_key];
     const wildcard_list = this.handlers[WILDCARD_KEY];
@@ -326,7 +326,7 @@ async function render(env, opts = {}) {
 }
 async function post_process(env, frag, opts = {}) {
   await this.render_setting_components(frag, { scope: env });
-  const env_collections_containers = frag.querySelectorAll("[数据智能设置]");
+  const env_collections_containers = frag.querySelectorAll("[data-smart-settings]");
   for (const env_collections_container of env_collections_containers) {
     const collection_key = env_collections_container.dataset.smartSettings;
     const collection = env[collection_key];
@@ -800,7 +800,7 @@ function migrate_exclusion_settings_2025_08_22(settings = {}) {
   if (file_exclusions !== void 0 || folder_exclusions2 !== void 0 || excluded_headings !== void 0) {
     settings.smart_sources = settings.smart_sources || {};
     if (file_exclusions !== void 0) {
-      if (file_exclusions.length && file_exclusions !== "无标题" && (!settings.smart_sources?.file_exclusions?.length || settings.smart_sources?.file_exclusions === "无标题")) {
+      if (file_exclusions.length && file_exclusions !== "Untitled" && (!settings.smart_sources?.file_exclusions?.length || settings.smart_sources?.file_exclusions === "Untitled")) {
         settings.smart_sources.file_exclusions = file_exclusions;
       }
     }
@@ -822,7 +822,7 @@ function migrate_exclusion_settings_2025_08_22(settings = {}) {
 }
 
 // node_modules/obsidian-smart-env/node_modules/smart-environment/smart_env.js
-var ROOT_SCOPE = typeof globalThis !== "undefined" ? globalThis : Function("返回此")();
+var ROOT_SCOPE = typeof globalThis !== "undefined" ? globalThis : Function("return this")();
 var SmartEnv = class {
   static version = "2.2.8";
   scope_name = "smart_env";
@@ -918,7 +918,7 @@ var SmartEnv = class {
     if (typeof this.global_env?.constructor?.version === "undefined") return true;
     if (compare_versions(this.version, this.global_env.constructor?.version) > 0) {
       console.warn(
-        "SmartEnv：由于版本不匹配而重新加载环境",
+        "SmartEnv: Reloading environment because of version mismatch",
         `${this.version} > ${this.global_env.constructor.version}`
       );
       return true;
@@ -1152,7 +1152,7 @@ var SmartEnv = class {
       this.settings_container = container;
     }
     if (!container) {
-      throw new Error("需要容器");
+      throw new Error("Container is required");
     }
     const frag = await this.render_component("settings", this, {});
     this.smart_view.empty(container);
@@ -1209,7 +1209,7 @@ var SmartEnv = class {
           );
         }
       } catch (e) {
-        console.error("获取组件时出错", e);
+        console.error("Error getting component", e);
         console.log(
           `scope_name: ${scope_name}; component_key: ${component_key}; this.opts.components: ${Object.keys(
             this.opts.components || {}
@@ -1568,7 +1568,7 @@ var SmartFs = class {
     this.env = env;
     this.opts = opts;
     this.fs_path = opts.fs_path || opts.env_path || "";
-    if (!opts.adapter) throw new Error("SmartFs 需要适配器");
+    if (!opts.adapter) throw new Error("SmartFs requires an adapter");
     this.adapter = new opts.adapter(this);
     this.excluded_patterns = [];
     if (Array.isArray(opts.exclude_patterns)) {
@@ -1779,7 +1779,7 @@ var SmartFs = class {
       const content = await this.adapter.read(rel_path, encoding);
       return content;
     } catch (error) {
-      console.warn("读取时出错：" + error.message, rel_path);
+      console.warn("Error during read: " + error.message, rel_path);
       if (error.code === "ENOENT") return null;
       return { error: error.message };
     }
@@ -1839,7 +1839,8 @@ var SmartFs = class {
     }
   }
   // // aliases
-  // async create(rel_path, content) { return await this.use_adapter('write'，[rel_path]，内容）； }\n  // 异步更新(rel_path, content) { return wait this.use_adapter('write', [rel_path], content); }
+  // async create(rel_path, content) { return await this.use_adapter('write', [rel_path], content); }
+  // async update(rel_path, content) { return await this.use_adapter('write', [rel_path], content); }
   get_link_target_path(link_target, source_path) {
     if (this.adapter.get_link_target_path) return this.adapter.get_link_target_path(link_target, source_path);
     if (!this.file_paths) return console.warn("get_link_target_path: file_paths not found");
@@ -2292,13 +2293,13 @@ function convert_to_time_ago(timestamp) {
       return is_future ? `in ${suffix}` : `${suffix} ago`;
     }
   }
-  return "刚才";
+  return "just now";
 }
 
 // node_modules/obsidian-smart-env/node_modules/smart-utils/cos_sim.js
 function cos_sim(vector1 = [], vector2 = []) {
   if (vector1.length !== vector2.length) {
-    throw new Error("矢量必须具有相同的长度");
+    throw new Error("Vectors must have the same length");
   }
   let dot_product = 0;
   let magnitude1 = 0;
@@ -2457,7 +2458,7 @@ var SmartView = class {
   get adapter() {
     if (!this._adapter) {
       if (!this.opts.adapter) {
-        throw new Error("未向 SmartView 提供适配器。在环境配置中提供“smart_view.adapter”。");
+        throw new Error("No adapter provided to SmartView. Provide a 'smart_view.adapter' in env config.");
       }
       const AdapterClass = this.opts.adapter;
       this._adapter = new AdapterClass(this);
@@ -2539,7 +2540,7 @@ var SmartView = class {
       if (typeof value === "number") return `data-${attr.replace(/_/g, "-")}=${value}`;
       return `data-${attr.replace(/_/g, "-")}="${value}"`;
     }).join("\n");
-    return `<div class="setting-component${setting_config.scope_class ? " "+ 设置_config.scope_class :""}"
+    return `<div class="setting-component${setting_config.scope_class ? " " + setting_config.scope_class : ""}"
 data-setting="${setting_config.setting}"
 ${attributes}
 ></div>`;
@@ -2576,7 +2577,7 @@ ${attributes}
    */
   add_settings_listeners(scope, container = document) {
     if (!container || typeof container.querySelectorAll !== "function") return;
-    const elements = container.querySelectorAll("[数据智能设置]");
+    const elements = container.querySelectorAll("[data-smart-setting]");
     elements.forEach((elm) => {
       const path = elm.dataset.smartSetting;
       if (!path) return;
@@ -2670,11 +2671,11 @@ ${attributes}
     } else if (Array.isArray(dispose)) {
       dispose_fns = dispose.filter((fn) => typeof fn === "function");
     } else {
-      console.warn("[智能视图] Attach_disposer 使用无效的处理程序调用");
+      console.warn("[smart-view] attach_disposer called with invalid disposer");
       return;
     }
     if (!dispose_fns.length) {
-      console.warn("[智能视图] Attach_disposer 调用时没有有效的处理程序函数");
+      console.warn("[smart-view] attach_disposer called with no valid disposer functions");
       return;
     }
     let entry = element_disposers.get(el);
@@ -2710,7 +2711,7 @@ ${attributes}
             try {
               fn();
             } catch (err) {
-              console.error("[智能视图] 处理程序错误", err);
+              console.error("[smart-view] disposer error", err);
             }
           }
         } finally {
@@ -2743,7 +2744,7 @@ var SmartViewAdapter = class {
    * @throws Will throw an error if not implemented in the subclass.
    */
   get setting_class() {
-    throw new Error("设置_class() 未实现");
+    throw new Error("setting_class() not implemented");
   }
   /**
    * Generates the HTML for a specified icon.
@@ -2754,7 +2755,7 @@ var SmartViewAdapter = class {
    * @throws Will throw an error if not implemented in the subclass.
    */
   get_icon_html(icon_name) {
-    throw new Error("get_icon_html() 未实现");
+    throw new Error("get_icon_html() not implemented");
   }
   /**
    * Renders Markdown content within a specific scope.
@@ -2766,7 +2767,7 @@ var SmartViewAdapter = class {
    * @throws Will throw an error if not implemented in the subclass.
    */
   async render_markdown(markdown, scope = null) {
-    throw new Error("render_markdown() 未实现");
+    throw new Error("render_markdown() not implemented");
   }
   /**
    * Opens a specified URL.
@@ -2775,7 +2776,7 @@ var SmartViewAdapter = class {
    * @param {string} url - The URL to open.
    */
   open_url(url) {
-    throw new Error("open_url() 未实现");
+    throw new Error("open_url() not implemented");
   }
   /**
    * Handles the selection of a folder by invoking the folder selection dialog and updating the setting.
@@ -2786,7 +2787,7 @@ var SmartViewAdapter = class {
    * @param {object} scope - The current scope containing settings and actions.
    */
   handle_folder_select(path, value, elm, scope) {
-    throw new Error("handle_folder_select 未实现");
+    throw new Error("handle_folder_select not implemented");
   }
   /**
    * Handles the selection of a file by invoking the file selection dialog and updating the setting.
@@ -2797,7 +2798,7 @@ var SmartViewAdapter = class {
    * @param {object} scope - The current scope containing settings and actions.
    */
   handle_file_select(path, value, elm, scope) {
-    throw new Error("handle_file_select 未实现");
+    throw new Error("handle_file_select not implemented");
   }
   /**
    * Performs actions before a setting is changed, such as clearing notices and updating the UI.
@@ -2827,7 +2828,7 @@ var SmartViewAdapter = class {
    * @param {object} scope - The current scope containing settings.
    */
   revert_setting(path, elm, scope) {
-    console.warn("revert_setting() 未实现");
+    console.warn("revert_setting() not implemented");
   }
   // DEFAULT IMPLEMENTATIONS (may be overridden)
   get setting_renderers() {
@@ -3024,7 +3025,7 @@ var SmartViewAdapter = class {
   render_remove_component(elm, path, value, scope, settings_scope) {
     const smart_setting = new this.setting_class(elm);
     smart_setting.addButton((button) => {
-      button.setButtonText(elm.dataset.btnText || elm.dataset.name || "删除");
+      button.setButtonText(elm.dataset.btnText || elm.dataset.name || "Remove");
       button.onClick(async () => {
         this.main.delete_by_path(scope.settings, path, settings_scope);
         if (elm.dataset.callback) {
@@ -3103,10 +3104,10 @@ var SmartViewAdapter = class {
         const input = document.createElement("input");
         input.type = "text";
         input.value = val;
-        input.placeholder = "值";
+        input.placeholder = "Value";
         const remove_btn = document.createElement("button");
         remove_btn.textContent = "\u2715";
-        remove_btn.title = "删除";
+        remove_btn.title = "Remove";
         input.addEventListener("change", () => {
           arr[idx] = input.value;
           trigger_change();
@@ -3125,10 +3126,10 @@ var SmartViewAdapter = class {
     add_row.className = "array-add-row";
     const new_input = document.createElement("input");
     new_input.type = "text";
-    new_input.placeholder = "值";
+    new_input.placeholder = "Value";
     const add_btn = document.createElement("button");
     add_btn.textContent = "+";
-    add_btn.title = "添加值";
+    add_btn.title = "Add value";
     add_btn.addEventListener("click", () => {
       const v = new_input.value.trim();
       if (!v) return;
@@ -3162,14 +3163,14 @@ var SmartViewAdapter = class {
           const key_i = document.createElement("input");
           key_i.type = "text";
           key_i.value = key;
-          key_i.placeholder = "属性";
+          key_i.placeholder = "Property";
           const value_i = document.createElement("input");
           value_i.type = "text";
           value_i.value = val;
-          value_i.placeholder = "值";
+          value_i.placeholder = "Value";
           const remove_btn = document.createElement("button");
           remove_btn.textContent = "\u2715";
-          remove_btn.title = "删除";
+          remove_btn.title = "Remove";
           key_i.addEventListener("change", () => {
             const newKey = key_i.value.trim();
             if (!newKey) return;
@@ -3199,13 +3200,13 @@ var SmartViewAdapter = class {
       add_div.className = "json-add-row";
       const new_key_i = document.createElement("input");
       new_key_i.type = "text";
-      new_key_i.placeholder = "属性";
+      new_key_i.placeholder = "Property";
       const new_val_i = document.createElement("input");
       new_val_i.type = "text";
-      new_val_i.placeholder = "值";
+      new_val_i.placeholder = "Value";
       const add_btn = document.createElement("button");
       add_btn.textContent = "+";
-      add_btn.title = "添加属性";
+      add_btn.title = "Add property";
       add_btn.addEventListener("click", () => {
         const k = new_key_i.value.trim();
         if (!k || k in obj) return;
@@ -3246,7 +3247,7 @@ var SmartViewAdapter = class {
             } else if (elm.dataset.href) {
               this.open_url(elm.dataset.href);
             } else {
-              console.error("没有找到按钮的回调或 href。");
+              console.error("No callback or href found for button.");
             }
           });
         }
@@ -3259,7 +3260,7 @@ var SmartViewAdapter = class {
   handle_disabled_and_hidden(elm) {
     if (elm.dataset.disabled && elm.dataset.disabled !== "false") {
       elm.classList.add("disabled");
-      elm.querySelector("输入、选择、文本区域、按钮").disabled = true;
+      elm.querySelector("input, select, textarea, button").disabled = true;
     }
     if (elm.dataset.hidden && elm.dataset.hidden !== "false") {
       elm.style.display = "none";
@@ -3278,7 +3279,7 @@ var SmartViewAdapter = class {
     if (elm.dataset.validate) {
       const valid = this[elm.dataset.validate](path, value, elm, scope);
       if (!valid) {
-        elm.querySelector(".setting-item").style.border = "2px 纯红色";
+        elm.querySelector(".setting-item").style.border = "2px solid red";
         this.revert_setting(path, elm, scope);
         return;
       }
@@ -3295,9 +3296,11 @@ var SmartViewAdapter = class {
     smart_setting.addButton((button) => {
       button.setButtonText(elm.dataset.btnText || elm.dataset.name);
       elm.appendChild(this.main.create_doc_fragment(`
-        <div class="sc-inline-confirm-row" style="显示：无；">
+        <div class="sc-inline-confirm-row" style="
+          display: none;
+        ">
           <span style="margin-right: 10px;">
-            ${elm.dataset.confirm || "您确定吗？"}
+            ${elm.dataset.confirm || "Are you sure?"}
           </span>
           <span class="sc-inline-confirm-row-buttons">
             <button class="sc-inline-confirm-yes">Yes</button>
@@ -3350,7 +3353,7 @@ var SmartViewObsidianAdapter = class extends SmartViewAdapter {
   }
   async render_markdown(markdown, scope) {
     const component = scope.env.smart_connections_plugin?.connections_view || new import_obsidian.Component();
-    if (!scope) return console.warn("在黑曜石适配器中渲染降价所需的范围");
+    if (!scope) return console.warn("Scope required for rendering markdown in Obsidian adapter");
     const frag = this.main.create_doc_fragment("<div><div class='inner'></div></div>");
     const container = frag.querySelector(".inner");
     try {
@@ -3362,7 +3365,7 @@ var SmartViewObsidianAdapter = class extends SmartViewAdapter {
         component
       );
     } catch (e) {
-      console.warn("Obsidian 适配器中渲染降价时出错", e);
+      console.warn("Error rendering markdown in Obsidian adapter", e);
     }
     return frag;
   }
@@ -3378,7 +3381,7 @@ var SmartViewObsidianAdapter = class extends SmartViewAdapter {
     const folders = scope.env.plugin.app.vault.getAllFolders().sort((a, b) => a.path.localeCompare(b.path));
     smart_setting.addDropdown((dropdown) => {
       if (elm.dataset.required) dropdown.inputEl.setAttribute("required", true);
-      dropdown.addOption("", "未选择文件夹");
+      dropdown.addOption("", "No folder selected");
       folders.forEach((folder) => {
         dropdown.addOption(folder.path, folder.path);
       });
@@ -3393,7 +3396,7 @@ var SmartViewObsidianAdapter = class extends SmartViewAdapter {
 
 // node_modules/obsidian-smart-env/node_modules/smart-collections/utils/collection_instance_name_from.js
 function collection_instance_name_from(class_name) {
-  if (class_name.endsWith("项目")) {
+  if (class_name.endsWith("Item")) {
     return class_name.replace(/Item$/, "").replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase();
   }
   return class_name.replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase().replace(/y$/, "ie") + "s";
@@ -4245,7 +4248,7 @@ var Collection = class {
     if (name.match(/\d$/)) name = name.slice(0, -1);
     if (name.endsWith("ies")) return name.slice(0, -3) + "y";
     else if (name.endsWith("s")) return name.slice(0, -1);
-    return name + "项目";
+    return name + "Item";
   }
   /**
    * Derives a readable item name from the item class name.
@@ -4521,7 +4524,7 @@ var EntitiesVectorAdapter = class {
    * @throws {Error} Not implemented by default.
    */
   async nearest(vec, filter = {}) {
-    throw new Error("EntitiesVectorAdapter.nearest() 未实现");
+    throw new Error("EntitiesVectorAdapter.nearest() not implemented");
   }
   /**
    * Find the furthest entities from the given vector.
@@ -4533,7 +4536,7 @@ var EntitiesVectorAdapter = class {
    * @throws {Error} Not implemented by default.
    */
   async furthest(vec, filter = {}) {
-    throw new Error("EntitiesVectorAdapter.furthest() 未实现");
+    throw new Error("EntitiesVectorAdapter.furthest() not implemented");
   }
   /**
    * Embed a batch of entities.
@@ -4544,7 +4547,7 @@ var EntitiesVectorAdapter = class {
    * @throws {Error} Not implemented by default.
    */
   async embed_batch(entities) {
-    throw new Error("EntitiesVectorAdapter.embed_batch() 未实现");
+    throw new Error("EntitiesVectorAdapter.embed_batch() not implemented");
   }
   /**
    * Process a queue of entities waiting to be embedded.
@@ -4556,7 +4559,7 @@ var EntitiesVectorAdapter = class {
    * @throws {Error} Not implemented by default.
    */
   async process_embed_queue(embed_queue) {
-    throw new Error("EntitiesVectorAdapter.process_embed_queue() 未实现");
+    throw new Error("EntitiesVectorAdapter.process_embed_queue() not implemented");
   }
 };
 var EntityVectorAdapter = class {
@@ -5766,7 +5769,7 @@ ${content}`.substring(0, max_chars);
   async search(search_filter = {}) {
     const { keywords, type = "any", limit } = search_filter;
     if (!keywords || !Array.isArray(keywords)) {
-      console.warn("Entity.search：关键字未设置或不是数组");
+      console.warn("Entity.search: keywords not set or is not an array");
       return 0;
     }
     if (limit && this.collection.search_results_ct >= limit) return 0;
@@ -6447,7 +6450,8 @@ var SmartSources = class extends SmartEntities {
   /**
    * Looks for an extension in descending order:
    * e.g. split "my.file.name.github" -> ["my","file","name","github"]
-   * Try 'file.name.github', 'name.github', 'github'* 返回'source_adapters'
+   * Try 'file.name.github', 'name.github', 'github'
+   * Return the first that is in 'source_adapters'
    * @param {string} file_path
    * @returns {string|undefined} recognized extension, or undefined if none
    */
@@ -6801,7 +6805,8 @@ var SmartSources = class extends SmartEntities {
   //     if(item.is_gone) item.delete();
   //     else item.remove_embeddings();
   //   }
-  //   this.notices?.remove('pruning_collection'）；\n  // this.notices?.show('done_pruning_collection', { collection_key: this.block_collection.collection_key, count: remove_smart_blocks.length });
+  //   this.notices?.remove('pruning_collection');
+  //   this.notices?.show('done_pruning_collection', { collection_key: this.block_collection.collection_key, count: remove_smart_blocks.length });
   //   console.log(`Pruned ${remove_smart_blocks.length} blocks:\n${remove_smart_blocks.map(item => `${item.reason} - ${item.key}`).join("\n")}`);
   //   // 1) remove all .ajson files in `this.data_dir` ("multi" by default)
   //   await this.data_fs.remove_dir(this.data_dir, true);
@@ -6893,7 +6898,24 @@ var SmartSources = class extends SmartEntities {
 };
 var settings_config2 = {
   // file_exclusions: {
-  //   name: 'File Exclusions',\n  // 描述：'Comma-separated list of files to exclude.',\n  // 类型：'text'，\n  // 默认值：''，\n  // 回调：'update_exclusions',\n  // },\n  // 文件夹排除：{\n  // name:'Folder Exclusions',\n  // 描述：'Comma-separated list of folders to exclude.',\n  // 类型：'text'，\n  // 默认值：''，\n  // 回调：'update_exclusions',\n  // },\n  // 排除的标题：{\n  // 名称：'Excluded Headings',\n  // 描述：'Comma-separated list of headings to exclude.',\n  // 类型：'text'，\n  // 默认值：'',
+  //   name: 'File Exclusions',
+  //   description: 'Comma-separated list of files to exclude.',
+  //   type: 'text',
+  //   default: '',
+  //   callback: 'update_exclusions',
+  // },
+  // folder_exclusions: {
+  //   name: 'Folder Exclusions',
+  //   description: 'Comma-separated list of folders to exclude.',
+  //   type: 'text',
+  //   default: '',
+  //   callback: 'update_exclusions',
+  // },
+  // excluded_headings: {
+  //   name: 'Excluded Headings',
+  //   description: 'Comma-separated list of headings to exclude.',
+  //   type: 'text',
+  //   default: '',
   // },
 };
 
@@ -6992,7 +7014,7 @@ var CollectionDataAdapter = class {
    * @returns {Promise<void>}
    */
   async clear_all() {
-    throw new Error("未实现");
+    throw new Error("Not implemented");
   }
 };
 var ItemDataAdapter = class {
@@ -7023,7 +7045,7 @@ var ItemDataAdapter = class {
    * @returns {Promise<void>} Resolves when the item is saved.
    */
   async save(ajson = null) {
-    throw new Error("未实现");
+    throw new Error("Not implemented");
   }
   /**
    * Delete the item's data from storage. May involve removing a file or writing
@@ -7037,10 +7059,12 @@ var ItemDataAdapter = class {
   }
   /**
    * Returns the file path or unique identifier used by this adapter to locate and store
-   * the item's data. This may be a file name derived from the item'的密钥。\n   * @抽象\n   * @returns {string} 项目的路径或标识符's data.
+   * the item's data. This may be a file name derived from the item's key.
+   * @abstract
+   * @returns {string} The path or identifier for the item's data.
    */
   get data_path() {
-    throw new Error("未实现");
+    throw new Error("Not implemented");
   }
   /**
    * @returns {CollectionDataAdapter} The collection data adapter that this item data adapter belongs to.
@@ -7092,7 +7116,7 @@ var FileItemDataAdapter = class extends ItemDataAdapter {
    * @returns {string} Path to the persisted item data.
    */
   get data_path() {
-    throw new Error("未实现");
+    throw new Error("Not implemented");
   }
   async load_if_updated() {
     const data_path = this.data_path;
@@ -7787,7 +7811,7 @@ var FileSourceContentAdapter = class extends SourceContentAdapter {
    * Merge content into the source
    * @param {string} content - The content to merge into the source
    * @param {Object} opts - Options for the merge operation
-   * @param {string} opts.mode - The mode to use for the merge operation. Defaults to 'append_blocks'（也可能是'replace_blocks')
+   * @param {string} opts.mode - The mode to use for the merge operation. Defaults to 'append_blocks' (may also be 'replace_blocks')
    */
   async merge(content, opts = {}) {
     const { mode = "append_blocks" } = opts;
@@ -7961,7 +7985,7 @@ function get_bases_cache_links({ source, links = [], cache } = {}) {
 // node_modules/obsidian-smart-env/node_modules/smart-sources/utils/parse_frontmatter.js
 function parse_value(raw_value) {
   const trimmed = raw_value.trim();
-  if (trimmed.startsWith('"') && trimed.endsWith('"') || trimed.startsWith("'") && 修剪.endsWith("'")) {
+  if (trimmed.startsWith('"') && trimmed.endsWith('"') || trimmed.startsWith("'") && trimmed.endsWith("'")) {
     return trimmed.slice(1, -1);
   }
   const lower = trimmed.toLowerCase();
@@ -8471,7 +8495,7 @@ var SmartBlock = class extends SmartEntity {
       return await this.block_adapter.read();
     } catch (e) {
       if (e.message.includes("BLOCK NOT FOUND")) {
-        return 'BLOCK NOT FOUND (run "修剪" to remove)';
+        return 'BLOCK NOT FOUND (run "Prune" to remove)';
       } else {
         throw e;
       }
@@ -9297,8 +9321,8 @@ var SmartModel = class {
    * @param {Object} opts - Configuration options
    */
   validate_opts(opts) {
-    if (!opts.adapters) throw new Error("opts.adapters 是必需的");
-    if (!opts.settings) throw new Error("opts.settings 是必需的");
+    if (!opts.adapters) throw new Error("opts.adapters is required");
+    if (!opts.settings) throw new Error("opts.settings is required");
   }
   /**
    * Get the current settings
@@ -9362,7 +9386,7 @@ var SmartModel = class {
           await this.load();
           this.set_state("loaded");
           this.env?.events?.emit("model:loaded", { model_key: this.model_key });
-          this.notices?.show("已加载模型：" + this.model_key);
+          this.notices?.show("Loaded model: " + this.model_key);
         }, 6e4);
       }
       throw new Error(`Failed to load model: ${err.message}`);
@@ -9382,7 +9406,8 @@ var SmartModel = class {
     }
   }
   /**
-   * Set the model's 状态。\n   * @param {('unloaded'|'loading'|'loaded'|'unloading')} new_state - The new state
+   * Set the model's state.
+   * @param {('unloaded'|'loading'|'loaded'|'unloading')} new_state - The new state
    * @throws {Error} If the state is invalid
    */
   set_state(new_state) {
@@ -9665,7 +9690,7 @@ var SmartEmbedModel = class extends SmartModel {
   //  */
   // get_block_embedding_model_options() {
   //   const options = this.get_embedding_model_options();
-  //   options.unshift({ value: 'None'，名称：'None' });
+  //   options.unshift({ value: 'None', name: 'None' });
   //   return options;
   // }
 };
@@ -9790,7 +9815,7 @@ var SmartEmbedAdapter = class extends SmartModelAdapter {
    * @throws {Error} If not implemented by subclass
    */
   async count_tokens(input) {
-    throw new Error("count_tokens方法未实现");
+    throw new Error("count_tokens method not implemented");
   }
   /**
    * Generate embeddings for single input
@@ -9815,14 +9840,14 @@ var SmartEmbedAdapter = class extends SmartModelAdapter {
    * @throws {Error} If not implemented by subclass
    */
   async embed_batch(inputs) {
-    throw new Error("embed_batch 方法未实现");
+    throw new Error("embed_batch method not implemented");
   }
   get settings_config() {
     return {
-      "[适配器].model_key": {
-        name: "嵌入模型",
+      "[ADAPTER].model_key": {
+        name: "Embedding model",
         type: "dropdown",
-        description: "选择嵌入模型。",
+        description: "Select an embedding model.",
         options_callback: "adapter.get_models_as_options",
         callback: "model_changed",
         default: this.constructor.defaults.default_model
@@ -9849,7 +9874,7 @@ var SmartHttpRequest = class {
    */
   constructor(opts = {}) {
     this.opts = opts;
-    if (!opts.adapter) throw new Error("需要 HttpRequestAdapter");
+    if (!opts.adapter) throw new Error("HttpRequestAdapter is required");
     this.adapter = new opts.adapter(this);
   }
   /**
@@ -9885,7 +9910,7 @@ var SmartHttpRequestAdapter = class {
    * @returns {Promise<SmartHttpResponseAdapter>} Adapter-specific response wrapper.
    */
   async request(request_params) {
-    throw new Error("请求未实现");
+    throw new Error("request not implemented");
   }
 };
 var SmartHttpResponseAdapter = class {
@@ -9898,7 +9923,7 @@ var SmartHttpResponseAdapter = class {
    * @returns {Promise<Object>} Headers object for the response.
    */
   async headers() {
-    throw new Error("标头未实现");
+    throw new Error("headers not implemented");
   }
   /**
    * Parse the response body as JSON.
@@ -9906,7 +9931,7 @@ var SmartHttpResponseAdapter = class {
    * @returns {Promise<*>} Parsed JSON payload.
    */
   async json() {
-    throw new Error("json 未实现");
+    throw new Error("json not implemented");
   }
   /**
    * Get the HTTP status code.
@@ -9914,7 +9939,7 @@ var SmartHttpResponseAdapter = class {
    * @returns {Promise<number>} Response status code.
    */
   async status() {
-    throw new Error("状态未实现");
+    throw new Error("status not implemented");
   }
   /**
    * Read the raw text body.
@@ -9922,7 +9947,7 @@ var SmartHttpResponseAdapter = class {
    * @returns {Promise<string>} Response body as text.
    */
   async text() {
-    throw new Error("文本未实现");
+    throw new Error("text not implemented");
   }
 };
 
@@ -9932,13 +9957,13 @@ var SmartHttpObsidianRequestAdapter = class extends SmartHttpRequestAdapter {
     let response;
     try {
       if (!this.main.opts.obsidian_request_url) {
-        throw new Error("obsidian_request_url 在 SmartHttp 构造函数选项中是必需的");
+        throw new Error("obsidian_request_url is required in SmartHttp constructor opts");
       }
       response = await this.main.opts.obsidian_request_url({ ...request_params, throw: throw_on_error });
-      if (throw_on_error && response.status === 400) throw new Error("黑曜石请求失败");
+      if (throw_on_error && response.status === 400) throw new Error("Obsidian request failed");
       return new SmartHttpObsidianResponseAdapter(response);
     } catch (error) {
-      console.error("SmartHttpObsidianRequestAdapter.request() 中的错误：");
+      console.error("Error in SmartHttpObsidianRequestAdapter.request():");
       console.error(JSON.stringify(request_params, null, 2));
       console.error(response);
       console.error(error);
@@ -10237,13 +10262,13 @@ function normalize_error(error, http_status = null) {
     return normalize_error(error[0], http_status);
   }
   if (error == null) {
-    return { message: "未知错误", details: null, http_status };
+    return { message: "Unknown error", details: null, http_status };
   }
   if (typeof error === "string") {
     return { message: error, details: null, http_status };
   }
   if (error instanceof Error) {
-    const message = (error.message || "").trim() || "未知错误";
+    const message = (error.message || "").trim() || "Unknown error";
     const extra_details = extract_json_details(
       /** @type {Record<string, unknown>} */
       error,
@@ -10271,7 +10296,7 @@ function normalize_error(error, http_status = null) {
         const nested_details = extract_json_details(nested_obj, ["message"]);
         const outer_details = extract_json_details(obj, ["message", "error"]);
         const combined_details = merge_details(outer_details, nested_details);
-        const message = nested_message || get_message_from_object(obj) || "未知错误";
+        const message = nested_message || get_message_from_object(obj) || "Unknown error";
         return {
           message,
           details: is_empty_object(combined_details) ? null : combined_details,
@@ -10290,7 +10315,7 @@ function normalize_error(error, http_status = null) {
       };
     }
   }
-  return { message: "未知错误", details: null, http_status };
+  return { message: "Unknown error", details: null, http_status };
 }
 
 // node_modules/obsidian-smart-env/node_modules/smart-embed-model/adapters/_api.js
@@ -10344,7 +10369,7 @@ var SmartEmbedModelApiAdapter = class extends SmartEmbedAdapter {
    * @throws {Error} If not implemented by subclass
    */
   async count_tokens(input) {
-    throw new Error("count_tokens 未实现");
+    throw new Error("count_tokens not implemented");
   }
   /**
    * Estimate token count for input text
@@ -10363,10 +10388,10 @@ var SmartEmbedModelApiAdapter = class extends SmartEmbedAdapter {
    * @throws {Error} If API key is not set
    */
   async embed_batch(inputs) {
-    if (!this.api_key) throw new Error("API 密钥未设置");
+    if (!this.api_key) throw new Error("API key not set");
     inputs = inputs.filter((item) => item.embed_input?.length > 0);
     if (inputs.length === 0) {
-      console.log("空批次（或所有项目都有空的 embed_input）");
+      console.log("Empty batch (or all items have empty embed_input)");
       return [];
     }
     const embed_inputs = await Promise.all(
@@ -10376,14 +10401,14 @@ var SmartEmbedModelApiAdapter = class extends SmartEmbedAdapter {
     const request_params = _req.to_platform();
     const resp = await this.request(request_params);
     if (!resp) {
-      console.error("未收到嵌入请求的响应。");
+      console.error("No response received for embedding request.");
       return [];
     }
     if (resp.error) return [resp];
     const _res = new this.res_adapter(this, resp);
     const embeddings = _res.to_openai();
     if (!embeddings) {
-      console.error("无法解析嵌入。");
+      console.error("Failed to parse embeddings.");
       return [];
     }
     return inputs.map((item, i) => {
@@ -10400,7 +10425,7 @@ var SmartEmbedModelApiAdapter = class extends SmartEmbedAdapter {
    * @throws {Error} If not implemented by subclass
    */
   async prepare_embed_input(embed_input) {
-    throw new Error("prepare_embed_input未实现");
+    throw new Error("prepare_embed_input not implemented");
   }
   /**
    * Prepare request headers
@@ -10411,7 +10436,7 @@ var SmartEmbedModelApiAdapter = class extends SmartEmbedAdapter {
       "Content-Type": "application/json"
     };
     if (this.api_key) {
-      headers["授权"] = `Bearer ${this.api_key}`;
+      headers["Authorization"] = `Bearer ${this.api_key}`;
     }
     return headers;
   }
@@ -10434,7 +10459,7 @@ var SmartEmbedModelApiAdapter = class extends SmartEmbedAdapter {
       }
       return resp_json;
     } catch (error) {
-      console.warn("请求错误：", error);
+      console.warn("Request error:", error);
       return await this.handle_request_err(error, req, retries);
     }
   }
@@ -10533,7 +10558,7 @@ var SmartEmbedModelRequestAdapter = class {
    * @throws {Error} If not implemented by subclass
    */
   prepare_request_body() {
-    throw new Error("prepare_request_body 未实现");
+    throw new Error("prepare_request_body not implemented");
   }
 };
 var SmartEmbedModelResponseAdapter = class {
@@ -10560,7 +10585,7 @@ var SmartEmbedModelResponseAdapter = class {
    * @throws {Error} If not implemented by subclass
    */
   parse_response() {
-    throw new Error("parse_response 未实现");
+    throw new Error("parse_response not implemented");
   }
 };
 
@@ -10789,7 +10814,7 @@ var SmartEmbedMessageAdapter = class extends SmartEmbedAdapter {
   _handle_message_result(id, result, error) {
     if (!id.startsWith(this.message_prefix)) return;
     if (result?.model_loaded) {
-      console.log("模型已加载");
+      console.log("model loaded");
       this.state = "loaded";
       this.model.model_loaded = true;
       this.model.load_result = result;
@@ -10835,7 +10860,7 @@ var SmartEmbedMessageAdapter = class extends SmartEmbedAdapter {
    * @throws {Error} If not implemented by subclass
    */
   _post_message(message_data) {
-    throw new Error("_post_message 必须由子类实现");
+    throw new Error("_post_message must be implemented by subclass");
   }
 };
 
@@ -10871,7 +10896,7 @@ var SmartEmbedIframeAdapter = class extends SmartEmbedMessageAdapter {
                 ${this.connector}
                 // Set up a message listener in the iframe
                 window.addEventListener('message', async (event) => {
-                    if (event.origin !== '${this.origin}' || event.data.iframe_id !== '${this.iframe_id}') return console.log('消息被忽略（监听器）', event);
+                    if (event.origin !== '${this.origin}' || event.data.iframe_id !== '${this.iframe_id}') return console.log('message ignored (listener)', event);
                     // Process the message and send the response back
                     const response = await process_message(event.data);
                     window.parent.postMessage({ ...response, iframe_id: '${this.iframe_id}' }, '${this.origin}');
@@ -10928,7 +10953,7 @@ var transformers_connector = 'var __defProp = Object.defineProperty;\nvar __defN
 // node_modules/obsidian-smart-env/node_modules/smart-embed-model/adapters/transformers.js
 var transformers_defaults = {
   adapter: "transformers",
-  description: "变压器（本地、内置）",
+  description: "Transformers (Local, built-in)",
   default_model: "TaylorAI/bge-micro-v2",
   models: transformers_models
 };
@@ -10939,7 +10964,7 @@ var transformers_models = {
     "dims": 384,
     "max_tokens": 512,
     "name": "BGE-micro-v2",
-    "description": "本地，512 个令牌，384 个暗淡（推荐）",
+    "description": "Local, 512 tokens, 384 dim (recommended)",
     "adapter": "transformers"
   },
   "Snowflake/snowflake-arctic-embed-xs": {
@@ -10947,8 +10972,8 @@ var transformers_models = {
     "batch_size": 1,
     "dims": 384,
     "max_tokens": 512,
-    "name": "雪花北极嵌入 XS",
-    "description": "本地，512 个代币，384 个暗淡",
+    "name": "Snowflake Arctic Embed XS",
+    "description": "Local, 512 tokens, 384 dim",
     "adapter": "transformers"
   },
   "Snowflake/snowflake-arctic-embed-s": {
@@ -10956,8 +10981,8 @@ var transformers_models = {
     "batch_size": 1,
     "dims": 384,
     "max_tokens": 512,
-    "name": "雪花北极嵌入小号",
-    "description": "本地，512 个代币，384 个暗淡",
+    "name": "Snowflake Arctic Embed Small",
+    "description": "Local, 512 tokens, 384 dim",
     "adapter": "transformers"
   },
   "Snowflake/snowflake-arctic-embed-m": {
@@ -10965,8 +10990,8 @@ var transformers_models = {
     "batch_size": 1,
     "dims": 768,
     "max_tokens": 512,
-    "name": "雪花北极嵌入介质",
-    "description": "本地，512 个代币，768 个暗淡",
+    "name": "Snowflake Arctic Embed Medium",
+    "description": "Local, 512 tokens, 768 dim",
     "adapter": "transformers"
   },
   "TaylorAI/gte-tiny": {
@@ -10975,7 +11000,7 @@ var transformers_models = {
     "dims": 384,
     "max_tokens": 512,
     "name": "GTE-tiny",
-    "description": "本地，512 个代币，384 个暗淡",
+    "description": "Local, 512 tokens, 384 dim",
     "adapter": "transformers"
   },
   "onnx-community/embeddinggemma-300m-ONNX": {
@@ -10984,7 +11009,7 @@ var transformers_models = {
     "dims": 768,
     "max_tokens": 2048,
     "name": "EmbeddingGemma-300M",
-    "description": "本地，2,048 个代币，768 个暗淡",
+    "description": "Local, 2,048 tokens, 768 dim",
     "adapter": "transformers"
   },
   "Mihaiii/Ivysaur": {
@@ -10993,7 +11018,7 @@ var transformers_models = {
     "dims": 384,
     "max_tokens": 512,
     "name": "Ivysaur",
-    "description": "本地，512 个代币，384 个暗淡",
+    "description": "Local, 512 tokens, 384 dim",
     "adapter": "transformers"
   },
   "andersonbcdefg/bge-small-4096": {
@@ -11002,7 +11027,7 @@ var transformers_models = {
     "dims": 384,
     "max_tokens": 4096,
     "name": "BGE-small-4K",
-    "description": "本地，4,096 个代币，384 个暗淡",
+    "description": "Local, 4,096 tokens, 384 dim",
     "adapter": "transformers"
   },
   // Too slow and persistent crashes
@@ -11012,7 +11037,7 @@ var transformers_models = {
   //   "dims": 768,
   //   "max_tokens": 4096,
   //   "name": "jina-embeddings-v2-base-de",
-  //   "description": "本地、4,096 个令牌、768 个暗淡、德语",
+  //   "description": "Local, 4,096 tokens, 768 dim, German",
   //   "adapter": "transformers"
   // },
   "Xenova/jina-embeddings-v2-base-zh": {
@@ -11021,7 +11046,7 @@ var transformers_models = {
     "dims": 768,
     "max_tokens": 8192,
     "name": "Jina-v2-base-zh-8K",
-    "description": "本地，8,192 个令牌，768 个暗淡，中/英文双语",
+    "description": "Local, 8,192 tokens, 768 dim, Chinese/English bilingual",
     "adapter": "transformers"
   },
   "Xenova/jina-embeddings-v2-small-en": {
@@ -11030,7 +11055,7 @@ var transformers_models = {
     "dims": 512,
     "max_tokens": 8192,
     "name": "Jina-v2-small-en",
-    "description": "本地，8,192 个代币，512 个暗淡",
+    "description": "Local, 8,192 tokens, 512 dim",
     "adapter": "transformers"
   },
   "nomic-ai/nomic-embed-text-v1.5": {
@@ -11039,7 +11064,7 @@ var transformers_models = {
     "dims": 768,
     "max_tokens": 2048,
     "name": "Nomic-embed-text-v1.5",
-    "description": "本地，8,192 个代币，768 个暗淡",
+    "description": "Local, 8,192 tokens, 768 dim",
     "adapter": "transformers"
   },
   "Xenova/bge-small-en-v1.5": {
@@ -11048,7 +11073,7 @@ var transformers_models = {
     "dims": 384,
     "max_tokens": 512,
     "name": "BGE-small",
-    "description": "本地，512 个代币，384 个暗淡",
+    "description": "Local, 512 tokens, 384 dim",
     "adapter": "transformers"
   },
   "nomic-ai/nomic-embed-text-v1": {
@@ -11057,24 +11082,24 @@ var transformers_models = {
     "dims": 768,
     "max_tokens": 2048,
     "name": "Nomic-embed-text",
-    "description": "本地，2,048 个代币，768 个暗淡",
+    "description": "Local, 2,048 tokens, 768 dim",
     "adapter": "transformers"
   }
 };
 var transformers_settings_config = {
   // "[ADAPTER].legacy_transformers": {
-  //   name: '旧版变压器（无 GPU）',
+  //   name: 'Legacy transformers (no GPU)',
   //   type: "toggle",
-  //   description: "使用旧版转换器 (v2) 而不是 v3。如果本地嵌入不起作用，这可能会解决问题。",
+  //   description: "Use legacy transformers (v2) instead of v3. This may resolve issues if the local embedding isn't working.",
   //   callback: 'embed_model_changed',
   //   default: true,
   // },
 };
 var settings_config4 = {
   // "legacy_transformers": {
-  //   name: '旧版变压器（无 GPU）',
+  //   name: 'Legacy transformers (no GPU)',
   //   type: "toggle",
-  //   description: "使用旧版转换器 (v2) 而不是 v3。如果本地嵌入不起作用，这可能会解决问题。",
+  //   description: "Use legacy transformers (v2) instead of v3. This may resolve issues if the local embedding isn't working.",
   //   // callback: 'embed_model_changed',
   //   // default: false,
   // },
@@ -11089,7 +11114,7 @@ var SmartEmbedTransformersIframeAdapter = class extends SmartEmbedIframeAdapter 
   constructor(model) {
     super(model);
     this.connector = transformers_connector.replace("@huggingface/transformers", "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.0");
-    console.log("变压器 iframe 连接器", this.model);
+    console.log("transformers iframe connector", this.model);
   }
   /** @returns {Object} Settings configuration for transformers adapter */
   get settings_config() {
@@ -11113,7 +11138,7 @@ var SmartEmbedTransformersIframeAdapter = class extends SmartEmbedIframeAdapter 
 // node_modules/obsidian-smart-env/node_modules/smart-embed-model/adapters/ollama.js
 var SmartEmbedOllamaAdapter = class extends SmartEmbedModelApiAdapter {
   static defaults = {
-    description: "Ollama（本地）",
+    description: "Ollama (Local)",
     type: "API",
     host: "http://localhost:11434",
     endpoint: "/api/embed",
@@ -11342,7 +11367,7 @@ var SmartEmbedModelOllamaResponseAdapter = class extends SmartEmbedModelResponse
   to_openai() {
     const resp = this.response;
     if (!resp || !resp.embeddings) {
-      console.error("来自 Ollama 的无效响应格式：", resp);
+      console.error("Invalid response format from Ollama:", resp);
       return [];
     }
     const tokens = Math.ceil(resp.prompt_eval_count / this.adapter.batch_size);
@@ -11365,7 +11390,7 @@ var is_embedding_model = (mod) => {
 };
 var filter_embedding_models = (models) => {
   if (!Array.isArray(models)) {
-    throw new TypeError("模型必须是数组");
+    throw new TypeError("models must be an array");
   }
   return models.filter(is_embedding_model);
 };
@@ -11398,10 +11423,10 @@ var GeminiEmbedModelAdapter = class extends SmartEmbedModelApiAdapter {
    */
   async prepare_embed_input(embed_input) {
     if (typeof embed_input !== "string") {
-      throw new TypeError("embed_input 必须是字符串");
+      throw new TypeError("embed_input must be a string");
     }
     if (embed_input.length === 0) {
-      console.log("警告：prepare_embed_input 收到空字符串");
+      console.log("Warning: prepare_embed_input received an empty string");
       return null;
     }
     const { tokens } = await this.count_tokens(embed_input);
@@ -11428,7 +11453,7 @@ var GeminiEmbedModelAdapter = class extends SmartEmbedModelApiAdapter {
     const prepared_input = await this.prepare_embed_input(trimmed_input);
     if (prepared_input === null) {
       console.log(
-        "警告：在修剪"
+        "Warning: prepare_embed_input resulted in an empty string after trimming"
       );
       return null;
     }
@@ -11453,10 +11478,10 @@ var GeminiEmbedModelAdapter = class extends SmartEmbedModelApiAdapter {
     return {
       ...super.settings_config,
       "[ADAPTER].api_key": {
-        name: "用于 Gemini 嵌入的 Google API 密钥",
+        name: "Google API Key for Gemini embeddings",
         type: "password",
-        description: "Gemini 嵌入模型所需",
-        placeholder: "输入 Google API 密钥"
+        description: "Required for Gemini embedding models",
+        placeholder: "Enter Google API Key"
       }
     };
   }
@@ -11474,8 +11499,8 @@ var GeminiEmbedModelAdapter = class extends SmartEmbedModelApiAdapter {
         "batch_size": 50,
         "dims": 768,
         "max_tokens": 2048,
-        "name": "Gemini 嵌入",
-        "description": "API，2,048 个令牌，768 个暗淡",
+        "name": "Gemini Embedding",
+        "description": "API, 2,048 tokens, 768 dim",
         "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:batchEmbedContents",
         "adapter": "gemini"
       }
@@ -11493,15 +11518,15 @@ var GeminiEmbedModelAdapter = class extends SmartEmbedModelApiAdapter {
   // no usaqge stats from LM Studio so need to estimate tokens
   async embed_batch(inputs, retries = 0) {
     if (smart_env.smart_sources.entities_vector_adapter.is_queue_halted) {
-      throw new Error("由于速率限制错误，嵌入队列在退避等待期间停止。");
+      throw new Error("Embedding queue halted during backoff wait due to rate limit errors.");
     }
     const token_cts = inputs.map((item) => this.estimate_tokens(item.embed_input));
     const resp = await super.embed_batch(inputs);
     if (resp[0].error && resp[0].error.details && resp[0].error.details.code === 429) {
-      console.warn("在 Gemini embed_batch 响应中检测到速率限制错误。", resp);
+      console.warn("Rate limit error detected in Gemini embed_batch response.", resp);
       if (retries > 3) {
-        console.error("速率限制错误已达到最大重试次数。");
-        throw new Error("速率限制错误已达到最大重试次数。");
+        console.error("Max retries reached for rate limit errors.");
+        throw new Error("Max retries reached for rate limit errors.");
       }
       console.warn(resp[0].error.message);
       const retry_detail = resp[0].error.details?.details?.find((d) => d.retryDelay);
@@ -11517,13 +11542,13 @@ var GeminiEmbedModelAdapter = class extends SmartEmbedModelApiAdapter {
         return await this.embed_batch(inputs, retries + 1);
       }
     } else if (resp[0].error) {
-      console.error("Gemini 中的错误embed_batch 响应：", resp[0].error);
+      console.error("Error in Gemini embed_batch response:", resp[0].error);
       throw new Error(`Gemini embed_batch error: ${resp[0].error.message}`);
     }
     resp.forEach((item, idx) => {
       item.tokens = token_cts[idx];
     });
-    console.log("Gemini embed_batch 响应：", resp);
+    console.log("Gemini embed_batch response:", resp);
     return resp;
   }
 };
@@ -11573,9 +11598,9 @@ var SmartEmbedGeminiResponseAdapter = class extends SmartEmbedModelResponseAdapt
    */
   parse_response() {
     const resp = this.response;
-    console.log("Gemini 响应：", resp);
+    console.log("Gemini response:", resp);
     if (!resp || !resp.embeddings || !resp.embeddings[0].values) {
-      console.error("无效的 Gemini 嵌入响应格式", resp);
+      console.error("Invalid Gemini embedding response format", resp);
       return [];
     }
     return resp.embeddings.map((embedding, i) => {
@@ -11595,9 +11620,9 @@ var SmartEmbedGeminiResponseAdapter = class extends SmartEmbedModelResponseAdapt
 // node_modules/obsidian-smart-env/node_modules/smart-embed-model/adapters/lm_studio.js
 function parse_lm_studio_models(list, adapter_key = "lm_studio") {
   if (list.object !== "list" || !Array.isArray(list.data)) {
-    return { _: { id: "未找到模型。" } };
+    return { _: { id: "No models found." } };
   }
-  console.log("LM Studio 模型", list);
+  console.log("LM Studio models", list);
   return list.data.filter((m) => m.id && m.type === "embeddings").reduce((acc, m) => {
     acc[m.id] = {
       id: m.id,
@@ -11644,25 +11669,25 @@ var LmStudioEmbedModelAdapter = class extends SmartEmbedModelApiAdapter {
   get settings_config() {
     const cfg = { ...super.settings_config };
     delete cfg["[ADAPTER].api_key"];
-    cfg["[适配器].refresh_models"] = {
-      name: "刷新模型",
+    cfg["[ADAPTER].refresh_models"] = {
+      name: "Refresh Models",
       type: "button",
-      description: "刷新可用模型列表。",
+      description: "Refresh the list of available models.",
       callback: "adapter.refresh_models"
     };
-    cfg["[适配器].current_model"] = {
+    cfg["[ADAPTER].current_model"] = {
       type: "html",
       value: `<p>Embedding Model Max Tokens: ${this.max_tokens} (may be configured in LM Studio)</p>`
     };
-    cfg["[适配器].batch_size"] = {
-      name: "嵌入批量大小",
+    cfg["[ADAPTER].batch_size"] = {
+      name: "Embedding Batch Size",
       type: "number",
-      description: "要并行处理的嵌入数量。调整此项可能会提高性能。",
+      description: "Number of embeddings to process in parallel. Adjusting this may improve performance.",
       value: this.batch_size,
       default: this.constructor.defaults.batch_size
     };
-    cfg["[适配器].cors_note"] = {
-      name: "需要 CORS",
+    cfg["[ADAPTER].cors_note"] = {
+      name: "CORS required",
       type: "html",
       // The renderer treats `value` as innerHTML.
       value: `<p>Before you can use LM Studio you must <strong>Enable CORS</strong> inside LM Studio \u2192 Developer \u2192 Settings</p>`
@@ -11693,7 +11718,7 @@ var LmStudioEmbedModelAdapter = class extends SmartEmbedModelApiAdapter {
    * @returns {Promise<string|null>} Processed input text
    */
   async prepare_embed_input(embed_input) {
-    if (typeof embed_input !== "string") throw new TypeError("embed_input 必须是字符串");
+    if (typeof embed_input !== "string") throw new TypeError("embed_input must be a string");
     if (embed_input.length === 0) return null;
     const { tokens } = await this.count_tokens(embed_input);
     if (tokens <= this.max_tokens) return embed_input;
@@ -11737,7 +11762,7 @@ var LmStudioEmbedModelResponseAdapter = class extends SmartEmbedModelResponseAda
   parse_response() {
     const resp = this.response;
     if (!resp || !resp.data) {
-      console.error("无效的响应格式", resp);
+      console.error("Invalid response format", resp);
       return [];
     }
     return resp.data.map((item) => ({
@@ -12275,7 +12300,7 @@ var SmartChatModelApiAdapter = class extends SmartChatModelAdapter {
    *   @property {string} [description] - A description of the model's context and output capabilities.
    */
   parse_model_data(model_data) {
-    throw new Error("parse_model_data 未实现");
+    throw new Error("parse_model_data not implemented");
   }
   /**
    * Complete a chat request.
@@ -12296,7 +12321,7 @@ var SmartChatModelApiAdapter = class extends SmartChatModelAdapter {
       return resp;
     } catch (error) {
       const normalized_error = normalize_error(error?.data || error);
-      console.error("错误SmartChatModelApiAdapter.complete():", { normalized_error, error });
+      console.error("Error in SmartChatModelApiAdapter.complete():", { normalized_error, error });
       console.error(http_resp);
       return normalized_error;
     }
@@ -12333,14 +12358,14 @@ var SmartChatModelApiAdapter = class extends SmartChatModelAdapter {
             handlers.chunk && await handlers.chunk({ ...resp_adapter.to_openai(), raw });
           } catch (error) {
             const normalized_error = normalize_error({ ...e.data, ...error });
-            console.error("处理流块时出错：", { e, error, normalized_error });
+            console.error("Error processing stream chunk:", { e, error, normalized_error });
             handlers.error && handlers.error(normalized_error);
             this.stop_stream();
             reject(normalized_error);
           }
         });
         this.active_stream.addEventListener("error", (e) => {
-          console.error("流错误：", e);
+          console.error("Stream error:", e);
           const normalized_error = normalize_error(e?.data || e);
           handlers.error && handlers.error(normalized_error);
           this.stop_stream();
@@ -12348,7 +12373,7 @@ var SmartChatModelApiAdapter = class extends SmartChatModelAdapter {
         });
         this.active_stream.stream();
       } catch (err) {
-        console.error("无法启动流：", err);
+        console.error("Failed to start stream:", err);
         const normalized_error = normalize_error(err?.data || err);
         handlers.error && handlers.error(normalized_error);
         this.stop_stream();
@@ -12362,7 +12387,7 @@ var SmartChatModelApiAdapter = class extends SmartChatModelAdapter {
    * @returns {boolean} True if end of stream
    */
   is_end_of_stream(event) {
-    return event.data === "数据：[完成]";
+    return event.data === "data: [DONE]";
   }
   /**
    * Stop active stream.
@@ -12425,7 +12450,7 @@ var SmartChatModelApiAdapter = class extends SmartChatModelAdapter {
       console.log({ MODELS_DEV_CACHE });
       return data;
     } catch (err) {
-      console.warn("models.dev 获取失败；继续而不丰富", err);
+      console.warn("models.dev fetch failed; continuing without enrichment", err);
       return MODELS_DEV_CACHE.data || [];
     }
   }
@@ -12438,7 +12463,7 @@ var SmartChatModelApiAdapter = class extends SmartChatModelAdapter {
       return Object.entries(this.model_data).map(([id, model]) => ({ value: id, name: model.name || id })).sort((a, b) => a.name.localeCompare(b.name));
     }
     this.get_models(true);
-    return [{ value: "", name: "目前没有可用型号" }];
+    return [{ value: "", name: "No models currently available" }];
   }
   get model_data() {
     if (!MODEL_ADAPTER_CACHE[this.constructor.key]) MODEL_ADAPTER_CACHE[this.constructor.key] = {};
@@ -12531,7 +12556,7 @@ var SmartChatModelRequestAdapter = class {
       if (api_key_header) {
         headers[api_key_header] = this.adapter.api_key;
       } else if (this.adapter.api_key) {
-        headers["授权"] = `Bearer ${this.adapter.api_key}`;
+        headers["Authorization"] = `Bearer ${this.adapter.api_key}`;
       }
     }
     return headers;
@@ -12749,7 +12774,7 @@ var SmartChatModelResponseAdapter = class {
    * Parse chunk adds delta to content as expected output format
    */
   handle_chunk(chunk) {
-    if (chunk === "数据：[完成]") return;
+    if (chunk === "data: [DONE]") return;
     chunk = JSON.parse(chunk.split("data: ")[1] || "{}");
     if (Object.keys(chunk).length === 0) return;
     if (!this._res.choices[0]) {
@@ -12888,7 +12913,7 @@ var SmartChatModelAnthropicAdapter = class extends SmartChatModelApiAdapter {
       "anthropic-beta": "tools-2024-04-04",
       "anthropic-dangerous-direct-browser-access": true
     },
-    adapter: "人类",
+    adapter: "Anthropic",
     models_endpoint: false,
     default_model: "claude-opus-4-1-20250805",
     signup_url: "https://console.anthropic.com/login?returnTo=%2Fsettings%2Fkeys"
@@ -12934,19 +12959,19 @@ var SmartChatModelAnthropicAdapter = class extends SmartChatModelApiAdapter {
     return {
       // ── Claude 4 family ──────────────────────────────────────────────────────
       "claude-opus-4-1-20250805": {
-        name: "克劳德作品 4.1 (2025-08-05)",
+        name: "Claude Opus 4.1 (2025-08-05)",
         id: "claude-opus-4-1-20250805",
         model_name: "claude-opus-4-1-20250805",
-        description: "Anthropic Claude Opus 4.1 快照 (2025-08-05)",
+        description: "Anthropic Claude Opus 4.1 snapshot (2025-08-05)",
         max_input_tokens: 2e5,
         max_output_tokens: 32e3,
         multimodal: true
       },
       "claude-opus-4-20250514": {
-        name: "克劳德作品 4 (2025-05-14)",
+        name: "Claude Opus 4 (2025-05-14)",
         id: "claude-opus-4-20250514",
         model_name: "claude-opus-4-20250514",
-        description: "Anthropic Claude Opus 4 快照 (2025-05-14)",
+        description: "Anthropic Claude Opus 4 snapshot (2025-05-14)",
         max_input_tokens: 2e5,
         max_output_tokens: 32e3,
         multimodal: true
@@ -12955,36 +12980,36 @@ var SmartChatModelAnthropicAdapter = class extends SmartChatModelApiAdapter {
         name: "Claude Sonnet 4 (2025-05-14)",
         id: "claude-sonnet-4-20250514",
         model_name: "claude-sonnet-4-20250514",
-        description: "Anthropic Claude Sonnet 4 快照 (2025-05-14)",
+        description: "Anthropic Claude Sonnet 4 snapshot (2025-05-14)",
         max_input_tokens: 2e5,
         max_output_tokens: 64e3,
         multimodal: true
       },
       // ── Claude 3.7 family ───────────────────────────────────────────────────
       "claude-3-7-sonnet-latest": {
-        name: "克劳德 3.7 十四行诗 (最新)",
+        name: "Claude 3.7 Sonnet (latest)",
         id: "claude-3-7-sonnet-latest",
         model_name: "claude-3-7-sonnet-latest",
-        description: "Anthropic Claude 3.7 Sonnet（滚动最新）",
+        description: "Anthropic Claude 3.7 Sonnet (rolling-latest)",
         max_input_tokens: 2e5,
         max_output_tokens: 64e3,
         multimodal: true
       },
       "claude-3-7-sonnet-20250219": {
-        name: "克劳德 3.7 十四行诗 (2025-02-19)",
+        name: "Claude 3.7 Sonnet (2025-02-19)",
         id: "claude-3-7-sonnet-20250219",
         model_name: "claude-3-7-sonnet-20250219",
-        description: "Anthropic Claude 3.7 Sonnet 快照(2025-02-19)",
+        description: "Anthropic Claude 3.7 Sonnet snapshot (2025-02-19)",
         max_input_tokens: 2e5,
         max_output_tokens: 64e3,
         multimodal: true
       },
       // ── Claude 3.5 family ───────────────────────────────────────────────────
       "claude-3-5-sonnet-latest": {
-        name: "Claude 3.5 Sonnet (最新)",
+        name: "Claude 3.5 Sonnet (latest)",
         id: "claude-3-5-sonnet-latest",
         model_name: "claude-3-5-sonnet-latest",
-        description: "Anthropic Claude 3.5 Sonnet（滚动最新）",
+        description: "Anthropic Claude 3.5 Sonnet (rolling-latest)",
         max_input_tokens: 2e5,
         max_output_tokens: 8192,
         multimodal: true
@@ -12993,16 +13018,16 @@ var SmartChatModelAnthropicAdapter = class extends SmartChatModelApiAdapter {
         name: "Claude 3.5 Sonnet (2024-10-22)",
         id: "claude-3-5-sonnet-20241022",
         model_name: "claude-3-5-sonnet-20241022",
-        description: "Anthropic Claude 3.5 Sonnet 快照（2024-10-22）",
+        description: "Anthropic Claude 3.5 Sonnet snapshot (2024-10-22)",
         max_input_tokens: 2e5,
         max_output_tokens: 8192,
         multimodal: true
       },
       "claude-3-5-haiku-latest": {
-        name: "Claude 3.5 Haiku (最新)",
+        name: "Claude 3.5 Haiku (latest)",
         id: "claude-3-5-haiku-latest",
         model_name: "claude-3-5-haiku-latest",
-        description: "Anthropic Claude 3.5 Haiku (滚动最新)",
+        description: "Anthropic Claude 3.5 Haiku (rolling-latest)",
         max_input_tokens: 2e5,
         max_output_tokens: 8192
       },
@@ -13010,43 +13035,43 @@ var SmartChatModelAnthropicAdapter = class extends SmartChatModelApiAdapter {
         name: "Claude 3.5 Haiku (2024-10-22)",
         id: "claude-3-5-haiku-20241022",
         model_name: "claude-3-5-haiku-20241022",
-        description: "Anthropic Claude 3.5 Haiku 快照 (2024-10-22)",
+        description: "Anthropic Claude 3.5 Haiku snapshot (2024-10-22)",
         max_input_tokens: 2e5,
         max_output_tokens: 8192
       },
       // ── Claude 3 family ─────────────────────────────────────────────────────
       "claude-3-opus-latest": {
-        name: "克劳德 3 作品（最新）",
+        name: "Claude 3 Opus (latest)",
         id: "claude-3-opus-latest",
         model_name: "claude-3-opus-latest",
-        description: "Anthropic Claude 3 Opus（最新滚动）",
+        description: "Anthropic Claude 3 Opus (rolling-latest)",
         max_input_tokens: 2e5,
         max_output_tokens: 4096,
         multimodal: true
       },
       "claude-3-opus-20240229": {
-        name: "克劳德 3 作品 (2024-02-29)",
+        name: "Claude 3 Opus (2024-02-29)",
         id: "claude-3-opus-20240229",
         model_name: "claude-3-opus-20240229",
-        description: "Anthropic Claude 3 Opus 快照 (2024-02-29)",
+        description: "Anthropic Claude 3 Opus snapshot (2024-02-29)",
         max_input_tokens: 2e5,
         max_output_tokens: 4096,
         multimodal: true
       },
       "claude-3-sonnet-20240229": {
-        name: "克劳德 3 十四行诗 (2024-02-29)",
+        name: "Claude 3 Sonnet (2024-02-29)",
         id: "claude-3-sonnet-20240229",
         model_name: "claude-3-sonnet-20240229",
-        description: "Anthropic Claude 3 Sonnet 快照 (2024-02-29)",
+        description: "Anthropic Claude 3 Sonnet snapshot (2024-02-29)",
         max_input_tokens: 2e5,
         max_output_tokens: 4096,
         multimodal: true
       },
       "claude-3-haiku-20240307": {
-        name: "克劳德 3 俳句 (2024-03-07)",
+        name: "Claude 3 Haiku (2024-03-07)",
         id: "claude-3-haiku-20240307",
         model_name: "claude-3-haiku-20240307",
-        description: "Anthropic Claude 3 Haiku 快照 (2024-03-07)",
+        description: "Anthropic Claude 3 Haiku snapshot (2024-03-07)",
         max_input_tokens: 2e5,
         max_output_tokens: 4096,
         multimodal: true
@@ -13145,7 +13170,7 @@ var SmartChatModelAnthropicRequestAdapter = class extends SmartChatModelRequestA
   _get_anthropic_role(role) {
     const role_map = {
       function: "assistant",
-      // Anthropic doesn't 有一个函数角色，所以我们'll treat it as assistant
+      // Anthropic doesn't have a function role, so we'll treat it as assistant
       tool: "user"
     };
     return role_map[role] || role;
@@ -13415,9 +13440,9 @@ var SmartChatModelOpenaiAdapter = class extends SmartChatModelApiAdapter {
   get settings_config() {
     const config = super.settings_config;
     config["[CHAT_ADAPTER].open_ai_note"] = {
-      name: "有关使用 OpenAI 的注意事项",
+      name: "Note about using OpenAI",
       type: "html",
-      value: "<b>OpenAI 模型：</b>某些模型需要在您的 OpenAI 帐户中执行额外的验证步骤才能显示在模型列表中。"
+      value: "<b>OpenAI models:</b> Some models require extra verification steps in your OpenAI account for them to appear in the model list."
     };
     return config;
   }
@@ -13469,21 +13494,21 @@ var SmartChatModelAzureAdapter = class extends SmartChatModelOpenaiAdapter {
     return {
       ...super.settings_config,
       "[CHAT_ADAPTER].azure_resource_name": {
-        name: "Azure 资源名称",
+        name: "Azure Resource Name",
         type: "text",
-        description: "Azure OpenAI 资源的名称（例如“my-azure-openai”）。",
+        description: "The name of your Azure OpenAI resource (e.g. 'my-azure-openai').",
         default: ""
       },
       "[CHAT_ADAPTER].azure_deployment_name": {
-        name: "Azure 部署名称",
+        name: "Azure Deployment Name",
         type: "text",
-        description: "特定模型部署的名称（例如“gpt35-deployment”）。",
+        description: "The name of your specific model deployment (e.g. 'gpt35-deployment').",
         default: ""
       },
       "[CHAT_ADAPTER].azure_api_version": {
-        name: "Azure API 版本",
+        name: "Azure API Version",
         type: "text",
-        description: "Azure OpenAI 的 API 版本（例如“2024-10-01-preview”）。",
+        description: "The API version for Azure OpenAI (e.g. '2024-10-01-preview').",
         default: "2024-10-01-preview"
       }
     };
@@ -13679,7 +13704,7 @@ var SmartChatModelGoogleAdapter = class extends SmartChatModelApiAdapter {
     }, {});
   }
   is_end_of_stream(event) {
-    return event.data.includes('"完成原因"');
+    return event.data.includes('"finishReason"');
     return false;
   }
 };
@@ -13751,7 +13776,7 @@ var SmartChatModelGeminiRequestAdapter = class extends SmartChatModelRequestAdap
       user: "user",
       assistant: "model",
       function: "model"
-      // Gemini doesn't 有一个函数角色，所以我们'll treat it as model
+      // Gemini doesn't have a function role, so we'll treat it as model
     };
     return role_map[role] || role;
   }
@@ -13930,7 +13955,7 @@ var SmartChatModelGeminiResponseAdapter = class extends SmartChatModelResponseAd
 var SmartChatModelGeminiAdapter = class extends SmartChatModelGoogleAdapter {
   static key = "gemini";
   static defaults = {
-    description: "Gemini（切换到 **GOOGLE** 适配器）",
+    description: "Gemini (SWITCH TO **GOOGLE** ADAPTER)",
     type: "API",
     api_key_header: "none",
     endpoint: "https://generativelanguage.googleapis.com/v1beta/models/MODEL_NAME:generateContent",
@@ -13948,7 +13973,7 @@ var SmartChatModelOpenRouterAdapter = class extends SmartChatModelApiAdapter {
   static key = "open_router";
   static models_dev_key = "openrouter";
   static defaults = {
-    description: "打开路由器",
+    description: "Open Router",
     type: "API",
     endpoint: "https://openrouter.ai/api/v1/chat/completions",
     streaming: true,
@@ -14057,8 +14082,8 @@ ${this._res.error.metadata.raw}`;
 ${JSON.stringify(this._res.error.metadata.raw, null, 2)}`;
       }
     }
-    if (error.message.startsWith("无 cookie 身份验证")) {
-      error.suggested_action = "确保您的 Open Router API 密钥设置正确。";
+    if (error.message.startsWith("No cookie auth")) {
+      error.suggested_action = "Ensure your Open Router API key is set correctly.";
     }
     return error;
   }
@@ -14069,7 +14094,7 @@ var SmartChatModelLmStudioAdapter = class extends SmartChatModelApiAdapter {
   static key = "lm_studio";
   /** @type {import('./_adapter.js').SmartChatModelAdapter['constructor']['defaults']} */
   static defaults = {
-    description: "LM Studio（OpenAI 兼容）",
+    description: "LM Studio (OpenAI\u2011compatible)",
     type: "API",
     endpoint: "http://localhost:1234/v1/chat/completions",
     streaming: true,
@@ -14077,7 +14102,7 @@ var SmartChatModelLmStudioAdapter = class extends SmartChatModelApiAdapter {
     models_endpoint: "http://localhost:1234/v1/models",
     default_model: "",
     signup_url: "https://lmstudio.ai/docs/api/openai-api",
-    api_key: "不需要 api 密钥"
+    api_key: "no api key required"
   };
   /* ------------------------------------------------------------------ *
    *  Request / Response classes
@@ -14103,7 +14128,7 @@ var SmartChatModelLmStudioAdapter = class extends SmartChatModelApiAdapter {
       ...config,
       "[CHAT_ADAPTER].cors_instructions": {
         /* visible only when this adapter is selected */
-        name: "需要 CORS",
+        name: "CORS required",
         type: "html",
         value: `<p>Before you can use LM Studio you must <strong>Enable CORS</strong> inside LM Studio \u2192 Developer \u2192 Settings</p>`
       }
@@ -14117,7 +14142,7 @@ var SmartChatModelLmStudioAdapter = class extends SmartChatModelApiAdapter {
    */
   parse_model_data(model_data) {
     if (model_data.object !== "list" || !Array.isArray(model_data.data)) {
-      return { _: { id: "未找到模型。" } };
+      return { _: { id: "No models found." } };
     }
     const out = {};
     for (const m of model_data.data) {
@@ -14580,9 +14605,9 @@ var SmartChatModelCustomAdapter = class extends SmartChatModelApiAdapter {
        * you'd like to use for your custom endpoint.
        */
       "[CHAT_ADAPTER].api_adapter": {
-        name: "API 适配器",
+        name: "API Adapter",
         type: "dropdown",
-        description: "选择内置或外部适配器来解析请求/响应数据。",
+        description: "Pick a built-in or external adapter to parse request/response data.",
         // Provide a short selection set, or dynamically gather from keys of adapters_map
         // options_callback: 'adapter.get_adapters_as_options',
         options_callback: () => {
@@ -14592,44 +14617,44 @@ var SmartChatModelCustomAdapter = class extends SmartChatModelApiAdapter {
         default: "openai"
       },
       "[CHAT_ADAPTER].id": {
-        name: "型号名称",
+        name: "Model Name",
         type: "text",
-        description: "如果需要，请输入端点的型号名称。"
+        description: "Enter the model name for your endpoint if needed."
       },
-      "[CHAT_ADAPTER].协议": {
-        name: "协议",
+      "[CHAT_ADAPTER].protocol": {
+        name: "Protocol",
         type: "text",
-        description: "例如http 或 https"
+        description: "e.g. http or https"
       },
-      "[CHAT_ADAPTER].主机名": {
-        name: "主机名",
+      "[CHAT_ADAPTER].hostname": {
+        name: "Hostname",
         type: "text",
-        description: "例如localhost 或 some.remote.host"
+        description: "e.g. localhost or some.remote.host"
       },
       "[CHAT_ADAPTER].port": {
-        name: "端口",
+        name: "Port",
         type: "number",
-        description: "端口号或留空"
+        description: "Port number or leave blank"
       },
       "[CHAT_ADAPTER].path": {
-        name: "路径",
+        name: "Path",
         type: "text",
-        description: "路径部分URL 的（前导斜杠可选）"
+        description: "Path portion of the URL (leading slash optional)"
       },
       "[CHAT_ADAPTER].streaming": {
-        name: "流媒体",
+        name: "Streaming",
         type: "toggle",
-        description: "如果您的 API 支持，则启用流式传输。"
+        description: "Enable streaming if your API supports it."
       },
       "[CHAT_ADAPTER].max_input_tokens": {
-        name: "最大输入令牌",
+        name: "Max Input Tokens",
         type: "number",
-        description: "您的模型可以在提示中处理的最大令牌数。"
+        description: "Max number of tokens your model can handle in the prompt."
       },
       "[CHAT_ADAPTER].api_key": {
-        name: "API 密钥",
+        name: "API Key",
         type: "password",
-        description: "如果您的服务需要 API 密钥，请在此处添加。"
+        description: "If your service requires an API key, add it here."
       }
     };
   }
@@ -14815,7 +14840,7 @@ var SmartChatModelDeepseekAdapter = class extends SmartChatModelApiAdapter {
    */
   parse_model_data(model_data) {
     if (!model_data?.data || !Array.isArray(model_data.data)) {
-      return { "_": { id: "未找到模型。" } };
+      return { "_": { id: "No models found." } };
     }
     const parsed = {};
     for (const m of model_data.data) {
@@ -14845,12 +14870,13 @@ var SmartChatModelDeepseekAdapter = class extends SmartChatModelApiAdapter {
    */
   is_end_of_stream(event) {
     if (!event?.data) return false;
-    return event.data.includes('"done":true') || event.data.includes("[完成]");
+    return event.data.includes('"done":true') || event.data.includes("[DONE]");
   }
 };
 var SmartChatModelDeepseekRequestAdapter = class extends SmartChatModelRequestAdapter {
   /**
-   * Convert incoming request to DeepSeek'的预期格式\n   * 如果需要与 DeepSeek's design
+   * Convert incoming request to DeepSeek's expected format
+   * Often just reuse the base "to_openai()" if that matches DeepSeek's design
    * @param {boolean} streaming - True if streaming
    * @returns {Object} Request parameters
    */
@@ -15073,7 +15099,7 @@ var AjsonSingleFileCollectionDataAdapter = class extends AjsonMultiFileCollectio
           }
         }
       } catch (err) {
-        console.warn("行解析错误：", line, err);
+        console.warn("parse error for line: ", line, err);
         rewrite = true;
       }
       line_count++;
@@ -15260,7 +15286,7 @@ var SmartComponentAdapter = class {
    * @returns {Promise<*>} Rendered output for the component.
    */
   async render(scope, opts) {
-    throw new Error("render() 未实现");
+    throw new Error("render() not implemented");
   }
 };
 
@@ -15278,7 +15304,7 @@ var SmartViewComponentAdapter = class extends SmartComponentAdapter {
   async render(scope, opts = {}) {
     const render_fn = typeof this.module === "function" ? this.module : this.module?.render;
     if (typeof render_fn !== "function") {
-      throw new Error("SmartViewComponentAdapter：模块上缺少 render()");
+      throw new Error("SmartViewComponentAdapter: render() missing on module");
     }
     return await render_fn.call(this.smart_view, scope, opts);
   }
@@ -15418,7 +15444,7 @@ var SmartContext = class extends CollectionItem {
       ...existing || {},
       ...typeof item === "object" ? item : {}
     };
-    if (!key) return console.error("SmartContext：使用 add_item 调用无效项目", item);
+    if (!key) return console.error("SmartContext: add_item called with invalid item", item);
     this.data.context_items[key] = context_item;
     this.queue_save();
     if (emit_updated) this.emit_event("context:updated", { add_item: key });
@@ -15489,7 +15515,7 @@ var SmartContext = class extends CollectionItem {
     return this.data.name;
   }
   set name(name) {
-    if (typeof name !== "string") throw new TypeError("名称必须是字符串");
+    if (typeof name !== "string") throw new TypeError("Name must be a string");
     const was_nameless = !this.data.name || String(this.data.name).trim().length === 0;
     this.data.name = name;
     if (was_nameless) this.emit_event("context:named");
@@ -15628,7 +15654,7 @@ var SmartContexts = class extends Collection {
   static get default_settings() {
     return {
       template_preset: "xml_structured",
-      template_before: "<上下文>\n{{FILE_TREE}}",
+      template_before: "<context>\n{{FILE_TREE}}",
       template_after: "</context>"
     };
   }
@@ -15653,7 +15679,7 @@ var smart_contexts_default = smart_contexts_default_config;
 
 // node_modules/obsidian-smart-env/node_modules/smart-contexts/context_item.js
 var ContextItem = class extends CollectionItem {
-  // special handling because current name_to_collection_key removes "项目" suffix
+  // special handling because current name_to_collection_key removes "Items" suffix
   get collection_key() {
     return "context_items";
   }
@@ -15753,7 +15779,7 @@ var BlockContextItemAdapter = class extends ContextItemAdapter {
   }
   async get_text() {
     const block = this.ref;
-    if (!block) return { error: "未找到块" };
+    if (!block) return { error: "Block not found" };
     return await block.read();
   }
   async open(event = null) {
@@ -15787,7 +15813,7 @@ var SourceContextItemAdapter = class extends ContextItemAdapter {
     return this.ref?.mtime || null;
   }
   async get_text() {
-    return await this.ref?.read() || "缺少源";
+    return await this.ref?.read() || "MISSING SOURCE";
   }
   async open(event = null) {
     this.ref.actions.source_open(event);
@@ -15863,7 +15889,7 @@ var PdfContextItemAdapter = class extends ContextItemAdapter {
 // node_modules/obsidian-smart-env/node_modules/smart-contexts/context_items.js
 var ContextItems = class extends Collection {
   async load() {
-    console.log("ContextItems：加载名为");
+    console.log("ContextItems: load called");
   }
   static version = 1;
   get context_item_adapters() {
@@ -16029,7 +16055,7 @@ var EventLogs = class extends Collection {
       event_log.queue_save();
       this.queue_save();
     } catch (err) {
-      console.error("[EventLogs] 记录失败", event_key, err);
+      console.error("[EventLogs] record failure", event_key, err);
     }
   }
   /**
@@ -16100,7 +16126,7 @@ var SmartFuzzySuggestModal = class extends import_obsidian4.FuzzySuggestModal {
     env.create_env_getter(this);
     this.plugin = plugin;
     this.item_or_collection = item_or_collection;
-    this.emptyStateText = "无可用建议";
+    this.emptyStateText = "No suggestions available";
     this._set_custom_instructions = false;
   }
   /** Unique type key for this modal class. Subclasses override. */
@@ -16109,7 +16135,7 @@ var SmartFuzzySuggestModal = class extends import_obsidian4.FuzzySuggestModal {
   }
   /** Human label used in commands. Subclasses override as needed. */
   static get display_text() {
-    return "智能模糊建议";
+    return "Smart Fuzzy Suggest";
   }
   /** Event name listened to on env.events to open this modal. */
   static get event_domain() {
@@ -16172,13 +16198,13 @@ var SmartFuzzySuggestModal = class extends import_obsidian4.FuzzySuggestModal {
   }
   set_default_instructions() {
     this.setInstructions([
-      { command: "输入", purpose: "选择" }
+      { command: "Enter", purpose: "Select" }
     ], false);
   }
   open(params = {}) {
     super.open();
     this.modalEl.addEventListener("keydown", (e) => {
-      if (e.key === "输入") {
+      if (e.key === "Enter") {
         if (e.shiftKey) this.use_shift_select = true;
         this.selectActiveSuggestion(e);
       }
@@ -16239,7 +16265,7 @@ var SmartFuzzySuggestModal = class extends import_obsidian4.FuzzySuggestModal {
     if (typeof suggest_ref === "function") {
       this._set_custom_instructions = false;
       const result = await suggest_ref({ modal: this });
-      console.log("建议操作结果", result);
+      console.log("Suggestion action result", result);
       if (Array.isArray(result) && result.length) {
         this.suggestions = result;
       }
@@ -16249,8 +16275,8 @@ var SmartFuzzySuggestModal = class extends import_obsidian4.FuzzySuggestModal {
     if (Array.isArray(this.suggestions) && this.suggestions.length) {
       this.updateSuggestions();
     } else {
-      this.env.events.emit("notification:error", { message: "无效建议操作" });
-      console.warn("无效建议操作", suggest_ref);
+      this.env.events.emit("notification:error", { message: "Invalid suggestion action" });
+      console.warn("Invalid suggestion action", suggest_ref);
     }
     if (!this._set_custom_instructions) {
       this.set_default_instructions();
@@ -16308,7 +16334,7 @@ var SmartFuzzySuggestModal = class extends import_obsidian4.FuzzySuggestModal {
     } else if (typeof suggestion.select_action === "function") {
       this.handle_choose_action(suggestion, "select_action");
     } else {
-      this.env.events.emit("notification:warning", { selection_display: suggestion.display, message: "没有为此建议定义操作" });
+      this.env.events.emit("notification:warning", { selection_display: suggestion.display, message: "No action defined for this suggestion" });
     }
   }
   async handle_choose_action(suggestion, action_key) {
@@ -16317,7 +16343,7 @@ var SmartFuzzySuggestModal = class extends import_obsidian4.FuzzySuggestModal {
     if (Array.isArray(result) && result.length) {
       this.suggestions = result;
     } else if (Array.isArray(result)) {
-      this.env.events.emit("notification:info", { message: "操作未返回任何建议" });
+      this.env.events.emit("notification:info", { message: "No suggestions returned from action" });
     }
     const idx = this.chooser.values.findIndex((i) => i.item?.display === suggestion.display);
     setTimeout(() => {
@@ -16346,7 +16372,7 @@ var ContextModal = class extends SmartFuzzySuggestModal {
     return "context_selector";
   }
   static get display_text() {
-    return "上下文选择器";
+    return "Context Selector";
   }
   static get event_domain() {
     return "context_selector";
@@ -16368,9 +16394,9 @@ var ContextModal = class extends SmartFuzzySuggestModal {
   }
   set_default_instructions() {
     this.setInstructions([
-      { command: "输入", purpose: "添加到上下文" },
-      { command: `\u2192 / \u2190`, purpose: "切换块视图" },
-      { command: "Esc", purpose: "关闭" }
+      { command: "Enter", purpose: "Add to context" },
+      { command: `\u2192 / \u2190`, purpose: "Toggle block view" },
+      { command: "Esc", purpose: "Close" }
     ]);
   }
   open(params = {}) {
@@ -16406,7 +16432,7 @@ var NotificationsFeedModal = class extends import_obsidian6.Modal {
     this.env = env;
   }
   async onOpen() {
-    this.titleEl.setText("智能环境通知");
+    this.titleEl.setText("Smart Env notifications");
     this.contentEl.empty();
     const event_log = await this.env.smart_components.render_component("notifications_feed", this.env);
     this.contentEl.appendChild(event_log);
@@ -16442,12 +16468,12 @@ function render_milestones_modal_title(title_el, env) {
   row_el.className = "sc-milestones-modal__title-row";
   const text_el = document.createElement("div");
   text_el.className = "sc-milestones-modal__title-text";
-  text_el.textContent = "智能里程碑";
+  text_el.textContent = "Smart Milestones";
   const help_btn_el = document.createElement("button");
   help_btn_el.type = "button";
   help_btn_el.className = "sc-milestones-modal__help-btn";
-  help_btn_el.setAttribute("aria-label", "开放智能里程碑帮助");
-  help_btn_el.setAttribute("title", "帮助");
+  help_btn_el.setAttribute("aria-label", "Open Smart Milestones help");
+  help_btn_el.setAttribute("title", "Help");
   render_help_icon(help_btn_el);
   help_btn_el.addEventListener("click", (evt) => {
     evt.preventDefault();
@@ -16498,7 +16524,7 @@ var default_settings = {
       }
     },
     excluded_headings: "",
-    file_exclusions: "无标题",
+    file_exclusions: "Untitled",
     folder_exclusions: ""
   },
   language: "en",
@@ -16685,13 +16711,13 @@ var Model = class extends CollectionItem {
       },
       "meta.name": {
         type: "text",
-        name: "名称",
-        description: "此模型配置的友好名称。"
+        name: "Name",
+        description: "A friendly name for this model configuration."
       },
       model_key: {
         type: "dropdown",
-        name: "模型",
-        description: "来自所选提供商的要使用的模型。",
+        name: "Model",
+        description: "The model to use from the selected provider.",
         options_callback: "get_model_key_options",
         callback: "model_changed"
       },
@@ -17762,208 +17788,208 @@ var PLUGIN_INSTALL_EVENT_CONFIG = {
 var EVENTS_CHECKLIST_ITEMS_BY_EVENT_KEY = {
   // Environment
   "sources:import_completed": {
-    group: "环境",
-    milestone: "初始库导入已完成（已发现所有源）。",
+    group: "Environment",
+    milestone: "Initial vault import completed (all sources discovered).",
     link: "https://smartconnections.app/smart-environment/settings/?utm_source=milestones#sources"
   },
   "embedding:completed": {
-    group: "环境",
-    milestone: "初始嵌入已完成，您可以进行连接了！",
+    group: "Environment",
+    milestone: "Initial embedding completed, you are ready to make connections!",
     link: "https://smartconnections.app/smart-environment/settings/?utm_source=milestones#embedding-models"
   },
   // Connections
   "connections:installed": {
-    group: "连接",
-    milestone: "安装智能连接（核心插件）。",
+    group: "Connections",
+    milestone: "Installed Smart Connections (core plugin).",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones"
   },
   "connections:opened": {
-    group: "连接",
-    milestone: "打开连接视图。",
+    group: "Connections",
+    milestone: "Opened the connections view.",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones#quick-start"
   },
   "connections:drag_result": {
-    group: "连接",
-    milestone: "将智能连接结果拖到注释中以创建链接。",
+    group: "Connections",
+    milestone: "Dragged a Smart Connections result into a note to create a link.",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones#drag-link"
   },
   "connections:open_result": {
-    group: "连接",
-    milestone: "从 UI（列表项或内联弹出窗口）打开智能连接结果。",
+    group: "Connections",
+    milestone: "Opened a Smart Connections result from the UI (list item or inline popover).",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones#core-interactions"
   },
   "connections:sent_to_context": {
-    group: "连接",
-    milestone: "将连接结果发送到智能上下文（将发现转换为上下文包）。",
+    group: "Connections",
+    milestone: "Sent Connections results to Smart Context (turn discovery into a context pack).",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones#send-to-context"
   },
   "connections:copied_list": {
-    group: "连接",
-    milestone: "复制的连接结果作为链接列表。",
+    group: "Connections",
+    milestone: "Copied Connections results as a list of links.",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones#copy-list"
   },
   "connections:hover_preview": {
-    group: "连接",
-    milestone: "通过在悬停结果时按住 cmd/ctrl 来预览连接。",
+    group: "Connections",
+    milestone: "Previewed a connection by holding cmd/ctrl while hovering the result.",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones#core-interactions"
   },
   "connections:open_random": {
-    group: "连接",
-    milestone: "从智能连接打开了随机连接。",
+    group: "Connections",
+    milestone: "Opened a random connection from Smart Connections.",
     link: "https://smartconnections.app/smart-connections/getting-started/?utm_source=milestones#open-a-random-connection"
   },
   "connections:hidden_item": {
-    group: "连接",
-    milestone: "从列表中隐藏连接项。",
+    group: "Connections",
+    milestone: "Hidden a connection item from the list.",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones#manage-noise"
   },
   "connections:pinned_item": {
-    group: "连接",
-    milestone: "在列表中固定了一个连接项目。",
+    group: "Connections",
+    milestone: "Pinned a connection item in the list.",
     link: "https://smartconnections.app/smart-connections/list-feature/?utm_source=milestones#manage-noise"
   },
   // Connections Pro
   "connections_pro:installed": {
     group: "Connections Pro",
-    milestone: "已安装 Smart Connections Pro。",
+    milestone: "Installed Smart Connections Pro.",
     link: "https://smartconnections.app/pro-plugins/?utm_source=milestones#connections-pro",
     is_pro: true
   },
   // Lookup
   "lookup:hover_preview": {
-    group: "查找",
-    milestone: "通过在悬停时按住 cmd/ctrl 预览智能查找结果。",
+    group: "Lookup",
+    milestone: "Previewed a Smart Lookup result by holding cmd/ctrl while hovering.",
     link: "https://smartconnections.app/smart-connections/lookup/?utm_source=milestones#understanding-results"
   },
   "lookup:get_results": {
-    group: "查找",
-    milestone: "提交了查找查询（开始语义搜索）。",
+    group: "Lookup",
+    milestone: "Submitted a lookup query (started a semantic search).",
     link: "https://smartconnections.app/smart-connections/lookup/?utm_source=milestones"
   },
   "lookup:drag_result": {
-    group: "查找",
-    milestone: "将智能查找结果拖到注释中以创建链接。",
+    group: "Lookup",
+    milestone: "Dragged a Smart Lookup result into a note to create a link.",
     link: "https://smartconnections.app/smart-connections/lookup/?utm_source=milestones#understanding-results"
   },
   "lookup:open_result": {
-    group: "查找",
-    milestone: "打开查找结果。",
+    group: "Lookup",
+    milestone: "Opened a Lookup result.",
     link: "https://smartconnections.app/smart-connections/lookup/?utm_source=milestones#understanding-results"
   },
   // Context
   "context:created": {
-    group: "上下文",
-    milestone: "创建的第一个上下文！",
+    group: "Context",
+    milestone: "First context created!",
     link: "https://smartconnections.app/smart-context/builder/?utm_source=milestones#quick-start"
   },
   "context:copied": {
-    group: "上下文",
-    milestone: "已将上下文复制到剪贴板。",
+    group: "Context",
+    milestone: "Copied context to clipboard.",
     link: "https://smartconnections.app/smart-context/clipboard/?utm_source=milestones#copy-current"
   },
   "context:file_nav_copied": {
-    group: "上下文",
-    milestone: "从文件导航器复制上下文。",
+    group: "Context",
+    milestone: "Copied context from the file navigator.",
     link: "https://smartconnections.app/smart-context/clipboard/?utm_source=milestones#copy-selected"
   },
   "context_selector:open": {
-    group: "上下文",
-    milestone: "打开上下文生成器选择器模式。",
+    group: "Context",
+    milestone: "Opened the Context Builder selector modal.",
     link: "https://smartconnections.app/smart-context/builder/?utm_source=milestones#open-builder"
   },
   "context:named": {
-    group: "上下文",
-    milestone: "命名智能上下文（创建可重用的已保存上下文）。",
+    group: "Context",
+    milestone: "Named a Smart Context (created a reusable saved context).",
     link: "https://smartconnections.app/smart-context/builder/?utm_source=milestones#save-reuse"
   },
   "context:renamed": {
-    group: "上下文",
-    milestone: "重命名了智能上下文（更加清晰）。",
+    group: "Context",
+    milestone: "Renamed a Smart Context (increased clarity).",
     link: "https://smartconnections.app/smart-context/builder/?utm_source=milestones#save-reuse"
   },
   "context:copied_with_media": {
     group: "Context Pro",
-    milestone: "多模式工作流程的媒体（图像/PDF 页面）复制上下文后，prepare_embed_input 导致空字符串。",
+    milestone: "Copied context with media (images/PDF pages) for multimodal workflows.",
     link: "https://smartconnections.app/smart-context/clipboard/?utm_source=milestones#copy-modes",
     is_pro: true
   },
   // Context Pro
   "context_pro:installed": {
     group: "Context Pro",
-    milestone: "安装了 Smart Context Pro。",
+    milestone: "Installed Smart Context Pro.",
     link: "https://smartconnections.app/pro-plugins/?utm_source=milestones#context-pro",
     is_pro: true
   },
   // Chat
   "chat:installed": {
-    group: "聊天",
-    milestone: "已安装 Smart ChatGPT。",
+    group: "Chat",
+    milestone: "Installed Smart ChatGPT.",
     link: "https://smartconnections.app/smart-chat/?utm_source=milestones"
   },
   "chat_codeblock:saved_thread": {
-    group: "聊天",
-    milestone: "在智能聊天代码块中开始聊天（打开循环）。",
+    group: "Chat",
+    milestone: "Started a chat in a Smart Chat codeblock (opened the loop).",
     link: "https://smartconnections.app/smart-chat/codeblock/?utm_source=milestones#quick-start"
   },
   "completion:completed": {
-    group: "聊天 Pro",
-    milestone: "收到第一个智能聊天响应（完成）。",
+    group: "Chat Pro",
+    milestone: "Received the first Smart Chat response (a completion finished).",
     link: "https://smartconnections.app/smart-chat/api-integration/?utm_source=milestones#quick-start",
     is_pro: true
   },
   "chat_codeblock:marked_done": {
-    group: "聊天",
-    milestone: "将聊天线程标记为完成（关闭循环）。",
+    group: "Chat",
+    milestone: "Marked the chat thread as done (closed the loop).",
     link: "https://smartconnections.app/smart-chat/codeblock/?utm_source=milestones#chat-inbox"
   },
   // Chat Pro
   "chat_pro:installed": {
-    group: "聊天 Pro",
-    milestone: "安装的智能聊天专业版。",
+    group: "Chat Pro",
+    milestone: "Installed Smart Chat Pro.",
     link: "https://smartconnections.app/pro-plugins/?utm_source=milestones#chat-pro",
     is_pro: true
   },
   // Pro
   "smart_plugins_oauth_completed": {
     group: "Pro",
-    milestone: "连接帐户（已启用 Pro 插件）。",
+    milestone: "Connected account (enabled Pro plugins).",
     link: "https://smartconnections.app/pro-plugins/?utm_source=milestones"
   },
   // Connections Pro (Inline Connections)
   "inline_connections:show": {
     group: "Connections Pro",
-    milestone: "在注释中打开内联连接（使用内联工作流程）。",
+    milestone: "Opened inline connections in-note (used the inline workflow).",
     link: "https://smartconnections.app/smart-connections/inline/?utm_source=milestones",
     is_pro: true
   },
   "inline_connections:open_result": {
     group: "Connections Pro",
-    milestone: "打开内联连接结果（从发现导航到源）。",
+    milestone: "Opened an inline connections result (navigated from discovery to source).",
     link: "https://smartconnections.app/smart-connections/inline/?utm_source=milestones",
     is_pro: true
   },
   "inline_connections:drag_result": {
     group: "Connections Pro",
-    milestone: "从内联连接插入内联链接（将发现转换为持久链接）。",
+    milestone: "Inserted an inline link from an inline connection (converted discovery into a durable link).",
     link: "https://smartconnections.app/smart-connections/inline/?utm_source=milestones",
     is_pro: true
   }
 };
 var EVENTS_CHECKLIST_GROUP_ORDER = [
-  "环境",
-  "连接",
-  "查找",
-  "上下文",
-  "聊天",
+  "Environment",
+  "Connections",
+  "Lookup",
+  "Context",
+  "Chat",
   "Pro",
   "Connections Pro",
   "Context Pro",
-  "聊天 Pro"
+  "Chat Pro"
 ];
 function derive_events_checklist_groups(items_by_event_key) {
   const group_map = Object.entries(items_by_event_key || {}).reduce(
     (acc, [event_key, item]) => {
-      const group = item?.group || "其他";
+      const group = item?.group || "Other";
       if (!acc[group]) acc[group] = [];
       acc[group].push({ event_key, group, milestone: item?.milestone || "", ...item });
       return acc;
@@ -18035,7 +18061,7 @@ function register_first_of_event_notifications(env) {
       milestone_el.style.fontStyle = "italic";
       frag.appendChild(milestone_el);
       const btn = document.createElement("button");
-      btn.textContent = "查看里程碑";
+      btn.textContent = "View milestones";
       btn.addEventListener("click", () => {
         env.open_milestones_modal();
       });
@@ -18069,7 +18095,7 @@ function build_html7(env, params = {}) {
       <section class="sc-events-checklist__group" data-group="${escape_html(group.group)}">
         <h3 class="sc-events-checklist__group-title">
           <span class="sc-events-checklist__group-name">${escape_html(group.group)}</span>
-          <span class="sc-events-checklist__group-count" aria-label="组完成">${group_checked_count.toString()} / ${group_total_count.toString()}</span>
+          <span class="sc-events-checklist__group-count" aria-label="Group completion">${group_checked_count.toString()} / ${group_total_count.toString()}</span>
         </h3>
         <ul class="sc-events-checklist__items">
           ${items_html}
@@ -18084,7 +18110,7 @@ function build_html7(env, params = {}) {
       style="--sc-events-checklist-progress: ${progress_pct.toString()}%;"
     >
       <div class="sc-events-checklist__header">
-        <div class="sc-events-checklist__summary" aria-label="清单完成">
+        <div class="sc-events-checklist__summary" aria-label="Checklist completion">
           ${checked_count.toString()} / ${total_count.toString()}
         </div>
         <div class="sc-events-checklist__hint" aria-hidden="true">
@@ -18095,7 +18121,7 @@ function build_html7(env, params = {}) {
       <div
         class="sc-events-checklist__progress"
         role="progressbar"
-        aria-label="总体进度"
+        aria-label="Overall progress"
         aria-valuenow="${checked_count.toString()}"
         aria-valuemin="0"
         aria-valuemax="${total_count.toString()}"
@@ -18127,7 +18153,7 @@ function build_item_html(item, state) {
   const checked = state.checked === true;
   const checked_flag = checked ? "true" : "false";
   const link = typeof item.link === "string" ? item.link : "";
-  const status_label = checked ? "已完成" : "不完整";
+  const status_label = checked ? "Completed" : "Incomplete";
   const aria_label = `Open docs: ${item.milestone || item.event_key || "milestone"} (${status_label})`;
   return `
     <li
@@ -18160,7 +18186,7 @@ function attach_item_link_listeners(container) {
   container.addEventListener("keydown", (evt) => {
     const key = evt && /** @type {KeyboardEvent} */
     evt.key;
-    if (key !== "输入" && key !== " ") return;
+    if (key !== "Enter" && key !== " ") return;
     const item_el = get_item_el_from_event(container, evt);
     if (!item_el) return;
     evt.preventDefault();
@@ -18267,7 +18293,7 @@ async function post_process7(env, container, params = {}) {
   if (!entries.length) {
     const empty2 = feed_container.ownerDocument.createElement("p");
     empty2.className = "smart-env-notifications-empty";
-    empty2.textContent = "尚无智能环境通知。";
+    empty2.textContent = "No Smart Env notifications yet.";
     feed_container.appendChild(empty2);
     if (load_more_btn) {
       load_more_btn.style.display = "none";
@@ -18290,9 +18316,9 @@ async function post_process7(env, container, params = {}) {
     copy_btn.addEventListener("click", () => {
       const all_text = feed_container.textContent;
       navigator.clipboard.writeText(all_text).then(() => {
-        copy_btn.textContent = "已复制！";
+        copy_btn.textContent = "Copied!";
         setTimeout(() => {
-          copy_btn.textContent = "复制所有通知";
+          copy_btn.textContent = "Copy All Notifications";
         }, 2e3);
       });
     });
@@ -18394,7 +18420,7 @@ function try_get_zlib() {
 function inflate_deflate_data(compressed) {
   const zlib = try_get_zlib();
   if (!zlib) {
-    throw new Error("zlib 不可用（可能是 Obsidian 移动设备？）。");
+    throw new Error("zlib not available (maybe Obsidian mobile?).");
   }
   const buf = Buffer.from(compressed);
   const out = zlib.inflateRawSync(buf);
@@ -18489,7 +18515,7 @@ async function parse_zip_into_files(zipBuffer) {
   }
   return { files, pluginManifest };
 }
-function validate_zip_buffer(zip_buffer, source_label = "响应") {
+function validate_zip_buffer(zip_buffer, source_label = "Response") {
   if (!zip_buffer || zip_buffer.byteLength < 4) {
     throw new Error(`${source_label} returned too few bytes, not a valid ZIP.`);
   }
@@ -18536,14 +18562,14 @@ async function fetch_plugin_zip(repoName, token) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "授权": `Bearer ${token}`
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify({ repo: repoName })
   });
   if (resp.status !== 200) {
     throw new Error(`plugin_download error ${resp.status}: ${resp.text}`);
   }
-  return validate_zip_buffer(resp.arrayBuffer, "智能插件服务器");
+  return validate_zip_buffer(resp.arrayBuffer, "Smart Plugins server");
 }
 async function fetch_zip_from_url(download_url, request_fn = import_obsidian15.requestUrl) {
   console.log(`[smart_plugins] download plugin from URL: ${download_url}`);
@@ -18555,7 +18581,7 @@ async function fetch_zip_from_url(download_url, request_fn = import_obsidian15.r
   if (resp.status && resp.status !== 200) {
     throw new Error(`Download error ${resp.status}: ${resp.text || ""}`);
   }
-  return validate_zip_buffer(resp.arrayBuffer, "下载");
+  return validate_zip_buffer(resp.arrayBuffer, "Download");
 }
 async function fetch_plugin_readme(repo, token, request_fn = import_obsidian15.requestUrl) {
   const resp = await request_fn({
@@ -18563,7 +18589,7 @@ async function fetch_plugin_readme(repo, token, request_fn = import_obsidian15.r
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "授权": `Bearer ${token}`
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify({ repo })
   });
@@ -18589,7 +18615,7 @@ async function fetch_server_plugin_list(token) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "授权": `Bearer ${token}`
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify({})
   });
@@ -18605,7 +18631,7 @@ async function fetch_referral_stats(params = {}) {
     url: `${get_smart_server_url()}/api/referrals/stats`,
     method: "GET",
     headers: {
-      "授权": `Bearer ${token}`
+      "Authorization": `Bearer ${token}`
     }
   });
   if (resp.status === 401) {
@@ -18621,13 +18647,13 @@ async function fetch_referral_stats(params = {}) {
 var style_default = ".get-core-link {\r\n  text-wrap: nowrap;\r\n  font-size: var(--font-ui-small);\r\n}\r\n.core-installed-text {\r\n  text-wrap: nowrap;\r\n  font-size: var(--font-ui-small);\r\n  color: var(--text-muted);\r\n}\r\n\r\n.pro-plugins-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  row-gap: var(--size-4-3);\r\n  margin-top: var(--size-5);\r\n}\r\n\r\n.pro-plugins-list-item {\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 0.75em 0;\r\n  border-top: 1px solid var(--background-modifier-border);\r\n  row-gap: var(--size-4-3);\r\n}\r\n\r\n.pro-plugins-container > .setting-group {\r\n  .setting-item-name.pro-heading {\r\n    font-size: var(--h1-size);\r\n  }\r\n  &> p {\r\n    padding: 0 var(--size-4-4);\r\n  }\r\n\r\n}\r\n\r\n.smart-plugins-login .setting-item {\r\n  gap: var(--size-4-3);\r\n}\r\n\r\n.smart-plugins-login-manual {\r\n  margin-top: var(--size-4-3);\r\n}\r\n\r\n.smart-plugins-login-manual-instructions {\r\n  font-size: var(--font-ui-small);\r\n  color: var(--text-muted);\r\n  margin-bottom: var(--size-2-2);\r\n}\r\n\r\n.smart-plugins-login-manual-controls {\r\n  display: flex;\r\n  gap: var(--size-2-2);\r\n  align-items: center;\r\n}\r\n\r\n.smart-plugins-login-manual-input {\r\n  flex: 1;\r\n  min-width: 240px;\r\n  font-size: var(--font-ui-small);\r\n}\r\n";
 
 // node_modules/obsidian-smart-env/src/components/pro-plugins/list.js
-var PRO_PLUGINS_DESC = `<a href="https://smartconnections.app/core-plugins/" target="_external">Core plugins</a> provide essential functionality and a "正常工作" experience. <a href="https://smartconnections.app/pro-plugins/" target="_external">Pro plugins</a> enable advanced configuration and features for Obsidian AI experts.`;
+var PRO_PLUGINS_DESC = `<a href="https://smartconnections.app/core-plugins/" target="_external">Core plugins</a> provide essential functionality and a "just works" experience. <a href="https://smartconnections.app/pro-plugins/" target="_external">Pro plugins</a> enable advanced configuration and features for Obsidian AI experts.`;
 var PRO_PLUGINS_FOOTER = `All Pro plugins include advanced configurations and additional model providers. Pro users get priority support via email. <a href="https://smartconnections.app/introducing-pro-plugins/" target="_external">Learn more</a> about Pro plugins.`;
 function derive_fallback_plugins() {
   const pro_placeholders = [
     {
-      name: "聊天 Pro",
-      description: "配置聊天以使用本地和云 API 提供商（Ollama、LM Studio、OpenAI、Gemini、Anthropic、Open Router 等）。",
+      name: "Chat Pro",
+      description: "Configure chat to use Local and Cloud API providers (Ollama, LM Studio, OpenAI, Gemini, Anthropic, Open Router, and more).",
       core_id: "smart-chatgpt",
       url: "https://smartconnections.app/smart-chat/"
     },
@@ -18639,7 +18665,7 @@ function derive_fallback_plugins() {
     },
     {
       name: "Context Pro",
-      description: "用于上下文工程的高级工具。在您的上下文中利用基础、图像和外部资源（对编码人员来说非常有用！）。",
+      description: "Advanced tools for context engineering. Utilize Bases, images, and external sources (great for coders!) in your contexts.",
       core_id: "smart-context",
       url: "https://smartconnections.app/smart-context/"
     }
@@ -18648,16 +18674,16 @@ function derive_fallback_plugins() {
 }
 function build_html9(env, params = {}) {
   return `
-    <div class="专业插件容器设置项标题">
+    <div class="pro-plugins-container setting-item-heading">
       <div class="setting-group">
-        <div class="设置项 设置项标题">
-          <div class="设置项目名称专业标题">Pro plugins</div>
+        <div class="setting-item setting-item-heading">
+          <div class="setting-item-name pro-heading">Pro plugins</div>
           <div class="setting-item-control">
             <section class="smart-plugins-login"></section>
           </div>
         </div>
         <p>${PRO_PLUGINS_DESC}</p>
-        <div class="设置项目专业插件列表">
+        <div class="setting-items pro-plugins-list">
         </div>
         <p>${PRO_PLUGINS_FOOTER}</p>
         <div class="smart-plugins-referral"></div>
@@ -18703,7 +18729,7 @@ async function post_process8(env, container, params = {}) {
     manual_login_el.innerHTML = "";
     const instructions = document.createElement("div");
     instructions.classList.add("smart-plugins-login-manual-instructions");
-    instructions.textContent = "如果登录页面未打开，请复制此链接并将其粘贴到浏览器中以打开登录页面：";
+    instructions.textContent = "If the login page did not open, copy this link and paste it into your browser to open the login page:";
     manual_login_el.appendChild(instructions);
     const controls = document.createElement("div");
     controls.classList.add("smart-plugins-login-manual-controls");
@@ -18717,13 +18743,13 @@ async function post_process8(env, container, params = {}) {
     controls.appendChild(input);
     const btn = document.createElement("button");
     btn.classList.add("mod-cta");
-    btn.textContent = "复制";
+    btn.textContent = "Copy";
     btn.addEventListener("click", async () => {
       const ok = await copy_to_clipboard(login_url);
       if (ok) {
-        new import_obsidian16.Notice("将登录链接复制到剪贴板。");
+        new import_obsidian16.Notice("Copied login link to clipboard.");
       } else {
-        new import_obsidian16.Notice("复制失败。请手动选择并复制链接。");
+        new import_obsidian16.Notice("Copy failed. Please select and copy the link manually.");
       }
     });
     controls.appendChild(btn);
@@ -18750,16 +18776,16 @@ async function post_process8(env, container, params = {}) {
     if (env && typeof env.initiate_smart_plugins_oauth === "function") {
       last_login_url = initiate_smart_plugins_oauth();
     }
-    new import_obsidian16.Notice("请在浏览器中完成登录。");
+    new import_obsidian16.Notice("Please complete the login in your browser.");
   };
   const render_oauth_login_section = () => {
     this.empty(login_container);
     manual_login_el = null;
     const token = localStorage.getItem(oauth_storage_prefix + "token") || "";
     if (!token) {
-      const setting2 = new import_obsidian16.Setting(login_container).setName("连接帐户").setDesc("使用 Pro 欢迎电子邮件中提供的密钥登录。");
+      const setting2 = new import_obsidian16.Setting(login_container).setName("Connect account").setDesc("Log in with the key provided in your Pro welcome email.");
       setting2.addButton((btn) => {
-        btn.setButtonText("登录");
+        btn.setButtonText("Login");
         btn.onClick(async () => {
           await initiate_oauth_login();
         });
@@ -18767,13 +18793,13 @@ async function post_process8(env, container, params = {}) {
       return;
     }
     const setting = new import_obsidian16.Setting(login_container);
-    setting.setDesc("登录 Smart Plugins Pro 帐户。");
+    setting.setDesc("Signed in to Smart Plugins Pro account.");
     setting.addButton((btn) => {
-      btn.setButtonText("注销");
+      btn.setButtonText("Logout");
       btn.onClick(() => {
         localStorage.removeItem(oauth_storage_prefix + "token");
         localStorage.removeItem(oauth_storage_prefix + "refresh");
-        new import_obsidian16.Notice("已注销智能插件");
+        new import_obsidian16.Notice("Logged out of Smart Plugins");
         render_oauth_login_section();
         render_referral_section();
         render_plugin_list_section();
@@ -18790,22 +18816,22 @@ async function post_process8(env, container, params = {}) {
       const stats = await fetch_referral_stats({ token });
       const referral_link = String(stats?.referral_link || "").trim();
       if (!referral_link) return;
-      const setting = new import_obsidian16.Setting(referral_container).setName("推荐链接").setDesc("分享您的链接即可享受 Pro 优惠 30 美元并获得 30 天的 Pro 积分。");
+      const setting = new import_obsidian16.Setting(referral_container).setName("Referral link").setDesc("Share your link to give $30 off Pro and earn 30 days of Pro credit.");
       setting.addButton((btn) => {
-        btn.setButtonText("复制链接");
+        btn.setButtonText("Copy link");
         btn.onClick(async () => {
           const ok = await copy_to_clipboard(referral_link);
-          new import_obsidian16.Notice(ok ? "推荐链接已复制。" : "复制失败。请再试一次。");
+          new import_obsidian16.Notice(ok ? "Referral link copied." : "Copy failed. Please try again.");
         });
       });
       setting.addButton((btn) => {
-        btn.setButtonText("打开推荐");
+        btn.setButtonText("Open referrals");
         btn.onClick(() => {
           window.open("https://smartconnections.app/my-referrals/", "_external");
         });
       });
     } catch (err) {
-      console.error("[pro-plugins:list] 无法加载引用统计信息：", err);
+      console.error("[pro-plugins:list] Failed to load referral stats:", err);
     }
   };
   const render_fallback_plugin_list = async () => {
@@ -18821,21 +18847,21 @@ async function post_process8(env, container, params = {}) {
     }
   };
   const add_update_sub_to_login_section = () => {
-    const setting = new import_obsidian16.Setting(login_container).setName("订阅已过期").setDesc("您的 Smart Connections Pro 订阅已过期。请更新您的订阅以保留对 Pro 插件的访问权限。");
+    const setting = new import_obsidian16.Setting(login_container).setName("Subscription Expired").setDesc("Your Smart Connections Pro subscription has expired. Please update your subscription to retain access to Pro plugins.");
     setting.addButton((btn) => {
-      btn.setButtonText("获取专业版");
+      btn.setButtonText("Get Pro");
       btn.onClick(() => {
         window.open("https://smartconnections.app/subscribe/", "_external");
       });
     });
     setting.addButton((btn) => {
-      btn.setButtonText("更新订阅");
+      btn.setButtonText("Update subscription");
       btn.onClick(() => {
         window.open("https://smartconnections.app/subscription-update/", "_external");
       });
     });
     setting.addButton((btn) => {
-      btn.setButtonText("刷新");
+      btn.setButtonText("Refresh");
       btn.onClick(() => {
         env.events.emit("pro_plugins:refresh");
       });
@@ -18875,8 +18901,8 @@ async function post_process8(env, container, params = {}) {
         pro_list_el.appendChild(row);
       }
     } catch (err) {
-      console.error("[pro-plugins:list] 无法获取插件列表：", err);
-      pro_list_el.textContent = "获取插件列表时出错。检查控制台。";
+      console.error("[pro-plugins:list] Failed to fetch plugin list:", err);
+      pro_list_el.textContent = "Error fetching plugin list. Check console.";
     }
   };
   const render_smart_plugins = async () => {
@@ -18939,15 +18965,15 @@ function compute_display_state(item, local_info) {
   const local_version = local_info?.version || null;
   const display_name5 = local_info?.name || item.name || repo_name;
   let desc = `Server version: ${server_version}`;
-  let button_label = "安装";
+  let button_label = "Install";
   let is_disabled = false;
   if (local_version) {
     desc += ` | Installed version: ${local_version}`;
     const is_update = is_server_version_newer(local_version, server_version);
     if (is_update) {
-      button_label = "更新";
+      button_label = "Update";
     } else {
-      button_label = "已安装";
+      button_label = "Installed";
       is_disabled = true;
     }
   }
@@ -18967,31 +18993,31 @@ async function render10(item, params = {}) {
 async function post_process9(item, container, params = {}) {
   const { app, token, installed_map = {}, on_installed } = params;
   if (is_fallback_item(item)) {
-    const row2 = new import_obsidian17.Setting(container).setName(item.name || "Pro 插件").setDesc(item.description || "登录以解锁 Pro 插件。");
+    const row2 = new import_obsidian17.Setting(container).setName(item.name || "Pro plugin").setDesc(item.description || "Login to unlock Pro plugins.");
     if (item.core_id) {
       if (app.plugins.manifests[item.core_id]) {
         const core_installed_text = document.createElement("i");
         core_installed_text.classList.add("core-installed-text");
-        core_installed_text.textContent = "已安装核心！";
+        core_installed_text.textContent = "Core installed!";
         row2.controlEl.appendChild(core_installed_text);
       } else {
         const get_core_link = document.createElement("a");
         get_core_link.setAttribute("href", `obsidian://show-plugin?id=${item.core_id}`);
         get_core_link.setAttribute("target", "_external");
-        get_core_link.textContent = "安装核心";
+        get_core_link.textContent = "Install Core";
         get_core_link.style.marginLeft = "10px";
         get_core_link.classList.add("get-core-link");
         row2.controlEl.appendChild(get_core_link);
       }
     }
     row2.addButton((btn) => {
-      btn.setButtonText("获取专业版");
+      btn.setButtonText("Get Pro");
       btn.onClick(() => {
         window.open(PRO_PLUGINS_URL, "_external");
       });
     });
     row2.addButton((btn) => {
-      btn.setButtonText("了解更多");
+      btn.setButtonText("Learn more");
       btn.onClick(() => {
         window.open(item.url, "_external");
       });
@@ -19008,7 +19034,7 @@ async function post_process9(item, container, params = {}) {
     btn.onClick(() => install_plugin(item, { app, token, on_installed }));
   });
   row.addButton((btn) => {
-    btn.setButtonText("文档");
+    btn.setButtonText("Docs");
     if (item.docs_url) {
       btn.onClick(() => window.open(item.docs_url, "_external"));
     } else {
@@ -19023,7 +19049,7 @@ var download_plugin_zip = async (item, token) => {
     return fetch_zip_from_url(resolved_download_url);
   }
   if (!token) {
-    throw new Error("需要登录才能安装此插件。");
+    throw new Error("Login required to install this plugin.");
   }
   return fetch_plugin_zip(item.repo, token);
 };
@@ -19047,7 +19073,7 @@ var install_plugin = async (item, params = {}) => {
       await on_installed();
     }
   } catch (err) {
-    console.error("[pro-plugins:list_item] 安装错误：", err);
+    console.error("[pro-plugins:list_item] Install error:", err);
     new import_obsidian17.Notice(`Install failed: ${err.message}`);
   }
 };
@@ -19060,8 +19086,8 @@ var show_plugin_readme = async (item, params = {}) => {
     await import_obsidian17.MarkdownRenderer.render(app, readme, modal.contentEl, "", new import_obsidian17.Component());
     modal.open();
   } catch (err) {
-    console.error("[pro-plugins:list_item] 无法加载自述文件：", err);
-    new import_obsidian17.Notice("无法加载自述文件");
+    console.error("[pro-plugins:list_item] Failed to load README:", err);
+    new import_obsidian17.Notice("Failed to load README");
   }
 };
 
@@ -19081,7 +19107,7 @@ var SmartModelModal = class extends import_obsidian18.Modal {
     this.params = params;
   }
   onOpen() {
-    this.titleEl.setText("编辑模型");
+    this.titleEl.setText("Edit model");
     this.contentEl.addClass("smart-model-modal");
     this.render_form();
   }
@@ -19110,7 +19136,7 @@ var SmartModelModal = class extends import_obsidian18.Modal {
       scope: model
     });
     container.appendChild(form);
-    const test_btn = container.createEl("button", { text: "测试模型" });
+    const test_btn = container.createEl("button", { text: "Test model" });
     const test_results_el = container.createDiv({ cls: "model-test-container" });
     test_btn.addEventListener("click", async () => {
       await this.run_test(test_results_el, model);
@@ -19136,7 +19162,7 @@ var import_obsidian19 = require("obsidian");
 function build_html11(model, params) {
   const details = [
     `Provider: ${model.data.provider_key}`,
-    `Model: ${model.data.model_key || "**缺失 - 编辑和选择模型**"}`
+    `Model: ${model.data.model_key || "**MISSING - EDIT & SELECT MODEL**"}`
   ];
   return `<div class="model-info">
     <div class="smart-env-settings-header">
@@ -19187,89 +19213,89 @@ var import_obsidian20 = require("obsidian");
 var provider_options = {
   chat_completion_models: [
     {
-      label: "Open Router (云)",
+      label: "Open Router (cloud)",
       value: "open_router"
     },
     {
-      label: "PRO：LM Studio（本地，需要 LM Studio 应用程序）",
+      label: "PRO: LM Studio (local, requires LM Studio app)",
       value: "lm_studio",
       disabled: true
     },
     {
-      label: "PRO：Ollama（本地，需要 Ollama 应用程序）",
+      label: "PRO: Ollama (local, requires Ollama app)",
       value: "ollama",
       disabled: true
     },
     {
-      label: "PRO: OpenAI (云)",
+      label: "PRO: OpenAI (cloud)",
       value: "openai",
       disabled: true
     },
     {
-      label: "PRO：Google Gemini（云）",
+      label: "PRO: Google Gemini (cloud)",
       value: "google",
       disabled: true
     },
     {
-      label: "PRO: Cohere (云)",
+      label: "PRO: Cohere (cloud)",
       value: "cohere",
       disabled: true
     },
     {
-      label: "PRO: xAI Grok (云)",
+      label: "PRO: xAI Grok (cloud)",
       value: "xai",
       disabled: true
     },
     {
-      label: "PRO：人类克劳德（云）",
+      label: "PRO: Anthropic Claude (cloud)",
       value: "anthropic",
       disabled: true
     },
     {
-      label: "PRO：Deepseek（云）",
+      label: "PRO: Deepseek (cloud)",
       value: "deepseek",
       disabled: true
     },
     {
-      label: "PRO：Azure OpenAI（云）",
+      label: "PRO: Azure OpenAI (cloud)",
       value: "azure",
       disabled: true
     }
   ],
   embedding_models: [
     {
-      label: "变形金刚（简单、本地、内置）",
+      label: "Transformers (easy, local, built-in)",
       value: "transformers"
     },
     {
-      label: "PRO：LM Studio（本地，需要 LM Studio 应用程序）",
+      label: "PRO: LM Studio (local, requires LM Studio app)",
       value: "lm_studio",
       disabled: true
     },
     {
-      label: "PRO：Ollama（本地，需要 Ollama 应用程序）",
+      label: "PRO: Ollama (local, requires Ollama app)",
       value: "ollama",
       disabled: true
     },
     {
-      label: "PRO: OpenAI (云)",
+      label: "PRO: OpenAI (cloud)",
       value: "openai",
       disabled: true
     },
     {
-      label: "PRO：Google Gemini（云）",
+      label: "PRO: Google Gemini (cloud)",
       value: "gemini",
       disabled: true
     },
     {
-      label: "PRO：开放路由器（云）",
+      label: "PRO: Open Router (cloud)",
       value: "open_router",
       disabled: true
     }
   ],
   ranking_models: [
     {
-      label: "PRO: Cohere (云)",
+      label: "PRO: Cohere (cloud)",
       value: "cohere",
       disabled: true
     }
@@ -19282,7 +19308,7 @@ function show_new_model_menu(models_collection, event, params = {}) {
   if (providers.length === 0) {
     if (event.target.tagName.toLowerCase() === "button") {
       event.target.disabled = true;
-      event.title = "没有可用于创建新模型的提供程序。";
+      event.title = "No providers available to create new models.";
     }
   } else {
     const menu = new import_obsidian20.Menu();
@@ -19317,8 +19343,8 @@ function ensure_settings_config(settings_config12, scope) {
       settings_config12 = settings_config12(scope);
     }
   } catch (e) {
-    console.error("评估 settings_config 函数时出错：", e);
-    settings_config12 = { error: { name: "错误", description: `Failed to load settings. ${e.message} (logged to console)` } };
+    console.error("Error evaluating settings_config function:", e);
+    settings_config12 = { error: { name: "Error", description: `Failed to load settings. ${e.message} (logged to console)` } };
   }
   return settings_config12;
 }
@@ -19341,7 +19367,7 @@ var SettingGroupPolyfill = class {
   constructor(container) {
     this.components = [];
     this.groupEl = container.createDiv("setting-group");
-    this.headerEl = this.groupEl.createDiv("设置项 设置项标题");
+    this.headerEl = this.groupEl.createDiv("setting-item setting-item-heading");
     this.headerInnerEl = this.headerEl.createDiv("setting-item-name");
     this.controlEl = this.headerEl.createDiv("setting-item-control");
     this.listEl = this.groupEl.createDiv("setting-items");
@@ -19361,7 +19387,7 @@ var SettingGroupPolyfill = class {
 };
 function render_settings_config(settings_config12, scope, container, params = {}) {
   const {
-    default_group_name = "设置"
+    default_group_name = "Settings"
   } = params;
   const settings_config_source = settings_config12;
   const group_map = build_settings_group_map(settings_config12, scope, default_group_name);
@@ -19388,7 +19414,7 @@ function render_settings_group(group_name, scope, settings_config12, container, 
     settings_config_source,
     scope,
     group_name,
-    params.default_group_name || "设置"
+    params.default_group_name || "Settings"
   ) : settings_config12;
   let SettingGroup;
   try {
@@ -19410,7 +19436,7 @@ function render_settings_group(group_name, scope, settings_config12, container, 
       settings_config13,
       scope2,
       group_name2,
-      group_params.default_group_name || "设置"
+      group_params.default_group_name || "Settings"
     );
     return render_settings_group(group_name2, scope2, group_config, container2, group_params);
   } : render_settings_group;
@@ -19516,7 +19542,7 @@ function render_settings_group(group_name, scope, settings_config12, container, 
             text.setValue(String(get_by_path(scope.settings, setting_path) || ""));
             text.onChange((value) => {
               if (settng_is_pro && !env_is_pro) {
-                new import_obsidian21.Notice("不错的尝试！这是一个 PRO 功能。请升级才能访问此设置。");
+                new import_obsidian21.Notice("Nice try! This is a PRO feature. Please upgrade to access this setting.");
                 return;
               }
               set_by_path(scope.settings, setting_path, value);
@@ -19578,7 +19604,7 @@ function render_heading_button(setting_group, scope, heading_btn) {
     if (typeof heading_btn.callback === "function") {
       await handle_config_callback(null, event, heading_btn.callback, { scope });
     } else {
-      console.warn("没有为标题按钮定义回调");
+      console.warn("No callback defined for heading button");
     }
   });
   setting_group.controlEl.appendChild(btn_el);
@@ -19631,7 +19657,7 @@ async function post_process11(models_collection, container, params) {
       {
         default_group_name: `${models_collection.model_type} models`,
         heading_btn: {
-          btn_text: "+ 新",
+          btn_text: "+ New",
           callback: (event, setting) => {
             show_new_model_menu(models_collection, event);
           }
@@ -19676,7 +19702,7 @@ async function render13(env, params) {
   return container;
 }
 async function post_process12(env, container, params) {
-  const collection_containers = container.querySelectorAll("div[数据收集密钥]");
+  const collection_containers = container.querySelectorAll("div[data-collection-key]");
   for (const collection_container of collection_containers) {
     const collection_key = collection_container.getAttribute("data-collection-key");
     const models_collection = env[collection_key];
@@ -19726,7 +19752,7 @@ var ExcludedFoldersFuzzy = class extends import_obsidian22.FuzzySuggestModal {
   constructor(app, env) {
     super(app);
     this.env = env;
-    this.setPlaceholder("选择要排除的文件夹...");
+    this.setPlaceholder("Select a folder to exclude...");
   }
   /**
    * Open the modal with an optional callback invoked after an item is chosen.
@@ -19779,10 +19805,10 @@ var ExcludedFoldersFuzzy = class extends import_obsidian22.FuzzySuggestModal {
     }
     header.empty();
     const title_el = header.createEl("h3");
-    title_el.setText("排除的文件夹");
+    title_el.setText("Excluded folders");
     if (!excluded_folders.length) {
       const empty_el = header.createEl("p");
-      empty_el.setText("尚未排除任何文件夹。");
+      empty_el.setText("No folders excluded yet.");
       return;
     }
     const list_el = header.createEl("ul");
@@ -19824,7 +19850,7 @@ var ExcludedSourcesModal = class extends import_obsidian23.Modal {
     this.env = env;
   }
   async onOpen() {
-    this.titleEl.setText("排除的来源");
+    this.titleEl.setText("Excluded Sources");
     this.contentEl.addClass("excluded-sources-modal");
     this.render_excluded_list();
   }
@@ -19838,7 +19864,7 @@ var ExcludedSourcesModal = class extends import_obsidian23.Modal {
       li.setText(file_path);
     }
     this.contentEl.createEl("hr");
-    this.contentEl.createEl("h3", { text: "路径太长，无法导入智能环境" });
+    this.contentEl.createEl("h3", { text: "Paths too long to import into Smart Environment" });
     const too_long_list_ul = this.contentEl.createEl("ul", { cls: "too-long-exclusions" });
     for (const file_path of too_long_files) {
       const li = too_long_list_ul.createEl("li");
@@ -19869,7 +19895,7 @@ async function post_process13(env, container, opts = {}) {
     re_import_sources
   };
   render_settings_config(settings_config12, env, container, {
-    default_group_name: "来源",
+    default_group_name: "Sources",
     heading_btn: {
       btn_icon: "help-circle",
       callback: (event, setting) => {
@@ -19887,8 +19913,8 @@ function highlight_reset_data(env, container) {
     if (payload.collection_key !== "embedding_models") return;
     const re_import_setting = container.querySelector(".re-import-sources");
     re_import_setting.classList.add("env-setting-highlight");
-    const notice = re_import_setting.querySelector(".reimport-notice") ? re_import_setting.querySelector(".reimport-notice") : re_import_setting.createEl("div", { cls: "重新导入通知 env-setting-note" });
-    notice.textContent = "嵌入模型已更改。请重新导入您的源以更新其嵌入。";
+    const notice = re_import_setting.querySelector(".reimport-notice") ? re_import_setting.querySelector(".reimport-notice") : re_import_setting.createEl("div", { cls: "reimport-notice env-setting-note" });
+    notice.textContent = "Embedding model changed. Please re-import your sources to update their embeddings.";
     re_import_setting.appendChild(notice);
     env.events.once("sources:reimported", () => {
       re_import_setting.classList.remove("env-setting-highlight");
@@ -19898,9 +19924,9 @@ function highlight_reset_data(env, container) {
 }
 var folder_exclusions = {
   type: "button",
-  name: "管理排除的文件夹",
-  description: "管理从处理中排除的文件夹列表。",
-  btn_text: "管理文件夹",
+  name: "Manage excluded folders",
+  description: "Manage the list of folders excluded from processing.",
+  btn_text: "Manage folders",
   callback: async function(value, setting) {
     const env = this;
     const fuzzy = new ExcludedFoldersFuzzy(env.main.app, env);
@@ -19912,9 +19938,9 @@ var folder_exclusions = {
 };
 var view_exclusions = {
   type: "button",
-  name: "查看所有排除",
-  description: "查看所有排除的来源。",
-  btn_text: "显示",
+  name: "View all exclusions",
+  description: "View all excluded sources.",
+  btn_text: "Show",
   callback: async function(value, setting) {
     const env = this;
     const modal = new ExcludedSourcesModal(env.main.app, env);
@@ -19923,17 +19949,17 @@ var view_exclusions = {
 };
 var re_import_sources = {
   type: "button",
-  name: "重置数据",
-  description: "清除源数据并重新导入。",
-  btn_text: "重新导入源",
+  name: "Reset data",
+  description: "Clear sources data and re-import.",
+  btn_text: "Re-import sources",
   callback: async function(value, setting) {
     const env = this;
     const container = setting.controlEl;
     const confirm_row = container.createEl("div", { cls: "sc-inline-confirm-row" });
     const reimport_btn = container.querySelector("button");
     reimport_btn.style.display = "none";
-    confirm_row.setText("您确定要清除所有源数据吗？此操作无法撤消。");
-    let confirm_cancel = confirm_row.createEl("button", { text: "取消" });
+    confirm_row.setText("Are you sure you want to clear all sources data? This cannot be undone.");
+    let confirm_cancel = confirm_row.createEl("button", { text: "Cancel" });
     let confirm_yes = confirm_row.createEl("button", { text: "Re-import", cls: "mod-warning" });
     confirm_yes.addEventListener("click", async (e) => {
       confirm_cancel.style.display = "none";
@@ -19967,7 +19993,7 @@ function build_html15(model, params = {}) {
   return `<div class="smart-model-modal-actions">
     <button class="new-model-btn">New</button>
     <button class="delete-model-btn">Delete</button>
-    <div class="confirm-delete-container" style="显示：无；">
+    <div class="confirm-delete-container" style="display:none;">
       <span>Are you sure?</span>
       <button class="confirm-delete-yes-btn">Yes</button>
       <button class="confirm-delete-no-btn">No</button>
@@ -20012,14 +20038,14 @@ async function post_process14(model, container, params = {}) {
 // node_modules/obsidian-smart-env/src/components/settings/notifications.js
 async function build_html16(env, opts = {}) {
   let html = `<div class="settings-group">
-    <div class="设置项 设置项标题">
+    <div class="setting-item setting-item-heading">
       <div class="setting-item-name">Muted notices</div>
     </div>
     <div class="setting-items">
   `;
   if (Object.keys(env.notices.settings?.muted || {}).length) {
     for (const notice in env.notices.settings?.muted) {
-      html += `<div class="静音通知设置项" data-notice="${notice}" style="显示：flex；对齐项目：居中； justify-content：空间之间；间隙：10px；">
+      html += `<div class="muted-notice setting-item" data-notice="${notice}" style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
         <div class="setting-item-info">
           <div class="setting-item-name">  
             ${notice}
@@ -20141,7 +20167,7 @@ function render_btn_open_selector(ctx, container) {
   const add_btn = document.createElement("button");
   add_btn.type = "button";
   add_btn.className = "sc-add-context-btn";
-  add_btn.textContent = "添加上下文";
+  add_btn.textContent = "Add context";
   container.appendChild(add_btn);
   add_btn.addEventListener("click", () => {
     ctx.emit_event("context_selector:open");
@@ -20151,7 +20177,7 @@ function render_btn_copy_context(ctx, container) {
   const copy_btn = document.createElement("button");
   copy_btn.type = "button";
   copy_btn.className = "sc-copy-clipboard";
-  copy_btn.textContent = "复制到剪贴板";
+  copy_btn.textContent = "Copy to clipboard";
   if (!ctx.has_context_items) {
     copy_btn.style.display = "none";
   }
@@ -20164,7 +20190,7 @@ function render_btn_clear_context(ctx, container) {
   const clear_btn = document.createElement("button");
   clear_btn.type = "button";
   clear_btn.className = "sc-clear-context-btn";
-  clear_btn.textContent = "清除";
+  clear_btn.textContent = "Clear";
   if (!ctx.has_context_items) {
     clear_btn.style.display = "none";
   }
@@ -20178,7 +20204,7 @@ function render_btn_help(ctx, container) {
   const help_btn = document.createElement("button");
   help_btn.type = "button";
   help_btn.className = "sc-help-btn";
-  help_btn.setAttribute("aria-label", "了解更多");
+  help_btn.setAttribute("aria-label", "Learn more");
   container.appendChild(help_btn);
   (0, import_obsidian24.setIcon)(help_btn, "help-circle");
   help_btn.addEventListener("click", () => {
@@ -20200,11 +20226,11 @@ async function copy_to_clipboard2(text) {
       const { clipboard } = require("electron");
       clipboard.writeText(text);
     } else {
-      new import_obsidian25.Notice("无法复制文本：找不到有效的方法。");
+      new import_obsidian25.Notice("Unable to copy text: no valid method found.");
     }
   } catch (err) {
-    console.error("无法复制文本：", err);
-    new import_obsidian25.Notice("复制失败。");
+    console.error("Failed to copy text:", err);
+    new import_obsidian25.Notice("Failed to copy.");
   }
 }
 
@@ -20279,7 +20305,7 @@ async function post_process18(ctx, container, opts = {}) {
     if (!app) return;
     const menu = new Menu(app);
     menu.addItem(
-      (mi) => mi.setTitle("复制链接树").setIcon("copy").onClick(async () => {
+      (mi) => mi.setTitle("Copy link tree").setIcon("copy").onClick(async () => {
         const md = tree_dom_to_wikilinks(container);
         await copy_to_clipboard2(md);
       })
@@ -20333,7 +20359,7 @@ async function post_process19(ctx, container, params = {}) {
       const tokens = estimate_tokens(chars);
       container.textContent = `\u2248 ${chars.toLocaleString()} chars \xB7 ${tokens.toLocaleString()} tokens`;
     } else {
-      container.textContent = "未选择上下文项目";
+      container.textContent = "No context items selected";
     }
   };
   render_meta();
@@ -20573,11 +20599,11 @@ function build_html22(source, opts = {}) {
   return `<div>
     <div class="source-inspector-source-info">
       <button class="source-inspector-show-data-btn" type="button">Show source data</button>
-      <div class="source-inspector-source-data" style="显示：无；保证金：0.5em 0；">
-        <pre style="最大高度：300px；溢出：自动；背景：#222；颜色：#fff；填充：0.5em；边框半径：4px；"></pre>
+      <div class="source-inspector-source-data" style="display:none; margin: 0.5em 0;">
+        <pre style="max-height:300px; overflow:auto; background:#222; color:#fff; padding:0.5em; border-radius:4px;"></pre>
       </div>
     </div>
-    <div class="智能聊天消息源检查器">
+    <div class="smart-chat-message source-inspector">
       <h2>Blocks</h2>
       <div class="source-inspector-blocks-container"></div>
     </div>
@@ -20602,15 +20628,15 @@ async function post_process21(source, frag, opts = {}) {
       if (data_div.style.display === "none") {
         pre.textContent = JSON.stringify(source.data, null, 2);
         data_div.style.display = "";
-        btn.textContent = "隐藏源数据";
+        btn.textContent = "Hide source data";
       } else {
         data_div.style.display = "none";
-        btn.textContent = "显示源数据";
+        btn.textContent = "Show source data";
       }
     });
   }
-  const source_should_embed = source.should_embed ? `<span style="颜色：绿色；">should embed</span>` : `<span style="颜色：橙色；">embedding skipped</span>`;
-  const source_embed_status = source.vec ? `<span style="颜色：绿色；">vectorized</span>` : `<span style="颜色：橙色；">not vectorized</span>`;
+  const source_should_embed = source.should_embed ? `<span style="color: green;">should embed</span>` : `<span style="color: orange;">embedding skipped</span>`;
+  const source_embed_status = source.vec ? `<span style="color: green;">vectorized</span>` : `<span style="color: orange;">not vectorized</span>`;
   const source_info_frag = this.create_doc_fragment(`<p>${source_should_embed} | ${source_embed_status}</p>`);
   source_info.appendChild(source_info_frag);
   if (!source || !source.blocks || source.blocks.length === 0) {
@@ -20621,18 +20647,18 @@ async function post_process21(source, frag, opts = {}) {
   for (const block of sorted_blocks) {
     const sub_key_display = block.sub_key.split("#").join(" > ");
     const block_info = `${sub_key_display} (${block.size} chars; lines: ${block.line_start}-${block.line_end})`;
-    const should_embed = block.should_embed ? `<span style="颜色：绿色；">should embed</span>` : `<span style="颜色：橙色；">embedding skipped</span>`;
-    const embed_status = block.vec ? `<span style="颜色：绿色；">vectorized</span>` : `<span style="颜色：橙色；">not vectorized</span>`;
+    const should_embed = block.should_embed ? `<span style="color: green;">should embed</span>` : `<span style="color: orange;">embedding skipped</span>`;
+    const embed_status = block.vec ? `<span style="color: green;">vectorized</span>` : `<span style="color: orange;">not vectorized</span>`;
     let block_content = "";
     let embed_input = "";
     try {
       const raw = await block.read();
-      block_content = raw.replace(/</g, "<").replace(/>/g, ">").replace(/\n/g, "<br>").replace(/\t/g, "&nbsp;&nbsp;");
+      block_content = raw.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>").replace(/\t/g, "&nbsp;&nbsp;");
       const embed_raw = await block.get_embed_input(raw);
-      embed_input = embed_raw.replace(/</g, "<").replace(/>/g, ">");
+      embed_input = embed_raw.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     } catch (err) {
-      console.error("[source_inspector] 读取块时出错：", err);
-      block_content = `<em style="颜色：红色；">Error reading block content</em>`;
+      console.error("[source_inspector] Error reading block:", err);
+      block_content = `<em style="color:red;">Error reading block content</em>`;
     }
     const block_frag = this.create_doc_fragment(`
       <p>
@@ -20641,7 +20667,7 @@ async function post_process21(source, frag, opts = {}) {
       </p>
       <details class="source-inspector-embed-input">
         <summary>Embed input</summary>
-        <pre style="最大高度：300px；溢出：自动；背景：#222；颜色：#fff；填充：0.5em；边框半径：4px；">${embed_input}</pre>
+        <pre style="max-height:300px; overflow:auto; background:#222; color:#fff; padding:0.5em; border-radius:4px;">${embed_input}</pre>
       </details>
       <blockquote>${block_content}</blockquote>
       <hr>
@@ -20687,9 +20713,9 @@ var EnvStatsModal = class extends import_obsidian27.Modal {
     this.env = env;
   }
   onOpen() {
-    this.titleEl.setText("智能环境");
+    this.titleEl.setText("Smart Environment");
     this.contentEl.empty();
-    this.contentEl.createEl("p", { text: "正在加载统计信息..." });
+    this.contentEl.createEl("p", { text: "Loading stats..." });
     setTimeout(this.render.bind(this), 100);
   }
   async render() {
@@ -20698,7 +20724,7 @@ var EnvStatsModal = class extends import_obsidian27.Modal {
     if (frag) {
       this.contentEl.appendChild(frag);
     } else {
-      this.contentEl.createEl("p", { text: "无法加载统计信息。" });
+      this.contentEl.createEl("p", { text: "Failed to load stats." });
     }
   }
 };
@@ -20712,45 +20738,45 @@ function register_status_bar_context_menu(env, status_container, deps = {}) {
     ev.stopPropagation();
     const menu = new MenuClass(plugin.app);
     menu.addItem(
-      (item) => item.setTitle("检查活动注释").setIcon("search").onClick(async () => {
+      (item) => item.setTitle("Inspect active note").setIcon("search").onClick(async () => {
         const active_file = plugin.app.workspace.getActiveFile();
         if (!active_file) {
-          new import_obsidian28.Notice("未找到活动注释");
+          new import_obsidian28.Notice("No active note found");
           return;
         }
         const src = env.smart_sources?.get(active_file.path);
         if (!src) {
-          new import_obsidian28.Notice("活动注释未由智能环境索引");
+          new import_obsidian28.Notice("Active note is not indexed by Smart Environment");
           return;
         }
         new SmartNoteInspectModal(plugin, src).open();
       })
     );
     menu.addItem(
-      (item) => item.setTitle("显示统计信息").setIcon("chart-pie").onClick(() => {
+      (item) => item.setTitle("Show stats").setIcon("chart-pie").onClick(() => {
         const modal = new EnvStatsModal(plugin.app, env);
         modal.open();
       })
     );
     menu.addItem(
-      (item) => item.setTitle("导出数据").setIcon("download").onClick(() => {
+      (item) => item.setTitle("Export data").setIcon("download").onClick(() => {
         env.export_json();
-        new import_obsidian28.Notice("智能环境已导出");
+        new import_obsidian28.Notice("Smart Env exported");
       })
     );
     menu.addItem(
-      (item) => item.setTitle("里程碑").setIcon("flag").onClick(() => {
+      (item) => item.setTitle("Milestones").setIcon("flag").onClick(() => {
         env.open_milestones_modal();
       })
     );
     menu.addItem(
-      (item) => item.setTitle("通知").setIcon("bell").onClick(() => {
+      (item) => item.setTitle("Notifications").setIcon("bell").onClick(() => {
         env.open_notifications_feed_modal();
       })
     );
     menu.addSeparator();
     menu.addItem(
-      (item) => item.setTitle("了解社区支持者").setIcon("hand-heart").onClick(() => {
+      (item) => item.setTitle("Learn about Community Supporters").setIcon("hand-heart").onClick(() => {
         const url = "https://smartconnections.app/community-supporters/?utm_source=status-bar";
         window.open(url, "_external");
       })
@@ -20770,16 +20796,16 @@ function build_html23() {
     <a
       class="smart-env-status-container"
       role="button"
-      title="智能环境状态"
-      aria-label="智能环境状态"
+      title="Smart Environment status"
+      aria-label="Smart Environment status"
       tabindex="0"
     >
       <span class="smart-env-status-icon" aria-hidden="true"></span>
       <span class="smart-env-status-msg" aria-live="polite"></span>
       <span
         class="smart-env-status-indicator"
-        title="打开通知"
-        aria-label="打开通知源"
+        title="Open notifications"
+        aria-label="Open notifications feed"
         role="button"
         tabindex="0"
       ></span>
@@ -20807,12 +20833,12 @@ function post_process22(env, container, opts = {}) {
   const render_status_elm = () => {
     const embed_queue = get_embed_queue();
     let message = `Smart Env${version ? " " + version : ""}`;
-    let title = "智能环境状态";
+    let title = "Smart Environment status";
     let indicator_count = get_session_event_count();
     let indicator_level = env.event_logs?.notification_status || "info";
     if (embed_queue > 0) {
       message = `Embed now (${embed_queue})`;
-      title = "点击重新导入。";
+      title = "Click to re-import.";
       indicator_level = "attention";
     }
     if (icon_slot) {
@@ -20877,8 +20903,8 @@ var import_obsidian30 = require("obsidian");
 function build_html24(plugin, opts = {}) {
   const { plugin_name = plugin.manifest.name } = opts;
   return `<div class="wrapper">
-    <div id="footer-callout" data-callout-metadata="" data-callout-fold="" data-callout="info" class="callout" style="mix-blend-mode：未设置；">
-      <div class="callout-title" style="对齐项目：中心；">
+    <div id="footer-callout" data-callout-metadata="" data-callout-fold="" data-callout="info" class="callout" style="mix-blend-mode: unset;">
+      <div class="callout-title" style="align-items: center;">
         <div class="callout-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -20904,7 +20930,7 @@ function build_html24(plugin, opts = {}) {
               <ul>
                 <li>Named contexts</li>
                 <li>External sources: include code from external repositories</li>
-                <li>Context codeblocks: embed context in notes ("我最有价值的工作流程" - \u{1F334} Brian)</li>
+                <li>Context codeblocks: embed context in notes ("My most valuable workflow" - \u{1F334} Brian)</li>
               </ul>
             </li>
             <li><b>Smart Editor:</b>
@@ -21063,7 +21089,9 @@ var template_presets = {
   },
   json_structured: {
     label: "JSON structured",
-    context_template_before: '{\n  "context": {',\n    context_template_after：“ }\n}",\n    item_template_before：'    "{{KEY}}": { "name": "{{ITEM_NAME}}", "updated": "{{TIME_AGO}}", "depth": {{LINK_DEPTH}}, "content": ',
+    context_template_before: '{\n  "context": {',
+    context_template_after: "  }\n}",
+    item_template_before: '    "{{KEY}}": { "name": "{{ITEM_NAME}}", "updated": "{{TIME_AGO}}", "depth": {{LINK_DEPTH}}, "content": ',
     item_template_after: "    },",
     json_stringify: true
   },
@@ -21793,7 +21821,14 @@ var NOTICES = {
     en: "Supporter license key required for early access update"
   },
   revert_to_stable_release: {
-    en: 'Click "检查更新" in the community plugins tab and complete the update for Smart Connections to finish reverting to the stable release.'，\n    超时：0\n  },\n  已安装操作：{\n    en:'Installed action "{{name}}"'},\n  操作安装错误：{\n    en:'Error installing action "{{name}}": {{error}}',
+    en: 'Click "Check for Updates" in the community plugins tab and complete the update for Smart Connections to finish reverting to the stable release.',
+    timeout: 0
+  },
+  action_installed: {
+    en: 'Installed action "{{name}}"'
+  },
+  action_install_error: {
+    en: 'Error installing action "{{name}}": {{error}}',
     timeout: 0
   },
   embed_model_not_loaded: {
@@ -22275,7 +22310,8 @@ var SmartEnv2 = class extends SmartEnv {
    * @returns {Promise<SmartEnv>} The initialized SmartEnv instance.
    */
   static async create(plugin, env_config) {
-    if (!plugin) throw new Error("SmartEnv.create: 'plugin'参数匹配，通常只需重用基本的“to_openai()”即可。”);\n    if (!env_config) throw new Error("SmartEnv.create:'env_config' parameter is required.");
+    if (!plugin) throw new Error("SmartEnv.create: 'plugin' parameter is required.");
+    if (!env_config) throw new Error("SmartEnv.create: 'env_config' parameter is required.");
     env_config.version = this.version;
     add_smart_chat_icon();
     add_smart_connections_icon();
@@ -22608,7 +22644,7 @@ var SmartPluginSettingsTab = class extends import_obsidian44.PluginSettingTab {
     if (this.env.is_pro && !this.env_settings_tab) this.plugin.addSettingTab(new SmartEnvSettingTab(this.plugin.app, this.plugin));
     this.icon = "smart-connections";
     if (this.env.is_pro) {
-      this.name = this.name.replace("智能", "");
+      this.name = this.name.replace("Smart ", "");
     }
   }
   get smart_view() {
@@ -22651,13 +22687,13 @@ var SmartPluginSettingsTab = class extends import_obsidian44.PluginSettingTab {
     if (this.env.is_pro) {
       const settings_item_div = container.createDiv({ cls: "setting-item" });
       const info_div = settings_item_div.createDiv({ cls: "setting-item-info" });
-      info_div.createDiv({ cls: "setting-item-name", text: "智能环境" });
+      info_div.createDiv({ cls: "setting-item-name", text: "Smart Environment" });
       info_div.createDiv({
         cls: "setting-item-description",
-        text: "在专用智能环境设置选项卡中管理全局设置。"
+        text: "Manage global settings in the dedicated Smart Environment settings tab."
       });
       const control_div = settings_item_div.createDiv({ cls: "setting-item-control" });
-      const button = control_div.createEl("button", { text: "打开设置" });
+      const button = control_div.createEl("button", { text: "Open settings" });
       button.addEventListener("click", () => {
         this.app.setting.openTabById("smart-environment");
       });
@@ -22709,7 +22745,7 @@ var SmartEnvSettingTab = class extends import_obsidian44.PluginSettingTab {
     this.header_container = this.containerEl.createDiv({ cls: "smart-plugin-settings-header" });
     this.plugin_container = this.containerEl.createDiv({ cls: "smart-plugin-settings-main" });
     this.pro_plugins_container = this.containerEl.createDiv({ cls: "smart-plugin-settings-pro-plugins" });
-    this.header_container.createEl("p", { text: "从一个选项卡管理所有全局智能环境设置。这些设置适用于所有智能插件。" });
+    this.header_container.createEl("p", { text: "Manage all global Smart Environment settings from one tab. These settings apply to all Smart Plugins." });
     const settings_smart_env = await this.render_component("settings_smart_env", this.env);
     if (settings_smart_env) this.plugin_container.appendChild(settings_smart_env);
     const smart_plugins_settings = await this.render_component("pro_plugins_list", this.env);
@@ -22722,13 +22758,13 @@ function render_pre_env_load(scope) {
   const env = scope.env;
   if (env.state !== "loaded") {
     if (env.state === "loading") {
-      container.createEl("p", { text: "智能环境正在加载…" });
+      container.createEl("p", { text: "Smart Environment is loading\u2026" });
     } else {
-      container.createEl("p", { text: "智能环境尚未初始化。" });
-      const load_btn = container.createEl("button", { text: "加载智能环境" });
+      container.createEl("p", { text: "Smart Environment not yet initialized." });
+      const load_btn = container.createEl("button", { text: "Load Smart Environment" });
       load_btn.addEventListener("click", async () => {
         load_btn.disabled = true;
-        load_btn.textContent = "正在加载智能环境…";
+        load_btn.textContent = "Loading Smart Environment\u2026";
         await env.load(true);
       });
     }
@@ -22747,7 +22783,7 @@ var SmartPlugin = class extends import_obsidian45.Plugin {
     return {
       show_release_notes: {
         id: "show-release-notes",
-        name: "显示发行说明",
+        name: "Show release notes",
         callback: () => this.show_release_notes()
       }
     };
@@ -22833,7 +22869,7 @@ var SmartPlugin = class extends import_obsidian45.Plugin {
 
 // node_modules/smart-collections/utils/collection_instance_name_from.js
 function collection_instance_name_from2(class_name) {
-  if (class_name.endsWith("项目")) {
+  if (class_name.endsWith("Item")) {
     return class_name.replace(/Item$/, "").replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase();
   }
   return class_name.replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase().replace(/y$/, "ie") + "s";
@@ -23706,7 +23742,7 @@ var Collection2 = class {
     if (name.match(/\d$/)) name = name.slice(0, -1);
     if (name.endsWith("ies")) return name.slice(0, -3) + "y";
     else if (name.endsWith("s")) return name.slice(0, -1);
-    return name + "项目";
+    return name + "Item";
   }
   /**
    * Derives a readable item name from the item class name.
@@ -24114,7 +24150,7 @@ var ConnectionsList = class extends CollectionItem2 {
   }
   async post_process(results, params = {}) {
     if (!results?.length) {
-      console.warn("没有要后处理的结果，收到：", results);
+      console.warn("No results to post-process, received:", results);
       return [];
     }
     const action_key = this.settings.connections_post_process;
@@ -24233,32 +24269,32 @@ var ConnectionsLists = class extends Collection2 {
 function settings_config10(scope) {
   const config = {
     "results_collection_key": {
-      name: "连接结果类型",
+      name: "Connection results type",
       type: "dropdown",
-      description: "选择结果应该是源还是块。",
-      option_1: "smart_sources|来源",
-      option_2: "smart_blocks|块",
+      description: "Choose whether results should be sources or blocks.",
+      option_1: "smart_sources|Sources",
+      option_2: "smart_blocks|Blocks",
       options_callback: () => {
         const options = [
-          { value: "smart_sources", name: "来源" }
+          { value: "smart_sources", name: "Sources" }
         ];
         if (scope.env.smart_blocks) {
-          options.push({ value: "smart_blocks", name: "块" });
+          options.push({ value: "smart_blocks", name: "Blocks" });
         }
         return options;
       }
     },
     "results_limit": {
-      name: "结果限制",
+      name: "Results limit",
       type: "number",
-      description: "调整连接视图中显示的连接数（默认 20）。"
+      description: "Adjust the number of connections displayed in the connections view (default 20)."
     }
   };
   if (!scope.env.smart_blocks.settings.embed_blocks) {
     config.results_collection_key = {
       type: "html",
-      value: create_settings_section_heading("连接结果类型", '在智能块设置中启用“嵌入块”以使用块连接。'),
-      name: "连接结果类型"
+      value: create_settings_section_heading("Connection results type", 'Enable "Embed blocks" in Smart Blocks settings to use block connections.'),
+      name: "Connection results type"
     };
   }
   return config;
@@ -24304,7 +24340,7 @@ var StoryModal = class _StoryModal extends import_obsidian46.Modal {
       cls: "sc-story-container"
     });
     if (import_obsidian46.Platform.isMobile) {
-      const btn = container.createEl("button", { text: "在浏览器中打开" });
+      const btn = container.createEl("button", { text: "Open in browser" });
       btn.addEventListener("click", () => {
         open_url_externally(this.plugin, this.url);
         this.close();
@@ -24484,37 +24520,37 @@ function filter_hidden_results(results = [], connections_state = {}) {
 async function build_html26(connections_list, opts = {}) {
   const top_bar_buttons = [
     {
-      title: "刷新连接",
+      title: "Refresh connections",
       icon: "refresh-cw",
       attrs: 'data-action="refresh-connections"'
     },
     {
-      title: "展开全部",
+      title: "Expand all",
       icon: "unfold-vertical",
       attrs: 'data-action="expand-all"'
     },
     {
-      title: "折叠全部",
+      title: "Collapse all",
       icon: "fold-vertical",
       attrs: 'data-action="collapse-all"'
     },
     {
-      title: "将结果发送到 Smart Context",
+      title: "Send results to Smart Context",
       icon: "briefcase",
       attrs: 'data-action="send-to-smart-context"'
     },
     {
-      title: "复制为链接列表",
+      title: "Copy as list of links",
       icon: "copy",
       attrs: 'data-action="copy-as-links"'
     },
     {
-      title: "连接设置",
+      title: "Connections settings",
       icon: "settings",
       attrs: 'data-action="open-settings"'
     },
     {
-      title: "帮助和入门",
+      title: "Help & getting started",
       icon: "help-circle",
       attrs: 'data-action="open-help"'
     }
@@ -24526,7 +24562,7 @@ async function build_html26(connections_list, opts = {}) {
       ${this.get_icon_html(btn.icon)}
     </button>
   `).join("");
-  const html = `<div class="connections-codeblockconnections-item-view sc-connections-view">
+  const html = `<div class="connections-codeblock connections-item-view sc-connections-view">
     <div class="connections-top-bar">
       <div class="connections-actions">
         ${top_bar_buttons}
@@ -24551,7 +24587,7 @@ async function post_process25(connections_list, container, opts = {}) {
   const env = connections_list.env;
   const app = env.plugin.app || window.app;
   const render_list = async () => {
-    console.log("在代码块视图中渲染连接列表");
+    console.log("Rendering connections list in codeblock view");
     const connections_list_component_key = opts.connections_list_component_key || connections_list.connections_list_component_key || "connections_list_v3";
     const list = await env.smart_components.render_component(
       connections_list_component_key,
@@ -24572,7 +24608,7 @@ async function post_process25(connections_list, container, opts = {}) {
         await refresh_entity.collection.process_source_import_queue?.();
         render_list();
       } else {
-        console.warn("找不到用于刷新的实体");
+        console.warn("No entity found for refresh");
       }
     });
     const expand_all_button = container.querySelector('[data-action="expand-all"]');
@@ -24590,14 +24626,14 @@ async function post_process25(connections_list, container, opts = {}) {
     const context_button = container.querySelector('[data-action="send-to-smart-context"]');
     context_button?.addEventListener("click", async () => {
       const raw_results = await get_results_fallback(connections_list, opts);
-      if (!raw_results.length) return new import_obsidian47.Notice("没有连接结果可发送到智能上下文");
+      if (!raw_results.length) return new import_obsidian47.Notice("No connection results to send to Smart Context");
       const connections_state = connections_list?.item?.data?.connections || {};
       const visible_results = filter_hidden_results(raw_results, connections_state);
       const context_items = build_connections_context_items({
         source_item: connections_list?.item,
         results: visible_results
       });
-      if (!context_items.length) return new import_obsidian47.Notice("没有可见的连接结果发送到智能上下文");
+      if (!context_items.length) return new import_obsidian47.Notice("No visible connection results to send to Smart Context");
       const smart_context = env.smart_contexts.new_context();
       smart_context.add_items(context_items);
       smart_context.emit_event("context_selector:open");
@@ -24606,13 +24642,13 @@ async function post_process25(connections_list, container, opts = {}) {
     const copy_links_button = container.querySelector('[data-action="copy-as-links"]');
     copy_links_button?.addEventListener("click", async () => {
       const raw_results = await get_results_fallback(connections_list, opts);
-      if (!raw_results.length) return new import_obsidian47.Notice("没有可复制的连接结果");
+      if (!raw_results.length) return new import_obsidian47.Notice("No connection results to copy");
       const connections_state = connections_list?.item?.data?.connections || {};
       const visible_results = filter_hidden_results(raw_results, connections_state);
       const links_payload = format_connections_as_links(visible_results);
-      if (!links_payload) return new import_obsidian47.Notice("没有可见的连接结果要复制");
+      if (!links_payload) return new import_obsidian47.Notice("No visible connection results to copy");
       await copy_to_clipboard2(links_payload);
-      new import_obsidian47.Notice("将连接复制为链接列表");
+      new import_obsidian47.Notice("Copied connections as list of links");
       connections_list.emit_event("connections:copied_list");
     });
     const settings_button = container.querySelector('[data-action="open-settings"]');
@@ -24622,7 +24658,7 @@ async function post_process25(connections_list, container, opts = {}) {
     });
     const open_help = () => {
       StoryModal.open(env.plugin, {
-        title: "智能连接入门",
+        title: "Getting Started With Smart Connections",
         url: "https://smartconnections.app/story/smart-connections-getting-started/?utm_source=connections-view-help#page=understanding-connections-1"
       });
     };
@@ -24639,7 +24675,7 @@ async function get_results_fallback(connections_list, opts = {}) {
     const results = await connections_list.get_results({ ...opts });
     return Array.isArray(results) ? results : [];
   } catch (err) {
-    console.error("无法获取连接结果", err);
+    console.error("Failed to fetch connections results", err);
     return [];
   }
 }
@@ -24755,7 +24791,8 @@ async function build_html27(result, params = {}) {
   return `<div class="temp-container">
     <div
       class="sc-result ${all_expanded ? "" : "sc-collapsed"}"
-      data-path="${item.path.replace(/"/g, "\"")}"数据链接="${item.link?.replace(/"/g, "&quot;") || ""}"
+      data-path="${item.path.replace(/"/g, "&quot;")}"
+      data-link="${item.link?.replace(/"/g, "&quot;") || ""}"
       data-collection="${item.collection_key}"
       data-score="${score}"
       data-key="${item.key}"
@@ -24763,12 +24800,12 @@ async function build_html27(result, params = {}) {
     >
       <span class="header">
         ${this.get_icon_html("right-triangle")}
-        <a class="sc-result-file-title" href="#" title="${item.path.replace(/"/g, "\"")}"可拖动="true">
+        <a class="sc-result-file-title" href="#" title="${item.path.replace(/"/g, "&quot;")}" draggable="true">
           ${header_html}
         </a>
       </span>
       <ul draggable="true">
-        <li class="sc-result-file-title"标题="${item.path.replace(/"/g, "&quot;")}" data-collection="${item.collection_key}" data-key="${item.key}"></li>
+        <li class="sc-result-file-title" title="${item.path.replace(/"/g, "&quot;")}" data-collection="${item.collection_key}" data-key="${item.key}"></li>
       </ul>
     </div>
   </div>`;
@@ -24871,13 +24908,13 @@ ${await entity.read()}`;
           source_item.collection.save();
           source_item.emit_event("connections:hidden_item");
         } catch (err) {
-          new import_obsidian48.Notice("隐藏失败 – 检查控制台");
+          new import_obsidian48.Notice("Hide failed \u2013 check console");
           console.error(err);
         }
       });
     });
     menu.addItem((menu_item) => {
-      const title_prefix = pinned ? "取消固定" : "Pin";
+      const title_prefix = pinned ? "Unpin" : "Pin";
       menu_item.setTitle(`${title_prefix} ${target_name}`).setIcon(pinned ? "pin-off" : "pin").onClick(() => {
         try {
           if (pinned) {
@@ -24902,9 +24939,9 @@ ${await entity.read()}`;
     const links_payload = format_connections_as_links(results);
     if (links_payload) {
       menu.addItem((menu_item) => {
-        menu_item.setTitle("复制为链接列表").setIcon("copy").onClick(async () => {
+        menu_item.setTitle("Copy as list of links").setIcon("copy").onClick(async () => {
           await copy_to_clipboard2(links_payload);
-          new import_obsidian48.Notice("连接链接复制到剪贴板");
+          new import_obsidian48.Notice("Connections links copied to clipboard");
           result_scope.connections_list.emit_event("connections:copied_list");
         });
       });
@@ -24918,10 +24955,10 @@ ${await entity.read()}`;
           if (!changed) return;
           if (source_item.data.hidden_connections) delete source_item.data.hidden_connections;
           source_item.queue_save();
-          container.closest(".sc-connections-view")?.querySelector('[title="刷新"]')?.click();
+          container.closest(".sc-connections-view")?.querySelector('[title="Refresh"]')?.click();
           source_item.collection.save();
         } catch (err) {
-          new import_obsidian48.Notice("取消隐藏失败 – 检查控制台");
+          new import_obsidian48.Notice("Unhide failed \u2013 check console");
           console.error(err);
         }
       });
@@ -24933,14 +24970,14 @@ ${await entity.read()}`;
           const changed = remove_all_pinned_states(source_item.data.connections);
           if (!changed) return;
           const list_root = container.closest(".connections-list");
-          list_root?.querySelectorAll(".sc-结果[数据固定]").forEach((result_el) => {
+          list_root?.querySelectorAll(".sc-result[data-pinned]").forEach((result_el) => {
             result_el.classList.remove("sc-result-pinned");
             result_el.removeAttribute("data-pinned");
           });
           source_item.queue_save();
           source_item.collection.save();
         } catch (err) {
-          new import_obsidian48.Notice("取消固定失败 – 检查控制台");
+          new import_obsidian48.Notice("Unpin failed \u2013 check console");
           console.error(err);
         }
       });
@@ -24981,8 +25018,8 @@ function should_render_embed(entity) {
   return false;
 }
 function process_for_rendering(content) {
-  if (content.includes("```数据视图")) content = content.replace(/```dataview/g, "```\\dataview");
-  if (content.includes("```智能上下文")) content = content.replace(/```smart-context/g, "```\\smart-context");
+  if (content.includes("```dataview")) content = content.replace(/```dataview/g, "```\\dataview");
+  if (content.includes("```smart-context")) content = content.replace(/```smart-context/g, "```\\smart-context");
   if (content.includes("```smart-chatgpt")) content = content.replace(/```smart-chatgpt/g, "```\\smart-chatgpt");
   if (content.includes("![[")) content = content.replace(/\!\[\[/g, "! [[");
   return content;
@@ -24995,22 +25032,22 @@ function toggle_result(event) {
 }
 var settings_config11 = {
   "show_full_path": {
-    name: "显示完整路径",
+    name: "Show full path",
     type: "toggle",
-    description: "打开将在连接结果中包含文件夹路径。",
+    description: "Turning on will include the folder path in the connections results.",
     default: true
   },
   "render_markdown": {
-    name: "渲染降价",
+    name: "Render markdown",
     type: "toggle",
-    description: "关闭以防止渲染 markdown 并将连接结果显示为纯文本。",
+    description: "Turn off to prevent rendering markdown and display connection results as plain text.",
     default: true
   }
 };
 
 // src/components/connections-list/v3.js
 async function build_html28(connections_list, opts = {}) {
-  return `<div><div class="连接列表 sc-list" data-key="${connections_list.item.key}"></div></div>`;
+  return `<div><div class="connections-list sc-list" data-key="${connections_list.item.key}"></div></div>`;
 }
 async function render28(connections_list, opts = {}) {
   const html = await build_html28.call(this, connections_list, opts);
@@ -25961,7 +25998,7 @@ var SmartItemView = class extends import_obsidian52.ItemView {
 };
 
 // releases/latest_release.md
-var latest_release_default = '> [!NOTE] Patch v4.1.8\n> - Added: "Pin" and "隐藏" events/milestones\n> \n> All Smart Plugins:\n> - Fixed: verified Pro plugins login should work on mobile\n> - Fixed: settings groups now re-render when a dropdown changes (prevents stale dependent settings)\n> - Improved: notifications modal includes a "加载更多" button (beyond the default 100)\n\n> [!NOTE]- Previous patches\n> > [!NOTE]- v4.1.7\n> > - Added: Links to docs from [milestones](https://smartconnections.app/smart-environment/milestones/?utm_source=release-notes)\n> > - Added: Include active source item in context created from the connections view\n> > - Fixed: replaced model source for multilingual E5 Small embedding model to ensure quantized variations available\n> \n> > [!NOTE]- v4.1.6\n> > - Added: milestones feature with modal and checklist components\n> > - Added: connections view menu option to copy results as links \n> > - Added: multilingual-e5-small embedding model support\n> > - Improved: settings tab with added "了解更多" and "help" buttons to settings groups\n> > - Fixed: markdown parser should handle frontmatter correctly (prevent false-positive frontmatter detection)\n> \n> > [!NOTE]- v4.1.4\n> > - Added fallback for opening Pro login in case the button doesn\'t automatically open the browser as expected\n> \n> > [!NOTE]- v4.1.3\n> > - Added link to documentation in settings for easier access\n> > - Fixed highlight "Reset data" after embedding model change\n> \n> > [!NOTE]- v4.1.2\n> > - Improved model configuration UX\n> >   - Added "Delete" functionality to better manage models\n> > - Enhanced UI for settings and improved styling\n> > - Pro: Updated score algorithm settings to clarify descriptions\n> \n> > [!NOTE]- v4.1.1\n> > - Connections codeblock view should render as expected without errors\n> \n> \n# Smart Connections `v4`\r\n\r\n## What\'s new in v4\r\n\r\nSmart Connections v4 focuses the core plugin on a simple promise: install, enable, and AI-powered connections just work. Advanced configuration and power-user workflows now live in Pro plugins. Read [Introducing Pro Plugins](https://smartconnections.app/introducing-pro-plugins/?utm_source=connections-release-notes) to learn more.\r\n\r\n### Pause connections\r\n\r\nUse the new Connections "pause" button to freeze the connections results. This allows you to move through your vault while keeping the connections to a specific note visible while you work.\r\n\r\n### Copy connections as list of links\r\n\r\nRight-click the connections results to *copy all links* to clipboard.\r\n\r\n### Copy all connections content (Context Engineering)\r\n\r\nClick the connections view menu button and "Send to Smart Context" (briefcase icon) option. This allows you to quickly copy *all content from the connections* to clipboard for use as context with any AI chat! The Smart Context view also lets you add or remove items before copying all to the clipboard in one-click!\r\n\r\n### Pinned connections\r\n\r\nIn addition to "hiding" connections, you can now "Pin" connections. This ensures the pinned connections are always visible in the connections view. **Connections Pro:** *Hidden and pinned connections are used by new connections algorithms (available in Pro) to improve results!*\r\n\r\n### Events and notifications\r\n\r\nImportant events are now surfaced in a dedicated notifications modal:\r\n\r\n- On desktop, click the Smart Env item in the status bar to open the notifications modal.  \r\n- On mobile, a Smart Environment notice appears at the bottom of the Connections view; tap it to review events.\r\n\r\nExamples of events you might see:\r\n\r\n- Initial indexing complete for your vault  \r\n- Sources reimported after model changes  \r\n- Warnings when exclusions block indexing on specific folders or files  \r\n\r\nObjectives of the new Events system:\r\n\r\n- make the environment inspectable and understandable\r\n- reduce the number of Obsidian native notifications\r\n\r\n### Connections Pro\r\n\r\nConnections Pro builds on the core plugin and Smart Environment to give power users more control.\r\n\r\n![](https://smartconnections.app/assets/connections-view-pro-notes.gif)\r\n\r\nExamples of Pro features:\r\n\r\n- **Inline connections**  \r\n  Small badges in the editor that show how many strong matches a block has, with a pop-over of related blocks and notes.  \r\n- **Footer connections**  \r\n  A persistent panel that updates as you type so high value connections stay visible while you write.  \r\n- **Configurable scoring and ranking**  \r\n  Choose different algorithms for how results are scored and optionally add a rerank stage.  \r\n- **Connections in Bases**  \r\n  Use `score_connection` and `list_connections` in Obsidian Bases to show similarity columns and related note lists in tables.  \r\n- **Advanced filters and models**  \r\n  Extra Smart Environment controls for embeddings, collections, and include or exclude rules.  \r\n- **Early release experiments**  \r\n  New ideas launch in Early channels first so supporters can shape how they evolve.\r\n\r\nConnections Pro is part of the [Pro plugins](https://smartconnections.app/pro-plugins/?utm_source=connections-release-notes) family and is available to active project supporters. It is still built on the same open Smart Environment. Supporting Pro helps fund development of all Smart Plugins and the free core.\n';
+var latest_release_default = '> [!NOTE] Patch v4.1.8\n> - Added: "Pin" and "Hide" events/milestones\n> \n> All Smart Plugins:\n> - Fixed: verified Pro plugins login should work on mobile\n> - Fixed: settings groups now re-render when a dropdown changes (prevents stale dependent settings)\n> - Improved: notifications modal includes a "Load more" button (beyond the default 100)\n\n> [!NOTE]- Previous patches\n> > [!NOTE]- v4.1.7\n> > - Added: Links to docs from [milestones](https://smartconnections.app/smart-environment/milestones/?utm_source=release-notes)\n> > - Added: Include active source item in context created from the connections view\n> > - Fixed: replaced model source for multilingual E5 Small embedding model to ensure quantized variations available\n> \n> > [!NOTE]- v4.1.6\n> > - Added: milestones feature with modal and checklist components\n> > - Added: connections view menu option to copy results as links \n> > - Added: multilingual-e5-small embedding model support\n> > - Improved: settings tab with added "learn more" and "help" buttons to settings groups\n> > - Fixed: markdown parser should handle frontmatter correctly (prevent false-positive frontmatter detection)\n> \n> > [!NOTE]- v4.1.4\n> > - Added fallback for opening Pro login in case the button doesn\'t automatically open the browser as expected\n> \n> > [!NOTE]- v4.1.3\n> > - Added link to documentation in settings for easier access\n> > - Fixed highlight "Reset data" after embedding model change\n> \n> > [!NOTE]- v4.1.2\n> > - Improved model configuration UX\n> >   - Added "Delete" functionality to better manage models\n> > - Enhanced UI for settings and improved styling\n> > - Pro: Updated score algorithm settings to clarify descriptions\n> \n> > [!NOTE]- v4.1.1\n> > - Connections codeblock view should render as expected without errors\n> \n> \n# Smart Connections `v4`\r\n\r\n## What\'s new in v4\r\n\r\nSmart Connections v4 focuses the core plugin on a simple promise: install, enable, and AI-powered connections just work. Advanced configuration and power-user workflows now live in Pro plugins. Read [Introducing Pro Plugins](https://smartconnections.app/introducing-pro-plugins/?utm_source=connections-release-notes) to learn more.\r\n\r\n### Pause connections\r\n\r\nUse the new Connections "pause" button to freeze the connections results. This allows you to move through your vault while keeping the connections to a specific note visible while you work.\r\n\r\n### Copy connections as list of links\r\n\r\nRight-click the connections results to *copy all links* to clipboard.\r\n\r\n### Copy all connections content (Context Engineering)\r\n\r\nClick the connections view menu button and "Send to Smart Context" (briefcase icon) option. This allows you to quickly copy *all content from the connections* to clipboard for use as context with any AI chat! The Smart Context view also lets you add or remove items before copying all to the clipboard in one-click!\r\n\r\n### Pinned connections\r\n\r\nIn addition to "hiding" connections, you can now "Pin" connections. This ensures the pinned connections are always visible in the connections view. **Connections Pro:** *Hidden and pinned connections are used by new connections algorithms (available in Pro) to improve results!*\r\n\r\n### Events and notifications\r\n\r\nImportant events are now surfaced in a dedicated notifications modal:\r\n\r\n- On desktop, click the Smart Env item in the status bar to open the notifications modal.  \r\n- On mobile, a Smart Environment notice appears at the bottom of the Connections view; tap it to review events.\r\n\r\nExamples of events you might see:\r\n\r\n- Initial indexing complete for your vault  \r\n- Sources reimported after model changes  \r\n- Warnings when exclusions block indexing on specific folders or files  \r\n\r\nObjectives of the new Events system:\r\n\r\n- make the environment inspectable and understandable\r\n- reduce the number of Obsidian native notifications\r\n\r\n### Connections Pro\r\n\r\nConnections Pro builds on the core plugin and Smart Environment to give power users more control.\r\n\r\n![](https://smartconnections.app/assets/connections-view-pro-notes.gif)\r\n\r\nExamples of Pro features:\r\n\r\n- **Inline connections**  \r\n  Small badges in the editor that show how many strong matches a block has, with a pop-over of related blocks and notes.  \r\n- **Footer connections**  \r\n  A persistent panel that updates as you type so high value connections stay visible while you write.  \r\n- **Configurable scoring and ranking**  \r\n  Choose different algorithms for how results are scored and optionally add a rerank stage.  \r\n- **Connections in Bases**  \r\n  Use `score_connection` and `list_connections` in Obsidian Bases to show similarity columns and related note lists in tables.  \r\n- **Advanced filters and models**  \r\n  Extra Smart Environment controls for embeddings, collections, and include or exclude rules.  \r\n- **Early release experiments**  \r\n  New ideas launch in Early channels first so supporters can shape how they evolve.\r\n\r\nConnections Pro is part of the [Pro plugins](https://smartconnections.app/pro-plugins/?utm_source=connections-release-notes) family and is available to active project supporters. It is still built on the same open Smart Environment. Supporting Pro helps fund development of all Smart Plugins and the free core.\n';
 
 // src/views/release_notes_view.js
 var ReleaseNotesView = class _ReleaseNotesView extends SmartItemView {
@@ -25969,7 +26006,7 @@ var ReleaseNotesView = class _ReleaseNotesView extends SmartItemView {
     return "smart-release-notes-view";
   }
   static get display_text() {
-    return "发行说明";
+    return "Release Notes";
   }
   static get icon_name() {
     return "file-text";
@@ -26000,7 +26037,7 @@ var ReleaseNotesView = class _ReleaseNotesView extends SmartItemView {
     const content = this.containerEl?.querySelector(".view-content");
     let preview = content?.querySelector(".markdown-preview-view");
     if (!preview) {
-      const main = content?.createDiv("cm-scroller 是可读行宽");
+      const main = content?.createDiv("cm-scroller is-readable-line-width");
       preview = main?.createDiv("markdown-preview-view markdown-rendered");
     }
     return preview;
@@ -26008,7 +26045,7 @@ var ReleaseNotesView = class _ReleaseNotesView extends SmartItemView {
   async render() {
     while (!this.container) {
       await new Promise((resolve) => setTimeout(resolve, 100));
-      console.warn("等待containerEl 准备好...", this.container);
+      console.warn("Waiting for containerEl to be ready...", this.container);
     }
     await import_obsidian53.MarkdownRenderer.render(
       this.app,
@@ -26070,7 +26107,7 @@ function add_smart_dice_icon() {
   (0, import_obsidian54.addIcon)("smart-dice", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <rect x="1" y="1" width="22" height="22" rx="2" fill="none"/>
 
-  <g transform="翻译(12 10) 比例(0.18) 翻译(-50 -50)">
+  <g transform="translate(12 10) scale(0.18) translate(-50 -50)">
     <path d="M50 20 L80 40 L80 60 L50 100" fill="none" stroke="currentColor" stroke-width="4"/>
     <path d="M30 50 L55 70" fill="none" stroke="currentColor" stroke-width="5"/>
     <circle cx="50" cy="20" r="9" fill="currentColor"/>
@@ -26103,7 +26140,7 @@ var ConnectionsItemView = class extends SmartItemView {
     return "smart-connections-view";
   }
   static get display_text() {
-    return "连接";
+    return "Connections";
   }
   static get icon_name() {
     return "smart-connections";
@@ -26152,7 +26189,7 @@ var ConnectionsItemView = class extends SmartItemView {
       }
     });
     register_env_event_listener(this, "connections:show", (event) => {
-      console.log("连接：显示收到的事件", { event });
+      console.log("connections:show event received", { event });
       if (event.collection_key && event.item_key) {
         const collection = this.env[event.collection_key];
         const item = collection.get(event.item_key);
@@ -26198,11 +26235,11 @@ function is_visible(container) {
     return false;
   }
   if (!container.isConnected) {
-    console.warn("连接容器未连接到 DOM");
+    console.warn("Connections container is not connected to DOM");
     return false;
   }
   if (typeof container.checkVisibility === "function" && container.checkVisibility() === false) {
-    console.log("连接容器不可见");
+    console.log("Connections container is not visible");
     return false;
   }
   return true;
@@ -26216,7 +26253,7 @@ var get_registry = (view) => {
 };
 var register_env_event_listener = (view, event_key, callback) => {
   if (!view || typeof view.env?.events?.on !== "function") {
-    console.warn("视图或事件系统不可用于注册事件监听器");
+    console.warn("View or event system not available for registering event listener");
     return () => {
     };
   }
@@ -26250,7 +26287,7 @@ var LookupItemView = class extends SmartItemView {
     return "smart-lookup-view";
   }
   static get display_text() {
-    return "查找";
+    return "Lookup";
   }
   static get icon_name() {
     return "smart-lookup";
@@ -26268,22 +26305,22 @@ async function register_smart_connections_codeblock(plugin) {
     "smart-connections",
     async (cb_content, container, mpp_ctx) => {
       container.empty();
-      container.createEl("span", { text: "正在加载..." });
+      container.createEl("span", { text: "Loading\u2026" });
       const cb_config = JSON.parse(cb_content.trim() || "{}");
       const env = plugin.env;
       const entity = env.smart_sources.get(mpp_ctx.sourcePath) ?? env.smart_sources.init_file_path(mpp_ctx.sourcePath);
       const smart_view = env.smart_view;
       if (!entity) {
         container.empty();
-        container.createEl("p", { text: "未找到实体：" + mpp_ctx.sourcePath });
+        container.createEl("p", { text: "Entity not found: " + mpp_ctx.sourcePath });
         return;
       }
       const render_codeblock = async () => {
         const connections_list = entity.connections;
         if (!connections_list?.env) {
           container.empty();
-          container.createEl("p", { text: "智能环境/连接正在加载…" });
-          const retry_button = container.createEl("button", { text: "重试" });
+          container.createEl("p", { text: "Smart Environment / Connections loading\u2026" });
+          const retry_button = container.createEl("button", { text: "Retry" });
           retry_button.addEventListener("click", () => {
             render_codeblock();
           });
@@ -26304,7 +26341,7 @@ async function register_smart_connections_codeblock(plugin) {
         container._has_listeners = true;
         const disposers = [];
         disposers.push(env.events.on("settings:changed", (event) => {
-          console.log("连接代码块视图检测到的设置更改", event);
+          console.log("connections codeblock view detected settings change", event);
           if (event.path?.includes("connections_lists")) {
             render_codeblock();
           }
@@ -26366,7 +26403,7 @@ var SmartConnectionsPlugin = class extends SmartPlugin {
   }
   // async onload() { this.app.workspace.onLayoutReady(this.initialize.bind(this)); } // initialize when layout is ready
   onunload() {
-    console.log("卸载智能连接插件中的第一个");
+    console.log("Unloading Smart Connections plugin");
     this.notices?.unload();
     this.env?.unload_main?.(this);
   }
@@ -26376,7 +26413,7 @@ var SmartConnectionsPlugin = class extends SmartPlugin {
       if (!is_new) return;
       setTimeout(() => {
         StoryModal.open(this, {
-          title: "智能连接入门",
+          title: "Getting Started With Smart Connections",
           url: "https://smartconnections.app/story/smart-connections-getting-started/?utm_source=sc-op-new-user"
         });
       }, 1e3);
@@ -26385,7 +26422,7 @@ var SmartConnectionsPlugin = class extends SmartPlugin {
         this.open_connections_view();
         if (this.app.workspace.rightSplit.collapsed) this.app.workspace.rightSplit.toggle();
       }, 1e3);
-      this.add_to_gitignore("# 忽略智能环境文件夹\n.smart-env");
+      this.add_to_gitignore("\n\n# Ignore Smart Environment folder\n.smart-env");
     });
     await this.SmartEnv.wait_for({ loaded: true });
     register_smart_connections_codeblock(this);
@@ -26398,21 +26435,21 @@ var SmartConnectionsPlugin = class extends SmartPlugin {
     return {
       connections: {
         icon_name: "smart-connections",
-        description: "智能连接：打开连接视图",
+        description: "Smart Connections: Open connections view",
         callback: () => {
           this.open_connections_view();
         }
       },
       lookup: {
         icon_name: "smart-lookup",
-        description: "智能查找：打开查找视图",
+        description: "Smart Lookup: Open lookup view",
         callback: () => {
           this.open_lookup_view();
         }
       },
       random_note: {
         icon_name: "smart-dice",
-        description: "智能连接：打开随机连接",
+        description: "Smart Connections: Open random connection",
         callback: () => {
           this.open_random_connection();
         }
@@ -26424,11 +26461,11 @@ var SmartConnectionsPlugin = class extends SmartPlugin {
   }
   async check_for_updates() {
     if (await this.is_new_plugin_version(this.manifest.version)) {
-      console.log("打开发行说明模态");
+      console.log("opening release notes modal");
       try {
         ReleaseNotesView.open(this.app.workspace, this.manifest.version);
       } catch (e) {
-        console.error("无法打开 ReleaseNotesView", e);
+        console.error("Failed to open ReleaseNotesView", e);
       }
       await this.set_last_known_version(this.manifest.version);
     }
@@ -26469,24 +26506,24 @@ var SmartConnectionsPlugin = class extends SmartPlugin {
       ...super.commands,
       random_connection: {
         id: "smart-connections-random",
-        name: "打开：来自连接的随机注释",
+        name: "Open: Random note from connections",
         callback: async () => {
           await this.open_random_connection();
         }
       },
       getting_started: {
         id: "smart-connections-getting-started",
-        name: "显示：入门幻灯片",
+        name: "Show: Getting started slideshow",
         callback: () => {
           StoryModal.open(this, {
-            title: "智能连接入门",
+            title: "Getting Started With Smart Connections",
             url: "https://smartconnections.app/story/smart-connections-getting-started/?utm_source=sc-op-command"
           });
         }
       },
       insert_connections_codeblock: {
         id: "insert-connections-codeblock",
-        name: "插入：连接代码块",
+        name: "Insert: Connections codeblock",
         editorCallback: (editor) => {
           editor.replaceSelection(build_connections_codeblock());
         }
@@ -26499,12 +26536,12 @@ var SmartConnectionsPlugin = class extends SmartPlugin {
   async open_random_connection() {
     const curr_file = this.app.workspace.getActiveFile();
     if (!curr_file) {
-      new Notice13("没有活动文件来查找");
+      new Notice13("No active file to find connections for");
       return;
     }
     const rand_entity = await get_random_connection(this.env, curr_file.path);
     if (!rand_entity) {
-      new Notice13("无法打开非嵌入源的随机连接：" + curr_file.path);
+      new Notice13("Cannot open random connection for non-embedded source: " + curr_file.path);
       return;
     }
     this.open_note(rand_entity.item.path);
@@ -26523,7 +26560,7 @@ var SmartConnectionsPlugin = class extends SmartPlugin {
       await this.app.vault.adapter.append(".gitignore", `
 
 ${message ? "# " + message + "\n" : ""}${ignore}`);
-      console.log("添加到 .gitignore：" + ignore);
+      console.log("Added to .gitignore: " + ignore);
     }
   }
 };

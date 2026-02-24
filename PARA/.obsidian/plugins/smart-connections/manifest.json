@@ -1,10 +1,10 @@
 {
-    "id": "smart-connections",
-    "name": "智能连接",
-    "author": "Brian Petro",
-    "description": "与您的笔记聊天并查看本地或远程模型相关内容的链接。",
-    "minAppVersion": "1.1.0",
-    "authorUrl": "https://smartconnections.app",
-    "isDesktopOnly": false,
-    "version": "4.1.8"
+  "id": "smart-connections",
+  "name": "Smart Connections",
+  "author": "Brian Petro",
+  "description": "Chat with your notes & see links to related content with Local or Remote models.",
+  "minAppVersion": "1.1.0",
+  "authorUrl": "https://smartconnections.app",
+  "isDesktopOnly": false,
+  "version": "4.1.8"
 }

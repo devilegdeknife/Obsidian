@@ -1,0 +1,90 @@
+/* ====================== 学术长文专用样式 ====================== */
+.analysis-note {
+  --file-line-width: 42em;           /* 窄列阅读，中文最舒适宽度 */
+  --line-height-normal: 1.85;        /* 中文行高优化 */
+}
+
+/* Callout美化：[!summary] 学术蓝色调（仿GitHub + Obsidian原生） */
+.analysis-note .callout[data-callout="summary"],
+.analysis-note .callout[data-callout="note"] {
+  --callout-color: 0, 122, 255;      /* 醒目蓝色 */
+  --callout-icon: lucide-book-open;
+  border-radius: 12px;
+  border-left-width: 6px;
+  background: rgba(0, 122, 255, 0.08);
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.analysis-note .callout[data-callout="summary"] .callout-title {
+  font-weight: 700;
+  color: rgb(0, 122, 255);
+  font-size: 1.15em;
+}
+
+/* 标题层次优化（学术专业感） */
+.analysis-note h1 {
+  font-size: 2.4em;
+  border-bottom: 3px solid var(--accent-color);
+  padding-bottom: 0.6rem;
+  margin-bottom: 2rem;
+}
+.analysis-note h2 { font-size: 1.75em; margin-top: 3rem; color: var(--text-normal); }
+.analysis-note h3 { font-size: 1.4em; color: var(--text-muted); }
+
+/* 中文排版增强（首行缩进 + 字间距） */
+.analysis-note .markdown-preview-view p {
+  text-indent: 2em;
+  line-height: var(--line-height-normal);
+  font-size: 1.05em;
+  letter-spacing: 0.02em;
+}
+
+/* 表格美化（斑马纹 + 学术风） */
+.analysis-note table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+  border: 1px solid var(--background-modifier-border);
+}
+.analysis-note th,
+.analysis-note td {
+  padding: 14px 18px;
+  border: 1px solid var(--background-modifier-border);
+  text-align: left;
+}
+.analysis-note tr:nth-child(even) {
+  background-color: rgba(0,0,0,0.03);
+}
+.analysis-note th {
+  background-color: var(--background-secondary);
+  font-weight: 600;
+}
+
+/* 列表与引用优化 */
+.analysis-note ul, .analysis-note ol {
+  padding-left: 1.8em;
+}
+.analysis-note li { margin-bottom: 0.6em; }
+.analysis-note blockquote {
+  border-left: 5px solid var(--accent-color);
+  padding-left: 1.5em;
+  color: var(--text-muted);
+  font-size: 1.02em;
+}
+
+/* 暗黑模式自动适配 */
+.theme-dark .analysis-note .callout[data-callout="summary"] {
+  background: rgba(0, 122, 255, 0.12);
+}
+.theme-dark .analysis-note tr:nth-child(even) {
+  background-color: rgba(255,255,255,0.05);
+}
+
+/* 移动端友好 */
+@media (max-width: 768px) {
+  .analysis-note {
+    --file-line-width: 92%;
+  }
+}
