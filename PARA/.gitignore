@@ -1,0 +1,37 @@
+# ===== Obsidian local state =====
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/plugins/*/data.json
+
+# ===== Agent runtime / telemetry =====
+.smart-env/
+.agent/outputs/
+.agent/tmp/
+
+# ===== Inbox processing intermediates (keep final reports) =====
+01_Project/00_Inbox_Processing/rg_*_index.txt
+01_Project/00_Inbox_Processing/source_hash_*.tsv
+
+# ===== Logs / temp =====
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# ===== Editor / OS =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ===== Secrets =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
