@@ -51,7 +51,7 @@
 
 - file_path: 00_Inbox\AI 应用开发学习全景路线图.md
 - created_at: 2026-02-05
-- summary_short: 该文系统梳理[[AI 应用开发学习全景路线图]]，覆盖背景、核心方法与可执行建议。
+- summary_short: 该文系统梳理[[AI-应用开发学习全景路线图]]，覆盖背景、核心方法与可执行建议。
 - summary_detailed:
   - 主题焦点：AI 应用开发学习全景路线图
   - 关键线索：AI 应用开发学习全景路线图
@@ -114,7 +114,7 @@
 
 - file_path: 00_Inbox\DMA外挂真的无解吗？_享彦_2025-08-12.md
 - created_at: 
-- summary_short: 该文聚焦[[DMA外挂真的无解吗？_享彦_2025-08-12]]，整理了关键事实、观点与后续可处理线索。
+- summary_short: 该文聚焦[[DMA外挂真的无解吗-享彦-2025-08-12]]，整理了关键事实、观点与后续可处理线索。
 - summary_detailed:
   - 主题焦点：DMA外挂真的无解吗？_享彦_2025-08-12
   - 关键线索：藤子+微软通过VT-d直接就给dma干末日了
@@ -1015,7 +1015,7 @@
 - summary_short: 该笔记以素材摘录为主，围绕[未命名]保留原始观点与上下文，便于后续二次加工。
 - summary_detailed:
   - 主题焦点：未命名
-  - 关键线索：![[../04_Archives/attachments/Pasted image 20260221141940.png]]
+  - 关键线索：![[04_Archives/attachments/Pasted image 20260221141940.png]]
   - 整理建议：建议暂留 Inbox，待补充上下文后再迁移。
 - tags_primary: 杂项素材
 - tags_secondary: 素材摘录, 方法论, 知乎讨论
@@ -1514,4 +1514,3 @@
 - tags_secondary: 知乎讨论, 国际关系, 社会结构, AI工具链, 学习路线, 系统设计, 软件工程, 网络安全
 - confidence: high
 - next_action: 建议迁移至 02_Areas 技术专题，长文可拆为方法卡片与SOP。
-
