@@ -4,14 +4,10 @@
 状态:
   - Areas
 tags:
-  - #agents
-  - #ci
-  - #codex
-  - #coding
-  - #mcp
+  - Codex
 para: areas
 aliases:
-  - "00_目录 - Codex CLI 学习路径"
+  - 00_目录 - Codex CLI 学习路径
 ---
 # Codex CLI 学习路径 (给程序员)
 

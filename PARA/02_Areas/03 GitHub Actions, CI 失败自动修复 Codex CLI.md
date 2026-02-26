@@ -4,14 +4,10 @@
 状态:
   - Areas
 tags:
-  - #ci
-  - #codex
-  - #coding
-  - #github
-  - #github-actions
+  - codex
 para: areas
 aliases:
-  - "03_GitHub Actions, CI 失败自动修复 (Codex CLI)"
+  - 03_GitHub Actions, CI 失败自动修复 (Codex CLI)
 ---
 # GitHub Actions: CI 失败自动修复 (Codex CLI)
 

@@ -4,12 +4,10 @@
 状态:
   - Areas
 tags:
-  - #codex
-  - #coding
-  - #mcp
+  - codex
 para: areas
 aliases:
-  - "01_MCP 模型上下文协议"
+  - 01_MCP 模型上下文协议
 ---
 # 模型上下文协议 (MCP)
 

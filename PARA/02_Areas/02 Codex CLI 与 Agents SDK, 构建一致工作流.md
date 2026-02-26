@@ -4,13 +4,10 @@
 状态:
   - Areas
 tags:
-  - #agents
-  - #codex
-  - #coding
-  - #mcp
+  - codex
 para: areas
 aliases:
-  - "02_Codex CLI 与 Agents SDK, 构建一致工作流"
+  - 02_Codex CLI 与 Agents SDK, 构建一致工作流
 ---
 # Codex CLI 与 Agents SDK: 构建一致, 可追踪的 Agent 工作流
 

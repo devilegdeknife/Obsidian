@@ -4,15 +4,10 @@
 状态:
   - Areas
 tags:
-  - #ci
-  - #code-quality
-  - #codex
-  - #coding
-  - #gitlab
-  - #security
+  - codex
 para: areas
 aliases:
-  - "04_GitLab CI, 代码质量与安全修复 (Codex CLI)"
+  - 04_GitLab CI, 代码质量与安全修复 (Codex CLI)
 ---
 # GitLab CI: 用 Codex 生成 Code Quality 报告, 整理并修复 SAST 结果
 

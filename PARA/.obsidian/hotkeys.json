@@ -1,3 +1,12 @@
 {
-  "editor:save-file": []
+  "editor:save-file": [],
+  "app:delete-file": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Delete"
+    }
+  ],
+  "switcher:open": []
 }

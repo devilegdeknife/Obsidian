@@ -4,14 +4,10 @@
 状态:
   - Areas
 tags:
-  - #ci
-  - #code-review
-  - #codex
-  - #coding
-  - #github
+  - codex
 para: areas
 aliases:
-  - "05_CI 中的代码审查, Codex 结构化输出"
+  - 05_CI 中的代码审查, Codex 结构化输出
 ---
 # CI 中的代码审查: 用 Codex 结构化输出生成可发布的 Review 结果
 
