@@ -1614,5 +1614,20 @@
     },
     "expandedKeys": [],
     "zoom": 1
+  },
+  "OpenClaw.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
   }
 }
