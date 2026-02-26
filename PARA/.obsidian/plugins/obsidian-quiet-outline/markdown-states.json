@@ -1,6 +1,6 @@
 {
   "PLAN.md": {
-    "scroll": 0.11928641067533531,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 0,
@@ -996,7 +996,612 @@
     "zoom": 1
   },
   "00_Inbox/Git工作流程.md": {
-    "scroll": 0.3262135826160464,
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "02_Areas/00-目录-Codex-CLI-学习路径.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-2",
+      "item-1-0"
+    ],
+    "zoom": 1
+  },
+  "02_Areas/MOC-心理控制机制.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ],
+    "zoom": 1
+  },
+  "02_Areas/编程分析.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/01-MOC-AI编程能力.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 27
+      },
+      "to": {
+        "line": 32,
+        "ch": 27
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-快速开始.md": {
+    "scroll": 313.5075976336789,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 33
+      },
+      "to": {
+        "line": 21,
+        "ch": 33
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-CLI-学习路径.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-CI-中的代码审查-Codex-结构化输出.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-AI与CS学习实践指南.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-代码库现代化-用-Codex-迁移遗留系统.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-学习路径.md": {
+    "scroll": 9.565217391304348,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 0
+      },
+      "to": {
+        "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-CLI-与-Agents-SDK-构建一致工作流.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-ExecPlan-用-PLANS-md-拆解多小时任务.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-ExecPlan-用-PLANS-md-拆解多小时任务.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-GitHub-Actions-CI-失败自动修复-Codex-CLI.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-GitLab-CI-代码质量与安全修复-Codex-CLI.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Jira-与-GitHub-自动化-用-Codex-CLI-从工单开-PR.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-MCP-模型上下文协议.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-MCP-模型上下文协议.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 23
+      },
+      "to": {
+        "line": 25,
+        "ch": 23
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-代码库现代化.md": {
+    "scroll": 46.260384992467834,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-Agents-SDK-构建一致工作流.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-GitHub-Actions-CI-失败自动修复.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-GitLab-CI-代码质量与安全修复.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-GitLabCI代码质量与安全修复.md": {
+    "scroll": 21.208704455001794,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-Jira-与-GitHub-自动化从工单开-PR.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-Jira与GitHub自动化从工单开PR.md": {
+    "scroll": 55.22209800006977,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 0
+      },
+      "to": {
+        "line": 26,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-MCP模型上下文协议.md": {
+    "scroll": 88.55909710838681,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 23
+      },
+      "to": {
+        "line": 26,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Trellis-AI编码框架介绍与开源分享.md": {
+    "scroll": 35.09076960160179,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-提示词指南.md": {
+    "scroll": 151.4925556057655,
+    "cursor": {
+      "from": {
+        "line": 170,
+        "ch": 0
+      },
+      "to": {
+        "line": 170,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-快速开始与提示词指南.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 33
+      },
+      "to": {
+        "line": 21,
+        "ch": 33
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-用AgentsSDK构建一致工作流.md": {
+    "scroll": 160.89866464685514,
+    "cursor": {
+      "from": {
+        "line": 152,
+        "ch": 32
+      },
+      "to": {
+        "line": 152,
+        "ch": 32
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-用PLANSmd拆解多小时任务.md": {
+    "scroll": 43.421603043504014,
+    "cursor": {
+      "from": {
+        "line": 70,
+        "ch": 0
+      },
+      "to": {
+        "line": 70,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "未命名.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "AGENT.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "AGENTS.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 136
+      },
+      "to": {
+        "line": 0,
+        "ch": 136
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Codex-GitHubActionsCI失败自动修复.md": {
+    "scroll": 43.706630434308735,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "3-Resources/MOC-资源总索引.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Claude-Code-快速开始.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Claude-Code技巧.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "2-Areas/AI编程能力-Rust-学习笔记-基础篇.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [],
+    "zoom": 1
+  },
+  "1-Projects/00_Inbox_Processing/项目-Inbox标签索引.md": {
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 0,
