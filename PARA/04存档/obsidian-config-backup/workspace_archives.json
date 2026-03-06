@@ -1,0 +1,236 @@
+{
+  "main": {
+    "id": "1a69a6c68eae0934",
+    "type": "split",
+    "children": [
+      {
+        "id": "2a867b13dfdf69c9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cd4fe7a53c20f291",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "爱情/以获取房产为目的的欺诈.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "以获取房产为目的的欺诈"
+            }
+          },
+          {
+            "id": "641cc2718f0bcca9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "测试文档.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "测试文档"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6497b9deb9511a1c",
+    "type": "split",
+    "children": [
+      {
+        "id": "f9159d9fe2f92056",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e8c34441d89f8cd3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "07202e463336da2c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "6efa9e40f9d6e3d9",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "406245e3d9b950b0",
+    "type": "split",
+    "children": [
+      {
+        "id": "72660158bdac0d09",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9726397513743bef",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "测试文档.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-coming-in",
+              "title": "测试文档 的反向链接列表"
+            }
+          },
+          {
+            "id": "50f151358394f4d0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "测试文档.md",
+                "linksCollapsed": true,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-going-out",
+              "title": "测试文档 的出链列表"
+            }
+          },
+          {
+            "id": "14a5a9a6a98cafbd",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "b01f7980a820c741",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "测试文档.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "测试文档 的大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "641cc2718f0bcca9",
+  "lastOpenFiles": [
+    "2024-05-27.md",
+    "2023-12-09.md",
+    "测试文档.md",
+    "图片/95122414_7.png",
+    "2024-05-14.md",
+    "2022-04-23.md",
+    "归档/科技发展方向.md",
+    "2024-01-03.md",
+    "爱情/谈论婚姻时，我们在谈些什么.md",
+    "爱情/贫民窟女孩阶级跨越指南.md",
+    "爱情/穿越千里，只为你一笑.md",
+    "归档/大脑记忆的细胞机制-从幼年时期记忆丢失谈起.md",
+    "归档/工业皇冠-境外版.md",
+    "归档/论宣传日本匠人精神的可笑.md",
+    "归档/历史-以色列.md",
+    "归档/酒井星子的理想男生标准.md",
+    "归档/鸡蛋吃起来有“橡皮味”.md",
+    "归档/分析女权思想.md",
+    "2024-03-17.md",
+    "2024-01-11.md",
+    "2024-02-08.md",
+    "2024-01-12.md",
+    "2024-01-07.md",
+    "2023-12-06.md",
+    "2023-11-28.md",
+    "图片/日本战败.png",
+    "ACGN/亚文化圈子.md",
+    "2023-11-20.md",
+    "图片/冥界路线图.png",
+    "图片/面料.png",
+    "图片/swe_at_google.2.cover.jpg",
+    "图片/Pasted image 20240527165526.png",
+    "图片/Pasted image 20240109200236.png",
+    "图片/Pasted image 20231229191728.png",
+    "图片/Pasted image 20231019220121.png",
+    "图片/设计细节.png",
+    "副业",
+    "日记",
+    "新建文件夹",
+    "归档/未命名.canvas",
+    "归档",
+    "图片/日本战败.jfif",
+    "图片/日本战败.jfif.crdownload",
+    "Excalidraw",
+    "未命名.canvas",
+    "ACGN",
+    "整理",
+    "ACGN",
+    "Untitled.canvas"
+  ]
+}

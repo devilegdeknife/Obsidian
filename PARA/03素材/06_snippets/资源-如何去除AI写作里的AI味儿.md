@@ -1,0 +1,20 @@
+---
+创建时间: 2026-02-02
+最后修改: 2026-02-15
+状态:
+  - Resource
+tags: []
+para: resource
+aliases:
+  - "如何去除AI写作里的AI味儿_0072"
+---
+# 如何去除AI写作里的AI味儿？
+[内容链接](https://www.zhihu.com/question/966797856/answer/1913678451300370176)
+
+比较取巧的方法就是把几十篇文章喂给大模型，并使用下面的prompt，让大模型提取文风。
+
+然后另开一个对话窗口，把提取的文风json丢给大模型，并带上你要创作的主题/内容，基本就能照猫画虎的写出一样风格的文章了。好用记得夸夸我~
+
+不便复制可以fork我的仓库：
+
+[GitHub - NeekChaw/awesome-prompt: 让你一眼惊艳的prompt](https://link.zhihu.com/?target=https%3A//github.com/NeekChaw/awesome-prompt)
